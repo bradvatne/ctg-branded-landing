@@ -28,6 +28,21 @@ const levers = [
   ["Abandoned booking retargeting", "Bring guests back to the zone, date, and price they left."],
 ];
 
+const faqs = [
+  ["What is Clubtech?", "Clubtech is an all-in-one booking platform for beach clubs, day clubs, nightclubs, and hotel pools—online reservations, front-of-house operations, and marketing in a single system. Founded in Singapore, it processes $332k in weekly GMV and supports venue partners in over 7 countries."],
+  ["How much does Clubtech cost?", "There is no monthly fee. Online bookings carry a 4% processing fee paid by the customer, and each venue pays a one-time $2,000 setup fee covering widget setup, system configuration, and staff training. The platform earns when the venue's online revenue grows."],
+  ["How does Clubtech reduce no-shows?", "Guests commit before they arrive. Prepayments, deposits, and minimum spends are collected inside the booking flow, so the money arrives before the guest does—and capacity is locked in days ahead instead of guessed on the day."],
+  ["Does Clubtech integrate with our existing POS and PMS?", "Yes. Clubtech sits on top of the existing stack rather than replacing it, with no major IT changes. Integrations include Opera PMS, Airwallex, Midtrans (QRIS, GoPay, OVO), Apple Pay, Google Pay, Meta Ads, Google Ads, GA4, and WhatsApp, with multi-currency support."],
+  ["What makes Clubtech different from a restaurant reservation system?", "Clubtech sells the venue itself, not a time slot. The 3D birds-eye interactive map lets guests choose the exact furniture and zone, stack add-ons like bottles and transfers, and pay upfront—built for furniture, zones, and dayparts rather than dining covers."],
+  ["How does onboarding work?", "A dedicated account lead runs five stages: onboarding, build, training, go-live, and optimization. The rollout is configured around what the venue actually sells, and 90-day hypercare with strategic data advisory continues after launch to improve conversion."],
+];
+
+const faqJsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),
+});
+
 const delivery = [
   ["Onboarding", "Scope the venue, inventory, systems, and commercial model."],
   ["Build", "Configure a booking journey around what your venue actually sells."],
@@ -160,7 +175,21 @@ export default function Home() {
         <div className="quote-meta"><div className="avatar-placeholder" aria-hidden="true">Mobile image<br /><b>1080 × 1080 px</b></div><p><strong>Beau Whittington</strong><br />CEO, FINNS Beach Club</p></div>
       </section>
 
+      <section className="section shell faq" id="faq">
+        <div className="section-heading centered"><p className="eyebrow">FAQ</p><h2>Questions operators <span className="indigo-text">ask.</span></h2></div>
+        <div className="faq-list">
+          {faqs.map(([q, a]) => (
+            <details className="faq-item" key={q}>
+              <summary><h3>{q}</h3><span className="faq-toggle" aria-hidden="true">+</span></summary>
+              <p>{a}</p>
+            </details>
+          ))}
+        </div>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd }} />
+      </section>
+
       <section className="closing dark-section" id="contact">
+        <img className="closing-mark" src="/brand/clubtech-mark-white.png" alt="" aria-hidden="true" />
         <div className="shell centered"><p className="eyebrow">Your venue, pre-sold.</p><h2>See what Saturday looks like <span className="mint-text">on Wednesday.</span></h2><p>Book a focused walkthrough, configured around a premium venue like yours.</p><a className="button button-mint" href="mailto:info@clubtechglobal.com">Book a demo <Arrow /></a></div>
       </section>
 
