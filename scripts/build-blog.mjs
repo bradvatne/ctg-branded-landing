@@ -1,0 +1,525 @@
+#!/usr/bin/env node
+/* Clubtech branded landing — blog build.
+   Ports the ctg-landingpage blog protocol (content/blog/*.md → blog/) with
+   zero dependencies: a built-in markdown renderer replaces marked, and the
+   listing is emitted as final static HTML (no PHP cache layer).
+
+   Emits:
+     blog/<slug>/index.html   (one page per post)
+     blog/index.html          (the directory/listing page)
+     sitemap.xml
+
+   Frontmatter (flat key: value lines, optional quotes — NOT full YAML):
+   title, titleTag, slug, date, author, category, excerpt, hero, heroAlt,
+   description. A "## Questions operators ask" section emits FAQPage JSON-LD.
+
+   Canonicals: every post canonicalizes to the original article on
+   www.clubtechglobal.com — this Pages site is a branded mirror and must not
+   compete with the primary blog in search. For the same reason sitemap.xml
+   lists only this site's own indexable URLs (/ and /blog/), not the posts.
+
+   Usage: node scripts/build-blog.mjs   (or: npm run build:blog)
+*/
+
+import { readFileSync, writeFileSync, readdirSync, mkdirSync, rmSync, existsSync } from 'node:fs';
+import { dirname, join, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const ROOT = resolve(__dirname, '..');
+const CONTENT_DIR = join(ROOT, 'content', 'blog');
+const OUT_DIR = join(ROOT, 'blog');
+const SITE_ORIGIN = 'https://bradvatne.github.io/ctg-branded-landing';
+const CANONICAL_ORIGIN = 'https://www.clubtechglobal.com';
+
+/* ─── Frontmatter parser (same contract as ctg-landingpage) ──── */
+function parseFrontmatter(raw) {
+  const m = raw.match(/^---\n([\s\S]+?)\n---\n([\s\S]*)$/);
+  if (!m) throw new Error('Missing frontmatter');
+  const meta = {};
+  for (const line of m[1].split('\n')) {
+    const i = line.indexOf(':');
+    if (i === -1) continue;
+    const key = line.slice(0, i).trim();
+    let val = line.slice(i + 1).trim();
+    if (val.startsWith('"') && val.endsWith('"')) val = val.slice(1, -1);
+    meta[key] = val;
+  }
+  return { meta, body: m[2] };
+}
+
+/* ─── HTML helpers ───────────────────────────────────────────── */
+const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const escScriptJson = (s) => String(s).replace(/</g, '\\u003c').replace(/>/g, '\\u003e').replace(/&/g, '\\u0026');
+
+function sanitizeBlogHtml(html) {
+  return String(html)
+    .replace(/<script\b[\s\S]*?<\/script\s*>/gi, '')
+    .replace(/<style\b[\s\S]*?<\/style\s*>/gi, '')
+    .replace(/<iframe\b[\s\S]*?<\/iframe\s*>/gi, '')
+    .replace(/<object\b[\s\S]*?<\/object\s*>/gi, '')
+    .replace(/<embed\b[^>]*>/gi, '')
+    .replace(/\son\w+\s*=\s*"[^"]*"/gi, '')
+    .replace(/\son\w+\s*=\s*'[^']*'/gi, '')
+    .replace(/\son\w+\s*=\s*[^\s>]+/gi, '')
+    .replace(/\b(href|src|action|formaction)\s*=\s*(["'])\s*(?:javascript|data|vbscript):[^"']*\2/gi, '$1="#"');
+}
+
+/* ─── Minimal markdown renderer ──────────────────────────────── */
+/* Covers the authoring subset the blog protocol allows: ##/### headings,
+   paragraphs, **bold**, _italic_/*italic*, [text](href), `code`,
+   -/* unordered lists, 1. ordered lists, > blockquotes, --- rules.
+   Raw HTML in the source is escaped (the protocol strips it anyway). */
+function inlineMd(text) {
+  let out = esc(text);
+  out = out.replace(/`([^`]+)`/g, (_, c) => `<code>${c}</code>`);
+  out = out.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+  out = out.replace(/(^|[\s(])\*([^*\s][^*]*)\*(?=[\s).,:;!?]|$)/g, '$1<em>$2</em>');
+  out = out.replace(/(^|[\s(])_([^_\s][^_]*)_(?=[\s).,:;!?]|$)/g, '$1<em>$2</em>');
+  out = out.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (_, label, href) => {
+    const safe = /^(https?:\/\/|\/|#|mailto:)/.test(href) ? href : '#';
+    const ext = /^https?:\/\//.test(safe) ? ' rel="noopener"' : '';
+    return `<a href="${esc(safe)}"${ext}>${label}</a>`;
+  });
+  return out;
+}
+
+function renderMarkdown(md) {
+  const lines = md.replace(/\r\n/g, '\n').split('\n');
+  const out = [];
+  let para = [];
+  let list = null; // {tag, items}
+  let quote = [];
+
+  const flushPara = () => {
+    if (para.length) { out.push(`<p>${inlineMd(para.join(' ').trim())}</p>`); para = []; }
+  };
+  const flushList = () => {
+    if (list) { out.push(`<${list.tag}>` + list.items.map((i) => `<li>${inlineMd(i)}</li>`).join('') + `</${list.tag}>`); list = null; }
+  };
+  const flushQuote = () => {
+    if (quote.length) { out.push(`<blockquote><p>${inlineMd(quote.join(' ').trim())}</p></blockquote>`); quote = []; }
+  };
+  const flushAll = () => { flushPara(); flushList(); flushQuote(); };
+
+  for (const raw of lines) {
+    const line = raw.replace(/\s+$/, '');
+    const h = line.match(/^(#{1,4}) (.+)$/);
+    if (h) { flushAll(); const lvl = Math.min(h[1].length + 1, 4); out.push(`<h${lvl}>${inlineMd(h[2])}</h${lvl}>`); continue; }
+    if (/^(-{3,}|\*{3,})$/.test(line)) { flushAll(); out.push('<hr/>'); continue; }
+    const ul = line.match(/^\s*[-*] (.+)$/);
+    if (ul) { flushPara(); flushQuote(); if (!list || list.tag !== 'ul') { flushList(); list = { tag: 'ul', items: [] }; } list.items.push(ul[1]); continue; }
+    const ol = line.match(/^\s*\d+\. (.+)$/);
+    if (ol) { flushPara(); flushQuote(); if (!list || list.tag !== 'ol') { flushList(); list = { tag: 'ol', items: [] }; } list.items.push(ol[1]); continue; }
+    const bq = line.match(/^> ?(.*)$/);
+    if (bq) { flushPara(); flushList(); quote.push(bq[1]); continue; }
+    if (!line.trim()) { flushAll(); continue; }
+    flushList(); flushQuote(); para.push(line.trim());
+  }
+  flushAll();
+  return out.join('\n');
+}
+
+/* ─── Dates, read time ───────────────────────────────────────── */
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+function shortDate(iso) {
+  const d = new Date(iso + 'T00:00:00Z');
+  return `${d.getUTCDate()} ${MONTHS[d.getUTCMonth()]} ${d.getUTCFullYear()}`;
+}
+function readMinutes(body) {
+  const words = body.replace(/[#*_`>\-\[\]()]/g, ' ').split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.round(words / 250));
+}
+
+/* ─── FAQ extraction (FAQPage JSON-LD) ──────────────────────── */
+function mdToPlain(md) {
+  return md
+    .replace(/<!--[\s\S]*?-->/g, '')
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
+    .replace(/[*_`]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+function extractFaqs(body) {
+  const secMatch = body.match(/^## Questions operators ask\s*$([\s\S]*?)(?=^## |(?![\s\S]))/m);
+  if (!secMatch) return [];
+  const faqs = [];
+  const re = /^### (.+)$([\s\S]*?)(?=^### |(?![\s\S]))/gm;
+  let m;
+  while ((m = re.exec(secMatch[1])) !== null) {
+    const q = mdToPlain(m[1]);
+    const a = mdToPlain(m[2]);
+    if (q && a) faqs.push({ q, a });
+  }
+  return faqs;
+}
+
+/* ─── JSON-LD ────────────────────────────────────────────────── */
+function postJsonLd(post) {
+  const url = `${SITE_ORIGIN}/blog/${post.meta.slug}/`;
+  const canonical = `${CANONICAL_ORIGIN}/blog/${post.meta.slug}/`;
+  const faqs = extractFaqs(post.body);
+  const obj = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'BlogPosting',
+        '@id': canonical,
+        headline: post.meta.title,
+        description: post.meta.description || post.meta.excerpt,
+        image: `${CANONICAL_ORIGIN}${post.meta.hero}`,
+        datePublished: post.meta.date,
+        dateModified: post.meta.date,
+        author: { '@type': 'Organization', name: post.meta.author || 'Clubtech Global' },
+        publisher: { '@type': 'Organization', name: 'Clubtech Global', url: `${CANONICAL_ORIGIN}/` },
+        mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
+        articleSection: post.meta.category,
+        url,
+      },
+    ],
+  };
+  if (faqs.length) {
+    obj['@graph'].push({
+      '@type': 'FAQPage',
+      '@id': `${url}#faq`,
+      mainEntity: faqs.map(({ q, a }) => ({
+        '@type': 'Question',
+        name: q,
+        acceptedAnswer: { '@type': 'Answer', text: a },
+      })),
+    });
+  }
+  return JSON.stringify(obj, null, 2);
+}
+
+function listingJsonLd(posts) {
+  return JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    '@id': `${SITE_ORIGIN}/blog/`,
+    name: 'The Index — Clubtech',
+    url: `${SITE_ORIGIN}/blog/`,
+    description: 'Operator playbooks on booking UX, revenue capture, and guest data for premium venues.',
+    hasPart: posts.map((p) => ({
+      '@type': 'BlogPosting',
+      headline: p.meta.title,
+      url: `${SITE_ORIGIN}/blog/${p.meta.slug}/`,
+      datePublished: p.meta.date,
+    })),
+  }, null, 2);
+}
+
+/* ─── Shared chrome ──────────────────────────────────────────── */
+/* rel = path prefix back to the site root ('../' listing, '../../' posts). */
+function navMarkup(rel) {
+  const links = [
+    ['#platform', 'Platform'], ['#booking', 'Booking'], ['#operations', 'Operations'],
+    ['#intelligence', 'Intelligence'], ['#delivery', 'Delivery'], ['#pricing', 'Pricing'],
+  ].map(([hash, label]) => [`${rel}index.html${hash}`, label]);
+  const items = links.map(([href, label]) => `        <a href="${href}">${label}</a>`).join('\n');
+  const mobItems = links.map(([href, label]) => `          <a href="${href}">${label}</a>`).join('\n');
+  return `  <header class="nav-wrap scrolled">
+    <nav class="nav" aria-label="Main navigation">
+      <a href="${rel}index.html" class="brand" aria-label="Clubtech home"><img src="${rel}brand/clubtech-wordmark-white.png" alt="Clubtech" width="176" height="28"></a>
+      <div class="nav-links">
+${items}
+        <a href="${rel}blog/" class="nav-active">Blog</a>
+      </div>
+      <a class="button button-dark nav-cta" href="${rel}index.html#contact">Book a demo <span aria-hidden="true">↗</span></a>
+      <details class="mobile-menu">
+        <summary aria-label="Open navigation">Menu</summary>
+        <div>
+${mobItems}
+          <a href="${rel}blog/">Blog</a>
+          <a href="${rel}index.html#contact">Book a demo</a>
+        </div>
+      </details>
+    </nav>
+  </header>`;
+}
+
+function footerMarkup(rel) {
+  return `  <footer class="footer shell">
+    <div class="footer-top">
+      <a href="${rel}index.html" class="brand"><img src="${rel}brand/clubtech-wordmark-white.png" alt="Clubtech"></a>
+      <div>
+        <a href="${rel}index.html#platform">Platform</a>
+        <a href="${rel}index.html#booking">Booking</a>
+        <a href="${rel}index.html#operations">Operations</a>
+        <a href="${rel}index.html#intelligence">Intelligence</a>
+        <a href="${rel}index.html#pricing">Pricing</a>
+        <a href="${rel}blog/">Blog</a>
+        <a href="mailto:info@clubtechglobal.com">Contact</a>
+      </div>
+    </div>
+    <div class="footer-wordmark"><img src="${rel}brand/clubtech-wordmark-white.png" alt="Clubtech"></div>
+    <p class="copyright">© 2026 Clubtech, Inc.</p>
+  </footer>`;
+}
+
+function headHTML({ title, description, canonical, ogImage, ogImageAlt, jsonLd, rel, ogType = 'article' }) {
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>${esc(title)}</title>
+  <meta name="description" content="${esc(description)}">
+  <link rel="canonical" href="${esc(canonical)}">
+  <link rel="icon" href="${rel}favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@500;600;700;800&display=swap">
+
+  <meta property="og:type" content="${esc(ogType)}">
+  <meta property="og:site_name" content="Clubtech">
+  <meta property="og:title" content="${esc(title)}">
+  <meta property="og:description" content="${esc(description)}">
+  <meta property="og:image" content="${esc(ogImage)}">
+  <meta property="og:image:alt" content="${esc(ogImageAlt)}">
+
+  <link rel="stylesheet" href="${rel}css/styles.css">
+  <link rel="stylesheet" href="${rel}css/blog.css">
+  <script>document.documentElement.classList.add('js')</script>
+
+  <script type="application/ld+json">
+${escScriptJson(jsonLd)}
+  </script>
+</head>`;
+}
+
+/* ─── Listing (the directory page) ───────────────────────────── */
+function indexRow(post, n) {
+  const cat = post.meta.category || '';
+  const catKey = cat.toLowerCase().replace(/\s+/g, '-');
+  return `      <a class="index-row" href="${esc(post.meta.slug)}/" data-category="${esc(catKey)}">
+        <span class="index-num">${String(n).padStart(2, '0')}</span>
+        <span class="index-main">
+          <span class="index-title">${esc(post.meta.title)}</span>
+          <span class="index-meta"><span class="index-cat">${esc(cat)}</span><span>${esc(shortDate(post.meta.date))}</span><span>${readMinutes(post.body)} min</span></span>
+        </span>
+        <img class="index-thumb" src="..${esc(post.meta.hero)}" alt="" loading="lazy">
+        <span class="index-arrow" aria-hidden="true">↗</span>
+      </a>`;
+}
+
+function renderListing(posts) {
+  const [latest, ...rest] = posts;
+  const categories = [...new Set(posts.map((p) => p.meta.category).filter(Boolean))];
+  const chips = categories.map((c) =>
+    `        <button class="filter-chip" data-filter="${esc(c.toLowerCase().replace(/\s+/g, '-'))}">${esc(c)}</button>`).join('\n');
+  const rows = rest.map((p, i) => indexRow(p, posts.length - 1 - i)).join('\n');
+
+  const head = headHTML({
+    title: 'The Index — operator playbooks | Clubtech',
+    description: 'Operator playbooks on booking UX, revenue capture, and guest data for premium venues. From the team behind Clubtech.',
+    canonical: `${SITE_ORIGIN}/blog/`,
+    ogImage: `${SITE_ORIGIN}${latest.meta.hero}`,
+    ogImageAlt: latest.meta.heroAlt || 'Clubtech',
+    jsonLd: listingJsonLd(posts),
+    rel: '../',
+    ogType: 'website',
+  });
+
+  return `${head}
+<body class="blog-index">
+<main>
+${navMarkup('../')}
+
+  <section class="index-hero">
+    <div class="shell">
+      <p class="index-kicker"><span class="tick"></span>The Clubtech index · ${posts.length} entries</p>
+      <h1 class="index-h1">Playbooks for<br>venues that <span class="mint-text">sell out.</span></h1>
+      <p class="index-sub">Booking UX, revenue capture, guest data. Everything we learn on the floor of premium venues, written down.</p>
+    </div>
+    <div class="index-marquee" aria-hidden="true"><div class="index-marquee-track"><span>BOOKING UX · REVENUE CAPTURE · GUEST DATA · DYNAMIC PRICING · PRE-PAID · ATTRIBUTION · </span><span>BOOKING UX · REVENUE CAPTURE · GUEST DATA · DYNAMIC PRICING · PRE-PAID · ATTRIBUTION · </span></div></div>
+  </section>
+
+  <section class="index-featured shell" aria-label="Latest entry">
+    <a class="featured-card" href="${esc(latest.meta.slug)}/">
+      <div class="featured-copy">
+        <p class="featured-tag"><span class="index-cat">${esc(latest.meta.category)}</span><span class="featured-latest">Latest — ${esc(shortDate(latest.meta.date))}</span></p>
+        <h2>${esc(latest.meta.title)}</h2>
+        <p class="featured-excerpt">${esc(latest.meta.excerpt)}</p>
+        <span class="featured-cta">Read the entry <span aria-hidden="true">↗</span></span>
+      </div>
+      <div class="featured-media"><img src="..${esc(latest.meta.hero)}" alt="${esc(latest.meta.heroAlt)}"></div>
+    </a>
+  </section>
+
+  <section class="index-list-wrap shell" aria-label="All entries">
+    <div class="index-toolbar">
+      <p class="index-count"><b>${posts.length - 1}</b> more entries</p>
+      <div class="index-filters" role="group" aria-label="Filter by category">
+        <button class="filter-chip is-active" data-filter="all">All</button>
+${chips}
+      </div>
+    </div>
+    <div class="index-list">
+${rows}
+    </div>
+    <p class="index-empty" hidden>Nothing in this category yet.</p>
+  </section>
+
+  <section class="closing dark-section blog-closing">
+    <img class="closing-mark" src="../brand/clubtech-mark-white.png" alt="" aria-hidden="true">
+    <div class="shell centered">
+      <p class="eyebrow">Your venue, pre-sold.</p>
+      <h2>Stop reading about it. <span class="mint-text">See it live.</span></h2>
+      <p>Book a focused walkthrough, configured around a premium venue like yours.</p>
+      <a class="button button-mint" href="mailto:info@clubtechglobal.com">Book a demo <span aria-hidden="true">↗</span></a>
+    </div>
+  </section>
+
+${footerMarkup('../')}
+</main>
+<script src="../js/blog.js" defer></script>
+</body>
+</html>
+`;
+}
+
+/* ─── Post page ──────────────────────────────────────────────── */
+function renderPost(post, posts) {
+  const canonical = `${CANONICAL_ORIGIN}/blog/${post.meta.slug}/`;
+  const body = sanitizeBlogHtml(renderMarkdown(post.body));
+  const readMin = readMinutes(post.body);
+
+  const others = posts.filter((p) => p.meta.slug !== post.meta.slug).slice(0, 3);
+  const moreRows = others.map((p) => `      <a class="index-row" href="../${esc(p.meta.slug)}/">
+        <span class="index-main">
+          <span class="index-title">${esc(p.meta.title)}</span>
+          <span class="index-meta"><span class="index-cat">${esc(p.meta.category)}</span><span>${esc(shortDate(p.meta.date))}</span></span>
+        </span>
+        <img class="index-thumb" src="../..${esc(p.meta.hero)}" alt="" loading="lazy">
+        <span class="index-arrow" aria-hidden="true">↗</span>
+      </a>`).join('\n');
+
+  const head = headHTML({
+    title: post.meta.titleTag || `${post.meta.title} | Clubtech`,
+    description: post.meta.description || post.meta.excerpt,
+    canonical,
+    ogImage: `${SITE_ORIGIN}${post.meta.hero}`,
+    ogImageAlt: post.meta.heroAlt || post.meta.title,
+    jsonLd: postJsonLd(post),
+    rel: '../../',
+  });
+
+  return `${head}
+<body class="blog-post">
+<main>
+${navMarkup('../../')}
+
+  <article>
+    <header class="post-hero">
+      <div class="shell post-hero-inner">
+        <p class="post-back"><a href="../">← The Index</a></p>
+        <p class="post-tags"><span class="index-cat">${esc(post.meta.category)}</span></p>
+        <h1>${esc(post.meta.title)}</h1>
+        <p class="post-meta">${esc(shortDate(post.meta.date))} · ${esc(post.meta.author || 'Clubtech Global')} · ${readMin} min read</p>
+      </div>
+    </header>
+
+    <div class="shell post-hero-media">
+      <img src="../..${esc(post.meta.hero)}" alt="${esc(post.meta.heroAlt)}" fetchpriority="high">
+    </div>
+
+    <div class="shell post-body">
+${body}
+    </div>
+  </article>
+
+  <section class="shell post-more" aria-label="More entries">
+    <h2 class="post-more-h">More from the index</h2>
+    <div class="index-list">
+${moreRows}
+    </div>
+  </section>
+
+  <section class="closing dark-section blog-closing">
+    <img class="closing-mark" src="../../brand/clubtech-mark-white.png" alt="" aria-hidden="true">
+    <div class="shell centered">
+      <p class="eyebrow">Your venue, pre-sold.</p>
+      <h2>Stop reading about it. <span class="mint-text">See it live.</span></h2>
+      <p>Book a focused walkthrough, configured around a premium venue like yours.</p>
+      <a class="button button-mint" href="mailto:info@clubtechglobal.com">Book a demo <span aria-hidden="true">↗</span></a>
+    </div>
+  </section>
+
+${footerMarkup('../../')}
+</main>
+<script src="../../js/blog.js" defer></script>
+</body>
+</html>
+`;
+}
+
+/* ─── Sitemap ────────────────────────────────────────────────── */
+function renderSitemap(posts) {
+  const latest = posts[0]?.meta.date || '2026-01-01';
+  const entries = [
+    { loc: `${SITE_ORIGIN}/`, lastmod: latest, changefreq: 'weekly', priority: '1.0' },
+    { loc: `${SITE_ORIGIN}/blog/`, lastmod: latest, changefreq: 'weekly', priority: '0.8' },
+  ];
+  const xml = entries.map((e) => `  <url>
+    <loc>${e.loc}</loc>
+    <lastmod>${e.lastmod}</lastmod>
+    <changefreq>${e.changefreq}</changefreq>
+    <priority>${e.priority}</priority>
+  </url>`).join('\n');
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${xml}
+</urlset>
+`;
+}
+
+/* ─── Main ───────────────────────────────────────────────────── */
+function main() {
+  if (!existsSync(CONTENT_DIR)) {
+    console.error(`Missing ${CONTENT_DIR}`);
+    process.exit(1);
+  }
+  const files = readdirSync(CONTENT_DIR).filter((f) => f.endsWith('.md'));
+  if (!files.length) {
+    console.error('No posts found in content/blog/');
+    process.exit(1);
+  }
+
+  const posts = files.map((file) => {
+    const raw = readFileSync(join(CONTENT_DIR, file), 'utf8');
+    const { meta, body } = parseFrontmatter(raw);
+    if (!meta.slug || !meta.title || !meta.date) {
+      throw new Error(`${file}: missing slug/title/date frontmatter`);
+    }
+    if (!/^[a-z0-9][a-z0-9-]*$/.test(meta.slug)) {
+      throw new Error(`${file}: invalid slug "${meta.slug}" — must match /^[a-z0-9][a-z0-9-]*$/`);
+    }
+    if (`${meta.slug}.md` !== file) {
+      throw new Error(`${file}: slug "${meta.slug}" does not match filename`);
+    }
+    const heroPath = join(ROOT, meta.hero.replace(/^\//, ''));
+    if (!existsSync(heroPath)) {
+      throw new Error(`${file}: hero image ${meta.hero} not found`);
+    }
+    return { file, meta, body };
+  }).sort((a, b) => (a.meta.date < b.meta.date ? 1 : -1));
+
+  // Wipe and regenerate blog/ — everything under it is build output.
+  if (existsSync(OUT_DIR)) rmSync(OUT_DIR, { recursive: true, force: true });
+  mkdirSync(OUT_DIR, { recursive: true });
+
+  for (const post of posts) {
+    const dir = join(OUT_DIR, post.meta.slug);
+    mkdirSync(dir, { recursive: true });
+    writeFileSync(join(dir, 'index.html'), renderPost(post, posts));
+  }
+  writeFileSync(join(OUT_DIR, 'index.html'), renderListing(posts));
+  writeFileSync(join(ROOT, 'sitemap.xml'), renderSitemap(posts));
+
+  console.log(`Built ${posts.length} posts + listing → blog/`);
+  console.log('Refreshed sitemap.xml');
+}
+
+main();

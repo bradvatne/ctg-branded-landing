@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GA4 for Venue Bookings: Track Revenue, Not Pageviews</title>
+  <meta name="description" content="GA4 for venue bookings, explained for operators — the event model, booker audiences, and GM reports, plus why your GA4 numbers never match the books.">
+  <link rel="canonical" href="https://www.clubtechglobal.com/blog/ga4-for-venue-bookings/">
+  <link rel="icon" href="../../favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@500;600;700;800&display=swap">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Clubtech">
+  <meta property="og:title" content="GA4 for Venue Bookings: Track Revenue, Not Pageviews">
+  <meta property="og:description" content="GA4 for venue bookings, explained for operators — the event model, booker audiences, and GM reports, plus why your GA4 numbers never match the books.">
+  <meta property="og:image" content="https://bradvatne.github.io/ctg-branded-landing/assets/blog/ga4-for-venue-bookings.webp">
+  <meta property="og:image:alt" content="GA4 report tracking venue booking revenue by source">
+
+  <link rel="stylesheet" href="../../css/styles.css">
+  <link rel="stylesheet" href="../../css/blog.css">
+  <script>document.documentElement.classList.add('js')</script>
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": "https://www.clubtechglobal.com/blog/ga4-for-venue-bookings/",
+      "headline": "GA4 for venue bookings: measure the deck, not the pageviews",
+      "description": "GA4 for venue bookings, explained for operators — the event model, booker audiences, and GM reports, plus why your GA4 numbers never match the books.",
+      "image": "https://www.clubtechglobal.com/assets/blog/ga4-for-venue-bookings.webp",
+      "datePublished": "2026-07-06",
+      "dateModified": "2026-07-06",
+      "author": {
+        "@type": "Organization",
+        "name": "Clubtech Global"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Clubtech Global",
+        "url": "https://www.clubtechglobal.com/"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.clubtechglobal.com/blog/ga4-for-venue-bookings/"
+      },
+      "articleSection": "Marketing",
+      "url": "https://bradvatne.github.io/ctg-branded-landing/blog/ga4-for-venue-bookings/"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://bradvatne.github.io/ctg-branded-landing/blog/ga4-for-venue-bookings/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I track bookings in GA4?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Send GA4's standard ecommerce events from your booking flow — viewitem, addtocart, begincheckout, and purchase — with the furniture variant as the item, real revenue and currency on the purchase, and a unique transaction ID. Add custom dimensions for visit date, zone, and daypart. Mark purchase as a key event so it drives attribution and audiences."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What GA4 events matter for a venue?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "purchase matters most: it carries revenue and powers everything downstream. begincheckout matters second, because the gap between it and purchase defines your abandoned-cart audience. viewitem and addtocart complete the funnel so you can see where guests drop. A refund event keeps revenue honest — most venues skip it and quietly overstate GA4 revenue."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I build GA4 audiences from bookers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Create audiences conditioned on the purchase event rather than sessions or pageviews: all purchasers in the last 180 days, high-value purchasers above a revenue threshold, repeat bookers with two or more purchases, and checkout abandoners who began checkout without buying. Link GA4 to Google Ads so those audiences feed targeting and exclusions directly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why don't my GA4 numbers match my bookings?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "They never will exactly — the goal is a stable, explained gap. GA4 misses bookings blocked by consent choices and ad blockers, double-counts when purchase events fire twice, ignores refunds unless you send them, and can misattribute bookings that return through a payment provider's domain. Reconcile against your booking system weekly; investigate when the delta shifts, not when it exists. --- See your bookings flow into GA4, Meta, and Google in real time. 15 minutes, no pitch deck, no contracts. Book a demo"
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body class="blog-post">
+<main>
+  <header class="nav-wrap scrolled">
+    <nav class="nav" aria-label="Main navigation">
+      <a href="../../index.html" class="brand" aria-label="Clubtech home"><img src="../../brand/clubtech-wordmark-white.png" alt="Clubtech" width="176" height="28"></a>
+      <div class="nav-links">
+        <a href="../../index.html#platform">Platform</a>
+        <a href="../../index.html#booking">Booking</a>
+        <a href="../../index.html#operations">Operations</a>
+        <a href="../../index.html#intelligence">Intelligence</a>
+        <a href="../../index.html#delivery">Delivery</a>
+        <a href="../../index.html#pricing">Pricing</a>
+        <a href="../../blog/" class="nav-active">Blog</a>
+      </div>
+      <a class="button button-dark nav-cta" href="../../index.html#contact">Book a demo <span aria-hidden="true">↗</span></a>
+      <details class="mobile-menu">
+        <summary aria-label="Open navigation">Menu</summary>
+        <div>
+          <a href="../../index.html#platform">Platform</a>
+          <a href="../../index.html#booking">Booking</a>
+          <a href="../../index.html#operations">Operations</a>
+          <a href="../../index.html#intelligence">Intelligence</a>
+          <a href="../../index.html#delivery">Delivery</a>
+          <a href="../../index.html#pricing">Pricing</a>
+          <a href="../../blog/">Blog</a>
+          <a href="../../index.html#contact">Book a demo</a>
+        </div>
+      </details>
+    </nav>
+  </header>
+
+  <article>
+    <header class="post-hero">
+      <div class="shell post-hero-inner">
+        <p class="post-back"><a href="../">← The Index</a></p>
+        <p class="post-tags"><span class="index-cat">Marketing</span></p>
+        <h1>GA4 for venue bookings: measure the deck, not the pageviews</h1>
+        <p class="post-meta">6 Jul 2026 · Clubtech Global · 5 min read</p>
+      </div>
+    </header>
+
+    <div class="shell post-hero-media">
+      <img src="../../assets/blog/ga4-for-venue-bookings.webp" alt="GA4 report tracking venue booking revenue by source" fetchpriority="high">
+    </div>
+
+    <div class="shell post-body">
+<p>Every GA4 tutorial on the internet assumes you sell t-shirts. You sell Saturday. A daybed for July 19 is not a SKU sitting in a warehouse — it expires at close, it has a zone and a daypart, and the guest who bought it is worth more than the transaction. Set GA4 up like a Shopify store and you&#39;ll get a dashboard full of numbers that are technically accurate and operationally useless.</p>
+<p>Here is how GA4 booking tracking should work when the product is furniture, dates, and dayparts.</p>
+<h3>The event model: bookings are ecommerce, with a twist</h3>
+<p>GA4&#39;s ecommerce events map onto a booking flow better than most operators expect — you just have to translate the vocabulary:</p>
+<ul><li><strong><code>view_item</code></strong> — a guest opens a zone or a specific bed. The &quot;item&quot; is the furniture variant: front-row daybed, swim-up bed, cabana.</li><li><strong><code>add_to_cart</code></strong> — they select the bed and a date. Date matters: pass it as an item parameter, because a cabana for this Saturday and the same cabana for a rainy Tuesday are different products economically.</li><li><strong><code>begin_checkout</code></strong> — they hit the payment step. The gap between this and purchase is your abandoned-cart pool, and it&#39;s where paid recovery lives — more on that in our guide to the <a href="/blog/meta-conversions-api-for-venue-bookings/">Meta Conversions API for venue bookings</a>.</li><li><strong><code>purchase</code></strong> — the booking, with real transaction value, currency, and an ID you can reconcile against your booking system.</li></ul>
+<p>Two additions make this venue-grade rather than shop-grade. First, carry <strong>custom dimensions</strong> on the purchase event: visit date (not just booking date), daypart, zone, and package tier. Second, derive <strong>lead time</strong> — days between booking and visit — because it drives everything from staffing to pricing, and GA4 will never compute it for you unless you send the raw material.</p>
+<p>If you only instrument one thing correctly, make it <code>purchase</code> with accurate revenue. Everything else in GA4 — attribution, audiences, ROAS — inherits from that event.</p>
+<h3>Audiences: seed from bookers, not browsers</h3>
+<p>The default temptation is to build audiences from engaged sessions or pageviews. Don&#39;t. A guest who read your menu for four minutes and a guest who prepaid a $600 cabana package look identical to a pageview-based audience, and only one of them should be seeding your lookalikes.</p>
+<p>Build your GA4 audiences down the funnel instead:</p>
+<ul><li><strong>Purchasers, last 180 days</strong> — your core seed for Google Ads lookalike-style expansion and your exclusion list for prospecting (stop paying to reach people who already booked this month).</li><li><strong>High-value purchasers</strong> — filter on purchase revenue above your package threshold. Small audience, disproportionate signal.</li><li><strong>Checkout abandoners</strong> — reached <code>begin_checkout</code>, no <code>purchase</code> in the last 7 days. This is retargeting inventory with intent already proven.</li><li><strong>Repeat bookers</strong> — two or more purchases. These guests justify their own creative and their own offer.</li></ul>
+<p>Link GA4 to Google Ads and these audiences become bid signals, not just reports. This is the same funnel-inversion logic that runs through a modern <a href="/blog/beach-club-marketing-strategy/">beach club marketing strategy</a>: the booking is the conversion, so the booking defines the audience.</p>
+<p>One honest caveat: GA4 audiences are only as good as consent rates and cookie survival allow. They will always undercount. Use them for direction and campaign fuel, not as your system of record.</p>
+<h3>The three reports a GM should actually open</h3>
+<p>GA4 ships with dozens of reports. A venue GM needs three, and two of them you have to build in Explorations:</p>
+<ol><li><strong>Source to revenue.</strong> Not source to sessions — source to booked dollars. Default channel group against purchase revenue tells you whether Instagram is filling the deck or just filling the feed. Expect direct and unassigned to be inflated; that&#39;s measurement decay, not organic brilliance.</li><li><strong>Lead time distribution.</strong> If you&#39;re passing booking-to-visit lead time as a dimension, you can see how far ahead each channel books. Paid social books closer in; returning guests book further out &lt;!-- VERIFY: directional claim — confirm against real venue data before publishing --&gt;. This shapes when you spend, not just where.</li><li><strong>Daypart and zone performance.</strong> Which zones sell out first, which dayparts drag, and what average booking value looks like per variant — the demand map your pricing decisions should sit on.</li></ol>
+<p>If building these by hand sounds like a second job: this is a place where the platform matters. Clubtech pipes bookings into GA4 as conversion events in real time, alongside Meta and Google Ads, and surfaces the operator view — daily booking volume, lead time by daypart, average value by variant, repeat-customer share — natively, without CSV exports. GA4 becomes the cross-channel check, not the only window you have.</p>
+<h3>Common tracking lies (and how to catch them)</h3>
+<p>GA4 will confidently show you wrong numbers. The usual suspects:</p>
+<ul><li><strong>Double-counted purchases.</strong> A guest refreshes the confirmation page, or the event fires from both the page and a tag manager trigger. Fix: fire <code>purchase</code> once, server-side where possible, always with a <code>transaction_id</code> — GA4 deduplicates on it within session but a stable ID also lets you audit.</li><li><strong>Missing refunds and cancellations.</strong> GA4 has a <code>refund</code> event; almost nobody sends it. Your GA4 revenue will read high forever unless refunds flow in or you accept GA4 as gross-bookings-only and say so on the dashboard.</li><li><strong>Payment-redirect attribution loss.</strong> If checkout bounces through a payment provider&#39;s domain and returns, the booking can attribute to the payment gateway as a referral. Add payment domains to the unwanted-referrals list or your best channel will forever be &quot;paypal.com / referral.&quot;</li><li><strong>Consent-mode gaps.</strong> Post-consent-banner, a slice of bookings simply never reaches GA4. That&#39;s not a bug to fix; it&#39;s a floor to acknowledge.</li></ul>
+<p>The discipline that makes all of this survivable: reconcile GA4 purchase revenue against your booking system weekly. The delta should be stable. When it moves, something broke.</p>
+<h3>Questions operators ask</h3>
+<h4>How do I track bookings in GA4?</h4>
+<p>Send GA4&#39;s standard ecommerce events from your booking flow — <code>view_item</code>, <code>add_to_cart</code>, <code>begin_checkout</code>, and <code>purchase</code> — with the furniture variant as the item, real revenue and currency on the purchase, and a unique transaction ID. Add custom dimensions for visit date, zone, and daypart. Mark <code>purchase</code> as a key event so it drives attribution and audiences.</p>
+<h4>What GA4 events matter for a venue?</h4>
+<p><code>purchase</code> matters most: it carries revenue and powers everything downstream. <code>begin_checkout</code> matters second, because the gap between it and purchase defines your abandoned-cart audience. <code>view_item</code> and <code>add_to_cart</code> complete the funnel so you can see where guests drop. A <code>refund</code> event keeps revenue honest — most venues skip it and quietly overstate GA4 revenue.</p>
+<h4>How do I build GA4 audiences from bookers?</h4>
+<p>Create audiences conditioned on the <code>purchase</code> event rather than sessions or pageviews: all purchasers in the last 180 days, high-value purchasers above a revenue threshold, repeat bookers with two or more purchases, and checkout abandoners who began checkout without buying. Link GA4 to Google Ads so those audiences feed targeting and exclusions directly.</p>
+<h4>Why don&#39;t my GA4 numbers match my bookings?</h4>
+<p>They never will exactly — the goal is a stable, explained gap. GA4 misses bookings blocked by consent choices and ad blockers, double-counts when purchase events fire twice, ignores refunds unless you send them, and can misattribute bookings that return through a payment provider&#39;s domain. Reconcile against your booking system weekly; investigate when the delta shifts, not when it exists.</p>
+<hr/>
+<p><strong>See your bookings flow into GA4, Meta, and Google in real time.</strong> 15 minutes, no pitch deck, no contracts. <a href="/contact.html">Book a demo</a></p>
+    </div>
+  </article>
+
+  <section class="shell post-more" aria-label="More entries">
+    <h2 class="post-more-h">More from the index</h2>
+    <div class="index-list">
+      <a class="index-row" href="../big-match-playbook-major-events-revenue/">
+        <span class="index-main">
+          <span class="index-title">The big-match playbook: turning major events into your best revenue weekend</span>
+          <span class="index-meta"><span class="index-cat">Revenue</span><span>8 Jul 2026</span></span>
+        </span>
+        <img class="index-thumb" src="../../assets/blog/big-match-playbook-major-events-revenue.webp" alt="" loading="lazy">
+        <span class="index-arrow" aria-hidden="true">↗</span>
+      </a>
+      <a class="index-row" href="../meta-conversions-api-for-venue-bookings/">
+        <span class="index-main">
+          <span class="index-title">Meta Conversions API for venue bookings: the operator&#39;s guide</span>
+          <span class="index-meta"><span class="index-cat">Marketing</span><span>6 Jul 2026</span></span>
+        </span>
+        <img class="index-thumb" src="../../assets/blog/meta-conversions-api-for-venue-bookings.webp" alt="" loading="lazy">
+        <span class="index-arrow" aria-hidden="true">↗</span>
+      </a>
+      <a class="index-row" href="../finns-beach-club-case-study/">
+        <span class="index-main">
+          <span class="index-title">FINNS Beach Club revenue: from on-the-day chaos to a pre-paid engine</span>
+          <span class="index-meta"><span class="index-cat">Case study</span><span>6 Jul 2026</span></span>
+        </span>
+        <img class="index-thumb" src="../../assets/blog/finns-beach-club-case-study.webp" alt="" loading="lazy">
+        <span class="index-arrow" aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="closing dark-section blog-closing">
+    <img class="closing-mark" src="../../brand/clubtech-mark-white.png" alt="" aria-hidden="true">
+    <div class="shell centered">
+      <p class="eyebrow">Your venue, pre-sold.</p>
+      <h2>Stop reading about it. <span class="mint-text">See it live.</span></h2>
+      <p>Book a focused walkthrough, configured around a premium venue like yours.</p>
+      <a class="button button-mint" href="mailto:info@clubtechglobal.com">Book a demo <span aria-hidden="true">↗</span></a>
+    </div>
+  </section>
+
+  <footer class="footer shell">
+    <div class="footer-top">
+      <a href="../../index.html" class="brand"><img src="../../brand/clubtech-wordmark-white.png" alt="Clubtech"></a>
+      <div>
+        <a href="../../index.html#platform">Platform</a>
+        <a href="../../index.html#booking">Booking</a>
+        <a href="../../index.html#operations">Operations</a>
+        <a href="../../index.html#intelligence">Intelligence</a>
+        <a href="../../index.html#pricing">Pricing</a>
+        <a href="../../blog/">Blog</a>
+        <a href="mailto:info@clubtechglobal.com">Contact</a>
+      </div>
+    </div>
+    <div class="footer-wordmark"><img src="../../brand/clubtech-wordmark-white.png" alt="Clubtech"></div>
+    <p class="copyright">© 2026 Clubtech, Inc.</p>
+  </footer>
+</main>
+<script src="../../js/blog.js" defer></script>
+</body>
+</html>

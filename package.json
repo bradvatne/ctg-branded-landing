@@ -1,0 +1,7 @@
+{
+  "name": "ctg-branded-landing",
+  "private": true,
+  "scripts": {
+    "build:blog": "node scripts/build-blog.mjs"
+  }
+}
