@@ -69,7 +69,7 @@ export default function Home() {
         <img className="hero-mark" src="/brand/clubtech-mark-white.png" alt="" aria-hidden="true" />
         <div className="hero-grid">
           <div className="hero-content">
-            <h1>World-class venue operations <span className="mint-text">& revenue capture</span></h1>
+            <h1>World-class<br /><span className="no-wrap">venue operations &amp;</span><br /><span className="mint-text">revenue capture</span></h1>
             <p className="hero-copy">Turn furniture, zones, and dayparts into pre-paid revenue—then run the floor, own the guest data, and know what is booked before the doors open.</p>
             <div className="hero-actions">
               <a className="button button-dark" href="#contact">Book a demo <Arrow /></a>
@@ -77,11 +77,9 @@ export default function Home() {
             </div>
           </div>
           <div className="hero-device" aria-label="Clubtech mobile booking experience video">
-            <div className="phone-speaker" aria-hidden="true" />
             <video autoPlay muted loop playsInline preload="metadata" poster="/brand/clubtech-mark-black-white-bg.png">
               <source src="/video/clubtech-hero-mobile.mp4" type="video/mp4" />
             </video>
-            <span className="video-label">The booking journey</span>
           </div>
         </div>
       </section>
