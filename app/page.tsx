@@ -41,23 +41,34 @@ export default function Home() {
     <main>
       <header className="nav-wrap">
         <nav className="nav" aria-label="Main navigation">
-          <a href="#top" className="brand" aria-label="Clubtech home"><span className="mark">«</span>Clubtech</a>
+          <a href="#top" className="brand" aria-label="Clubtech home"><img src="/brand/clubtech-wordmark-white.png" alt="Clubtech" /></a>
           <div className="nav-links">
-            <a href="#platform">Platform</a><a href="#operations">Operations</a><a href="#intelligence">Intelligence</a>
+            <a href="#platform">Platform</a><a href="#booking">Booking</a><a href="#operations">Operations</a><a href="#intelligence">Intelligence</a><a href="#delivery">Delivery</a><a href="#pricing">Pricing</a><a href="https://www.clubtechglobal.com/blog">Blog</a>
           </div>
           <a className="button button-dark nav-cta" href="#contact">Book a demo <Arrow /></a>
+          <details className="mobile-menu"><summary aria-label="Open navigation">Menu</summary><div><a href="#platform">Platform</a><a href="#booking">Booking</a><a href="#operations">Operations</a><a href="#intelligence">Intelligence</a><a href="#delivery">Delivery</a><a href="#pricing">Pricing</a><a href="https://www.clubtechglobal.com/blog">Blog</a><a href="#contact">Book a demo</a></div></details>
         </nav>
       </header>
 
       <section className="hero shell" id="top">
-        <p className="eyebrow">World-class venue operations & revenue capture</p>
-        <h1>Your venue,<br /><span className="mint-text">pre-sold.</span></h1>
-        <p className="hero-copy">Turn furniture, zones, and dayparts into pre-paid revenue—then run the floor, own the guest data, and know what is booked before the doors open.</p>
-        <div className="hero-actions">
-          <a className="button button-dark" href="#contact">Book a demo <Arrow /></a>
-          <a className="button button-light" href="#platform">See the platform <span aria-hidden="true">↓</span></a>
+        <img className="hero-mark" src="/brand/clubtech-mark-white.png" alt="" aria-hidden="true" />
+        <div className="hero-grid">
+          <div className="hero-content">
+            <h1>World-class venue operations <span className="mint-text">& revenue capture</span></h1>
+            <p className="hero-copy">Turn furniture, zones, and dayparts into pre-paid revenue—then run the floor, own the guest data, and know what is booked before the doors open.</p>
+            <div className="hero-actions">
+              <a className="button button-dark" href="#contact">Book a demo <Arrow /></a>
+              <a className="button button-light" href="#platform">See the platform <span aria-hidden="true">↓</span></a>
+            </div>
+          </div>
+          <div className="hero-device" aria-label="Clubtech mobile booking experience video">
+            <div className="phone-speaker" aria-hidden="true" />
+            <video autoPlay muted loop playsInline preload="metadata" poster="/brand/clubtech-mark-black-white-bg.png">
+              <source src="/video/clubtech-hero-mobile.mp4" type="video/mp4" />
+            </video>
+            <span className="video-label">The booking journey</span>
+          </div>
         </div>
-        <Placeholder type="Desktop" size="1440 × 900 px" className="hero-placeholder" />
       </section>
 
       <section className="trust shell section-tight" aria-label="Company proof">
@@ -78,7 +89,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section shell feature-row">
+      <section className="section shell feature-row" id="booking">
         <div className="feature-copy">
           <p className="eyebrow">The signature booking journey</p>
           <h2>Guests buy the spot, <span className="indigo-text">not “a sunbed.”</span></h2>
@@ -110,7 +121,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section shell mobile-story">
+      <section className="section shell mobile-story" id="guest-data">
         <div className="section-heading centered">
           <p className="eyebrow">Every guest. Not only the booker.</p>
           <h2>Own the whole <span className="indigo-text">customer journey.</span></h2>
@@ -131,14 +142,14 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section shell">
+      <section className="section shell" id="delivery">
         <div className="section-heading centered"><p className="eyebrow">Built around your venue</p><h2>From scope to a <span className="indigo-text">stronger operating loop.</span></h2><p>No one-size-fits-all package. A dedicated lead stays with the rollout from onboarding through optimization.</p></div>
         <div className="timeline">
           {delivery.map(([title, body], i) => <article key={title}><span>{String(i + 1).padStart(2, "0")}</span><h3>{title}</h3><p>{body}</p></article>)}
         </div>
       </section>
 
-      <section className="section shell pricing">
+      <section className="section shell pricing" id="pricing">
         <div><p className="eyebrow">Aligned commercials</p><h2>No monthly fee.</h2><p>The platform grows when online revenue grows. Simple setup. Clear processing.</p></div>
         <div className="price-card"><span>Online processing</span><strong>4%</strong><p>Paid by the customer</p></div>
         <div className="price-card"><span>One-time setup</span><strong>$2,000</strong><p>Per venue, including configuration and staff training</p></div>
@@ -154,8 +165,8 @@ export default function Home() {
       </section>
 
       <footer className="footer shell">
-        <div className="footer-top"><a href="#top" className="brand"><span className="mark">«</span>Clubtech</a><div><a href="#platform">Platform</a><a href="#operations">Operations</a><a href="#intelligence">Intelligence</a><a href="mailto:info@clubtechglobal.com">Contact</a></div></div>
-        <div className="footer-wordmark"><span>«</span>Clubtech</div>
+        <div className="footer-top"><a href="#top" className="brand"><img src="/brand/clubtech-wordmark-white.png" alt="Clubtech" /></a><div><a href="#platform">Platform</a><a href="#booking">Booking</a><a href="#operations">Operations</a><a href="#intelligence">Intelligence</a><a href="#pricing">Pricing</a><a href="https://www.clubtechglobal.com/blog">Blog</a><a href="mailto:info@clubtechglobal.com">Contact</a></div></div>
+        <div className="footer-wordmark"><img src="/brand/clubtech-wordmark-white.png" alt="Clubtech" /></div>
         <p className="copyright">© 2026 Clubtech, Inc.</p>
       </footer>
     </main>
