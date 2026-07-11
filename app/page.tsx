@@ -50,8 +50,8 @@ export default function Home() {
       </header>
 
       <section className="hero shell" id="top">
-        <p className="eyebrow">Booking and revenue operations for premium venues</p>
-        <h1>Your venue,<br />pre-sold.</h1>
+        <p className="eyebrow">World-class venue operations & revenue capture</p>
+        <h1>Your venue,<br /><span className="mint-text">pre-sold.</span></h1>
         <p className="hero-copy">Turn furniture, zones, and dayparts into pre-paid revenue—then run the floor, own the guest data, and know what is booked before the doors open.</p>
         <div className="hero-actions">
           <a className="button button-dark" href="#contact">Book a demo <Arrow /></a>
@@ -70,7 +70,7 @@ export default function Home() {
 
       <section className="section shell" id="platform">
         <div className="section-heading split-heading">
-          <div><p className="eyebrow">One operating system</p><h2>Reservation. Floor. Marketing.</h2></div>
+          <div><p className="eyebrow">All in one platform</p><h2>Reservation. Floor. <span className="indigo-text">Marketing.</span></h2></div>
           <p>One platform connects the guest&apos;s first tap to the team running service—and the campaigns that bring them back.</p>
         </div>
         <div className="platform-grid">
@@ -81,7 +81,7 @@ export default function Home() {
       <section className="section shell feature-row">
         <div className="feature-copy">
           <p className="eyebrow">The signature booking journey</p>
-          <h2>Guests buy the spot, not “a sunbed.”</h2>
+          <h2>Guests buy the spot, <span className="indigo-text">not “a sunbed.”</span></h2>
           <p>The 3D birds-eye interactive map turns the venue into the product. Guests explore real zones, select exact furniture, stack add-ons, and commit before arrival.</p>
           <ul><li>Select the exact furniture</li><li>Preview the experience</li><li>Add products in the same flow</li><li>Confirm in four taps</li></ul>
         </div>
@@ -91,7 +91,7 @@ export default function Home() {
       <section className="section dark-section" id="operations">
         <div className="shell">
           <div className="section-heading light split-heading">
-            <div><p className="eyebrow">Revenue at every touchpoint</p><h2>Make more from the same seats.</h2></div>
+            <div><p className="eyebrow">Revenue at every touchpoint</p><h2>Make more from the <span className="mint-text">same seats.</span></h2></div>
             <p>Clubtech captures revenue before, during, and after the reservation—not only at checkout.</p>
           </div>
           <div className="lever-grid">
@@ -104,7 +104,7 @@ export default function Home() {
         <Placeholder type="Desktop" size="1200 × 900 px" />
         <div className="feature-copy">
           <p className="eyebrow">The operator console</p>
-          <h2>Know what is booked before the doors open.</h2>
+          <h2>Know what is booked <span className="indigo-text">before the doors open.</span></h2>
           <p>Set the inventory the team actually sells. Run allocation from a live venue map. Keep guest details, promotions, and reports inside the same operating loop.</p>
           <div className="mini-grid"><span>Live floor plan</span><span>Automatic allocation</span><span>Real-time inventory</span><span>Guest-list management</span></div>
         </div>
@@ -113,7 +113,7 @@ export default function Home() {
       <section className="section shell mobile-story">
         <div className="section-heading centered">
           <p className="eyebrow">Every guest. Not only the booker.</p>
-          <h2>Own the whole customer journey.</h2>
+          <h2>Own the whole <span className="indigo-text">customer journey.</span></h2>
           <p>The main booker invites the group. Every guest shares their own details before arrival. The venue&apos;s audience grows with every reservation.</p>
         </div>
         <div className="phones"><Placeholder type="Mobile" size="1170 × 2532 px" /><Placeholder type="Mobile" size="1170 × 2532 px" /><Placeholder type="Mobile" size="1170 × 2532 px" /></div>
@@ -123,7 +123,7 @@ export default function Home() {
         <div className="shell feature-row">
           <div className="feature-copy">
             <p className="eyebrow">Guest intelligence</p>
-            <h2>Read the business before the patterns arrive too late.</h2>
+            <h2>Read the business <span className="indigo-text">before the patterns arrive too late.</span></h2>
             <p>See revenue by hour, booking lead time, product mix, origin markets, and repeat behavior across 20+ reports—without rebuilding the week in a spreadsheet.</p>
             <a className="button button-dark" href="#contact">See it in action <Arrow /></a>
           </div>
@@ -132,7 +132,7 @@ export default function Home() {
       </section>
 
       <section className="section shell">
-        <div className="section-heading centered"><p className="eyebrow">Built around your venue</p><h2>From scope to a stronger operating loop.</h2><p>No one-size-fits-all package. A dedicated lead stays with the rollout from onboarding through optimization.</p></div>
+        <div className="section-heading centered"><p className="eyebrow">Built around your venue</p><h2>From scope to a <span className="indigo-text">stronger operating loop.</span></h2><p>No one-size-fits-all package. A dedicated lead stays with the rollout from onboarding through optimization.</p></div>
         <div className="timeline">
           {delivery.map(([title, body], i) => <article key={title}><span>{String(i + 1).padStart(2, "0")}</span><h3>{title}</h3><p>{body}</p></article>)}
         </div>
@@ -150,7 +150,7 @@ export default function Home() {
       </section>
 
       <section className="closing dark-section" id="contact">
-        <div className="shell centered"><p className="eyebrow">Your venue, pre-sold.</p><h2>See what Saturday looks like on Wednesday.</h2><p>Book a focused walkthrough, configured around a premium venue like yours.</p><a className="button button-white" href="mailto:info@clubtechglobal.com">Book a demo <Arrow /></a></div>
+        <div className="shell centered"><p className="eyebrow">Your venue, pre-sold.</p><h2>See what Saturday looks like <span className="mint-text">on Wednesday.</span></h2><p>Book a focused walkthrough, configured around a premium venue like yours.</p><a className="button button-mint" href="mailto:info@clubtechglobal.com">Book a demo <Arrow /></a></div>
       </section>
 
       <footer className="footer shell">
