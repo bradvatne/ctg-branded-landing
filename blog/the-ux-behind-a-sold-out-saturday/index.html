@@ -6,11 +6,9 @@
   <title>The Booking UX Behind a Sold-Out Saturday | Clubtech</title>
   <meta name="description" content="Smarter booking UX lifts mobile conversion, pre-arrival spend, and guaranteed deposits. The flow fixes behind sold-out Saturdays.">
   <link rel="canonical" href="https://www.clubtechglobal.com/blog/the-ux-behind-a-sold-out-saturday/">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#020617">
   <link rel="icon" href="../../favicon.svg">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@500;600;700;800&display=swap">
 
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Clubtech">
@@ -18,9 +16,15 @@
   <meta property="og:description" content="Smarter booking UX lifts mobile conversion, pre-arrival spend, and guaranteed deposits. The flow fixes behind sold-out Saturdays.">
   <meta property="og:image" content="https://bradvatne.github.io/ctg-branded-landing/assets/blog/the-ux-behind-a-sold-out-saturday.jpg">
   <meta property="og:image:alt" content="Clubtech Booking UI">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Booking UX Behind a Sold-Out Saturday | Clubtech">
+  <meta name="twitter:description" content="Smarter booking UX lifts mobile conversion, pre-arrival spend, and guaranteed deposits. The flow fixes behind sold-out Saturdays.">
+  <meta name="twitter:image" content="https://bradvatne.github.io/ctg-branded-landing/assets/blog/the-ux-behind-a-sold-out-saturday.jpg">
 
+  <link rel="preload" href="../../fonts/albert-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="../../css/styles.css">
   <link rel="stylesheet" href="../../css/blog.css">
+  <link rel="stylesheet" href="../../css/consent.css">
   <script>document.documentElement.classList.add('js')</script>
 
   <script type="application/ld+json">
@@ -215,7 +219,7 @@
 
   <footer class="footer shell">
     <div class="footer-top">
-      <a href="../../index.html" class="brand"><img src="../../brand/clubtech-wordmark-white.png" alt="Clubtech"></a>
+      <a href="../../index.html" class="brand"><img src="../../brand/clubtech-wordmark-white.png" alt="Clubtech" width="190" height="48"></a>
       <div>
         <a href="../../index.html#platform">Platform</a>
         <a href="../../index.html#booking">Booking</a>
@@ -224,12 +228,71 @@
         <a href="../../index.html#pricing">Pricing</a>
         <a href="../../blog/">Blog</a>
         <a href="mailto:info@clubtechglobal.com">Contact</a>
+        <a href="#" data-open-consent>Cookie preferences</a>
       </div>
     </div>
-    <div class="footer-wordmark"><img src="../../brand/clubtech-wordmark-white.png" alt="Clubtech"></div>
+    <div class="footer-wordmark"><img src="../../brand/clubtech-wordmark-white.png" alt="Clubtech" width="1200" height="300" loading="lazy"></div>
     <p class="copyright">© 2026 Clubtech, Inc.</p>
   </footer>
 </main>
+<div class="cc-banner" id="cc-banner" role="dialog" aria-live="polite" aria-label="Cookie consent" hidden>
+  <div class="cc-banner-head">Cookies &amp; privacy</div>
+  <div class="cc-banner-body">
+    We use cookies to make this site work, understand how it's used, and — with your permission — measure campaign performance. Accept all, reject non-essential, or choose categories. Reopen anytime via <a href="#" data-open-consent>preferences</a>.
+  </div>
+  <div class="cc-banner-actions">
+    <button type="button" class="cc-btn cc-btn-primary" id="cc-accept">Accept all</button>
+    <button type="button" class="cc-btn cc-btn-ghost" id="cc-reject">Reject non-essential</button>
+    <button type="button" class="cc-btn cc-btn-link" id="cc-customize">Customize</button>
+  </div>
+</div>
+
+<div class="cc-prefs" id="cc-prefs" role="dialog" aria-modal="true" aria-labelledby="cc-prefs-title" hidden>
+  <div class="cc-prefs-inner">
+    <button type="button" class="cc-prefs-close" id="cc-prefs-close" aria-label="Close">✕</button>
+    <span class="cc-prefs-kicker">Cookie preferences</span>
+    <h2 class="cc-prefs-title" id="cc-prefs-title">Choose what we can store</h2>
+    <p class="cc-prefs-sub">Essential cookies keep the site working; everything else is opt-in and can be changed at any time.</p>
+    <div class="cc-prefs-list">
+      <div class="cc-cat">
+        <div class="cc-cat-head">
+          <div class="cc-cat-title">Strictly necessary</div>
+          <span class="cc-locked">Always on</span>
+        </div>
+        <div class="cc-cat-desc">Required for the site to function — remembering your consent choice and basic security. Cannot be disabled.</div>
+      </div>
+      <div class="cc-cat">
+        <div class="cc-cat-head">
+          <div class="cc-cat-title">Analytics</div>
+          <label class="cc-switch">
+            <input type="checkbox" id="cc-toggle-analytics">
+            <span class="cc-switch-slider"></span>
+          </label>
+        </div>
+        <div class="cc-cat-desc">Helps us understand which pages are useful, where visitors drop off, and how to improve the product.</div>
+        <div class="cc-cat-vendors">Vendors · Google Analytics 4</div>
+      </div>
+      <div class="cc-cat">
+        <div class="cc-cat-head">
+          <div class="cc-cat-title">Marketing</div>
+          <label class="cc-switch">
+            <input type="checkbox" id="cc-toggle-marketing">
+            <span class="cc-switch-slider"></span>
+          </label>
+        </div>
+        <div class="cc-cat-desc">Measures the performance of paid campaigns and lets us show you relevant ads on other platforms.</div>
+        <div class="cc-cat-vendors">Vendors · Google Ads · Meta Pixel</div>
+      </div>
+    </div>
+    <div class="cc-prefs-actions">
+      <button type="button" class="cc-btn cc-btn-link" id="cc-prefs-reject">Reject all</button>
+      <button type="button" class="cc-btn cc-btn-ghost" id="cc-prefs-accept">Accept all</button>
+      <button type="button" class="cc-btn cc-btn-primary" id="cc-save">Save preferences</button>
+    </div>
+  </div>
+</div>
+<script src="../../js/consent.js" defer></script>
+<script src="../../js/analytics.js" defer></script>
 <script src="../../js/blog.js" defer></script>
 </body>
 </html>

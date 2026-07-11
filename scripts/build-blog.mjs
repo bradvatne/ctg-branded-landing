@@ -241,7 +241,7 @@ ${mobItems}
 function footerMarkup(rel) {
   return `  <footer class="footer shell">
     <div class="footer-top">
-      <a href="${rel}index.html" class="brand"><img src="${rel}brand/clubtech-wordmark-white.png" alt="Clubtech"></a>
+      <a href="${rel}index.html" class="brand"><img src="${rel}brand/clubtech-wordmark-white.png" alt="Clubtech" width="190" height="48"></a>
       <div>
         <a href="${rel}index.html#platform">Platform</a>
         <a href="${rel}index.html#booking">Booking</a>
@@ -250,12 +250,70 @@ function footerMarkup(rel) {
         <a href="${rel}index.html#pricing">Pricing</a>
         <a href="${rel}blog/">Blog</a>
         <a href="mailto:info@clubtechglobal.com">Contact</a>
+        <a href="#" data-open-consent>Cookie preferences</a>
       </div>
     </div>
-    <div class="footer-wordmark"><img src="${rel}brand/clubtech-wordmark-white.png" alt="Clubtech"></div>
+    <div class="footer-wordmark"><img src="${rel}brand/clubtech-wordmark-white.png" alt="Clubtech" width="1200" height="300" loading="lazy"></div>
     <p class="copyright">© 2026 Clubtech, Inc.</p>
   </footer>`;
 }
+
+const CONSENT_MARKUP = `<div class="cc-banner" id="cc-banner" role="dialog" aria-live="polite" aria-label="Cookie consent" hidden>
+  <div class="cc-banner-head">Cookies &amp; privacy</div>
+  <div class="cc-banner-body">
+    We use cookies to make this site work, understand how it's used, and — with your permission — measure campaign performance. Accept all, reject non-essential, or choose categories. Reopen anytime via <a href="#" data-open-consent>preferences</a>.
+  </div>
+  <div class="cc-banner-actions">
+    <button type="button" class="cc-btn cc-btn-primary" id="cc-accept">Accept all</button>
+    <button type="button" class="cc-btn cc-btn-ghost" id="cc-reject">Reject non-essential</button>
+    <button type="button" class="cc-btn cc-btn-link" id="cc-customize">Customize</button>
+  </div>
+</div>
+
+<div class="cc-prefs" id="cc-prefs" role="dialog" aria-modal="true" aria-labelledby="cc-prefs-title" hidden>
+  <div class="cc-prefs-inner">
+    <button type="button" class="cc-prefs-close" id="cc-prefs-close" aria-label="Close">✕</button>
+    <span class="cc-prefs-kicker">Cookie preferences</span>
+    <h2 class="cc-prefs-title" id="cc-prefs-title">Choose what we can store</h2>
+    <p class="cc-prefs-sub">Essential cookies keep the site working; everything else is opt-in and can be changed at any time.</p>
+    <div class="cc-prefs-list">
+      <div class="cc-cat">
+        <div class="cc-cat-head">
+          <div class="cc-cat-title">Strictly necessary</div>
+          <span class="cc-locked">Always on</span>
+        </div>
+        <div class="cc-cat-desc">Required for the site to function — remembering your consent choice and basic security. Cannot be disabled.</div>
+      </div>
+      <div class="cc-cat">
+        <div class="cc-cat-head">
+          <div class="cc-cat-title">Analytics</div>
+          <label class="cc-switch">
+            <input type="checkbox" id="cc-toggle-analytics">
+            <span class="cc-switch-slider"></span>
+          </label>
+        </div>
+        <div class="cc-cat-desc">Helps us understand which pages are useful, where visitors drop off, and how to improve the product.</div>
+        <div class="cc-cat-vendors">Vendors · Google Analytics 4</div>
+      </div>
+      <div class="cc-cat">
+        <div class="cc-cat-head">
+          <div class="cc-cat-title">Marketing</div>
+          <label class="cc-switch">
+            <input type="checkbox" id="cc-toggle-marketing">
+            <span class="cc-switch-slider"></span>
+          </label>
+        </div>
+        <div class="cc-cat-desc">Measures the performance of paid campaigns and lets us show you relevant ads on other platforms.</div>
+        <div class="cc-cat-vendors">Vendors · Google Ads · Meta Pixel</div>
+      </div>
+    </div>
+    <div class="cc-prefs-actions">
+      <button type="button" class="cc-btn cc-btn-link" id="cc-prefs-reject">Reject all</button>
+      <button type="button" class="cc-btn cc-btn-ghost" id="cc-prefs-accept">Accept all</button>
+      <button type="button" class="cc-btn cc-btn-primary" id="cc-save">Save preferences</button>
+    </div>
+  </div>
+</div>`;
 
 function headHTML({ title, description, canonical, ogImage, ogImageAlt, jsonLd, rel, ogType = 'article' }) {
   return `<!DOCTYPE html>
@@ -266,11 +324,9 @@ function headHTML({ title, description, canonical, ogImage, ogImageAlt, jsonLd, 
   <title>${esc(title)}</title>
   <meta name="description" content="${esc(description)}">
   <link rel="canonical" href="${esc(canonical)}">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#020617">
   <link rel="icon" href="${rel}favicon.svg">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@500;600;700;800&display=swap">
 
   <meta property="og:type" content="${esc(ogType)}">
   <meta property="og:site_name" content="Clubtech">
@@ -278,9 +334,15 @@ function headHTML({ title, description, canonical, ogImage, ogImageAlt, jsonLd, 
   <meta property="og:description" content="${esc(description)}">
   <meta property="og:image" content="${esc(ogImage)}">
   <meta property="og:image:alt" content="${esc(ogImageAlt)}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="${esc(title)}">
+  <meta name="twitter:description" content="${esc(description)}">
+  <meta name="twitter:image" content="${esc(ogImage)}">
 
+  <link rel="preload" href="${rel}fonts/albert-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="${rel}css/styles.css">
   <link rel="stylesheet" href="${rel}css/blog.css">
+  <link rel="stylesheet" href="${rel}css/consent.css">
   <script>document.documentElement.classList.add('js')</script>
 
   <script type="application/ld+json">
@@ -374,6 +436,9 @@ ${rows}
 
 ${footerMarkup('../')}
 </main>
+${CONSENT_MARKUP}
+<script src="../js/consent.js" defer></script>
+<script src="../js/analytics.js" defer></script>
 <script src="../js/blog.js" defer></script>
 </body>
 </html>
@@ -449,6 +514,9 @@ ${moreRows}
 
 ${footerMarkup('../../')}
 </main>
+${CONSENT_MARKUP}
+<script src="../../js/consent.js" defer></script>
+<script src="../../js/analytics.js" defer></script>
 <script src="../../js/blog.js" defer></script>
 </body>
 </html>

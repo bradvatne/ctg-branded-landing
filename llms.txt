@@ -1,0 +1,33 @@
+# Clubtech — Your venue, pre-sold
+
+> Clubtech is an all-in-one booking and revenue operations platform for premium venues — beach clubs, day clubs, nightclubs, and hotel pools. Online reservations with a 3D birds-eye venue map, front-of-house floor operations, and marketing attribution in a single system. Founded in Singapore; processes $332k in weekly GMV across venue partners in 7+ countries.
+
+Key facts:
+- Guests select the exact furniture, zone, and daypart on a 3D interactive map and pay before arrival.
+- Revenue levers: prepayments and deposits, upsells and add-ons, dynamic pricing, abandoned-booking retargeting.
+- Pricing: no monthly fee; 4% online processing paid by the customer; one-time $2,000 setup per venue.
+- Integrations: Opera PMS, Airwallex, Midtrans (QRIS, GoPay, OVO), Apple Pay, Google Pay, Meta Ads, Google Ads, GA4, WhatsApp.
+- Delivery: five stages (onboarding, build, training, go-live, optimize) with a dedicated account lead and 90-day hypercare.
+- Contact: info@clubtechglobal.com · main site: https://www.clubtechglobal.com/
+
+## Pages
+
+- [Landing page](https://bradvatne.github.io/ctg-branded-landing/): platform overview, booking journey, operations, pricing, FAQ
+- [The Index (blog)](https://bradvatne.github.io/ctg-branded-landing/blog/): operator playbooks on booking UX, revenue capture, and guest data
+
+## Blog entries
+
+- [The big-match playbook: turning major events into your best revenue weekend](https://bradvatne.github.io/ctg-branded-landing/blog/big-match-playbook-major-events-revenue/): A World Cup final, a title fight, a Grand Prix weekend — a marquee event fills your venue whether you plan for it or not. The question is whether the demand lands as pre-sold revenue or walk-up guesswork.
+- [The complete guide to choosing a beach club booking system](https://bradvatne.github.io/ctg-branded-landing/blog/beach-club-booking-system-complete-guide/): What a beach club booking system does, what to pay for, and the 12 questions to ask any vendor — the complete operator's guide to pre-selling your venue.
+- [Meta Conversions API for venue bookings: the operator's guide](https://bradvatne.github.io/ctg-branded-landing/blog/meta-conversions-api-for-venue-bookings/): Meta Conversions API for bookings, explained for venue operators — why pixel attribution broke, what CAPI sends, and what changes in your ad results.
+- [How to increase beach club revenue: the operator's playbook](https://bradvatne.github.io/ctg-branded-landing/blog/beach-club-revenue-playbook/): How to increase beach club revenue: the full stack from entry fees to minimum spends, plus the pricing moves that pre-sell your venue days ahead.
+- [GA4 for venue bookings: measure the deck, not the pageviews](https://bradvatne.github.io/ctg-branded-landing/blog/ga4-for-venue-bookings/): GA4 for venue bookings, explained for operators — the event model, booker audiences, and GM reports, plus why your GA4 numbers never match the books.
+- [FINNS Beach Club revenue: from on-the-day chaos to a pre-paid engine](https://bradvatne.github.io/ctg-branded-landing/blog/finns-beach-club-case-study/): How FINNS Beach Club revenue went from on-the-day chaos to millions in pre-paid bookings monthly — the exact booking mechanics, from Clubtech.
+- [Dynamic pricing for beach clubs: your daybeds are airline seats with sunscreen](https://bradvatne.github.io/ctg-branded-landing/blog/dynamic-pricing-for-beach-clubs/): Dynamic pricing for beach clubs: the demand signals, tier ladders, and guardrails that lift daybed revenue without burning guest trust.
+- [Beach club marketing strategy: the operator's guide for 2026](https://bradvatne.github.io/ctg-branded-landing/blog/beach-club-marketing-strategy/): Beach club marketing strategy for operators — the bookings-first ads loop, first-party data, and the five numbers a GM should watch every week.
+- [That Last Click Before Checkout Could Be Worth Thousands](https://bradvatne.github.io/ctg-branded-landing/blog/that-last-click-before-checkout-could-be-worth-thousands/): Clubtech turns the final seconds before checkout into a high-intent revenue moment with context-aware upsells built directly into the booking flow.
+- [The UX Behind a Sold-Out Saturday](https://bradvatne.github.io/ctg-branded-landing/blog/the-ux-behind-a-sold-out-saturday/): Discover how smarter booking UX drives real revenue. Top venues lift mobile conversions, pre-arrival spend, and guaranteed deposits — all by fixing how guests move through the flow.
+- [Your Guests Want to Spend More, You're Just Not Letting Them](https://bradvatne.github.io/ctg-branded-landing/blog/your-guests-want-to-spend-more-youre-just-not-letting-them/): Stop leaving money on the table. Smart upsells turn your booking flow into a profit engine guests actually enjoy — pre-arrival, in-flow, and frictionless.
+- [Beach club no-shows: the real cost and the pre-payment fix](https://bradvatne.github.io/ctg-branded-landing/blog/the-hidden-revenue-leak-in-your-beach-club-booking-flow/): Beach club no-shows cost real money — staffed shifts, dead daybeds, missed upsells. The math on what they cost and how prepayment cuts them by half.
+- [Maximize Beach Club Revenue: The Power of Pre-Booked Upsells](https://bradvatne.github.io/ctg-branded-landing/blog/maximize-beach-club-revenue-the-power-of-pre-booked-upsells/): Pre-booked upsells unlock new revenue, smoother operations, and stronger guest satisfaction. Why presenting add-ons during the booking flow — not on arrival — changes the math.
+- [Why First-Party Data is the Future of Beach Club Marketing](https://bradvatne.github.io/ctg-branded-landing/blog/why-first-party-data-is-the-future-of-beach-club-marketing/): Third-party cookies are dying. First-party data — collected directly with consent — is the foundation of personalized, compliant, profitable marketing for beach clubs.

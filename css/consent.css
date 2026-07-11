@@ -1,0 +1,52 @@
+/* Cookie consent — banner + preferences modal, on the site token system */
+
+.cc-banner{position:fixed;z-index:60;left:20px;bottom:20px;width:min(420px,calc(100vw - 40px));padding:24px;border-radius:24px;background:var(--navy);color:#cbd5e1;border:1px solid rgba(255,255,255,.16);box-shadow:0 30px 80px rgba(2,6,23,.45)}
+.cc-banner[hidden]{display:none}
+.cc-banner-head{color:var(--white);font-size:18px;font-weight:800;letter-spacing:-.03em}
+.cc-banner-body{margin-top:10px;font-size:14px;line-height:1.5}
+.cc-banner-body a{color:var(--mint);font-weight:700}
+.cc-banner-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+
+.cc-btn{appearance:none;border:0;cursor:pointer;font-family:inherit;font-size:13px;font-weight:700;letter-spacing:0;border-radius:999px;padding:12px 18px;transition:transform .2s,box-shadow .2s,background .2s}
+.cc-btn:hover{transform:translateY(-1px)}
+.cc-btn-primary{background:var(--mint);color:var(--navy)}
+.cc-btn-ghost{background:rgba(255,255,255,.1);color:var(--white);border:1px solid rgba(255,255,255,.18)}
+.cc-btn-link{background:transparent;color:#94a3b8;text-decoration:underline;text-underline-offset:3px}
+.cc-btn-link:hover{color:var(--white)}
+
+.cc-prefs{position:fixed;z-index:70;inset:0;background:rgba(2,6,23,.6);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:20px}
+.cc-prefs[hidden]{display:none}
+.cc-prefs-inner{position:relative;width:min(560px,100%);max-height:calc(100vh - 40px);overflow-y:auto;background:var(--paper);border-radius:28px;padding:36px}
+.cc-prefs-close{position:absolute;top:18px;right:18px;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:transparent;cursor:pointer;display:grid;place-items:center;color:var(--heading);font-size:16px;line-height:1}
+.cc-prefs-close:hover{background:var(--navy);color:var(--mint);border-color:var(--navy)}
+.cc-prefs-kicker{display:inline-flex;align-items:center;padding:6px 13px;border-radius:999px;background:var(--lime);color:var(--navy);font-size:13px;font-weight:800}
+.cc-prefs-title{margin-top:16px;font-size:clamp(26px,3vw,34px);line-height:1.02}
+.cc-prefs-sub{margin-top:12px;color:var(--muted);font-size:15px;line-height:1.5}
+.cc-prefs-list{margin-top:24px;display:flex;flex-direction:column;gap:12px}
+.cc-cat{padding:18px 20px;border:1px solid var(--line);border-radius:18px;background:var(--white)}
+.cc-cat-head{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.cc-cat-title{font-weight:800;color:var(--heading)}
+.cc-locked{font-size:12px;font-weight:800;color:var(--indigo);text-transform:uppercase;letter-spacing:.06em}
+.cc-cat-desc{margin-top:8px;font-size:13px;line-height:1.5;color:var(--muted)}
+.cc-cat-vendors{margin-top:8px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#94a3b8}
+
+.cc-switch{position:relative;display:inline-block;width:46px;height:26px;flex:none}
+.cc-switch input{opacity:0;width:0;height:0}
+.cc-switch-slider{position:absolute;inset:0;border-radius:999px;background:var(--grey);cursor:pointer;transition:background .2s}
+.cc-switch-slider:before{content:"";position:absolute;left:3px;top:3px;width:20px;height:20px;border-radius:50%;background:var(--white);transition:transform .2s;box-shadow:0 1px 4px rgba(2,6,23,.25)}
+.cc-switch input:checked + .cc-switch-slider{background:var(--mint)}
+.cc-switch input:checked + .cc-switch-slider:before{transform:translateX(20px)}
+.cc-switch input:focus-visible + .cc-switch-slider{outline:2px solid var(--indigo);outline-offset:2px}
+
+.cc-prefs-actions{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:8px;margin-top:26px}
+.cc-prefs-actions .cc-btn-ghost{background:#eef0ff;color:var(--navy);border:1px solid var(--line)}
+.cc-prefs-actions .cc-btn-link{color:var(--muted)}
+.cc-prefs-actions .cc-btn-link:hover{color:var(--heading)}
+
+@media(max-width:600px){
+  .cc-banner{left:10px;bottom:10px;width:calc(100vw - 20px);padding:20px}
+  .cc-prefs-inner{padding:26px 20px}
+}
+@media(prefers-reduced-motion:reduce){
+  .cc-btn:hover{transform:none}
+}
