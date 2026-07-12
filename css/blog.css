@@ -118,3 +118,8 @@
   .featured-card:hover{transform:none}
   .featured-card:hover .featured-media img{transform:none}
 }
+
+/* ─── Solution / comparison landing pages ──────────────────── */
+.post-sub{margin-top:24px;max-width:720px;font-size:19px;line-height:1.45;font-weight:600;color:#94a3b8}
+.post-hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
+.button-ghost{background:rgba(255,255,255,.1);color:var(--white);border:1px solid rgba(255,255,255,.16)}

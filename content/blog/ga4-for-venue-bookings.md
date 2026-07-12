@@ -1,6 +1,6 @@
 ---
 title: "GA4 for venue bookings: measure the deck, not the pageviews"
-titleTag: "GA4 for Venue Bookings: Track Revenue, Not Pageviews"
+titleTag: "GA4 for Venue Bookings & Booking Tracking | Clubtech"
 slug: ga4-for-venue-bookings
 date: 2026-07-06
 author: Clubtech Global
@@ -14,7 +14,7 @@ Every GA4 tutorial on the internet assumes you sell t-shirts. You sell Saturday.
 
 Here is how GA4 booking tracking should work when the product is furniture, dates, and dayparts.
 
-## The event model: bookings are ecommerce, with a twist
+## GA4 booking tracking: ecommerce events, with a twist
 
 GA4's ecommerce events map onto a booking flow better than most operators expect — you just have to translate the vocabulary:
 
@@ -47,7 +47,7 @@ One honest caveat: GA4 audiences are only as good as consent rates and cookie su
 GA4 ships with dozens of reports. A venue GM needs three, and two of them you have to build in Explorations:
 
 1. **Source to revenue.** Not source to sessions — source to booked dollars. Default channel group against purchase revenue tells you whether Instagram is filling the deck or just filling the feed. Expect direct and unassigned to be inflated; that's measurement decay, not organic brilliance.
-2. **Lead time distribution.** If you're passing booking-to-visit lead time as a dimension, you can see how far ahead each channel books. Paid social books closer in; returning guests book further out <!-- VERIFY: directional claim — confirm against real venue data before publishing -->. This shapes when you spend, not just where.
+2. **Lead time distribution.** If you're passing booking-to-visit lead time as a dimension, you can see how far ahead each channel books — and the differences between channels are usually bigger than operators expect. This shapes when you spend, not just where.
 3. **Daypart and zone performance.** Which zones sell out first, which dayparts drag, and what average booking value looks like per variant — the demand map your pricing decisions should sit on.
 
 If building these by hand sounds like a second job: this is a place where the platform matters. Clubtech pipes bookings into GA4 as conversion events in real time, alongside Meta and Google Ads, and surfaces the operator view — daily booking volume, lead time by daypart, average value by variant, repeat-customer share — natively, without CSV exports. GA4 becomes the cross-channel check, not the only window you have.
@@ -80,6 +80,14 @@ Create audiences conditioned on the `purchase` event rather than sessions or pag
 ### Why don't my GA4 numbers match my bookings?
 
 They never will exactly — the goal is a stable, explained gap. GA4 misses bookings blocked by consent choices and ad blockers, double-counts when purchase events fire twice, ignores refunds unless you send them, and can misattribute bookings that return through a payment provider's domain. Reconcile against your booking system weekly; investigate when the delta shifts, not when it exists.
+
+### What is booking tracking in GA4?
+
+Booking tracking means sending each step of the reservation flow to GA4 as ecommerce events — zone viewed, bed and date selected, checkout started, booking paid — with real revenue on the purchase event. Done properly, it turns GA4 from a pageview counter into a record of which channels, campaigns, and creative produce booked dollars, and it feeds the booker audiences your ad platforms optimize against.
+
+### Can GA4 show which channel drives booking revenue?
+
+Yes — and it's the report worth building first. With a revenue-carrying purchase event in place, an Exploration of default channel group against purchase revenue shows booked dollars by source rather than sessions. Expect direct and unassigned to be inflated by consent gaps and cookie loss; treat the report as directional for budget decisions and reconcile totals against your booking system.
 
 ---
 

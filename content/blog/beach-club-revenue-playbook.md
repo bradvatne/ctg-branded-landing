@@ -83,7 +83,13 @@ Increasing revenue isn't only about selling more. Three leaks quietly drain venu
 
 Close the loop with on-deck economics too: guests who pre-committed to a package upgrade and spend past their minimum more readily than walk-ups — see our earlier post on [the power of pre-booked upsells](/blog/maximize-beach-club-revenue-the-power-of-pre-booked-upsells/).
 
-For the platform-level view of how these mechanics fit together for beach clubs specifically, see our [beach club solutions page](/solutions/beach-clubs/) or the full [platform overview](/platform.html).
+## The revenue model in a beach club business plan
+
+If you're writing a beach club business plan — for a bank, an investor, or a landlord — the revenue section is where most plans go soft: one blended revenue line multiplied by an occupancy guess. Build it stream by stream instead. Units of furniture by tier and zone, price per unit per daypart, occupancy assumptions by season, minimum-spend attach on premium positions, then add-ons and events layered on top.
+
+Two numbers deserve their own line in any plan. Season length, because your inventory only exists on days the deck is open — a 20-week season and a year-round operation are different businesses wearing the same swimwear. And the pre-sold share of revenue: the percentage banked before the day it's earned. The higher that share, the less your projections depend on weather and walk-up luck — and the easier the plan is to defend, because pre-sold bookings are a demand record, not a hope. The same architecture that makes the plan credible on paper is the one that protects profit once the venue is open: profit follows the mix — how much of the deck sells at premium tiers, how much F&B the minimums guarantee, and how little of it walks away as no-shows.
+
+This playbook is the education layer. When you want to see the machinery running on a venue like yours — the map-first booking flow, packages, prepayment, and the reporting behind all of it — start with the [Clubtech platform for beach clubs](https://bradvatne.github.io/ctg-branded-landing/solutions/beach-clubs/).
 
 ## Questions operators ask
 
@@ -98,6 +104,10 @@ The typical streams are entry/day passes, furniture by zone and tier, food and b
 ### How does minimum spend work at a beach club?
 
 A minimum spend is a committed amount a guest agrees to spend on food and beverage in exchange for reserving premium furniture — the daybed is "free," but the table must ring up, say, $500. Operators tier minimums by zone and position, anchor them inside packages so they read as value rather than a toll, and increasingly collect them (fully or partly) online at booking so they're enforced by prepayment, not a door negotiation.
+
+### What should a beach club business plan include on the revenue side?
+
+Model each revenue stream separately rather than one blended line: furniture units by tier and zone, price per daypart, seasonal occupancy, minimum-spend attach, add-ons, and events. State your season length and your target pre-sold share of revenue explicitly — those two assumptions drive the whole model, and a plan built on pre-sold bookings is far easier to defend than one built on walk-up hope.
 
 ### How profitable is a beach club?
 

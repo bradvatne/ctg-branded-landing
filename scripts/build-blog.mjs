@@ -28,9 +28,11 @@ import { fileURLToPath } from 'node:url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
 const CONTENT_DIR = join(ROOT, 'content', 'blog');
+const PAGES_DIR = join(ROOT, 'content', 'pages');
 const OUT_DIR = join(ROOT, 'blog');
 const SITE_ORIGIN = 'https://bradvatne.github.io/ctg-branded-landing';
 const CANONICAL_ORIGIN = 'https://www.clubtechglobal.com';
+const PAGE_SECTIONS = { solutions: 'Solutions', compare: 'Compare' };
 
 /* ─── Frontmatter parser (same contract as ctg-landingpage) ──── */
 function parseFrontmatter(raw) {
@@ -77,7 +79,10 @@ function inlineMd(text) {
   out = out.replace(/(^|[\s(])\*([^*\s][^*]*)\*(?=[\s).,:;!?]|$)/g, '$1<em>$2</em>');
   out = out.replace(/(^|[\s(])_([^_\s][^_]*)_(?=[\s).,:;!?]|$)/g, '$1<em>$2</em>');
   out = out.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (_, label, href) => {
-    const safe = /^(https?:\/\/|\/|#|mailto:)/.test(href) ? href : '#';
+    let safe = /^(https?:\/\/|\/|#|mailto:)/.test(href) ? href : '#';
+    // Root-relative links come from content written for www.clubtechglobal.com;
+    // on this subpath-hosted mirror they must point at the primary site.
+    if (safe.startsWith('/')) safe = CANONICAL_ORIGIN + safe;
     const ext = /^https?:\/\//.test(safe) ? ' rel="noopener"' : '';
     return `<a href="${esc(safe)}"${ext}>${label}</a>`;
   });
@@ -85,6 +90,10 @@ function inlineMd(text) {
 }
 
 function renderMarkdown(md) {
+  // HTML comments (e.g. <!-- VERIFY: ... --> author flags) stay in the
+  // source but must never render — raw HTML is escaped, so without this
+  // they'd appear as visible text on the published page.
+  md = md.replace(/<!--[\s\S]*?-->/g, '');
   const lines = md.replace(/\r\n/g, '\n').split('\n');
   const out = [];
   let para = [];
@@ -144,7 +153,9 @@ function extractFaqs(body) {
   const secMatch = body.match(/^## Questions operators ask\s*$([\s\S]*?)(?=^## |(?![\s\S]))/m);
   if (!secMatch) return [];
   const faqs = [];
-  const re = /^### (.+)$([\s\S]*?)(?=^### |(?![\s\S]))/gm;
+  // Answers stop at the next question, a horizontal rule, or EOF — without
+  // the ^--- stop, a trailing rule + CTA line bleeds into the last answer.
+  const re = /^### (.+)$([\s\S]*?)(?=^### |^-{3,}\s*$|(?![\s\S]))/gm;
   let m;
   while ((m = re.exec(secMatch[1])) !== null) {
     const q = mdToPlain(m[1]);
@@ -351,6 +362,145 @@ ${escScriptJson(jsonLd)}
 </head>`;
 }
 
+/* ─── Solution / comparison pages (content/pages/*.md) ───────── */
+/* Frontmatter adds: section (solutions|compare) and optional canonical
+   (set it to the clubtechglobal.com URL for pages that also exist on the
+   primary site; omit for net-new pages, which self-canonicalize here). */
+
+// "**word**" in a page title renders as the mint accent span in the H1.
+function h1Html(title) {
+  return esc(title).replace(/\*\*([^*]+)\*\*/g, '<span class="mint-text">$1</span>');
+}
+const plainTitle = (t) => String(t).replace(/\*\*/g, '');
+
+function pageCanonical(page) {
+  return page.meta.canonical || `${SITE_ORIGIN}/${page.meta.section}/${page.meta.slug}/`;
+}
+
+function pageJsonLd(page) {
+  const url = `${SITE_ORIGIN}/${page.meta.section}/${page.meta.slug}/`;
+  const canonical = pageCanonical(page);
+  const faqs = extractFaqs(page.body);
+  const obj = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebPage',
+        '@id': canonical,
+        name: page.meta.titleTag || plainTitle(page.meta.title),
+        headline: plainTitle(page.meta.title),
+        description: page.meta.description || page.meta.excerpt,
+        image: `${SITE_ORIGIN}${page.meta.hero}`,
+        datePublished: page.meta.date,
+        dateModified: page.meta.date,
+        about: { '@type': 'Organization', name: 'Clubtech', url: `${CANONICAL_ORIGIN}/` },
+        url,
+      },
+      {
+        '@type': 'BreadcrumbList',
+        '@id': `${url}#breadcrumbs`,
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_ORIGIN}/` },
+          { '@type': 'ListItem', position: 2, name: plainTitle(page.meta.title), item: url },
+        ],
+      },
+    ],
+  };
+  if (faqs.length) {
+    obj['@graph'].push({
+      '@type': 'FAQPage',
+      '@id': `${url}#faq`,
+      mainEntity: faqs.map(({ q, a }) => ({
+        '@type': 'Question',
+        name: q,
+        acceptedAnswer: { '@type': 'Answer', text: a },
+      })),
+    });
+  }
+  return JSON.stringify(obj, null, 2);
+}
+
+function renderLandingPage(page, pages) {
+  const body = sanitizeBlogHtml(renderMarkdown(page.body));
+  const sectionLabel = PAGE_SECTIONS[page.meta.section];
+
+  const others = pages.filter((p) => p.meta.section === page.meta.section && p.meta.slug !== page.meta.slug).slice(0, 4);
+  const moreRows = others.map((p) => `      <a class="index-row" href="../${esc(p.meta.slug)}/">
+        <span class="index-main">
+          <span class="index-title">${esc(plainTitle(p.meta.title))}</span>
+          <span class="index-meta"><span class="index-cat">${esc(PAGE_SECTIONS[p.meta.section])}</span></span>
+        </span>
+        <img class="index-thumb" src="../..${esc(p.meta.hero)}" alt="" loading="lazy">
+        <span class="index-arrow" aria-hidden="true">↗</span>
+      </a>`).join('\n');
+  const moreSection = others.length ? `
+  <section class="shell post-more" aria-label="More ${esc(sectionLabel.toLowerCase())}">
+    <h2 class="post-more-h">More from ${esc(sectionLabel.toLowerCase())}</h2>
+    <div class="index-list">
+${moreRows}
+    </div>
+  </section>
+` : '';
+
+  const head = headHTML({
+    title: page.meta.titleTag || `${plainTitle(page.meta.title)} | Clubtech`,
+    description: page.meta.description || page.meta.excerpt,
+    canonical: pageCanonical(page),
+    ogImage: `${SITE_ORIGIN}${page.meta.hero}`,
+    ogImageAlt: page.meta.heroAlt || plainTitle(page.meta.title),
+    jsonLd: pageJsonLd(page),
+    rel: '../../',
+    ogType: 'website',
+  });
+
+  return `${head}
+<body class="blog-post p-${esc(page.meta.section)}">
+<main>
+${navMarkup('../../')}
+
+  <article>
+    <header class="post-hero">
+      <div class="shell post-hero-inner">
+        <p class="post-tags"><span class="index-cat">${esc(sectionLabel)}</span></p>
+        <h1>${h1Html(page.meta.title)}</h1>
+        <p class="post-sub">${esc(page.meta.excerpt)}</p>
+        <div class="post-hero-actions">
+          <a class="button button-mint" href="mailto:info@clubtechglobal.com">Book a demo <span aria-hidden="true">↗</span></a>
+          <a class="button button-ghost" href="../../index.html#platform">See the platform <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </header>
+
+    <div class="shell post-hero-media">
+      <img src="../..${esc(page.meta.hero)}" alt="${esc(page.meta.heroAlt)}" fetchpriority="high">
+    </div>
+
+    <div class="shell post-body">
+${body}
+    </div>
+  </article>
+${moreSection}
+  <section class="closing dark-section blog-closing">
+    <img class="closing-mark" src="../../brand/clubtech-mark-white.png" alt="" aria-hidden="true" width="1200" height="1200" loading="lazy">
+    <div class="shell centered">
+      <p class="eyebrow">Your venue, pre-sold.</p>
+      <h2>Stop reading about it. <span class="mint-text">See it live.</span></h2>
+      <p>Book a focused walkthrough, configured around a premium venue like yours.</p>
+      <a class="button button-mint" href="mailto:info@clubtechglobal.com">Book a demo <span aria-hidden="true">↗</span></a>
+    </div>
+  </section>
+
+${footerMarkup('../../')}
+</main>
+${CONSENT_MARKUP}
+<script src="../../js/consent.js" defer></script>
+<script src="../../js/analytics.js" defer></script>
+<script src="../../js/blog.js" defer></script>
+</body>
+</html>
+`;
+}
+
 /* ─── Listing (the directory page) ───────────────────────────── */
 function indexRow(post, n) {
   const cat = post.meta.category || '';
@@ -524,11 +674,19 @@ ${CONSENT_MARKUP}
 }
 
 /* ─── Sitemap ────────────────────────────────────────────────── */
-function renderSitemap(posts) {
+/* Blog posts and canonical-elsewhere pages are excluded (they point at
+   www.clubtechglobal.com); self-canonical solution/compare pages are in. */
+function renderSitemap(posts, pages) {
   const latest = posts[0]?.meta.date || '2026-01-01';
   const entries = [
     { loc: `${SITE_ORIGIN}/`, lastmod: latest, changefreq: 'weekly', priority: '1.0' },
     { loc: `${SITE_ORIGIN}/blog/`, lastmod: latest, changefreq: 'weekly', priority: '0.8' },
+    ...pages.filter((p) => !p.meta.canonical).map((p) => ({
+      loc: `${SITE_ORIGIN}/${p.meta.section}/${p.meta.slug}/`,
+      lastmod: p.meta.date,
+      changefreq: 'monthly',
+      priority: '0.8',
+    })),
   ];
   const xml = entries.map((e) => `  <url>
     <loc>${e.loc}</loc>
@@ -543,7 +701,53 @@ ${xml}
 `;
 }
 
+/* ─── llms.txt (AEO) ─────────────────────────────────────────── */
+function renderLlmsTxt(posts, pages) {
+  const lines = [`# Clubtech — Your venue, pre-sold
+
+> Clubtech is an all-in-one booking and revenue operations platform for premium venues — beach clubs, day clubs, nightclubs, and hotel pools. Online reservations with a 3D birds-eye venue map, front-of-house floor operations, and marketing attribution in a single system. Founded in Singapore; processes $332k in weekly GMV across venue partners in 7+ countries.
+
+Key facts:
+- Guests select the exact furniture, zone, and daypart on a 3D interactive map and pay before arrival.
+- Revenue levers: prepayments and deposits, upsells and add-ons, dynamic pricing, abandoned-booking retargeting.
+- Pricing: no monthly fee; 4% online processing paid by the customer; one-time $2,000 setup per venue.
+- Integrations: Opera PMS, Airwallex, Midtrans (QRIS, GoPay, OVO), Apple Pay, Google Pay, Meta Ads, Google Ads, GA4, WhatsApp.
+- Delivery: five stages (onboarding, build, training, go-live, optimize) with a dedicated account lead and 90-day hypercare.
+- Contact: info@clubtechglobal.com · main site: https://www.clubtechglobal.com/
+
+## Pages
+
+- [Landing page](${SITE_ORIGIN}/): platform overview, booking journey, operations, pricing, FAQ
+- [The Index (blog)](${SITE_ORIGIN}/blog/): operator playbooks on booking UX, revenue capture, and guest data`];
+  for (const sectionKey of Object.keys(PAGE_SECTIONS)) {
+    const sectionPages = pages.filter((p) => p.meta.section === sectionKey);
+    if (!sectionPages.length) continue;
+    lines.push(`\n## ${PAGE_SECTIONS[sectionKey]}\n`);
+    for (const p of sectionPages) {
+      lines.push(`- [${plainTitle(p.meta.title)}](${SITE_ORIGIN}/${p.meta.section}/${p.meta.slug}/): ${p.meta.excerpt}`);
+    }
+  }
+  lines.push('\n## Blog entries\n');
+  for (const p of posts) {
+    lines.push(`- [${p.meta.title}](${SITE_ORIGIN}/blog/${p.meta.slug}/): ${p.meta.excerpt}`);
+  }
+  lines.push('');
+  return lines.join('\n');
+}
+
 /* ─── Main ───────────────────────────────────────────────────── */
+function validateEntry(file, meta) {
+  if (!meta.slug || !meta.title || !meta.date) {
+    throw new Error(`${file}: missing slug/title/date frontmatter`);
+  }
+  if (!/^[a-z0-9][a-z0-9-]*$/.test(meta.slug)) {
+    throw new Error(`${file}: invalid slug "${meta.slug}" — must match /^[a-z0-9][a-z0-9-]*$/`);
+  }
+  if (`${meta.slug}.md` !== file) {
+    throw new Error(`${file}: slug "${meta.slug}" does not match filename`);
+  }
+}
+
 function main() {
   if (!existsSync(CONTENT_DIR)) {
     console.error(`Missing ${CONTENT_DIR}`);
@@ -558,15 +762,7 @@ function main() {
   const posts = files.map((file) => {
     const raw = readFileSync(join(CONTENT_DIR, file), 'utf8');
     const { meta, body } = parseFrontmatter(raw);
-    if (!meta.slug || !meta.title || !meta.date) {
-      throw new Error(`${file}: missing slug/title/date frontmatter`);
-    }
-    if (!/^[a-z0-9][a-z0-9-]*$/.test(meta.slug)) {
-      throw new Error(`${file}: invalid slug "${meta.slug}" — must match /^[a-z0-9][a-z0-9-]*$/`);
-    }
-    if (`${meta.slug}.md` !== file) {
-      throw new Error(`${file}: slug "${meta.slug}" does not match filename`);
-    }
+    validateEntry(file, meta);
     const heroPath = join(ROOT, meta.hero.replace(/^\//, ''));
     if (!existsSync(heroPath)) {
       throw new Error(`${file}: hero image ${meta.hero} not found`);
@@ -574,9 +770,29 @@ function main() {
     return { file, meta, body };
   }).sort((a, b) => (a.meta.date < b.meta.date ? 1 : -1));
 
-  // Wipe and regenerate blog/ — everything under it is build output.
+  // Landing pages (content/pages/*.md → solutions/ + compare/).
+  const pageFiles = existsSync(PAGES_DIR) ? readdirSync(PAGES_DIR).filter((f) => f.endsWith('.md')) : [];
+  const pages = pageFiles.map((file) => {
+    const raw = readFileSync(join(PAGES_DIR, file), 'utf8');
+    const { meta, body } = parseFrontmatter(raw);
+    validateEntry(file, meta);
+    if (!PAGE_SECTIONS[meta.section]) {
+      throw new Error(`${file}: invalid section "${meta.section}" — must be one of ${Object.keys(PAGE_SECTIONS).join('|')}`);
+    }
+    const heroPath = join(ROOT, meta.hero.replace(/^\//, ''));
+    if (!existsSync(heroPath)) {
+      throw new Error(`${file}: hero image ${meta.hero} not found`);
+    }
+    return { file, meta, body };
+  }).sort((a, b) => (a.meta.slug < b.meta.slug ? -1 : 1));
+
+  // Wipe and regenerate build output dirs.
   if (existsSync(OUT_DIR)) rmSync(OUT_DIR, { recursive: true, force: true });
   mkdirSync(OUT_DIR, { recursive: true });
+  for (const section of Object.keys(PAGE_SECTIONS)) {
+    const dir = join(ROOT, section);
+    if (existsSync(dir)) rmSync(dir, { recursive: true, force: true });
+  }
 
   for (const post of posts) {
     const dir = join(OUT_DIR, post.meta.slug);
@@ -584,10 +800,19 @@ function main() {
     writeFileSync(join(dir, 'index.html'), renderPost(post, posts));
   }
   writeFileSync(join(OUT_DIR, 'index.html'), renderListing(posts));
-  writeFileSync(join(ROOT, 'sitemap.xml'), renderSitemap(posts));
+
+  for (const page of pages) {
+    const dir = join(ROOT, page.meta.section, page.meta.slug);
+    mkdirSync(dir, { recursive: true });
+    writeFileSync(join(dir, 'index.html'), renderLandingPage(page, pages));
+  }
+
+  writeFileSync(join(ROOT, 'sitemap.xml'), renderSitemap(posts, pages));
+  writeFileSync(join(ROOT, 'llms.txt'), renderLlmsTxt(posts, pages));
 
   console.log(`Built ${posts.length} posts + listing → blog/`);
-  console.log('Refreshed sitemap.xml');
+  console.log(`Built ${pages.length} landing pages → ${Object.keys(PAGE_SECTIONS).map((s) => s + '/').join(' + ')}`);
+  console.log('Refreshed sitemap.xml + llms.txt');
 }
 
 main();
