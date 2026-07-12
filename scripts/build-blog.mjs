@@ -222,7 +222,7 @@ function listingJsonLd(posts) {
 
 /* ─── Shared chrome ──────────────────────────────────────────── */
 /* rel = path prefix back to the site root ('../' listing, '../../' posts). */
-function navMarkup(rel) {
+function navMarkup(rel, active = 'blog') {
   const links = [
     ['#platform', 'Platform'], ['#booking', 'Booking'], ['#operations', 'Operations'],
     ['#intelligence', 'Intelligence'], ['#delivery', 'Delivery'], ['#pricing', 'Pricing'],
@@ -231,16 +231,19 @@ function navMarkup(rel) {
   const mobItems = links.map(([href, label]) => `          <a href="${href}">${label}</a>`).join('\n');
   return `  <header class="nav-wrap scrolled">
     <nav class="nav" aria-label="Main navigation">
-      <a href="${rel}index.html" class="brand" aria-label="Clubtech home"><img src="${rel}brand/clubtech-wordmark-white.png" alt="Clubtech" width="176" height="28"></a>
+      <a href="${rel}index.html" class="brand" aria-label="Clubtech home"><img src="${rel}brand/clubtech-wordmark-white.png" alt="Clubtech" width="176" height="44"></a>
       <div class="nav-links">
 ${items}
-        <a href="${rel}blog/" class="nav-active">Blog</a>
+        <a href="${rel}solutions/"${active === 'solutions' ? ' class="nav-active"' : ''}>Solutions</a>
+        <a href="${rel}blog/"${active === 'blog' ? ' class="nav-active"' : ''}>Blog</a>
       </div>
       <a class="button button-dark nav-cta" href="${rel}index.html#contact">Book a demo <span aria-hidden="true">↗</span></a>
       <details class="mobile-menu">
         <summary aria-label="Open navigation">Menu</summary>
         <div>
 ${mobItems}
+          <a href="${rel}solutions/">Solutions</a>
+          <a href="${rel}compare/">Compare</a>
           <a href="${rel}blog/">Blog</a>
           <a href="${rel}index.html#contact">Book a demo</a>
         </div>
@@ -249,7 +252,39 @@ ${mobItems}
   </header>`;
 }
 
-function footerMarkup(rel) {
+/* Short labels for footer columns and anywhere full titles don't fit. */
+const SHORT_LABELS = {
+  'sunbed-booking-system': 'Sunbed booking',
+  'beach-clubs': 'Beach clubs',
+  'day-club-booking-system': 'Day clubs',
+  'nightclub-table-booking': 'Nightclub tables',
+  'hotel-pool-booking': 'Hotel pools',
+  'beach-club-booking-bali': 'Bali',
+  'beach-club-booking-dubai': 'Dubai',
+  'beach-club-booking-phuket': 'Phuket',
+  'beach-club-booking-ibiza': 'Ibiza',
+  'beach-club-booking-mykonos': 'Mykonos',
+  'urvenue-alternative': 'vs UrVenue',
+  'sevenrooms-alternative': 'vs SevenRooms',
+  'resortpass-alternative': 'vs ResortPass',
+  'servme-alternative': 'vs serVme',
+  'book-tech-labs-alternative': 'vs Book Tech Labs',
+  'fourvenues-alternative': 'vs Fourvenues',
+  'hoteligy-alternative': 'vs Hoteligy',
+};
+const GEO_PREFIX = 'beach-club-booking-';
+const shortLabel = (slug) =>
+  SHORT_LABELS[slug] || slug.replace(/-/g, ' ').replace(/^\w/, (c) => c.toUpperCase());
+
+function footerMarkup(rel, pages = []) {
+  const col = (title, links) => `      <div class="footer-col">
+        <p class="footer-col-h">${esc(title)}</p>
+${links.map(([href, label]) => `        <a href="${href}">${esc(label)}</a>`).join('\n')}
+      </div>`;
+  const solutions = pages.filter((p) => p.meta.section === 'solutions' && !p.meta.slug.startsWith(GEO_PREFIX));
+  const geos = pages.filter((p) => p.meta.section === 'solutions' && p.meta.slug.startsWith(GEO_PREFIX));
+  const compares = pages.filter((p) => p.meta.section === 'compare');
+  const pageLink = (p) => [`${rel}${p.meta.section}/${p.meta.slug}/`, shortLabel(p.meta.slug)];
   return `  <footer class="footer shell">
     <div class="footer-top">
       <a href="${rel}index.html" class="brand"><img src="${rel}brand/clubtech-wordmark-white.png" alt="Clubtech" width="190" height="48"></a>
@@ -263,6 +298,11 @@ function footerMarkup(rel) {
         <a href="mailto:info@clubtechglobal.com">Contact</a>
         <a href="#" data-open-consent>Cookie preferences</a>
       </div>
+    </div>
+    <div class="footer-grid">
+${col('Solutions', [...solutions.map(pageLink), [`${rel}solutions/`, 'All solutions']])}
+${col('Locations', geos.map(pageLink))}
+${col('Compare', [...compares.map(pageLink), [`${rel}compare/`, 'All comparisons']])}
     </div>
     <div class="footer-wordmark"><img src="${rel}brand/clubtech-wordmark-white.png" alt="Clubtech" width="1200" height="300" loading="lazy"></div>
     <p class="copyright">© 2026 Clubtech, Inc.</p>
@@ -456,7 +496,7 @@ ${moreRows}
   return `${head}
 <body class="blog-post p-${esc(page.meta.section)}">
 <main>
-${navMarkup('../../')}
+${navMarkup('../../', page.meta.section === 'solutions' ? 'solutions' : null)}
 
   <article>
     <header class="post-hero">
@@ -490,12 +530,104 @@ ${moreSection}
     </div>
   </section>
 
-${footerMarkup('../../')}
+${footerMarkup('../../', pages)}
 </main>
 ${CONSENT_MARKUP}
 <script src="../../js/consent.js" defer></script>
 <script src="../../js/analytics.js" defer></script>
 <script src="../../js/blog.js" defer></script>
+</body>
+</html>
+`;
+}
+
+/* ─── Section index pages (/solutions/ + /compare/) ──────────── */
+const SECTION_HERO = {
+  solutions: {
+    h1: 'Built for how <span class="mint-text">your venue sells.</span>',
+    sub: 'Sunbeds, daybeds, tables, and day passes — one platform, configured to the way each venue type turns furniture into revenue.',
+  },
+  compare: {
+    h1: 'Clubtech, <span class="mint-text">compared fairly.</span>',
+    sub: 'Honest, fair-fit comparisons. Where an alternative is the better tool for your venue, these pages say so.',
+  },
+};
+
+function sectionIndexJsonLd(sectionKey, sectionPages) {
+  return JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    '@id': `${SITE_ORIGIN}/${sectionKey}/`,
+    name: `${PAGE_SECTIONS[sectionKey]} — Clubtech`,
+    url: `${SITE_ORIGIN}/${sectionKey}/`,
+    hasPart: sectionPages.map((p) => ({
+      '@type': 'WebPage',
+      name: plainTitle(p.meta.title),
+      url: `${SITE_ORIGIN}/${p.meta.section}/${p.meta.slug}/`,
+    })),
+  }, null, 2);
+}
+
+function renderSectionIndex(sectionKey, pages) {
+  const sectionPages = pages.filter((p) => p.meta.section === sectionKey);
+  const label = PAGE_SECTIONS[sectionKey];
+  const rows = sectionPages.map((p) => `      <a class="index-row" href="${esc(p.meta.slug)}/">
+        <span class="index-main">
+          <span class="index-title">${esc(plainTitle(p.meta.title))}</span>
+          <span class="index-desc">${esc(p.meta.excerpt)}</span>
+        </span>
+        <img class="index-thumb" src="..${esc(p.meta.hero)}" alt="" loading="lazy">
+        <span class="index-arrow" aria-hidden="true">↗</span>
+      </a>`).join('\n');
+
+  const head = headHTML({
+    title: `${label} — Clubtech`,
+    description: sectionKey === 'solutions'
+      ? 'Clubtech booking and revenue solutions by venue type and destination — beach clubs, day clubs, nightclubs, hotel pools, and sunbed decks.'
+      : 'Fair, factual comparisons of Clubtech against UrVenue, SevenRooms, ResortPass, serVme, Book Tech Labs, Fourvenues, and Hoteligy.',
+    canonical: `${SITE_ORIGIN}/${sectionKey}/`,
+    ogImage: `${SITE_ORIGIN}${sectionPages[0]?.meta.hero || '/video/clubtech-hero-poster.jpg'}`,
+    ogImageAlt: `Clubtech ${label.toLowerCase()}`,
+    jsonLd: sectionIndexJsonLd(sectionKey, sectionPages),
+    rel: '../',
+    ogType: 'website',
+  });
+
+  return `${head}
+<body class="blog-index p-${esc(sectionKey)}-index">
+<main>
+${navMarkup('../', sectionKey === 'solutions' ? 'solutions' : null)}
+
+  <section class="index-hero">
+    <div class="shell">
+      <p class="index-kicker"><span class="tick"></span>${esc(label)} · ${sectionPages.length} pages</p>
+      <h1 class="index-h1">${SECTION_HERO[sectionKey].h1}</h1>
+      <p class="index-sub">${esc(SECTION_HERO[sectionKey].sub)}</p>
+    </div>
+  </section>
+
+  <section class="index-list-wrap shell" aria-label="All ${esc(label.toLowerCase())} pages">
+    <div class="index-list">
+${rows}
+    </div>
+  </section>
+
+  <section class="closing dark-section blog-closing">
+    <img class="closing-mark" src="../brand/clubtech-mark-white.png" alt="" aria-hidden="true" width="1200" height="1200" loading="lazy">
+    <div class="shell centered">
+      <p class="eyebrow">Your venue, pre-sold.</p>
+      <h2>Stop reading about it. <span class="mint-text">See it live.</span></h2>
+      <p>Book a focused walkthrough, configured around a premium venue like yours.</p>
+      <a class="button button-mint" href="mailto:info@clubtechglobal.com">Book a demo <span aria-hidden="true">↗</span></a>
+    </div>
+  </section>
+
+${footerMarkup('../', pages)}
+</main>
+${CONSENT_MARKUP}
+<script src="../js/consent.js" defer></script>
+<script src="../js/analytics.js" defer></script>
+<script src="../js/blog.js" defer></script>
 </body>
 </html>
 `;
@@ -516,7 +648,7 @@ function indexRow(post, n) {
       </a>`;
 }
 
-function renderListing(posts) {
+function renderListing(posts, pages) {
   const [latest, ...rest] = posts;
   const categories = [...new Set(posts.map((p) => p.meta.category).filter(Boolean))];
   const chips = categories.map((c) =>
@@ -584,7 +716,7 @@ ${rows}
     </div>
   </section>
 
-${footerMarkup('../')}
+${footerMarkup('../', pages)}
 </main>
 ${CONSENT_MARKUP}
 <script src="../js/consent.js" defer></script>
@@ -596,7 +728,7 @@ ${CONSENT_MARKUP}
 }
 
 /* ─── Post page ──────────────────────────────────────────────── */
-function renderPost(post, posts) {
+function renderPost(post, posts, pages) {
   const canonical = `${CANONICAL_ORIGIN}/blog/${post.meta.slug}/`;
   const body = sanitizeBlogHtml(renderMarkdown(post.body));
   const readMin = readMinutes(post.body);
@@ -662,7 +794,7 @@ ${moreRows}
     </div>
   </section>
 
-${footerMarkup('../../')}
+${footerMarkup('../../', pages)}
 </main>
 ${CONSENT_MARKUP}
 <script src="../../js/consent.js" defer></script>
@@ -681,6 +813,7 @@ function renderSitemap(posts, pages) {
   const entries = [
     { loc: `${SITE_ORIGIN}/`, lastmod: latest, changefreq: 'weekly', priority: '1.0' },
     { loc: `${SITE_ORIGIN}/blog/`, lastmod: latest, changefreq: 'weekly', priority: '0.8' },
+    ...Object.keys(PAGE_SECTIONS).map((sec) => ({ loc: `${SITE_ORIGIN}/${sec}/`, lastmod: latest, changefreq: 'weekly', priority: '0.7' })),
     ...pages.filter((p) => !p.meta.canonical).map((p) => ({
       loc: `${SITE_ORIGIN}/${p.meta.section}/${p.meta.slug}/`,
       lastmod: p.meta.date,
@@ -797,14 +930,18 @@ function main() {
   for (const post of posts) {
     const dir = join(OUT_DIR, post.meta.slug);
     mkdirSync(dir, { recursive: true });
-    writeFileSync(join(dir, 'index.html'), renderPost(post, posts));
+    writeFileSync(join(dir, 'index.html'), renderPost(post, posts, pages));
   }
-  writeFileSync(join(OUT_DIR, 'index.html'), renderListing(posts));
+  writeFileSync(join(OUT_DIR, 'index.html'), renderListing(posts, pages));
 
   for (const page of pages) {
     const dir = join(ROOT, page.meta.section, page.meta.slug);
     mkdirSync(dir, { recursive: true });
     writeFileSync(join(dir, 'index.html'), renderLandingPage(page, pages));
+  }
+
+  for (const sectionKey of Object.keys(PAGE_SECTIONS)) {
+    writeFileSync(join(ROOT, sectionKey, 'index.html'), renderSectionIndex(sectionKey, pages));
   }
 
   writeFileSync(join(ROOT, 'sitemap.xml'), renderSitemap(posts, pages));
