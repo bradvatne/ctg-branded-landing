@@ -237,7 +237,7 @@ ${items}
         <a href="${rel}solutions/"${active === 'solutions' ? ' class="nav-active"' : ''}>Solutions</a>
         <a href="${rel}blog/"${active === 'blog' ? ' class="nav-active"' : ''}>Blog</a>
       </div>
-      <a class="button button-dark nav-cta" href="${rel}index.html#contact">Book a demo <span aria-hidden="true">↗</span></a>
+      <a class="button button-dark nav-cta" href="${rel}index.html#contact" data-open-demo>Book a demo <span aria-hidden="true">↗</span></a>
       <details class="mobile-menu">
         <summary aria-label="Open navigation">Menu</summary>
         <div>
@@ -245,7 +245,7 @@ ${mobItems}
           <a href="${rel}solutions/">Solutions</a>
           <a href="${rel}compare/">Compare</a>
           <a href="${rel}blog/">Blog</a>
-          <a href="${rel}index.html#contact">Book a demo</a>
+          <a href="${rel}index.html#contact" data-open-demo>Book a demo</a>
         </div>
       </details>
     </nav>
@@ -394,6 +394,7 @@ function headHTML({ title, description, canonical, ogImage, ogImageAlt, jsonLd, 
   <link rel="stylesheet" href="${rel}css/styles.css">
   <link rel="stylesheet" href="${rel}css/blog.css">
   <link rel="stylesheet" href="${rel}css/consent.css">
+  <link rel="stylesheet" href="${rel}css/booking.css">
   <script>document.documentElement.classList.add('js')</script>
 
   <script type="application/ld+json">
@@ -505,7 +506,7 @@ ${navMarkup('../../', page.meta.section === 'solutions' ? 'solutions' : null)}
         <h1>${h1Html(page.meta.title)}</h1>
         <p class="post-sub">${esc(page.meta.excerpt)}</p>
         <div class="post-hero-actions">
-          <a class="button button-mint" href="mailto:info@clubtechglobal.com">Book a demo <span aria-hidden="true">↗</span></a>
+          <a class="button button-mint" href="mailto:info@clubtechglobal.com" data-open-demo>Book a demo <span aria-hidden="true">↗</span></a>
           <a class="button button-ghost" href="../../index.html#platform">See the platform <span aria-hidden="true">↗</span></a>
         </div>
       </div>
@@ -526,7 +527,7 @@ ${moreSection}
       <p class="eyebrow">Your venue, pre-sold.</p>
       <h2>Stop reading about it.<br><span class="mint-text">See it live.</span></h2>
       <p>Book a focused walkthrough, configured around a premium venue like yours.</p>
-      <a class="button button-mint" href="mailto:info@clubtechglobal.com">Book a demo <span aria-hidden="true">↗</span></a>
+      <a class="button button-mint" href="mailto:info@clubtechglobal.com" data-open-demo>Book a demo <span aria-hidden="true">↗</span></a>
     </div>
   </section>
 
@@ -534,6 +535,8 @@ ${footerMarkup('../../', pages)}
 </main>
 ${CONSENT_MARKUP}
 <script src="../../js/consent.js" defer></script>
+<script src="../../js/hubspot.js" defer></script>
+<script src="../../js/booking.js" defer></script>
 <script src="../../js/analytics.js" defer></script>
 <script src="../../js/blog.js" defer></script>
 </body>
@@ -618,7 +621,7 @@ ${rows}
       <p class="eyebrow">Your venue, pre-sold.</p>
       <h2>Stop reading about it.<br><span class="mint-text">See it live.</span></h2>
       <p>Book a focused walkthrough, configured around a premium venue like yours.</p>
-      <a class="button button-mint" href="mailto:info@clubtechglobal.com">Book a demo <span aria-hidden="true">↗</span></a>
+      <a class="button button-mint" href="mailto:info@clubtechglobal.com" data-open-demo>Book a demo <span aria-hidden="true">↗</span></a>
     </div>
   </section>
 
@@ -626,6 +629,8 @@ ${footerMarkup('../', pages)}
 </main>
 ${CONSENT_MARKUP}
 <script src="../js/consent.js" defer></script>
+<script src="../js/hubspot.js" defer></script>
+<script src="../js/booking.js" defer></script>
 <script src="../js/analytics.js" defer></script>
 <script src="../js/blog.js" defer></script>
 </body>
@@ -707,12 +712,12 @@ ${rows}
   </section>
 
   <section class="closing dark-section blog-closing">
-    <img class="closing-mark" src="../brand/clubtech-mark-white.png" alt="" aria-hidden="true">
+    <img class="closing-mark" src="../brand/clubtech-mark-white.png" alt="" aria-hidden="true" width="1200" height="1200" loading="lazy" decoding="async">
     <div class="shell centered">
       <p class="eyebrow">Your venue, pre-sold.</p>
       <h2>Stop reading about it.<br><span class="mint-text">See it live.</span></h2>
       <p>Book a focused walkthrough, configured around a premium venue like yours.</p>
-      <a class="button button-mint" href="mailto:info@clubtechglobal.com">Book a demo <span aria-hidden="true">↗</span></a>
+      <a class="button button-mint" href="mailto:info@clubtechglobal.com" data-open-demo>Book a demo <span aria-hidden="true">↗</span></a>
     </div>
   </section>
 
@@ -720,6 +725,8 @@ ${footerMarkup('../', pages)}
 </main>
 ${CONSENT_MARKUP}
 <script src="../js/consent.js" defer></script>
+<script src="../js/hubspot.js" defer></script>
+<script src="../js/booking.js" defer></script>
 <script src="../js/analytics.js" defer></script>
 <script src="../js/blog.js" defer></script>
 </body>
@@ -785,12 +792,12 @@ ${moreRows}
   </section>
 
   <section class="closing dark-section blog-closing">
-    <img class="closing-mark" src="../../brand/clubtech-mark-white.png" alt="" aria-hidden="true">
+    <img class="closing-mark" src="../../brand/clubtech-mark-white.png" alt="" aria-hidden="true" width="1200" height="1200" loading="lazy" decoding="async">
     <div class="shell centered">
       <p class="eyebrow">Your venue, pre-sold.</p>
       <h2>Stop reading about it.<br><span class="mint-text">See it live.</span></h2>
       <p>Book a focused walkthrough, configured around a premium venue like yours.</p>
-      <a class="button button-mint" href="mailto:info@clubtechglobal.com">Book a demo <span aria-hidden="true">↗</span></a>
+      <a class="button button-mint" href="mailto:info@clubtechglobal.com" data-open-demo>Book a demo <span aria-hidden="true">↗</span></a>
     </div>
   </section>
 
@@ -798,6 +805,8 @@ ${footerMarkup('../../', pages)}
 </main>
 ${CONSENT_MARKUP}
 <script src="../../js/consent.js" defer></script>
+<script src="../../js/hubspot.js" defer></script>
+<script src="../../js/booking.js" defer></script>
 <script src="../../js/analytics.js" defer></script>
 <script src="../../js/blog.js" defer></script>
 </body>

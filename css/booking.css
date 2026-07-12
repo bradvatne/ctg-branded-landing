@@ -1,0 +1,37 @@
+/* Booking modal — branded lead form + scheduler step, on the site tokens */
+
+.bk-back{position:fixed;z-index:80;inset:0;background:rgba(2,6,23,.62);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;padding:20px}
+.bk-back[hidden]{display:none}
+.bk-card{position:relative;width:min(520px,100%);max-height:calc(100vh - 40px);overflow-y:auto;background:var(--paper);border-radius:28px;padding:38px;transition:width .3s ease}
+.bk-card.bk-wide{width:min(760px,100%)}
+.bk-close{position:absolute;top:18px;right:18px;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:transparent;cursor:pointer;display:grid;place-items:center;color:var(--heading);font-size:16px;line-height:1;z-index:1}
+.bk-close:hover{background:var(--navy);color:var(--mint);border-color:var(--navy)}
+.bk-kicker{display:inline-flex;align-items:center;padding:6px 13px;border-radius:999px;background:var(--lime);color:var(--navy);font-size:13px;font-weight:800}
+.bk-h{margin-top:16px;font-size:clamp(28px,3.4vw,40px);line-height:1;letter-spacing:-.05em}
+.bk-h .mint-text{color:var(--indigo)}
+.bk-sub{margin-top:12px;color:var(--muted);font-size:15px;line-height:1.5;font-weight:600}
+
+.bk-form{margin-top:24px;display:flex;flex-direction:column;gap:14px}
+.bk-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.bk-field{display:flex;flex-direction:column;gap:6px}
+.bk-field span{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--heading)}
+.bk-field span em{font-style:normal;color:#94a3b8;font-weight:700}
+.bk-field input,.bk-field textarea{font-family:inherit;font-size:15px;font-weight:600;color:var(--heading);background:var(--white);border:1px solid var(--line);border-radius:14px;padding:13px 15px;letter-spacing:-.02em;transition:border-color .2s,box-shadow .2s}
+.bk-field input::placeholder,.bk-field textarea::placeholder{color:#a6b0c3;font-weight:500}
+.bk-field input:focus,.bk-field textarea:focus{outline:none;border-color:var(--indigo);box-shadow:0 0 0 3px rgba(65,94,226,.15)}
+.bk-field textarea{resize:vertical;min-height:56px}
+.bk-error{color:#b42318;font-size:13px;font-weight:700;margin:-2px 0 0}
+.bk-submit{margin-top:6px;width:100%;border:0;cursor:pointer;font-family:inherit}
+.bk-fine{text-align:center;font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#94a3b8;margin-top:2px}
+
+.bk-cal{margin-top:22px;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--white);min-height:620px}
+.bk-cal iframe{display:block;width:100%;height:660px;border:0}
+.bk-alt{margin-top:14px;font-size:13px;font-weight:600;color:var(--muted);text-align:center}
+.bk-alt a{color:var(--indigo);font-weight:700;border-bottom:1px solid rgba(65,94,226,.35)}
+
+@media(max-width:600px){
+  .bk-back{padding:0;align-items:flex-end}
+  .bk-card{border-radius:24px 24px 0 0;max-height:94vh;padding:28px 20px}
+  .bk-row{grid-template-columns:1fr}
+  .bk-cal iframe{height:560px}
+}

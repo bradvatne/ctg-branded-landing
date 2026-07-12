@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Clubtech — Your venue, pre-sold</title>
-  <meta name="description" content="Clubtech is the booking and revenue operations platform for premium venues — beach clubs, day clubs, nightclubs, and hotel pools. Pre-paid bookings, live floor operations, and owned guest data.">
+  <meta name="description" content="Clubtech is the booking and revenue operations platform for beach clubs, day clubs, nightclubs, and hotel pools — pre-paid bookings and owned guest data.">
   <link rel="canonical" href="https://bradvatne.github.io/ctg-branded-landing/">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#020617">
@@ -27,6 +27,7 @@
   <link rel="preload" href="video/clubtech-hero-poster.jpg" as="image" fetchpriority="high">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/consent.css">
+  <link rel="stylesheet" href="css/booking.css">
   <script>document.documentElement.classList.add('js')</script>
 
   <script type="application/ld+json">
@@ -113,7 +114,7 @@
         <a href="solutions/">Solutions</a>
         <a href="blog/">Blog</a>
       </div>
-      <a class="button button-dark nav-cta" href="#contact">Book a demo <span aria-hidden="true">↗</span></a>
+      <a class="button button-dark nav-cta" href="#contact" data-open-demo>Book a demo <span aria-hidden="true">↗</span></a>
       <details class="mobile-menu">
         <summary aria-label="Open navigation">Menu</summary>
         <div>
@@ -126,7 +127,7 @@
           <a href="solutions/">Solutions</a>
           <a href="compare/">Compare</a>
           <a href="blog/">Blog</a>
-          <a href="#contact">Book a demo</a>
+          <a href="#contact" data-open-demo>Book a demo</a>
         </div>
       </details>
     </nav>
@@ -139,7 +140,7 @@
         <h1>World-class<br><span class="no-wrap">venue operations &amp;</span><br><span class="mint-text">revenue capture</span></h1>
         <p class="hero-copy">Turn furniture, zones, and dayparts into pre-paid revenue. Run the floor, own the guest data, and know what is booked before the doors open.</p>
         <div class="hero-actions">
-          <a class="button button-dark" href="#contact">Book a demo <span aria-hidden="true">↗</span></a>
+          <a class="button button-dark" href="#contact" data-open-demo>Book a demo <span aria-hidden="true">↗</span></a>
           <a class="button button-light" href="#platform">See the platform <span aria-hidden="true">↓</span></a>
         </div>
       </div>
@@ -262,7 +263,7 @@
         <p class="eyebrow">Guest intelligence</p>
         <h2>Read the business <span class="indigo-text">before the patterns arrive too late.</span></h2>
         <p>See revenue by hour, booking lead time, product mix, origin markets, and repeat behavior across 20+ reports—without rebuilding the week in a spreadsheet.</p>
-        <a class="button button-dark" href="#contact">See it in action <span aria-hidden="true">↗</span></a>
+        <a class="button button-dark" href="#contact" data-open-demo>See it in action <span aria-hidden="true">↗</span></a>
       </div>
       <div class="placeholder" role="img" aria-label="Desktop image placeholder, 1440 × 900 px"><span>Desktop image</span><strong>1440 × 900 px</strong></div>
     </div>
@@ -340,7 +341,7 @@
       <p class="eyebrow">Your venue, pre-sold.</p>
       <h2>See what Saturday looks like <span class="mint-text">on Wednesday.</span></h2>
       <p>Book a focused walkthrough, configured around a premium venue like yours.</p>
-      <a class="button button-mint" href="mailto:info@clubtechglobal.com">Book a demo <span aria-hidden="true">↗</span></a>
+      <a class="button button-mint" href="mailto:info@clubtechglobal.com" data-open-demo>Book a demo <span aria-hidden="true">↗</span></a>
     </div>
   </section>
 
@@ -450,6 +451,8 @@
 </div>
 
 <script src="js/consent.js" defer></script>
+<script src="js/hubspot.js" defer></script>
+<script src="js/booking.js" defer></script>
 <script src="js/analytics.js" defer></script>
 <script src="js/main.js" defer></script>
 </body>
