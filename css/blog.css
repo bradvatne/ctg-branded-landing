@@ -60,6 +60,8 @@
 .index-thumb{position:absolute;right:110px;top:50%;width:190px;height:120px;object-fit:cover;border-radius:14px;transform:translateY(-50%) rotate(3deg) scale(.92);opacity:0;pointer-events:none;box-shadow:0 24px 50px rgba(2,6,23,.3);transition:opacity .25s,transform .25s;z-index:1}
 .index-row:hover .index-thumb{opacity:1;transform:translateY(-50%) rotate(0deg) scale(1)}
 .index-row[hidden]{display:none}
+/* Rows without a number cell (section indexes, related strips) drop the 70px column */
+.index-row:not(:has(.index-num)){grid-template-columns:1fr 44px}
 .index-empty{padding:40px 8px;color:var(--muted);font-weight:600}
 
 /* ─── Post page ────────────────────────────────────────────── */
