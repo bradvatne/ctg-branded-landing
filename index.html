@@ -28,6 +28,7 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/consent.css">
   <link rel="stylesheet" href="css/booking.css">
+  <link rel="stylesheet" href="css/demo.css">
   <script>document.documentElement.classList.add('js')</script>
 
   <script type="application/ld+json">
@@ -225,7 +226,7 @@
       </ul>
       <p><a href="booking/">See the full booking journey ↗</a></p>
     </div>
-    <div class="placeholder" role="img" aria-label="Desktop image placeholder, 1200 × 900 px"><span>Desktop image</span><strong>1200 × 900 px</strong></div>
+    <div class="bk" id="product-demo" role="application" aria-label="Interactive booking demo — pick a date, choose a spot on the venue map, add extras, and confirm" style="background-image:url(assets/demo/venue-map.svg);background-size:cover;background-position:center"></div>
   </section>
 
   <section class="section dark-section" id="operations">
@@ -268,9 +269,95 @@
       <p>The main booker invites the group. Every guest shares their own details before arrival. The venue&rsquo;s audience grows with every reservation. <a href="booking/#every-guest-data">How every-guest capture works ↗</a></p>
     </div>
     <div class="phones">
-      <div class="placeholder" role="img" aria-label="Mobile image placeholder, 1170 × 2532 px"><span>Mobile image</span><strong>1170 × 2532 px</strong></div>
-      <div class="placeholder" role="img" aria-label="Mobile image placeholder, 1170 × 2532 px"><span>Mobile image</span><strong>1170 × 2532 px</strong></div>
-      <div class="placeholder" role="img" aria-label="Mobile image placeholder, 1170 × 2532 px"><span>Mobile image</span><strong>1170 × 2532 px</strong></div>
+      <div class="bkm" role="img" aria-label="Mobile booking map: date pill, zone cards, live map with available spots, hold timer and bottom navigation">
+        <div class="bkm-map"></div>
+        <div class="bkm-head">
+          <span class="lg"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.2" stroke="#1c1c1c" stroke-width="2"/><path d="M6.5 14.5q2.75-2.2 5.5 0t5.5 0" stroke="#14b8a6" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="8.6" r="2.3" fill="#f6a417"/></svg></span>
+          <span class="dt"><svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="1.8"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M8 3v4M16 3v4M3.5 10h17"/></svg>18 July 2026</span>
+          <span class="rd"><svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="1.8"><circle cx="9.5" cy="19.5" r="1.4"/><circle cx="17" cy="19.5" r="1.4"/><path d="M3.5 4.5h2l2 10.5h9.5l2-8H7"/></svg><b>1</b></span>
+          <span class="rd"><svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="1.8"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 20c1.2-3.4 3.8-5 7-5s5.8 1.6 7 5"/></svg></span>
+        </div>
+        <div class="bkm-zrow">
+          <span class="bkm-zc"><small class="fast">Selling Fast</small><strong>Pool Club</strong></span>
+          <span class="bkm-zc"><small class="sold">Sold Out</small><strong>Beachfront</strong></span>
+          <span class="bkm-zc"><small class="sold">Sold Out</small><strong>Sunset Deck</strong></span>
+        </div>
+        <span class="bkm-pin teal" style="left:38%;top:34%"><i><svg viewBox="0 0 24 24" fill="#fff"><path d="M6 15.5 4 20l4.5-2L6 15.5Zm1.5-2.6 3.6 3.6 8.4-4.9a1 1 0 0 0 .1-1.6l-5.6-5.6a1 1 0 0 0-1.6.1L7.5 12.9ZM17 3.5l1 2 2 1-2 1-1 2-1-2-2-1 2-1 1-2Z"/></svg></i><em>Pool Club</em></span>
+        <span class="bkm-pin purple" style="left:66%;top:56%"><i><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9"><path d="M5 5h14l-7 8v6M8.5 21h7M7 8h10"/></svg></i><em>Pool Bar</em></span>
+        <span class="bkm-spot free" style="left:26%;top:44%;width:15%;height:6.5%"></span>
+        <span class="bkm-spot sold" style="left:45%;top:41%;width:15%;height:6.5%"></span>
+        <span class="bkm-spot picked" style="left:60%;top:44%;width:16%;height:7%"></span>
+        <span class="bkm-spot sold" style="left:33%;top:56%;width:15%;height:6.5%"></span>
+        <span class="bkm-spot free" style="left:50%;top:58%;width:15%;height:6.5%"></span>
+        <span class="bkm-timer">⏱ 7:36</span>
+        <span class="bkm-zoom"><span>+</span><span>−</span></span>
+        <div class="bkm-tabbar">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 4h10l4 5.5L12 21 3 9.5 7 4Z"/><path d="M3 9.5h18M9.5 4 12 21 14.5 4"/></svg>Skip the queue</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="m9 15 6-6"/><circle cx="9.3" cy="9.3" r="1.1" fill="currentColor" stroke="none"/><circle cx="14.7" cy="14.7" r="1.1" fill="currentColor" stroke="none"/></svg>Promotions</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="9" r="3"/><path d="M3.5 19c.9-2.8 3-4.2 5.5-4.2s4.6 1.4 5.5 4.2M16 6.2a3 3 0 0 1 0 5.6M17.5 15c1.7.5 2.9 1.8 3.5 4"/></svg>Free entry party zones</span>
+        </div>
+      </div>
+      <div class="bkm" role="img" aria-label="Mobile furniture detail sheet: tags, photo gallery, food and beverage credit, add to cart and book now">
+        <div class="bkm-map" style="filter:brightness(.55);background-size:340%;background-position:40% 30%"></div>
+        <div class="bkm-head">
+          <span class="lg"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.2" stroke="#1c1c1c" stroke-width="2"/><path d="M6.5 14.5q2.75-2.2 5.5 0t5.5 0" stroke="#14b8a6" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="8.6" r="2.3" fill="#f6a417"/></svg></span>
+          <span class="dt"><svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="1.8"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M8 3v4M16 3v4M3.5 10h17"/></svg>18 July 2026</span>
+          <span class="rd"><svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="1.8"><circle cx="9.5" cy="19.5" r="1.4"/><circle cx="17" cy="19.5" r="1.4"/><path d="M3.5 4.5h2l2 10.5h9.5l2-8H7"/></svg><b>1</b></span>
+        </div>
+        <div class="bkm-sheet">
+          <span class="grab"></span>
+          <h5>Pool Club Bed – #655</h5>
+          <div class="bk-chiprow">
+            <span class="bk-chip blue">✦ New</span>
+            <span class="bk-chip pinkc">🎉 Party Zone</span>
+            <span class="bk-chip grey">Ground Floor</span>
+          </div>
+          <p class="pax">👥 Recommended for 4 People <em>· Adults Only (16+)</em></p>
+          <div class="gal">
+            <div style="background-position:30% 20%"></div>
+            <div style="background-position:60% 45%"></div>
+            <div style="background-position:45% 60%"></div>
+          </div>
+          <p class="cred">Includes $150 in food &amp; beverage credit</p>
+          <div class="btns"><span class="line">Add to Cart 🛒</span><span class="dark">Book Now</span></div>
+        </div>
+      </div>
+      <div class="bkm" role="img" aria-label="Mobile order review: cart with package, tax and fee summary, grand total and checkout">
+        <div class="bkm-appbar">
+          <span class="lg"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.2" stroke="#1c1c1c" stroke-width="2"/><path d="M6.5 14.5q2.75-2.2 5.5 0t5.5 0" stroke="#14b8a6" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="8.6" r="2.3" fill="#f6a417"/></svg></span>
+          <span class="tmr">⏱ 6:12</span>
+        </div>
+        <div class="bkm-body">
+          <h5>Order Review</h5>
+          <div class="bkm-datebar">📅 Booking Date: <b>18 July 2026</b></div>
+          <div class="bkm-item">
+            <span class="th" style="background-position:56% 53%"></span>
+            <div style="flex:1">
+              <h6>Pool Club Bed #655<br>Bed + Party Package</h6>
+              <p>🕐 Arrive Before 1pm</p>
+              <p>👥 Recommended for 4 People</p>
+              <p>$150 food &amp; beverage credit</p>
+              <div class="pr">$250</div>
+            </div>
+            <span class="rm">✕</span>
+          </div>
+          <div class="bkm-item">
+            <span class="th" style="background-image:none;background:linear-gradient(160deg,#bfe6f2,#5db6d6);display:grid;place-items:center;font-size:22px">🍾</span>
+            <div style="flex:1">
+              <h6>Signature White Rum × 1</h6>
+              <div class="pr">$118</div>
+            </div>
+            <span class="rm">✕</span>
+          </div>
+          <div class="bkm-sum">
+            <div class="bkm-sumrow"><span>Subtotal</span><b>$368</b></div>
+            <div class="bkm-sumrow"><span>20% Government Tax &amp; Service Charge</span><b>$74</b></div>
+            <div class="bkm-sumrow"><span>Processing Fee</span><b>$9</b></div>
+            <div class="bkm-sumrow grand"><span><b>Grand Total</b></span><b>$451</b></div>
+          </div>
+        </div>
+        <span class="bkm-paybtn">Proceed to Checkout</span>
+      </div>
     </div>
   </section>
 
@@ -314,7 +401,7 @@
   <section class="section shell quote-section">
     <blockquote>&ldquo;We have grown from simple on-the-day bookings with no financial guarantee&hellip; to now having millions of dollars worth of pre-paid bookings each month.&rdquo;</blockquote>
     <div class="quote-meta">
-      <div class="avatar-placeholder" aria-hidden="true">Mobile image<br><b>1080 × 1080 px</b></div>
+      <div class="avatar-initials" aria-hidden="true">BW</div>
       <p><strong>Beau Whittington</strong><br>CEO, FINNS Beach Club</p>
     </div>
   </section>
@@ -483,6 +570,7 @@
 <script src="js/consent.js" defer></script>
 <script src="js/hubspot.js" defer></script>
 <script src="js/booking.js" defer></script>
+<script src="js/demo.js" defer></script>
 <script src="js/analytics.js" defer></script>
 <script src="js/main.js" defer></script>
 </body>
