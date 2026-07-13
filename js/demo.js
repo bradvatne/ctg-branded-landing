@@ -14,15 +14,26 @@
    scripts/build-venue-map.py — swap for a photoreal render anytime;
    hotspot coords are percentages of that image).
 
-   Mount: <div id="product-demo" class="bk"> in index.html.
+   Mount: <div id="product-demo" class="ckd"> in index.html.
    Analytics delegated to window.CTGTrack when present.
    ────────────────────────────────────────────────────────────────────── */
 
 (function () {
   'use strict';
 
-  var root = document.getElementById('product-demo');
-  if (!root) return;
+  var mounts = [].slice.call(document.querySelectorAll('[data-demo]'));
+  if (!mounts.length) return;
+
+  /* asset path relative to this script, so mounts work from any page depth */
+  var SCRIPT_SRC = (document.currentScript && document.currentScript.src) || 'js/demo.js';
+  var MAP_URL = SCRIPT_SRC.replace(/js\/demo\.js.*$/, 'assets/demo/venue-map.svg');
+  mounts.forEach(function (m) { createDemo(m); });
+
+  function createDemo(root) {
+  var OPTS = {
+    view: root.getAttribute('data-demo') || 'map',
+    badge: root.getAttribute('data-demo-badge') || ''
+  };
 
   /* ===== demo data ==================================================== */
 
@@ -155,7 +166,7 @@
 
   /* ===== build shell ================================================== */
 
-  var MAP = 'assets/demo/venue-map.svg';
+  var MAP = MAP_URL;
   var world, stage;
   var Z = { s: 1, x: 0, y: 0 };
 
@@ -163,12 +174,12 @@
     root.innerHTML = '';
     root.style.backgroundImage = 'none';
 
-    stage = h('div', 'bk-stage');
-    world = h('div', 'bk-world');
+    stage = h('div', 'ckd-stage');
+    world = h('div', 'ckd-world');
     world.appendChild(h('img')).src = MAP;
 
     SPOTS.forEach(function (s) {
-      var b = h('button', 'bk-spot ' + (s.sold ? 'sold' : 'free'));
+      var b = h('button', 'ckd-spot ' + (s.sold ? 'sold' : 'free'));
       b.type = 'button';
       b.style.cssText = 'left:' + s.x + '%;top:' + s.y + '%;width:' + s.w + '%;height:' + s.h + '%';
       b.setAttribute('data-id', s.id);
@@ -179,14 +190,14 @@
     });
 
     PINS.forEach(function (p) {
-      var el = h('div', 'bk-pin ' + p.color,
+      var el = h('div', 'ckd-pin ' + p.color,
         '<i>' + I[p.icon === 'party' ? 'party' : p.icon === 'drink' ? 'drink' : 'shopbag'] + '</i>' +
         '<div><em>' + p.label + '</em>' + (p.sold ? '<em class="soldchip">Sold Out</em>' : '') + '</div>');
       el.style.cssText = 'left:' + p.x + '%;top:' + p.y + '%';
       world.appendChild(el);
     });
     AREAS.forEach(function (a) {
-      var el = h('div', 'bk-area', a.label);
+      var el = h('div', 'ckd-area', a.label);
       el.style.cssText = 'left:' + a.x + '%;top:' + a.y + '%';
       world.appendChild(el);
     });
@@ -195,66 +206,69 @@
     root.appendChild(stage);
 
     // hint
-    root.appendChild(h('div', 'bk-hint', 'Live demo — tap a green spot to book it'));
+    root.appendChild(h('div', 'ckd-hint', 'Live demo — tap a green spot to book it'));
 
     // top chrome
-    var top = h('div', 'bk-top');
-    top.appendChild(h('span', 'bk-logo', I.logo));
-    var dp = h('button', 'bk-datepill', I.cal + '<span data-date>' + dateStr() + '</span>');
+    var top = h('div', 'ckd-top');
+    top.appendChild(h('span', 'ckd-logo', I.logo));
+    var dp = h('button', 'ckd-datepill', I.cal + '<span data-date>' + dateStr() + '</span>');
     dp.type = 'button';
     dp.addEventListener('click', function () { openModal(); });
     top.appendChild(dp);
-    top.appendChild(h('div', 'bk-stepper', stepper(0)));
-    var cluster = h('div', 'bk-cluster',
-      '<span class="bk-timer" data-timer>' + I.clock + '<span>10:00</span></span>' +
-      '<button type="button" class="bk-iconbtn" data-cartbtn aria-label="Cart">' + I.cart + '<b hidden>0</b></button>' +
-      '<button type="button" class="bk-iconbtn" aria-label="Account">' + I.user + '</button>');
+    top.appendChild(h('div', 'ckd-stepper', stepper(0)));
+    var cluster = h('div', 'ckd-cluster',
+      '<span class="ckd-timer" data-timer>' + I.clock + '<span>10:00</span></span>' +
+      '<button type="button" class="ckd-iconbtn" data-cartbtn aria-label="Cart">' + I.cart + '<b hidden>0</b></button>' +
+      '<button type="button" class="ckd-iconbtn" aria-label="Account">' + I.user + '</button>');
     $('[data-cartbtn]', cluster).addEventListener('click', function () { if (state.cart.length) showView('review'); });
     top.appendChild(cluster);
     root.appendChild(top);
 
     // left rail
-    root.appendChild(h('div', 'bk-rail',
+    root.appendChild(h('div', 'ckd-rail',
       '<span>' + I.gem + 'Skip The<br>Queue</span>' +
       '<span>' + I.pct + 'Promotions</span>' +
       '<span>' + I.ppl + 'Free Entry<br>Party Zones</span>'));
 
     // zoom
-    var zm = h('div', 'bk-zoom', '<button type="button" aria-label="Zoom in">+</button><button type="button" aria-label="Zoom out">−</button>');
+    var zm = h('div', 'ckd-zoom', '<button type="button" aria-label="Zoom in">+</button><button type="button" aria-label="Zoom out">−</button>');
     zm.children[0].addEventListener('click', function () { zoomTo(Z.s * 1.35); });
     zm.children[1].addEventListener('click', function () { zoomTo(Z.s / 1.35); });
     root.appendChild(zm);
 
     // zone cards
-    var zc = h('div', 'bk-zones');
-    var cards = h('div', 'bk-zonecards');
+    var zc = h('div', 'ckd-zones');
+    var cards = h('div', 'ckd-zonecards');
     ZCARDS.forEach(function (z) {
-      var c = h('button', 'bk-zcard', '<small class="' + z.cls + '">' + z.status + '</small><strong>' + z.name + '</strong>');
+      var c = h('button', 'ckd-zcard', '<small class="' + z.cls + '">' + z.status + '</small><strong>' + z.name + '</strong>');
       c.type = 'button';
       c.addEventListener('click', function () { focusZone(z.name); });
       cards.appendChild(c);
     });
     zc.appendChild(cards);
-    zc.appendChild(h('button', 'bk-znext', '›')).type = 'button';
+    zc.appendChild(h('button', 'ckd-znext', '›')).type = 'button';
     root.appendChild(zc);
 
     // booking bar
-    var bar = h('div', 'bk-bar');
+    var bar = h('div', 'ckd-bar');
     root.appendChild(bar);
     renderBar();
 
     // overlays
     root.appendChild(buildModal());
-    root.appendChild(h('div', 'bk-panel'));
+    root.appendChild(h('div', 'ckd-panel'));
     ['addons', 'review', 'confirm', 'success'].forEach(function (v) {
-      var el = h('div', 'bk-view');
+      var el = h('div', 'ckd-view');
       el.setAttribute('data-view', v);
       root.appendChild(el);
     });
 
     initPanZoom();
 
-    function sizeMode() { root.classList.toggle('narrow', root.clientWidth < 760); }
+    function sizeMode() {
+      root.classList.toggle('narrow', root.clientWidth < 760);
+      root.classList.toggle('tiny', root.clientWidth < 460);
+    }
     sizeMode();
     if (window.ResizeObserver) new ResizeObserver(sizeMode).observe(root);
   }
@@ -262,7 +276,7 @@
   function mark() {
     if (state.interacted) return;
     state.interacted = true;
-    $('.bk-hint').classList.add('off');
+    $('.ckd-hint').classList.add('off');
     track('demo_interact', {});
   }
 
@@ -274,7 +288,7 @@
     Z.x = Math.min(0, Math.max(-maxX, Z.x));
     Z.y = Math.min(0, Math.max(-maxY, Z.y));
     world.style.transform = 'translate(' + Z.x + 'px,' + Z.y + 'px) scale(' + Z.s + ')';
-    $$('.bk-pin', world).concat($$('.bk-area', world)).forEach(function (p) {
+    $$('.ckd-pin', world).concat($$('.ckd-area', world)).forEach(function (p) {
       p.style.transformOrigin = '0 50%';
       p.style.transform = 'translate(-15px,-50%) scale(' + (1 / Z.s) + ')';
     });
@@ -337,8 +351,8 @@
   /* ===== date modal ==================================================== */
 
   function buildModal() {
-    var scrim = h('div', 'bk-scrim');
-    var m = h('div', 'bk-modal');
+    var scrim = h('div', 'ckd-scrim');
+    var m = h('div', 'ckd-modal');
     var days = '', d = 1;
     var rows = [[null, null, 0, 0, 0, 0, 0]]; // 1 Jul 2026 = Wed
     // build calendar cells: July 2026, starts Wed, 31 days
@@ -354,31 +368,31 @@
         if (v == null) { rowsHtml += '<td></td>'; continue; }
         var past = v < TODAY;
         var dot = past ? '' : WARN_DAYS.indexOf(v) !== -1 ? '<span class="dot warn"></span>' : '<span class="dot promo"></span>';
-        rowsHtml += '<td><button type="button" class="bk-day' + (past ? ' past' : '') + (v === state.day ? ' sel' : '') + '" data-day="' + v + '">' + v + '</button>' + dot + '</td>';
+        rowsHtml += '<td><button type="button" class="ckd-day' + (past ? ' past' : '') + (v === state.day ? ' sel' : '') + '" data-day="' + v + '">' + v + '</button>' + dot + '</td>';
       }
       rowsHtml += '</tr>';
     }
     m.innerHTML =
-      '<button type="button" class="bk-x" aria-label="Close">✕</button>' +
+      '<button type="button" class="ckd-x" aria-label="Close">✕</button>' +
       '<h3>Select Date</h3>' +
-      '<div class="bk-monthrow"><button type="button">‹</button><b>' + MONTH + '</b><button type="button">›</button></div>' +
-      '<table class="bk-cal"><thead><tr><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th><th>Sun</th></tr></thead>' +
+      '<div class="ckd-monthrow"><button type="button">‹</button><b>' + MONTH + '</b><button type="button">›</button></div>' +
+      '<table class="ckd-cal"><thead><tr><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th><th>Sun</th></tr></thead>' +
       '<tbody>' + rowsHtml + '</tbody></table>' +
-      '<div class="bk-legend">' +
+      '<div class="ckd-legend">' +
         '<p><i style="background:#f26d7e"></i>Almost Sold Out</p>' +
         '<p><i style="background:#7c3aed"></i>Promo Available – <b>Get 75% OFF VIP Party Beds</b></p>' +
       '</div>' +
-      '<div class="bk-modal-foot"><button type="button" class="bk-btn-ghost" data-cancel>Cancel</button>' +
-      '<button type="button" class="bk-btn-dark" data-choose>Choose Bed</button></div>';
+      '<div class="ckd-modal-foot"><button type="button" class="ckd-btn-ghost" data-cancel>Cancel</button>' +
+      '<button type="button" class="ckd-btn-dark" data-choose>Choose Bed</button></div>';
     scrim.appendChild(m);
 
-    $('.bk-x', m).addEventListener('click', closeModal);
+    $('.ckd-x', m).addEventListener('click', closeModal);
     $('[data-cancel]', m).addEventListener('click', closeModal);
     $('[data-choose]', m).addEventListener('click', function () { closeModal(); track('demo_date_chosen', { day: state.day }); });
-    $$('.bk-day', m).forEach(function (b) {
+    $$('.ckd-day', m).forEach(function (b) {
       b.addEventListener('click', function () {
         state.day = +b.getAttribute('data-day');
-        $$('.bk-day.sel', m).forEach(function (x) { x.classList.remove('sel'); });
+        $$('.ckd-day.sel', m).forEach(function (x) { x.classList.remove('sel'); });
         b.classList.add('sel');
         $$('[data-date]').forEach(function (x) { x.textContent = dateStr(); });
       });
@@ -387,8 +401,8 @@
     return scrim;
   }
 
-  function openModal() { mark(); $('.bk-scrim').classList.add('open'); track('demo_date_open', {}); }
-  function closeModal() { $('.bk-scrim').classList.remove('open'); }
+  function openModal() { mark(); $('.ckd-scrim').classList.add('open'); track('demo_date_open', {}); }
+  function closeModal() { $('.ckd-scrim').classList.remove('open'); }
 
   /* ===== furniture panel ============================================== */
 
@@ -403,36 +417,36 @@
     mark();
     curSpot = s;
     state.pkg = 'party';
-    var p = $('.bk-panel');
+    var p = $('.ckd-panel');
     p.innerHTML =
-      '<div class="bk-panel-scroll">' +
-        '<button type="button" class="bk-x" aria-label="Close">✕</button>' +
+      '<div class="ckd-panel-scroll">' +
+        '<button type="button" class="ckd-x" aria-label="Close">✕</button>' +
         '<h2>' + s.name + ' – #' + s.num + '</h2>' +
-        '<div class="bk-chiprow">' +
-          '<span class="bk-chip blue">✦ New</span>' +
-          '<span class="bk-chip pinkc">🎉 Party Zone</span>' +
-          '<span class="bk-chip grey">Ground Floor</span>' +
+        '<div class="ckd-chiprow">' +
+          '<span class="ckd-chip blue">✦ New</span>' +
+          '<span class="ckd-chip pinkc">🎉 Party Zone</span>' +
+          '<span class="ckd-chip grey">Ground Floor</span>' +
         '</div>' +
-        '<p class="bk-pax">' + I.pax + ' Recommended for ' + s.cap + ' People <em>· Adults Only (16+)</em></p>' +
-        '<p class="bk-desc">A lively spot at the heart of the club — great music, cold bottles, and a front-row seat to the best energy on the coast.</p>' +
-        '<div class="bk-gallery">' +
+        '<p class="ckd-pax">' + I.pax + ' Recommended for ' + s.cap + ' People <em>· Adults Only (16+)</em></p>' +
+        '<p class="ckd-desc">A lively spot at the heart of the club — great music, cold bottles, and a front-row seat to the best energy on the coast.</p>' +
+        '<div class="ckd-gallery">' +
           '<div style="' + galleryTile(s, 300, 0) + '"><span class="play"><i>▶</i></span></div>' +
           [1, 2, 3, 4].map(function (i) { return '<div style="' + galleryTile(s, 520, i) + '"></div>'; }).join('') +
         '</div>' +
-        '<h4 class="bk-h4">Next Availability</h4>' +
-        '<div class="bk-days">' +
+        '<h4 class="ckd-h4">Next Availability</h4>' +
+        '<div class="ckd-days">' +
           [16, 17, 18, 19, 20].map(function (d) {
             return '<button type="button" data-day="' + d + '" class="' + (d === state.day ? 'sel' : '') + '"><b>' + d + '</b><small>Jul</small><span>' + dayLabel(d) + '</span></button>';
           }).join('') +
           '<span class="cal">' + I.cal + '</span>' +
         '</div>' +
-        '<h4 class="bk-save">Book Online &amp; Save</h4><p>Packages</p>' +
-        '<div class="bk-pkgtabs">' +
+        '<h4 class="ckd-save">Book Online &amp; Save</h4><p>Packages</p>' +
+        '<div class="ckd-pkgtabs">' +
           PKGS.map(function (k) { return '<button type="button" data-pkgtab="' + k.id + '" class="' + (k.gold ? 'gold ' : '') + (k.id === state.pkg ? 'on' : '') + '">' + k.tab + '</button>'; }).join('') +
         '</div>' +
-        '<div class="bk-pkgs">' +
+        '<div class="ckd-pkgs">' +
           PKGS.map(function (k) {
-            return '<div class="bk-pkg' + (k.id === state.pkg ? ' sel' : '') + '" data-pkg="' + k.id + '">' +
+            return '<div class="ckd-pkg' + (k.id === state.pkg ? ' sel' : '') + '" data-pkg="' + k.id + '">' +
               (k.best ? '<span class="best">Best Value</span>' : '') +
               '<span class="savechip">Book Online &amp; Save <b>' + money(k.save) + '</b></span>' +
               '<h5>' + k.name + '<i>✓</i></h5>' +
@@ -444,17 +458,17 @@
           }).join('') +
         '</div>' +
       '</div>' +
-      '<div class="bk-panel-foot">' +
+      '<div class="ckd-panel-foot">' +
         '<small>Includes $150 in food &amp; beverage credit</small>' +
-        '<div><button type="button" class="bk-btn-line" data-addcart>Add to Cart ' + I.cart + '</button>' +
-        '<button type="button" class="bk-cta" data-booknow style="flex:1.2">Book Now</button></div>' +
+        '<div><button type="button" class="ckd-btn-line" data-addcart>Add to Cart ' + I.cart + '</button>' +
+        '<button type="button" class="ckd-cta" data-booknow style="flex:1.2">Book Now</button></div>' +
       '</div>';
 
-    $('.bk-x', p).addEventListener('click', closePanel);
+    $('.ckd-x', p).addEventListener('click', closePanel);
     $$('[data-day]', p).forEach(function (b) {
       b.addEventListener('click', function () {
         state.day = +b.getAttribute('data-day');
-        $$('.bk-days button', p).forEach(function (x) { x.classList.toggle('sel', x === b); });
+        $$('.ckd-days button', p).forEach(function (x) { x.classList.toggle('sel', x === b); });
         $$('[data-date]').forEach(function (x) { x.textContent = dateStr(); });
       });
     });
@@ -472,7 +486,7 @@
     track('demo_spot_view', { spot: s.id });
   }
 
-  function closePanel() { $('.bk-panel').classList.remove('open'); }
+  function closePanel() { $('.ckd-panel').classList.remove('open'); }
 
   /* ===== cart & timer ================================================= */
 
@@ -500,17 +514,17 @@
   }
 
   function renderBar() {
-    var bar = $('.bk-bar');
+    var bar = $('.ckd-bar');
     var badge = $('[data-cartbtn] b');
     if (badge) { badge.textContent = cartCount(); badge.hidden = !cartCount(); }
     if (!state.cart.length) {
-      bar.innerHTML = '<p style="padding-left:8px">' + I.cal.replace('currentColor', '#1c1c1c') + '</p><p><b>Start your booking now</b></p><button type="button" class="bk-cta" data-start>Book Now</button>';
+      bar.innerHTML = '<p style="padding-left:8px">' + I.cal.replace('currentColor', '#1c1c1c') + '</p><p><b>Start your booking now</b></p><button type="button" class="ckd-cta" data-start>Book Now</button>';
       $('[data-start]', bar).addEventListener('click', openModal);
     } else {
       var c = state.cart[state.cart.length - 1];
-      bar.innerHTML = '<span class="bk-thumb" style="background-image:url(' + MAP + ');background-position:' + c.x + '% ' + c.y + '%"></span>' +
+      bar.innerHTML = '<span class="ckd-thumb" style="background-image:url(' + MAP + ');background-position:' + c.x + '% ' + c.y + '%"></span>' +
         '<p>Total<b>' + money(subtotal()) + '</b></p>' +
-        '<button type="button" class="bk-cta" data-go>Book Now</button>';
+        '<button type="button" class="ckd-cta" data-go>Book Now</button>';
       $('[data-go]', bar).addEventListener('click', function () { showView('addons'); });
     }
   }
@@ -518,19 +532,19 @@
   /* ===== views ======================================================== */
 
   function appbar(step) {
-    return '<div class="bk-appbar">' +
-      '<span class="bk-logo">' + I.logo + '</span>' +
-      '<div class="bk-stepper" style="flex:1;justify-content:center">' + stepper(step) + '</div>' +
-      '<div class="bk-cluster">' +
-        '<span class="bk-timer' + (state.timerId ? ' show' : '') + '" data-timer>' + I.clock + '<span>–:––</span></span>' +
-        '<button type="button" class="bk-iconbtn" data-vcart>' + I.cart + '<b ' + (cartCount() ? '' : 'hidden') + '>' + cartCount() + '</b></button>' +
-        '<button type="button" class="bk-iconbtn">' + I.user + '</button>' +
+    return '<div class="ckd-appbar">' +
+      '<span class="ckd-logo">' + I.logo + '</span>' +
+      '<div class="ckd-stepper" style="flex:1;justify-content:center">' + stepper(step) + '</div>' +
+      '<div class="ckd-cluster">' +
+        '<span class="ckd-timer' + (state.timerId ? ' show' : '') + '" data-timer>' + I.clock + '<span>–:––</span></span>' +
+        '<button type="button" class="ckd-iconbtn" data-vcart>' + I.cart + '<b ' + (cartCount() ? '' : 'hidden') + '>' + cartCount() + '</b></button>' +
+        '<button type="button" class="ckd-iconbtn">' + I.user + '</button>' +
       '</div></div>';
   }
 
   function showView(name) {
     mark();
-    $$('.bk-view').forEach(function (v) { v.classList.remove('open'); });
+    $$('.ckd-view').forEach(function (v) { v.classList.remove('open'); });
     if (name === 'map') return;
     var v = $('[data-view="' + name + '"]');
     if (name === 'addons') renderAddons(v);
@@ -551,29 +565,29 @@
     var list = ADDONS.filter(function (a) { return a.cat === state.addonTab; });
     var feat = list[0];
     v.innerHTML = appbar(1) +
-      '<div class="bk-body"><h2>Add Ons</h2>' +
-      '<div class="bk-tabs">' + cats.map(function (c) { return '<button type="button" data-tab="' + c + '" class="' + (c === state.addonTab ? 'on' : '') + '">' + c + '</button>'; }).join('') + '</div>' +
-      '<div style="display:grid;grid-template-columns:1.15fr .85fr;gap:14px;align-items:start" class="bk-addon-cols">' +
-        '<div class="bk-addon-grid">' +
+      '<div class="ckd-body"><h2>Add Ons</h2>' +
+      '<div class="ckd-tabs">' + cats.map(function (c) { return '<button type="button" data-tab="' + c + '" class="' + (c === state.addonTab ? 'on' : '') + '">' + c + '</button>'; }).join('') + '</div>' +
+      '<div style="display:grid;grid-template-columns:1.15fr .85fr;gap:14px;align-items:start" class="ckd-addon-cols">' +
+        '<div class="ckd-addon-grid">' +
           list.map(function (a) {
             var q = state.addons[a.id] || 0;
-            return '<div class="bk-prod"><div class="ph" style="background:' + a.bg + '">' + a.emoji +
+            return '<div class="ckd-prod"><div class="ph" style="background:' + a.bg + '">' + a.emoji +
               (a.save ? '<span class="flame">🔥 ' + a.save + '</span>' : '') + '</div>' +
               '<div class="info"><h5>' + a.name + '</h5><span class="tag">' + a.cat + '</span>' +
               '<div class="prices">' + (a.was ? '<s>' + money(a.was) + '</s>' : '') + '<b>' + money(a.price) + '</b></div>' +
-              '<button type="button" class="bk-btn-line' + (q ? ' added' : '') + '" data-add="' + a.id + '">' + (q ? '✓ Added (' + q + ')' : 'Add to Cart ') + (q ? '' : I.cart) + '</button></div></div>';
+              '<button type="button" class="ckd-btn-line' + (q ? ' added' : '') + '" data-add="' + a.id + '">' + (q ? '✓ Added (' + q + ')' : 'Add to Cart ') + (q ? '' : I.cart) + '</button></div></div>';
           }).join('') +
         '</div>' +
-        '<div class="bk-feature" style="background:' + feat.bg + '"><span class="big">' + feat.emoji + '</span>' +
+        '<div class="ckd-feature" style="background:' + feat.bg + '"><span class="big">' + feat.emoji + '</span>' +
           '<h4>' + feat.name + '</h4>' + (feat.was ? '<s>' + money(feat.was) + '</s>' : '') +
           '<p class="fp">' + money(feat.price) + '</p>' + (feat.save ? '<span class="savechip">' + feat.save + '</span>' : '') +
           '<button type="button" data-add="' + feat.id + '">Add to Cart 🛒</button>' +
         '</div>' +
       '</div></div>' +
-      '<div class="bk-foot">' +
+      '<div class="ckd-foot">' +
         '<button type="button" class="back" data-back>Back</button>' +
-        '<div class="tot"><span class="bk-thumb"></span><p>Grand Total<b>' + money(grand()) + '</b></p></div>' +
-        '<button type="button" class="bk-cta" data-checkout>Checkout</button>' +
+        '<div class="tot"><span class="ckd-thumb"></span><p>Grand Total<b>' + money(grand()) + '</b></p></div>' +
+        '<button type="button" class="ckd-cta" data-checkout>Checkout</button>' +
       '</div>';
     wireAppbar(v);
     $$('[data-tab]', v).forEach(function (t) {
@@ -595,19 +609,19 @@
     var recs = ADDONS.filter(function (a) { return !state.addons[a.id]; }).slice(0, 3);
     var sub = subtotal(), tax = Math.round(sub * TAX);
     v.innerHTML = appbar(2) +
-      '<div class="bk-body"><h2>Order Review</h2>' +
-      '<div class="bk-datebar">' + I.cal + '<span>Booking Date: <b data-date>' + dateStr() + '</b></span></div>' +
-      '<div style="display:grid;grid-template-columns:1.1fr .9fr;gap:16px;align-items:start" class="bk-review-cols">' +
-        '<div><h4 class="bk-h6">Recommended For Your Booking</h4>' +
-          '<div class="bk-banner">' + I.pct + ' Last Chance To Get Up To 30% Off Bottles</div>' +
-          '<div class="bk-recs">' + recs.map(function (a) {
-            return '<div class="bk-rec"><div class="ph" style="background:' + a.bg + '">' + a.emoji + '</div>' +
+      '<div class="ckd-body"><h2>Order Review</h2>' +
+      '<div class="ckd-datebar">' + I.cal + '<span>Booking Date: <b data-date>' + dateStr() + '</b></span></div>' +
+      '<div style="display:grid;grid-template-columns:1.1fr .9fr;gap:16px;align-items:start" class="ckd-review-cols">' +
+        '<div><h4 class="ckd-h6">Recommended For Your Booking</h4>' +
+          '<div class="ckd-banner">' + I.pct + ' Last Chance To Get Up To 30% Off Bottles</div>' +
+          '<div class="ckd-recs">' + recs.map(function (a) {
+            return '<div class="ckd-rec"><div class="ph" style="background:' + a.bg + '">' + a.emoji + '</div>' +
               '<div class="info"><h6>' + a.name + '</h6><p>' + money(a.price) + '</p></div></div>';
           }).join('') + '</div>' +
         '</div>' +
-        '<div class="bk-cartcard"><h4>Your Cart</h4><p class="lbl">Furniture</p>' +
+        '<div class="ckd-cartcard"><h4>Your Cart</h4><p class="lbl">Furniture</p>' +
           state.cart.map(function (c, i) {
-            return '<div class="bk-item"><span class="bk-thumb" style="background-position:' + c.x + '% ' + c.y + '%"></span>' +
+            return '<div class="ckd-item"><span class="ckd-thumb" style="background-position:' + c.x + '% ' + c.y + '%"></span>' +
               '<div style="flex:1"><h6>' + c.name + '<br>' + c.pkg + '</h6>' +
               '<p>' + I.clock + ' ' + c.arrive + '</p>' +
               '<p>' + I.pax + ' Recommended for ' + c.cap + ' People</p>' +
@@ -617,19 +631,19 @@
           }).join('') +
           Object.keys(state.addons).map(function (id) {
             var a = addon(id);
-            return '<div class="bk-item"><span class="bk-thumb" style="background-image:none;background:' + a.bg + ';display:grid;place-items:center;font-size:24px">' + a.emoji + '</span>' +
+            return '<div class="ckd-item"><span class="ckd-thumb" style="background-image:none;background:' + a.bg + ';display:grid;place-items:center;font-size:24px">' + a.emoji + '</span>' +
               '<div style="flex:1"><h6>' + a.name + ' × ' + state.addons[id] + '</h6>' +
               '<div class="pr">' + money(a.price * state.addons[id]) + '</div></div>' +
               '<button type="button" class="rm" data-rma="' + id + '" aria-label="Remove">✕</button></div>';
           }).join('') +
-          '<button type="button" class="bk-addmore" data-more>Book Additional Furniture +</button>' +
-          '<div class="bk-sums">' +
-            '<div class="bk-sumrow"><span>Subtotal</span><b>' + money(sub) + '</b></div>' +
-            '<div class="bk-sumrow"><span>20% Government Tax &amp;<br>Service Charge</span><b>' + money(tax) + '</b></div>' +
-            '<div class="bk-sumrow"><span>Processing Fee</span><b>' + money(sub ? FEE : 0) + '</b></div>' +
-            '<div class="bk-sumrow grand"><span><b>Grand Total</b></span><b>' + money(grand()) + '</b></div>' +
+          '<button type="button" class="ckd-addmore" data-more>Book Additional Furniture +</button>' +
+          '<div class="ckd-sums">' +
+            '<div class="ckd-sumrow"><span>Subtotal</span><b>' + money(sub) + '</b></div>' +
+            '<div class="ckd-sumrow"><span>20% Government Tax &amp;<br>Service Charge</span><b>' + money(tax) + '</b></div>' +
+            '<div class="ckd-sumrow"><span>Processing Fee</span><b>' + money(sub ? FEE : 0) + '</b></div>' +
+            '<div class="ckd-sumrow grand"><span><b>Grand Total</b></span><b>' + money(grand()) + '</b></div>' +
           '</div>' +
-          '<button type="button" class="bk-checkoutbtn" data-proceed>Proceed to Checkout</button>' +
+          '<button type="button" class="ckd-checkoutbtn" data-proceed>Proceed to Checkout</button>' +
         '</div>' +
       '</div></div>';
     wireAppbar(v);
@@ -650,22 +664,22 @@
 
   function renderConfirm(v) {
     v.innerHTML = appbar(3) +
-      '<div class="bk-body"><div class="bk-form">' +
+      '<div class="ckd-body"><div class="ckd-form">' +
         '<h2>Tell us more about you</h2>' +
-        '<div class="bk-frow">' +
-          '<div class="bk-field"><label>First Name</label><input placeholder="First Name" autocomplete="off"></div>' +
-          '<div class="bk-field"><label>Last Name</label><input placeholder="Last Name" autocomplete="off"></div>' +
+        '<div class="ckd-frow">' +
+          '<div class="ckd-field"><label>First Name</label><input placeholder="First Name" autocomplete="off"></div>' +
+          '<div class="ckd-field"><label>Last Name</label><input placeholder="Last Name" autocomplete="off"></div>' +
         '</div>' +
-        '<div class="bk-field"><label>Email</label><input placeholder="Email" autocomplete="off"></div>' +
-        '<div class="bk-field"><label>Phone Number</label><div class="bk-phone">' +
+        '<div class="ckd-field"><label>Email</label><input placeholder="Email" autocomplete="off"></div>' +
+        '<div class="ckd-field"><label>Phone Number</label><div class="ckd-phone">' +
           '<span class="cc">🌴 +62 ▾</span><input placeholder="Enter Phone Number" autocomplete="off" style="flex:1"></div></div>' +
-        '<button type="button" class="bk-continue" data-done>Continue</button>' +
-        '<div class="bk-or">Or fill with</div>' +
-        '<div class="bk-sso"><button type="button" aria-label="Continue with Google">' + I.google + '</button>' +
+        '<button type="button" class="ckd-continue" data-done>Continue</button>' +
+        '<div class="ckd-or">Or fill with</div>' +
+        '<div class="ckd-sso"><button type="button" aria-label="Continue with Google">' + I.google + '</button>' +
         '<button type="button" aria-label="Continue with Meta">' + I.meta + '</button></div>' +
       '</div></div>';
     wireAppbar(v);
-    $$('.bk-sso button', v).forEach(function (b) { b.addEventListener('click', function () { showView('success'); }); });
+    $$('.ckd-sso button', v).forEach(function (b) { b.addEventListener('click', function () { showView('success'); }); });
     $('[data-done]', v).addEventListener('click', function () {
       track('demo_confirm', { total: grand(), spots: state.cart.length });
       showView('success');
@@ -674,16 +688,16 @@
 
   function renderSuccess(v) {
     v.innerHTML = appbar(3) +
-      '<div class="bk-success">' +
+      '<div class="ckd-success">' +
         '<i>✓</i><h3>Booking confirmed</h3>' +
         '<p>' + dateStr() + ' is locked in — the spot is off the market and the revenue is banked before doors open.</p>' +
         '<span class="tag">Interactive demo · no payment taken</span>' +
-        '<button type="button" class="bk-cta" data-restart>Start over</button>' +
+        '<button type="button" class="ckd-cta" data-restart>Start over</button>' +
       '</div>';
     $('[data-restart]', v).addEventListener('click', function () {
       state.cart = []; state.addons = {}; state.day = 18;
       if (state.timerId) { clearInterval(state.timerId); state.timerId = null; }
-      $$('.bk-spot.picked').forEach(function (s) { s.classList.remove('picked'); });
+      $$('.ckd-spot.picked').forEach(function (s) { s.classList.remove('picked'); });
       $$('[data-timer]').forEach(function (t) { t.classList.remove('show'); });
       $$('[data-date]').forEach(function (x) { x.textContent = dateStr(); });
       renderBar();
@@ -693,4 +707,37 @@
   }
 
   build();
+
+  /* ===== initial state per mount ==================================== */
+
+  function seedCart(withAddon) {
+    var s = SPOTS.filter(function (x) { return x.id === 'db10'; })[0];
+    var pkg = PKGS[1];
+    state.cart.push({ spot: s.id, name: s.name + ' #' + s.num, pkg: pkg.name, price: pkg.price, arrive: pkg.arrive, cap: s.cap, x: s.x, y: s.y });
+    var sb = $('[data-id="' + s.id + '"]');
+    if (sb) sb.classList.add('picked');
+    if (withAddon) state.addons.rum = 1;
+    startTimer();
+    renderBar();
+  }
+
+  (function init() {
+    if (OPTS.badge) {
+      root.appendChild(h('div', 'ckd-badge' + (OPTS.view === 'panel' ? ' right' : ''), '<i></i>' + OPTS.badge));
+    }
+    var v = OPTS.view;
+    if (v === 'map') return;
+    $('.ckd-hint').classList.add('off');
+    state.interacted = true;
+    if (v === 'datemodal') { $('.ckd-scrim').classList.add('open'); return; }
+    if (v === 'panel') {
+      openPanel(SPOTS.filter(function (x) { return x.id === 'db13'; })[0]);
+      return;
+    }
+    if (v === 'addons') { seedCart(false); showView('addons'); }
+    if (v === 'review') { seedCart(true); showView('review'); }
+    if (v === 'confirm') { seedCart(true); showView('confirm'); }
+    if (v === 'success') { seedCart(true); showView('success'); }
+  })();
+  }
 })();

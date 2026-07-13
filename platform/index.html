@@ -25,6 +25,7 @@
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/consent.css">
   <link rel="stylesheet" href="../css/booking.css">
+  <link rel="stylesheet" href="../css/demo.css">
   <script>document.documentElement.classList.add('js')</script>
 
   <script type="application/ld+json">
@@ -161,7 +162,7 @@
           <a class="button button-light" href="../booking/">See the booking journey <span aria-hidden="true">↗</span></a>
         </div>
       </div>
-      <div class="placeholder" role="img" aria-label="Product image placeholder, 900 × 1100 px" style="min-height:560px"><span>Product image</span><strong>900 × 1100 px</strong></div>
+      <div class="ckd" data-demo="map" data-demo-badge="Live demo — this is the product" role="application" aria-label="Interactive booking demo: the live venue map guests book from"></div>
     </div>
   </section>
 
@@ -257,7 +258,36 @@
         <li>The phone is the primary venue for the transaction, not a responsive afterthought</li>
       </ul>
     </div>
-    <div class="placeholder" role="img" aria-label="Desktop image placeholder, 1200 × 900 px"><span>Desktop image</span><strong>1200 × 900 px</strong></div>
+    <div style="max-width:300px;margin:0 auto">
+<div class="ckdm" role="img" aria-label="Mobile booking map: date pill, zone cards, live map with available spots, hold timer and bottom navigation">
+        <div class="ckdm-map"></div>
+        <div class="ckdm-head">
+          <span class="lg"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.2" stroke="#1c1c1c" stroke-width="2"/><path d="M6.5 14.5q2.75-2.2 5.5 0t5.5 0" stroke="#14b8a6" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="8.6" r="2.3" fill="#f6a417"/></svg></span>
+          <span class="dt"><svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="1.8"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M8 3v4M16 3v4M3.5 10h17"/></svg>18 July 2026</span>
+          <span class="rd"><svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="1.8"><circle cx="9.5" cy="19.5" r="1.4"/><circle cx="17" cy="19.5" r="1.4"/><path d="M3.5 4.5h2l2 10.5h9.5l2-8H7"/></svg><b>1</b></span>
+          <span class="rd"><svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="1.8"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 20c1.2-3.4 3.8-5 7-5s5.8 1.6 7 5"/></svg></span>
+        </div>
+        <div class="ckdm-zrow">
+          <span class="ckdm-zc"><small class="fast">Selling Fast</small><strong>Pool Club</strong></span>
+          <span class="ckdm-zc"><small class="sold">Sold Out</small><strong>Beachfront</strong></span>
+          <span class="ckdm-zc"><small class="sold">Sold Out</small><strong>Sunset Deck</strong></span>
+        </div>
+        <span class="ckdm-pin teal" style="left:38%;top:34%"><i><svg viewBox="0 0 24 24" fill="#fff"><path d="M6 15.5 4 20l4.5-2L6 15.5Zm1.5-2.6 3.6 3.6 8.4-4.9a1 1 0 0 0 .1-1.6l-5.6-5.6a1 1 0 0 0-1.6.1L7.5 12.9ZM17 3.5l1 2 2 1-2 1-1 2-1-2-2-1 2-1 1-2Z"/></svg></i><em>Pool Club</em></span>
+        <span class="ckdm-pin purple" style="left:66%;top:56%"><i><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9"><path d="M5 5h14l-7 8v6M8.5 21h7M7 8h10"/></svg></i><em>Pool Bar</em></span>
+        <span class="ckdm-spot free" style="left:26%;top:44%;width:15%;height:6.5%"></span>
+        <span class="ckdm-spot sold" style="left:45%;top:41%;width:15%;height:6.5%"></span>
+        <span class="ckdm-spot picked" style="left:60%;top:44%;width:16%;height:7%"></span>
+        <span class="ckdm-spot sold" style="left:33%;top:56%;width:15%;height:6.5%"></span>
+        <span class="ckdm-spot free" style="left:50%;top:58%;width:15%;height:6.5%"></span>
+        <span class="ckdm-timer">⏱ 7:36</span>
+        <span class="ckdm-zoom"><span>+</span><span>−</span></span>
+        <div class="ckdm-tabbar">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 4h10l4 5.5L12 21 3 9.5 7 4Z"/><path d="M3 9.5h18M9.5 4 12 21 14.5 4"/></svg>Skip the queue</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="m9 15 6-6"/><circle cx="9.3" cy="9.3" r="1.1" fill="currentColor" stroke="none"/><circle cx="14.7" cy="14.7" r="1.1" fill="currentColor" stroke="none"/></svg>Promotions</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="9" r="3"/><path d="M3.5 19c.9-2.8 3-4.2 5.5-4.2s4.6 1.4 5.5 4.2M16 6.2a3 3 0 0 1 0 5.6M17.5 15c1.7.5 2.9 1.8 3.5 4"/></svg>Free entry party zones</span>
+        </div>
+      </div>
+</div>
   </section>
 
   <section class="section shell feature-row reverse" id="multi-currency">
@@ -446,6 +476,7 @@
 <script src="../js/consent.js" defer></script>
 <script src="../js/hubspot.js" defer></script>
 <script src="../js/booking.js" defer></script>
+<script src="../js/demo.js" defer></script>
 <script src="../js/analytics.js" defer></script>
 </body>
 </html>
