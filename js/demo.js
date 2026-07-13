@@ -39,26 +39,26 @@
   /* ===== demo data ==================================================== */
 
   var SPOTS = [
-    { id: 'cab1', name: 'VIP Cabana', num: 12, zone: 'VIP Cabanas', x: 9.5, y: 12.5, w: 12.5, h: 14, cap: 8 },
-    { id: 'cab2', name: 'VIP Cabana', num: 14, zone: 'VIP Cabanas', x: 9.5, y: 29.5, w: 12.5, h: 14, cap: 8, sold: true },
-    { id: 'cab3', name: 'VIP Cabana', num: 16, zone: 'VIP Cabanas', x: 9.5, y: 46.5, w: 12.5, h: 14, cap: 8 },
-    { id: 'cab4', name: 'VIP Cabana', num: 18, zone: 'VIP Cabanas', x: 9.5, y: 63.5, w: 12.5, h: 14, cap: 8, sold: true },
-    { id: 'db1', name: 'Pool Club Bed', num: 651, zone: 'Pool Club', x: 36.7, y: 24.5, w: 5.4, h: 7.6, cap: 4 },
-    { id: 'db2', name: 'Pool Club Bed', num: 652, zone: 'Pool Club', x: 43.1, y: 24.5, w: 5.4, h: 7.6, cap: 4, sold: true },
-    { id: 'db3', name: 'Pool Club Bed', num: 653, zone: 'Pool Club', x: 49.5, y: 24.5, w: 5.4, h: 7.6, cap: 4 },
-    { id: 'db4', name: 'Pool Club Bed', num: 654, zone: 'Pool Club', x: 55.9, y: 24.5, w: 5.4, h: 7.6, cap: 4, sold: true },
-    { id: 'db5', name: 'Pool Club Bed', num: 655, zone: 'Pool Club', x: 62.3, y: 24.5, w: 5.4, h: 7.6, cap: 4 },
-    { id: 'db6', name: 'Pool Club Bed', num: 656, zone: 'Pool Club', x: 34.4, y: 50, w: 5.4, h: 7.6, cap: 4, sold: true },
-    { id: 'db7', name: 'Pool Club Bed', num: 657, zone: 'Pool Club', x: 40.9, y: 50, w: 5.4, h: 7.6, cap: 4 },
-    { id: 'db8', name: 'Pool Club Bed', num: 658, zone: 'Pool Club', x: 47.4, y: 50, w: 5.4, h: 7.6, cap: 4 },
-    { id: 'db9', name: 'Pool Club Bed', num: 659, zone: 'Pool Club', x: 53.9, y: 50, w: 5.4, h: 7.6, cap: 4, sold: true },
-    { id: 'db10', name: 'Pool Club Bed', num: 660, zone: 'Pool Club', x: 60.4, y: 50, w: 5.4, h: 7.6, cap: 4 },
-    { id: 'db11', name: 'Pool Club Bed', num: 661, zone: 'Pool Club', x: 26.6, y: 30, w: 4.6, h: 6.4, cap: 4, sold: true },
-    { id: 'db12', name: 'Pool Club Bed', num: 662, zone: 'Pool Club', x: 26.6, y: 37.5, w: 4.6, h: 6.4, cap: 4 },
-    { id: 'bb1', name: 'Beachfront Bale', num: 21, zone: 'Beachfront', x: 32, y: 61.5, w: 8, h: 11, cap: 6, sold: true },
-    { id: 'bb2', name: 'Beachfront Bale', num: 22, zone: 'Beachfront', x: 42.7, y: 61.5, w: 8, h: 11, cap: 6 },
-    { id: 'bb3', name: 'Beachfront Bale', num: 23, zone: 'Beachfront', x: 53.3, y: 61.5, w: 8, h: 11, cap: 6, sold: true },
-    { id: 'bb4', name: 'Beachfront Bale', num: 24, zone: 'Beachfront', x: 64, y: 61.5, w: 8, h: 11, cap: 6, sold: true }
+    { id: 'cab1', name: 'VIP Cabana', num: 12, zone: 'VIP Cabanas', x: 9.3, y: 13.3, w: 12.6, h: 13.8, cap: 8 },
+    { id: 'cab2', name: 'VIP Cabana', num: 14, zone: 'VIP Cabanas', x: 9.3, y: 30.3, w: 12.6, h: 13.8, cap: 8, sold: true },
+    { id: 'cab3', name: 'VIP Cabana', num: 16, zone: 'VIP Cabanas', x: 9.3, y: 47.3, w: 12.6, h: 13.8, cap: 8 },
+    { id: 'cab4', name: 'VIP Cabana', num: 18, zone: 'VIP Cabanas', x: 9.3, y: 64.3, w: 12.6, h: 13.8, cap: 8, sold: true },
+    { id: 'db1', name: 'Pool Club Bed', num: 651, zone: 'Pool Club', x: 37.5, y: 21.6, w: 4.0, h: 7.2, cap: 4 },
+    { id: 'db2', name: 'Pool Club Bed', num: 652, zone: 'Pool Club', x: 43.9, y: 21.6, w: 4.0, h: 7.2, cap: 4, sold: true },
+    { id: 'db3', name: 'Pool Club Bed', num: 653, zone: 'Pool Club', x: 50.3, y: 21.6, w: 4.0, h: 7.2, cap: 4 },
+    { id: 'db4', name: 'Pool Club Bed', num: 654, zone: 'Pool Club', x: 56.7, y: 21.6, w: 4.0, h: 7.2, cap: 4, sold: true },
+    { id: 'db5', name: 'Pool Club Bed', num: 655, zone: 'Pool Club', x: 62.2, y: 21.6, w: 4.0, h: 7.2, cap: 4 },
+    { id: 'db6', name: 'Pool Club Bed', num: 656, zone: 'Pool Club', x: 36.2, y: 49.6, w: 3.9, h: 6.9, cap: 4, sold: true },
+    { id: 'db7', name: 'Pool Club Bed', num: 657, zone: 'Pool Club', x: 42.7, y: 49.6, w: 3.9, h: 6.9, cap: 4 },
+    { id: 'db8', name: 'Pool Club Bed', num: 658, zone: 'Pool Club', x: 49.9, y: 49.6, w: 3.9, h: 6.9, cap: 4 },
+    { id: 'db9', name: 'Pool Club Bed', num: 659, zone: 'Pool Club', x: 56.6, y: 49.6, w: 3.9, h: 6.9, cap: 4, sold: true },
+    { id: 'db10', name: 'Pool Club Bed', num: 660, zone: 'Pool Club', x: 63.6, y: 49.6, w: 3.9, h: 6.9, cap: 4 },
+    { id: 'db11', name: 'Pool Club Bed', num: 661, zone: 'Pool Club', x: 26.6, y: 30.0, w: 4.6, h: 6.4, cap: 4, sold: true },
+    { id: 'db12', name: 'Pool Club Bed', num: 662, zone: 'Pool Club', x: 26.6, y: 37.7, w: 4.6, h: 6.4, cap: 4 },
+    { id: 'bb1', name: 'Beachfront Bale', num: 21, zone: 'Beachfront', x: 36.2, y: 61.0, w: 7.8, h: 10.4, cap: 6, sold: true },
+    { id: 'bb2', name: 'Beachfront Bale', num: 22, zone: 'Beachfront', x: 44.9, y: 61.0, w: 7.8, h: 10.4, cap: 6 },
+    { id: 'bb3', name: 'Beachfront Bale', num: 23, zone: 'Beachfront', x: 53.4, y: 61.0, w: 7.8, h: 10.4, cap: 6, sold: true },
+    { id: 'bb4', name: 'Beachfront Bale', num: 24, zone: 'Beachfront', x: 64.1, y: 61.0, w: 7.8, h: 10.4, cap: 6, sold: true }
   ];
 
   var PINS = [
