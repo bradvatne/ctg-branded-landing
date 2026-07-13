@@ -44,6 +44,7 @@
 .ckd-top>*{pointer-events:auto}
 .ckd-logo{width:46px;height:46px;border-radius:50%;background:#fff;display:grid;place-items:center;flex:none;box-shadow:0 2px 10px rgba(0,0,0,.12)}
 .ckd-logo svg{width:26px;height:26px}
+.ckd-logo img{width:24px;height:24px;object-fit:contain}
 .ckd-datepill{height:46px;min-width:210px;padding:0 22px;border-radius:999px;background:#fff;border:1px solid #ececec;display:inline-flex;align-items:center;justify-content:center;gap:9px;font-size:13.5px;font-weight:600;box-shadow:0 2px 10px rgba(0,0,0,.12)}
 .ckd-datepill svg{width:15px;height:15px}
 .ckd-stepper{margin:0 auto;height:56px;padding:0 26px;border-radius:999px;background:#fff;display:flex;align-items:center;gap:9px;box-shadow:0 2px 10px rgba(0,0,0,.12);white-space:nowrap}
@@ -197,14 +198,16 @@
 .ckd-tabs{display:flex;gap:6px;margin-top:12px}
 .ckd-tabs button{height:38px;padding:0 15px;border-radius:999px;font-size:12.5px;font-weight:600;color:#3f3f46}
 .ckd-tabs button.on{border:1.5px solid #1c1c1c;color:#1c1c1c}
+.ckd-addon-cols{display:grid;grid-template-columns:1.15fr .85fr;gap:14px;align-items:start}
 .ckd-addon-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
-.ckd-prod{border:1px solid #efefef;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 1px 6px rgba(0,0,0,.05)}
+.ckd-prod{display:flex;flex-direction:column;border:1px solid #efefef;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 1px 6px rgba(0,0,0,.05)}
 .ckd-prod .ph{position:relative;height:110px;display:grid;place-items:center;font-size:38px}
 .ckd-prod .ph .flame{position:absolute;top:8px;left:8px;display:inline-flex;align-items:center;gap:4px;background:#fff;border-radius:999px;padding:4px 9px;font-size:9.5px;font-weight:700;color:#e02d3c;box-shadow:0 1px 5px rgba(0,0,0,.12)}
-.ckd-prod .info{padding:10px 12px 12px}
+.ckd-prod .ph{flex:none}
+.ckd-prod .info{flex:1;display:flex;flex-direction:column;align-items:flex-start;padding:10px 12px 12px}
 .ckd-prod .info h5{margin:0;font-size:13.5px;font-weight:700}
 .ckd-prod .tag{display:inline-flex;align-items:center;gap:4px;border:1px solid #e8e8e8;border-radius:999px;padding:3px 9px;font-size:10px;font-weight:600;color:#3f3f46;margin-top:6px}
-.ckd-prod .prices{margin-top:8px;text-align:right}
+.ckd-prod .prices{margin-top:auto;padding-top:8px;text-align:right;align-self:flex-end}
 .ckd-prod .prices s{display:block;font-size:10.5px;color:#9b9b9b}
 .ckd-prod .prices b{font-size:14px;font-weight:700}
 .ckd-prod .ckd-btn-line{width:100%;height:40px;margin-top:9px;font-size:12.5px}
@@ -226,6 +229,8 @@
 .ckd-foot .tot p b{display:block;color:#1c1c1c;font-size:14px;font-weight:700}
 
 /* order review */
+.ckd-review-cols{display:grid;grid-template-columns:1.1fr .9fr;gap:16px;align-items:start}
+.ckd-review-cols>div{min-width:0}
 .ckd-datebar{display:flex;align-items:center;justify-content:center;gap:10px;border:1px solid #ececec;border-radius:12px;padding:12px;margin-top:12px;font-size:12.5px;font-weight:500;color:#3f3f46}
 .ckd-datebar svg{width:16px;height:16px}
 .ckd-datebar b{font-weight:700;color:#1c1c1c}
@@ -335,6 +340,7 @@
 .ckdm-head{position:absolute;top:12px;left:10px;right:10px;z-index:20;display:flex;align-items:center;gap:7px;background:#fff;border-radius:999px;padding:6px 8px;box-shadow:0 2px 10px rgba(0,0,0,.14)}
 .ckdm-head .lg{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;flex:none}
 .ckdm-head .lg svg{width:22px;height:22px}
+.ckdm-head .lg img{width:19px;height:19px;object-fit:contain}
 .ckdm-head .dt{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;font-size:11.5px;font-weight:600}
 .ckdm-head .dt svg{width:13px;height:13px}
 .ckdm-head .rd{position:relative;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;flex:none}
@@ -380,6 +386,7 @@
 .ckdm-sheet .btns .dark{background:#1c1c1c;color:#fff}
 .ckdm-appbar{flex:none;display:flex;align-items:center;justify-content:space-between;padding:14px 14px 10px;border-bottom:1px solid #f4f4f4}
 .ckdm-appbar .lg svg{width:24px;height:24px}
+.ckdm-appbar .lg img{width:21px;height:21px;object-fit:contain}
 .ckdm-appbar .tmr{display:inline-flex;align-items:center;gap:5px;border:1.5px solid #e02d3c;color:#e02d3c;border-radius:999px;padding:5px 11px;font-size:11.5px;font-weight:700}
 .ckdm-body{flex:1;overflow:hidden;padding:12px 14px}
 .ckdm-body h5{margin:0;font-size:16px;font-weight:700}
@@ -410,6 +417,7 @@
 .ckd.mobile .ckd-top{left:10px;right:10px;top:10px;background:#fff;border-radius:999px;padding:5px;box-shadow:0 2px 10px rgba(0,0,0,.14);gap:6px;align-items:center}
 .ckd.mobile .ckd-logo{width:34px;height:34px;box-shadow:none}
 .ckd.mobile .ckd-logo svg{width:22px}
+.ckd.mobile .ckd-logo img{width:19px;height:19px}
 .ckd.mobile .ckd-datepill{flex:1;height:36px;min-width:0;border:0;box-shadow:none;font-size:12.5px;padding:0 8px}
 .ckd.mobile .ckd-cluster{box-shadow:none;padding:0}
 .ckd.mobile .ckd-iconbtn{width:32px;height:32px}
@@ -429,6 +437,13 @@
 .ckd.mobile .ckd-panel{top:auto;bottom:0;width:100%;height:74%;transform:translateY(103%);border-radius:22px 22px 0 0;box-shadow:0 -14px 44px rgba(0,0,0,.25)}
 .ckd.mobile .ckd-panel.open{transform:none}
 .ckd.mobile .ckd-panel-scroll::before{content:"";display:block;width:36px;height:4px;border-radius:999px;background:#dcdcdc;margin:-6px auto 10px}
+/* narrow frames: order review stacks to one column, recs become a swipe row */
+.ckd.mobile .ckd-review-cols,.ckd.tiny .ckd-review-cols{grid-template-columns:1fr;gap:12px}
+.ckd.mobile .ckd-recs,.ckd.tiny .ckd-recs{display:flex;overflow-x:auto;scrollbar-width:none;padding-bottom:4px}
+.ckd.mobile .ckd-recs::-webkit-scrollbar,.ckd.tiny .ckd-recs::-webkit-scrollbar{display:none}
+.ckd.mobile .ckd-rec,.ckd.tiny .ckd-rec{flex:none;width:122px}
+.ckd.mobile .ckd-banner,.ckd.tiny .ckd-banner{font-size:11px;text-align:center}
+.ckd.mobile .ckd-cartcard,.ckd.tiny .ckd-cartcard{margin-top:12px}
 
 /* ═══ bottom sheets (cart / skip-queue / promos / free-entry zones) ═══ */
 .ckd-sheetscrim{position:absolute;inset:0;z-index:56;background:rgba(10,10,12,.45);opacity:0;pointer-events:none;transition:opacity .3s}

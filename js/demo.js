@@ -28,6 +28,7 @@
   var SCRIPT_SRC = (document.currentScript && document.currentScript.src) || 'js/demo.js';
   var ASSET_BASE = SCRIPT_SRC.replace(/js\/demo\.js.*$/, 'assets/demo/');
   var MAP_URL = ASSET_BASE + 'venue-real.jpg';
+  var BRAND_MARK = SCRIPT_SRC.replace(/js\/demo\.js.*$/, 'brand/clubtech-mark-black.png');
   mounts.forEach(function (m) { createDemo(m); });
 
   function createDemo(root) {
@@ -166,7 +167,7 @@
   /* ===== icons ======================================================== */
 
   var I = {
-    logo: '<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.2" stroke="#1c1c1c" stroke-width="2"/><path d="M6.5 14.5q2.75-2.2 5.5 0t5.5 0" stroke="#14b8a6" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="8.6" r="2.3" fill="#f6a417"/></svg>',
+    logo: '<img src="' + BRAND_MARK + '" alt="">',
     cal: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M8 3v4M16 3v4M3.5 10h17"/></svg>',
     bed: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6M3 18h18M5 10V7a1.5 1.5 0 0 1 1.5-1.5h11A1.5 1.5 0 0 1 19 7v3"/></svg>',
     bag: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 8h14l-1 12.5H6L5 8Z"/><path d="M8.5 10V6.5a3.5 3.5 0 0 1 7 0V10"/></svg>',
@@ -239,7 +240,11 @@
 
     // top chrome
     var top = h('div', 'ckd-top');
-    top.appendChild(h('span', 'ckd-logo', I.logo));
+    var lg = h('button', 'ckd-logo', I.logo);
+    lg.type = 'button';
+    lg.setAttribute('aria-label', 'Back to booking map');
+    lg.addEventListener('click', goMap);
+    top.appendChild(lg);
     var dp = h('button', 'ckd-datepill', I.cal + '<span data-date>' + dateStr() + '</span>');
     dp.type = 'button';
     dp.addEventListener('click', function () { openModal(); });
@@ -605,9 +610,16 @@
 
   /* ===== views ======================================================== */
 
+  function goMap() {
+    closeSheet();
+    closePanel();
+    closeModal();
+    showView('map');
+  }
+
   function appbar(step) {
     return '<div class="ckd-appbar">' +
-      '<span class="ckd-logo">' + I.logo + '</span>' +
+      '<button type="button" class="ckd-logo" data-home aria-label="Back to booking map">' + I.logo + '</button>' +
       '<div class="ckd-stepper" style="flex:1;justify-content:center">' + stepper(step) + '</div>' +
       '<div class="ckd-cluster">' +
         '<span class="ckd-timer' + (state.timerId ? ' show' : '') + '" data-timer>' + I.clock + '<span>–:––</span></span>' +
@@ -634,6 +646,8 @@
     if (c) c.addEventListener('click', function () { openSheet('cart'); });
     var u = $('[data-vuser]', v);
     if (u) u.addEventListener('click', function () { openSheet('profile'); });
+    var hm = $('[data-home]', v);
+    if (hm) hm.addEventListener('click', goMap);
   }
 
   function renderAddons(v) {
@@ -644,7 +658,7 @@
     v.innerHTML = appbar(1) +
       '<div class="ckd-body"><h2>Add Ons</h2>' +
       '<div class="ckd-tabs">' + cats.map(function (c) { return '<button type="button" data-tab="' + c + '" class="' + (c === state.addonTab ? 'on' : '') + '">' + c + '</button>'; }).join('') + '</div>' +
-      '<div style="display:grid;grid-template-columns:1.15fr .85fr;gap:14px;align-items:start" class="ckd-addon-cols">' +
+      '<div class="ckd-addon-cols">' +
         '<div class="ckd-addon-grid">' +
           list.map(function (a) {
             var q = state.addons[a.id] || 0;
@@ -754,7 +768,7 @@
     v.innerHTML = appbar(2) +
       '<div class="ckd-body"><h2>Order Review</h2>' +
       '<div class="ckd-datebar">' + I.cal + '<span>Booking Date: <b data-date>' + dateStr() + '</b></span></div>' +
-      '<div style="display:grid;grid-template-columns:1.1fr .9fr;gap:16px;align-items:start" class="ckd-review-cols">' +
+      '<div class="ckd-review-cols">' +
         '<div><h4 class="ckd-h6">Recommended For Your Booking</h4>' +
           '<div class="ckd-banner">' + I.pct + ' Last Chance To Get Up To 30% Off Bottles</div>' +
           '<div class="ckd-recs">' + recs.map(function (a) {
