@@ -23,7 +23,6 @@
 
   <link rel="preload" href="../fonts/albert-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="../css/styles.css">
-  <link rel="stylesheet" href="../css/blog.css">
   <link rel="stylesheet" href="../css/consent.css">
   <link rel="stylesheet" href="../css/booking.css">
   <script>document.documentElement.classList.add('js')</script>
@@ -116,9 +115,9 @@
 }
   </script>
 </head>
-<body class="blog-post p-solutions">
+<body class="p-feature">
 <main>
-  <header class="nav-wrap scrolled">
+  <header class="nav-wrap">
     <nav class="nav" aria-label="Main navigation">
       <a href="../index.html" class="brand" aria-label="Clubtech home"><img src="../brand/clubtech-wordmark-white.png" alt="Clubtech" width="176" height="44"></a>
       <div class="nav-links">
@@ -150,117 +149,156 @@
     </nav>
   </header>
 
-  <article>
-    <header class="post-hero">
-      <div class="shell post-hero-inner">
-        <p class="post-tags"><span class="index-cat">Platform</span></p>
+  <section class="hero shell" id="top">
+    <img class="hero-mark" src="../brand/clubtech-mark-white.png" alt="" aria-hidden="true" width="1200" height="1200">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <p class="eyebrow">Platform · Operations</p>
         <h1>Venue operations software that knows the floor <span class="mint-text">before the doors open.</span></h1>
-        <p class="post-sub">One live floor plan for online sales and the service day: automatic seating allocation, real-time inventory, guest lists, and QR check-in — no whiteboard, no clipboard.</p>
-        <div class="post-hero-actions">
-          <a class="button button-mint" href="mailto:info@clubtechglobal.com" data-open-demo>Book a demo <span aria-hidden="true">↗</span></a>
-          <a class="button button-ghost" href="../booking/">See the booking journey <span aria-hidden="true">↗</span></a>
+        <p class="hero-copy">Venue operations software for beach clubs, day clubs, nightclubs, and hotel pools: a live internal floor plan, automatic seating allocation, real-time inventory, guest-list management, and QR check-in in one system. The floor plan and the online booking map are the same object &mdash; so before doors, the GM already knows which furniture is booked, prepaid, and spoken for.</p>
+        <div class="hero-actions">
+          <a class="button button-dark" href="../index.html#contact" data-open-demo>Book a demo <span aria-hidden="true">↗</span></a>
+          <a class="button button-light" href="../booking/">See the booking journey <span aria-hidden="true">↗</span></a>
         </div>
       </div>
-    </header>
-
-    <div class="shell post-hero-media">
-      <img src="../assets/blog/the-ux-behind-a-sold-out-saturday.jpg" alt="Venue floor set and ready before a fully booked service day" fetchpriority="high">
-    </div>
-
-    <div class="shell post-body">
-<p>Venue operations software runs the service day for beach clubs, day clubs, nightclubs, and hotel pools: a live internal floor plan, automatic seating allocation, real-time inventory, guest-list management, and QR check-in in one system. On Clubtech, the floor plan and the online booking map are the same object — so before the doors open, the GM already knows which furniture is booked, prepaid, and spoken for.</p>
-<p>That last sentence is the whole page. Most venue management software treats the reservation and the floor as two systems that get reconciled at 6pm, by hand, on a whiteboard. When the thing guests buy is furniture in a zone at a daypart — a daybed until 4pm, a booth from 11 — reconciliation is where the money leaks.</p>
-<p>On this page:</p>
-<ul>
-  <li><a href="#floor-plan">The floor plan is the booking map</a></li>
-  <li><a href="#seating-allocation">Automatic seating allocation</a></li>
-  <li><a href="#inventory-sync">Real-time inventory sync</a></li>
-  <li><a href="#operator-console">The service-day console</a></li>
-  <li><a href="#guest-list-vms">Guest list and visitor management</a></li>
-  <li><a href="#qr-check-in">QR-code check-in</a></li>
-</ul>
-<h3 id="floor-plan">The floor plan is the booking map</h3>
-<p>Guests book from a <a href="../booking/">3D birds-eye interactive map</a> of the venue — real zones, exact furniture. Internally, that same map is your floor plan. Not an export of it, not a copy updated overnight: the same object, viewed from the operator&#39;s side.</p>
-<p>That single design decision removes the most common failure in front-of-house software — version drift. When the booking system and the floor plan are separate, every online sale is a pending edit someone has to carry across, and every hour of lag is a window where the floor team is working from fiction. On Clubtech, online sales sync to the internal floor plan in real time. A cabana sold at 11:42am is on the floor plan at 11:42am, with the package attached.</p>
-<p>The floor team stops asking "is this list current?" because there is only one list, and it is always current.</p>
-<h3 id="seating-allocation">Automatic seating allocation</h3>
-<p>The 6pm whiteboard session — a manager, a printout, and forty parties to place before service — is the daily tax venues pay for keeping bookings and the floor in separate systems. Clubtech pays it for you: automatic seating allocation places confirmed parties onto the live floor plan as bookings land.</p>
-<p>Instead of building the floor from scratch every afternoon, the team reviews a floor that is already placed. The hours that went into allocation go back into service — briefing hosts on the big packages, walking the zones, working the arrivals. And because allocation runs continuously, the late Friday-night booking for Saturday doesn&#39;t trigger a redo; it simply appears, placed.</p>
-<h3 id="inventory-sync">Real-time inventory sync</h3>
-<p>Double-sells have one cause: two channels selling from two lists. The website sells daybed 14, the host stand sells daybed 14 to a walk-up, and at 1pm two parties are standing over the same furniture while a manager improvises a refund.</p>
-<p>Clubtech runs every channel off one inventory, synced in real time. You set what the team actually sells — the furniture, the zones, the dayparts, the packages on each — and online and walk-up draw down the same pool. When a <a href="../solutions/beach-clubs/">sunbed</a> sells online, it is gone at the host stand in the same moment; because both channels read the same pool, nothing can be sold twice. No buffer stock held back "just in case," no spreadsheet reconciliation, no apology round at 1pm.</p>
-<h3 id="operator-console">The service-day console</h3>
-<p>The operator console is where the service day starts: which furniture is prepaid, what each party ordered, and where tonight&#39;s revenue is sitting — by zone, by daypart, before the first guest arrives. A host greeting a party already knows they booked the party package with two extra bottles; a floor manager can see at a glance which zones are sold through and which need attention.</p>
-<p>This page covers the operating side deliberately. The four levers that grow the number the console shows — prepayments, upsells, dynamic pricing, and retargeting — live in the <a href="../booking/">booking journey</a>, and the reports that read the patterns behind it live in <a href="../intelligence/">guest intelligence</a>. Operations is where those numbers become a floor you can actually run.</p>
-<h3 id="guest-list-vms">Guest list and visitor management</h3>
-<p>The door is the last part of most venues still running on paper — a clipboard, five promoters&#39; phones, and a bouncer&#39;s judgment call. Clubtech&#39;s guest-list and visitor management puts the door on the same system as the floor: table bookings, guest-list registrations, and comps in one view, so the door team confirms a name in seconds instead of triaging three lists.</p>
-<p>The quieter win is what the list becomes afterward. Free-entry registrations capture contact details as guests sign up, so the guest list stops evaporating at close and starts building a marketable database — the same database every paid booking already feeds. For the full door-and-VIP picture, see how <a href="../solutions/nightclub-table-booking/">nightclub table booking</a> absorbs the DM-and-doorman era.</p>
-<h3 id="qr-check-in">QR-code check-in</h3>
-<p>For events and ticketed nights, Clubtech&#39;s events and ticketing runs QR-code check-in at the door. Each ticket carries its own code; the door scans, the system confirms, and the line moves. No printed manifests, no name-by-name lookups, no counterfeit judgment calls at midnight.</p>
-<p>Check-in also closes the data loop on the busiest nights: the door works from confirmed tickets instead of a printout — and when furniture or tickets sell out, priority-entry capture keeps taking details, turning a full house into next event&#39;s audience.</p>
-<h3>Questions operators ask</h3>
-<h4>What software do venues use to manage the floor?</h4>
-<p>Most venues run a patchwork: a reservations tool, a spreadsheet for allocation, a clipboard at the door, and a POS that talks to none of them. Venue operations software like Clubtech replaces the patchwork with one system — the booking map, the floor plan, the guest list, and inventory are the same live object, so what sells online is exactly what the team sees on the floor.</p>
-<h4>How does automatic seating allocation work?</h4>
-<p>Every confirmed booking is placed onto the live floor plan automatically, so parties have furniture assigned before service starts instead of being dealt out in a pre-shift huddle. The team reviews a placed floor rather than building one from scratch — and because the plan updates as online sales land, the picture stays current right up to doors.</p>
-<h4>How do venues stop double-booking sunbeds and tables?</h4>
-<p>Run every channel off one inventory. Double-sells happen when online booking and walk-up sales draw from different lists that reconcile too late. On Clubtech, online sales sync to the internal floor plan in real time and the floor team sells from that same live inventory — when a daybed is gone, it is gone everywhere at once.</p>
-<h4>Can the door team see online bookings in real time?</h4>
-<p>Yes. Online bookings, guest-list registrations, and ticket sales land in the same system the door works from, updating in real time. The door team sees confirmed, prepaid parties as they book — not a printout from 6pm — and QR-code check-in confirms tickets at the line without radioing the office.</p>
-<h4>Does Clubtech replace the guest list clipboard?</h4>
-<p>Yes. Guest-list and visitor management is built into the platform, so the door works from one system instead of a clipboard plus promoters&#39; phones. Free-entry registrations capture contact details as guests sign up, which means the list finally builds a marketable database instead of evaporating at close.</p>
-<hr/>
-<p><strong>See your floor on Clubtech.</strong> 15 minutes, no contracts, no credit card — pre-configured to a venue like yours, floor plan included. <a href="mailto:info@clubtechglobal.com">Book a demo</a></p>
-    </div>
-  </article>
-
-  <section class="shell post-more" aria-label="Explore the platform">
-    <h2 class="post-more-h">Explore the platform</h2>
-    <div class="index-list">
-      <a class="index-row" href="../platform/">
-        <span class="index-main">
-          <span class="index-title">The platform: one system for bookings, floor, and marketing</span>
-          <span class="index-meta"><span class="index-cat">Platform</span></span>
-        </span>
-        <span class="index-arrow" aria-hidden="true">↗</span>
-      </a>
-      <a class="index-row" href="../booking/">
-        <span class="index-main">
-          <span class="index-title">Booking: the 3D map, packages, and prepaid revenue</span>
-          <span class="index-meta"><span class="index-cat">Platform</span></span>
-        </span>
-        <span class="index-arrow" aria-hidden="true">↗</span>
-      </a>
-      <a class="index-row" href="../intelligence/">
-        <span class="index-main">
-          <span class="index-title">Intelligence: read the business across 20+ reports</span>
-          <span class="index-meta"><span class="index-cat">Platform</span></span>
-        </span>
-        <span class="index-arrow" aria-hidden="true">↗</span>
-      </a>
-      <a class="index-row" href="../delivery/">
-        <span class="index-main">
-          <span class="index-title">Delivery: from scope to go-live with a dedicated lead</span>
-          <span class="index-meta"><span class="index-cat">Platform</span></span>
-        </span>
-        <span class="index-arrow" aria-hidden="true">↗</span>
-      </a>
-      <a class="index-row" href="../pricing/">
-        <span class="index-main">
-          <span class="index-title">Pricing: no monthly fee, aligned commercials</span>
-          <span class="index-meta"><span class="index-cat">Platform</span></span>
-        </span>
-        <span class="index-arrow" aria-hidden="true">↗</span>
-      </a>
+      <div class="placeholder" role="img" aria-label="Product image placeholder, 900 × 1100 px" style="min-height:560px"><span>Product image</span><strong>900 × 1100 px</strong></div>
     </div>
   </section>
 
-  <section class="closing dark-section blog-closing">
+  <section class="section shell feature-row" id="floor-plan">
+    <div class="feature-copy">
+      <p class="eyebrow">One live object</p>
+      <h2>The floor plan is <span class="indigo-text">the booking map.</span></h2>
+      <p>Guests book from a <a href="../booking/">3D birds-eye interactive map</a> of the venue &mdash; real zones, exact furniture. Internally, that same map is your floor plan. Not an export of it, not a copy updated overnight: the same object, viewed from the operator&rsquo;s side.</p>
+      <ul>
+        <li>Online sales sync to the internal floor plan in real time</li>
+        <li>A cabana sold at 11:42am is on the floor plan at 11:42am, with the package attached</li>
+        <li>No version drift &mdash; no pending edits someone has to carry across</li>
+        <li>Only one list, and it is always current</li>
+      </ul>
+      <p>Most venue management software treats the reservation and the floor as two systems that get reconciled at 6pm, by hand, on a whiteboard. When the thing guests buy is furniture in a zone at a daypart &mdash; a daybed until 4pm, a booth from 11 &mdash; reconciliation is where the money leaks.</p>
+    </div>
+    <div class="placeholder" role="img" aria-label="Desktop image placeholder, 1200 × 900 px"><span>Desktop image</span><strong>1200 × 900 px</strong></div>
+  </section>
+
+  <section class="section shell feature-row reverse" id="seating-allocation">
+    <div class="placeholder" role="img" aria-label="Desktop image placeholder, 1200 × 900 px"><span>Desktop image</span><strong>1200 × 900 px</strong></div>
+    <div class="feature-copy">
+      <p class="eyebrow">Automatic seating allocation</p>
+      <h2>The floor places itself <span class="indigo-text">as bookings land.</span></h2>
+      <p>The 6pm whiteboard session &mdash; a manager, a printout, and forty parties to place before service &mdash; is the daily tax venues pay for keeping bookings and the floor in separate systems. Clubtech pays it for you.</p>
+      <ul>
+        <li>Confirmed parties are placed onto the live floor plan as bookings land</li>
+        <li>The team reviews a floor that is already placed, instead of building one from scratch</li>
+        <li>Allocation hours go back into service &mdash; briefing hosts, walking the zones, working the arrivals</li>
+        <li>The late Friday-night booking for Saturday doesn&rsquo;t trigger a redo; it simply appears, placed</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section shell feature-row" id="inventory-sync">
+    <div class="feature-copy">
+      <p class="eyebrow">Real-time inventory sync</p>
+      <h2>One inventory. <span class="indigo-text">Zero double-sells.</span></h2>
+      <p>Double-sells have one cause: two channels selling from two lists. The website sells daybed 14, the host stand sells daybed 14 to a walk-up, and at 1pm two parties are standing over the same furniture while a manager improvises a refund.</p>
+      <ul>
+        <li>You set what the team actually sells &mdash; furniture, zones, dayparts, and the packages on each</li>
+        <li>Online and walk-up draw down the same pool, synced in real time</li>
+        <li>When a <a href="../solutions/beach-clubs/">sunbed</a> sells online, it is gone at the host stand in the same moment</li>
+        <li>No buffer stock held back &ldquo;just in case,&rdquo; no spreadsheet reconciliation, no apology round at 1pm</li>
+      </ul>
+    </div>
+    <div class="placeholder" role="img" aria-label="Desktop image placeholder, 1200 × 900 px"><span>Desktop image</span><strong>1200 × 900 px</strong></div>
+  </section>
+
+  <section class="section shell feature-row reverse" id="operator-console">
+    <div class="placeholder" role="img" aria-label="Desktop image placeholder, 1200 × 900 px"><span>Desktop image</span><strong>1200 × 900 px</strong></div>
+    <div class="feature-copy">
+      <p class="eyebrow">The service-day console</p>
+      <h2>Where the service day <span class="indigo-text">starts.</span></h2>
+      <p>The operator console shows which furniture is prepaid, what each party ordered, and where tonight&rsquo;s revenue is sitting &mdash; by zone, by daypart, before the first guest arrives.</p>
+      <ul>
+        <li>A host greeting a party already knows they booked the party package with two extra bottles</li>
+        <li>A floor manager sees at a glance which zones are sold through and which need attention</li>
+        <li>The levers that grow the number &mdash; prepayments, upsells, dynamic pricing &mdash; live in the <a href="../booking/">booking journey</a>; the reports that read it live in <a href="../intelligence/">guest intelligence</a></li>
+      </ul>
+      <div class="mini-grid">
+        <span>Live floor plan</span>
+        <span>Automatic allocation</span>
+        <span>Real-time inventory</span>
+        <span>Guest-list management</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark-section" aria-label="The door on one system">
+    <div class="shell">
+      <div class="section-heading light split-heading">
+        <div>
+          <p class="eyebrow">The door, off paper</p>
+          <h2>The last clipboard <span class="mint-text">leaves the building.</span></h2>
+        </div>
+        <p>The door is the last part of most venues still running on paper &mdash; a clipboard, five promoters&rsquo; phones, and a bouncer&rsquo;s judgment call. Clubtech puts it on the same system as the floor.</p>
+      </div>
+      <div class="lever-grid">
+        <article class="lever" id="guest-list-vms"><span>01</span><h3>Guest list &amp; visitor management</h3><p>Table bookings, guest-list registrations, and comps in one view, so the door team confirms a name in seconds instead of triaging three lists. For the full door-and-VIP picture, see how <a href="../solutions/nightclub-table-booking/">nightclub table booking</a> absorbs the DM-and-doorman era.</p></article>
+        <article class="lever" id="qr-check-in"><span>02</span><h3>QR-code check-in</h3><p>For events and ticketed nights, each ticket carries its own code; the door scans, the system confirms, and the line moves. No printed manifests, no name-by-name lookups, no counterfeit judgment calls at midnight.</p></article>
+        <article class="lever"><span>03</span><h3>Booked before doors</h3><p>Online bookings, guest-list registrations, and ticket sales land in the same system the door works from, updating in real time &mdash; the door sees confirmed, prepaid parties as they book, not a printout from 6pm.</p></article>
+        <article class="lever"><span>04</span><h3>One system at the door</h3><p>Free-entry registrations capture contact details as guests sign up, and on sell-out nights priority-entry capture keeps taking details &mdash; the guest list stops evaporating at close and starts building a marketable database.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section shell faq" id="faq">
+    <div class="section-heading centered">
+      <p class="eyebrow">FAQ</p>
+      <h2>Questions operators <span class="indigo-text">ask.</span></h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary><h3>What software do venues use to manage the floor?</h3><span class="faq-toggle" aria-hidden="true">+</span></summary>
+        <p>Most venues run a patchwork: a reservations tool, a spreadsheet for allocation, a clipboard at the door, and a POS that talks to none of them. Venue operations software like Clubtech replaces the patchwork with one system &mdash; the booking map, the floor plan, the guest list, and inventory are the same live object, so what sells online is exactly what the team sees on the floor.</p>
+      </details>
+      <details class="faq-item">
+        <summary><h3>How does automatic seating allocation work?</h3><span class="faq-toggle" aria-hidden="true">+</span></summary>
+        <p>Every confirmed booking is placed onto the live floor plan automatically, so parties have furniture assigned before service starts instead of being dealt out in a pre-shift huddle. The team reviews a placed floor rather than building one from scratch &mdash; and because the plan updates as online sales land, the picture stays current right up to doors.</p>
+      </details>
+      <details class="faq-item">
+        <summary><h3>How do venues stop double-booking sunbeds and tables?</h3><span class="faq-toggle" aria-hidden="true">+</span></summary>
+        <p>Run every channel off one inventory. Double-sells happen when online booking and walk-up sales draw from different lists that reconcile too late. On Clubtech, online sales sync to the internal floor plan in real time and the floor team sells from that same live inventory &mdash; when a daybed is gone, it is gone everywhere at once.</p>
+      </details>
+      <details class="faq-item">
+        <summary><h3>Can the door team see online bookings in real time?</h3><span class="faq-toggle" aria-hidden="true">+</span></summary>
+        <p>Yes. Online bookings, guest-list registrations, and ticket sales land in the same system the door works from, updating in real time. The door team sees confirmed, prepaid parties as they book &mdash; not a printout from 6pm &mdash; and QR-code check-in confirms tickets at the line without radioing the office.</p>
+      </details>
+      <details class="faq-item">
+        <summary><h3>Does Clubtech replace the guest list clipboard?</h3><span class="faq-toggle" aria-hidden="true">+</span></summary>
+        <p>Yes. Guest-list and visitor management is built into the platform, so the door works from one system instead of a clipboard plus promoters' phones. Free-entry registrations capture contact details as guests sign up, which means the list finally builds a marketable database instead of evaporating at close.</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="section shell" aria-label="Explore the platform">
+    <div class="section-heading centered">
+      <p class="eyebrow">Explore the platform</p>
+      <h2>Operations is where the numbers become <span class="indigo-text">a floor you can run.</span></h2>
+      <p>The levers that grow the number the console shows live in the <a href="../booking/">booking journey</a>, and the reports that read the patterns behind it live in <a href="../intelligence/">guest intelligence</a>. The commercials stay simple: <a href="../pricing/">no monthly fee, 4% paid by the customer, $2,000 setup</a>.</p>
+      <div class="hero-actions" style="justify-content:center;flex-wrap:wrap">
+        <a class="button button-light" href="../platform/">Platform <span aria-hidden="true">↗</span></a>
+        <a class="button button-light" href="../booking/">Booking <span aria-hidden="true">↗</span></a>
+        <a class="button button-light" href="../intelligence/">Intelligence <span aria-hidden="true">↗</span></a>
+        <a class="button button-light" href="../delivery/">Delivery <span aria-hidden="true">↗</span></a>
+        <a class="button button-light" href="../pricing/">Pricing <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="closing dark-section" id="contact">
     <img class="closing-mark" src="../brand/clubtech-mark-white.png" alt="" aria-hidden="true" width="1200" height="1200" loading="lazy">
     <div class="shell centered">
-      <p class="eyebrow">Your venue, pre-sold.</p>
-      <h2>Stop reading about it.<br><span class="mint-text">See it live.</span></h2>
-      <p>Book a focused walkthrough, configured around a premium venue like yours.</p>
+      <p class="eyebrow">Your floor, live.</p>
+      <h2>See your floor <span class="mint-text">on Clubtech.</span></h2>
+      <p>15 minutes, no contracts, no credit card &mdash; pre-configured to a venue like yours, floor plan included.</p>
       <a class="button button-mint" href="mailto:info@clubtechglobal.com" data-open-demo>Book a demo <span aria-hidden="true">↗</span></a>
     </div>
   </section>
@@ -370,10 +408,10 @@
     </div>
   </div>
 </div>
+<script src="../js/main.js" defer></script>
 <script src="../js/consent.js" defer></script>
 <script src="../js/hubspot.js" defer></script>
 <script src="../js/booking.js" defer></script>
 <script src="../js/analytics.js" defer></script>
-<script src="../js/blog.js" defer></script>
 </body>
 </html>

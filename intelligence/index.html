@@ -23,7 +23,6 @@
 
   <link rel="preload" href="../fonts/albert-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="../css/styles.css">
-  <link rel="stylesheet" href="../css/blog.css">
   <link rel="stylesheet" href="../css/consent.css">
   <link rel="stylesheet" href="../css/booking.css">
   <script>document.documentElement.classList.add('js')</script>
@@ -116,9 +115,9 @@
 }
   </script>
 </head>
-<body class="blog-post p-solutions">
+<body class="p-feature">
 <main>
-  <header class="nav-wrap scrolled">
+  <header class="nav-wrap">
     <nav class="nav" aria-label="Main navigation">
       <a href="../index.html" class="brand" aria-label="Clubtech home"><img src="../brand/clubtech-wordmark-white.png" alt="Clubtech" width="176" height="44"></a>
       <div class="nav-links">
@@ -150,120 +149,147 @@
     </nav>
   </header>
 
-  <article>
-    <header class="post-hero">
-      <div class="shell post-hero-inner">
-        <p class="post-tags"><span class="index-cat">Platform</span></p>
-        <h1>The marketing loop where <span class="mint-text">the booking is the conversion.</span></h1>
-        <p class="post-sub">Every booking fires to Meta, Google Ads, and GA4 with revenue attached. Every guest enters a database your venue owns. 20+ reports read the business without a spreadsheet.</p>
-        <div class="post-hero-actions">
-          <a class="button button-mint" href="mailto:info@clubtechglobal.com" data-open-demo>Book a demo <span aria-hidden="true">↗</span></a>
-          <a class="button button-ghost" href="../booking/">See the booking flow <span aria-hidden="true">↗</span></a>
+  <section class="hero shell" id="top">
+    <img class="hero-mark" src="../brand/clubtech-mark-white.png" alt="" aria-hidden="true" width="1200" height="1200">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <p class="eyebrow">Platform · Intelligence</p>
+        <h1>The marketing loop where<br><span class="mint-text">the booking is the conversion.</span></h1>
+        <p class="hero-copy">Guest data, reporting, and marketing attribution for venues comes down to three things: every reservation builds first-party guest data the venue owns, 20+ reports turn booking patterns into decisions, and every booking fires to Meta, Google Ads, and GA4 in real time with revenue posted back &mdash; so ad platforms optimize toward booked dollars, not clicks. Clubtech does all three from the same booking flow.</p>
+        <div class="hero-actions">
+          <a class="button button-dark" href="../index.html#contact" data-open-demo>Book a demo <span aria-hidden="true">↗</span></a>
+          <a class="button button-light" href="../booking/">See the booking flow <span aria-hidden="true">↗</span></a>
         </div>
       </div>
-    </header>
-
-    <div class="shell post-hero-media">
-      <img src="../assets/blog/why-first-party-data-is-the-future-of-beach-club-marketing.webp" alt="Guests at a beach club captured as first-party data on the venue's own booking system" fetchpriority="high">
-    </div>
-
-    <div class="shell post-body">
-<p>Guest data, reporting, and marketing attribution for venues comes down to three things: every reservation builds first-party guest data the venue owns, 20+ reports turn booking patterns into decisions, and every booking fires to Meta, Google Ads, and GA4 in real time with revenue posted back — so ad platforms optimize toward booked dollars, not clicks. Clubtech does all three from the same booking flow.</p>
-<p><strong>On this page</strong></p>
-<ul>
-  <li><a href="#guest-intelligence">Guest intelligence</a></li>
-  <li><a href="#reports">20+ reports</a></li>
-  <li><a href="#ads-integration">Meta, Google Ads &amp; GA4 integration</a></li>
-  <li><a href="#abandoned-booking-retargeting">Abandoned booking retargeting</a></li>
-  <li><a href="#lookalike-audiences">Lookalike audiences</a></li>
-  <li><a href="#every-guest-data">Data on every guest</a></li>
-  <li><a href="#owned-data">Your domain, your data</a></li>
-</ul>
-<h3 id="guest-intelligence">Guest intelligence: booking patterns as an owned asset</h3>
-<p>Most venues are sitting on the answer to their hardest commercial questions — it&#39;s just trapped in a booking log. Which hours actually produce the revenue, not the footfall. How far ahead the brunch crowd books versus the sunset crowd. Which packages carry the margin and which just fill furniture. Where this month&#39;s guests flew in from, and how many have been before.</p>
-<p>Clubtech turns that log into guest intelligence: revenue by hour, booking lead time by daypart, product mix, origin markets, and repeat share — segmented and trending over time, inside the platform. No CSV exports, no rebuilding the week in a spreadsheet, no &quot;I&#39;ll get the numbers to you Thursday.&quot; The patterns surface while there&#39;s still time to act on them: a daypart booking shorter and shorter lead times is a pricing signal; a rising origin market is a campaign brief.</p>
-<p>That makes the reservation system something most venues have never had — a proprietary dataset about how their guests actually buy, owned outright and compounding with every booking taken on the <a href="../booking/">booking flow</a>.</p>
-<h3 id="reports">20+ reports, three views of the venue</h3>
-<p>Clubtech ships more than 20 built-in reports across three views: the guests (who books, what they buy, whether they return), the operations (what&#39;s selling by zone, daypart, and package), and the business (revenue, lead time, and mix over time).</p>
-<p>The point is not the count — it&#39;s that the questions a GM, a revenue manager, and a marketing manager ask on Monday morning are answered in the same system that took the bookings. One source of truth, no reconciling the POS export against the ads dashboard against somebody&#39;s spreadsheet. How the wider <a href="../platform/">platform</a> ties reservations, operations, and marketing together is its own page; the short version is that the data never has to leave to become useful.</p>
-<h3 id="ads-integration">Bookings fire to Meta, Google Ads, and GA4 — with revenue attached</h3>
-<p>Most venue marketing runs blind at the exact moment it matters: the ad platforms see a click, maybe a pageview, and then nothing. The booking — the only event that is actually money — never makes it back. So Meta and Google optimize toward people who click, and the marketing manager defends spend with screenshots instead of revenue.</p>
-<p>Clubtech closes the loop. Every booking fires to Meta, Google Ads, and GA4 in real time, with the revenue value posted back. That changes what the platforms optimize for: value-based optimization means the algorithm hunts for people who book $900 cabanas, not people who generate &quot;a conversion.&quot; A $150 booking and a $1,500 booking stop being the same event.</p>
-<p>For the mechanics, see the guides to the <a href="../blog/meta-conversions-api-for-venue-bookings/">Meta Conversions API for venue bookings</a> and <a href="../blog/ga4-for-venue-bookings/">GA4 for venue bookings</a> — server-side events, revenue values, and why pixel-only tracking undercounts the guests who matter most.</p>
-<h3 id="abandoned-booking-retargeting">Abandoned booking retargeting, within seconds</h3>
-<p>A guest who picked a daybed, chose a date, saw the price, and left is not a lost cause — they&#39;re the warmest audience your venue has tonight. The problem is timing: by the time a weekly remarketing list updates, the group chat has already booked somewhere else.</p>
-<p>On Clubtech, the abandonment fires as a Conversions API event within seconds of the guest walking away. Dynamic ads then return them to the exact zone, date, and price they left — not a generic brand ad, but the specific booking they were one tap from completing. The distance between &quot;almost booked&quot; and &quot;booked&quot; becomes one impression, served while the decision is still live.</p>
-<h3 id="lookalike-audiences">Lookalikes seeded from your best bookers</h3>
-<p>A lookalike audience is only as good as its seed. Build it from page followers and you find more people who like watching beach clubs. Build it from your highest-LTV bookers — the guests who prepay the big packages, stack the add-ons, and come back — and you find more people who buy them.</p>
-<p>Because the booking system knows exactly who those guests are and what they&#39;re worth, Clubtech seeds prospecting from spend, not sentiment. The venue&#39;s acquisition modeling starts from its own revenue data — one more return on owning the dataset in the first place.</p>
-<h3 id="every-guest-data">Every guest in the database, not just the booker</h3>
-<p>A party of eight usually enters a venue&#39;s database as one contact — the person who paid. Clubtech captures the whole party, so the marketable audience grows with every reservation instead of one-eighth as fast. The full mechanic lives on the <a href="../booking/#every-guest-data">booking page</a>; the intelligence consequence is simple: bigger first-party audiences to report on, retarget, and seed lookalikes from.</p>
-<h3 id="owned-data">Your domain, your data</h3>
-<p>None of this works if the guest relationship belongs to someone else. Book through a marketplace and the platform owns the guest: their email, their history, their next visit — rented back to you alongside your competitors. That&#39;s the core of the <a href="../compare/resortpass-alternative/">Clubtech vs ResortPass comparison</a>, and it&#39;s why Clubtech is white-label by design: the booking happens on the venue&#39;s domain, in the venue&#39;s design, and every byte of guest data belongs to the venue.</p>
-<p>With third-party cookies dying and privacy rules tightening, first-party data is no longer a nice-to-have — it&#39;s the only marketing asset that appreciates. The case in full: <a href="../blog/why-first-party-data-is-the-future-of-beach-club-marketing/">why first-party data is the future of beach club marketing</a>.</p>
-<h3>Questions operators ask</h3>
-<h4>How do venues track bookings in GA4?</h4>
-<p>By sending each completed booking to GA4 as an event with the revenue value attached, in real time, rather than relying on a thank-you-page pageview. On Clubtech this happens automatically: every booking fires to GA4 with revenue posted back, so reports show booked dollars by channel and campaign — not sessions that may or may not have become money.</p>
-<h4>What is the Meta Conversions API for bookings?</h4>
-<p>A server-side channel that sends booking events from the venue&#39;s booking system directly to Meta, instead of depending on a browser pixel that ad blockers and iOS privacy settings routinely silence. Clubtech fires completed and abandoned bookings through CAPI within seconds, with revenue values attached, so Meta optimizes toward booked revenue and retargets the guests who almost committed.</p>
-<h4>How do beach clubs build first-party guest data?</h4>
-<p>By taking bookings on their own domain, so every guest detail lands in a database the venue owns. Clubtech extends this in two directions: whole-party capture records every guest in the group, not just the booker, and priority-entry capture keeps collecting contact details when the venue sells out. The marketable audience grows with every reservation — sold out included.</p>
-<h4>What reports does a venue booking system need?</h4>
-<p>Enough to read guests, operations, and the business without exporting a CSV: revenue by hour, booking lead time by daypart, product mix, origin markets, and repeat share, each segmentable and trendable over time. Clubtech ships more than 20 reports across those three views, so the questions a GM asks on Monday are answered in the platform, not rebuilt in a spreadsheet.</p>
-<h4>How does abandoned booking retargeting work?</h4>
-<p>When a guest leaves checkout without paying, the abandonment fires as a Conversions API event within seconds. Dynamic ads then return that guest to the exact zone, date, and price they walked away from — not a generic brand ad, but the daybed they were one tap from buying, usually while the group chat is still deciding.</p>
-<hr/>
-<p><strong>See your own attribution loop running.</strong> 15 minutes, no contracts, no credit card — a walkthrough pre-configured to a venue like yours, bookings firing to the ad platforms with real revenue attached. <a href="mailto:info@clubtechglobal.com">Book a demo</a></p>
-    </div>
-  </article>
-
-  <section class="shell post-more" aria-label="Explore the platform">
-    <h2 class="post-more-h">Explore the platform</h2>
-    <div class="index-list">
-      <a class="index-row" href="../platform/">
-        <span class="index-main">
-          <span class="index-title">One platform for reservations, operations, and marketing</span>
-          <span class="index-meta"><span class="index-cat">Platform</span></span>
-        </span>
-        <span class="index-arrow" aria-hidden="true">↗</span>
-      </a>
-      <a class="index-row" href="../booking/">
-        <span class="index-main">
-          <span class="index-title">The booking flow: 3D venue map, packages, and prepayment</span>
-          <span class="index-meta"><span class="index-cat">Platform</span></span>
-        </span>
-        <span class="index-arrow" aria-hidden="true">↗</span>
-      </a>
-      <a class="index-row" href="../operations/">
-        <span class="index-main">
-          <span class="index-title">Operations: the floor plan, allocation, and the service day</span>
-          <span class="index-meta"><span class="index-cat">Platform</span></span>
-        </span>
-        <span class="index-arrow" aria-hidden="true">↗</span>
-      </a>
-      <a class="index-row" href="../delivery/">
-        <span class="index-main">
-          <span class="index-title">Delivery: onboarding to optimization with a dedicated lead</span>
-          <span class="index-meta"><span class="index-cat">Platform</span></span>
-        </span>
-        <span class="index-arrow" aria-hidden="true">↗</span>
-      </a>
-      <a class="index-row" href="../pricing/">
-        <span class="index-main">
-          <span class="index-title">Pricing: no monthly fee, aligned commercials</span>
-          <span class="index-meta"><span class="index-cat">Platform</span></span>
-        </span>
-        <span class="index-arrow" aria-hidden="true">↗</span>
-      </a>
+      <div class="placeholder" role="img" aria-label="Product image placeholder, 900 × 1100 px" style="min-height:560px"><span>Product image</span><strong>900 × 1100 px</strong></div>
     </div>
   </section>
 
-  <section class="closing dark-section blog-closing">
+  <section class="trust shell section-tight" aria-label="Company proof">
+    <p class="small-label">The attribution loop behind $332k in weekly GMV</p>
+    <div class="proof-grid">
+      <div class="proof"><strong data-count="332" data-prefix="$" data-suffix="k">$332k</strong><span>weekly GMV processed</span></div>
+      <div class="proof"><strong data-count="20" data-suffix="+">20+</strong><span>built-in reports across guests, operations, and the business</span></div>
+      <div class="proof"><strong data-count="82" data-suffix="%">82%</strong><span>of bookings happen on a phone after 10pm</span></div>
+    </div>
+  </section>
+
+  <section class="section shell feature-row" id="guest-intelligence">
+    <div class="feature-copy">
+      <p class="eyebrow">Guest intelligence</p>
+      <h2>Booking patterns as <span class="indigo-text">an owned asset.</span></h2>
+      <p>Most venues are sitting on the answer to their hardest commercial questions &mdash; it&rsquo;s just trapped in a booking log. Clubtech turns that log into guest intelligence, surfacing the patterns while there&rsquo;s still time to act on them.</p>
+      <ul>
+        <li>Revenue by hour, booking lead time by daypart, product mix, origin markets, repeat share</li>
+        <li>Segmented and trending over time, inside the platform &mdash; no CSV exports</li>
+        <li>A daypart booking on shorter and shorter lead times is a pricing signal</li>
+        <li>A rising origin market is a campaign brief</li>
+      </ul>
+      <p>The result is a proprietary dataset about how your guests actually buy &mdash; owned outright and compounding with every booking taken on the <a href="../booking/">booking flow</a>.</p>
+    </div>
+    <div class="placeholder" role="img" aria-label="Desktop image placeholder, 1200 × 900 px"><span>Desktop image</span><strong>1200 × 900 px</strong></div>
+  </section>
+
+  <section class="section shell feature-row reverse" id="reports">
+    <div class="placeholder" role="img" aria-label="Desktop image placeholder, 1200 × 900 px"><span>Desktop image</span><strong>1200 × 900 px</strong></div>
+    <div class="feature-copy">
+      <p class="eyebrow">20+ reports</p>
+      <h2>Three views of <span class="indigo-text">the same venue.</span></h2>
+      <p>Clubtech ships more than 20 built-in reports &mdash; and the point is not the count. The questions a GM, a revenue manager, and a marketing manager ask on Monday morning are answered in the same system that took the bookings.</p>
+      <ul>
+        <li>The guests: who books, what they buy, whether they return</li>
+        <li>The operations: what&rsquo;s selling by zone, daypart, and package</li>
+        <li>The business: revenue, lead time, and mix over time</li>
+        <li>One source of truth &mdash; no reconciling the POS export against the ads dashboard</li>
+      </ul>
+      <p>How the wider <a href="../platform/">platform</a> ties reservations, operations, and marketing together is its own page; the short version is that the data never has to leave to become useful.</p>
+    </div>
+  </section>
+
+  <section class="section shell feature-row" id="ads-integration">
+    <div class="feature-copy">
+      <p class="eyebrow">Meta, Google Ads &amp; GA4</p>
+      <h2>Bookings fire with <span class="indigo-text">revenue attached.</span></h2>
+      <p>Most venue marketing runs blind at the exact moment it matters: the ad platforms see a click, maybe a pageview, and the booking &mdash; the only event that is actually money &mdash; never makes it back. Clubtech closes the loop.</p>
+      <ul>
+        <li>Every booking fires to Meta, Google Ads, and GA4 in real time</li>
+        <li>Revenue posted back &mdash; a $150 booking and a $1,500 booking stop being the same event</li>
+        <li>Value-based optimization: the algorithm hunts for people who book $900 cabanas</li>
+        <li>Spend defended with booked dollars, not screenshots</li>
+      </ul>
+      <p>For the mechanics, see the guides to the <a href="../blog/meta-conversions-api-for-venue-bookings/">Meta Conversions API for venue bookings</a> and <a href="../blog/ga4-for-venue-bookings/">GA4 for venue bookings</a>.</p>
+    </div>
+    <div class="placeholder" role="img" aria-label="Desktop image placeholder, 1200 × 900 px"><span>Desktop image</span><strong>1200 × 900 px</strong></div>
+  </section>
+
+  <section class="section dark-section" aria-label="Owned data, working">
+    <div class="shell">
+      <div class="section-heading light split-heading">
+        <div>
+          <p class="eyebrow">Owned data, working</p>
+          <h2>The audience grows with <span class="mint-text">every booking.</span></h2>
+        </div>
+        <p>With third-party cookies dying and privacy rules tightening, first-party data is the only marketing asset that appreciates. The case in full: <a href="../blog/why-first-party-data-is-the-future-of-beach-club-marketing/">why first-party data is the future of beach club marketing</a>.</p>
+      </div>
+      <div class="lever-grid">
+        <article class="lever" id="abandoned-booking-retargeting"><span>01</span><h3>Abandoned booking retargeting</h3><p>A guest who picked a daybed, saw the price, and left is the warmest audience your venue has tonight. The abandonment fires as a Conversions API event within seconds, and dynamic ads return them to the exact zone, date, and price they walked away from &mdash; while the group chat is still deciding.</p></article>
+        <article class="lever" id="lookalike-audiences"><span>02</span><h3>Lookalike audiences</h3><p>A lookalike audience is only as good as its seed. Build it from page followers and you find more people who like watching beach clubs; build it from your highest-LTV bookers and you find more people who buy. Clubtech seeds prospecting from spend, not sentiment.</p></article>
+        <article class="lever" id="every-guest-data"><span>03</span><h3>Every guest in the database</h3><p>A party of eight usually enters a venue&rsquo;s database as one contact &mdash; the person who paid. Clubtech captures the whole party, so the marketable audience grows with every reservation instead of one-eighth as fast. The full mechanic lives on the <a href="../booking/#every-guest-data">booking page</a>.</p></article>
+        <article class="lever" id="owned-data"><span>04</span><h3>Your domain, your data</h3><p>Book through a marketplace and the platform owns the guest &mdash; rented back to you alongside your competitors. Clubtech is white-label by design: the booking happens on the venue&rsquo;s domain, in the venue&rsquo;s design, and every byte of guest data belongs to the venue. That&rsquo;s the core of the <a href="../compare/resortpass-alternative/">Clubtech vs ResortPass comparison</a>.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section shell faq" id="faq">
+    <div class="section-heading centered">
+      <p class="eyebrow">FAQ</p>
+      <h2>Questions operators <span class="indigo-text">ask.</span></h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary><h3>How do venues track bookings in GA4?</h3><span class="faq-toggle" aria-hidden="true">+</span></summary>
+        <p>By sending each completed booking to GA4 as an event with the revenue value attached, in real time, rather than relying on a thank-you-page pageview. On Clubtech this happens automatically: every booking fires to GA4 with revenue posted back, so reports show booked dollars by channel and campaign &mdash; not sessions that may or may not have become money.</p>
+      </details>
+      <details class="faq-item">
+        <summary><h3>What is the Meta Conversions API for bookings?</h3><span class="faq-toggle" aria-hidden="true">+</span></summary>
+        <p>A server-side channel that sends booking events from the venue&#39;s booking system directly to Meta, instead of depending on a browser pixel that ad blockers and iOS privacy settings routinely silence. Clubtech fires completed and abandoned bookings through CAPI within seconds, with revenue values attached, so Meta optimizes toward booked revenue and retargets the guests who almost committed.</p>
+      </details>
+      <details class="faq-item">
+        <summary><h3>How do beach clubs build first-party guest data?</h3><span class="faq-toggle" aria-hidden="true">+</span></summary>
+        <p>By taking bookings on their own domain, so every guest detail lands in a database the venue owns. Clubtech extends this in two directions: whole-party capture records every guest in the group, not just the booker, and priority-entry capture keeps collecting contact details when the venue sells out. The marketable audience grows with every reservation &mdash; sold out included.</p>
+      </details>
+      <details class="faq-item">
+        <summary><h3>What reports does a venue booking system need?</h3><span class="faq-toggle" aria-hidden="true">+</span></summary>
+        <p>Enough to read guests, operations, and the business without exporting a CSV: revenue by hour, booking lead time by daypart, product mix, origin markets, and repeat share, each segmentable and trendable over time. Clubtech ships more than 20 reports across those three views, so the questions a GM asks on Monday are answered in the platform, not rebuilt in a spreadsheet.</p>
+      </details>
+      <details class="faq-item">
+        <summary><h3>How does abandoned booking retargeting work?</h3><span class="faq-toggle" aria-hidden="true">+</span></summary>
+        <p>When a guest leaves checkout without paying, the abandonment fires as a Conversions API event within seconds. Dynamic ads then return that guest to the exact zone, date, and price they walked away from &mdash; not a generic brand ad, but the daybed they were one tap from buying, usually while the group chat is still deciding.</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="section shell" aria-label="Explore the platform">
+    <div class="section-heading centered">
+      <p class="eyebrow">Explore the platform</p>
+      <h2>The loop starts with <span class="indigo-text">a booking.</span></h2>
+      <p>Guest data enters through the <a href="../booking/">booking flow</a> and gets put to work on the <a href="../operations/">floor plan</a> the same day. The commercials stay simple: <a href="../pricing/">no monthly fee, 4% paid by the customer, $2,000 setup</a>.</p>
+      <div class="hero-actions" style="justify-content:center;flex-wrap:wrap">
+        <a class="button button-light" href="../platform/">Platform <span aria-hidden="true">↗</span></a>
+        <a class="button button-light" href="../booking/">Booking <span aria-hidden="true">↗</span></a>
+        <a class="button button-light" href="../operations/">Operations <span aria-hidden="true">↗</span></a>
+        <a class="button button-light" href="../delivery/">Delivery <span aria-hidden="true">↗</span></a>
+        <a class="button button-light" href="../pricing/">Pricing <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="closing dark-section" id="contact">
     <img class="closing-mark" src="../brand/clubtech-mark-white.png" alt="" aria-hidden="true" width="1200" height="1200" loading="lazy">
     <div class="shell centered">
       <p class="eyebrow">Your venue, pre-sold.</p>
-      <h2>Stop reading about it.<br><span class="mint-text">See it live.</span></h2>
-      <p>Book a focused walkthrough, configured around a premium venue like yours.</p>
+      <h2>See your own attribution loop <span class="mint-text">running.</span></h2>
+      <p>15 minutes, no contracts, no credit card &mdash; a walkthrough pre-configured to a venue like yours, bookings firing to the ad platforms with real revenue attached.</p>
       <a class="button button-mint" href="mailto:info@clubtechglobal.com" data-open-demo>Book a demo <span aria-hidden="true">↗</span></a>
     </div>
   </section>
@@ -373,10 +399,10 @@
     </div>
   </div>
 </div>
+<script src="../js/main.js" defer></script>
 <script src="../js/consent.js" defer></script>
 <script src="../js/hubspot.js" defer></script>
 <script src="../js/booking.js" defer></script>
 <script src="../js/analytics.js" defer></script>
-<script src="../js/blog.js" defer></script>
 </body>
 </html>
