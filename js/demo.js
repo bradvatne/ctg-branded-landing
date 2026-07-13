@@ -115,6 +115,16 @@
 
   var PASS = { name: 'Priority Entry Pass', price: 10, was: 40 };
 
+  /* innerHTML-parsed <video autoplay muted> doesn't always start in Chrome —
+     nudge playback explicitly */
+  function nudgeVideo(scope) {
+    $$('video', scope).forEach(function (vid) {
+      vid.muted = true;
+      var p = vid.play();
+      if (p && p.catch) p.catch(function () {});
+    });
+  }
+
   function mediaBg(a) {
     return a.img
       ? 'background-image:url(' + ASSET_BASE + a.img + ');background-size:cover;background-position:center'
@@ -130,7 +140,7 @@
 
   var state = {
     day: 18, pkg: 'party', spot: null, cart: [], addons: {}, pass: 0, addonTab: 'Bottles',
-    timer: 600, timerId: null, view: 'map', interacted: false
+    shopSel: null, timer: 600, timerId: null, view: 'map', interacted: false
   };
 
   function track(n, p) { try { if (window.CTGTrack && window.CTGTrack.event) window.CTGTrack.event(n, p || {}); } catch (_) {} }
@@ -238,8 +248,9 @@
     var cluster = h('div', 'ckd-cluster',
       '<span class="ckd-timer" data-timer>' + I.clock + '<span>10:00</span></span>' +
       '<button type="button" class="ckd-iconbtn" data-cartbtn aria-label="Cart">' + I.cart + '<b hidden>0</b></button>' +
-      '<button type="button" class="ckd-iconbtn" aria-label="Account">' + I.user + '</button>');
+      '<button type="button" class="ckd-iconbtn" data-userbtn aria-label="Account">' + I.user + '</button>');
     $('[data-cartbtn]', cluster).addEventListener('click', function () { openSheet('cart'); });
+    $('[data-userbtn]', cluster).addEventListener('click', function () { openSheet('profile'); });
     top.appendChild(cluster);
     root.appendChild(top);
 
@@ -580,9 +591,10 @@
     var badge = $('[data-cartbtn] b');
     if (badge) { badge.textContent = cartCount(); badge.hidden = !cartCount(); }
     if (!state.cart.length) {
-      bar.innerHTML = '<p style="padding-left:8px">' + I.cal.replace('currentColor', '#1c1c1c') + '</p><p><b>Start your booking now</b></p><button type="button" class="ckd-cta" data-start>Book Now</button>';
-      $('[data-start]', bar).addEventListener('click', openModal);
+      bar.innerHTML = '';
+      bar.style.display = 'none';
     } else {
+      bar.style.display = '';
       var c = state.cart[state.cart.length - 1];
       bar.innerHTML = '<span class="ckd-thumb" style="background-image:url(' + MAP + ');background-position:' + c.x + '% ' + c.y + '%"></span>' +
         '<p>Total<b>' + money(subtotal()) + '</b></p>' +
@@ -600,7 +612,7 @@
       '<div class="ckd-cluster">' +
         '<span class="ckd-timer' + (state.timerId ? ' show' : '') + '" data-timer>' + I.clock + '<span>–:––</span></span>' +
         '<button type="button" class="ckd-iconbtn" data-vcart>' + I.cart + '<b ' + (cartCount() ? '' : 'hidden') + '>' + cartCount() + '</b></button>' +
-        '<button type="button" class="ckd-iconbtn">' + I.user + '</button>' +
+        '<button type="button" class="ckd-iconbtn" data-vuser aria-label="Account">' + I.user + '</button>' +
       '</div></div>';
   }
 
@@ -620,9 +632,12 @@
   function wireAppbar(v) {
     var c = $('[data-vcart]', v);
     if (c) c.addEventListener('click', function () { openSheet('cart'); });
+    var u = $('[data-vuser]', v);
+    if (u) u.addEventListener('click', function () { openSheet('profile'); });
   }
 
   function renderAddons(v) {
+    if (OPTS.mobile || root.clientWidth < 600) return renderShop(v);
     var cats = ['Bottles', 'Special Occasions', 'Experiences'];
     var list = ADDONS.filter(function (a) { return a.cat === state.addonTab; });
     var feat = list[0];
@@ -655,6 +670,7 @@
         '<button type="button" class="ckd-cta" data-checkout>Checkout</button>' +
       '</div>';
     wireAppbar(v);
+    nudgeVideo(v);
     $$('[data-tab]', v).forEach(function (t) {
       t.addEventListener('click', function () { state.addonTab = t.getAttribute('data-tab'); renderAddons(v); });
     });
@@ -668,6 +684,68 @@
     });
     $('[data-back]', v).addEventListener('click', function () { showView('map'); });
     $('[data-checkout]', v).addEventListener('click', function () { showView('review'); });
+  }
+
+  /* mobile add-ons — full-screen shop: full-bleed product media, category
+     tabs over the top, scrollable inventory rail on the right, price block
+     bottom-left, add-to-cart / checkout dock (mirrors the live product) */
+  function renderShop(v) {
+    var cats = ['Bottles', 'Special Occasions', 'Experiences'];
+    var list = ADDONS.filter(function (a) { return a.cat === state.addonTab; });
+    if (!state.shopSel || !list.some(function (a) { return a.id === state.shopSel; })) state.shopSel = list[0].id;
+    var sel = addon(state.shopSel);
+    v.innerHTML =
+      '<div class="ckd-shop">' +
+        (sel.video
+          ? '<video class="media" autoplay muted loop playsinline' + (sel.img ? ' poster="' + ASSET_BASE + sel.img + '" style="' + mediaBg(sel) + '"' : '') + ' src="' + ASSET_BASE + sel.video + '"></video>'
+          : '<div class="media" style="' + mediaBg(sel) + '"></div>') +
+        '<div class="ckd-shop-top">' +
+          '<button type="button" class="ckd-shop-back" data-back aria-label="Back to map">‹</button>' +
+          '<span class="ckd-shop-timer' + (state.timerId ? ' show' : '') + '" data-timer>' + I.clock + '<span>–:––</span></span>' +
+          '<button type="button" class="ckd-shop-iconbtn" data-vcart aria-label="Cart">' + I.cart + '<b ' + (cartCount() ? '' : 'hidden') + '>' + cartCount() + '</b></button>' +
+          '<button type="button" class="ckd-shop-iconbtn" data-vuser aria-label="Account">' + I.user + '</button>' +
+        '</div>' +
+        '<div class="ckd-shop-tabs">' +
+          cats.map(function (c) { return '<button type="button" data-tab="' + c + '" class="' + (c === state.addonTab ? 'on' : '') + '">' + c + '</button>'; }).join('') +
+        '</div>' +
+        '<div class="ckd-shop-rail">' +
+          list.map(function (a) {
+            var on = a.id === state.shopSel;
+            return '<button type="button" class="ckd-shop-thumb' + (on ? ' on' : '') + '" data-sel="' + a.id + '">' +
+              '<span>' + a.name + '</span><i style="' + mediaBg(a) + '">' + (a.img ? '' : a.emoji) + '</i></button>';
+          }).join('') +
+        '</div>' +
+        '<div class="ckd-shop-info">' +
+          '<h3>' + sel.name + '</h3>' +
+          (sel.was ? '<s>' + money(sel.was) + '</s>' : '') +
+          '<p class="p">' + money(sel.price) + '</p>' +
+          (sel.save ? '<span class="savechip">' + sel.save + '</span>' : '') +
+        '</div>' +
+        '<div class="ckd-shop-dock">' +
+          '<div class="tot"><span>Total</span><b>' + money(grand()) + '</b></div>' +
+          '<div class="btns">' +
+            '<button type="button" class="add" data-add="' + sel.id + '">Add to Cart ' + I.cart + '</button>' +
+            '<button type="button" class="co" data-checkout>Checkout</button>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+    nudgeVideo(v);
+    $$('[data-tab]', v).forEach(function (t) {
+      t.addEventListener('click', function () { state.addonTab = t.getAttribute('data-tab'); state.shopSel = null; renderShop(v); });
+    });
+    $$('[data-sel]', v).forEach(function (b) {
+      b.addEventListener('click', function () { state.shopSel = b.getAttribute('data-sel'); renderShop(v); });
+    });
+    $('[data-add]', v).addEventListener('click', function () {
+      var id = sel.id;
+      state.addons[id] = (state.addons[id] || 0) + 1;
+      track('demo_addon_add', { addon: id });
+      renderShop(v); renderBar();
+    });
+    $('[data-back]', v).addEventListener('click', function () { showView('map'); });
+    $('[data-checkout]', v).addEventListener('click', function () { showView('review'); });
+    $('[data-vcart]', v).addEventListener('click', function () { openSheet('cart'); });
+    $('[data-vuser]', v).addEventListener('click', function () { openSheet('profile'); });
   }
 
   function renderReview(v) {
@@ -825,6 +903,22 @@
         }
         openSheet('cart');
       });
+    }
+    if (name === 'profile') {
+      s.innerHTML = sheetShell('<h3 class="center">Account</h3>',
+        '<div class="ckd-acct">' +
+          '<span class="av">' + I.user + '</span>' +
+          '<h6>You’re browsing as a guest</h6>' +
+          '<p>Sign in to see your bookings and check out faster.</p>' +
+          '<div class="ckd-sso"><button type="button" aria-label="Continue with Google">' + I.google + '</button>' +
+          '<button type="button" aria-label="Continue with Meta">' + I.meta + '</button></div>' +
+        '</div>' +
+        '<div class="ckd-acct-rows">' +
+          '<button type="button" data-acct="bookings">' + I.doc + '<span>My Bookings</span><i>›</i></button>' +
+          '<button type="button">' + I.tick + '<span>Payment Methods</span><i>›</i></button>' +
+          '<button type="button">' + I.ppl + '<span>Help &amp; Support</span><i>›</i></button>' +
+        '</div>');
+      $('[data-acct="bookings"]', s).addEventListener('click', function () { openSheet('cart'); });
     }
     if (name === 'promos') {
       s.innerHTML = sheetShell('<h3>Promotions</h3>',

@@ -494,3 +494,56 @@
 .ckd-morebtn{width:100%;height:48px;border-radius:999px;border:1px solid #e2e2e2;background:#fff;font-size:13.5px;font-weight:600}
 .ckd-booknow{width:100%;height:50px;border-radius:999px;background:#1c1c1c;color:#fff;font-size:13.5px;font-weight:600}
 .ckd-booknow:hover{background:#000}
+
+/* account / profile sheet */
+.ckd-acct{text-align:center;padding:4px 0 14px;border-bottom:1px solid #f0f0f0}
+.ckd-acct .av{width:64px;height:64px;margin:4px auto 0;border-radius:50%;background:#f2f2f2;display:grid;place-items:center;color:#1c1c1c}
+.ckd-acct .av svg{width:30px;height:30px}
+.ckd-acct h6{margin:12px 0 0;font-size:14.5px;font-weight:700}
+.ckd-acct p{margin:5px auto 0;max-width:250px;font-size:12px;color:#3f3f46;font-weight:500}
+.ckd-acct .ckd-sso{max-width:250px;margin:14px auto 0}
+.ckd-acct .ckd-sso button{height:44px}
+.ckd-acct-rows{padding-top:6px}
+.ckd-acct-rows button{width:100%;display:flex;align-items:center;gap:12px;padding:13px 4px;border-bottom:1px solid #f4f4f4;font-size:13.5px;font-weight:600;color:#1c1c1c;text-align:left}
+.ckd-acct-rows button svg{width:19px;height:19px;flex:none;color:#3f3f46}
+.ckd-acct-rows button span{flex:1}
+.ckd-acct-rows button i{font-style:normal;color:#9b9b9b;font-size:16px}
+
+/* ═══ mobile add-ons — full-screen shop (TikTok-shop style) ═══ */
+.ckd-shop{position:absolute;inset:0;background:#0b0b0d;color:#fff;overflow:hidden}
+.ckd-shop .media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background-size:cover;background-position:center}
+.ckd-shop::before{content:"";position:absolute;left:0;right:0;top:0;height:32%;background:linear-gradient(180deg,rgba(8,8,10,.6),transparent);pointer-events:none}
+.ckd-shop::after{content:"";position:absolute;left:0;right:0;bottom:0;height:44%;background:linear-gradient(180deg,transparent,rgba(8,8,10,.78) 72%);pointer-events:none}
+.ckd-shop-top{position:absolute;top:10px;left:10px;right:10px;z-index:5;display:flex;align-items:center;justify-content:flex-end;gap:8px}
+.ckd-shop-back{width:38px;height:38px;margin-right:auto;border-radius:50%;background:rgba(28,28,32,.55);backdrop-filter:blur(6px);color:#fff;font-size:22px;display:grid;place-items:center;padding-bottom:3px}
+.ckd-shop-timer{display:none;align-items:center;gap:6px;height:38px;padding:0 14px;border-radius:999px;border:1.5px solid #e02d3c;background:rgba(28,28,32,.55);backdrop-filter:blur(6px);color:#fff;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+.ckd-shop-timer.show{display:inline-flex}
+.ckd-shop-timer svg{width:14px;height:14px;color:#ff5a4e}
+.ckd-shop-iconbtn{position:relative;width:38px;height:38px;border-radius:50%;background:rgba(28,28,32,.55);backdrop-filter:blur(6px);color:#fff;display:grid;place-items:center}
+.ckd-shop-iconbtn svg{width:19px;height:19px}
+.ckd-shop-iconbtn b{position:absolute;top:-3px;right:-3px;min-width:16px;height:16px;padding:0 4px;border-radius:999px;background:#e02d3c;color:#fff;font-size:10px;font-weight:700;display:grid;place-items:center}
+.ckd-shop-iconbtn b[hidden]{display:none}
+.ckd-shop-tabs{position:absolute;top:58px;left:12px;right:64px;z-index:5;display:flex;align-items:center;gap:6px;overflow-x:auto;scrollbar-width:none}
+.ckd-shop-tabs::-webkit-scrollbar{display:none}
+.ckd-shop-tabs button{flex:none;height:34px;padding:0 12px;border-radius:10px;color:#fff;font-size:13px;font-weight:600;text-shadow:0 1px 6px rgba(0,0,0,.45);white-space:nowrap}
+.ckd-shop-tabs button.on{background:rgba(255,255,255,.3);backdrop-filter:blur(6px);text-shadow:none}
+.ckd-shop-rail{position:absolute;right:8px;top:104px;bottom:158px;z-index:4;display:flex;flex-direction:column;align-items:flex-end;gap:14px;overflow-y:auto;scrollbar-width:none;padding:4px 0}
+.ckd-shop-rail::-webkit-scrollbar{display:none}
+.ckd-shop-thumb{flex:none;display:flex;align-items:center;justify-content:flex-end;gap:7px;color:#fff}
+.ckd-shop-thumb span{max-width:76px;font-size:9.5px;font-weight:600;color:rgba(255,255,255,.85);text-align:right;text-shadow:0 1px 5px rgba(0,0,0,.55);line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.ckd-shop-thumb i{flex:none;width:44px;height:56px;border-radius:12px;background-size:cover;background-position:center;display:grid;place-items:center;font-size:20px;font-style:normal;opacity:.92;box-shadow:0 3px 12px rgba(0,0,0,.35)}
+.ckd-shop-thumb.on span{max-width:84px;font-size:12.5px;font-weight:700;color:#fff;-webkit-line-clamp:3}
+.ckd-shop-thumb.on i{width:62px;height:82px;border-radius:16px;border:1.5px solid rgba(255,255,255,.9);opacity:1;font-size:26px}
+.ckd-shop-info{position:absolute;left:14px;right:104px;bottom:132px;z-index:4;text-shadow:0 1px 8px rgba(0,0,0,.45)}
+.ckd-shop-info h3{margin:0;font-size:19px;font-weight:800}
+.ckd-shop-info s{display:block;margin-top:4px;font-size:12px;color:rgba(255,255,255,.72)}
+.ckd-shop-info .p{margin:1px 0 0;font-size:17px;font-weight:800}
+.ckd-shop-info .savechip{display:inline-block;margin-top:7px;background:#8f3125;border-radius:6px;padding:4px 9px;font-size:10.5px;font-weight:700;text-shadow:none}
+.ckd-shop-dock{position:absolute;left:0;right:0;bottom:0;z-index:6;padding:6px 14px 14px}
+.ckd-shop-dock .tot{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.ckd-shop-dock .tot span{font-size:13px;font-weight:600}
+.ckd-shop-dock .tot b{font-size:17.5px;font-weight:800}
+.ckd-shop-dock .btns{display:flex;gap:9px}
+.ckd-shop-dock .add{flex:1.5;height:48px;border-radius:999px;background:#fff;color:#141414;font-size:13.5px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.ckd-shop-dock .add svg{width:16px;height:16px}
+.ckd-shop-dock .co{flex:1;height:48px;border-radius:999px;background:rgba(20,20,22,.6);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.55);color:#fff;font-size:13.5px;font-weight:600}
