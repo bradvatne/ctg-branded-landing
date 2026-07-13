@@ -38,7 +38,7 @@ The deeper difference is where demand comes from. Fourvenues is built to orchest
 
 Day venues buy their demand from Meta and Google, and that machine needs different plumbing. On Clubtech, the booking is the conversion event: every reservation fires to Meta, Google, and GA4 in real time with its revenue value posted back, so campaigns optimize on dollars rather than clicks. Abandoned checkouts trigger CAPI events within seconds, and dynamic ads return the guest to the exact zone, date, and price they left. Lookalike audiences are seeded from your highest-LTV bookers. Fourvenues does integrate with Meta and Google for campaign tracking; the question to press in any demo is depth — server-side events, revenue postback, abandoned-cart recovery — because that's where paid-social economics are won.
 
-Mobile is the other pressure point: 82% of Clubtech bookings happen on a phone after 10pm. Sub-second load, four-tap checkout, no app install — the [mobile experience](https://www.clubtechglobal.com/mobile.html) is built for the guest deciding from the sofa on Thursday night.
+Mobile is the other pressure point: 82% of Clubtech bookings happen on a phone after 10pm. Sub-second load, four-tap checkout, no app install — the [mobile experience](../../booking/#four-tap-checkout) is built for the guest deciding from the sofa on Thursday night.
 
 ## Where each platform fits
 

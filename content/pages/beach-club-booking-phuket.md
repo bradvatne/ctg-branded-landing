@@ -33,7 +33,7 @@ Every booking also fires to Meta, Google, and GA4 in real time with revenue atta
 
 ## A checkout for every passport
 
-Phuket's guest mix is the payment problem in miniature: one Saturday's front row can hold six nationalities. Clubtech checkout is multi-currency, with Apple Pay and Google Pay alongside international cards — so the guest booking from a Melbourne departure gate and the one booking from a Kamala villa close in the same four taps. The [platform](https://www.clubtechglobal.com/platform.html) runs white-label throughout: your domain, your design, your guest data. A guest never sees our name — they see a faster version of your brand.
+Phuket's guest mix is the payment problem in miniature: one Saturday's front row can hold six nationalities. Clubtech checkout is multi-currency, with Apple Pay and Google Pay alongside international cards — so the guest booking from a Melbourne departure gate and the one booking from a Kamala villa close in the same four taps. The [platform](../../platform/) runs white-label throughout: your domain, your design, your guest data. A guest never sees our name — they see a faster version of your brand.
 
 The commercials fit an island where margins live in the season: no monthly fee, a one-time $2,000 setup, and a 4% online processing fee paid by the customer. The platform earns when your deck sells, not before.
 
@@ -71,4 +71,4 @@ By capturing demand instead of just serving it. Priority-entry capture takes gue
 
 ---
 
-**See your venue on Clubtech.** 15 minutes, no pitch deck, no contracts — we'll show up with the map already built for a venue like yours. [Book a demo](https://www.clubtechglobal.com/contact.html)
+**See your venue on Clubtech.** 15 minutes, no pitch deck, no contracts — we'll show up with the map already built for a venue like yours. [Book a demo](mailto:info@clubtechglobal.com)

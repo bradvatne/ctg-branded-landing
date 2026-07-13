@@ -44,7 +44,7 @@ Direct software inverts that. Your domain, your pricing, your guest profiles —
 
 ## Room-rate discipline, applied to the deck
 
-Hotels already run rooms on data. A pre-sold deck finally gives the same discipline to the pool: more than 20 built-in reports cover booking volume, lead time by daypart, average value by furniture type, and repeat share, so a revenue manager can see that cabanas sell out days ahead while Sunday daybeds run soft — and price accordingly with dynamic pricing. It's the difference between generic venue booking software and a system that understands furniture, zones, and dayparts as the actual inventory. The [analytics overview](https://www.clubtechglobal.com/analytics.html) shows the reporting live.
+Hotels already run rooms on data. A pre-sold deck finally gives the same discipline to the pool: more than 20 built-in reports cover booking volume, lead time by daypart, average value by furniture type, and repeat share, so a revenue manager can see that cabanas sell out days ahead while Sunday daybeds run soft — and price accordingly with dynamic pricing. It's the difference between generic venue booking software and a system that understands furniture, zones, and dayparts as the actual inventory. The [analytics overview](../../intelligence/) shows the reporting live.
 
 The commercials fit a hotel's ancillary math: no monthly fee, a 4% online processing fee paid by the customer, and a $2,000 one-time setup per property covering widget setup, configuration, and staff training. FINNS Beach Club — whose CEO Beau Whittington describes moving from on-the-day bookings with no financial guarantee to millions of dollars in pre-paid bookings each month — runs the same engine at resort scale.
 

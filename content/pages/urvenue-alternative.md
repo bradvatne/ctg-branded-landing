@@ -50,7 +50,7 @@ Set side by side, the differences trace back to who each platform was built for.
 - **Sold-out handling.** Clubtech captures priority-entry and free-entry contact data when furniture is gone, so sold out never means lost guest; UrVenue offers ticket waitlists that let guests buy as availability changes.
 - **Commercials.** UrVenue's pricing is quote-based — its own FAQ directs venues to contact sales for a tailored quote. Clubtech publishes its numbers: no monthly fee, a 4% online processing fee paid by the customer, and a one-time $2,000 setup fee per venue.
 
-The UrVenue side reflects their public materials as of July 2026; where they don't publish detail — ad-platform attribution, specific payment gateways — we've said so rather than guessed. The full revenue architecture behind the Clubtech side is on the [revenue page](https://www.clubtechglobal.com/revenue.html).
+The UrVenue side reflects their public materials as of July 2026; where they don't publish detail — ad-platform attribution, specific payment gateways — we've said so rather than guessed. The full revenue architecture behind the Clubtech side is on the [revenue page](../../booking/).
 
 ## What switching actually looks like
 

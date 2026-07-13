@@ -7,6 +7,42 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://bradvatne.github.io/ctg-branded-landing/platform/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bradvatne.github.io/ctg-branded-landing/booking/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bradvatne.github.io/ctg-branded-landing/operations/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bradvatne.github.io/ctg-branded-landing/intelligence/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bradvatne.github.io/ctg-branded-landing/delivery/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bradvatne.github.io/ctg-branded-landing/pricing/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://bradvatne.github.io/ctg-branded-landing/blog/</loc>
     <lastmod>2026-07-12</lastmod>
     <changefreq>weekly</changefreq>

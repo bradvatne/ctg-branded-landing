@@ -50,7 +50,7 @@ On the floor, the same data runs service: online sales sync to the interactive i
 
 Each booking fires to Meta, Google, and GA4 in real time, with revenue posted back — so campaigns optimize toward booking value, not clicks. Lookalike audiences get seeded from your cabana-and-bottles bookers, not the free-entry list. Abandoned bookings trigger retargeting within seconds, returning a group to the exact zone, date, and price they walked away from — usually before the group chat has agreed on a different venue.
 
-And because 82% of bookings happen on a phone after 10pm — the group chat hour — the checkout is built for that moment: sub-second load, no app install, Apple Pay and Google Pay, done in four taps. The [mobile booking experience](https://www.clubtechglobal.com/mobile.html) shows the flow end to end.
+And because 82% of bookings happen on a phone after 10pm — the group chat hour — the checkout is built for that moment: sub-second load, no app install, Apple Pay and Google Pay, done in four taps. The [mobile booking experience](../../booking/#four-tap-checkout) shows the flow end to end.
 
 The commercials match the model: no monthly fee, a 4% online processing fee paid by the customer, and a $2,000 one-time setup covering widget setup, configuration, and staff training. Clubtech sits on top of your existing POS with no major IT changes.
 

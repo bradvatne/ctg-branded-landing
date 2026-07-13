@@ -36,7 +36,7 @@ The commercials fit a seasonal business: no monthly fee, a one-time $2,000 setup
 
 ## Proven where the season is even harsher
 
-Clubtech's flagship proof point is FINNS Beach Club in Bali — one of the most-searched beach clubs in the world — where the platform took the venue from on-the-day bookings with no financial guarantee to millions of dollars of pre-paid bookings each month. Bali is a different market, but the mechanics that moved — map-first booking, prepayment, package ladders, priority capture when zones sell out — are the same ones an Ibiza deck runs on, compressed into five months instead of twelve. Clubtech supports venue partners in more than seven countries and processes $332k in weekly GMV; the [platform overview](https://www.clubtechglobal.com/platform.html) shows the full engine, and the same model is live for short-season Mediterranean markets like [Mykonos](https://bradvatne.github.io/ctg-branded-landing/solutions/beach-club-booking-mykonos/).
+Clubtech's flagship proof point is FINNS Beach Club in Bali — one of the most-searched beach clubs in the world — where the platform took the venue from on-the-day bookings with no financial guarantee to millions of dollars of pre-paid bookings each month. Bali is a different market, but the mechanics that moved — map-first booking, prepayment, package ladders, priority capture when zones sell out — are the same ones an Ibiza deck runs on, compressed into five months instead of twelve. Clubtech supports venue partners in more than seven countries and processes $332k in weekly GMV; the [platform overview](../../platform/) shows the full engine, and the same model is live for short-season Mediterranean markets like [Mykonos](https://bradvatne.github.io/ctg-branded-landing/solutions/beach-club-booking-mykonos/).
 
 ## The pre-season checklist
 
@@ -66,4 +66,4 @@ No. Clubtech sits on top of the stack you already run, integrating with existing
 
 ---
 
-**See your venue on Clubtech.** 15 minutes, no pitch deck, no contracts — we'll show up with the map already built for a venue like yours. [Book a demo](https://www.clubtechglobal.com/contact.html)
+**See your venue on Clubtech.** 15 minutes, no pitch deck, no contracts — we'll show up with the map already built for a venue like yours. [Book a demo](mailto:info@clubtechglobal.com)

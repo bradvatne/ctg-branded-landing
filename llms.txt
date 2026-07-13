@@ -13,6 +13,12 @@ Key facts:
 ## Pages
 
 - [Landing page](https://bradvatne.github.io/ctg-branded-landing/): platform overview, booking journey, operations, pricing, FAQ
+- [Platform](https://bradvatne.github.io/ctg-branded-landing/platform/): the all-in-one platform — reservations, front of house, and marketing
+- [Booking](https://bradvatne.github.io/ctg-branded-landing/booking/): the guest booking journey — 3D map, packages, add-ons, dynamic pricing, gift cards
+- [Operations](https://bradvatne.github.io/ctg-branded-landing/operations/): floor plan, seating allocation, inventory sync, guest lists
+- [Intelligence](https://bradvatne.github.io/ctg-branded-landing/intelligence/): guest data, 20+ reports, Meta/Google/GA4 attribution
+- [Delivery](https://bradvatne.github.io/ctg-branded-landing/delivery/): five-stage rollout with a dedicated account lead and 90-day hypercare
+- [Pricing](https://bradvatne.github.io/ctg-branded-landing/pricing/): no monthly fee, 4% online processing paid by the customer, $2,000 setup
 - [The Index (blog)](https://bradvatne.github.io/ctg-branded-landing/blog/): operator playbooks on booking UX, revenue capture, and guest data
 
 ## Solutions

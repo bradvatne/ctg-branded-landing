@@ -44,7 +44,7 @@ This is the same mechanic that took FINNS Beach Club from on-the-day bookings wi
 
 Most nightclub table booking software stops at the reservation. Clubtech runs the service side too: online sales sync to an interactive internal floor plan in real time, automatic seating allocation places parties, and guest-list and visitor management replaces the clipboard at the door. At 9pm the operator console already shows where tonight's revenue is sitting — which booths are prepaid, what each table ordered, who's on the list. Hosts greet confirmed parties by name instead of triaging a queue of maybes.
 
-That's the difference between table booking bolted onto venue management software and a platform where the booking map and the floor plan are the same object. See the [operations overview](https://www.clubtechglobal.com/operations.html) for how the service day runs.
+That's the difference between table booking bolted onto venue management software and a platform where the booking map and the floor plan are the same object. See the [operations overview](../../operations/) for how the service day runs.
 
 ## Tonight's bottle buyer is next month's audience
 

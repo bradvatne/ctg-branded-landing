@@ -37,7 +37,7 @@ Here's the honest reason Hoteligy doesn't market an ads pipeline: its audience i
 
 On Clubtech, the booking is the conversion event. Day-pass and cabana bookings fire to Meta, Google, and GA4 in real time with revenue values posted back, so campaigns optimize on dollars. Abandoned checkouts trigger CAPI events within seconds, and dynamic ads return the guest to the exact zone, date, and price they left. Lookalike audiences are seeded from your highest-value bookers, and the platform captures marketing data on every guest in the party — not just the booker — so the marketable audience compounds with every reservation. When the deck sells out, priority-entry capture turns the miss into a lead.
 
-This also reframes the marketplace question. Hotels exploring day-pass revenue often start with a listing on a marketplace — and pay commission on a guest whose account stays with the platform. An owned channel on your domain keeps the pricing, the margin, and the guest relationship. The full architecture — booking flow, operations, and attribution in one system — is on the [platform page](https://www.clubtechglobal.com/platform.html).
+This also reframes the marketplace question. Hotels exploring day-pass revenue often start with a listing on a marketplace — and pay commission on a guest whose account stays with the platform. An owned channel on your domain keeps the pricing, the margin, and the guest relationship. The full architecture — booking flow, operations, and attribution in one system — is on the [platform page](../../platform/).
 
 ## Where each platform fits
 

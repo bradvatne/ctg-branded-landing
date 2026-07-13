@@ -31,7 +31,7 @@ Clubtech captures revenue at every touchpoint, not just the moment of booking:
 3. **Dynamic pricing.** Saturday front row and Wednesday shade line are different products. Pricing to demand earns more from the same furniture.
 4. **Abandoned-booking retargeting.** A guest who browsed a date and left gets pulled back by dynamic ads showing the exact zone, date, and price they abandoned — the event fires within seconds.
 
-Minimum spends slot into the same architecture: attached to specific furniture and dayparts, set at booking with prepayment behind them, so the minimum is a guarantee rather than a doorstep argument. The [revenue overview](https://www.clubtechglobal.com/revenue.html) breaks down each lever.
+Minimum spends slot into the same architecture: attached to specific furniture and dayparts, set at booking with prepayment behind them, so the minimum is a guarantee rather than a doorstep argument. The [revenue overview](../../booking/) breaks down each lever.
 
 ## Sold out is a list, not a dead end
 

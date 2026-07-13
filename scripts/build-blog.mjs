@@ -221,12 +221,15 @@ function listingJsonLd(posts) {
 }
 
 /* ─── Shared chrome ──────────────────────────────────────────── */
+/* Standalone feature pages at the site root (hand-written, not generated). */
+const FEATURE_PAGES = [
+  ['platform', 'Platform'], ['booking', 'Booking'], ['operations', 'Operations'],
+  ['intelligence', 'Intelligence'], ['delivery', 'Delivery'], ['pricing', 'Pricing'],
+];
+
 /* rel = path prefix back to the site root ('../' listing, '../../' posts). */
 function navMarkup(rel, active = 'blog') {
-  const links = [
-    ['#platform', 'Platform'], ['#booking', 'Booking'], ['#operations', 'Operations'],
-    ['#intelligence', 'Intelligence'], ['#delivery', 'Delivery'], ['#pricing', 'Pricing'],
-  ].map(([hash, label]) => [`${rel}index.html${hash}`, label]);
+  const links = FEATURE_PAGES.map(([slug, label]) => [`${rel}${slug}/`, label]);
   const items = links.map(([href, label]) => `        <a href="${href}">${label}</a>`).join('\n');
   const mobItems = links.map(([href, label]) => `          <a href="${href}">${label}</a>`).join('\n');
   return `  <header class="nav-wrap scrolled">
@@ -289,11 +292,7 @@ ${links.map(([href, label]) => `        <a href="${href}">${esc(label)}</a>`).jo
     <div class="footer-top">
       <a href="${rel}index.html" class="brand"><img src="${rel}brand/clubtech-wordmark-white.png" alt="Clubtech" width="190" height="48"></a>
       <div>
-        <a href="${rel}index.html#platform">Platform</a>
-        <a href="${rel}index.html#booking">Booking</a>
-        <a href="${rel}index.html#operations">Operations</a>
-        <a href="${rel}index.html#intelligence">Intelligence</a>
-        <a href="${rel}index.html#pricing">Pricing</a>
+${FEATURE_PAGES.map(([slug, label]) => `        <a href="${rel}${slug}/">${label}</a>`).join('\n')}
         <a href="${rel}blog/">Blog</a>
         <a href="mailto:info@clubtechglobal.com">Contact</a>
         <a href="#" data-open-consent>Cookie preferences</a>
@@ -507,7 +506,7 @@ ${navMarkup('../../', page.meta.section === 'solutions' ? 'solutions' : null)}
         <p class="post-sub">${esc(page.meta.excerpt)}</p>
         <div class="post-hero-actions">
           <a class="button button-mint" href="mailto:info@clubtechglobal.com" data-open-demo>Book a demo <span aria-hidden="true">↗</span></a>
-          <a class="button button-ghost" href="../../index.html#platform">See the platform <span aria-hidden="true">↗</span></a>
+          <a class="button button-ghost" href="../../platform/">See the platform <span aria-hidden="true">↗</span></a>
         </div>
       </div>
     </header>
@@ -821,6 +820,7 @@ function renderSitemap(posts, pages) {
   const latest = posts[0]?.meta.date || '2026-01-01';
   const entries = [
     { loc: `${SITE_ORIGIN}/`, lastmod: latest, changefreq: 'weekly', priority: '1.0' },
+    ...FEATURE_PAGES.map(([slug]) => ({ loc: `${SITE_ORIGIN}/${slug}/`, lastmod: latest, changefreq: 'monthly', priority: '0.8' })),
     { loc: `${SITE_ORIGIN}/blog/`, lastmod: latest, changefreq: 'weekly', priority: '0.8' },
     ...Object.keys(PAGE_SECTIONS).map((sec) => ({ loc: `${SITE_ORIGIN}/${sec}/`, lastmod: latest, changefreq: 'weekly', priority: '0.7' })),
     ...pages.filter((p) => !p.meta.canonical).map((p) => ({
@@ -860,6 +860,12 @@ Key facts:
 ## Pages
 
 - [Landing page](${SITE_ORIGIN}/): platform overview, booking journey, operations, pricing, FAQ
+- [Platform](${SITE_ORIGIN}/platform/): the all-in-one platform — reservations, front of house, and marketing
+- [Booking](${SITE_ORIGIN}/booking/): the guest booking journey — 3D map, packages, add-ons, dynamic pricing, gift cards
+- [Operations](${SITE_ORIGIN}/operations/): floor plan, seating allocation, inventory sync, guest lists
+- [Intelligence](${SITE_ORIGIN}/intelligence/): guest data, 20+ reports, Meta/Google/GA4 attribution
+- [Delivery](${SITE_ORIGIN}/delivery/): five-stage rollout with a dedicated account lead and 90-day hypercare
+- [Pricing](${SITE_ORIGIN}/pricing/): no monthly fee, 4% online processing paid by the customer, $2,000 setup
 - [The Index (blog)](${SITE_ORIGIN}/blog/): operator playbooks on booking UX, revenue capture, and guest data`];
   for (const sectionKey of Object.keys(PAGE_SECTIONS)) {
     const sectionPages = pages.filter((p) => p.meta.section === sectionKey);

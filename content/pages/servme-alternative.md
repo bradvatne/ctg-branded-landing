@@ -48,7 +48,7 @@ The honest sorting rule:
 - **Choose Clubtech** if your venue's core transaction is furniture and dayparts — a beach club, day club, or pool where daybeds, cabanas, and packages are the margin — and paid social is how you fill them. That's the model we built for [beach clubs in Dubai](https://bradvatne.github.io/ctg-branded-landing/solutions/beach-club-booking-dubai/) specifically.
 - **Running both is plausible** at venues that are genuinely two businesses — a dining room on covers, a deck on furniture. Clubtech integrates with your existing POS and PMS rather than replacing them, so it sits alongside a guest-management stack with no major IT changes.
 
-Beyond the booking flow, Clubtech also runs the service day: the online inventory syncs to an interactive internal floor plan with automatic seating allocation and guest-list management, so front of house knows what's booked before doors open. The full operator console is on the [operations page](https://www.clubtechglobal.com/operations.html).
+Beyond the booking flow, Clubtech also runs the service day: the online inventory syncs to an interactive internal floor plan with automatic seating allocation and guest-list management, so front of house knows what's booked before doors open. The full operator console is on the [operations page](../../operations/).
 
 ## Commercials, side by side
 
