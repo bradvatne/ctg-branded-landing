@@ -403,3 +403,94 @@
 
 /* featured add-on video loop */
 .ckd-feature .featvid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+/* ═══ mobile chrome mode (.ckd.mobile — real product mobile layout) ═══ */
+.ckd.mobile .ckd-stepper,.ckd.mobile .ckd-rail,.ckd.mobile .ckd-bar{display:none}
+.ckd.mobile .ckd-cluster .ckd-timer{display:none!important}
+.ckd.mobile .ckd-top{left:10px;right:10px;top:10px;background:#fff;border-radius:999px;padding:5px;box-shadow:0 2px 10px rgba(0,0,0,.14);gap:6px;align-items:center}
+.ckd.mobile .ckd-logo{width:34px;height:34px;box-shadow:none}
+.ckd.mobile .ckd-logo svg{width:22px}
+.ckd.mobile .ckd-datepill{flex:1;height:36px;min-width:0;border:0;box-shadow:none;font-size:12.5px;padding:0 8px}
+.ckd.mobile .ckd-cluster{box-shadow:none;padding:0}
+.ckd.mobile .ckd-iconbtn{width:32px;height:32px}
+.ckd.mobile .ckd-zones{display:flex;top:62px;bottom:auto;left:10px;right:10px;max-width:none}
+.ckd.mobile .ckd-zcard{padding:6px 13px 8px;border-radius:12px}
+.ckd.mobile .ckd-zcard small{font-size:9.5px}
+.ckd.mobile .ckd-zcard strong{font-size:11.5px;white-space:nowrap}
+.ckd.mobile .ckd-znext{display:none}
+.ckd.mobile .ckd-zoom{bottom:126px;right:10px}
+.ckd.mobile .ckd-badge{top:112px}
+.ckd-flytimer{display:none;position:absolute;left:10px;bottom:126px;z-index:44;align-items:center;gap:5px;background:#fff;border:1.5px solid #e02d3c;color:#e02d3c;border-radius:999px;padding:7px 13px;font-size:12.5px;font-weight:700;font-variant-numeric:tabular-nums;box-shadow:0 2px 8px rgba(0,0,0,.14)}
+.ckd-flytimer svg{width:14px;height:14px}
+.ckd-flytimer.show{display:inline-flex}
+.ckd-tabbar{position:absolute;left:0;right:0;bottom:0;z-index:46;background:#fff;border-top:1px solid #f0f0f0;display:flex;padding:9px 2px 11px}
+.ckd-tabbar button{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;font-size:8px;font-weight:600;letter-spacing:.05em;color:#3f3f46;text-transform:uppercase;text-align:center;line-height:1.3}
+.ckd-tabbar svg{width:19px;height:19px;color:#7c3aed}
+.ckd.mobile .ckd-panel{top:auto;bottom:0;width:100%;height:74%;transform:translateY(103%);border-radius:22px 22px 0 0;box-shadow:0 -14px 44px rgba(0,0,0,.25)}
+.ckd.mobile .ckd-panel.open{transform:none}
+.ckd.mobile .ckd-panel-scroll::before{content:"";display:block;width:36px;height:4px;border-radius:999px;background:#dcdcdc;margin:-6px auto 10px}
+
+/* ═══ bottom sheets (cart / skip-queue / promos / free-entry zones) ═══ */
+.ckd-sheetscrim{position:absolute;inset:0;z-index:56;background:rgba(10,10,12,.45);opacity:0;pointer-events:none;transition:opacity .3s}
+.ckd-sheetscrim.open{opacity:1;pointer-events:auto}
+.ckd-sheet{position:absolute;left:0;right:0;bottom:0;z-index:57;background:#fff;border-radius:22px 22px 0 0;max-height:82%;display:flex;flex-direction:column;transform:translateY(103%);transition:transform .35s cubic-bezier(.22,.8,.3,1);box-shadow:0 -14px 44px rgba(0,0,0,.3)}
+.ckd-sheet.open{transform:none}
+.ckd-sheet-head{flex:none;padding:9px 18px 8px;position:relative}
+.ckd-sheet-head::before{content:"";display:block;width:36px;height:4px;border-radius:999px;background:#dcdcdc;margin:0 auto 10px}
+.ckd-sheet-head h3{margin:0;font-size:17.5px;font-weight:700}
+.ckd-sheet-head h3.center{text-align:center;font-size:15.5px}
+.ckd-sheet-head .ckd-x{top:18px;right:14px}
+.ckd-sheet-body{flex:1;overflow-y:auto;padding:2px 18px 16px}
+.ckd-sheet-foot{flex:none;padding:10px 16px 14px;display:flex;flex-direction:column;gap:9px}
+
+/* free entry party zones */
+.ckd-social-copy{margin:2px 0 12px;font-size:12px;color:#3f3f46;font-weight:400;line-height:1.55}
+.ckd-socialrow{display:flex;gap:11px;overflow-x:auto;scrollbar-width:none;padding-bottom:6px}
+.ckd-socialrow::-webkit-scrollbar{display:none}
+.ckd-social{position:relative;flex:none;width:192px;height:252px;border-radius:16px;overflow:hidden;background-size:cover;background-position:center;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;padding:10px}
+.ckd-social::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.55))}
+.ckd-social .chip{position:relative;z-index:1;display:inline-flex;align-items:center;gap:4px;border-radius:8px;padding:4px 9px;font-size:10px;font-weight:700;margin-bottom:6px}
+.ckd-social .chip.ocean{background:#e3f2fd;color:#1867c0}
+.ckd-social .chip.free{background:#fdeee3;color:#e2620e}
+.ckd-social strong{position:absolute;z-index:1;left:12px;bottom:11px;color:#fff;font-size:15px;font-weight:800;text-shadow:0 2px 8px rgba(0,0,0,.5)}
+
+/* skip the queue */
+.ckd-qbanner{border-radius:16px;padding:16px;background:linear-gradient(180deg,#7ce8c8,#eafff7);margin-bottom:14px}
+.ckd-qbanner .off{display:inline-flex;align-items:center;gap:6px;background:#0d7a56;color:#fff;border-radius:999px;padding:6px 12px;font-size:11px;font-weight:800}
+.ckd-qbanner h5{margin:11px 0 0;font-size:14px;font-weight:700;color:#0b3b2c}
+.ckd-qbanner p{margin:5px 0 0;font-size:11.5px;color:#2d6a54;font-weight:500}
+.ckd-qdays h4{margin:0 0 9px;font-size:14px;font-weight:700}
+.ckd-qtotal{display:flex;align-items:center;justify-content:space-between;border-top:1px solid #ececec;margin-top:14px;padding-top:12px;font-size:13px;font-weight:600}
+.ckd-qtotal b{font-size:15.5px;font-weight:800}
+.ckd-qtotal s{color:#9b9b9b;font-weight:500;font-size:11.5px;margin-right:6px}
+.ckd-qbook{width:100%;height:48px;border-radius:14px;background:#7bd7bb;color:#fff;font-size:14px;font-weight:700;margin-top:11px;transition:background .15s}
+.ckd-qbook:hover{background:#57c9a6}
+.ckd-qbook.added{background:#1c1c1c}
+
+/* promotions */
+.ckd-promo{display:flex;align-items:center;gap:12px;border:1px solid #ececec;border-radius:16px;padding:11px;margin-bottom:11px}
+.ckd-promo .th{width:64px;height:64px;border-radius:10px;flex:none;background-size:cover;background-position:center}
+.ckd-promo>div{flex:1;min-width:0}
+.ckd-promo h6{margin:0;font-size:13px;font-weight:700}
+.ckd-promo .sub{margin:3px 0 0;font-size:11.5px;color:#1c1c1c;font-weight:600}
+.ckd-promo p{margin:3px 0 0;font-size:10.5px;color:#6e6e6e;font-weight:400;line-height:1.45}
+.ckd-promo .chev{color:#9b9b9b;font-size:16px;flex:none}
+
+/* cart sheet */
+.ckd-cart-date{display:flex;justify-content:center;margin:0 0 8px}
+.ckd-cart-date span{display:inline-flex;align-items:center;gap:7px;border:1px solid #ececec;border-radius:999px;padding:8px 15px;font-size:12.5px;font-weight:600}
+.ckd-cart-date svg{width:14px;height:14px}
+.ckd-cartitem{position:relative;display:flex;gap:12px;padding:12px 2px;border-bottom:1px dashed #dcdcdc}
+.ckd-cartitem .th{width:72px;height:72px;border-radius:10px;flex:none;background-image:url(../assets/demo/venue-real.jpg);background-size:420%;background-position:50% 45%}
+.ckd-cartitem h6{margin:0;font-size:13.5px;font-weight:700;padding-right:22px}
+.ckd-cartitem p{margin:3px 0 0;font-size:11.5px;color:#3f3f46;font-weight:500;display:flex;align-items:center;gap:5px}
+.ckd-cartitem p svg{width:12px;height:12px;flex:none}
+.ckd-cartitem .pr{margin-top:7px;text-align:right;font-size:14.5px;font-weight:800}
+.ckd-cartitem .rm{position:absolute;top:12px;right:2px;color:#e02d3c;font-size:13px}
+.ckd-cart-empty{text-align:center;padding:26px 0 34px}
+.ckd-cart-empty svg{width:120px;height:120px}
+.ckd-cart-empty h6{margin:14px 0 0;font-size:15.5px;font-weight:700}
+.ckd-cart-empty p{margin:5px 0 0;font-size:12.5px;color:#3f3f46;font-weight:500}
+.ckd-morebtn{width:100%;height:48px;border-radius:999px;border:1px solid #e2e2e2;background:#fff;font-size:13.5px;font-weight:600}
+.ckd-booknow{width:100%;height:50px;border-radius:999px;background:#1c1c1c;color:#fff;font-size:13.5px;font-weight:600}
+.ckd-booknow:hover{background:#000}

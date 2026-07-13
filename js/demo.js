@@ -33,7 +33,8 @@
   function createDemo(root) {
   var OPTS = {
     view: root.getAttribute('data-demo') || 'map',
-    badge: root.getAttribute('data-demo-badge') || ''
+    badge: root.getAttribute('data-demo-badge') || '',
+    mobile: root.getAttribute('data-demo-chrome') === 'mobile'
   };
 
   /* ===== demo data ==================================================== */
@@ -101,6 +102,19 @@
     { id: 'sushi', name: 'Japanese Sushi Boat', cat: 'Experiences', emoji: '🍣', bg: 'linear-gradient(160deg,#dbe3f5,#7e93cf)', img: 'addon-sushi.jpg', price: 154, was: 171, save: 'Save 10% online' }
   ];
 
+  var SOCIAL = [
+    { name: 'The Pavilion', img: 'social-pavilion.jpg', chips: [['free', '🔥 Free Entry'], ['ocean', '≋ Late Night']] },
+    { name: 'Beach Party Bar', img: 'social-beachbar.jpg', chips: [['ocean', '≋ Oceanfront'], ['free', '🔥 Free Entry']] },
+    { name: 'Surf Deck', img: 'social-surfdeck.jpg', chips: [['ocean', '≋ Oceanfront'], ['free', '🔥 Free Entry']] }
+  ];
+
+  var PROMOS = [
+    { img: 'promo-vip.jpg', title: 'VIP Party Preview', sub: 'Pre-Opening Preview Sale', desc: 'Get 75% OFF the newest party experience before its official launch. Be among the first to get a sneak peek!' },
+    { img: 'promo-happyhour.jpg', title: 'Daily Happy Hour', sub: '2 for 1 drinks!', desc: 'Daily from 8 PM to 9 PM' }
+  ];
+
+  var PASS = { name: 'Priority Entry Pass', price: 10, was: 40 };
+
   function mediaBg(a) {
     return a.img
       ? 'background-image:url(' + ASSET_BASE + a.img + ');background-size:cover;background-position:center'
@@ -115,7 +129,7 @@
   /* ===== state ======================================================== */
 
   var state = {
-    day: 18, pkg: 'party', spot: null, cart: [], addons: {}, addonTab: 'Bottles',
+    day: 18, pkg: 'party', spot: null, cart: [], addons: {}, pass: 0, addonTab: 'Bottles',
     timer: 600, timerId: null, view: 'map', interacted: false
   };
 
@@ -128,7 +142,7 @@
   function dateStr() { return state.day + ' July 2026'; }
 
   function subtotal() {
-    var t = 0;
+    var t = state.pass * PASS.price;
     state.cart.forEach(function (c) { t += c.price; });
     Object.keys(state.addons).forEach(function (id) {
       t += addon(id).price * state.addons[id];
@@ -137,7 +151,7 @@
   }
   function addon(id) { return ADDONS.filter(function (a) { return a.id === id; })[0]; }
   function grand() { var s = subtotal(); return s + Math.round(s * TAX) + (s ? FEE : 0); }
-  function cartCount() { var n = state.cart.length; Object.keys(state.addons).forEach(function (k) { n += state.addons[k]; }); return n; }
+  function cartCount() { var n = state.cart.length + state.pass; Object.keys(state.addons).forEach(function (k) { n += state.addons[k]; }); return n; }
 
   /* ===== icons ======================================================== */
 
@@ -225,15 +239,19 @@
       '<span class="ckd-timer" data-timer>' + I.clock + '<span>10:00</span></span>' +
       '<button type="button" class="ckd-iconbtn" data-cartbtn aria-label="Cart">' + I.cart + '<b hidden>0</b></button>' +
       '<button type="button" class="ckd-iconbtn" aria-label="Account">' + I.user + '</button>');
-    $('[data-cartbtn]', cluster).addEventListener('click', function () { if (state.cart.length) showView('review'); });
+    $('[data-cartbtn]', cluster).addEventListener('click', function () { openSheet('cart'); });
     top.appendChild(cluster);
     root.appendChild(top);
 
-    // left rail
-    root.appendChild(h('div', 'ckd-rail',
-      '<span>' + I.gem + 'Skip The<br>Queue</span>' +
-      '<span>' + I.pct + 'Promotions</span>' +
-      '<span>' + I.ppl + 'Free Entry<br>Party Zones</span>'));
+    // left rail (desktop) — items open the corresponding sheets
+    var rail = h('div', 'ckd-rail',
+      '<button type="button" data-sheet="queue"><span>' + I.gem + 'Skip The<br>Queue</span></button>' +
+      '<button type="button" data-sheet="promos"><span>' + I.pct + 'Promotions</span></button>' +
+      '<button type="button" data-sheet="zones"><span>' + I.ppl + 'Free Entry<br>Party Zones</span></button>');
+    $$('[data-sheet]', rail).forEach(function (b) {
+      b.addEventListener('click', function () { openSheet(b.getAttribute('data-sheet')); });
+    });
+    root.appendChild(rail);
 
     // zoom
     var zm = h('div', 'ckd-zoom', '<button type="button" aria-label="Zoom in">+</button><button type="button" aria-label="Zoom out">−</button>');
@@ -258,6 +276,25 @@
     var bar = h('div', 'ckd-bar');
     root.appendChild(bar);
     renderBar();
+
+    if (OPTS.mobile) {
+      root.classList.add('mobile');
+      root.appendChild(h('span', 'ckd-flytimer', I.clock + '<span>10:00</span>')).setAttribute('data-timer', '');
+      var tb = h('div', 'ckd-tabbar',
+        '<button type="button" data-sheet="queue">' + I.gem + 'Skip The Queue</button>' +
+        '<button type="button" data-sheet="promos">' + I.pct + 'Promotions</button>' +
+        '<button type="button" data-sheet="zones">' + I.ppl + 'Free Entry Party Zones</button>');
+      $$('[data-sheet]', tb).forEach(function (b) {
+        b.addEventListener('click', function () { openSheet(b.getAttribute('data-sheet')); });
+      });
+      root.appendChild(tb);
+    }
+
+    // bottom sheets
+    var scrimEl = h('div', 'ckd-sheetscrim');
+    scrimEl.addEventListener('click', closeSheet);
+    root.appendChild(scrimEl);
+    root.appendChild(h('div', 'ckd-sheet'));
 
     // overlays
     root.appendChild(buildModal());
@@ -582,7 +619,7 @@
 
   function wireAppbar(v) {
     var c = $('[data-vcart]', v);
-    if (c) c.addEventListener('click', function () { showView('review'); });
+    if (c) c.addEventListener('click', function () { openSheet('cart'); });
   }
 
   function renderAddons(v) {
@@ -732,6 +769,128 @@
       showView('map');
       track('demo_restart', {});
     });
+  }
+
+
+  /* ===== bottom sheets (cart / queue / promos / zones) ================ */
+
+  function closeSheet() {
+    $('.ckd-sheet').classList.remove('open');
+    $('.ckd-sheetscrim').classList.remove('open');
+  }
+
+  function sheetShell(titleHtml, bodyHtml, footHtml) {
+    return '<div class="ckd-sheet-head">' + titleHtml +
+      '<button type="button" class="ckd-x" aria-label="Close">✕</button></div>' +
+      '<div class="ckd-sheet-body">' + bodyHtml + '</div>' +
+      (footHtml ? '<div class="ckd-sheet-foot">' + footHtml + '</div>' : '');
+  }
+
+  function openSheet(name) {
+    mark();
+    var s = $('.ckd-sheet');
+    if (name === 'zones') {
+      s.innerHTML = sheetShell('<h3>Free Entry Party Zones</h3>',
+        '<p class="ckd-social-copy">Several social areas where you can walk in for free and enjoy with no minimum spend. Grab a drink at the bar and take in the oceanfront views and sunsets — world-class entertainment and parties every day of the week!</p>' +
+        '<div class="ckd-socialrow">' + SOCIAL.map(function (z) {
+          return '<div class="ckd-social" style="background-image:url(' + ASSET_BASE + z.img + ')">' +
+            z.chips.map(function (c) { return '<span class="chip ' + c[0] + '">' + c[1] + '</span>'; }).join('') +
+            '<strong>' + z.name + '</strong></div>';
+        }).join('') + '</div>');
+    }
+    if (name === 'queue') {
+      s.innerHTML = sheetShell('<h3>Skip The Queue</h3>',
+        '<div class="ckd-qbanner"><span class="off">⊘ 75% OFF</span>' +
+        '<h5>You got 75% OFF for booking in advance</h5>' +
+        '<p>You\u2019re all set with the best price for your day.</p></div>' +
+        '<div class="ckd-qdays"><h4>Choose Date</h4><div class="ckd-days">' +
+        [16, 17, 18, 19, 20].map(function (d) {
+          return '<button type="button" data-qday="' + d + '" class="' + (d === state.day ? 'sel' : '') + '"><b>' + d + '</b><small>Jul</small><span>' + dayLabel(d) + '</span></button>';
+        }).join('') + '</div></div>' +
+        '<div class="ckd-qtotal"><span>Total</span><span><s>' + money(PASS.was) + '</s><b>' + money(PASS.price) + '</b></span></div>' +
+        '<button type="button" class="ckd-qbook' + (state.pass ? ' added' : '') + '" data-qbook>' + (state.pass ? '✓ Priority Entry added' : 'Book Now') + '</button>');
+      $$('[data-qday]', s).forEach(function (b) {
+        b.addEventListener('click', function () {
+          state.day = +b.getAttribute('data-qday');
+          $$('[data-qday]', s).forEach(function (x) { x.classList.toggle('sel', x === b); });
+          $$('[data-date]').forEach(function (x) { x.textContent = dateStr(); });
+        });
+      });
+      $('[data-qbook]', s).addEventListener('click', function () {
+        if (!state.pass) {
+          state.pass = 1;
+          startTimer();
+          renderBar();
+          track('demo_priority_pass', {});
+        }
+        openSheet('cart');
+      });
+    }
+    if (name === 'promos') {
+      s.innerHTML = sheetShell('<h3>Promotions</h3>',
+        PROMOS.map(function (p) {
+          return '<div class="ckd-promo"><span class="th" style="background-image:url(' + ASSET_BASE + p.img + ')"></span>' +
+            '<div><h6>' + p.title + '</h6><p class="sub">' + p.sub + '</p><p>' + p.desc + '</p></div>' +
+            '<span class="chev">›</span></div>';
+        }).join(''));
+    }
+    if (name === 'cart') {
+      var items = '';
+      state.cart.forEach(function (c, i) {
+        items += '<div class="ckd-cartitem"><span class="th" style="background-position:' + c.x + '% ' + c.y + '%"></span>' +
+          '<div style="flex:1"><h6>' + c.name + '<br>' + c.pkg + '</h6>' +
+          '<p>' + I.clock + ' ' + c.arrive + '</p><p>' + I.pax + ' Recommended for ' + c.cap + ' People</p>' +
+          '<div class="pr">' + money(c.price) + '</div></div>' +
+          '<button type="button" class="rm" data-rmf="' + i + '" aria-label="Remove">✕</button></div>';
+      });
+      Object.keys(state.addons).forEach(function (id) {
+        var a = addon(id);
+        items += '<div class="ckd-cartitem"><span class="th" style="' + (a.img ? 'background-image:url(' + ASSET_BASE + a.img + ');background-size:cover;background-position:center' : 'background:' + a.bg) + '"></span>' +
+          '<div style="flex:1"><h6>' + a.name + ' × ' + state.addons[id] + '</h6>' +
+          '<div class="pr">' + money(a.price * state.addons[id]) + '</div></div>' +
+          '<button type="button" class="rm" data-rmc="' + id + '" aria-label="Remove">✕</button></div>';
+      });
+      if (state.pass) {
+        items += '<div class="ckd-cartitem"><span class="th" style="background-image:none;background:linear-gradient(160deg,#7ce8c8,#0d7a56);display:grid;place-items:center;font-size:26px">🎟</span>' +
+          '<div style="flex:1"><h6>' + PASS.name + '</h6><p>' + I.gem.replace('currentColor', '#0d7a56') + ' Skip the line · 75% off booked ahead</p>' +
+          '<div class="pr"><s style="color:#9b9b9b;font-weight:500;font-size:11px;margin-right:6px">' + money(PASS.was) + '</s>' + money(PASS.price) + '</div></div>' +
+          '<button type="button" class="rm" data-rmp aria-label="Remove">✕</button></div>';
+      }
+      var empty = !items;
+      s.innerHTML = sheetShell('<h3 class="center">Cart</h3>',
+        '<div class="ckd-cart-date"><span>' + I.cal + ' ' + state.day + ' Jul</span></div>' +
+        (empty
+          ? '<div class="ckd-cart-empty">' +
+            '<svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="1.1"><circle cx="9.5" cy="19.5" r="1.3" fill="#1c1c1c"/><circle cx="16.5" cy="19.5" r="1.3" fill="#1c1c1c"/><path d="M4 5h2l2 10h9l2-7.5H7.2" stroke-linejoin="round"/></svg>' +
+            '<h6>Your cart is empty</h6><p>Let\u2019s change that!</p></div>'
+          : items),
+        empty
+          ? '<button type="button" class="ckd-booknow" data-explore>Explore Furnitures</button>'
+          : '<button type="button" class="ckd-morebtn" data-more2>Book More Furniture +</button>' +
+            '<button type="button" class="ckd-booknow" data-cartbook>Book Now</button>');
+      var ex = $('[data-explore]', s);
+      if (ex) ex.addEventListener('click', function () { closeSheet(); showView('map'); });
+      var mb = $('[data-more2]', s);
+      if (mb) mb.addEventListener('click', function () { closeSheet(); showView('map'); });
+      var bn = $('[data-cartbook]', s);
+      if (bn) bn.addEventListener('click', function () { closeSheet(); showView('addons'); });
+      $$('[data-rmf]', s).forEach(function (b) {
+        b.addEventListener('click', function () {
+          var c = state.cart.splice(+b.getAttribute('data-rmf'), 1)[0];
+          if (c) { var sp = $('[data-id="' + c.spot + '"]'); if (sp) sp.classList.remove('picked'); }
+          renderBar(); openSheet('cart');
+        });
+      });
+      $$('[data-rmc]', s).forEach(function (b) {
+        b.addEventListener('click', function () { delete state.addons[b.getAttribute('data-rmc')]; renderBar(); openSheet('cart'); });
+      });
+      var rp = $('[data-rmp]', s);
+      if (rp) rp.addEventListener('click', function () { state.pass = 0; renderBar(); openSheet('cart'); });
+    }
+    $('.ckd-x', s).addEventListener('click', closeSheet);
+    $('.ckd-sheetscrim').classList.add('open');
+    s.classList.add('open');
+    track('demo_sheet', { sheet: name });
   }
 
   build();
