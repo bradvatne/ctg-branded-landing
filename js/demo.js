@@ -26,7 +26,8 @@
 
   /* asset path relative to this script, so mounts work from any page depth */
   var SCRIPT_SRC = (document.currentScript && document.currentScript.src) || 'js/demo.js';
-  var MAP_URL = SCRIPT_SRC.replace(/js\/demo\.js.*$/, 'assets/demo/venue-map.svg');
+  var ASSET_BASE = SCRIPT_SRC.replace(/js\/demo\.js.*$/, 'assets/demo/');
+  var MAP_URL = ASSET_BASE + 'venue-real.jpg';
   mounts.forEach(function (m) { createDemo(m); });
 
   function createDemo(root) {
@@ -38,42 +39,40 @@
   /* ===== demo data ==================================================== */
 
   var SPOTS = [
-    { id: 'cab1', name: 'VIP Cabana', num: 12, zone: 'VIP Cabanas', x: 9.77, y: 27.78, w: 8.59, h: 9.38, cap: 8 },
-    { id: 'cab2', name: 'VIP Cabana', num: 14, zone: 'VIP Cabanas', x: 9.77, y: 40.8, w: 8.59, h: 9.38, cap: 8, sold: true },
-    { id: 'cab3', name: 'VIP Cabana', num: 16, zone: 'VIP Cabanas', x: 9.77, y: 53.82, w: 8.59, h: 9.38, cap: 8 },
-    { id: 'db1', name: 'Pool Club Bed', num: 651, zone: 'Pool Club', x: 38.41, y: 21.7, w: 5.08, h: 5.38, cap: 4 },
-    { id: 'db2', name: 'Pool Club Bed', num: 652, zone: 'Pool Club', x: 45.57, y: 18.4, w: 5.08, h: 5.38, cap: 4, sold: true },
-    { id: 'db3', name: 'Pool Club Bed', num: 653, zone: 'Pool Club', x: 53.39, y: 17.36, w: 5.08, h: 5.38, cap: 4 },
-    { id: 'db4', name: 'Pool Club Bed', num: 654, zone: 'Pool Club', x: 61.2, y: 18.06, w: 5.08, h: 5.38, cap: 4, sold: true },
-    { id: 'db5', name: 'Pool Club Bed', num: 655, zone: 'Pool Club', x: 69.01, y: 20.14, w: 5.08, h: 5.38, cap: 4 },
-    { id: 'db6', name: 'Pool Club Bed', num: 656, zone: 'Pool Club', x: 74.87, y: 28.65, w: 5.08, h: 5.38, cap: 4, sold: true },
-    { id: 'db7', name: 'Pool Club Bed', num: 657, zone: 'Pool Club', x: 75.52, y: 39.06, w: 5.08, h: 5.38, cap: 4 },
-    { id: 'db8', name: 'Pool Club Bed', num: 658, zone: 'Pool Club', x: 40.36, y: 50.35, w: 5.08, h: 5.38, cap: 4 },
-    { id: 'db9', name: 'Pool Club Bed', num: 659, zone: 'Pool Club', x: 48.18, y: 52.6, w: 5.08, h: 5.38, cap: 4, sold: true },
-    { id: 'db10', name: 'Pool Club Bed', num: 660, zone: 'Pool Club', x: 55.99, y: 53.3, w: 5.08, h: 5.38, cap: 4 },
-    { id: 'db11', name: 'Pool Club Bed', num: 661, zone: 'Pool Club', x: 63.8, y: 52.08, w: 5.08, h: 5.38, cap: 4, sold: true },
-    { id: 'db12', name: 'Pool Club Bed', num: 662, zone: 'Pool Club', x: 70.96, y: 48.61, w: 5.08, h: 5.38, cap: 4 },
-    { id: 'db13', name: 'Pool Club Bed', num: 663, zone: 'Pool Club', x: 32.55, y: 37.33, w: 5.08, h: 5.38, cap: 4 },
-    { id: 'db14', name: 'Pool Club Bed', num: 664, zone: 'Pool Club', x: 32.88, y: 46.88, w: 5.08, h: 5.38, cap: 4, sold: true },
-    { id: 'bb1', name: 'Beachfront Bale', num: 21, zone: 'Beachfront', x: 21.48, y: 58.33, w: 6.25, h: 6.6, cap: 6, sold: true },
-    { id: 'bb2', name: 'Beachfront Bale', num: 22, zone: 'Beachfront', x: 40.36, y: 59.2, w: 6.25, h: 6.6, cap: 6 },
-    { id: 'bb3', name: 'Beachfront Bale', num: 23, zone: 'Beachfront', x: 59.24, y: 59.2, w: 6.25, h: 6.6, cap: 6, sold: true },
-    { id: 'bb4', name: 'Beachfront Bale', num: 24, zone: 'Beachfront', x: 78.12, y: 58.33, w: 6.25, h: 6.6, cap: 6, sold: true }
+    { id: 'cab1', name: 'VIP Cabana', num: 12, zone: 'VIP Cabanas', x: 9.5, y: 12.5, w: 12.5, h: 14, cap: 8 },
+    { id: 'cab2', name: 'VIP Cabana', num: 14, zone: 'VIP Cabanas', x: 9.5, y: 29.5, w: 12.5, h: 14, cap: 8, sold: true },
+    { id: 'cab3', name: 'VIP Cabana', num: 16, zone: 'VIP Cabanas', x: 9.5, y: 46.5, w: 12.5, h: 14, cap: 8 },
+    { id: 'cab4', name: 'VIP Cabana', num: 18, zone: 'VIP Cabanas', x: 9.5, y: 63.5, w: 12.5, h: 14, cap: 8, sold: true },
+    { id: 'db1', name: 'Pool Club Bed', num: 651, zone: 'Pool Club', x: 36.7, y: 24.5, w: 5.4, h: 7.6, cap: 4 },
+    { id: 'db2', name: 'Pool Club Bed', num: 652, zone: 'Pool Club', x: 43.1, y: 24.5, w: 5.4, h: 7.6, cap: 4, sold: true },
+    { id: 'db3', name: 'Pool Club Bed', num: 653, zone: 'Pool Club', x: 49.5, y: 24.5, w: 5.4, h: 7.6, cap: 4 },
+    { id: 'db4', name: 'Pool Club Bed', num: 654, zone: 'Pool Club', x: 55.9, y: 24.5, w: 5.4, h: 7.6, cap: 4, sold: true },
+    { id: 'db5', name: 'Pool Club Bed', num: 655, zone: 'Pool Club', x: 62.3, y: 24.5, w: 5.4, h: 7.6, cap: 4 },
+    { id: 'db6', name: 'Pool Club Bed', num: 656, zone: 'Pool Club', x: 34.4, y: 50, w: 5.4, h: 7.6, cap: 4, sold: true },
+    { id: 'db7', name: 'Pool Club Bed', num: 657, zone: 'Pool Club', x: 40.9, y: 50, w: 5.4, h: 7.6, cap: 4 },
+    { id: 'db8', name: 'Pool Club Bed', num: 658, zone: 'Pool Club', x: 47.4, y: 50, w: 5.4, h: 7.6, cap: 4 },
+    { id: 'db9', name: 'Pool Club Bed', num: 659, zone: 'Pool Club', x: 53.9, y: 50, w: 5.4, h: 7.6, cap: 4, sold: true },
+    { id: 'db10', name: 'Pool Club Bed', num: 660, zone: 'Pool Club', x: 60.4, y: 50, w: 5.4, h: 7.6, cap: 4 },
+    { id: 'db11', name: 'Pool Club Bed', num: 661, zone: 'Pool Club', x: 26.6, y: 30, w: 4.6, h: 6.4, cap: 4, sold: true },
+    { id: 'db12', name: 'Pool Club Bed', num: 662, zone: 'Pool Club', x: 26.6, y: 37.5, w: 4.6, h: 6.4, cap: 4 },
+    { id: 'bb1', name: 'Beachfront Bale', num: 21, zone: 'Beachfront', x: 32, y: 61.5, w: 8, h: 11, cap: 6, sold: true },
+    { id: 'bb2', name: 'Beachfront Bale', num: 22, zone: 'Beachfront', x: 42.7, y: 61.5, w: 8, h: 11, cap: 6 },
+    { id: 'bb3', name: 'Beachfront Bale', num: 23, zone: 'Beachfront', x: 53.3, y: 61.5, w: 8, h: 11, cap: 6, sold: true },
+    { id: 'bb4', name: 'Beachfront Bale', num: 24, zone: 'Beachfront', x: 64, y: 61.5, w: 8, h: 11, cap: 6, sold: true }
   ];
 
   var PINS = [
-    { label: 'Pool Club', color: 'teal', icon: 'party', x: 54, y: 30 },
-    { label: 'VIP Cabanas', color: 'pink', icon: 'party', x: 10, y: 18, sold: false },
-    { label: 'Beachfront', color: 'pink', icon: 'party', x: 46, y: 66, sold: true },
-    { label: 'Pool Bar', color: 'purple', icon: 'drink', x: 86.6, y: 35.6 },
-    { label: 'Party Deck', color: 'purple', icon: 'drink', x: 86.6, y: 53 },
-    { label: 'Boutique', color: 'gold', icon: 'bag', x: 68, y: 9 }
+    { label: 'Pool Club', color: 'teal', icon: 'party', x: 48, y: 29 },
+    { label: 'VIP Cabanas', color: 'pink', icon: 'party', x: 9.5, y: 7 },
+    { label: 'Beachfront', color: 'pink', icon: 'party', x: 47, y: 67, sold: true },
+    { label: 'Pool Bar', color: 'purple', icon: 'drink', x: 79.5, y: 21 },
+    { label: 'Party Deck', color: 'purple', icon: 'drink', x: 81, y: 47 }
   ];
 
   var AREAS = [
-    { label: 'Beach Access', x: 12, y: 76 },
-    { label: 'Beach Access', x: 88, y: 74 },
-    { label: 'Dance Floor', x: 43, y: 41 }
+    { label: 'Beach Access', x: 5, y: 78 },
+    { label: 'Beach Access', x: 93, y: 76 },
+    { label: 'Dance Floor', x: 81, y: 53 }
   ];
 
   var ZCARDS = [
@@ -94,13 +93,19 @@
   ];
 
   var ADDONS = [
-    { id: 'rum', name: 'Signature White Rum', cat: 'Bottles', emoji: '🍾', bg: 'linear-gradient(160deg,#bfe6f2,#5db6d6)', price: 118, was: 148, save: 'Save 20% online' },
-    { id: 'gin', name: 'Island Botanical Gin', cat: 'Bottles', emoji: '🍸', bg: 'linear-gradient(160deg,#f6d8e8,#d67ab1)', price: 118, was: 148, save: 'Save 20% online' },
-    { id: 'bday', name: 'Birthday Package', cat: 'Special Occasions', emoji: '🎂', bg: 'linear-gradient(160deg,#ffe3c9,#f6a417)', price: 220, was: 275, save: 'Save 20% online' },
-    { id: 'tira', name: 'Tiramisu', cat: 'Special Occasions', emoji: '🍰', bg: 'linear-gradient(160deg,#efe0d0,#c9a276)', price: 52 },
-    { id: 'photo', name: 'Photo Package', cat: 'Experiences', emoji: '📸', bg: 'linear-gradient(160deg,#cfe8dc,#5fae8a)', price: 86 },
-    { id: 'sushi', name: 'Japanese Sushi Boat', cat: 'Experiences', emoji: '🍣', bg: 'linear-gradient(160deg,#dbe3f5,#7e93cf)', price: 154, was: 171, save: 'Save 10% online' }
+    { id: 'rum', name: 'Signature White Rum', cat: 'Bottles', emoji: '🍾', bg: 'linear-gradient(160deg,#bfe6f2,#5db6d6)', img: 'addon-rum.jpg', video: 'video-rum.mp4', price: 118, was: 148, save: 'Save 20% online' },
+    { id: 'gin', name: 'Island Botanical Gin', cat: 'Bottles', emoji: '🍸', bg: 'linear-gradient(160deg,#f6d8e8,#d67ab1)', img: 'addon-gin.jpg', video: 'video-gin.mp4', price: 118, was: 148, save: 'Save 20% online' },
+    { id: 'bday', name: 'Birthday Package', cat: 'Special Occasions', emoji: '🎂', bg: 'linear-gradient(160deg,#ffe3c9,#f6a417)', img: 'addon-bday.jpg', price: 220, was: 275, save: 'Save 20% online' },
+    { id: 'tira', name: 'Tiramisu', cat: 'Special Occasions', emoji: '🍰', bg: 'linear-gradient(160deg,#efe0d0,#c9a276)', img: 'addon-tira.jpg', price: 52 },
+    { id: 'photo', name: 'Photo Package', cat: 'Experiences', emoji: '📸', bg: 'linear-gradient(160deg,#cfe8dc,#5fae8a)', img: 'addon-photo.jpg', price: 86 },
+    { id: 'sushi', name: 'Japanese Sushi Boat', cat: 'Experiences', emoji: '🍣', bg: 'linear-gradient(160deg,#dbe3f5,#7e93cf)', img: 'addon-sushi.jpg', price: 154, was: 171, save: 'Save 10% online' }
   ];
+
+  function mediaBg(a) {
+    return a.img
+      ? 'background-image:url(' + ASSET_BASE + a.img + ');background-size:cover;background-position:center'
+      : 'background:' + a.bg;
+  }
 
   var MONTH = 'July 2026';
   var TODAY = 13;
@@ -282,11 +287,25 @@
 
   /* ===== pan / zoom ==================================================== */
 
+  var MAP_AR = 1536 / 1152; // aspect ratio of the venue render
+
+  function sizeWorld() {
+    var r = stage.getBoundingClientRect();
+    if (!r.width || !r.height) return;
+    var w = Math.max(r.width, r.height * MAP_AR);
+    var h = w / MAP_AR;
+    if (h < r.height) { h = r.height; w = h * MAP_AR; }
+    world._w = w; world._h = h;
+    world.style.width = w + 'px';
+    world.style.height = h + 'px';
+  }
+
   function apply() {
     var r = stage.getBoundingClientRect();
-    var maxX = r.width * (Z.s - 1), maxY = r.height * (Z.s - 1);
-    Z.x = Math.min(0, Math.max(-maxX, Z.x));
-    Z.y = Math.min(0, Math.max(-maxY, Z.y));
+    if (!world._w) sizeWorld();
+    var ww = world._w * Z.s, wh = world._h * Z.s;
+    Z.x = Math.min(0, Math.max(r.width - ww, Z.x));
+    Z.y = Math.min(0, Math.max(r.height - wh, Z.y));
     world.style.transform = 'translate(' + Z.x + 'px,' + Z.y + 'px) scale(' + Z.s + ')';
     $$('.ckd-pin', world).concat($$('.ckd-area', world)).forEach(function (p) {
       p.style.transformOrigin = '0 50%';
@@ -306,12 +325,12 @@
 
   function focusZone(name) {
     mark();
-    var map = { 'Pool Club': [54, 35], 'VIP Cabanas': [12, 40], 'Beachfront': [50, 60], 'Sunset Deck': [80, 45], 'Party Pavilion': [86, 50] };
+    var map = { 'Pool Club': [48, 30], 'VIP Cabanas': [11, 34], 'Beachfront': [47, 62], 'Sunset Deck': [81, 47], 'Party Pavilion': [79, 22] };
     var t = map[name] || [50, 50];
     var r = stage.getBoundingClientRect();
     Z.s = 1.9;
-    Z.x = r.width / 2 - t[0] / 100 * r.width * Z.s;
-    Z.y = r.height / 2 - t[1] / 100 * r.height * Z.s;
+    Z.x = r.width / 2 - t[0] / 100 * world._w * Z.s;
+    Z.y = r.height / 2 - t[1] / 100 * world._h * Z.s;
     apply();
     track('demo_zone_focus', { zone: name });
   }
@@ -345,7 +364,13 @@
       var r = stage.getBoundingClientRect();
       zoomTo(Z.s * (e.deltaY < 0 ? 1.12 : 0.89), e.clientX - r.left, e.clientY - r.top);
     }, { passive: false });
+    sizeWorld();
+    // center the (possibly wider-than-frame) world
+    var r0 = stage.getBoundingClientRect();
+    Z.x = (r0.width - world._w) / 2;
+    Z.y = (r0.height - world._h) / 2;
     apply();
+    if (window.ResizeObserver) new ResizeObserver(function () { sizeWorld(); apply(); }).observe(stage);
   }
 
   /* ===== date modal ==================================================== */
@@ -571,14 +596,17 @@
         '<div class="ckd-addon-grid">' +
           list.map(function (a) {
             var q = state.addons[a.id] || 0;
-            return '<div class="ckd-prod"><div class="ph" style="background:' + a.bg + '">' + a.emoji +
+            return '<div class="ckd-prod"><div class="ph" style="' + mediaBg(a) + '">' + (a.img ? '' : a.emoji) +
               (a.save ? '<span class="flame">🔥 ' + a.save + '</span>' : '') + '</div>' +
               '<div class="info"><h5>' + a.name + '</h5><span class="tag">' + a.cat + '</span>' +
               '<div class="prices">' + (a.was ? '<s>' + money(a.was) + '</s>' : '') + '<b>' + money(a.price) + '</b></div>' +
               '<button type="button" class="ckd-btn-line' + (q ? ' added' : '') + '" data-add="' + a.id + '">' + (q ? '✓ Added (' + q + ')' : 'Add to Cart ') + (q ? '' : I.cart) + '</button></div></div>';
           }).join('') +
         '</div>' +
-        '<div class="ckd-feature" style="background:' + feat.bg + '"><span class="big">' + feat.emoji + '</span>' +
+        '<div class="ckd-feature" style="' + mediaBg(feat) + '">' +
+          (feat.video
+            ? '<video class="featvid" autoplay muted loop playsinline src="' + ASSET_BASE + feat.video + '"></video>'
+            : (feat.img ? '' : '<span class="big">' + feat.emoji + '</span>')) +
           '<h4>' + feat.name + '</h4>' + (feat.was ? '<s>' + money(feat.was) + '</s>' : '') +
           '<p class="fp">' + money(feat.price) + '</p>' + (feat.save ? '<span class="savechip">' + feat.save + '</span>' : '') +
           '<button type="button" data-add="' + feat.id + '">Add to Cart 🛒</button>' +
@@ -615,7 +643,7 @@
         '<div><h4 class="ckd-h6">Recommended For Your Booking</h4>' +
           '<div class="ckd-banner">' + I.pct + ' Last Chance To Get Up To 30% Off Bottles</div>' +
           '<div class="ckd-recs">' + recs.map(function (a) {
-            return '<div class="ckd-rec"><div class="ph" style="background:' + a.bg + '">' + a.emoji + '</div>' +
+            return '<div class="ckd-rec"><div class="ph" style="' + mediaBg(a) + '">' + (a.img ? '' : a.emoji) + '</div>' +
               '<div class="info"><h6>' + a.name + '</h6><p>' + money(a.price) + '</p></div></div>';
           }).join('') + '</div>' +
         '</div>' +
@@ -631,7 +659,7 @@
           }).join('') +
           Object.keys(state.addons).map(function (id) {
             var a = addon(id);
-            return '<div class="ckd-item"><span class="ckd-thumb" style="background-image:none;background:' + a.bg + ';display:grid;place-items:center;font-size:24px">' + a.emoji + '</span>' +
+            return '<div class="ckd-item"><span class="ckd-thumb" style="' + (a.img ? mediaBg(a) : 'background-image:none;background:' + a.bg + ';display:grid;place-items:center;font-size:24px') + '">' + (a.img ? '' : a.emoji) + '</span>' +
               '<div style="flex:1"><h6>' + a.name + ' × ' + state.addons[id] + '</h6>' +
               '<div class="pr">' + money(a.price * state.addons[id]) + '</div></div>' +
               '<button type="button" class="rm" data-rma="' + id + '" aria-label="Remove">✕</button></div>';
@@ -731,7 +759,7 @@
     state.interacted = true;
     if (v === 'datemodal') { $('.ckd-scrim').classList.add('open'); return; }
     if (v === 'panel') {
-      openPanel(SPOTS.filter(function (x) { return x.id === 'db13'; })[0]);
+      openPanel(SPOTS.filter(function (x) { return x.id === 'db3'; })[0]);
       return;
     }
     if (v === 'addons') { seedCart(false); showView('addons'); }
