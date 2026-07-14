@@ -24,7 +24,7 @@ If your core business is dinner service — covers, courses, turn times — Seve
 
 | What you're comparing | Clubtech | SevenRooms |
 |---|---|---|
-| Commercial model | No monthly fee; 4% guest-paid processing; $2,000 one-time setup | Subscription-based platform |
+| Commercial model | No monthly fee; aligned to your online revenue — quote on a quick demo | Subscription-based platform |
 | How guests book | Guest picks exact spot on a 3D interactive map | Party size, date, and time — no spatial map |
 | Packages & add-ons | Tiered packages with stackable add-ons at checkout | Prepaid upgrades (welcome drinks, premium-table upsells) |
 | Dynamic pricing | Zone and date pricing built in | Zone pricing approximated via booking rules |
@@ -67,7 +67,7 @@ Mobile matters here too. On Clubtech, 82% of bookings happen on a phone after 10
 
 For resorts and hospitality groups, this often isn't an either/or. The natural split is by product: restaurant covers stay on SevenRooms, where its dining CRM earns its keep; furniture, zones, dayparts, and packages — the beach club, the day club, the pool — run on Clubtech. Because Clubtech integrates with your existing POS and PMS rather than replacing them — Opera PMS, Airwallex, Midtrans, Apple Pay, Google Pay, WhatsApp — it sits alongside a dining stack with no major IT changes, and the guest never sees a seam.
 
-On commercials, the two models differ in kind: Clubtech charges no monthly fee — a 4% online processing fee is paid by the customer, and setup is a one-time $2,000 per venue — so adding a furniture channel next to an existing dining stack doesn't add a second subscription line.
+On commercials, the two models differ in kind: Clubtech charges no monthly fee and runs a model aligned to your online revenue — [book a demo](../../book-a-demo/) for a quote built around your venue — so adding a furniture channel next to an existing dining stack doesn't add a second subscription line.
 
 ## Questions operators ask
 

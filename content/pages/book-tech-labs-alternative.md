@@ -23,13 +23,13 @@ Taken on its own terms, that's a real furniture-first product with real venues o
 
 | What you're comparing | Clubtech | Book Tech Labs |
 |---|---|---|
-| Commercial model | No monthly fee; 4% processing fee paid by guest; $2,000 one-time setup | Pricing not published; quote required |
+| Commercial model | No monthly fee; aligned to your online revenue — quote on a quick demo | Pricing not published; quote required |
 | How guests book | 3D birds-eye map, zones, 360° walkthroughs, tiered packages, stackable add-ons | Interactive 3D layout; visual sunbed/cabana selection; packages and add-ons |
 | Packages & add-ons | Tiered packages from bed-only to ultimate experience; add-ons stacked in checkout | Packages and add-ons available at booking |
 | Dynamic pricing | Demand-based dynamic pricing across zones and dayparts | Zone-pricing and daypart yield depth not visible in public materials |
 | Operations & floor plan | Real-time inventory sync to interactive floor plan; automatic seating allocation; operator console | Operational console depth not described publicly |
 | Ads attribution & revenue loop | Every booking fires to Meta, Google, and GA4 with revenue value; abandoned-cart CAPI within seconds | No native ads-revenue pipeline described in public materials |
-| Implementation & setup | One-time $2,000 fee covers widget setup, configuration, and staff training | Claims launch within a week |
+| Implementation & setup | Widget setup, configuration, and staff training included in onboarding | Claims launch within a week |
 | Venue focus | Beach clubs, day clubs, nightclubs, and hotel pools | Nightclubs, beach clubs, theme parks, resorts, marinas, and F&B venues |
 
 ## Same model, different depth
@@ -48,7 +48,7 @@ Both platforms let a guest pick their spot visually and prepay. The evaluation s
 
 Book Tech Labs publishes strong vendor-reported numbers, and they deserve to be read as what they are: the vendor's own case figures. Clubtech's proof point is named and quoted. At FINNS Beach Club in Bali, CEO Beau Whittington describes the shift from simple on-the-day bookings with no financial guarantee to millions of dollars worth of pre-paid bookings each month. That's the same pre-arrival revenue story both platforms pitch — running at scale, in public, with the CEO's name on it.
 
-On commercials, Book Tech Labs doesn't publish pricing. Clubtech does: no monthly fee, a 4% online processing fee paid by the customer, and a one-time $2,000 setup fee per venue covering widget setup, system configuration, and staff training. When two products look similar in the demo, an operator's tiebreakers are usually exactly these — published pricing, named proof, and the depth behind the picker.
+On commercials, Book Tech Labs doesn't publish pricing. Clubtech's model is simple and aligned: no monthly fee, and the platform earns when your online revenue grows — [book a demo](../../book-a-demo/) for a quote built around your venue. When two products look similar in the demo, an operator's tiebreakers are usually exactly these — an aligned commercial model, named proof, and the depth behind the picker.
 
 ## How to run this evaluation
 
@@ -70,7 +70,7 @@ Book Tech Labs is a booking-engine company selling a 3D interactive reservation 
 
 ### How is Clubtech different from Book Tech Labs?
 
-Both sell furniture-first visual booking with prepayment; the differences sit around the booking. Clubtech fires every booking to Meta, Google, and GA4 in real time with revenue posted back and abandoned-cart CAPI recovery, runs four revenue levers including dynamic pricing, syncs inventory to a front-of-house operator console, and publishes its pricing. Book Tech Labs' public materials don't describe an equivalent ads-revenue pipeline.
+Both sell furniture-first visual booking with prepayment; the differences sit around the booking. Clubtech fires every booking to Meta, Google, and GA4 in real time with revenue posted back and abandoned-cart CAPI recovery, runs four revenue levers including dynamic pricing, syncs inventory to a front-of-house operator console, and runs a simple, aligned commercial model with no monthly fee. Book Tech Labs' public materials don't describe an equivalent ads-revenue pipeline.
 
 ### Do both platforms let guests pick their own sunbed?
 
@@ -78,7 +78,7 @@ Yes. Book Tech Labs offers visual sunbed and cabana selection on an interactive 
 
 ### What does Book Tech Labs cost?
 
-Book Tech Labs does not publish pricing — you'll need to request a quote. Clubtech publishes its commercial terms: no monthly fee, a 4% online processing fee paid by the customer, and a one-time $2,000 setup fee per venue covering widget setup, configuration, and staff training. Ask any vendor for setup, recurring, and processing costs in writing, including who pays each.
+Book Tech Labs does not publish pricing — you'll need to request a quote. Clubtech's model is simple and aligned: no monthly fee, and the platform earns as your online revenue grows — book a demo for a quote built around your venue. Ask any vendor for setup, recurring, and processing costs in writing, including who pays each.
 
 ### Why does the ads loop matter for a beach club?
 

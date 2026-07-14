@@ -32,7 +32,7 @@ None of this makes ResortPass a bad partner. It makes it a channel — and no op
 | What you're comparing | Clubtech | ResortPass |
 |---|---|---|
 | Channel ownership | Direct booking on your own domain | Marketplace; guests browse competitor properties on same page |
-| Commercial model | 4% processing fee (guest-paid); $2,000 one-time setup | Commission per booking plus 3% card-processing fee |
+| Commercial model | No monthly fee; aligned to your online revenue — quote on a quick demo | Commission per booking plus 3% card-processing fee |
 | Guest data ownership | Full guest profile owned by venue; whole party captured | Reservation details only; account and rebooking stay with marketplace |
 | How guests book | Interactive map on your site; choose exact daybed or cabana | Standard listing card in marketplace search results |
 | Packages & add-ons | Tiered packages and stackable add-ons inside booking flow | Pass only; no upsell architecture in marketplace checkout |
@@ -59,7 +59,7 @@ Selling direct doesn't mean bolting a generic ticket widget onto your website an
 - **A checkout built for phones.** 82% of bookings happen on a phone after 10pm. Sub-second load, no app install, Apple Pay or Google Pay, done in four taps.
 - **Hotel plumbing included.** Opera PMS integration means resident reservations land on the folio, and outside-guest day passes reconcile cleanly. The full resident-plus-day-guest model is covered on our [hotel pool booking page](https://www.clubtechglobal.com/solutions/hotel-pool-booking/).
 
-All of it runs white-label — your domain, your design, your guest data. To a guest, it's simply your hotel's booking page. And the commercials match the owned-channel logic: no monthly fee, a 4% online processing fee paid by the customer, and a one-time $2,000 setup per venue — a fixed cost of ownership instead of a percentage of every peak-day booking, forever.
+All of it runs white-label — your domain, your design, your guest data. To a guest, it's simply your hotel's booking page. And the commercials match the owned-channel logic: no monthly fee, and a model aligned to your online revenue rather than a percentage of every peak-day booking, forever — [book a demo](../../book-a-demo/) for a quote built around your venue.
 
 ## When a marketplace still makes sense
 

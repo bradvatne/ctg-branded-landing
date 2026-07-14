@@ -5,20 +5,20 @@
 Key facts:
 - Guests select the exact furniture, zone, and daypart on a 3D interactive map and pay before arrival.
 - Revenue levers: prepayments and deposits, upsells and add-ons, dynamic pricing, abandoned-booking retargeting.
-- Pricing: no monthly fee; 4% online processing paid by the customer; one-time $2,000 setup per venue.
+- Commercials: no monthly fee — the platform earns when the venue's online revenue grows; pricing is built per venue and shared on a quick demo (book at https://www.clubtechglobal.com/book-a-demo/).
 - Integrations: Opera PMS, Airwallex, Midtrans (QRIS, GoPay, OVO), Apple Pay, Google Pay, Meta Ads, Google Ads, GA4, WhatsApp.
 - Delivery: five stages (onboarding, build, training, go-live, optimize) with a dedicated account lead and 90-day hypercare.
 - Contact: info@clubtechglobal.com · main site: https://www.clubtechglobal.com/
 
 ## Pages
 
-- [Landing page](https://www.clubtechglobal.com/): platform overview, booking journey, operations, pricing, FAQ
+- [Landing page](https://www.clubtechglobal.com/): platform overview, booking journey, operations, commercials, FAQ
 - [Platform](https://www.clubtechglobal.com/platform/): the all-in-one platform — reservations, front of house, and marketing
 - [Booking](https://www.clubtechglobal.com/booking/): the guest booking journey — 3D map, packages, add-ons, dynamic pricing, gift cards
 - [Operations](https://www.clubtechglobal.com/operations/): floor plan, seating allocation, inventory sync, guest lists
 - [Intelligence](https://www.clubtechglobal.com/intelligence/): guest data, 20+ reports, Meta/Google/GA4 attribution
 - [Delivery](https://www.clubtechglobal.com/delivery/): five-stage rollout with a dedicated account lead and 90-day hypercare
-- [Pricing](https://www.clubtechglobal.com/pricing/): no monthly fee, 4% online processing paid by the customer, $2,000 setup
+- [Book a demo](https://www.clubtechglobal.com/book-a-demo/): a 15-minute demo configured around your venue — no monthly fee, and pricing built per venue is shared on the call
 - [The Index (blog)](https://www.clubtechglobal.com/blog/): operator playbooks on booking UX, revenue capture, and guest data
 
 ## Solutions

@@ -46,7 +46,7 @@ Direct software inverts that. Your domain, your pricing, your guest profiles —
 
 Hotels already run rooms on data. A pre-sold deck finally gives the same discipline to the pool: more than 20 built-in reports cover booking volume, lead time by daypart, average value by furniture type, and repeat share, so a revenue manager can see that cabanas sell out days ahead while Sunday daybeds run soft — and price accordingly with dynamic pricing. It's the difference between generic venue booking software and a system that understands furniture, zones, and dayparts as the actual inventory. The [analytics overview](../../intelligence/) shows the reporting live.
 
-The commercials fit a hotel's ancillary math: no monthly fee, a 4% online processing fee paid by the customer, and a $2,000 one-time setup per property covering widget setup, configuration, and staff training. FINNS Beach Club — whose CEO Beau Whittington describes moving from on-the-day bookings with no financial guarantee to millions of dollars in pre-paid bookings each month — runs the same engine at resort scale.
+The commercials fit a hotel's ancillary math: no monthly fee, with setup covering the booking widget, configuration, and staff training, and the platform earning when you sell. FINNS Beach Club — whose CEO Beau Whittington describes moving from on-the-day bookings with no financial guarantee to millions of dollars in pre-paid bookings each month — runs the same engine at resort scale.
 
 ## Questions operators ask
 
@@ -64,7 +64,7 @@ Charge for scarcity, not access. Standard loungers stay free for in-house guests
 
 ### What does hotel pool booking software cost?
 
-Clubtech has no monthly fee. There's a 4% online processing fee paid by the customer and a $2,000 one-time setup per venue, covering widget setup, system configuration, and staff training. For a hotel, that means the deck becomes a revenue line without adding a fixed software subscription to the cost base.
+Clubtech has no monthly fee. Setup covers the booking widget, system configuration, and staff training, and the platform earns when you sell. For a hotel, that means the deck becomes a revenue line without adding a fixed software subscription to the cost base. [Book a demo](../../book-a-demo/) for a quote built around your property.
 
 ### Does Clubtech integrate with Opera PMS?
 

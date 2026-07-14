@@ -51,7 +51,7 @@ It connects to what you already run — Airwallex, Midtrans, Apple Pay, Google P
 
 FINNS Beach Club in Bali runs this model at scale. CEO Beau Whittington puts it plainly: from simple on-the-day bookings with no financial guarantee to millions of dollars worth of pre-paid bookings each month. Same beach, same furniture — a different selling window.
 
-The commercials are aligned with that outcome: no monthly fee, a 4% online processing fee paid by the customer, and a $2,000 one-time setup per venue covering widget setup, configuration, and staff training. Clubtech earns when you sell.
+The commercials are aligned with that outcome: no monthly fee, and setup covers the booking widget, configuration, and staff training. Clubtech earns when you sell. [Book a demo](../../book-a-demo/) for a quote built around your venue.
 
 ## Questions operators ask
 
@@ -61,7 +61,7 @@ A beach club booking system lets guests choose and pay for specific daybeds, cab
 
 ### How much does a beach club booking system cost?
 
-Clubtech has no monthly fee. There's a 4% online processing fee paid by the customer and a $2,000 one-time setup per venue, which covers widget setup, system configuration, and staff training. That structure means the platform's revenue scales with your bookings rather than sitting on your P&L as fixed software cost.
+Clubtech has no monthly fee. Setup covers the booking widget, system configuration, and staff training, and the platform earns when you sell. That structure means the platform's revenue scales with your bookings rather than sitting on your P&L as fixed software cost.
 
 ### How do you increase beach club revenue with a booking system?
 

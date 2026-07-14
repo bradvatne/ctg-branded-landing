@@ -23,7 +23,7 @@ That's a genuine pedigree, and this page won't pretend otherwise. The question i
 | What you're comparing | Clubtech | UrVenue |
 |---|---|---|
 | Who it's built for | Independent beach clubs, day clubs, hotel pools | US casino-resort portfolios, multi-venue nightlife groups |
-| Commercial model | No monthly fee; 4% processing fee paid by guest; $2,000 one-time setup | Quote-based; contact sales for a tailored quote |
+| Commercial model | No monthly fee; aligned to your online revenue — quote on a quick demo | Quote-based; contact sales for a tailored quote |
 | How guests book | 3D birds-eye map, 360° walkthroughs, four taps, no app install | Interactive 3D venue maps, cross-venue widgets, branded event landing pages |
 | Packages & add-ons | Tiered packages, in-flow upsells (bottles, cakes, transfers), early-commit pricing | Table deposits, F&B minimums, ticket waitlists |
 | Dynamic pricing | Yes — dynamic pricing built in | Automated price yielding |
@@ -61,7 +61,7 @@ Set side by side, the differences trace back to who each platform was built for.
 - **Revenue mechanics.** Clubtech runs four levers on every booking: prepayments and deposits, upsells and add-ons stacked in the flow (bottles, cakes, transfers), dynamic pricing, and abandoned-booking retargeting — with tiered packages from bed only to ultimate experience and "Book Online & Save" early-commitment pricing. UrVenue's public toolset centers on automated price yielding, table deposits, F&B minimums, and ticket waitlists.
 - **Ads and attribution.** Clubtech fires bookings to Meta, Google, and GA4 in real time with revenue values posted back; UrVenue's public materials don't detail an equivalent pipeline — ask them directly.
 - **Sold-out handling.** Clubtech captures priority-entry and free-entry contact data when furniture is gone, so sold out never means lost guest; UrVenue offers ticket waitlists that let guests buy as availability changes.
-- **Commercials.** UrVenue's pricing is quote-based — its own FAQ directs venues to contact sales for a tailored quote. Clubtech publishes its numbers: no monthly fee, a 4% online processing fee paid by the customer, and a one-time $2,000 setup fee per venue.
+- **Commercials.** UrVenue's pricing is quote-based — its own FAQ directs venues to contact sales for a tailored quote. Clubtech's model is simple and aligned: no monthly fee, and the platform earns when your online revenue grows — [book a demo](../../book-a-demo/) for a quote built around your venue.
 
 The UrVenue side reflects their public materials as of July 2026; where they don't publish detail — ad-platform attribution, specific payment gateways — we've said so rather than guessed. The full revenue architecture behind the Clubtech side is on the [revenue page](../../booking/).
 
@@ -83,7 +83,7 @@ UrVenue does not publish pricing; its own FAQ directs venues to contact its team
 
 ### What does Clubtech cost compared to UrVenue?
 
-Clubtech publishes its pricing: no monthly fee, a 4% online processing fee paid by the customer, and a one-time $2,000 setup fee per venue covering widget setup, system configuration, and staff training. UrVenue is quote-based. For an independent venue, the practical difference is that Clubtech's model puts no fixed monthly cost between you and going live.
+Clubtech's model is simple and aligned: no monthly fee, and the platform earns as your online revenue grows — book a demo for a quote built around your venue. UrVenue is quote-based. For an independent venue, the practical difference is that Clubtech's model puts no fixed monthly cost between you and going live.
 
 ### What is the best UrVenue alternative?
 

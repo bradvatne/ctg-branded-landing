@@ -24,7 +24,7 @@ For an event-led nightclub or festival whose distribution runs through promoters
 | What you're comparing | Clubtech | Fourvenues |
 |---|---|---|
 | Who it's built for | Beach clubs, day clubs, pool venues selling furniture | Event-led nightclubs, festivals, promoter-driven nights |
-| Commercial model | No monthly fee; 4% processing fee paid by guest; $2,000 setup | Pricing not published; contact for quote |
+| Commercial model | No monthly fee; aligned to your online revenue — quote on a quick demo | Pricing not published; contact for quote |
 | How guests book | Guest picks exact daybed or cabana on a 3D interactive map | Tickets, guest lists, and VIP reservations via promoter channels |
 | Packages & add-ons | Tiered packages; bottles, cakes, transfers added at checkout | Deals and add-ons on beach club product |
 | Dynamic pricing | Daypart sessions, sunset premiums, event-day rates | Price-jump automation on ticket sales |
@@ -58,7 +58,7 @@ Mobile is the other pressure point: 82% of Clubtech bookings happen on a phone a
 - **Choose Clubtech** if you're a beach club, day club, or pool venue where furniture, packages, and dayparts are the margin — and paid social is the demand engine. White-label on your domain, Opera PMS for hotel-attached venues, payments from Airwallex to Apple Pay and Google Pay, and front-of-house tools that sync the online map to the floor team.
 - **Hybrid venues** — a day club that becomes a party at sunset — should map their revenue honestly. If most of the money lands before dark, run the deck on a furniture-first platform; ticketed nights can coexist alongside it, and Clubtech handles event ticketing within the same white-label flow.
 
-Commercials differ in posture too. Fourvenues doesn't publish pricing. Clubtech does: no monthly fee, a 4% online processing fee paid by the customer, and a one-time $2,000 setup per venue. Founded in Singapore, supporting venue partners in more than 7 countries, processing $332k in weekly GMV — with FINNS Beach Club in Bali as the named proof: millions of dollars worth of pre-paid bookings each month, in the CEO's own words.
+Commercials differ in posture too. Fourvenues doesn't publish pricing. Clubtech's model is simple and aligned: no monthly fee, and the platform earns when your online revenue grows — [book a demo](../../book-a-demo/) for a quote built around your venue. Founded in Singapore, supporting venue partners in more than 7 countries, processing $332k in weekly GMV — with FINNS Beach Club in Bali as the named proof: millions of dollars worth of pre-paid bookings each month, in the CEO's own words.
 
 ## Questions operators ask
 
@@ -76,7 +76,7 @@ Clubtech is built around the furniture transaction rather than the ticketed nigh
 
 ### What does Fourvenues cost?
 
-Fourvenues does not publish pricing; you'll need to contact their team for a quote. Clubtech publishes its terms: no monthly fee, a 4% online processing fee paid by the customer, and a one-time $2,000 setup fee per venue covering widget setup, system configuration, and staff training. Whatever platforms you shortlist, get setup, recurring, and per-transaction costs in writing.
+Fourvenues does not publish pricing; you'll need to contact their team for a quote. Clubtech's model is simple and aligned: no monthly fee, and the platform earns as your online revenue grows — book a demo for a quote built around your venue. Whatever platforms you shortlist, get setup, recurring, and per-transaction costs in writing.
 
 ### Can a nightclub use Clubtech?
 

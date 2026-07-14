@@ -25,7 +25,7 @@ For an all-inclusive resort GM digitizing in-stay services — where sunbed book
 |---|---|---|
 | Who it's built for | Residents and outside day guests | Guests already checked in to the hotel |
 | Revenue channel | Outside day-pass buyers plus in-house guests | In-house guests via the hotel's resident webapp |
-| Monthly fee & commercial model | No monthly fee; 4% processing fee paid by customer; $2,000 one-time setup | Quote-only, scaled by zones and resources |
+| Monthly fee & commercial model | No monthly fee; aligned to your online revenue — quote on a quick demo | Quote-only, scaled by zones and resources |
 | How guests book | 3D birds-eye interactive map with 360° zone walkthroughs | QR/NFC-activated webapp hosted on the hotel's domain |
 | Packages & add-ons | Tiered cabana and daybed packages with stackable add-ons | Drink minimums and premium towel upgrades |
 | Dynamic pricing | Demand-based pricing by daypart and zone | Lead-time dynamic pricing configurable per zone |
@@ -57,7 +57,7 @@ This also reframes the marketplace question. Hotels exploring day-pass revenue o
 - **Choose Clubtech** if the job is making the pool a revenue channel: selling day passes to non-residents, packaging cabanas and daybeds into tiered products, pricing dayparts to demand, and running paid acquisition against all of it. That's the [hotel pool booking model](https://www.clubtechglobal.com/solutions/hotel-pool-booking/) — residents and day guests on one map, folio integration included.
 - **Meeting both in one hotel is plausible.** A resort can run Hoteligy's guest app for in-stay services while Clubtech powers the public-facing pool and beach commerce. Clubtech integrates with the existing PMS and POS rather than replacing them, so the outside-guest channel arrives with no major IT changes.
 
-On commercials: Hoteligy is quote-only, scaled by zones and resources. Clubtech publishes its terms — no monthly fee, a 4% online processing fee paid by the customer, and a one-time $2,000 setup per venue covering widget setup, configuration, and staff training. Behind the model: founded in Singapore, venue partners in more than 7 countries, $332k in weekly GMV processed, and a named proof point in FINNS Beach Club in Bali, where the CEO describes millions of dollars worth of pre-paid bookings each month.
+On commercials: Hoteligy is quote-only, scaled by zones and resources. Clubtech's model is simple and aligned — no monthly fee, and the platform earns when your online revenue grows, so [book a demo](../../book-a-demo/) for a quote built around your venue. Behind the model: founded in Singapore, venue partners in more than 7 countries, $332k in weekly GMV processed, and a named proof point in FINNS Beach Club in Bali, where the CEO describes millions of dollars worth of pre-paid bookings each month.
 
 ## Questions operators ask
 

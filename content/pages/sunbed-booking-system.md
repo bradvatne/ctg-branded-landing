@@ -53,7 +53,7 @@ For resort and hotel decks, the same map handles resident reservations, outside-
 
 ## What it costs
 
-No monthly fee. A 4% online processing fee, paid by the customer, and a $2,000 one-time setup per venue covering widget setup, system configuration, and staff training. Clubtech sits on top of your existing POS and PMS rather than replacing them, and runs white-label — your domain, your design, your guest data. The [platform overview](../../platform/) shows how the pieces fit.
+No monthly fee, and the platform earns when you sell. Setup covers the booking widget, system configuration, and staff training. Clubtech sits on top of your existing POS and PMS rather than replacing them, and runs white-label — your domain, your design, your guest data. The [platform overview](../../platform/) shows how the pieces fit.
 
 ## Questions operators ask
 

@@ -34,7 +34,7 @@ Because every booking fires to Meta, Google, and GA4 in real time with its reven
 
 Five-ish sellable months mean two moments where evidence beats instinct: pricing the season open, and reading it fast enough to correct course by mid-July. Clubtech ships 20+ built-in reports — lead time by daypart, average value by package variant, revenue by hour, origin markets, repeat-guest share — trending live, no CSV exports. Next April, you price opening month against last season's actual lead curves instead of memory.
 
-The commercials respect the calendar too: no monthly fee, a one-time $2,000 setup per venue covering configuration and staff training, and a 4% online processing fee paid by the customer. Nothing bleeds through the closed months — the platform earns when the deck sells. And it sits on top of your existing POS and PMS rather than replacing them, so a winter decision becomes a spring go-live without an IT project in between.
+The commercials respect the calendar too: no monthly fee, with setup covering configuration and staff training. Nothing bleeds through the closed months — the platform earns when the deck sells. And it sits on top of your existing POS and PMS rather than replacing them, so a winter decision becomes a spring go-live without an IT project in between.
 
 The proof point comes from the market where this model was forged: FINNS Beach Club in Bali — one of the most-searched beach clubs in the world — moved from on-the-day bookings with no financial guarantee to millions of dollars of pre-paid bookings each month on Clubtech. Mykonos is a different island with a harsher calendar, but the lever is identical: sell the furniture before the day, at full value, to guests who committed from a phone. Clubtech supports venue partners in more than seven countries processing $332k in weekly GMV; the [platform overview](../../platform/) shows the full engine, and the pre-season playbook is laid out on the [Ibiza page](https://www.clubtechglobal.com/solutions/beach-club-booking-ibiza/) — it transfers to the Aegean intact.
 
@@ -54,7 +54,7 @@ Because a short season has no slack: every lost Saturday bed is unrecoverable, a
 
 ### What does Clubtech cost for a Mykonos venue?
 
-There's no monthly fee. Setup is a one-time $2,000 per venue — widget setup, system configuration, and staff training — and online payments carry a 4% processing fee paid by the customer, not the venue. Through the closed winter months the platform costs nothing, which is how software for a seasonal business should be structured.
+There's no monthly fee. Setup covers the booking widget, system configuration, and staff training, and the platform earns when it's selling your furniture, not before. Through the closed winter months the platform costs nothing, which is how software for a seasonal business should be structured. [Book a demo](../../book-a-demo/) for a quote built around your venue.
 
 ### What happens when the front row sells out?
 

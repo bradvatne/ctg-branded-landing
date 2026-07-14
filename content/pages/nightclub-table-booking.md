@@ -54,7 +54,7 @@ More than 20 built-in reports turn the reservation log into guest intelligence: 
 
 If you run a daytime concept alongside the club, the same engine handles the [day club booking flow](https://www.clubtechglobal.com/solutions/day-club-booking-system/) — one inventory, two dayparts, one guest database.
 
-The commercials: no monthly fee, a 4% online processing fee paid by the customer, and a $2,000 one-time setup covering widget setup, configuration, and staff training. It sits on top of your existing POS with no major IT changes.
+The commercials: no monthly fee, with setup covering the booking widget, configuration, and staff training, and the platform earning when you sell. It sits on top of your existing POS with no major IT changes. [Book a demo](../../book-a-demo/) for a quote built around your venue.
 
 ## Questions operators ask
 

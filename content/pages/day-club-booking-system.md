@@ -52,7 +52,7 @@ Each booking fires to Meta, Google, and GA4 in real time, with revenue posted ba
 
 And because 82% of bookings happen on a phone after 10pm — the group chat hour — the checkout is built for that moment: sub-second load, no app install, Apple Pay and Google Pay, done in four taps. The [mobile booking experience](../../booking/#four-tap-checkout) shows the flow end to end.
 
-The commercials match the model: no monthly fee, a 4% online processing fee paid by the customer, and a $2,000 one-time setup covering widget setup, configuration, and staff training. Clubtech sits on top of your existing POS with no major IT changes.
+The commercials match the model: no monthly fee, with setup covering the booking widget, configuration, and staff training, and the platform earning when you sell. Clubtech sits on top of your existing POS with no major IT changes. [Book a demo](../../book-a-demo/) for a quote built around your venue.
 
 ## Questions operators ask
 

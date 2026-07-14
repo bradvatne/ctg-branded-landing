@@ -32,7 +32,7 @@ Clubtech loads in under a second and takes a guest from map to paid confirmation
 
 The data loop compounds all season. Every booking fires to Meta, Google, and GA4 in real time with revenue attached; lookalike audiences build from your highest-value guests, not follower counts; abandoned bookings retarget within seconds, returning a browser to the exact bed, date, and price they left. Party details are captured beyond just the booker, so a table of eight grows the database by eight — and the whole picture sits in 20+ built-in reports: lead time by daypart, average value by package, repeat-guest share, origin markets. By August you're pricing September on evidence.
 
-The commercials fit a seasonal business: no monthly fee, a one-time $2,000 setup covering configuration and staff training, and a 4% online processing fee paid by the customer. There's no subscription bleeding through the closed months — the platform earns when the deck sells.
+The commercials fit a seasonal business: no monthly fee, and setup covers configuration and staff training. There's no subscription bleeding through the closed months — the platform earns when the deck sells.
 
 ## Proven where the season is even harsher
 
@@ -40,7 +40,7 @@ Clubtech's flagship proof point is FINNS Beach Club in Bali — one of the most-
 
 ## The pre-season checklist
 
-Between January and April, an Ibiza operator can have all of this stood up without touching a live service day: venue map built and walkthroughs shot, zones and minimum spends configured, package tiers and add-ons loaded, price calendar set through closing, the team trained on the operator console, and the booking page live on your domain capturing early demand — because a meaningful share of peak-season front rows will sell before your first DJ soundchecks. Setup is a one-time $2,000 per venue, and it sits on top of your existing POS and PMS stack rather than replacing it, so there's no IT project standing between a winter decision and a spring opening.
+Between January and April, an Ibiza operator can have all of this stood up without touching a live service day: venue map built and walkthroughs shot, zones and minimum spends configured, package tiers and add-ons loaded, price calendar set through closing, the team trained on the operator console, and the booking page live on your domain capturing early demand — because a meaningful share of peak-season front rows will sell before your first DJ soundchecks. Setup covers configuration and staff training, and it sits on top of your existing POS and PMS stack rather than replacing it, so there's no IT project standing between a winter decision and a spring opening.
 
 ## Questions operators ask
 
@@ -58,7 +58,7 @@ Yes — that's the core of the model. Each zone on the venue map carries its own
 
 ### What does a beach club booking system cost?
 
-Clubtech has no monthly fee. There's a one-time $2,000 setup per venue — widget setup, configuration, and staff training — and a 4% online processing fee paid by the customer, not the venue. For a business that's closed half the year, no subscription through the winter matters: the platform earns only when it's selling your furniture.
+Clubtech has no monthly fee. Setup covers the booking widget, system configuration, and staff training. For a business that's closed half the year, no subscription through the winter matters: the platform earns only when it's selling your furniture. [Book a demo](../../book-a-demo/) for a quote built around your venue.
 
 ### Does it replace our existing POS or PMS?
 

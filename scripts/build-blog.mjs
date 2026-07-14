@@ -243,7 +243,7 @@ function listingJsonLd(posts) {
 /* Standalone feature pages at the site root (hand-written, not generated). */
 const FEATURE_PAGES = [
   ['platform', 'Platform'], ['booking', 'Booking'], ['operations', 'Operations'],
-  ['intelligence', 'Intelligence'], ['delivery', 'Delivery'], ['pricing', 'Pricing'],
+  ['intelligence', 'Intelligence'], ['delivery', 'Delivery'],
 ];
 
 /* rel = path prefix back to the site root ('../' listing, '../../' posts). */
@@ -850,6 +850,7 @@ function renderSitemap(posts, pages) {
   const entries = [
     { loc: `${SITE_ORIGIN}/`, lastmod: latest, changefreq: 'weekly', priority: '1.0' },
     ...FEATURE_PAGES.map(([slug]) => ({ loc: `${SITE_ORIGIN}/${slug}/`, lastmod: latest, changefreq: 'monthly', priority: '0.8' })),
+    { loc: `${SITE_ORIGIN}/book-a-demo/`, lastmod: latest, changefreq: 'monthly', priority: '0.8' },
     { loc: `${SITE_ORIGIN}/blog/`, lastmod: latest, changefreq: 'weekly', priority: '0.8' },
     ...Object.keys(PAGE_SECTIONS).map((sec) => ({ loc: `${SITE_ORIGIN}/${sec}/`, lastmod: latest, changefreq: 'weekly', priority: '0.7' })),
     ...posts.map((p) => ({
@@ -887,20 +888,20 @@ function renderLlmsTxt(posts, pages) {
 Key facts:
 - Guests select the exact furniture, zone, and daypart on a 3D interactive map and pay before arrival.
 - Revenue levers: prepayments and deposits, upsells and add-ons, dynamic pricing, abandoned-booking retargeting.
-- Pricing: no monthly fee; 4% online processing paid by the customer; one-time $2,000 setup per venue.
+- Commercials: no monthly fee — the platform earns when the venue's online revenue grows; pricing is built per venue and shared on a quick demo (book at ${SITE_ORIGIN}/book-a-demo/).
 - Integrations: Opera PMS, Airwallex, Midtrans (QRIS, GoPay, OVO), Apple Pay, Google Pay, Meta Ads, Google Ads, GA4, WhatsApp.
 - Delivery: five stages (onboarding, build, training, go-live, optimize) with a dedicated account lead and 90-day hypercare.
 - Contact: info@clubtechglobal.com · main site: https://www.clubtechglobal.com/
 
 ## Pages
 
-- [Landing page](${SITE_ORIGIN}/): platform overview, booking journey, operations, pricing, FAQ
+- [Landing page](${SITE_ORIGIN}/): platform overview, booking journey, operations, commercials, FAQ
 - [Platform](${SITE_ORIGIN}/platform/): the all-in-one platform — reservations, front of house, and marketing
 - [Booking](${SITE_ORIGIN}/booking/): the guest booking journey — 3D map, packages, add-ons, dynamic pricing, gift cards
 - [Operations](${SITE_ORIGIN}/operations/): floor plan, seating allocation, inventory sync, guest lists
 - [Intelligence](${SITE_ORIGIN}/intelligence/): guest data, 20+ reports, Meta/Google/GA4 attribution
 - [Delivery](${SITE_ORIGIN}/delivery/): five-stage rollout with a dedicated account lead and 90-day hypercare
-- [Pricing](${SITE_ORIGIN}/pricing/): no monthly fee, 4% online processing paid by the customer, $2,000 setup
+- [Book a demo](${SITE_ORIGIN}/book-a-demo/): a 15-minute demo configured around your venue — no monthly fee, and pricing built per venue is shared on the call
 - [The Index (blog)](${SITE_ORIGIN}/blog/): operator playbooks on booking UX, revenue capture, and guest data`];
   for (const sectionKey of Object.keys(PAGE_SECTIONS)) {
     const sectionPages = pages.filter((p) => p.meta.section === sectionKey);

@@ -45,7 +45,7 @@ Many of Dubai's strongest beach days happen inside hotels. If your venue sits on
 
 That guest database compounds. Daily booking volume, lead time by daypart, average value by variant, repeat-customer share — segmented and trending inside the [platform](/platform.html), no CSV exports. In an eight-month market, knowing by mid-October how this season's lead times compare to last season's is the difference between pricing with confidence and discounting out of nerves.
 
-Clubtech operates from Dubai, alongside Bali and Singapore — this market isn't a time zone we cover, it's one we work in. And the commercials are aligned with the season: no monthly fee, a one-time $2,000 setup, and a 4% online processing fee paid by the customer — the platform earns when the deck sells, not before.
+Clubtech operates from Dubai, alongside Bali and Singapore — this market isn't a time zone we cover, it's one we work in. And the commercials are aligned with the season: no monthly fee, and the platform earns when the deck sells, not before. [Book a demo](../../book-a-demo/) for a quote built around your venue.
 
 ## Questions operators ask
 

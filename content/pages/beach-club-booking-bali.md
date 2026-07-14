@@ -53,7 +53,7 @@ Clubtech is white-label throughout: your domain, your design, your guest data. A
 
 We're not remote support in another hemisphere, either. Clubtech operates from Bali, alongside Singapore and Dubai. When your GM wants to talk through Saturday's zone pricing, that conversation happens in your timezone.
 
-The commercials match how venues here run: no monthly fee, a one-time $2,000 setup, and a 4% online processing fee paid by the customer. If the platform isn't selling your furniture, it isn't costing you anything.
+The commercials match how venues here run: no monthly fee, and the platform earns only when it's selling your furniture — so if it isn't, it isn't costing you anything. [Book a demo](../../book-a-demo/) for a quote built around your venue.
 
 If you're still building your shortlist, the [complete guide to beach club booking systems](/blog/beach-club-booking-system-complete-guide/) walks through the full evaluation checklist — including the questions where simpler tools genuinely win.
 

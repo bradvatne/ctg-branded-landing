@@ -24,7 +24,7 @@ If you run restaurant covers in the Gulf — a dining room, a hotel F&B group, a
 | What you're comparing | Clubtech | serVme |
 |---|---|---|
 | Built for | Beach clubs, day clubs, pool venues | Restaurants, hotel F&B groups, brunch programs |
-| Commercial model | No monthly fee; 4% processing fee; $2,000 setup | Commission-free flat subscription; pricing on request |
+| Commercial model | No monthly fee; aligned to your online revenue — quote on a quick demo | Commission-free flat subscription; pricing on request |
 | How guests book | Guest picks exact bed on a 3D map before checkout | Staff assigns covers on an operator-side floor plan |
 | Packages & add-ons | Tiered packages with stackable one-tap add-ons | Upsell lists and notes, no native package ladder |
 | Operations & floor plan | Interactive internal floor plan with auto-seating allocation | Staff iPad with drag-and-drop reservation management |
@@ -64,7 +64,7 @@ Beyond the booking flow, Clubtech also runs the service day: the online inventor
 
 ## Commercials, side by side
 
-serVme sells a commission-free flat subscription; pricing isn't published, and it claims meaningful savings against per-cover rivals. Clubtech publishes its numbers: no monthly fee, a 4% online processing fee paid by the customer, and a one-time $2,000 setup fee per venue covering widget setup, configuration, and staff training. For a seasonal deck, the practical difference is that Clubtech's cost scales with money actually flowing — there's no subscription running through the months the venue sleeps.
+serVme sells a commission-free flat subscription; pricing isn't published, and it claims meaningful savings against per-cover rivals. Clubtech's model is simple and aligned: no monthly fee, and the platform earns when your online revenue grows — [book a demo](../../book-a-demo/) for a quote built around your venue. For a seasonal deck, the practical difference is that Clubtech's cost scales with money actually flowing — there's no subscription running through the months the venue sleeps.
 
 The scale behind that model: Clubtech was founded in Singapore, supports venue partners in more than 7 countries, and processes $332k in weekly GMV. At FINNS Beach Club in Bali, CEO Beau Whittington describes growing from on-the-day bookings with no financial guarantee to millions of dollars worth of pre-paid bookings each month.
 
@@ -88,7 +88,7 @@ Yes, where the venue is really two businesses. Restaurant covers and dining CRM 
 
 ### How much does Clubtech cost compared to serVme?
 
-Clubtech publishes its pricing: no monthly fee, a 4% online processing fee paid by the customer, and a one-time $2,000 setup fee per venue. serVme sells a flat subscription with pricing available on request. The structural difference: Clubtech carries no fixed monthly cost, so a seasonal venue pays nothing in the months it isn't selling.
+Clubtech's model is simple and aligned: no monthly fee, and the platform earns as your online revenue grows — book a demo for a quote built around your venue. serVme sells a flat subscription with pricing available on request. The structural difference: Clubtech carries no fixed monthly cost, so a seasonal venue pays nothing in the months it isn't selling.
 
 ## See it live
 
