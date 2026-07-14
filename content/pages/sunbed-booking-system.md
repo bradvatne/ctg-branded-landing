@@ -49,7 +49,7 @@ Then the data compounds. More than 20 built-in reports turn reservations into gu
 
 ## Hotels: the same engine, folio-ready
 
-For resort and hotel decks, the same map handles resident reservations, outside-guest day passes, and cabana upsells — with Opera PMS integration so resident bookings post where finance expects them. If your deck belongs to a property rather than a standalone club, the [hotel pool booking](https://bradvatne.github.io/ctg-branded-landing/solutions/hotel-pool-booking/) page covers the folio, day-pass, and pricing-policy details.
+For resort and hotel decks, the same map handles resident reservations, outside-guest day passes, and cabana upsells — with Opera PMS integration so resident bookings post where finance expects them. If your deck belongs to a property rather than a standalone club, the [hotel pool booking](https://www.clubtechglobal.com/solutions/hotel-pool-booking/) page covers the folio, day-pass, and pricing-policy details.
 
 ## What it costs
 

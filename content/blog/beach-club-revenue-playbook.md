@@ -89,7 +89,7 @@ If you're writing a beach club business plan — for a bank, an investor, or a l
 
 Two numbers deserve their own line in any plan. Season length, because your inventory only exists on days the deck is open — a 20-week season and a year-round operation are different businesses wearing the same swimwear. And the pre-sold share of revenue: the percentage banked before the day it's earned. The higher that share, the less your projections depend on weather and walk-up luck — and the easier the plan is to defend, because pre-sold bookings are a demand record, not a hope. The same architecture that makes the plan credible on paper is the one that protects profit once the venue is open: profit follows the mix — how much of the deck sells at premium tiers, how much F&B the minimums guarantee, and how little of it walks away as no-shows.
 
-This playbook is the education layer. When you want to see the machinery running on a venue like yours — the map-first booking flow, packages, prepayment, and the reporting behind all of it — start with the [Clubtech platform for beach clubs](https://bradvatne.github.io/ctg-branded-landing/solutions/beach-clubs/).
+This playbook is the education layer. When you want to see the machinery running on a venue like yours — the map-first booking flow, packages, prepayment, and the reporting behind all of it — start with the [Clubtech platform for beach clubs](https://www.clubtechglobal.com/solutions/beach-clubs/).
 
 ## Questions operators ask
 

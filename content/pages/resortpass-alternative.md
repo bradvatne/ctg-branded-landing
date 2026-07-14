@@ -57,7 +57,7 @@ Selling direct doesn't mean bolting a generic ticket widget onto your website an
 - **Early-commitment pricing.** A "Book Online & Save" spread gives guests a reason to prepay days ahead — and gives you revenue certainty and capacity data before the weekend arrives, instead of a walk-up guess. Dynamic pricing then prices the same furniture to demand.
 - **Sold out ≠ lost guest.** When cabanas are gone, priority-entry capture takes the guest's details anyway. On a marketplace, a sold-out listing is a dead end; on your own channel, it's a lead.
 - **A checkout built for phones.** 82% of bookings happen on a phone after 10pm. Sub-second load, no app install, Apple Pay or Google Pay, done in four taps.
-- **Hotel plumbing included.** Opera PMS integration means resident reservations land on the folio, and outside-guest day passes reconcile cleanly. The full resident-plus-day-guest model is covered on our [hotel pool booking page](https://bradvatne.github.io/ctg-branded-landing/solutions/hotel-pool-booking/).
+- **Hotel plumbing included.** Opera PMS integration means resident reservations land on the folio, and outside-guest day passes reconcile cleanly. The full resident-plus-day-guest model is covered on our [hotel pool booking page](https://www.clubtechglobal.com/solutions/hotel-pool-booking/).
 
 All of it runs white-label — your domain, your design, your guest data. To a guest, it's simply your hotel's booking page. And the commercials match the owned-channel logic: no monthly fee, a 4% online processing fee paid by the customer, and a one-time $2,000 setup per venue — a fixed cost of ownership instead of a percentage of every peak-day booking, forever.
 

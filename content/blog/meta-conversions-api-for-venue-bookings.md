@@ -46,7 +46,7 @@ Generic CAPI guides assume you sell sneakers. A venue's event model is different
 - **Abandoned cart, with context** — a guest who picked a front-row daybed for Saturday and bailed at checkout is your highest-intent audience of the week. An abandoned-cart event that carries the zone, date, and price lets dynamic ads bring them back to the exact spot they left behind, not a generic "come back" banner.
 - **Revenue posted back** — when actual transaction values flow to Meta (CAPI revenue, and Enhanced Conversions on the Google side), you unlock value-based optimization: the algorithm stops hunting for people likely to book anything and starts hunting for people who look like your $1,000-plus bookers.
 
-That last event is where nightclubs and day clubs leave the most money on the table. The DM-and-doorman era of [VIP table booking](https://bradvatne.github.io/ctg-branded-landing/solutions/nightclub-table-booking/) produced zero events — unattributed, unguaranteed, unretargetable. Every table sold through a real booking flow is a revenue-carrying signal your next campaign learns from.
+That last event is where nightclubs and day clubs leave the most money on the table. The DM-and-doorman era of [VIP table booking](https://www.clubtechglobal.com/solutions/nightclub-table-booking/) produced zero events — unattributed, unguaranteed, unretargetable. Every table sold through a real booking flow is a revenue-carrying signal your next campaign learns from.
 
 ## What changes in campaign performance
 

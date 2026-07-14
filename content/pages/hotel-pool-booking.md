@@ -28,7 +28,7 @@ One deck, three products, one system of record.
 
 A guest opens the interactive map of your pool on their phone — no app, no login wall. They explore zones, compare the swim-up row to the shade line, watch a 360° walkthrough of the cabana they're considering, then tap the exact piece of furniture. Packages and add-ons stack onto the booking before payment; Apple Pay, Google Pay, or card closes it in four taps.
 
-The sequencing matters. Guests commit to a spot before they see a price, which is why map-first flows sell premium positions first — and why a book-online-and-save spread pulls commitment days forward, handing you occupancy and staffing data before the weekend. When the deck sells out, priority-entry capture takes contact details anyway, so a full Saturday still builds Tuesday's audience. The deck-level revenue mechanics are covered in depth on the [sunbed booking system](https://bradvatne.github.io/ctg-branded-landing/solutions/sunbed-booking-system/) page.
+The sequencing matters. Guests commit to a spot before they see a price, which is why map-first flows sell premium positions first — and why a book-online-and-save spread pulls commitment days forward, handing you occupancy and staffing data before the weekend. When the deck sells out, priority-entry capture takes contact details anyway, so a full Saturday still builds Tuesday's audience. The deck-level revenue mechanics are covered in depth on the [sunbed booking system](https://www.clubtechglobal.com/solutions/sunbed-booking-system/) page.
 
 ## Resident bookings that land on the folio
 

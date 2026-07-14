@@ -20,7 +20,7 @@ A beach club booking system closes that gap. Guests choose the exact daybed, cab
 - **Packages do the upselling.** Tiered options — bed only, party package, ultimate — with stackable add-ons like bottles, cakes, and transfers. The upgrade is one tap at booking, not a negotiation on the deck.
 - **Payment happens at booking.** Apple Pay, Google Pay, or card; four taps; sub-second load; no app install. Since 82% of bookings happen on a phone after 10pm, the flow is built for a guest on a sofa at 11:15 on a Tuesday — because that's where your Saturday is actually decided.
 
-If you're still mapping the category — what these systems do, what to ask vendors, where simpler tools genuinely win — start with the [complete guide to beach club booking systems](https://bradvatne.github.io/ctg-branded-landing/blog/beach-club-booking-system-complete-guide/). This page is the shorter version: what running one on Clubtech looks like.
+If you're still mapping the category — what these systems do, what to ask vendors, where simpler tools genuinely win — start with the [complete guide to beach club booking systems](https://www.clubtechglobal.com/blog/beach-club-booking-system-complete-guide/). This page is the shorter version: what running one on Clubtech looks like.
 
 ## Four revenue levers, pulled before doors open
 

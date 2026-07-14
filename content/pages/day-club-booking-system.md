@@ -30,7 +30,7 @@ Generic venue booking software can't express that; it sells time slots and cover
 - **Each zone carries its own tiers.** Bed only, party package, ultimate — with stackable add-ons like bottles, cakes, and transfers, one tap at booking.
 - **Dayparts price independently.** Dynamic pricing means the sunset session stops being priced like the noon session, and Saturday stops being priced like Tuesday. Pool party events run through the same flow via event ticketing.
 
-If your second daypart runs past midnight, the same engine and the same guest database handle [nightclub table booking](https://bradvatne.github.io/ctg-branded-landing/solutions/nightclub-table-booking/) — one inventory, two products.
+If your second daypart runs past midnight, the same engine and the same guest database handle [nightclub table booking](https://www.clubtechglobal.com/solutions/nightclub-table-booking/) — one inventory, two products.
 
 ## Bottle pre-sales: the spend decision moves to the couch
 

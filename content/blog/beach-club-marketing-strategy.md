@@ -70,7 +70,7 @@ Move table and guest-list sales into a real booking flow and nightclub retargeti
 - **The abandoned table is the week's best audience.** A guest who priced a table, saw the minimum spend, and bailed at the deposit is precisely who Friday's retargeting budget should chase — with the exact table, date, and package they left behind.
 - **Seed lookalikes from table buyers, not followers.** A nightclub's Instagram following is full of people who will never buy a table. Lookalikes built from paying bookers point the ad platforms at spenders.
 
-The booking-flow side of this — deposits, minimums, table inventory online — is covered on our [nightclub table booking](https://bradvatne.github.io/ctg-branded-landing/solutions/nightclub-table-booking/) page.
+The booking-flow side of this — deposits, minimums, table inventory online — is covered on our [nightclub table booking](https://www.clubtechglobal.com/solutions/nightclub-table-booking/) page.
 
 ## Instagram, influencers, and the organic reality check
 

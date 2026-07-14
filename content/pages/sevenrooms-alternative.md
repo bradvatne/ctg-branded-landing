@@ -51,7 +51,7 @@ Operators who arrive at Clubtech from a dining-first tool tend to report the sam
 3. **No zone pricing.** One room, one price logic collapses when the same "table type" should cost triple in the front row on a Saturday — dynamic pricing by zone and date is how the same furniture earns more.
 4. **Deposit logic built for dinner.** Beach and day clubs run on prepayment and minimum spends by zone. Dining tools do offer deposits and card holds, but the default posture is protecting a service period from no-shows — not pre-selling a deck at full package price, days in advance.
 
-None of this makes SevenRooms bad software. It makes it software optimized for a different transaction. The economics of the furniture-first model are laid out on our [beach club booking engine page](https://bradvatne.github.io/ctg-branded-landing/solutions/beach-clubs/).
+None of this makes SevenRooms bad software. It makes it software optimized for a different transaction. The economics of the furniture-first model are laid out on our [beach club booking engine page](https://www.clubtechglobal.com/solutions/beach-clubs/).
 
 ## The ads and revenue loop, compared
 

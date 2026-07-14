@@ -52,7 +52,7 @@ Every booking fires to Meta, Google, and GA4 in real time, with revenue posted b
 
 More than 20 built-in reports turn the reservation log into guest intelligence: booking volume, lead time, average value by package, repeat share. And because 82% of bookings happen on a phone after 10pm, the checkout is built for the group chat hour: sub-second load, no app install, Apple Pay and Google Pay, four taps.
 
-If you run a daytime concept alongside the club, the same engine handles the [day club booking flow](https://bradvatne.github.io/ctg-branded-landing/solutions/day-club-booking-system/) — one inventory, two dayparts, one guest database.
+If you run a daytime concept alongside the club, the same engine handles the [day club booking flow](https://www.clubtechglobal.com/solutions/day-club-booking-system/) — one inventory, two dayparts, one guest database.
 
 The commercials: no monthly fee, a 4% online processing fee paid by the customer, and a $2,000 one-time setup covering widget setup, configuration, and staff training. It sits on top of your existing POS with no major IT changes.
 
