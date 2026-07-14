@@ -1,103 +1,247 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://bradvatne.github.io/ctg-branded-landing/</loc>
+    <loc>https://www.clubtechglobal.com/</loc>
     <lastmod>2026-07-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://bradvatne.github.io/ctg-branded-landing/platform/</loc>
+    <loc>https://www.clubtechglobal.com/platform/</loc>
     <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bradvatne.github.io/ctg-branded-landing/booking/</loc>
+    <loc>https://www.clubtechglobal.com/booking/</loc>
     <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bradvatne.github.io/ctg-branded-landing/operations/</loc>
+    <loc>https://www.clubtechglobal.com/operations/</loc>
     <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bradvatne.github.io/ctg-branded-landing/intelligence/</loc>
+    <loc>https://www.clubtechglobal.com/intelligence/</loc>
     <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bradvatne.github.io/ctg-branded-landing/delivery/</loc>
+    <loc>https://www.clubtechglobal.com/delivery/</loc>
     <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bradvatne.github.io/ctg-branded-landing/pricing/</loc>
+    <loc>https://www.clubtechglobal.com/pricing/</loc>
     <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bradvatne.github.io/ctg-branded-landing/blog/</loc>
+    <loc>https://www.clubtechglobal.com/blog/</loc>
     <lastmod>2026-07-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bradvatne.github.io/ctg-branded-landing/solutions/</loc>
-    <lastmod>2026-07-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://bradvatne.github.io/ctg-branded-landing/compare/</loc>
+    <loc>https://www.clubtechglobal.com/solutions/</loc>
     <lastmod>2026-07-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://bradvatne.github.io/ctg-branded-landing/solutions/beach-club-booking-ibiza/</loc>
+    <loc>https://www.clubtechglobal.com/compare/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.clubtechglobal.com/blog/the-hidden-revenue-leak-in-your-beach-club-booking-flow/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.clubtechglobal.com/blog/big-match-playbook-major-events-revenue/</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.clubtechglobal.com/blog/meta-conversions-api-for-venue-bookings/</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.clubtechglobal.com/blog/ga4-for-venue-bookings/</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.clubtechglobal.com/blog/finns-beach-club-case-study/</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.clubtechglobal.com/blog/dynamic-pricing-for-beach-clubs/</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.clubtechglobal.com/blog/beach-club-revenue-playbook/</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.clubtechglobal.com/blog/beach-club-marketing-strategy/</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.clubtechglobal.com/blog/beach-club-booking-system-complete-guide/</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.clubtechglobal.com/blog/that-last-click-before-checkout-could-be-worth-thousands/</loc>
+    <lastmod>2025-12-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.clubtechglobal.com/blog/the-ux-behind-a-sold-out-saturday/</loc>
+    <lastmod>2025-10-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.clubtechglobal.com/blog/your-guests-want-to-spend-more-youre-just-not-letting-them/</loc>
+    <lastmod>2025-10-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.clubtechglobal.com/blog/maximize-beach-club-revenue-the-power-of-pre-booked-upsells/</loc>
+    <lastmod>2025-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.clubtechglobal.com/blog/why-first-party-data-is-the-future-of-beach-club-marketing/</loc>
+    <lastmod>2025-10-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.clubtechglobal.com/solutions/beach-club-booking-bali/</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.clubtechglobal.com/solutions/beach-club-booking-dubai/</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.clubtechglobal.com/solutions/beach-club-booking-ibiza/</loc>
     <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bradvatne.github.io/ctg-branded-landing/solutions/beach-club-booking-mykonos/</loc>
+    <loc>https://www.clubtechglobal.com/solutions/beach-club-booking-mykonos/</loc>
     <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bradvatne.github.io/ctg-branded-landing/solutions/beach-club-booking-phuket/</loc>
+    <loc>https://www.clubtechglobal.com/solutions/beach-club-booking-phuket/</loc>
     <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bradvatne.github.io/ctg-branded-landing/compare/book-tech-labs-alternative/</loc>
+    <loc>https://www.clubtechglobal.com/solutions/beach-clubs/</loc>
     <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bradvatne.github.io/ctg-branded-landing/compare/fourvenues-alternative/</loc>
+    <loc>https://www.clubtechglobal.com/compare/book-tech-labs-alternative/</loc>
     <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bradvatne.github.io/ctg-branded-landing/compare/hoteligy-alternative/</loc>
+    <loc>https://www.clubtechglobal.com/solutions/day-club-booking-system/</loc>
     <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bradvatne.github.io/ctg-branded-landing/compare/servme-alternative/</loc>
+    <loc>https://www.clubtechglobal.com/compare/fourvenues-alternative/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.clubtechglobal.com/solutions/hotel-pool-booking/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.clubtechglobal.com/compare/hoteligy-alternative/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.clubtechglobal.com/solutions/nightclub-table-booking/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.clubtechglobal.com/compare/resortpass-alternative/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.clubtechglobal.com/compare/servme-alternative/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.clubtechglobal.com/compare/sevenrooms-alternative/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.clubtechglobal.com/solutions/sunbed-booking-system/</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.clubtechglobal.com/compare/urvenue-alternative/</loc>
     <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

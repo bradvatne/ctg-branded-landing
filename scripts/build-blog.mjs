@@ -30,7 +30,7 @@ const ROOT = resolve(__dirname, '..');
 const CONTENT_DIR = join(ROOT, 'content', 'blog');
 const PAGES_DIR = join(ROOT, 'content', 'pages');
 const OUT_DIR = join(ROOT, 'blog');
-const SITE_ORIGIN = 'https://bradvatne.github.io/ctg-branded-landing';
+const SITE_ORIGIN = 'https://www.clubtechglobal.com';
 const CANONICAL_ORIGIN = 'https://www.clubtechglobal.com';
 const PAGE_SECTIONS = { solutions: 'Solutions', compare: 'Compare' };
 
@@ -842,8 +842,9 @@ ${CONSENT_MARKUP}
 }
 
 /* ─── Sitemap ────────────────────────────────────────────────── */
-/* Blog posts and canonical-elsewhere pages are excluded (they point at
-   www.clubtechglobal.com); self-canonical solution/compare pages are in. */
+/* Pages whose canonical points at another origin are excluded; now that the
+   site serves www.clubtechglobal.com itself, those canonicals are self-
+   canonical and everything (incl. blog posts) belongs in the sitemap. */
 function renderSitemap(posts, pages) {
   const latest = posts[0]?.meta.date || '2026-01-01';
   const entries = [
@@ -851,7 +852,13 @@ function renderSitemap(posts, pages) {
     ...FEATURE_PAGES.map(([slug]) => ({ loc: `${SITE_ORIGIN}/${slug}/`, lastmod: latest, changefreq: 'monthly', priority: '0.8' })),
     { loc: `${SITE_ORIGIN}/blog/`, lastmod: latest, changefreq: 'weekly', priority: '0.8' },
     ...Object.keys(PAGE_SECTIONS).map((sec) => ({ loc: `${SITE_ORIGIN}/${sec}/`, lastmod: latest, changefreq: 'weekly', priority: '0.7' })),
-    ...pages.filter((p) => !p.meta.canonical).map((p) => ({
+    ...posts.map((p) => ({
+      loc: `${SITE_ORIGIN}/blog/${p.meta.slug}/`,
+      lastmod: p.meta.date,
+      changefreq: 'monthly',
+      priority: '0.7',
+    })),
+    ...pages.filter((p) => !p.meta.canonical || p.meta.canonical === `${SITE_ORIGIN}/${p.meta.section}/${p.meta.slug}/`).map((p) => ({
       loc: `${SITE_ORIGIN}/${p.meta.section}/${p.meta.slug}/`,
       lastmod: p.meta.date,
       changefreq: 'monthly',

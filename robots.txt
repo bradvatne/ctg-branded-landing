@@ -27,4 +27,4 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
-Sitemap: https://bradvatne.github.io/ctg-branded-landing/sitemap.xml
+Sitemap: https://www.clubtechglobal.com/sitemap.xml
