@@ -1,0 +1,80 @@
+/* Clubtech branded landing — guest intelligence dashboard demo (.cki-).
+   Same design language as the guest demo and operator console: Albert
+   Sans, white cards on a soft canvas, #1c1c1c headers, indigo bars +
+   teal trend line, lavender insight callout. */
+
+.cki{position:relative;isolation:isolate;width:100%;aspect-ratio:4/3;background:#f6f6f4;border-radius:24px;overflow:hidden;box-shadow:18px 18px 0 var(--lav);font-family:"Albert Sans",system-ui,sans-serif;letter-spacing:0;color:#1c1c1c;font-size:14px;line-height:1.35;user-select:none;-webkit-user-select:none;display:flex}
+.feature-row .cki{aspect-ratio:auto;height:610px}
+.hero-grid .cki{aspect-ratio:auto;height:640px;min-height:560px}
+#intelligence .cki{aspect-ratio:auto;height:640px}
+.cki *{box-sizing:border-box}
+.cki :where(button){font:inherit;border:0;background:none;color:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent;letter-spacing:0}
+.cki img{display:block}
+
+/* sidebar */
+.cki-side{flex:none;width:196px;background:#fff;border-right:1px solid #ececec;padding:14px 14px 12px;display:flex;flex-direction:column;gap:11px;overflow-y:auto}
+.cki-brand{display:flex;align-items:center;gap:8px;padding-bottom:11px;border-bottom:1px solid #f0f0f0}
+.cki-brand .lg{width:30px;height:30px;flex:none;border-radius:50%;border:1px solid #ececec;display:grid;place-items:center}
+.cki-brand .lg img{width:16px;height:16px;object-fit:contain}
+.cki-brand b{font-size:12.5px;font-weight:800;line-height:1.25}
+.cki-filter{display:block;font-size:10px;font-weight:700;color:#6e6e6e;text-transform:uppercase;letter-spacing:.05em}
+.cki-filter select{width:100%;margin-top:5px;height:36px;border:1px solid #e2e2e2;border-radius:10px;padding:0 8px;font:inherit;font-size:12px;font-weight:600;color:#1c1c1c;background:#fff;letter-spacing:0;text-transform:none}
+.cki-filter select:focus{outline:2px solid #1c1c1c;outline-offset:-1px}
+.cki-foot{margin:auto 0 0;font-size:10px;color:#9b9b9b;font-weight:500;line-height:1.5}
+
+/* main column */
+.cki-main{flex:1;min-width:0;display:flex;flex-direction:column;gap:10px;padding:12px;overflow-y:auto}
+.cki-stats{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.cki-stat{background:#fff;border:1px solid #ececec;border-radius:14px;padding:10px 12px}
+.cki-stat span{display:block;font-size:9px;font-weight:700;color:#6e6e6e;text-transform:uppercase;letter-spacing:.05em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cki-stat b{display:block;margin-top:3px;font-size:17px;font-weight:800;white-space:nowrap}
+
+/* tabs + granularity */
+.cki-tabrow{display:flex;align-items:center;gap:8px}
+.cki-tabs{flex:1;min-width:0;display:flex;gap:5px;overflow-x:auto;scrollbar-width:none}
+.cki-tabs::-webkit-scrollbar{display:none}
+.cki-tabs button{flex:none;height:32px;padding:0 12px;border-radius:999px;border:1px solid #e2e2e2;background:#fff;font-size:11px;font-weight:600;color:#3f3f46;white-space:nowrap}
+.cki-tabs button.on{background:#1c1c1c;border-color:#1c1c1c;color:#fff}
+.cki-gran{flex:none;display:flex;background:#fff;border:1px solid #e2e2e2;border-radius:999px;padding:2px}
+.cki-gran button{height:26px;padding:0 10px;border-radius:999px;font-size:10.5px;font-weight:600;color:#6e6e6e}
+.cki-gran button.on{background:#1c1c1c;color:#fff}
+
+/* chart card */
+.cki-chartcard{background:#fff;border:1px solid #ececec;border-radius:16px;padding:12px 14px 8px}
+.cki-chartcard h4{margin:0 0 6px;font-size:12.5px;font-weight:700}
+.cki-svg{display:block;width:100%;height:200px}
+.cki-key{margin:2px 0 4px;display:flex;align-items:center;gap:6px;font-size:10px;font-weight:600;color:#6e6e6e}
+.cki-key i{width:10px;height:10px;border-radius:3px;background:#7b8ce8}
+.cki-key i.line{width:14px;height:3px;border-radius:2px;background:#14b8a6;margin-left:10px}
+
+/* bottom split */
+.cki-split{display:grid;grid-template-columns:1.25fr .75fr;gap:10px;align-items:stretch}
+.cki-prodcard{background:#fff;border:1px solid #ececec;border-radius:16px;padding:12px 14px}
+.cki-prodcard h4{margin:0 0 9px;font-size:12.5px;font-weight:700}
+.cki-bar{display:flex;align-items:center;gap:8px;margin-top:7px}
+.cki-bar span{flex:none;width:118px;font-size:10px;font-weight:600;color:#3f3f46;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cki-bar i{height:12px;border-radius:6px;background:linear-gradient(90deg,#7b8ce8,#a5b0f2);min-width:8px;transition:width .35s ease}
+.cki-bar b{font-size:10.5px;font-weight:800;white-space:nowrap}
+.cki-insight{background:#ede4ff;border-radius:16px;padding:14px;display:flex;gap:10px;align-items:flex-start}
+.cki-insight .ic{width:30px;height:30px;flex:none;border-radius:50%;background:#fff;display:grid;place-items:center;color:#7c3aed}
+.cki-insight .ic svg{width:16px;height:16px}
+.cki-insight p{margin:0;font-size:11.5px;font-weight:500;color:#1c1c1c;line-height:1.55}
+.cki-insight b{font-weight:800}
+
+/* badge */
+.cki-badge{position:absolute;right:14px;bottom:14px;z-index:50;display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;font-size:11.5px;font-weight:700;padding:8px 14px;border-radius:999px;box-shadow:0 8px 22px rgba(2,6,23,.35);pointer-events:none}
+.cki-badge i{width:8px;height:8px;border-radius:50%;background:var(--mint);animation:cki-blink 1.8s ease-in-out infinite}
+@keyframes cki-blink{0%,100%{opacity:1}50%{opacity:.35}}
+
+/* narrow frames */
+.cki.tiny{flex-direction:column}
+.cki.tiny .cki-side{width:100%;border-right:0;border-bottom:1px solid #ececec;flex-direction:row;flex-wrap:wrap;gap:8px;padding:10px 12px}
+.cki.tiny .cki-brand{border:0;padding:0;width:100%}
+.cki.tiny .cki-filter{flex:1;min-width:120px}
+.cki.tiny .cki-foot{display:none}
+.cki.tiny .cki-stats{grid-template-columns:repeat(3,1fr)}
+.cki.tiny .cki-stat:nth-child(n+4){display:none}
+.cki.tiny .cki-split{grid-template-columns:1fr}
+@media(max-width:600px){
+  .cki{aspect-ratio:auto;height:640px}
+}
