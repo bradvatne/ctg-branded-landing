@@ -692,7 +692,7 @@
             : (feat.img ? '' : '<span class="big">' + feat.emoji + '</span>')) +
           '<h4>' + feat.name + '</h4>' + (feat.was ? '<s>' + money(feat.was) + '</s>' : '') +
           '<p class="fp">' + money(feat.price) + '</p>' + (feat.save ? '<span class="savechip">' + feat.save + '</span>' : '') +
-          '<button type="button" data-add="' + feat.id + '">Add to Cart 🛒</button>' +
+          '<button type="button" data-add="' + feat.id + '">Add to Cart ' + I.cart + '</button>' +
         '</div>' +
       '</div></div>' +
       '<div class="ckd-foot">' +

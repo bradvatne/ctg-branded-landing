@@ -240,7 +240,7 @@ ${items}
         <a href="${rel}solutions/"${active === 'solutions' ? ' class="nav-active"' : ''}>Solutions</a>
         <a href="${rel}blog/"${active === 'blog' ? ' class="nav-active"' : ''}>Blog</a>
       </div>
-      <a class="button button-dark nav-cta" href="${rel}index.html#contact" data-open-demo>Book a demo <span aria-hidden="true">↗</span></a>
+      <a class="button button-dark nav-cta" href="${rel}index.html#contact" data-open-demo>Book a Demo</a>
       <details class="mobile-menu">
         <summary aria-label="Open navigation">Menu</summary>
         <div>
@@ -505,8 +505,8 @@ ${navMarkup('../../', page.meta.section === 'solutions' ? 'solutions' : null)}
         <h1>${h1Html(page.meta.title)}</h1>
         <p class="post-sub">${esc(page.meta.excerpt)}</p>
         <div class="post-hero-actions">
-          <a class="button button-mint" href="mailto:info@clubtechglobal.com" data-open-demo>Book a demo <span aria-hidden="true">↗</span></a>
-          <a class="button button-ghost" href="../../platform/">See the platform <span aria-hidden="true">↗</span></a>
+          <a class="button button-mint" href="mailto:info@clubtechglobal.com" data-open-demo>Book a Demo</a>
+          <a class="button button-ghost" href="../../platform/">See the Platform</a>
         </div>
       </div>
     </header>
@@ -526,7 +526,7 @@ ${moreSection}
       <p class="eyebrow">Your venue, pre-sold.</p>
       <h2>Stop reading about it.<br><span class="mint-text">See it live.</span></h2>
       <p>Book a focused walkthrough, configured around a premium venue like yours.</p>
-      <a class="button button-mint" href="mailto:info@clubtechglobal.com" data-open-demo>Book a demo <span aria-hidden="true">↗</span></a>
+      <a class="button button-mint" href="mailto:info@clubtechglobal.com" data-open-demo>Book a Demo</a>
     </div>
   </section>
 
@@ -620,7 +620,7 @@ ${rows}
       <p class="eyebrow">Your venue, pre-sold.</p>
       <h2>Stop reading about it.<br><span class="mint-text">See it live.</span></h2>
       <p>Book a focused walkthrough, configured around a premium venue like yours.</p>
-      <a class="button button-mint" href="mailto:info@clubtechglobal.com" data-open-demo>Book a demo <span aria-hidden="true">↗</span></a>
+      <a class="button button-mint" href="mailto:info@clubtechglobal.com" data-open-demo>Book a Demo</a>
     </div>
   </section>
 
@@ -716,7 +716,7 @@ ${rows}
       <p class="eyebrow">Your venue, pre-sold.</p>
       <h2>Stop reading about it.<br><span class="mint-text">See it live.</span></h2>
       <p>Book a focused walkthrough, configured around a premium venue like yours.</p>
-      <a class="button button-mint" href="mailto:info@clubtechglobal.com" data-open-demo>Book a demo <span aria-hidden="true">↗</span></a>
+      <a class="button button-mint" href="mailto:info@clubtechglobal.com" data-open-demo>Book a Demo</a>
     </div>
   </section>
 
@@ -796,7 +796,7 @@ ${moreRows}
       <p class="eyebrow">Your venue, pre-sold.</p>
       <h2>Stop reading about it.<br><span class="mint-text">See it live.</span></h2>
       <p>Book a focused walkthrough, configured around a premium venue like yours.</p>
-      <a class="button button-mint" href="mailto:info@clubtechglobal.com" data-open-demo>Book a demo <span aria-hidden="true">↗</span></a>
+      <a class="button button-mint" href="mailto:info@clubtechglobal.com" data-open-demo>Book a Demo</a>
     </div>
   </section>
 

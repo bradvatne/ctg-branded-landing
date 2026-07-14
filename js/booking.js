@@ -71,7 +71,7 @@
       '      <label class="bk-field"><span>Phone <em>(optional)</em></span><input name="phone" type="tel" autocomplete="tel" placeholder="+62 812 …"></label>' +
       '      <label class="bk-field"><span>What should we prepare? <em>(optional)</em></span><textarea name="description" rows="2"></textarea></label>' +
       '      <p class="bk-error" hidden>Please fill in your name, venue, and a valid email.</p>' +
-      '      <button type="submit" class="button button-mint bk-submit">Pick a time <span aria-hidden="true">↗</span></button>' +
+      '      <button type="submit" class="button button-mint bk-submit">Pick a Time</button>' +
       '      <p class="bk-fine">No contracts · no credit card · we only use your details to reply</p>' +
       '    </form>' +
       '  </div>' +
