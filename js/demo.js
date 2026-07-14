@@ -285,7 +285,10 @@
       cards.appendChild(c);
     });
     zc.appendChild(cards);
-    zc.appendChild(h('button', 'ckd-znext', '›')).type = 'button';
+    var znext = zc.appendChild(h('button', 'ckd-znext', '›'));
+    znext.type = 'button';
+    znext.setAttribute('aria-label', 'More zones');
+    znext.addEventListener('click', function () { cards.scrollBy({ left: 220, behavior: 'smooth' }); });
     root.appendChild(zc);
 
     // booking bar
@@ -342,8 +345,16 @@
 
   var MAP_AR = 1536 / 1152; // aspect ratio of the venue render
 
+  /* stage layout size in CSS px — clientWidth/Height ignore ancestor
+     transforms (reveal animations), which getBoundingClientRect does not;
+     a rect measured mid-animation left the world sized for a shrunken
+     stage and the hotspots adrift of the art */
+  function stageSize() {
+    return { width: stage.clientWidth, height: stage.clientHeight };
+  }
+
   function sizeWorld() {
-    var r = stage.getBoundingClientRect();
+    var r = stageSize();
     if (!r.width || !r.height) return;
     var w = Math.max(r.width, r.height * MAP_AR);
     var h = w / MAP_AR;
@@ -354,7 +365,7 @@
   }
 
   function apply() {
-    var r = stage.getBoundingClientRect();
+    var r = stageSize();
     if (!world._w) sizeWorld();
     var ww = world._w * Z.s, wh = world._h * Z.s;
     Z.x = Math.min(0, Math.max(r.width - ww, Z.x));
@@ -368,7 +379,7 @@
 
   function zoomTo(s, cx, cy) {
     mark();
-    var r = stage.getBoundingClientRect();
+    var r = stageSize();
     cx = cx == null ? r.width / 2 : cx; cy = cy == null ? r.height / 2 : cy;
     var ns = Math.min(3.2, Math.max(1, s));
     var k = ns / Z.s;
@@ -380,7 +391,8 @@
     mark();
     var map = { 'Pool Club': [48, 30], 'VIP Cabanas': [11, 34], 'Beachfront': [47, 62], 'Sunset Deck': [81, 47], 'Party Pavilion': [79, 22] };
     var t = map[name] || [50, 50];
-    var r = stage.getBoundingClientRect();
+    sizeWorld();
+    var r = stageSize();
     Z.s = 1.9;
     Z.x = r.width / 2 - t[0] / 100 * world._w * Z.s;
     Z.y = r.height / 2 - t[1] / 100 * world._h * Z.s;
@@ -419,11 +431,13 @@
     }, { passive: false });
     sizeWorld();
     // center the (possibly wider-than-frame) world
-    var r0 = stage.getBoundingClientRect();
+    var r0 = stageSize();
     Z.x = (r0.width - world._w) / 2;
     Z.y = (r0.height - world._h) / 2;
     apply();
     if (window.ResizeObserver) new ResizeObserver(function () { sizeWorld(); apply(); }).observe(stage);
+    // late layout settles (fonts, first paint) can shift sizes without a resize event
+    window.addEventListener('load', function () { sizeWorld(); apply(); });
   }
 
   /* ===== date modal ==================================================== */
@@ -458,7 +472,7 @@
       '<tbody>' + rowsHtml + '</tbody></table>' +
       '<div class="ckd-legend">' +
         '<p><i style="background:#f26d7e"></i>Almost Sold Out</p>' +
-        '<p><i style="background:#7c3aed"></i>Promo Available – <b>Get 75% OFF VIP Party Beds</b></p>' +
+        '<p><i style="background:#7c3aed"></i>Promo Available</p>' +
       '</div>' +
       '<div class="ckd-modal-foot"><button type="button" class="ckd-btn-ghost" data-cancel>Cancel</button>' +
       '<button type="button" class="ckd-btn-dark" data-choose>Choose Bed</button></div>';
@@ -595,6 +609,7 @@
     var bar = $('.ckd-bar');
     var badge = $('[data-cartbtn] b');
     if (badge) { badge.textContent = cartCount(); badge.hidden = !cartCount(); }
+    root.classList.toggle('has-cart', !!state.cart.length);
     if (!state.cart.length) {
       bar.innerHTML = '';
       bar.style.display = 'none';
@@ -615,6 +630,8 @@
     closePanel();
     closeModal();
     showView('map');
+    sizeWorld();
+    apply();
   }
 
   function appbar(step) {

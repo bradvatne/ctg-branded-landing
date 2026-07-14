@@ -71,8 +71,9 @@
 .ckd-zoom button{width:38px;height:36px;font-size:19px;font-weight:500;display:grid;place-items:center;color:#1c1c1c}
 .ckd-zoom button+button{border-top:1px solid #eee}
 
-/* bottom zone cards */
-.ckd-zones{position:absolute;left:14px;bottom:14px;z-index:35;display:flex;align-items:center;gap:8px;max-width:calc(100% - 330px)}
+/* bottom zone cards — reserve space for the booking bar only when it exists */
+.ckd-zones{position:absolute;left:14px;bottom:14px;z-index:35;display:flex;align-items:center;gap:8px;max-width:calc(100% - 80px)}
+.ckd.has-cart .ckd-zones{max-width:calc(100% - 330px)}
 .ckd-zonecards{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;border-radius:16px}
 .ckd-zonecards::-webkit-scrollbar{display:none}
 .ckd-zcard{flex:none;background:#fff;border-radius:14px;padding:9px 18px 11px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.12);transition:background .15s}
@@ -112,9 +113,9 @@
 .ckd-cal .dot{display:block;width:6px;height:6px;border-radius:50%;margin:1px auto 3px}
 .ckd-cal .dot.warn{background:#f26d7e}
 .ckd-cal .dot.promo{background:#7c3aed}
-.ckd-legend{margin-top:10px;font-size:11.5px;color:#3f3f46}
-.ckd-legend p{margin:4px 0;display:flex;align-items:center;gap:7px}
-.ckd-legend i{width:8px;height:8px;border-radius:50%;flex:none}
+.ckd-legend{margin-top:10px;font-size:9.5px;color:#3f3f46}
+.ckd-legend p{margin:3px 0;display:flex;align-items:center;gap:6px}
+.ckd-legend i{width:6px;height:6px;border-radius:50%;flex:none}
 .ckd-legend b{font-weight:700}
 .ckd-modal-foot{display:flex;gap:10px;margin-top:16px;padding-top:16px;border-top:1px solid #ececec}
 .ckd-btn-ghost{flex:1;height:48px;border-radius:999px;border:1px solid #e2e2e2;background:#fff;font-size:13.5px;font-weight:600}
@@ -319,7 +320,7 @@
 .ckd.narrow .ckd-stepper{padding:0 16px;gap:7px;height:46px}
 .ckd.narrow .ckd-stepper span:not(.on) u{display:none}
 .ckd.narrow .ckd-datepill{min-width:0;padding:0 14px}
-.ckd.narrow .ckd-zones{max-width:calc(100% - 292px)}
+.ckd.narrow.has-cart .ckd-zones{max-width:calc(100% - 292px)}
 .ckd.narrow .ckd-appbar .ckd-stepper{height:auto}
 @media(max-width:900px){
   .ckd-rail{display:none}
