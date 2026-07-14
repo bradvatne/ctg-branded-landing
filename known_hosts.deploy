@@ -1,0 +1,20 @@
+# Pinned SSH host keys for ctg-landing-page deploy.
+# Captured 2026-05-26 via `ssh-keyscan` from the ctg-dev VM.
+#
+# Jump host: 139.59.118.191:16308 (gln-platform bastion)
+# Target host: 168.144.141.155 (sgp1-marketing-prod01)
+#
+# How to add a new host key:
+#   ssh-keyscan -p <port> <host> >> known_hosts.deploy
+#   (review the new lines, then commit)
+#
+# The deploy script (deploy-prod.sh) consumes this file via
+# UserKnownHostsFile and refuses unknown keys.
+
+[139.59.118.191]:16308 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINB3UzKAhmRZlFlfTril8mSI0BqHi1BmwG09sYL69VGD
+[139.59.118.191]:16308 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBJfW/tC5FJoIVkHeUpLhbHN9eZB95sPjF5gO7TPnjCT5zBJoGmzp1nf68JaB0LvbWL3bzdlnuIF7AYj5hRcuxpc=
+[139.59.118.191]:16308 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCZKZokgC78q5zVrmgbh7HFNhnbBswdrag1K6LPfKxtZj0mUuMC/gLyM6Sa2w6DiG3j66zE/QfB9BUEXUxtS5in2Xrg9mUUybM5IKfi/wmB3pDtmcYTZMf1V0xBygCy+WX9141b2B2Ij5h+l9pqcQ8IH6M0NvJ/44VcQCDRVCqID9rvjw4fp44B8ElWg8rI+NFwT5ug2OnVPOjQlu0KqCUUNsTFsxn8pXGRuxYFL+AOoFIrreCkit6V/xiVVIKVB2riaAWnk8jucG0OSMe2yNF9wxHt2foD2Y5Q/MrinuEuLFiYKyq7zVv+xhMwlkWXd4rBHXx46IJoO+BCKT9z8aPawYgZ5aSBsxIqv5Mtx1NRqbeW5wBH/rn2OvxBCQlRNuqwaReX4rAEpKbxilAWCpcwn9B++kV4zl/1mqFZi1gnCi2YTArLqKLGqjA0zYiiGzlieP/BOYx1RUXA9TPaKFfeSPGv5KUYxEeDqf95lu3bfLqJY3t8/6ZHFj5tb4KeLws=
+
+# Target host fingerprint is captured on first connect (accept-new) because
+# ssh-keyscan can't reach 168.144.141.155 directly from outside the bastion.
+# After the first successful run, the deploy script will refuse a changed key.
