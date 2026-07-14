@@ -197,7 +197,7 @@
   /* ===== build shell ================================================== */
 
   var MAP = MAP_URL;
-  var world, stage;
+  var world, stage, hintEl;
   var Z = { s: 1, x: 0, y: 0 };
 
   function build() {
@@ -238,7 +238,8 @@
     root.appendChild(stage);
 
     // hint
-    root.appendChild(h('div', 'ckd-hint', 'Live demo — tap a green spot to book it'));
+    hintEl = h('div', 'ckd-hint', 'Live demo — tap a green spot to book it');
+    root.appendChild(hintEl);
 
     // top chrome
     var top = h('div', 'ckd-top');
@@ -339,7 +340,7 @@
   function mark() {
     if (state.interacted) return;
     state.interacted = true;
-    $('.ckd-hint').classList.add('off');
+    hintEl.classList.add('off');
     track('demo_interact', {});
   }
 
@@ -1043,15 +1044,16 @@
   }
 
   (function init() {
+    var bhost = h('div', 'demo-badge-host');
+    root.parentNode.insertBefore(bhost, root);
+    bhost.appendChild(root);
     if (OPTS.badge) {
-      var bhost = h('div', 'demo-badge-host');
-      root.parentNode.insertBefore(bhost, root);
-      bhost.appendChild(root);
       bhost.appendChild(h('div', 'ckd-badge' + (OPTS.view === 'panel' ? ' right' : ''), '<i></i>' + OPTS.badge));
     }
+    bhost.appendChild(hintEl);
     var v = OPTS.view;
     if (v === 'map') return;
-    $('.ckd-hint').classList.add('off');
+    hintEl.classList.add('off');
     state.interacted = true;
     if (v === 'datemodal') { $('.ckd-scrim').classList.add('open'); return; }
     if (v === 'panel') {

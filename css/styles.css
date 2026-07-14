@@ -68,9 +68,9 @@ html{scroll-padding-top:96px}
 .skip-link:focus{top:14px}
 
 .demo-badge-host{position:relative}
-.ckd-badge,.cko-badge,.cki-badge{position:absolute;top:0;left:30px;transform:translateY(-52%) rotate(-2deg);z-index:80;display:inline-flex;align-items:center;gap:8px;background:var(--mint);color:var(--navy);font-size:12px;font-weight:800;letter-spacing:-.01em;padding:9px 16px;border-radius:999px;box-shadow:4px 4px 0 rgba(2,6,23,.85);pointer-events:none;transition:opacity .25s}
+.ckd-badge,.cko-badge,.cki-badge{position:absolute;top:0;left:30px;transform:translateY(-52%) rotate(-2deg);z-index:80;display:inline-flex;align-items:center;gap:8px;background:var(--lav);color:var(--navy);font-size:12px;font-weight:600;letter-spacing:0;padding:9px 16px;border-radius:999px;box-shadow:4px 4px 0 rgba(2,6,23,.85);pointer-events:none;transition:opacity .25s}
 .ckd-badge.right,.cko-badge.right,.cki-badge.right{left:auto;right:30px;transform:translateY(-52%) rotate(2deg)}
-.ckd-badge i,.cko-badge i,.cki-badge i{width:8px;height:8px;border-radius:50%;background:var(--navy);animation:demo-badge-blink 1.8s ease-in-out infinite}
+.ckd-badge i,.cko-badge i,.cki-badge i{width:8px;height:8px;border-radius:50%;background:var(--indigo);animation:demo-badge-blink 1.8s ease-in-out infinite}
 @keyframes demo-badge-blink{0%,100%{opacity:1}50%{opacity:.3}}
 .demo-badge-host:has(.ckd.tiny .ckd-panel.open) .ckd-badge,.demo-badge-host:has(.ckd.tiny .ckd-view.open) .ckd-badge,.demo-badge-host:has(.ckd-scrim.open) .ckd-badge{opacity:0}
 @media (prefers-reduced-motion: reduce){.ckd-badge i,.cko-badge i,.cki-badge i{animation:none}}
