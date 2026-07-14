@@ -19,6 +19,18 @@ Its distinctive strength is the promoter economy. Fourvenues gives PR teams indi
 
 For an event-led nightclub or festival whose distribution runs through promoters and ticket drops, Fourvenues is a strong, purpose-built choice. This page is for the venues whose product isn't a ticket.
 
+## Clubtech vs Fourvenues at a glance
+
+| What you're comparing | Clubtech | Fourvenues |
+|---|---|---|
+| Who it's built for | Beach clubs, day clubs, pool venues selling furniture | Event-led nightclubs, festivals, promoter-driven nights |
+| Commercial model | No monthly fee; 4% processing fee paid by guest; $2,000 setup | Pricing not published; contact for quote |
+| How guests book | Guest picks exact daybed or cabana on a 3D interactive map | Tickets, guest lists, and VIP reservations via promoter channels |
+| Packages & add-ons | Tiered packages; bottles, cakes, transfers added at checkout | Deals and add-ons on beach club product |
+| Dynamic pricing | Daypart sessions, sunset premiums, event-day rates | Price-jump automation on ticket sales |
+| Operations & floor plan | Online map syncs to floor team in real time | Operator map centralizes all incoming bookings by channel |
+| Reports & ads attribution | Revenue postback to Meta, Google, and GA4 per booking; CAPI recovery | Meta and Google campaign tracking integrations |
+
 ## Tickets and lists vs furniture and dayparts
 
 The unit of sale shapes everything downstream. Fourvenues grew up selling entry to a night: tickets with automated price jumps, guest lists with two-click check-in, VIP tables fed by a promoter network. The operator map is a command console — it centralizes bookings coming in from every channel so the team can control the room.

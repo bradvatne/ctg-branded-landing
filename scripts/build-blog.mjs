@@ -98,6 +98,7 @@ function renderMarkdown(md) {
   const out = [];
   let para = [];
   let list = null; // {tag, items}
+  let table = [];
   let quote = [];
 
   const flushPara = () => {
@@ -109,7 +110,20 @@ function renderMarkdown(md) {
   const flushQuote = () => {
     if (quote.length) { out.push(`<blockquote><p>${inlineMd(quote.join(' ').trim())}</p></blockquote>`); quote = []; }
   };
-  const flushAll = () => { flushPara(); flushList(); flushQuote(); };
+
+  const flushTable = () => {
+    if (!table.length) return;
+    const rows = table.map(r => r.replace(/^\||\|$/g, '').split('|').map(c => c.trim()));
+    const sepAt = rows.findIndex(r => r.every(c => /^:?-{3,}:?$/.test(c)));
+    const head = sepAt > 0 ? rows[0] : null;
+    const body = rows.filter((r, i) => i !== sepAt && (head ? i !== 0 : true) && !r.every(c => /^:?-{3,}:?$/.test(c)));
+    let html = '<div class="cmp-table"><table>';
+    if (head) html += '<thead><tr>' + head.map(c => `<th scope="col">${inlineMd(c)}</th>`).join('') + '</tr></thead>';
+    html += '<tbody>' + body.map(r => '<tr>' + r.map((c, i) => i === 0 ? `<th scope="row">${inlineMd(c)}</th>` : `<td>${inlineMd(c)}</td>`).join('') + '</tr>').join('') + '</tbody></table></div>';
+    out.push(html);
+    table = [];
+  };
+  const flushAll = () => { flushPara(); flushList(); flushQuote(); flushTable(); };
 
   for (const raw of lines) {
     const line = raw.replace(/\s+$/, '');
@@ -122,8 +136,13 @@ function renderMarkdown(md) {
     if (ol) { flushPara(); flushQuote(); if (!list || list.tag !== 'ol') { flushList(); list = { tag: 'ol', items: [] }; } list.items.push(ol[1]); continue; }
     const bq = line.match(/^> ?(.*)$/);
     if (bq) { flushPara(); flushList(); quote.push(bq[1]); continue; }
+    if (/^\|.*\|\s*$/.test(line)) {
+      flushPara(); flushList(); flushQuote();
+      table.push(line.trim());
+      continue;
+    }
     if (!line.trim()) { flushAll(); continue; }
-    flushList(); flushQuote(); para.push(line.trim());
+    flushList(); flushQuote(); flushTable(); para.push(line.trim());
   }
   flushAll();
   return out.join('\n');

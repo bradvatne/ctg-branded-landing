@@ -19,6 +19,19 @@ The logo list is credible — Nikki Beach, Ministry of Sound in London, Tibu Mar
 
 Taken on its own terms, that's a real furniture-first product with real venues on it. If you're comparing it against a covers-based dining tool for a beach club, Book Tech Labs is asking the right question.
 
+## Clubtech vs Book Tech Labs at a glance
+
+| What you're comparing | Clubtech | Book Tech Labs |
+|---|---|---|
+| Commercial model | No monthly fee; 4% processing fee paid by guest; $2,000 one-time setup | Pricing not published; quote required |
+| How guests book | 3D birds-eye map, zones, 360° walkthroughs, tiered packages, stackable add-ons | Interactive 3D layout; visual sunbed/cabana selection; packages and add-ons |
+| Packages & add-ons | Tiered packages from bed-only to ultimate experience; add-ons stacked in checkout | Packages and add-ons available at booking |
+| Dynamic pricing | Demand-based dynamic pricing across zones and dayparts | Zone-pricing and daypart yield depth not visible in public materials |
+| Operations & floor plan | Real-time inventory sync to interactive floor plan; automatic seating allocation; operator console | Operational console depth not described publicly |
+| Ads attribution & revenue loop | Every booking fires to Meta, Google, and GA4 with revenue value; abandoned-cart CAPI within seconds | No native ads-revenue pipeline described in public materials |
+| Implementation & setup | One-time $2,000 fee covers widget setup, configuration, and staff training | Claims launch within a week |
+| Venue focus | Beach clubs, day clubs, nightclubs, and hotel pools | Nightclubs, beach clubs, theme parks, resorts, marinas, and F&B venues |
+
 ## Same model, different depth
 
 Both platforms let a guest pick their spot visually and prepay. The evaluation should therefore move to the layers underneath. Four places to look closely:

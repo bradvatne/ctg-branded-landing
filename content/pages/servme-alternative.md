@@ -19,6 +19,18 @@ Its commercial stance is a genuine strength too: a commission-free flat subscrip
 
 If you run restaurant covers in the Gulf — a dining room, a hotel F&B group, a brunch program — serVme is a credible, regionally fluent choice, and this page won't argue otherwise.
 
+## Clubtech vs serVme at a glance
+
+| What you're comparing | Clubtech | serVme |
+|---|---|---|
+| Built for | Beach clubs, day clubs, pool venues | Restaurants, hotel F&B groups, brunch programs |
+| Commercial model | No monthly fee; 4% processing fee; $2,000 setup | Commission-free flat subscription; pricing on request |
+| How guests book | Guest picks exact bed on a 3D map before checkout | Staff assigns covers on an operator-side floor plan |
+| Packages & add-ons | Tiered packages with stackable one-tap add-ons | Upsell lists and notes, no native package ladder |
+| Operations & floor plan | Interactive internal floor plan with auto-seating allocation | Staff iPad with drag-and-drop reservation management |
+| Ads attribution | Every booking fires to Meta, Google, GA4 with revenue value | CRM-led; no server-side paid-acquisition pipeline described |
+| White-label & guest data | White-label storefront on your domain; data on every guest in party | Widget-based booking embeds; guest management for the booker |
+
 ## The mismatch: managing the floor vs selling it
 
 Here's the distinction that decides the fit. serVme's floor plan is an operator-facing tool: staff see the room on an iPad, drag reservations onto tables, and run service. That's table management, and serVme does it well.

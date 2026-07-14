@@ -27,6 +27,19 @@ The costs are structural, not hidden:
 
 None of this makes ResortPass a bad partner. It makes it a channel — and no operator should run a single channel they don't control. There's also a plain geographic fact: ResortPass operates in the US, Mexico, and the Caribbean. An independent operator in Bali, Ibiza, or Dubai can't list there — the category demand ResortPass proved is arriving in those regions without an incumbent marketplace attached.
 
+## Clubtech vs ResortPass at a glance
+
+| What you're comparing | Clubtech | ResortPass |
+|---|---|---|
+| Channel ownership | Direct booking on your own domain | Marketplace; guests browse competitor properties on same page |
+| Commercial model | 4% processing fee (guest-paid); $2,000 one-time setup | Commission per booking plus 3% card-processing fee |
+| Guest data ownership | Full guest profile owned by venue; whole party captured | Reservation details only; account and rebooking stay with marketplace |
+| How guests book | Interactive map on your site; choose exact daybed or cabana | Standard listing card in marketplace search results |
+| Packages & add-ons | Tiered packages and stackable add-ons inside booking flow | Pass only; no upsell architecture in marketplace checkout |
+| Dynamic pricing | Venue prices inventory to demand directly | Venue price sits in a comparison grid alongside competitors |
+| Ad & conversion attribution | Bookings fire to Meta, Google, and GA4 in real time | Marketplace owns checkout; real-time conversion loop unavailable |
+| White-label & branding | Your domain, your design; invisible to guest | Brand rendered as a card alongside competing properties |
+
 ## The data asymmetry: whose guest is it?
 
 Ask one question of any booking channel: when the transaction clears, who can contact the guest tomorrow?

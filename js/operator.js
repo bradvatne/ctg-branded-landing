@@ -262,6 +262,7 @@
     sizeWorld();
     if (window.ResizeObserver) new ResizeObserver(sizeWorld).observe(stage);
     window.addEventListener('load', sizeWorld);
+    [300, 1200, 3000].forEach(function (t) { setTimeout(sizeWorld, t); });
 
     function sizeWorld() {
       var W = stage.clientWidth, H = stage.clientHeight;

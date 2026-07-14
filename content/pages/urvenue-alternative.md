@@ -18,6 +18,19 @@ UrVenue is a Las Vegas-born hospitality booking platform, founded in 2011, that 
 
 That's a genuine pedigree, and this page won't pretend otherwise. The question isn't whether UrVenue is good software. It's whether it's built for your venue.
 
+## Clubtech vs UrVenue at a glance
+
+| What you're comparing | Clubtech | UrVenue |
+|---|---|---|
+| Who it's built for | Independent beach clubs, day clubs, hotel pools | US casino-resort portfolios, multi-venue nightlife groups |
+| Commercial model | No monthly fee; 4% processing fee paid by guest; $2,000 one-time setup | Quote-based; contact sales for a tailored quote |
+| How guests book | 3D birds-eye map, 360° walkthroughs, four taps, no app install | Interactive 3D venue maps, cross-venue widgets, branded event landing pages |
+| Packages & add-ons | Tiered packages, in-flow upsells (bottles, cakes, transfers), early-commit pricing | Table deposits, F&B minimums, ticket waitlists |
+| Dynamic pricing | Yes — dynamic pricing built in | Automated price yielding |
+| Ads & attribution | Bookings fire to Meta, Google, GA4 in real time with revenue postback | Public materials don't detail an equivalent pipeline |
+| White-label & guest data | Fully white-label: your domain, your design, your guest data | Creative Services design team — a service engagement, not a self-serve default |
+| Sold-out handling | Captures priority-entry and free-entry contact data when sold out | Ticket waitlists let guests buy as availability changes |
+
 ## Where UrVenue fits well
 
 Be honest about the cases where UrVenue is a strong answer:

@@ -19,6 +19,18 @@ Its sunbed module deserves specific credit, because it's capable: an interactive
 
 For an all-inclusive resort GM digitizing in-stay services — where sunbed booking is one convenience among menus, activities, and requests — Hoteligy is a strong, proven suite. This page won't pretend otherwise.
 
+## Clubtech vs Hoteligy at a glance
+
+| What you're comparing | Clubtech | Hoteligy |
+|---|---|---|
+| Who it's built for | Residents and outside day guests | Guests already checked in to the hotel |
+| Revenue channel | Outside day-pass buyers plus in-house guests | In-house guests via the hotel's resident webapp |
+| Monthly fee & commercial model | No monthly fee; 4% processing fee paid by customer; $2,000 one-time setup | Quote-only, scaled by zones and resources |
+| How guests book | 3D birds-eye interactive map with 360° zone walkthroughs | QR/NFC-activated webapp hosted on the hotel's domain |
+| Packages & add-ons | Tiered cabana and daybed packages with stackable add-ons | Drink minimums and premium towel upgrades |
+| Dynamic pricing | Demand-based pricing by daypart and zone | Lead-time dynamic pricing configurable per zone |
+| Ads attribution | Bookings fire to Meta, Google, and GA4 with revenue values posted back | No ads pipeline; audience is already on property |
+
 ## The frame: amenity software vs commerce software
 
 The structural difference isn't a feature; it's who the software is pointed at. Hoteligy's flow serves residents — people the hotel has already acquired through room bookings. The webapp activates on property, the guest reserves a lounger, service improves, complaints drop. That's amenity management, and done well it protects the guest experience.

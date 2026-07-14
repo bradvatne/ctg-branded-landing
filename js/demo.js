@@ -362,14 +362,19 @@
     var w = Math.max(r.width, r.height * MAP_AR);
     var h = w / MAP_AR;
     if (h < r.height) { h = r.height; w = h * MAP_AR; }
+    // only touch the DOM when the size actually changed
+    if (Math.abs(w - (world._w || 0)) < 1 && Math.abs(h - (world._h || 0)) < 1) return;
     world._w = w; world._h = h;
     world.style.width = w + 'px';
     world.style.height = h + 'px';
   }
 
   function apply() {
+    // self-heal: any stale world (measured mid-animation / pre-CSS) is
+    // corrected on the next pan/zoom/tap instead of persisting
+    sizeWorld();
     var r = stageSize();
-    if (!world._w) sizeWorld();
+    if (!world._w) return;
     var ww = world._w * Z.s, wh = world._h * Z.s;
     Z.x = Math.min(0, Math.max(r.width - ww, Z.x));
     Z.y = Math.min(0, Math.max(r.height - wh, Z.y));
@@ -439,8 +444,10 @@
     Z.y = (r0.height - world._h) / 2;
     apply();
     if (window.ResizeObserver) new ResizeObserver(function () { sizeWorld(); apply(); }).observe(stage);
-    // late layout settles (fonts, first paint) can shift sizes without a resize event
+    // late layout settles (fonts, first paint, reveal animations) can shift
+    // sizes without a resize event — re-sync on load and on a few timers
     window.addEventListener('load', function () { sizeWorld(); apply(); });
+    [300, 1200, 3000].forEach(function (t) { setTimeout(function () { sizeWorld(); apply(); }, t); });
   }
 
   /* ===== date modal ==================================================== */

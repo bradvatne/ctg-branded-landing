@@ -20,6 +20,18 @@ The company is also now a DoorDash company — acquired for $1.2 billion in 2025
 
 If your core business is dinner service — covers, courses, turn times — SevenRooms is a strong choice, and this page won't pretend otherwise. The mismatch starts when the venue's real product isn't a table for two at 8pm.
 
+## Clubtech vs SevenRooms at a glance
+
+| What you're comparing | Clubtech | SevenRooms |
+|---|---|---|
+| Commercial model | No monthly fee; 4% guest-paid processing; $2,000 one-time setup | Subscription-based platform |
+| How guests book | Guest picks exact spot on a 3D interactive map | Party size, date, and time — no spatial map |
+| Packages & add-ons | Tiered packages with stackable add-ons at checkout | Prepaid upgrades (welcome drinks, premium-table upsells) |
+| Dynamic pricing | Zone and date pricing built in | Zone pricing approximated via booking rules |
+| Ads attribution | Native server-side CAPI to Meta, Google, GA4; revenue postback | No native server-side ads pipeline in public materials |
+| Guest data ownership | White-label on your domain; guest data stays with venue | CRM sits inside DoorDash consumer marketplace |
+| Core design strength | Furniture, zones, and dayparts for beach and day clubs | Restaurant reservations, table management, and dining CRM |
+
 ## Beach clubs sell furniture, zones, and dayparts — not covers
 
 A covers model asks: how many people, what time? A beach club guest is answering a different question: _which spot is mine?_

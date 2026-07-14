@@ -67,7 +67,7 @@ html{scroll-padding-top:96px}
 .skip-link{position:fixed;left:14px;top:-60px;z-index:300;background:var(--mint);color:var(--navy);font-weight:700;font-size:14px;padding:12px 18px;border-radius:999px;transition:top .15s}
 .skip-link:focus{top:14px}
 
-.demo-badge-host{position:relative}
+.demo-badge-host{position:relative;z-index:1}
 .ckd-badge,.cko-badge,.cki-badge{position:absolute;top:0;left:30px;transform:translateY(-52%) rotate(-2deg);z-index:80;display:inline-flex;align-items:center;gap:8px;background:var(--lav);color:var(--navy);font-size:12px;font-weight:600;letter-spacing:0;padding:9px 16px;border-radius:999px;box-shadow:4px 4px 0 rgba(2,6,23,.85);pointer-events:none;transition:opacity .25s}
 .ckd-badge.right,.cko-badge.right,.cki-badge.right{left:auto;right:30px;transform:translateY(-52%) rotate(2deg)}
 .ckd-badge i,.cko-badge i,.cki-badge i{width:8px;height:8px;border-radius:50%;background:var(--indigo);animation:demo-badge-blink 1.8s ease-in-out infinite}
