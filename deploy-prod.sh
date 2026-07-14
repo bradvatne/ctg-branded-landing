@@ -25,6 +25,13 @@ REMOTE_USER="brad"
 REMOTE_HOST="168.144.141.155"
 REMOTE_TMP="/tmp"
 APP_NAME="ctg-branded-landing"
+# Optional: pin the SSH identity (the prod key). Defaults to the running
+# environment's agent/default keys when unset. On the ctg-prod-ssh VM the prod
+# key is ~/.ssh/ed25519 — run: PROD_SSH_KEY=~/.ssh/ed25519 ./deploy-prod.sh
+PROD_SSH_KEY="${PROD_SSH_KEY:-}"
+ID_LINE=""
+[ -n "$PROD_SSH_KEY" ] && ID_LINE="IdentityFile $PROD_SSH_KEY
+  IdentitiesOnly yes"
 
 TIMESTAMP="$(date -u +"%Y%m%dT%H%M%SZ")"
 STAMP_EPOCH="$(date +%s)"
@@ -50,6 +57,7 @@ Host ctg-branded-prod-jump
   HostName $JUMP_HOST
   Port $PORT
   User $REMOTE_USER
+  $ID_LINE
   UserKnownHostsFile $KNOWN_HOSTS
   StrictHostKeyChecking accept-new
   HashKnownHosts no
@@ -59,6 +67,7 @@ Host ctg-branded-prod-target
   HostName $REMOTE_HOST
   Port $PORT
   User $REMOTE_USER
+  $ID_LINE
   ProxyJump ctg-branded-prod-jump
   UserKnownHostsFile $KNOWN_HOSTS
   StrictHostKeyChecking accept-new
