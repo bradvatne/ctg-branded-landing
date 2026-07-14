@@ -1,0 +1,143 @@
+/* Clubtech branded landing — operator console demo (.cko-).
+   Same design language as the guest booking demo (css/demo.css): Albert
+   Sans, white pills and cards on the live venue map, #1c1c1c primaries,
+   soft shadows. Operator status colors: green available · amber booked ·
+   teal checked-in · slate blocked. */
+
+.cko{position:relative;isolation:isolate;width:100%;aspect-ratio:4/3;background:#f6f6f4;border-radius:24px;overflow:hidden;box-shadow:18px 18px 0 var(--lav);font-family:"Albert Sans",system-ui,sans-serif;letter-spacing:0;color:#1c1c1c;font-size:14px;line-height:1.35;user-select:none;-webkit-user-select:none;display:flex;flex-direction:column}
+.feature-row .cko{aspect-ratio:auto;height:610px}
+.hero-grid .cko{aspect-ratio:auto;height:640px;min-height:560px}
+.cko *{box-sizing:border-box}
+.cko :where(button){font:inherit;border:0;background:none;color:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent;letter-spacing:0}
+.cko img{display:block}
+.cko svg{width:15px;height:15px}
+.cko [hidden]{display:none!important}
+
+/* ═══ toolbar ═══ */
+.cko-bar{flex:none;display:flex;align-items:center;gap:8px;padding:10px 12px 8px;background:#fff;border-bottom:1px solid #ececec;flex-wrap:wrap}
+.cko-logo{width:36px;height:36px;border-radius:50%;background:#fff;border:1px solid #ececec;display:grid;place-items:center;flex:none}
+.cko-logo img{width:19px;height:19px;object-fit:contain}
+.cko-seg{display:flex;background:#f2f2f0;border-radius:999px;padding:3px}
+.cko-seg button{height:32px;padding:0 13px;border-radius:999px;font-size:12px;font-weight:600;color:#6e6e6e;white-space:nowrap}
+.cko-seg button.on{background:#1c1c1c;color:#fff}
+.cko-datepill{height:38px;padding:0 14px;border-radius:999px;border:1px solid #e2e2e2;display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;white-space:nowrap}
+.cko-search{flex:1;min-width:150px;height:38px;display:flex;align-items:center;gap:8px;border:1px solid #e2e2e2;border-radius:999px;padding:0 14px;color:#9b9b9b}
+.cko-search input{flex:1;min-width:0;border:0;outline:0;background:none;font:inherit;font-size:12.5px;color:#1c1c1c}
+.cko-search input::placeholder{color:#9b9b9b}
+.cko-stats{display:flex;gap:6px}
+.cko-stats span{display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 12px;border-radius:999px;background:#f2f2f0;font-size:10.5px;font-weight:600;color:#6e6e6e;white-space:nowrap}
+.cko-stats span b{font-size:15px;font-weight:800;color:#1c1c1c}
+
+/* day-strip popover */
+.cko-daypop{position:absolute;z-index:70;top:56px;left:50%;transform:translateX(-50%);display:none;gap:6px;background:#fff;border-radius:14px;padding:8px;box-shadow:0 14px 40px rgba(0,0,0,.18)}
+.cko-daypop.open{display:flex}
+.cko-daypop button{width:48px;border:1.5px solid #e2e2e2;border-radius:11px;padding:7px 0;text-align:center}
+.cko-daypop button b{display:block;font-size:14px;font-weight:700}
+.cko-daypop button span{display:block;font-size:9.5px;font-weight:600;color:#6e6e6e}
+.cko-daypop button.sel{border-color:#1c1c1c;border-width:2px;background:#f7f7f5}
+
+/* ═══ mode row ═══ */
+.cko-modes{flex:none;display:flex;align-items:center;gap:8px;padding:8px 12px;background:#fff;border-bottom:1px solid #ececec;flex-wrap:wrap}
+.cko-mode{height:34px;padding:0 13px;border-radius:999px;border:1px solid #e2e2e2;background:#fff;font-size:12px;font-weight:600;display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
+.cko-mode.on{border:2px solid #1c1c1c}
+.cko-mode.dark{background:#1c1c1c;border-color:#1c1c1c;color:#fff}
+.cko-mode.line{border-style:dashed}
+.cko-zonemenu{position:relative}
+.cko-zonelist{position:absolute;z-index:70;top:40px;left:0;min-width:170px;display:none;flex-direction:column;background:#fff;border-radius:14px;padding:6px;box-shadow:0 14px 40px rgba(0,0,0,.18)}
+.cko-zonemenu.open .cko-zonelist{display:flex}
+.cko-zonelist button{text-align:left;padding:9px 12px;border-radius:9px;font-size:12.5px;font-weight:600}
+.cko-zonelist button:hover{background:#f2f2f0}
+.cko-legend{margin-left:auto;display:flex;gap:10px;font-size:10px;font-weight:600;color:#6e6e6e}
+.cko-legend span{display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
+.cko-legend i{width:9px;height:9px;border-radius:3px}
+.cko-legend i.free{background:#4ade80}
+.cko-legend i.booked{background:#f6a417}
+.cko-legend i.checked{background:#14b8a6}
+.cko-legend i.blocked{background:#64748b}
+
+/* ═══ map ═══ */
+.cko-stage{flex:1;position:relative;overflow:hidden;background:#0d3d33}
+.cko-world{position:absolute}
+.cko-world>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.cko-spot{position:absolute;transform:translate(-50%,-50%);border-radius:6px;border:1.5px solid rgba(255,255,255,.9);transition:box-shadow .15s}
+.cko-spot.free{background:rgba(74,222,128,.42);box-shadow:0 0 0 1.5px rgba(34,197,94,.55)}
+.cko-spot.free:hover{background:rgba(74,222,128,.62)}
+.cko-spot.booked{background:rgba(246,164,23,.5);box-shadow:0 0 0 1.5px rgba(217,119,6,.55)}
+.cko-spot.checked{background:rgba(20,184,166,.55);box-shadow:0 0 0 1.5px rgba(13,148,136,.6)}
+.cko-spot.blocked{background:rgba(100,116,139,.55);box-shadow:0 0 0 1.5px rgba(71,85,105,.55)}
+.cko-spot.sel{box-shadow:0 0 0 3px #1c1c1c;border-color:#fff}
+.cko-spot.pulse{animation:cko-pulse
+.8s ease-in-out 2}
+@keyframes cko-pulse{0%,100%{box-shadow:0 0 0 2px rgba(28,28,28,.9)}50%{box-shadow:0 0 0 10px rgba(28,28,28,0)}}
+
+/* ═══ side panel (bed detail / reservations) ═══ */
+.cko-panel{position:absolute;right:0;top:0;bottom:0;z-index:55;width:min(360px,92%);background:#fff;padding:18px 18px 14px;overflow-y:auto;transform:translateX(103%);transition:transform .35s cubic-bezier(.22,.8,.3,1);box-shadow:-20px 0 50px rgba(0,0,0,.16)}
+.cko-panel.open{transform:none}
+.cko-panel h3{margin:0 26px 0 0;font-size:16.5px;font-weight:700}
+.cko-x{position:absolute;top:14px;right:14px;width:28px;height:28px;display:grid;place-items:center;color:#6e6e6e;font-size:14px}
+.cko-sub{margin:7px 0 0;font-size:11.5px;color:#3f3f46;font-weight:500;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.cko-sub svg{width:13px;height:13px}
+.cko-chip{display:inline-flex;align-items:center;height:22px;padding:0 9px;border-radius:999px;font-size:10px;font-weight:700}
+.cko-chip.free{background:#e7f8ee;color:#158a4a}
+.cko-chip.booked{background:#fdf3dd;color:#c98a1b}
+.cko-chip.checked{background:#e0f5f2;color:#0d7a6c}
+.cko-chip.blocked{background:#eef1f5;color:#586274}
+.cko-thumb{display:block;height:120px;border-radius:14px;background-size:480%;margin-top:12px}
+.cko-thumb.sm{width:50px;height:50px;flex:none;border-radius:10px;background-size:420%;margin:0}
+.cko-note{margin:12px 0 0;font-size:12px;color:#3f3f46;font-weight:500;line-height:1.5}
+.cko-actions{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+.cko-btn{height:46px;border-radius:999px;font-size:13px;font-weight:600;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.cko-btn.dark{background:#1c1c1c;color:#fff}
+.cko-btn.dark:hover{background:#000}
+.cko-btn.line{border:1px solid #e2e2e2;background:#fff}
+.cko-btn.sm{height:34px;padding:0 13px;font-size:11.5px;flex:none}
+.cko-guest{border:1px solid #ececec;border-radius:14px;padding:12px 14px;margin-top:12px}
+.cko-guest h4{margin:0;font-size:14px;font-weight:700}
+.cko-guest p{margin:4px 0 0;font-size:11.5px;color:#3f3f46;font-weight:500}
+.cko-guest .paid{font-weight:700;color:#158a4a}
+.cko-row{display:flex;align-items:center;gap:11px;padding:11px 2px;border-bottom:1px dashed #e2e2e2;cursor:pointer}
+.cko-row>div{flex:1;min-width:0}
+.cko-row h5{margin:0;font-size:13px;font-weight:700}
+.cko-row p{margin:2px 0 0;font-size:10.5px;color:#3f3f46;font-weight:500}
+.cko-empty{margin:22px 0;font-size:12.5px;color:#6e6e6e;text-align:center}
+
+/* ═══ Form Confirm Booking modal ═══ */
+.cko-scrim{position:absolute;inset:0;z-index:60;background:rgba(10,10,12,.45);display:none;align-items:center;justify-content:center;padding:14px}
+.cko-scrim.open{display:flex}
+.cko-modal{width:min(560px,100%);max-height:96%;background:#fff;border-radius:18px;display:flex;flex-direction:column;box-shadow:0 30px 80px rgba(0,0,0,.35);overflow:hidden}
+.cko-modal-head{flex:none;position:relative;padding:16px 20px 12px;border-bottom:1px solid #ececec}
+.cko-modal-head h3{margin:0;font-size:16px;font-weight:800}
+.cko-modal-body{flex:1;overflow-y:auto;padding:12px 20px 6px}
+.cko-modal-sub{margin:0 0 4px;text-align:center;font-size:12.5px;color:#3f3f46;font-weight:500;line-height:1.5}
+.cko-modal-sub b{font-size:13.5px;color:#1c1c1c}
+.cko-frow{display:flex;gap:10px}
+.cko-frow .cko-field{flex:1}
+.cko-field{display:block;margin-top:10px;font-size:11.5px;font-weight:700}
+.cko-field i{font-style:normal;color:#e02d3c}
+.cko-field input,.cko-field select,.cko-field textarea{width:100%;margin-top:5px;height:40px;border:1px solid #e2e2e2;border-radius:10px;padding:0 11px;font:inherit;font-size:12.5px;font-weight:500;color:#1c1c1c;background:#fff}
+.cko-field textarea{height:auto;padding:9px 11px;resize:none}
+.cko-field input:focus,.cko-field select:focus,.cko-field textarea:focus{outline:2px solid #1c1c1c;outline-offset:-1px}
+.cko-agree{margin-top:14px;border-top:1px dashed #e2e2e2;padding-top:11px}
+.cko-agree label{display:flex;gap:9px;align-items:flex-start;margin-bottom:8px;font-size:11px;color:#3f3f46;font-weight:500;line-height:1.45}
+.cko-agree input{width:15px;height:15px;flex:none;margin-top:1px;accent-color:#1c1c1c}
+.cko-modal-foot{flex:none;display:flex;gap:10px;padding:12px 20px 16px;border-top:1px solid #ececec}
+.cko-modal-foot .cko-btn{flex:1}
+.cko-modal-foot .cko-btn.dark{flex:1.5}
+
+/* ═══ toast & badge ═══ */
+.cko-toast{position:absolute;z-index:80;left:50%;bottom:18px;transform:translate(-50%,10px);background:#1c1c1cf0;color:#fff;font-size:12.5px;font-weight:600;padding:11px 18px;border-radius:999px;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;max-width:88%;text-align:center}
+.cko-toast.show{opacity:1;transform:translate(-50%,0)}
+.cko-badge{position:absolute;right:14px;bottom:14px;z-index:50;display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;font-size:11.5px;font-weight:700;padding:8px 14px;border-radius:999px;box-shadow:0 8px 22px rgba(2,6,23,.35);pointer-events:none}
+.cko-badge i{width:8px;height:8px;border-radius:50%;background:var(--mint);animation:cko-blink 1.8s ease-in-out infinite}
+@keyframes cko-blink{0%,100%{opacity:1}50%{opacity:.35}}
+
+/* ═══ narrow frames ═══ */
+.cko.tiny .cko-seg button{padding:0 9px;font-size:10.5px}
+.cko.tiny .cko-stats span{padding:0 9px}
+.cko.tiny .cko-legend{display:none}
+.cko.tiny .cko-panel{width:100%}
+@media(max-width:600px){
+  .cko{aspect-ratio:auto;height:620px}
+  .cko-datepill span{display:none}
+  .cko-frow{flex-direction:column;gap:0}
+}
