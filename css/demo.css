@@ -200,8 +200,8 @@
 .ckd-tabs{display:flex;gap:6px;margin-top:12px}
 .ckd-tabs button{height:38px;padding:0 15px;border-radius:999px;font-size:12.5px;font-weight:600;color:#3f3f46}
 .ckd-tabs button.on{border:1.5px solid #1c1c1c;color:#1c1c1c}
-.ckd-addon-cols{display:grid;grid-template-columns:1.15fr .85fr;gap:14px;align-items:start}
-.ckd-addon-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.ckd-addon-cols{display:grid;grid-template-columns:1.15fr .85fr;gap:14px;align-items:start;margin-top:14px}
+.ckd-addon-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .ckd-prod{display:flex;flex-direction:column;border:1px solid #efefef;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 1px 6px rgba(0,0,0,.05)}
 .ckd-prod .ph{position:relative;height:110px;display:grid;place-items:center;font-size:38px}
 .ckd-prod .ph .flame{position:absolute;top:8px;left:8px;display:inline-flex;align-items:center;gap:4px;background:#fff;border-radius:999px;padding:4px 9px;font-size:9.5px;font-weight:700;color:#e02d3c;box-shadow:0 1px 5px rgba(0,0,0,.12)}
@@ -212,7 +212,7 @@
 .ckd-prod .prices{margin-top:auto;padding-top:8px;text-align:right;align-self:flex-end}
 .ckd-prod .prices s{display:block;font-size:10.5px;color:#767676}
 .ckd-prod .prices b{font-size:14px;font-weight:700}
-.ckd-prod .ckd-btn-line{width:100%;height:40px;margin-top:9px;font-size:12.5px}
+.ckd-prod .ckd-btn-line{flex:none;width:100%;height:44px;margin-top:12px;font-size:12.5px}
 .ckd-prod .ckd-btn-line.added{background:#1c1c1c;color:#fff;border-color:#1c1c1c}
 .ckd-feature{position:relative;border-radius:20px;overflow:hidden;min-height:260px;display:flex;flex-direction:column;justify-content:flex-end;padding:18px;color:#fff}
 .ckd-feature .big{position:absolute;inset:0;display:grid;place-items:center;font-size:92px;opacity:.9}
