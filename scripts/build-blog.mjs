@@ -234,7 +234,7 @@ function navMarkup(rel, active = 'blog') {
   const mobItems = links.map(([href, label]) => `          <a href="${href}">${label}</a>`).join('\n');
   return `  <header class="nav-wrap scrolled">
     <nav class="nav" aria-label="Main navigation">
-      <a href="${rel}index.html" class="brand" aria-label="Clubtech home"><img src="${rel}brand/clubtech-wordmark-white.png" alt="Clubtech" width="176" height="44"></a>
+      <a href="${rel}index.html" class="brand" aria-label="Clubtech home"><img src="${rel}brand/clubtech-wordmark-white-560.png" alt="Clubtech" width="176" height="44"></a>
       <div class="nav-links">
 ${items}
         <a href="${rel}solutions/"${active === 'solutions' ? ' class="nav-active"' : ''}>Solutions</a>
@@ -242,7 +242,7 @@ ${items}
       </div>
       <a class="button button-dark nav-cta" href="${rel}index.html#contact" data-open-demo>Book a Demo</a>
       <details class="mobile-menu">
-        <summary aria-label="Open navigation">Menu</summary>
+        <summary>Menu</summary>
         <div>
 ${mobItems}
           <a href="${rel}solutions/">Solutions</a>
@@ -290,7 +290,7 @@ ${links.map(([href, label]) => `        <a href="${href}">${esc(label)}</a>`).jo
   const pageLink = (p) => [`${rel}${p.meta.section}/${p.meta.slug}/`, shortLabel(p.meta.slug)];
   return `  <footer class="footer shell">
     <div class="footer-top">
-      <a href="${rel}index.html" class="brand"><img src="${rel}brand/clubtech-wordmark-white.png" alt="Clubtech" width="190" height="48"></a>
+      <a href="${rel}index.html" class="brand"><img src="${rel}brand/clubtech-wordmark-white-560.png" alt="Clubtech" width="190" height="48"></a>
       <div>
 ${FEATURE_PAGES.map(([slug, label]) => `        <a href="${rel}${slug}/">${label}</a>`).join('\n')}
         <a href="${rel}blog/">Blog</a>
@@ -303,7 +303,7 @@ ${col('Solutions', [...solutions.map(pageLink), [`${rel}solutions/`, 'All soluti
 ${col('Locations', geos.map(pageLink))}
 ${col('Compare', [...compares.map(pageLink), [`${rel}compare/`, 'All comparisons']])}
     </div>
-    <div class="footer-wordmark"><img src="${rel}brand/clubtech-wordmark-white.png" alt="Clubtech" width="1200" height="300" loading="lazy"></div>
+    <div class="footer-wordmark"><img src="${rel}brand/clubtech-wordmark-white-560.png" alt="Clubtech" width="1200" height="300" loading="lazy"></div>
     <p class="copyright">© 2026 Clubtech, Inc.</p>
   </footer>`;
 }
@@ -397,8 +397,8 @@ function headHTML({ title, description, canonical, ogImage, ogImageAlt, jsonLd, 
   <link rel="preload" href="${rel}fonts/albert-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="${rel}css/styles.css">
   <link rel="stylesheet" href="${rel}css/blog.css">
-  <link rel="stylesheet" href="${rel}css/consent.css">
-  <link rel="stylesheet" href="${rel}css/booking.css">
+  <link rel="stylesheet" href="${rel}css/consent.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="${rel}css/consent.css"></noscript>
+  <link rel="stylesheet" href="${rel}css/booking.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="${rel}css/booking.css"></noscript>
   <script>document.documentElement.classList.add('js')</script>
 
   <script type="application/ld+json">

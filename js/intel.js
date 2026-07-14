@@ -22,7 +22,7 @@
   if (!mounts.length) return;
 
   var SCRIPT_SRC = (document.currentScript && document.currentScript.src) || 'js/intel.js';
-  var BRAND_MARK = SCRIPT_SRC.replace(/js\/intel\.js.*$/, 'brand/clubtech-mark-black.png');
+  var BRAND_MARK = SCRIPT_SRC.replace(/js\/intel\.js.*$/, 'brand/clubtech-mark-black-96.png');
 
   mounts.forEach(function (m) { createDash(m); });
 
@@ -246,12 +246,12 @@
       title = 'Attributed revenue by channel — conversions fired to Meta, Google Ads & GA4 with revenue attached';
       chart = barChart(ADS.map(function (x) { return x[1] * t.rev / 100; }), ADS.map(function (x) { return x[0]; }), null, moneyK);
     }
-    card.innerHTML = '<h4>' + title + '</h4>' + chart +
+    card.innerHTML = '<h4 role="presentation">' + title + '</h4>' + chart +
       (state.tab === 'product' ? '<p class="cki-key"><i class="bar"></i>Bookings <i class="line"></i>Revenue</p>' : '');
 
     var mix = PRODMIX.map(function (p) { return [p[0], p[1] * t.rev]; });
     var maxMix = mix[1][1];
-    $('.cki-prodcard').innerHTML = '<h4>Revenue by product</h4>' + mix.map(function (p) {
+    $('.cki-prodcard').innerHTML = '<h4 role="presentation">Revenue by product</h4>' + mix.map(function (p) {
       return '<div class="cki-bar"><span>' + p[0] + '</span><i style="width:' + Math.round(p[1] / maxMix * 100) + '%"></i><b>' + moneyK(p[1]) + '</b></div>';
     }).join('');
 

@@ -21,8 +21,8 @@
   if (!mounts.length) return;
 
   var SCRIPT_SRC = (document.currentScript && document.currentScript.src) || 'js/operator.js';
-  var MAP_URL = SCRIPT_SRC.replace(/js\/operator\.js.*$/, 'assets/demo/venue-real.jpg');
-  var BRAND_MARK = SCRIPT_SRC.replace(/js\/operator\.js.*$/, 'brand/clubtech-mark-black.png');
+  var MAP_URL = SCRIPT_SRC.replace(/js\/operator\.js.*$/, 'assets/demo/venue-real.webp');
+  var BRAND_MARK = SCRIPT_SRC.replace(/js\/operator\.js.*$/, 'brand/clubtech-mark-black-96.png');
   var MAP_AR = 1536 / 1152;
 
   mounts.forEach(function (m) { createConsole(m); });
@@ -138,6 +138,7 @@
     bar.appendChild(seg);
     var dp = h('button', 'cko-datepill', I.cal + '<span data-opdate>' + state.day + ' July 2026</span>');
     dp.type = 'button';
+    dp.setAttribute('aria-label', 'Choose service date');
     bar.appendChild(dp);
     var search = h('div', 'cko-search', I.search + '<input type="text" placeholder="Guest, bed # or booking" aria-label="Search bookings">');
     bar.appendChild(search);
@@ -206,7 +207,9 @@
     /* map */
     var stage = h('div', 'cko-stage');
     world = h('div', 'cko-world');
-    world.appendChild(h('img')).src = MAP_URL;
+    var wimg = world.appendChild(h('img'));
+    wimg.alt = '';
+    wimg.src = MAP_URL;
     SPOTS.forEach(function (s) {
       var b = h('button', 'cko-spot');
       b.type = 'button';
@@ -273,9 +276,11 @@
   /* ===== paint / stats ================================================ */
 
   function paint() {
+    var LBL = { free: 'available', booked: 'booked', checked: 'checked in', blocked: 'blocked' };
     SPOTS.forEach(function (s) {
       var el = $('[data-opid="' + s.id + '"]');
       el.className = 'cko-spot ' + state.status[s.id] + (state.selected[s.id] ? ' sel' : '');
+      el.setAttribute('aria-label', s.name + ' #' + s.num + ' — ' + LBL[state.status[s.id]]);
     });
     var st = stats();
     $('.cko-stats').innerHTML =
@@ -360,7 +365,7 @@
     var p = $('.cko-panel');
     var html =
       '<button type="button" class="cko-x" aria-label="Close">✕</button>' +
-      '<h3>' + s.name + ' – #' + s.num + '</h3>' +
+      '<h3 role="presentation">' + s.name + ' – #' + s.num + '</h3>' +
       '<p class="cko-sub">' + s.zone + ' · ' + I.pax + ' up to ' + s.cap + ' guests · ' + statusChip(st) + '</p>' +
       '<span class="cko-thumb" style="background-image:url(' + MAP_URL + ');background-position:' + s.x + '% ' + s.y + '%"></span>';
 
@@ -378,7 +383,7 @@
     }
     if ((st === 'booked' || st === 'checked') && b) {
       html += '<div class="cko-guest">' +
-        '<h4>' + b.guest + '</h4>' +
+        '<h4 role="presentation">' + b.guest + '</h4>' +
         '<p>' + b.pkg + ' · ' + b.pax + ' pax · ' + b.type + '</p>' +
         '<p class="paid">Prepaid ' + money(b.paid) + '</p></div>';
       html += '<div class="cko-actions">' +
@@ -428,13 +433,13 @@
     var title = state.listFilter === 'checked' ? 'Guest list — in house' : 'Reservations — ' + state.day + ' July';
     p.innerHTML =
       '<button type="button" class="cko-x" aria-label="Close">✕</button>' +
-      '<h3>' + title + '</h3>' +
+      '<h3 role="presentation">' + title + '</h3>' +
       (state.query ? '<p class="cko-sub">Matching “' + state.query + '”</p>' : '') +
       (rows.length ? rows.map(function (b) {
         var s = spot(b.spot);
         return '<div class="cko-row" data-oprow="' + b.spot + '">' +
           '<span class="cko-thumb sm" style="background-image:url(' + MAP_URL + ');background-position:' + s.x + '% ' + s.y + '%"></span>' +
-          '<div><h5>' + b.guest + '</h5><p>' + s.name + ' #' + s.num + ' · ' + b.pax + ' pax</p>' +
+          '<div><h5 role="presentation">' + b.guest + '</h5><p>' + s.name + ' #' + s.num + ' · ' + b.pax + ' pax</p>' +
           '<p>' + b.pkg + ' · prepaid ' + money(b.paid) + '</p></div>' +
           (b.status === 'checked'
             ? '<span class="cko-chip checked">In house</span>'
@@ -474,7 +479,7 @@
     var m = $('.cko-modal');
     var walkin = type === 'WALK-IN';
     m.innerHTML =
-      '<div class="cko-modal-head"><h3>Form Confirm Booking</h3>' +
+      '<div class="cko-modal-head"><h3 role="presentation">Form Confirm Booking</h3>' +
       '<button type="button" class="cko-x" aria-label="Close">✕</button></div>' +
       '<div class="cko-modal-body">' +
       '<p class="cko-modal-sub">' + (walkin ? 'Walk-in Booking' : 'Advance Booking') + '<br><b>' + s.name + ' #' + s.num + '</b></p>' +

@@ -27,8 +27,8 @@
   /* asset path relative to this script, so mounts work from any page depth */
   var SCRIPT_SRC = (document.currentScript && document.currentScript.src) || 'js/demo.js';
   var ASSET_BASE = SCRIPT_SRC.replace(/js\/demo\.js.*$/, 'assets/demo/');
-  var MAP_URL = ASSET_BASE + 'venue-real.jpg';
-  var BRAND_MARK = SCRIPT_SRC.replace(/js\/demo\.js.*$/, 'brand/clubtech-mark-black.png');
+  var MAP_URL = ASSET_BASE + 'venue-real.webp';
+  var BRAND_MARK = SCRIPT_SRC.replace(/js\/demo\.js.*$/, 'brand/clubtech-mark-black-96.png');
   mounts.forEach(function (m) { createDemo(m); });
 
   function createDemo(root) {
@@ -206,7 +206,9 @@
 
     stage = h('div', 'ckd-stage');
     world = h('div', 'ckd-world');
-    world.appendChild(h('img')).src = MAP;
+    var wimg = world.appendChild(h('img'));
+    wimg.alt = '';
+    wimg.src = MAP;
 
     SPOTS.forEach(function (s) {
       var b = h('button', 'ckd-spot ' + (s.sold ? 'sold' : 'free'));
@@ -466,7 +468,7 @@
     }
     m.innerHTML =
       '<button type="button" class="ckd-x" aria-label="Close">✕</button>' +
-      '<h3>Select Date</h3>' +
+      '<h3 role="presentation">Select Date</h3>' +
       '<div class="ckd-monthrow"><button type="button">‹</button><b>' + MONTH + '</b><button type="button">›</button></div>' +
       '<table class="ckd-cal"><thead><tr><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th><th>Sun</th></tr></thead>' +
       '<tbody>' + rowsHtml + '</tbody></table>' +
@@ -513,7 +515,7 @@
     p.innerHTML =
       '<div class="ckd-panel-scroll">' +
         '<button type="button" class="ckd-x" aria-label="Close">✕</button>' +
-        '<h2>' + s.name + ' – #' + s.num + '</h2>' +
+        '<h2 role="presentation">' + s.name + ' – #' + s.num + '</h2>' +
         '<div class="ckd-chiprow">' +
           '<span class="ckd-chip blue">✦ New</span>' +
           '<span class="ckd-chip pinkc">🎉 Party Zone</span>' +
@@ -525,14 +527,14 @@
           '<div style="' + galleryTile(s, 300, 0) + '"><span class="play"><i>▶</i></span></div>' +
           [1, 2, 3, 4].map(function (i) { return '<div style="' + galleryTile(s, 520, i) + '"></div>'; }).join('') +
         '</div>' +
-        '<h4 class="ckd-h4">Next Availability</h4>' +
+        '<h4 role="presentation" class="ckd-h4">Next Availability</h4>' +
         '<div class="ckd-days">' +
           [16, 17, 18, 19, 20].map(function (d) {
             return '<button type="button" data-day="' + d + '" class="' + (d === state.day ? 'sel' : '') + '"><b>' + d + '</b><small>Jul</small><span>' + dayLabel(d) + '</span></button>';
           }).join('') +
           '<span class="cal">' + I.cal + '</span>' +
         '</div>' +
-        '<h4 class="ckd-save">Book Online &amp; Save</h4><p>Packages</p>' +
+        '<h4 role="presentation" class="ckd-save">Book Online &amp; Save</h4><p>Packages</p>' +
         '<div class="ckd-pkgtabs">' +
           PKGS.map(function (k) { return '<button type="button" data-pkgtab="' + k.id + '" class="' + (k.gold ? 'gold ' : '') + (k.id === state.pkg ? 'on' : '') + '">' + k.tab + '</button>'; }).join('') +
         '</div>' +
@@ -541,7 +543,7 @@
             return '<div class="ckd-pkg' + (k.id === state.pkg ? ' sel' : '') + '" data-pkg="' + k.id + '">' +
               (k.best ? '<span class="best">Best Value</span>' : '') +
               '<span class="savechip">Book Online &amp; Save <b>' + money(k.save) + '</b></span>' +
-              '<h5>' + k.name + '<i>✓</i></h5>' +
+              '<h5 role="presentation">' + k.name + '<i>✓</i></h5>' +
               '<p class="price">' + money(k.price) + '</p>' +
               '<p class="arrive">' + k.arrive + '</p>' +
               '<ul>' + k.inc.map(function (x) { return '<li class="' + x[0] + '"><i>' + (x[0] === 'ok' ? '✓' : '·') + '</i>' + x[1] + '</li>'; }).join('') + '</ul>' +
@@ -673,7 +675,7 @@
     var list = ADDONS.filter(function (a) { return a.cat === state.addonTab; });
     var feat = list[0];
     v.innerHTML = appbar(1) +
-      '<div class="ckd-body"><h2>Add Ons</h2>' +
+      '<div class="ckd-body"><h2 role="presentation">Add Ons</h2>' +
       '<div class="ckd-tabs">' + cats.map(function (c) { return '<button type="button" data-tab="' + c + '" class="' + (c === state.addonTab ? 'on' : '') + '">' + c + '</button>'; }).join('') + '</div>' +
       '<div class="ckd-addon-cols">' +
         '<div class="ckd-addon-grid">' +
@@ -681,7 +683,7 @@
             var q = state.addons[a.id] || 0;
             return '<div class="ckd-prod"><div class="ph" style="' + mediaBg(a) + '">' + (a.img ? '' : a.emoji) +
               (a.save ? '<span class="flame">🔥 ' + a.save + '</span>' : '') + '</div>' +
-              '<div class="info"><h5>' + a.name + '</h5><span class="tag">' + a.cat + '</span>' +
+              '<div class="info"><h5 role="presentation">' + a.name + '</h5><span class="tag">' + a.cat + '</span>' +
               '<div class="prices">' + (a.was ? '<s>' + money(a.was) + '</s>' : '') + '<b>' + money(a.price) + '</b></div>' +
               '<button type="button" class="ckd-btn-line' + (q ? ' added' : '') + '" data-add="' + a.id + '">' + (q ? '✓ Added (' + q + ')' : 'Add to Cart ') + (q ? '' : I.cart) + '</button></div></div>';
           }).join('') +
@@ -690,7 +692,7 @@
           (feat.video
             ? '<video class="featvid" autoplay muted loop playsinline src="' + ASSET_BASE + feat.video + '"></video>'
             : (feat.img ? '' : '<span class="big">' + feat.emoji + '</span>')) +
-          '<h4>' + feat.name + '</h4>' + (feat.was ? '<s>' + money(feat.was) + '</s>' : '') +
+          '<h4 role="presentation">' + feat.name + '</h4>' + (feat.was ? '<s>' + money(feat.was) + '</s>' : '') +
           '<p class="fp">' + money(feat.price) + '</p>' + (feat.save ? '<span class="savechip">' + feat.save + '</span>' : '') +
           '<button type="button" data-add="' + feat.id + '">Add to Cart ' + I.cart + '</button>' +
         '</div>' +
@@ -747,7 +749,7 @@
           }).join('') +
         '</div>' +
         '<div class="ckd-shop-info">' +
-          '<h3>' + sel.name + '</h3>' +
+          '<h3 role="presentation">' + sel.name + '</h3>' +
           (sel.was ? '<s>' + money(sel.was) + '</s>' : '') +
           '<p class="p">' + money(sel.price) + '</p>' +
           (sel.save ? '<span class="savechip">' + sel.save + '</span>' : '') +
@@ -783,20 +785,20 @@
     var recs = ADDONS.filter(function (a) { return !state.addons[a.id]; }).slice(0, 3);
     var sub = subtotal(), tax = Math.round(sub * TAX);
     v.innerHTML = appbar(2) +
-      '<div class="ckd-body"><h2>Order Review</h2>' +
+      '<div class="ckd-body"><h2 role="presentation">Order Review</h2>' +
       '<div class="ckd-datebar">' + I.cal + '<span>Booking Date: <b data-date>' + dateStr() + '</b></span></div>' +
       '<div class="ckd-review-cols">' +
-        '<div><h4 class="ckd-h6">Recommended For Your Booking</h4>' +
+        '<div><h4 role="presentation" class="ckd-h6">Recommended For Your Booking</h4>' +
           '<div class="ckd-banner">' + I.pct + ' Last Chance To Get Up To 30% Off Bottles</div>' +
           '<div class="ckd-recs">' + recs.map(function (a) {
             return '<div class="ckd-rec"><div class="ph" style="' + mediaBg(a) + '">' + (a.img ? '' : a.emoji) + '</div>' +
-              '<div class="info"><h6>' + a.name + '</h6><p>' + money(a.price) + '</p></div></div>';
+              '<div class="info"><h6 role="presentation">' + a.name + '</h6><p>' + money(a.price) + '</p></div></div>';
           }).join('') + '</div>' +
         '</div>' +
-        '<div class="ckd-cartcard"><h4>Your Cart</h4><p class="lbl">Furniture</p>' +
+        '<div class="ckd-cartcard"><h4 role="presentation">Your Cart</h4><p class="lbl">Furniture</p>' +
           state.cart.map(function (c, i) {
             return '<div class="ckd-item"><span class="ckd-thumb" style="background-position:' + c.x + '% ' + c.y + '%"></span>' +
-              '<div style="flex:1"><h6>' + c.name + '<br>' + c.pkg + '</h6>' +
+              '<div style="flex:1"><h6 role="presentation">' + c.name + '<br>' + c.pkg + '</h6>' +
               '<p>' + I.clock + ' ' + c.arrive + '</p>' +
               '<p>' + I.pax + ' Recommended for ' + c.cap + ' People</p>' +
               '<p>$150 food &amp; beverage credit</p>' +
@@ -806,7 +808,7 @@
           Object.keys(state.addons).map(function (id) {
             var a = addon(id);
             return '<div class="ckd-item"><span class="ckd-thumb" style="' + (a.img ? mediaBg(a) : 'background-image:none;background:' + a.bg + ';display:grid;place-items:center;font-size:24px') + '">' + (a.img ? '' : a.emoji) + '</span>' +
-              '<div style="flex:1"><h6>' + a.name + ' × ' + state.addons[id] + '</h6>' +
+              '<div style="flex:1"><h6 role="presentation">' + a.name + ' × ' + state.addons[id] + '</h6>' +
               '<div class="pr">' + money(a.price * state.addons[id]) + '</div></div>' +
               '<button type="button" class="rm" data-rma="' + id + '" aria-label="Remove">✕</button></div>';
           }).join('') +
@@ -839,7 +841,7 @@
   function renderConfirm(v) {
     v.innerHTML = appbar(3) +
       '<div class="ckd-body"><div class="ckd-form">' +
-        '<h2>Tell us more about you</h2>' +
+        '<h2 role="presentation">Tell us more about you</h2>' +
         '<div class="ckd-frow">' +
           '<label class="ckd-field"><span>First Name</span><input placeholder="First Name" autocomplete="off"></label>' +
           '<label class="ckd-field"><span>Last Name</span><input placeholder="Last Name" autocomplete="off"></label>' +
@@ -863,7 +865,7 @@
   function renderSuccess(v) {
     v.innerHTML = appbar(3) +
       '<div class="ckd-success">' +
-        '<i>✓</i><h3>Booking confirmed</h3>' +
+        '<i>✓</i><h3 role="presentation">Booking confirmed</h3>' +
         '<p>' + dateStr() + ' is locked in — the spot is off the market and the revenue is banked before doors open.</p>' +
         '<span class="tag">Interactive demo · no payment taken</span>' +
         '<button type="button" class="ckd-cta" data-restart>Start over</button>' +
@@ -899,7 +901,7 @@
     mark();
     var s = $('.ckd-sheet');
     if (name === 'zones') {
-      s.innerHTML = sheetShell('<h3>Free Entry Party Zones</h3>',
+      s.innerHTML = sheetShell('<h3 role="presentation">Free Entry Party Zones</h3>',
         '<p class="ckd-social-copy">Several social areas where you can walk in for free and enjoy with no minimum spend. Grab a drink at the bar and take in the oceanfront views and sunsets — world-class entertainment and parties every day of the week!</p>' +
         '<div class="ckd-socialrow">' + SOCIAL.map(function (z) {
           return '<div class="ckd-social" style="background-image:url(' + ASSET_BASE + z.img + ')">' +
@@ -908,11 +910,11 @@
         }).join('') + '</div>');
     }
     if (name === 'queue') {
-      s.innerHTML = sheetShell('<h3>Skip The Queue</h3>',
+      s.innerHTML = sheetShell('<h3 role="presentation">Skip The Queue</h3>',
         '<div class="ckd-qbanner"><span class="off">⊘ 75% OFF</span>' +
-        '<h5>You got 75% OFF for booking in advance</h5>' +
+        '<h5 role="presentation">You got 75% OFF for booking in advance</h5>' +
         '<p>You\u2019re all set with the best price for your day.</p></div>' +
-        '<div class="ckd-qdays"><h4>Choose Date</h4><div class="ckd-days">' +
+        '<div class="ckd-qdays"><h4 role="presentation">Choose Date</h4><div class="ckd-days">' +
         [16, 17, 18, 19, 20].map(function (d) {
           return '<button type="button" data-qday="' + d + '" class="' + (d === state.day ? 'sel' : '') + '"><b>' + d + '</b><small>Jul</small><span>' + dayLabel(d) + '</span></button>';
         }).join('') + '</div></div>' +
@@ -936,10 +938,10 @@
       });
     }
     if (name === 'profile') {
-      s.innerHTML = sheetShell('<h3 class="center">Account</h3>',
+      s.innerHTML = sheetShell('<h3 role="presentation" class="center">Account</h3>',
         '<div class="ckd-acct">' +
           '<span class="av">' + I.user + '</span>' +
-          '<h6>You’re browsing as a guest</h6>' +
+          '<h6 role="presentation">You’re browsing as a guest</h6>' +
           '<p>Sign in to see your bookings and check out faster.</p>' +
           '<div class="ckd-sso"><button type="button" aria-label="Continue with Google">' + I.google + '</button>' +
           '<button type="button" aria-label="Continue with Meta">' + I.meta + '</button></div>' +
@@ -952,10 +954,10 @@
       $('[data-acct="bookings"]', s).addEventListener('click', function () { openSheet('cart'); });
     }
     if (name === 'promos') {
-      s.innerHTML = sheetShell('<h3>Promotions</h3>',
+      s.innerHTML = sheetShell('<h3 role="presentation">Promotions</h3>',
         PROMOS.map(function (p) {
           return '<div class="ckd-promo"><span class="th" style="background-image:url(' + ASSET_BASE + p.img + ')"></span>' +
-            '<div><h6>' + p.title + '</h6><p class="sub">' + p.sub + '</p><p>' + p.desc + '</p></div>' +
+            '<div><h6 role="presentation">' + p.title + '</h6><p class="sub">' + p.sub + '</p><p>' + p.desc + '</p></div>' +
             '<span class="chev">›</span></div>';
         }).join(''));
     }
@@ -963,7 +965,7 @@
       var items = '';
       state.cart.forEach(function (c, i) {
         items += '<div class="ckd-cartitem"><span class="th" style="background-position:' + c.x + '% ' + c.y + '%"></span>' +
-          '<div style="flex:1"><h6>' + c.name + '<br>' + c.pkg + '</h6>' +
+          '<div style="flex:1"><h6 role="presentation">' + c.name + '<br>' + c.pkg + '</h6>' +
           '<p>' + I.clock + ' ' + c.arrive + '</p><p>' + I.pax + ' Recommended for ' + c.cap + ' People</p>' +
           '<div class="pr">' + money(c.price) + '</div></div>' +
           '<button type="button" class="rm" data-rmf="' + i + '" aria-label="Remove">✕</button></div>';
@@ -971,23 +973,23 @@
       Object.keys(state.addons).forEach(function (id) {
         var a = addon(id);
         items += '<div class="ckd-cartitem"><span class="th" style="' + (a.img ? 'background-image:url(' + ASSET_BASE + a.img + ');background-size:cover;background-position:center' : 'background:' + a.bg) + '"></span>' +
-          '<div style="flex:1"><h6>' + a.name + ' × ' + state.addons[id] + '</h6>' +
+          '<div style="flex:1"><h6 role="presentation">' + a.name + ' × ' + state.addons[id] + '</h6>' +
           '<div class="pr">' + money(a.price * state.addons[id]) + '</div></div>' +
           '<button type="button" class="rm" data-rmc="' + id + '" aria-label="Remove">✕</button></div>';
       });
       if (state.pass) {
         items += '<div class="ckd-cartitem"><span class="th" style="background-image:none;background:linear-gradient(160deg,#7ce8c8,#0d7a56);display:grid;place-items:center;font-size:26px">🎟</span>' +
-          '<div style="flex:1"><h6>' + PASS.name + '</h6><p>' + I.gem.replace('currentColor', '#0d7a56') + ' Skip the line · 75% off booked ahead</p>' +
+          '<div style="flex:1"><h6 role="presentation">' + PASS.name + '</h6><p>' + I.gem.replace('currentColor', '#0d7a56') + ' Skip the line · 75% off booked ahead</p>' +
           '<div class="pr"><s style="color:#9b9b9b;font-weight:500;font-size:11px;margin-right:6px">' + money(PASS.was) + '</s>' + money(PASS.price) + '</div></div>' +
           '<button type="button" class="rm" data-rmp aria-label="Remove">✕</button></div>';
       }
       var empty = !items;
-      s.innerHTML = sheetShell('<h3 class="center">Cart</h3>',
+      s.innerHTML = sheetShell('<h3 role="presentation" class="center">Cart</h3>',
         '<div class="ckd-cart-date"><span>' + I.cal + ' ' + state.day + ' Jul</span></div>' +
         (empty
           ? '<div class="ckd-cart-empty">' +
             '<svg viewBox="0 0 24 24" fill="none" stroke="#1c1c1c" stroke-width="1.1"><circle cx="9.5" cy="19.5" r="1.3" fill="#1c1c1c"/><circle cx="16.5" cy="19.5" r="1.3" fill="#1c1c1c"/><path d="M4 5h2l2 10h9l2-7.5H7.2" stroke-linejoin="round"/></svg>' +
-            '<h6>Your cart is empty</h6><p>Let\u2019s change that!</p></div>'
+            '<h6 role="presentation">Your cart is empty</h6><p>Let\u2019s change that!</p></div>'
           : items),
         empty
           ? '<button type="button" class="ckd-booknow" data-explore>Explore Furnitures</button>'
