@@ -114,7 +114,7 @@ function renderMarkdown(md) {
   for (const raw of lines) {
     const line = raw.replace(/\s+$/, '');
     const h = line.match(/^(#{1,4}) (.+)$/);
-    if (h) { flushAll(); const lvl = Math.min(h[1].length + 1, 4); out.push(`<h${lvl}>${inlineMd(h[2])}</h${lvl}>`); continue; }
+    if (h) { flushAll(); const lvl = Math.min(Math.max(h[1].length, 2), 4); out.push(`<h${lvl}>${inlineMd(h[2])}</h${lvl}>`); continue; }
     if (/^(-{3,}|\*{3,})$/.test(line)) { flushAll(); out.push('<hr/>'); continue; }
     const ul = line.match(/^\s*[-*] (.+)$/);
     if (ul) { flushPara(); flushQuote(); if (!list || list.tag !== 'ul') { flushList(); list = { tag: 'ul', items: [] }; } list.items.push(ul[1]); continue; }
@@ -185,7 +185,7 @@ function postJsonLd(post) {
         publisher: { '@type': 'Organization', name: 'Clubtech Global', url: `${CANONICAL_ORIGIN}/` },
         mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
         articleSection: post.meta.category,
-        url,
+        url: canonical,
       },
     ],
   };
@@ -308,7 +308,7 @@ ${col('Compare', [...compares.map(pageLink), [`${rel}compare/`, 'All comparisons
   </footer>`;
 }
 
-const CONSENT_MARKUP = `<div class="cc-banner" id="cc-banner" role="dialog" aria-live="polite" aria-label="Cookie consent" hidden>
+const CONSENT_MARKUP = `<div class="cc-banner" id="cc-banner" role="region" aria-label="Cookie consent" hidden>
   <div class="cc-banner-head">Cookies &amp; privacy</div>
   <div class="cc-banner-body">
     We use cookies to make this site work, understand how it's used, and — with your permission — measure campaign performance. Accept all, reject non-essential, or choose categories. Reopen anytime via <a href="#" data-open-consent>preferences</a>.
@@ -377,9 +377,13 @@ function headHTML({ title, description, canonical, ogImage, ogImageAlt, jsonLd, 
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#020617">
   <link rel="icon" href="${rel}favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="${rel}favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="${rel}favicon-16.png">
+  <link rel="apple-touch-icon" href="${rel}apple-touch-icon.png">
 
   <meta property="og:type" content="${esc(ogType)}">
   <meta property="og:site_name" content="Clubtech">
+  <meta property="og:url" content="${esc(canonical)}">
   <meta property="og:title" content="${esc(title)}">
   <meta property="og:description" content="${esc(description)}">
   <meta property="og:image" content="${esc(ogImage)}">
@@ -388,6 +392,7 @@ function headHTML({ title, description, canonical, ogImage, ogImageAlt, jsonLd, 
   <meta name="twitter:title" content="${esc(title)}">
   <meta name="twitter:description" content="${esc(description)}">
   <meta name="twitter:image" content="${esc(ogImage)}">
+  <meta name="twitter:image:alt" content="${esc(ogImageAlt)}">
 
   <link rel="preload" href="${rel}fonts/albert-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="${rel}css/styles.css">
@@ -434,7 +439,7 @@ function pageJsonLd(page) {
         datePublished: page.meta.date,
         dateModified: page.meta.date,
         about: { '@type': 'Organization', name: 'Clubtech', url: `${CANONICAL_ORIGIN}/` },
-        url,
+        url: canonical,
       },
       {
         '@type': 'BreadcrumbList',
@@ -470,7 +475,7 @@ function renderLandingPage(page, pages) {
           <span class="index-title">${esc(plainTitle(p.meta.title))}</span>
           <span class="index-meta"><span class="index-cat">${esc(PAGE_SECTIONS[p.meta.section])}</span></span>
         </span>
-        <img class="index-thumb" src="../..${esc(p.meta.hero)}" alt="" loading="lazy">
+        <img class="index-thumb" src="../..${esc(p.meta.hero)}" alt="" loading="lazy" decoding="async" width="190" height="120">
         <span class="index-arrow" aria-hidden="true">↗</span>
       </a>`).join('\n');
   const moreSection = others.length ? `
@@ -495,8 +500,9 @@ ${moreRows}
 
   return `${head}
 <body class="blog-post p-${esc(page.meta.section)}">
-<main>
+<a class="skip-link" href="#main">Skip to content</a>
 ${navMarkup('../../', page.meta.section === 'solutions' ? 'solutions' : null)}
+<main id="main">
 
   <article>
     <header class="post-hero">
@@ -512,7 +518,7 @@ ${navMarkup('../../', page.meta.section === 'solutions' ? 'solutions' : null)}
     </header>
 
     <div class="shell post-hero-media">
-      <img src="../..${esc(page.meta.hero)}" alt="${esc(page.meta.heroAlt)}" fetchpriority="high">
+      <img src="../..${esc(page.meta.hero)}" alt="${esc(page.meta.heroAlt)}" fetchpriority="high" decoding="async" width="1600" height="1067">
     </div>
 
     <div class="shell post-body">
@@ -578,7 +584,7 @@ function renderSectionIndex(sectionKey, pages) {
           <span class="index-title">${esc(plainTitle(p.meta.title))}</span>
           <span class="index-desc">${esc(p.meta.excerpt)}</span>
         </span>
-        <img class="index-thumb" src="..${esc(p.meta.hero)}" alt="" loading="lazy">
+        <img class="index-thumb" src="..${esc(p.meta.hero)}" alt="" loading="lazy" decoding="async" width="190" height="120">
         <span class="index-arrow" aria-hidden="true">↗</span>
       </a>`).join('\n');
 
@@ -588,7 +594,7 @@ function renderSectionIndex(sectionKey, pages) {
       ? 'Clubtech booking and revenue solutions by venue type and destination — beach clubs, day clubs, nightclubs, hotel pools, and sunbed decks.'
       : 'Fair, factual comparisons of Clubtech against UrVenue, SevenRooms, ResortPass, serVme, Book Tech Labs, Fourvenues, and Hoteligy.',
     canonical: `${SITE_ORIGIN}/${sectionKey}/`,
-    ogImage: `${SITE_ORIGIN}${sectionPages[0]?.meta.hero || '/video/clubtech-hero-poster.jpg'}`,
+    ogImage: `${SITE_ORIGIN}${sectionPages[0]?.meta.hero || '/assets/og/clubtech-og.jpg'}`,
     ogImageAlt: `Clubtech ${label.toLowerCase()}`,
     jsonLd: sectionIndexJsonLd(sectionKey, sectionPages),
     rel: '../',
@@ -597,8 +603,9 @@ function renderSectionIndex(sectionKey, pages) {
 
   return `${head}
 <body class="blog-index p-${esc(sectionKey)}-index">
-<main>
+<a class="skip-link" href="#main">Skip to content</a>
 ${navMarkup('../', sectionKey === 'solutions' ? 'solutions' : null)}
+<main id="main">
 
   <section class="index-hero">
     <div class="shell">
@@ -647,7 +654,7 @@ function indexRow(post, n) {
           <span class="index-title">${esc(post.meta.title)}</span>
           <span class="index-meta"><span class="index-cat">${esc(cat)}</span><span>${esc(shortDate(post.meta.date))}</span><span>${readMinutes(post.body)} min</span></span>
         </span>
-        <img class="index-thumb" src="..${esc(post.meta.hero)}" alt="" loading="lazy">
+        <img class="index-thumb" src="..${esc(post.meta.hero)}" alt="" loading="lazy" decoding="async" width="190" height="120">
         <span class="index-arrow" aria-hidden="true">↗</span>
       </a>`;
 }
@@ -672,8 +679,9 @@ function renderListing(posts, pages) {
 
   return `${head}
 <body class="blog-index">
-<main>
+<a class="skip-link" href="#main">Skip to content</a>
 ${navMarkup('../')}
+<main id="main">
 
   <section class="index-hero">
     <div class="shell">
@@ -692,7 +700,7 @@ ${navMarkup('../')}
         <p class="featured-excerpt">${esc(latest.meta.excerpt)}</p>
         <span class="featured-cta">Read the entry <span aria-hidden="true">↗</span></span>
       </div>
-      <div class="featured-media"><img src="..${esc(latest.meta.hero)}" alt="${esc(latest.meta.heroAlt)}"></div>
+      <div class="featured-media"><img src="..${esc(latest.meta.hero)}" alt="${esc(latest.meta.heroAlt)}" loading="lazy" decoding="async" width="1600" height="1067"></div>
     </a>
   </section>
 
@@ -745,7 +753,7 @@ function renderPost(post, posts, pages) {
           <span class="index-title">${esc(p.meta.title)}</span>
           <span class="index-meta"><span class="index-cat">${esc(p.meta.category)}</span><span>${esc(shortDate(p.meta.date))}</span></span>
         </span>
-        <img class="index-thumb" src="../..${esc(p.meta.hero)}" alt="" loading="lazy">
+        <img class="index-thumb" src="../..${esc(p.meta.hero)}" alt="" loading="lazy" decoding="async" width="190" height="120">
         <span class="index-arrow" aria-hidden="true">↗</span>
       </a>`).join('\n');
 
@@ -761,8 +769,9 @@ function renderPost(post, posts, pages) {
 
   return `${head}
 <body class="blog-post">
-<main>
+<a class="skip-link" href="#main">Skip to content</a>
 ${navMarkup('../../')}
+<main id="main">
 
   <article>
     <header class="post-hero">
@@ -775,7 +784,7 @@ ${navMarkup('../../')}
     </header>
 
     <div class="shell post-hero-media">
-      <img src="../..${esc(post.meta.hero)}" alt="${esc(post.meta.heroAlt)}" fetchpriority="high">
+      <img src="../..${esc(post.meta.hero)}" alt="${esc(post.meta.heroAlt)}" fetchpriority="high" decoding="async" width="1600" height="1067">
     </div>
 
     <div class="shell post-body">

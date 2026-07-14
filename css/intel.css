@@ -78,3 +78,8 @@
 @media(max-width:600px){
   .cki{aspect-ratio:auto;height:640px}
 }
+
+@media (prefers-reduced-motion: reduce){
+.cki-badge i{animation:none}
+.cki-bar i{transition:none}
+}

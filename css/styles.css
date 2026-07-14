@@ -63,3 +63,6 @@ html{scroll-padding-top:96px}
 .footer-col a{display:block;padding:5px 0;font-size:14px;letter-spacing:0;color:#dbe3ef}
 .footer-col a:hover{color:var(--mint)}
 @media(max-width:600px){.footer-grid{grid-template-columns:1fr 1fr;gap:22px}}
+
+.skip-link{position:fixed;left:14px;top:-60px;z-index:300;background:var(--mint);color:var(--navy);font-weight:700;font-size:14px;padding:12px 18px;border-radius:999px;transition:top .15s}
+.skip-link:focus{top:14px}

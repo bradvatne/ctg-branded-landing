@@ -841,12 +841,12 @@
       '<div class="ckd-body"><div class="ckd-form">' +
         '<h2>Tell us more about you</h2>' +
         '<div class="ckd-frow">' +
-          '<div class="ckd-field"><label>First Name</label><input placeholder="First Name" autocomplete="off"></div>' +
-          '<div class="ckd-field"><label>Last Name</label><input placeholder="Last Name" autocomplete="off"></div>' +
+          '<label class="ckd-field"><span>First Name</span><input placeholder="First Name" autocomplete="off"></label>' +
+          '<label class="ckd-field"><span>Last Name</span><input placeholder="Last Name" autocomplete="off"></label>' +
         '</div>' +
-        '<div class="ckd-field"><label>Email</label><input placeholder="Email" autocomplete="off"></div>' +
-        '<div class="ckd-field"><label>Phone Number</label><div class="ckd-phone">' +
-          '<span class="cc">🌴 +62 ▾</span><input placeholder="Enter Phone Number" autocomplete="off" style="flex:1"></div></div>' +
+        '<label class="ckd-field"><span>Email</span><input placeholder="Email" autocomplete="off"></label>' +
+        '<label class="ckd-field"><span>Phone Number</span><div class="ckd-phone">' +
+          '<span class="cc">🌴 +62 ▾</span><input placeholder="Enter Phone Number" autocomplete="off" style="flex:1"></div></label>' +
         '<button type="button" class="ckd-continue" data-done>Continue</button>' +
         '<div class="ckd-or">Or fill with</div>' +
         '<div class="ckd-sso"><button type="button" aria-label="Continue with Google">' + I.google + '</button>' +
@@ -1017,6 +1017,13 @@
     s.classList.add('open');
     track('demo_sheet', { sheet: name });
   }
+
+  window.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    if ($('.ckd-scrim.open')) closeModal();
+    else if ($('.ckd-sheet.open')) closeSheet();
+    else if ($('.ckd-panel.open')) closePanel();
+  });
 
   build();
 

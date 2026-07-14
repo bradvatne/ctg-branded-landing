@@ -75,6 +75,7 @@
 .cko-panel.open{transform:none}
 .cko-panel h3{margin:0 26px 0 0;font-size:16.5px;font-weight:700}
 .cko-x{position:absolute;top:14px;right:14px;width:28px;height:28px;display:grid;place-items:center;color:#6e6e6e;font-size:14px}
+.cko-x::after{content:"";position:absolute;inset:-9px}
 .cko-sub{margin:7px 0 0;font-size:11.5px;color:#3f3f46;font-weight:500;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
 .cko-sub svg{width:13px;height:13px}
 .cko-chip{display:inline-flex;align-items:center;height:22px;padding:0 9px;border-radius:999px;font-size:10px;font-weight:700}
@@ -141,3 +142,10 @@
   .cko-datepill span{display:none}
   .cko-frow{flex-direction:column;gap:0}
 }
+
+@media (prefers-reduced-motion: reduce){
+.cko-badge i{animation:none}
+.cko-spot.pulse{animation:none}
+.cko-panel,.cko-toast{transition:none}
+}
+.cko-modal,.cko-guest,.cko-row{user-select:text;-webkit-user-select:text}

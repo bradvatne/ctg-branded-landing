@@ -222,9 +222,16 @@
     root.appendChild(h('div', 'cko-panel'));
     var scrim = h('div', 'cko-scrim');
     scrim.addEventListener('click', function (e) { if (e.target === scrim) closeModal(); });
-    scrim.appendChild(h('div', 'cko-modal'));
+    var modal = h('div', 'cko-modal');
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-label', 'Form Confirm Booking');
+    scrim.appendChild(modal);
     root.appendChild(scrim);
-    root.appendChild(h('div', 'cko-toast'));
+        var toastEl = h('div', 'cko-toast');
+    toastEl.setAttribute('role', 'status');
+    toastEl.setAttribute('aria-live', 'polite');
+    root.appendChild(toastEl);
 
     if (OPTS.badge) root.appendChild(h('div', 'cko-badge', '<i></i>' + OPTS.badge));
 
@@ -525,6 +532,12 @@
   }
 
   function closeModal() { $('.cko-scrim').classList.remove('open'); }
+
+  window.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    if ($('.cko-scrim.open')) closeModal();
+    else if ($('.cko-panel.open')) closePanel();
+  });
 
   build();
 

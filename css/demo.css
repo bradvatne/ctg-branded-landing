@@ -48,7 +48,7 @@
 .ckd-datepill{height:46px;min-width:210px;padding:0 22px;border-radius:999px;background:#fff;border:1px solid #ececec;display:inline-flex;align-items:center;justify-content:center;gap:9px;font-size:13.5px;font-weight:600;box-shadow:0 2px 10px rgba(0,0,0,.12)}
 .ckd-datepill svg{width:15px;height:15px}
 .ckd-stepper{margin:0 auto;height:56px;padding:0 26px;border-radius:999px;background:#fff;display:flex;align-items:center;gap:9px;box-shadow:0 2px 10px rgba(0,0,0,.12);white-space:nowrap}
-.ckd-stepper span{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:#9b9b9b}
+.ckd-stepper span{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:#767676}
 .ckd-stepper span svg{width:17px;height:17px}
 .ckd-stepper span.on{color:#1c1c1c}
 .ckd-stepper i{width:3px;height:3px;border-radius:50%;background:#c9c9c9;font-style:normal}
@@ -78,8 +78,8 @@
 .ckd-zonecards::-webkit-scrollbar{display:none}
 .ckd-zcard{flex:none;background:#fff;border-radius:14px;padding:9px 18px 11px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.12);transition:background .15s}
 .ckd-zcard:hover{background:#f5f5f5}
-.ckd-zcard small{display:block;font-size:10.5px;font-weight:600;color:#9b9b9b}
-.ckd-zcard small.fast{color:#f6a417}
+.ckd-zcard small{display:block;font-size:10.5px;font-weight:600;color:#767676}
+.ckd-zcard small.fast{color:#b45309}
 .ckd-zcard small.sold{color:#e02d3c}
 .ckd-zcard strong{display:block;font-size:13.5px;font-weight:600;margin-top:2px}
 .ckd-znext{flex:none;width:38px;height:38px;border-radius:50%;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.12);display:grid;place-items:center;font-size:15px}
@@ -87,7 +87,7 @@
 /* bottom-right booking bar */
 .ckd-bar{position:absolute;right:14px;bottom:14px;z-index:36;display:flex;align-items:center;gap:12px;background:#fff;border-radius:999px;padding:6px 6px 6px 10px;box-shadow:0 4px 16px rgba(0,0,0,.18)}
 .ckd-bar .ckd-thumb{width:42px;height:42px;border-radius:10px;background-size:400%;background-position:50% 45%;flex:none}
-.ckd-bar p{margin:0;font-size:10.5px;color:#9b9b9b;font-weight:500;white-space:nowrap}
+.ckd-bar p{margin:0;font-size:10.5px;color:#767676;font-weight:500;white-space:nowrap}
 .ckd-bar p b{display:block;color:#1c1c1c;font-size:13.5px;font-weight:700}
 .ckd-cta{height:44px;padding:0 22px;border-radius:999px;background:#1c1c1c;color:#fff;font-size:13.5px;font-weight:600;white-space:nowrap;transition:background .15s}
 .ckd-cta:hover{background:#000}
@@ -98,6 +98,7 @@
 .ckd-modal{width:min(400px,calc(100% - 40px));max-height:92%;overflow-y:auto;background:#fff;border-radius:16px;padding:22px 24px;position:relative;box-shadow:0 30px 80px rgba(0,0,0,.35)}
 .ckd-modal h3{margin:0;text-align:center;font-size:17px;font-weight:700}
 .ckd-x{position:absolute;top:14px;right:14px;width:28px;height:28px;display:grid;place-items:center;color:#6e6e6e;font-size:15px}
+.ckd-x::after{content:"";position:absolute;inset:-9px}
 .ckd-monthrow{display:flex;align-items:center;justify-content:space-between;margin:14px 4px 4px}
 .ckd-monthrow b{font-size:15px;font-weight:700}
 .ckd-monthrow button{width:28px;height:28px;display:grid;place-items:center;color:#1c1c1c}
@@ -121,7 +122,7 @@
 .ckd-btn-ghost{flex:1;height:48px;border-radius:999px;border:1px solid #e2e2e2;background:#fff;font-size:13.5px;font-weight:600}
 .ckd-btn-dark{flex:1.4;height:48px;border-radius:999px;background:#1c1c1c;color:#fff;font-size:13.5px;font-weight:600}
 .ckd-btn-dark:hover{background:#000}
-.ckd-btn-dark:disabled{background:#9b9b9b;cursor:default}
+.ckd-btn-dark:disabled{background:#767676;cursor:default}
 
 /* ═══ furniture detail panel ═══ */
 .ckd-panel{position:absolute;left:0;top:0;bottom:0;z-index:55;width:min(420px,88%);background:#fff;display:flex;flex-direction:column;transform:translateX(-102%);transition:transform .35s cubic-bezier(.22,.8,.3,1);box-shadow:24px 0 60px rgba(0,0,0,.18)}
@@ -135,7 +136,7 @@
 .ckd-chip.grey{background:#fff;color:#3f3f46;border:1px solid #e2e2e2}
 .ckd-pax{display:flex;align-items:center;gap:7px;margin-top:12px;font-size:13px;font-weight:600}
 .ckd-pax svg{width:16px;height:16px}
-.ckd-pax em{font-style:normal;color:#9b9b9b;font-weight:500}
+.ckd-pax em{font-style:normal;color:#767676;font-weight:500}
 .ckd-desc{margin:10px 0 0;font-size:12.5px;color:#3f3f46;font-weight:400;line-height:1.5}
 .ckd-gallery{display:grid;grid-template-columns:1fr 1fr 1fr;grid-auto-rows:74px;gap:6px;margin-top:14px}
 .ckd-gallery>div{border-radius:10px;background-image:url(../assets/demo/venue-real.jpg);background-size:520%;position:relative;overflow:hidden}
@@ -175,7 +176,7 @@
 .ckd-pkg li{display:flex;gap:8px;align-items:flex-start;font-size:11.5px;font-weight:500;color:#1c1c1c;margin-top:8px}
 .ckd-pkg li i{width:15px;height:15px;flex:none;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:8.5px;color:#fff;margin-top:.5px}
 .ckd-pkg li.ok i{background:#18a957}
-.ckd-pkg li.na{color:#9b9b9b}
+.ckd-pkg li.na{color:#767676}
 .ckd-pkg li.na i{background:#c9c9c9}
 .ckd-pkg .more{margin-top:12px;font-size:11.5px;font-weight:600;display:inline-flex;align-items:center;gap:5px}
 .ckd-panel-foot{border-top:1px solid #ececec;padding:9px 16px 13px;background:#fff}
@@ -209,7 +210,7 @@
 .ckd-prod .info h5{margin:0;font-size:13.5px;font-weight:700}
 .ckd-prod .tag{display:inline-flex;align-items:center;gap:4px;border:1px solid #e8e8e8;border-radius:999px;padding:3px 9px;font-size:10px;font-weight:600;color:#3f3f46;margin-top:6px}
 .ckd-prod .prices{margin-top:auto;padding-top:8px;text-align:right;align-self:flex-end}
-.ckd-prod .prices s{display:block;font-size:10.5px;color:#9b9b9b}
+.ckd-prod .prices s{display:block;font-size:10.5px;color:#767676}
 .ckd-prod .prices b{font-size:14px;font-weight:700}
 .ckd-prod .ckd-btn-line{width:100%;height:40px;margin-top:9px;font-size:12.5px}
 .ckd-prod .ckd-btn-line.added{background:#1c1c1c;color:#fff;border-color:#1c1c1c}
@@ -227,7 +228,7 @@
 .ckd-foot .back{height:44px;padding:0 26px;border-radius:999px;border:1px solid #e2e2e2;font-size:13.5px;font-weight:600;margin:0 auto 0 0}
 .ckd-foot .tot{display:flex;align-items:center;gap:10px}
 .ckd-foot .tot .ckd-thumb{width:40px;height:40px;border-radius:10px;background-image:url(../assets/demo/venue-real.jpg);background-size:400%;background-position:50% 45%}
-.ckd-foot .tot p{margin:0;font-size:10.5px;color:#9b9b9b;font-weight:500}
+.ckd-foot .tot p{margin:0;font-size:10.5px;color:#767676;font-weight:500}
 .ckd-foot .tot p b{display:block;color:#1c1c1c;font-size:14px;font-weight:700}
 
 /* order review */
@@ -268,15 +269,15 @@
 .ckd-form{max-width:380px;margin:6vh auto 0;width:100%}
 .ckd-form h2{font-size:22px}
 .ckd-frow{display:flex;gap:12px}
-.ckd-field{flex:1;margin-top:14px}
-.ckd-field label{display:block;font-size:12.5px;font-weight:700;margin-bottom:7px}
+.ckd-field{display:block;flex:1;margin-top:14px}
+.ckd-field label,.ckd-field>span{display:block;font-size:12.5px;font-weight:700;margin-bottom:7px}
 .ckd-field input{width:100%;height:46px;border:1px solid #e2e2e2;border-radius:10px;padding:0 13px;font:inherit;font-size:13px;color:#1c1c1c;background:#fff}
-.ckd-field input::placeholder{color:#9b9b9b}
+.ckd-field input::placeholder{color:#767676}
 .ckd-field input:focus{outline:2px solid #1c1c1c;outline-offset:-1px}
 .ckd-phone{display:flex;gap:8px}
 .ckd-phone .cc{flex:none;width:86px;height:46px;border:1px solid #e2e2e2;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;gap:6px;font-size:13px;font-weight:600}
 .ckd-continue{width:100%;height:50px;border-radius:12px;background:#1c1c1c;color:#fff;font-size:14px;font-weight:600;margin-top:18px}
-.ckd-or{display:flex;align-items:center;gap:12px;margin-top:16px;color:#9b9b9b;font-size:12px;font-weight:500}
+.ckd-or{display:flex;align-items:center;gap:12px;margin-top:16px;color:#767676;font-size:12px;font-weight:500}
 .ckd-or::before,.ckd-or::after{content:"";flex:1;height:1px;background:#ececec}
 .ckd-sso{display:flex;gap:12px;margin-top:14px}
 .ckd-sso button{flex:1;height:52px;border:1px solid #e2e2e2;border-radius:12px;display:grid;place-items:center}
@@ -350,8 +351,8 @@
 .ckdm-head .rd b{position:absolute;top:-2px;right:-2px;min-width:14px;height:14px;border-radius:999px;background:#e02d3c;color:#fff;font-size:9px;font-weight:700;display:grid;place-items:center;padding:0 3px}
 .ckdm-zrow{position:absolute;top:64px;left:0;right:0;z-index:18;display:flex;gap:7px;padding:0 10px;overflow:hidden}
 .ckdm-zc{flex:none;background:#fff;border-radius:12px;padding:6px 13px 8px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.14)}
-.ckdm-zc small{display:block;font-size:9px;font-weight:600;color:#9b9b9b}
-.ckdm-zc small.fast{color:#f6a417}
+.ckdm-zc small{display:block;font-size:9px;font-weight:600;color:#767676}
+.ckdm-zc small.fast{color:#b45309}
 .ckdm-zc small.sold{color:#e02d3c}
 .ckdm-zc strong{display:block;font-size:11px;font-weight:600;margin-top:1px;white-space:nowrap}
 .ckdm-pin{position:absolute;z-index:15;display:flex;align-items:center;gap:5px;filter:drop-shadow(0 3px 8px rgba(0,0,0,.3))}
@@ -378,7 +379,7 @@
 .ckdm-sheet .ckd-chiprow{margin-top:8px}
 .ckdm-sheet .ckd-chip{height:22px;font-size:9.5px;padding:0 8px}
 .ckdm-sheet .pax{margin:8px 0 0;font-size:11px;font-weight:600;display:flex;gap:5px;align-items:center}
-.ckdm-sheet .pax em{font-style:normal;color:#9b9b9b;font-weight:500}
+.ckdm-sheet .pax em{font-style:normal;color:#767676;font-weight:500}
 .ckdm-sheet .gal{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;margin-top:10px}
 .ckdm-sheet .gal>div{height:56px;border-radius:8px;background-image:url(../assets/demo/venue-real.jpg);background-size:500%}
 .ckdm-sheet .cred{margin:10px 0 0;text-align:center;font-size:9.5px;color:#3f3f46;font-weight:500}
@@ -479,7 +480,7 @@
 .ckd-qdays h4{margin:0 0 9px;font-size:14px;font-weight:700}
 .ckd-qtotal{display:flex;align-items:center;justify-content:space-between;border-top:1px solid #ececec;margin-top:14px;padding-top:12px;font-size:13px;font-weight:600}
 .ckd-qtotal b{font-size:15.5px;font-weight:800}
-.ckd-qtotal s{color:#9b9b9b;font-weight:500;font-size:11.5px;margin-right:6px}
+.ckd-qtotal s{color:#767676;font-weight:500;font-size:11.5px;margin-right:6px}
 .ckd-qbook{width:100%;height:48px;border-radius:14px;background:#7bd7bb;color:#fff;font-size:14px;font-weight:700;margin-top:11px;transition:background .15s}
 .ckd-qbook:hover{background:#57c9a6}
 .ckd-qbook.added{background:#1c1c1c}
@@ -491,7 +492,7 @@
 .ckd-promo h6{margin:0;font-size:13px;font-weight:700}
 .ckd-promo .sub{margin:3px 0 0;font-size:11.5px;color:#1c1c1c;font-weight:600}
 .ckd-promo p{margin:3px 0 0;font-size:10.5px;color:#6e6e6e;font-weight:400;line-height:1.45}
-.ckd-promo .chev{color:#9b9b9b;font-size:16px;flex:none}
+.ckd-promo .chev{color:#767676;font-size:16px;flex:none}
 
 /* cart sheet */
 .ckd-cart-date{display:flex;justify-content:center;margin:0 0 8px}
@@ -524,7 +525,7 @@
 .ckd-acct-rows button{width:100%;display:flex;align-items:center;gap:12px;padding:13px 4px;border-bottom:1px solid #f4f4f4;font-size:13.5px;font-weight:600;color:#1c1c1c;text-align:left}
 .ckd-acct-rows button svg{width:19px;height:19px;flex:none;color:#3f3f46}
 .ckd-acct-rows button span{flex:1}
-.ckd-acct-rows button i{font-style:normal;color:#9b9b9b;font-size:16px}
+.ckd-acct-rows button i{font-style:normal;color:#767676;font-size:16px}
 
 /* ═══ mobile add-ons — full-screen shop (TikTok-shop style) ═══ */
 .ckd-shop{position:absolute;inset:0;background:#0b0b0d;color:#fff;overflow:hidden}
@@ -564,3 +565,10 @@
 .ckd-shop-dock .add{flex:1.5;height:48px;border-radius:999px;background:#fff;color:#141414;font-size:13.5px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;gap:8px}
 .ckd-shop-dock .add svg{width:16px;height:16px}
 .ckd-shop-dock .co{flex:1;height:48px;border-radius:999px;background:rgba(20,20,22,.6);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.55);color:#fff;font-size:13.5px;font-weight:600}
+
+@media (prefers-reduced-motion: reduce){
+.ckd-badge i{animation:none}
+.ckd-success i{animation:none}
+.ckd-panel,.ckd-sheet,.ckd-sheetscrim,.ckd-hint,.ckd-badge{transition:none}
+}
+.ckd-form,.ckd-cartcard,.ckd-success{user-select:text;-webkit-user-select:text}
