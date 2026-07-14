@@ -1044,7 +1044,10 @@
 
   (function init() {
     if (OPTS.badge) {
-      root.appendChild(h('div', 'ckd-badge' + (OPTS.view === 'panel' ? ' right' : ''), '<i></i>' + OPTS.badge));
+      var bhost = h('div', 'demo-badge-host');
+      root.parentNode.insertBefore(bhost, root);
+      bhost.appendChild(root);
+      bhost.appendChild(h('div', 'ckd-badge' + (OPTS.view === 'panel' ? ' right' : ''), '<i></i>' + OPTS.badge));
     }
     var v = OPTS.view;
     if (v === 'map') return;

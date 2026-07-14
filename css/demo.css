@@ -293,21 +293,15 @@
 .ckd-success .ckd-cta{margin-top:18px}
 
 /* annotation badge (what this embed demonstrates) */
-.ckd-badge{position:absolute;left:14px;top:74px;z-index:70;display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;font-size:11.5px;font-weight:700;padding:8px 14px;border-radius:999px;box-shadow:0 8px 22px rgba(2,6,23,.35);pointer-events:none}
-.ckd-badge.right{left:auto;right:14px}
-.ckd-badge{transition:opacity .25s}
-.ckd.tiny:has(.ckd-panel.open) .ckd-badge,.ckd.tiny:has(.ckd-view.open) .ckd-badge,.ckd:has(.ckd-scrim.open) .ckd-badge{opacity:0}
-.ckd-badge i{width:8px;height:8px;border-radius:50%;background:var(--mint);animation:ckd-blink 1.8s ease-in-out infinite}
 @keyframes ckd-blink{0%,100%{opacity:1}50%{opacity:.35}}
 
 /* portrait hero slot */
 .hero-grid .ckd{aspect-ratio:auto;height:640px;min-height:560px}
 /* homepage hero phone frame */
 .hero-device .ckd{aspect-ratio:500/922;height:auto;min-height:0;border-radius:18px;box-shadow:none}
-.hero-device .ckd .ckd-badge{top:64px}
 
 /* hint */
-.ckd-hint{position:absolute;z-index:38;left:50%;top:54%;transform:translate(-50%,-50%);padding:10px 18px;border-radius:999px;background:rgba(20,20,24,.78);color:#fff;font-size:12.5px;font-weight:600;pointer-events:none;backdrop-filter:blur(4px);transition:opacity .4s}
+.ckd-hint{position:absolute;z-index:38;left:50%;top:54%;transform:translate(-50%,-50%) rotate(-2deg);padding:10px 18px;border-radius:999px;background:var(--mint);color:var(--navy);font-size:12.5px;font-weight:800;pointer-events:none;box-shadow:4px 4px 0 rgba(2,6,23,.85);transition:opacity .4s}
 .ckd-hint.off{opacity:0}
 
 .ckd-datepill span{white-space:nowrap}
@@ -317,7 +311,6 @@
 .ckd.tiny .ckd-rail{display:none}
 .ckd.tiny .ckd-zones{display:none}
 .ckd.tiny .ckd-bar{left:14px;justify-content:space-between}
-.ckd.tiny .ckd-badge{top:66px}
 /* narrow container mode (set by demo.js when the frame is under 760px) */
 .ckd.narrow .ckd-stepper{padding:0 16px;gap:7px;height:46px}
 .ckd.narrow .ckd-stepper span:not(.on) u{display:none}
@@ -430,7 +423,6 @@
 .ckd.mobile .ckd-zcard strong{font-size:11.5px;white-space:nowrap}
 .ckd.mobile .ckd-znext{display:none}
 .ckd.mobile .ckd-zoom{bottom:126px;right:10px}
-.ckd.mobile .ckd-badge{top:112px}
 .ckd-flytimer{display:none;position:absolute;left:10px;bottom:126px;z-index:44;align-items:center;gap:5px;background:#fff;border:1.5px solid #e02d3c;color:#e02d3c;border-radius:999px;padding:7px 13px;font-size:12.5px;font-weight:700;font-variant-numeric:tabular-nums;box-shadow:0 2px 8px rgba(0,0,0,.14)}
 .ckd-flytimer svg{width:14px;height:14px}
 .ckd-flytimer.show{display:inline-flex}

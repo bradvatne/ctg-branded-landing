@@ -137,7 +137,12 @@
     main.appendChild(split);
     root.appendChild(main);
 
-    if (OPTS.badge) root.appendChild(h('div', 'cki-badge', '<i></i>' + OPTS.badge));
+    if (OPTS.badge) {
+      var bhost = h('div', 'demo-badge-host');
+      root.parentNode.insertBefore(bhost, root);
+      bhost.appendChild(root);
+      bhost.appendChild(h('div', 'cki-badge right', '<i></i>' + OPTS.badge));
+    }
 
     $$('[data-tab]', tabs).forEach(function (b) {
       b.addEventListener('click', function () { state.tab = b.getAttribute('data-tab'); paint(); track('inteldemo_tab', { tab: state.tab }); });

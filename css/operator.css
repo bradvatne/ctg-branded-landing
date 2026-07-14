@@ -128,8 +128,6 @@
 /* ═══ toast & badge ═══ */
 .cko-toast{position:absolute;z-index:80;left:50%;bottom:18px;transform:translate(-50%,10px);background:#1c1c1cf0;color:#fff;font-size:12.5px;font-weight:600;padding:11px 18px;border-radius:999px;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;max-width:88%;text-align:center}
 .cko-toast.show{opacity:1;transform:translate(-50%,0)}
-.cko-badge{position:absolute;right:14px;bottom:14px;z-index:50;display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;font-size:11.5px;font-weight:700;padding:8px 14px;border-radius:999px;box-shadow:0 8px 22px rgba(2,6,23,.35);pointer-events:none}
-.cko-badge i{width:8px;height:8px;border-radius:50%;background:var(--mint);animation:cko-blink 1.8s ease-in-out infinite}
 @keyframes cko-blink{0%,100%{opacity:1}50%{opacity:.35}}
 
 /* ═══ narrow frames ═══ */
@@ -144,7 +142,6 @@
 }
 
 @media (prefers-reduced-motion: reduce){
-.cko-badge i{animation:none}
 .cko-spot.pulse{animation:none}
 .cko-panel,.cko-toast{transition:none}
 }

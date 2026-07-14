@@ -236,7 +236,12 @@
     toastEl.setAttribute('aria-live', 'polite');
     root.appendChild(toastEl);
 
-    if (OPTS.badge) root.appendChild(h('div', 'cko-badge', '<i></i>' + OPTS.badge));
+    if (OPTS.badge) {
+      var bhost = h('div', 'demo-badge-host');
+      root.parentNode.insertBefore(bhost, root);
+      bhost.appendChild(root);
+      bhost.appendChild(h('div', 'cko-badge right', '<i></i>' + OPTS.badge));
+    }
 
     /* wiring */
     $$('[data-seg]', seg).forEach(function (b) {

@@ -62,8 +62,6 @@
 .cki-insight b{font-weight:800}
 
 /* badge */
-.cki-badge{position:absolute;right:14px;bottom:14px;z-index:50;display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;font-size:11.5px;font-weight:700;padding:8px 14px;border-radius:999px;box-shadow:0 8px 22px rgba(2,6,23,.35);pointer-events:none}
-.cki-badge i{width:8px;height:8px;border-radius:50%;background:var(--mint);animation:cki-blink 1.8s ease-in-out infinite}
 @keyframes cki-blink{0%,100%{opacity:1}50%{opacity:.35}}
 
 /* narrow frames */
@@ -80,6 +78,5 @@
 }
 
 @media (prefers-reduced-motion: reduce){
-.cki-badge i{animation:none}
 .cki-bar i{transition:none}
 }
