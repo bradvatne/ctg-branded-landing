@@ -18,15 +18,28 @@ rollback.
 TLS reuses the existing Cloudflare origin cert (`cf-star-clubtechglobal-com`,
 wildcard). No cert changes.
 
-## One-shot upload (from the ctg-prod-ssh VM — has prod SSH auth)
+## One-shot upload (from the Mac repo checkout)
 
 ```bash
 ./deploy-prod.sh
 ```
 
-Uploads the static tree to `/tmp/ctg-branded-landing-src-<ts>` and lands three
-`admin-run-*.sh` scripts in `/tmp` (deploy-watch posts each to Slack). Each
-script stamps a fresh 14-day guard at upload.
+The helper streams through the dedicated `ctg-prod-ssh` VM without putting the
+repo or rendered scripts on that VM. It keeps an inspectable durable source at
+`/home/brad/ctg-deploy/src/`, copies the reviewed tree to
+`/tmp/ctg-branded-landing-src-<ts>`, and atomically lands three checksum-verified
+`admin-run-*.sh` scripts in `/tmp` (Deploy-Watch posts each to Slack). Each
+script carries the exact GitHub commit and a fresh 14-day guard.
+The source contains `SHA256SUMS`; the uploader verifies it after transport and
+the root activator verifies it again before creating a release.
+
+Before landing a new queue, remove only obsolete pending handoffs and branded
+payloads (never system scripts or root-owned logs):
+
+```bash
+find /tmp -maxdepth 1 -user brad -type f -name 'admin-run-*.sh' -delete
+find /tmp -maxdepth 1 -user brad -type d -name 'ctg-branded-landing-src-*' -exec rm -rf -- {} +
+```
 
 ## Kaiesh/root runs, in order
 

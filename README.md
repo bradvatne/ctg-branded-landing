@@ -27,6 +27,12 @@ the primary blog in search.
 
 ## Deploy
 
+Staging and production use guarded release-symlink handoffs. Staging replaces
+`landingpage.tapbooknow.com`; production provisions an isolated
+`/var/www/sites/ctg-branded-landing` root and performs a reversible Apache vhost
+cutover for `www.clubtechglobal.com`. See `deploy/README.md`; do not deploy from
+GitHub Pages and do not run the root activation scripts without their host pins.
+
 GitHub Pages at https://bradvatne.github.io/ctg-branded-landing/ — `gh-pages`
 branch mirrors this branch's files plus `.nojekyll`.
 

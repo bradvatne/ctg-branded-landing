@@ -5,7 +5,8 @@
 # WHY:    Publish an inspected /tmp source tree as the live release in the branded docroot
 # IMPACT: Creates releases/<stamp>, flips current symlink, prunes old releases (NO vhost change)
 # ROLLBACK: ln -sfn <prev> current (printed at end of run)
-# REPO:   bradvatne/ctg-branded-landing
+# REPO:   clubtechglobal/ctg-branded-landing
+# COMMIT: __COMMIT__
 # NOTIFY: kaiesh
 # ===== DEPLOY-WATCH END =====
 #
@@ -19,7 +20,7 @@ PROD_HOST="sgp1-marketing-prod01"
 STAGING_HOST="sgp1-marketingwebsite-staging"
 DOMAIN="www.clubtechglobal.com"
 APP_BASE="/var/www/sites/ctg-branded-landing"
-APP_OWNER="${SUDO_USER:-www-data}"
+APP_OWNER="www-data"
 VH_ENABLED="/etc/apache2/sites-enabled/ctg-branded-landing-le-ssl.conf"
 KEEP=5
 SOURCE="${1:-}"
@@ -43,15 +44,19 @@ case "$SOURCE" in
   *) echo "refusing source outside /tmp/ctg-branded-landing-src-* (tarballs not accepted): $SOURCE"; exit 1 ;;
 esac
 [ -d "$SOURCE" ] || { echo "source is not a directory: $SOURCE"; exit 1; }
+[ -f "$SOURCE/SHA256SUMS" ] || { echo "source has no SHA256SUMS manifest: $SOURCE"; exit 1; }
 
 # ── deploy-watch: capture output + signal completion (the ONLY EXIT trap) ─────
 DW_SELF="$(readlink -f "${BASH_SOURCE[0]:-$0}")"
 DW_LOG="/tmp/$(basename "$DW_SELF" .sh).log"
 exec > >(tee -a "$DW_LOG") 2>&1
+# shellcheck disable=SC2154 # rc is assigned inside the EXIT trap
 trap 'rc=$?; echo "deploy-watch-exit:$rc" >> "$DW_LOG"; [ "$rc" -eq 0 ] && rm -f "$DW_SELF"' EXIT
 # ──────────────────────────────────────────────────────────────────────────────
 
 echo "ctg-branded-landing activate on $(hostname)"
+echo "verify source manifest"
+( cd "$SOURCE" && sha256sum -c SHA256SUMS )
 
 STAMP="$(date -u +%Y%m%dT%H%M%SZ)"
 REL="$APP_BASE/releases/$STAMP"
@@ -66,7 +71,7 @@ echo "remove non-runtime files from the release"
 rm -rf "$REL/.git" "$REL/.claude" "$REL/node_modules" "$REL/content" "$REL/scripts" "$REL/deploy"
 rm -f  "$REL"/deploy-prod.sh "$REL"/deploy-staging.sh "$REL"/known_hosts.deploy \
        "$REL"/README.md "$REL"/package.json "$REL"/package-lock.json "$REL"/.gitignore \
-       "$REL"/CLAUDE*.md "$REL"/WORKING_MEMORY.md "$REL"/INSTRUCTIONS.md
+       "$REL"/CLAUDE*.md "$REL"/WORKING_MEMORY.md "$REL"/INSTRUCTIONS.md "$REL"/SHA256SUMS
 
 echo "perms (root:www-data, dirs 755, files 644)"
 chown -R "$APP_OWNER":www-data "$REL"
@@ -84,10 +89,11 @@ ln -sfn "$REL" "$APP_BASE/current.tmp"
 mv -Tf "$APP_BASE/current.tmp" "$APP_BASE/current"
 
 echo "prune old releases (keep $KEEP)"
-( cd "$APP_BASE/releases" && ls -1dt */ 2>/dev/null | tail -n +$((KEEP+1)) | while read -r d; do
-    [ "$APP_BASE/releases/${d%/}" = "$PREV" ] && continue
-    rm -rf -- "${d%/}"
-  done ) || true
+find "$APP_BASE/releases" -mindepth 1 -maxdepth 1 -type d -printf '%T@ %p\n' 2>/dev/null \
+  | sort -rn | tail -n +$((KEEP+1)) | cut -d' ' -f2- | while IFS= read -r d; do
+      [ "$d" = "$PREV" ] && continue
+      rm -rf -- "$d"
+    done
 
 # Domain health-check ONLY when the branded vhost is already live (post-cutover
 # re-deploy). Pre-cutover the branded vhost is disabled and the domain still

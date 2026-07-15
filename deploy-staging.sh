@@ -47,4 +47,4 @@ echo "   Activation is root-only. Scaffold an admin-run via the ctg-handoff skil
 echo "     1. verifies the tree + refuses secret-shaped files"
 echo "     2. chown -R root:www-data + 755/644"
 echo "     3. ln -sfn releases/$STAMP $SITE_ROOT/current"
-echo "     4. health-checks https://127.0.0.1/ (Host: landingpage.tapbooknow.com) and rolls back on failure"
+echo "     4. health-checks with TLS SNI via --resolve landingpage.tapbooknow.com:443:127.0.0.1 and rolls back on failure"

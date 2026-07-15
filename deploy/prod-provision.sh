@@ -5,7 +5,8 @@
 # WHY:    One-time: create release dirs + a www.clubtechglobal.com static vhost, left DISABLED until cutover
 # IMPACT: Creates /var/www/sites/ctg-branded-landing/{releases,shared}; writes (does NOT enable) ctg-branded-landing-le-ssl.conf; NO live change
 # ROLLBACK: rm the vhost file + rm -rf the docroot; nothing was enabled or reloaded
-# REPO:   bradvatne/ctg-branded-landing
+# REPO:   clubtechglobal/ctg-branded-landing
+# COMMIT: __COMMIT__
 # NOTIFY: kaiesh
 # ===== DEPLOY-WATCH END =====
 #
@@ -24,7 +25,7 @@ PROD_HOST="sgp1-marketing-prod01"
 STAGING_HOST="sgp1-marketingwebsite-staging"
 DOMAIN="www.clubtechglobal.com"
 APP_BASE="/var/www/sites/ctg-branded-landing"
-APP_OWNER="${SUDO_USER:-www-data}"
+APP_OWNER="www-data"
 CERT_FILE="/etc/ssl/certs/cf-star-clubtechglobal-com.crt"
 CERT_KEY="/etc/ssl/private/cf-star-clubtechglobal-com.key"
 VH="/etc/apache2/sites-available/ctg-branded-landing-le-ssl.conf"
@@ -42,6 +43,7 @@ bk(){ [ -e "$1" ] && cp -a "$1" "$1.bak-$(date +%s)" && echo "  backed up $1"; r
 DW_SELF="$(readlink -f "${BASH_SOURCE[0]:-$0}")"
 DW_LOG="/tmp/$(basename "$DW_SELF" .sh).log"
 exec > >(tee -a "$DW_LOG") 2>&1
+# shellcheck disable=SC2154 # rc is assigned inside the EXIT trap
 trap 'rc=$?; echo "deploy-watch-exit:$rc" >> "$DW_LOG"; [ "$rc" -eq 0 ] && rm -f "$DW_SELF"' EXIT
 # ──────────────────────────────────────────────────────────────────────────────
 

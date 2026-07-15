@@ -5,7 +5,8 @@
 # WHY:    Make the static branded site the live www.clubtechglobal.com (replaces ctg-landingpage)
 # IMPACT: a2ensite branded + a2dissite ctg-landingpage + reload Apache; THIS is the live switch
 # ROLLBACK: a2dissite branded && a2ensite ctg-landingpage && systemctl reload apache2 (auto on health fail; command printed)
-# REPO:   bradvatne/ctg-branded-landing
+# REPO:   clubtechglobal/ctg-branded-landing
+# COMMIT: __COMMIT__
 # NOTIFY: kaiesh
 # ===== DEPLOY-WATCH END =====
 #
@@ -40,6 +41,7 @@ CREATED_EPOCH=__STAMP__   # replaced with $(date +%s) by deploy-prod.sh at uploa
 DW_SELF="$(readlink -f "${BASH_SOURCE[0]:-$0}")"
 DW_LOG="/tmp/$(basename "$DW_SELF" .sh).log"
 exec > >(tee -a "$DW_LOG") 2>&1
+# shellcheck disable=SC2154 # rc is assigned inside the EXIT trap
 trap 'rc=$?; echo "deploy-watch-exit:$rc" >> "$DW_LOG"; [ "$rc" -eq 0 ] && rm -f "$DW_SELF"' EXIT
 # ──────────────────────────────────────────────────────────────────────────────
 
