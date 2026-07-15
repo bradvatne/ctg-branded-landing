@@ -28,8 +28,10 @@ The helper streams through the dedicated `ctg-prod-ssh` VM without putting the
 repo or rendered scripts on that VM. It keeps an inspectable durable source at
 `/home/brad/ctg-deploy/src/`, copies the reviewed tree to
 `/tmp/ctg-branded-landing-src-<ts>`, and atomically lands three checksum-verified
-`admin-run-*.sh` scripts in `/tmp` (Deploy-Watch posts each to Slack). Each
-script carries the exact GitHub commit and a fresh 14-day guard.
+uniquely timestamped `admin-run-*.sh` scripts in `/tmp` (Deploy-Watch posts each
+fresh queue to Slack instead of confusing it with an older filename). Each
+script carries the exact GitHub commit, ordered next-step instructions, and a
+fresh 14-day guard.
 The source contains `SHA256SUMS`; the uploader verifies it after transport and
 the root activator verifies it again before creating a release.
 
@@ -44,9 +46,9 @@ find /tmp -maxdepth 1 -user brad -type d -name 'ctg-branded-landing-src-*' -exec
 ## Kaiesh/root runs, in order
 
 ```bash
-sudo bash /tmp/admin-run-branded-provision.sh                                   # once per box
-sudo bash /tmp/admin-run-branded-activate.sh  /tmp/ctg-branded-landing-src-<ts> # populate current
-sudo bash /tmp/admin-run-branded-cutover.sh                                     # THE live switch
+sudo bash /tmp/admin-run-branded-provision-<ts>.sh                                   # once per box
+sudo bash /tmp/admin-run-branded-activate-<ts>.sh /tmp/ctg-branded-landing-src-<ts>  # populate current
+sudo bash /tmp/admin-run-branded-cutover-<ts>.sh                                     # THE live switch
 ```
 
 - **provision** — creates the docroot + writes the vhost **disabled**. No live change.
@@ -66,6 +68,6 @@ The old docroot is untouched, so this is instant.
 
 ## Re-deploys (after cutover)
 
-Re-run `./deploy-prod.sh` then just `sudo bash /tmp/admin-run-branded-activate.sh <src>`
+Re-run `./deploy-prod.sh` then just `sudo bash /tmp/admin-run-branded-activate-<ts>.sh <src>`
 — once the branded vhost is live, activate health-checks the domain and rolls
 back `current` on failure. No cutover needed again.

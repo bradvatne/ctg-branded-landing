@@ -8,6 +8,7 @@
 # REPO:   clubtechglobal/ctg-branded-landing
 # COMMIT: __COMMIT__
 # NOTIFY: kaiesh
+# AFTER:  Run sudo bash /tmp/__CUTOVER_SCRIPT__ to switch www.clubtechglobal.com live
 # ===== DEPLOY-WATCH END =====
 #
 # Static site — no PHP, no shared blog runtime, no /api. Pre-cutover the branded
@@ -116,4 +117,5 @@ fi
 
 echo "deployed $STAMP"
 echo "rollback: sudo ln -sfn ${PREV:-<prev>} $APP_BASE/current.tmp && sudo mv -Tf $APP_BASE/current.tmp $APP_BASE/current"
+echo "NEXT: sudo bash /tmp/__CUTOVER_SCRIPT__"
 echo "this script self-deletes now"

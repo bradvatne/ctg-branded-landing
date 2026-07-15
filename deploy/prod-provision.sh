@@ -8,6 +8,7 @@
 # REPO:   clubtechglobal/ctg-branded-landing
 # COMMIT: __COMMIT__
 # NOTIFY: kaiesh
+# AFTER:  Run sudo bash /tmp/__ACTIVATE_SCRIPT__ __SOURCE_DIR__
 # ===== DEPLOY-WATCH END =====
 #
 # Static site. No PHP, no /api proxy, no /etc/gln env — the booking flow uses
@@ -96,5 +97,5 @@ VHOST
 apache2ctl configtest
 
 echo "provisioning complete — vhost written but DISABLED"
-echo "NEXT: run deploy/prod-activate.sh to populate the first release, then deploy/prod-cutover.sh to go live."
+echo "NEXT: sudo bash /tmp/__ACTIVATE_SCRIPT__ __SOURCE_DIR__"
 echo "this script self-deletes now"

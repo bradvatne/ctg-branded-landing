@@ -8,6 +8,7 @@
 # REPO:   clubtechglobal/ctg-branded-landing
 # COMMIT: __COMMIT__
 # NOTIFY: kaiesh
+# AFTER:  Verify https://www.clubtechglobal.com/ and https://www.clubtechglobal.com/book-a-demo/
 # ===== DEPLOY-WATCH END =====
 #
 # Prereq: prod-provision.sh (docroot + disabled vhost) and prod-activate.sh

@@ -7,14 +7,14 @@
 # Uploads:
 #   /home/brad/ctg-deploy/src/ctg-branded-landing-<timestamp> (durable source)
 #   /tmp/ctg-branded-landing-src-<timestamp>          (reviewed source copy)
-#   /tmp/admin-run-branded-provision.sh               (deploy/prod-provision.sh)
-#   /tmp/admin-run-branded-activate.sh                (deploy/prod-activate.sh)
-#   /tmp/admin-run-branded-cutover.sh                 (deploy/prod-cutover.sh)
+#   /tmp/admin-run-branded-provision-<timestamp>.sh   (deploy/prod-provision.sh)
+#   /tmp/admin-run-branded-activate-<timestamp>.sh    (deploy/prod-activate.sh)
+#   /tmp/admin-run-branded-cutover-<timestamp>.sh     (deploy/prod-cutover.sh)
 #
 # Run order for Kaiesh/root on the prod host (once each, in order):
-#   sudo bash /tmp/admin-run-branded-provision.sh
-#   sudo bash /tmp/admin-run-branded-activate.sh /tmp/ctg-branded-landing-src-<timestamp>
-#   sudo bash /tmp/admin-run-branded-cutover.sh
+#   sudo bash /tmp/admin-run-branded-provision-<timestamp>.sh
+#   sudo bash /tmp/admin-run-branded-activate-<timestamp>.sh /tmp/ctg-branded-landing-src-<timestamp>
+#   sudo bash /tmp/admin-run-branded-cutover-<timestamp>.sh
 #
 # Run from the Mac repo checkout. Production remains reachable only through
 # ctg-prod-ssh; this script refuses when that VM or its prod alias is unavailable.
@@ -28,6 +28,9 @@ TIMESTAMP="$(date -u +"%Y%m%dT%H%M%SZ")"
 STAMP_EPOCH="$(date +%s)"
 REMOTE_SOURCE_DIR="$REMOTE_TMP/${APP_NAME}-src-$TIMESTAMP"
 DURABLE_SOURCE_DIR="/home/brad/ctg-deploy/src/${APP_NAME}-$TIMESTAMP"
+PROVISION_SCRIPT="admin-run-branded-provision-$TIMESTAMP.sh"
+ACTIVATE_SCRIPT="admin-run-branded-activate-$TIMESTAMP.sh"
+CUTOVER_SCRIPT="admin-run-branded-cutover-$TIMESTAMP.sh"
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 COMMIT="$(git -C "$ROOT_DIR" rev-parse HEAD)"
@@ -107,13 +110,17 @@ echo "Copying reviewed durable source to the watched /tmp handoff area"
 prod_ssh "rm -rf '$REMOTE_SOURCE_DIR' && cp -a '$DURABLE_SOURCE_DIR' '$REMOTE_SOURCE_DIR'"
 
 echo "Rendering and landing fresh admin-run scripts"
-for pair in "prod-provision:admin-run-branded-provision" \
-            "prod-activate:admin-run-branded-activate" \
-            "prod-cutover:admin-run-branded-cutover"; do
+for pair in "prod-provision:${PROVISION_SCRIPT%.sh}" \
+            "prod-activate:${ACTIVATE_SCRIPT%.sh}" \
+            "prod-cutover:${CUTOVER_SCRIPT%.sh}"; do
   src="${pair%%:*}"; dst="${pair##*:}"
   rendered="$RENDER_DIR/$dst.sh"
   sed -e "s/CREATED_EPOCH=__STAMP__/CREATED_EPOCH=$STAMP_EPOCH/" \
-      -e "s/__COMMIT__/$COMMIT/g" "$ROOT_DIR/deploy/$src.sh" > "$rendered"
+      -e "s/__COMMIT__/$COMMIT/g" \
+      -e "s#__SOURCE_DIR__#$REMOTE_SOURCE_DIR#g" \
+      -e "s#__ACTIVATE_SCRIPT__#$ACTIVATE_SCRIPT#g" \
+      -e "s#__CUTOVER_SCRIPT__#$CUTOVER_SCRIPT#g" \
+      "$ROOT_DIR/deploy/$src.sh" > "$rendered"
   bash -n "$rendered"
   local_sha="$(shasum -a 256 "$rendered" | awk '{print $1}')"
   prod_ssh "mkdir -p /home/brad/ctg-deploy/steps && cat > '/home/brad/ctg-deploy/steps/$dst.sh'" < "$rendered"
@@ -130,9 +137,9 @@ prod_ssh "cd '$REMOTE_SOURCE_DIR' && sha256sum -c SHA256SUMS >/dev/null && test 
 echo ""
 echo "Upload complete. Kaiesh/root runs these on prod, in order:"
 echo ""
-echo "  sudo bash /tmp/admin-run-branded-provision.sh"
-echo "  sudo bash /tmp/admin-run-branded-activate.sh $REMOTE_SOURCE_DIR"
-echo "  sudo bash /tmp/admin-run-branded-cutover.sh"
+echo "  sudo bash /tmp/$PROVISION_SCRIPT"
+echo "  sudo bash /tmp/$ACTIVATE_SCRIPT $REMOTE_SOURCE_DIR"
+echo "  sudo bash /tmp/$CUTOVER_SCRIPT"
 echo ""
 echo "deploy-watch will post each to Slack. The cutover is the live switch;"
 echo "it health-checks www.clubtechglobal.com and auto-reverts on failure."
