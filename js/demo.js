@@ -60,13 +60,22 @@
     { id: 'bb1', name: 'Beachfront Bale', num: 21, zone: 'Beachfront', x: 36.2, y: 61.0, w: 7.8, h: 10.4, cap: 6, sold: true },
     { id: 'bb2', name: 'Beachfront Bale', num: 22, zone: 'Beachfront', x: 44.9, y: 61.0, w: 7.8, h: 10.4, cap: 6 },
     { id: 'bb3', name: 'Beachfront Bale', num: 23, zone: 'Beachfront', x: 53.4, y: 61.0, w: 7.8, h: 10.4, cap: 6, sold: true },
-    { id: 'bb4', name: 'Beachfront Bale', num: 24, zone: 'Beachfront', x: 64.1, y: 61.0, w: 7.8, h: 10.4, cap: 6, sold: true }
+    { id: 'bb4', name: 'Beachfront Bale', num: 24, zone: 'Beachfront', x: 64.1, y: 61.0, w: 7.8, h: 10.4, cap: 6, sold: true },
+    { id: 'sun1', name: 'Sunbed', num: 101, zone: 'Beachfront', x: 23.0, y: 74.0, w: 6.0, h: 7.5, cap: 2, sold: true },
+    { id: 'sun2', name: 'Sunbed', num: 102, zone: 'Beachfront', x: 31.2, y: 74.0, w: 6.0, h: 7.5, cap: 2, sold: true },
+    { id: 'sun3', name: 'Sunbed', num: 103, zone: 'Beachfront', x: 39.4, y: 74.0, w: 6.0, h: 7.5, cap: 2, sold: true },
+    { id: 'sun4', name: 'Sunbed', num: 104, zone: 'Beachfront', x: 47.7, y: 74.0, w: 6.0, h: 7.5, cap: 2, sold: true },
+    { id: 'sun5', name: 'Sunbed', num: 105, zone: 'Beachfront', x: 55.9, y: 74.0, w: 6.0, h: 7.5, cap: 2, sold: true },
+    { id: 'sun6', name: 'Sunbed', num: 106, zone: 'Beachfront', x: 64.1, y: 74.0, w: 6.0, h: 7.5, cap: 2, sold: true },
+    { id: 'sun7', name: 'Sunbed', num: 107, zone: 'Beachfront', x: 72.4, y: 74.0, w: 6.0, h: 7.5, cap: 2, sold: true },
+    { id: 'sun8', name: 'Sunbed', num: 108, zone: 'Beachfront', x: 80.6, y: 74.0, w: 6.0, h: 7.5, cap: 2, sold: true },
+    { id: 'sun9', name: 'Sunbed', num: 109, zone: 'Beachfront', x: 88.8, y: 74.0, w: 6.0, h: 7.5, cap: 2, sold: true }
   ];
 
   var PINS = [
     { label: 'Pool Club', color: 'teal', icon: 'party', x: 48, y: 29 },
     { label: 'VIP Cabanas', color: 'pink', icon: 'party', x: 9.5, y: 7 },
-    { label: 'Beachfront', color: 'pink', icon: 'party', x: 47, y: 67, sold: true },
+    { label: 'Beachfront', color: 'pink', icon: 'party', x: 40, y: 73, sold: true },
     { label: 'Pool Bar', color: 'purple', icon: 'drink', x: 79.5, y: 21 },
     { label: 'Party Deck', color: 'purple', icon: 'drink', x: 81, y: 47 }
   ];
@@ -114,7 +123,7 @@
     { img: 'promo-happyhour.jpg', title: 'Daily Happy Hour', sub: '2 for 1 drinks!', desc: 'Daily from 8 PM to 9 PM' }
   ];
 
-  var PASS = { name: 'Priority Entry Pass', price: 10, was: 40 };
+  var PASS = { name: 'General Admission Ticket', price: 25, was: 40 };
 
   /* innerHTML-parsed <video autoplay muted> doesn't always start in Chrome —
      nudge playback explicitly */
@@ -238,7 +247,7 @@
     root.appendChild(stage);
 
     // hint
-    hintEl = h('div', 'ckd-hint', 'Live demo — tap a green spot to book it');
+    hintEl = h('div', 'ckd-hint', 'Tap a green spot to book!');
     root.appendChild(hintEl);
 
     // top chrome
@@ -264,7 +273,7 @@
 
     // left rail (desktop) — items open the corresponding sheets
     var rail = h('div', 'ckd-rail',
-      '<button type="button" data-sheet="queue"><span>' + I.gem + 'Skip The<br>Queue</span></button>' +
+      '<button type="button" data-sheet="queue"><span>' + I.gem + 'General<br>Admission</span></button>' +
       '<button type="button" data-sheet="promos"><span>' + I.pct + 'Promotions</span></button>' +
       '<button type="button" data-sheet="zones"><span>' + I.ppl + 'Free Entry<br>Party Zones</span></button>');
     $$('[data-sheet]', rail).forEach(function (b) {
@@ -303,7 +312,7 @@
       root.classList.add('mobile');
       root.appendChild(h('span', 'ckd-flytimer', I.clock + '<span>10:00</span>')).setAttribute('data-timer', '');
       var tb = h('div', 'ckd-tabbar',
-        '<button type="button" data-sheet="queue">' + I.gem + 'Skip The Queue</button>' +
+        '<button type="button" data-sheet="queue">' + I.gem + 'General Admission</button>' +
         '<button type="button" data-sheet="promos">' + I.pct + 'Promotions</button>' +
         '<button type="button" data-sheet="zones">' + I.ppl + 'Free Entry Party Zones</button>');
       $$('[data-sheet]', tb).forEach(function (b) {
@@ -918,16 +927,16 @@
         }).join('') + '</div>');
     }
     if (name === 'queue') {
-      s.innerHTML = sheetShell('<h3 role="presentation">Skip The Queue</h3>',
-        '<div class="ckd-qbanner"><span class="off">⊘ 75% OFF</span>' +
-        '<h5 role="presentation">You got 75% OFF for booking in advance</h5>' +
-        '<p>You\u2019re all set with the best price for your day.</p></div>' +
+      s.innerHTML = sheetShell('<h3 role="presentation">General Admission</h3>',
+        '<div class="ckd-qbanner"><span class="off">🎟 GA</span>' +
+        '<h5 role="presentation">General admission — walk-in entry, booked ahead</h5>' +
+        '<p>Gets guests through the door without a reserved bed \u2014 access to the venue, party zones, bars and dance floor. No furniture reserved.</p></div>' +
         '<div class="ckd-qdays"><h4 role="presentation">Choose Date</h4><div class="ckd-days">' +
         [16, 17, 18, 19, 20].map(function (d) {
           return '<button type="button" data-qday="' + d + '" class="' + (d === state.day ? 'sel' : '') + '"><b>' + d + '</b><small>Jul</small><span>' + dayLabel(d) + '</span></button>';
         }).join('') + '</div></div>' +
         '<div class="ckd-qtotal"><span>Total</span><span><s>' + money(PASS.was) + '</s><b>' + money(PASS.price) + '</b></span></div>' +
-        '<button type="button" class="ckd-qbook' + (state.pass ? ' added' : '') + '" data-qbook>' + (state.pass ? '✓ Priority Entry added' : 'Book Now') + '</button>');
+        '<button type="button" class="ckd-qbook' + (state.pass ? ' added' : '') + '" data-qbook>' + (state.pass ? '✓ General Admission added' : 'Book Now') + '</button>');
       $$('[data-qday]', s).forEach(function (b) {
         b.addEventListener('click', function () {
           state.day = +b.getAttribute('data-qday');
@@ -987,7 +996,7 @@
       });
       if (state.pass) {
         items += '<div class="ckd-cartitem"><span class="th" style="background-image:none;background:linear-gradient(160deg,#7ce8c8,#0d7a56);display:grid;place-items:center;font-size:26px">🎟</span>' +
-          '<div style="flex:1"><h6 role="presentation">' + PASS.name + '</h6><p>' + I.gem.replace('currentColor', '#0d7a56') + ' Skip the line · 75% off booked ahead</p>' +
+          '<div style="flex:1"><h6 role="presentation">' + PASS.name + '</h6><p>' + I.gem.replace('currentColor', '#0d7a56') + ' Walk-in entry · no reserved furniture</p>' +
           '<div class="pr"><s style="color:#9b9b9b;font-weight:500;font-size:11px;margin-right:6px">' + money(PASS.was) + '</s>' + money(PASS.price) + '</div></div>' +
           '<button type="button" class="rm" data-rmp aria-label="Remove">✕</button></div>';
       }
@@ -1065,6 +1074,14 @@
     if (v === 'datemodal') { $('.ckd-scrim').classList.add('open'); return; }
     if (v === 'panel') {
       openPanel(SPOTS.filter(function (x) { return x.id === 'db3'; })[0]);
+      // open pre-scrolled to the Packages section — panel content lays out
+      // after render (and after fonts settle), so re-apply on a couple timers
+      var scrollToPkgs = function () {
+        var ps = $('.ckd-panel .ckd-panel-scroll');
+        if (ps) ps.scrollTop = ps.scrollHeight;
+      };
+      scrollToPkgs();
+      [300, 1200].forEach(function (t) { setTimeout(scrollToPkgs, t); });
       return;
     }
     if (v === 'addons') { seedCart(false); showView('addons'); }

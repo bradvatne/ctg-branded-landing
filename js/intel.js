@@ -115,7 +115,7 @@
     side.appendChild(filterBlock('Zone', 'zone', Object.keys(ZONES)));
     side.appendChild(filterBlock('Product / category', 'product', Object.keys(PRODUCTS)));
     side.appendChild(filterBlock('Booking type', 'type', Object.keys(TYPES)));
-    side.appendChild(h('p', 'cki-foot', 'Live demo — filters really filter. 20+ reports ship with the platform.'));
+    side.appendChild(h('p', 'cki-foot', 'Limited demo — filters really filter. 20+ reports ship with the platform.'));
     root.appendChild(side);
 
     var main = h('div', 'cki-main');
