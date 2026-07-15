@@ -68,13 +68,30 @@
 .cki.tiny{flex-direction:column}
 .cki.tiny .cki-side{width:100%;border-right:0;border-bottom:1px solid #ececec;flex-direction:row;flex-wrap:wrap;gap:8px;padding:10px 12px}
 .cki.tiny .cki-brand{border:0;padding:0;width:100%}
-.cki.tiny .cki-filter{flex:1;min-width:120px}
+.cki.tiny .cki-filter{flex:1 1 44%;min-width:0}
 .cki.tiny .cki-foot{display:none}
+.cki.tiny .cki-tabrow{flex-direction:column;align-items:stretch;gap:7px}
+.cki.tiny .cki-gran{align-self:flex-start}
 .cki.tiny .cki-stats{grid-template-columns:repeat(3,1fr)}
 .cki.tiny .cki-stat:nth-child(n+4){display:none}
 .cki.tiny .cki-split{grid-template-columns:1fr}
+
+/* Mobile: drive the stacked layout from CSS (not only the JS .tiny hook) so it
+   fits and can never overflow the viewport even before the resize observer
+   runs, and let height follow content instead of a fixed 640px box. */
 @media(max-width:600px){
-  .cki{aspect-ratio:auto;height:640px}
+  .cki,.hero-grid .cki,.feature-row .cki,#intelligence .cki{aspect-ratio:auto;height:auto;min-height:0;flex-direction:column}
+  .cki-side{width:100%;border-right:0;border-bottom:1px solid #ececec;flex-direction:row;flex-wrap:wrap;gap:8px;padding:10px 12px;overflow:visible}
+  .cki-brand{border:0;padding:0;width:100%}
+  .cki-filter{flex:1 1 44%;min-width:0}
+  .cki-foot{display:none}
+  .cki-main{overflow:visible;padding:12px 12px 14px}
+  .cki-stats{grid-template-columns:repeat(3,1fr)}
+  .cki-stat:nth-child(n+4){display:none}
+  .cki-tabrow{flex-direction:column;align-items:stretch;gap:7px}
+  .cki-gran{align-self:flex-start}
+  .cki-svg{height:180px}
+  .cki-split{grid-template-columns:1fr}
 }
 
 @media (prefers-reduced-motion: reduce){
