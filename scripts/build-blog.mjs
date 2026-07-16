@@ -255,36 +255,39 @@ const FEATURE_PAGES = [
    never drifts. Mobile collapses each mega into a <details> accordion. */
 const NAV = [
   {
-    key: 'platform', label: 'Platform', href: 'platform/',
+    key: 'platform', label: 'Platform', href: 'platform/', small: true, align: 'left',
     cols: [
-      { h: 'Sell', tag: 'Turn demand into pre-paid bookings', links: [
-        ['booking/', 'Booking platform', '3D birds-eye map — guests buy the spot'],
-        ['events/', 'Events &amp; ticketing', 'Tiered tickets and QR check-in'],
-        ['packages/', 'Packages &amp; upsells', 'Bottles, cakes, transfers'],
-        ['dynamic-pricing/', 'Dynamic pricing', 'Price the same seats to demand'],
-      ] },
-      { h: 'Operate', tag: "Run the floor on the venue's real map", links: [
-        ['operations/', 'Clubtech Portal', 'The venue-admin dashboard'],
-        ['solutions/guest-list-management-software/', 'Guest lists &amp; VMS', 'Door lists, whole-party capture'],
-        ['check-in/', 'Door &amp; check-in', 'QR scanning at the door'],
-      ] },
-      { h: 'Grow', tag: 'Turn bookings into a marketing engine', links: [
-        ['marketing-ai/', 'Marketing AI', 'Ad attribution &amp; auto-retargeting'],
-        ['intelligence/', 'Ads &amp; attribution', 'The booking is the conversion'],
-        ['guest-data/', 'Guest data &amp; reports', '20+ reports, data you own'],
-        ['reviews/', 'Clubtech Reviews', 'Capture post-visit guest feedback'],
+      { h: '', tag: '', links: [
+        ['platform/#booking', 'Booking platform', '3D birds-eye booking map'],
+        ['platform/#operations', 'Operations &amp; floor', 'Portal, floor plan, allocation'],
+        ['platform/#guest-lists', 'Guest lists &amp; VMS', 'Door lists, whole-party capture'],
+        ['platform/#check-in', 'Door &amp; check-in', 'QR scanning at the door'],
+        ['platform/#integrations', 'Integrations', 'POS, PMS, payments, ads'],
+        ['ai-bookings/', 'AI-agent bookings', 'Built for the agent era'],
       ] },
     ],
-    rail: {
-      feature: ['revenue/', 'Revenue', 'The four-lever revenue playbook'],
-      links: [
-        ['integrations/', 'Integrations', 'POS, PMS, payments, ads'],
-        ['support/', 'Clubtech Support', 'A real channel for your team'],
-        ['delivery/', 'How we deliver', 'Five stages to live, one lead'],
-        ['ai-bookings/', 'AI-agent bookings', 'Built for the agent era'],
-      ],
-      cta: ['index.html#contact', 'Book a demo'],
-    },
+  },
+  {
+    key: 'sell', label: 'Sell', href: 'sell/', small: true, align: 'left',
+    cols: [
+      { h: '', tag: '', links: [
+        ['sell/#events', 'Events &amp; ticketing', 'Tiered tickets and QR check-in'],
+        ['sell/#packages', 'Packages &amp; upsells', 'Bottles, cakes, transfers'],
+        ['sell/#dynamic-pricing', 'Dynamic pricing', 'Price the same seats to demand'],
+        ['sell/#revenue', 'Revenue', 'The four-lever revenue playbook'],
+      ] },
+    ],
+  },
+  {
+    key: 'grow', label: 'Grow', href: 'grow/', small: true, align: 'left',
+    cols: [
+      { h: '', tag: '', links: [
+        ['grow/#marketing-ai', 'Marketing AI', 'Ad attribution &amp; retargeting'],
+        ['grow/#ads', 'Ads &amp; attribution', 'The booking is the conversion'],
+        ['grow/#guest-data', 'Guest data &amp; reports', '20+ reports, data you own'],
+        ['grow/#reviews', 'Clubtech Reviews', 'Post-visit guest feedback'],
+      ] },
+    ],
   },
   {
     key: 'solutions', label: 'Solutions', href: 'solutions/',
@@ -304,9 +307,9 @@ const NAV = [
         ['solutions/beach-club-booking-mykonos/', 'Mykonos', ''],
       ] },
       { h: 'By goal', tag: '', links: [
-        ['revenue/', 'Grow revenue', ''],
+        ['sell/#revenue', 'Grow revenue', ''],
         ['solutions/guest-list-management-software/', 'Manage guest lists', ''],
-        ['events/', 'Fill events &amp; tickets', ''],
+        ['sell/#events', 'Fill events &amp; tickets', ''],
       ] },
     ],
     rail: {
@@ -314,7 +317,7 @@ const NAV = [
       links: [
         ['compare/', 'Compare Clubtech', 'See how we stack up'],
       ],
-      cta: ['index.html#contact', 'Book a demo'],
+      cta: ['index.html#contact', 'Book a Demo'],
     },
   },
   {
@@ -331,8 +334,9 @@ const NAV = [
         ['compare/urvenue-alternative/', 'vs UrVenue', ''],
         ['compare/', 'All comparisons', ''],
       ] },
-      { h: 'Help &amp; stories', tag: '', links: [
+      { h: 'Help &amp; support', tag: '', links: [
         ['help/', 'Help center', 'Answers for venue teams'],
+        ['support/', 'Support', 'Message the Clubtech team'],
         ['blog/finns-beach-club-case-study/', 'FINNS Beach Club', 'Customer story'],
       ] },
     ],
@@ -341,17 +345,18 @@ const NAV = [
       links: [
         ['help/', 'Help center', 'Search answers'],
       ],
-      cta: ['index.html#contact', 'Book a demo'],
+      cta: ['index.html#contact', 'Book a Demo'],
     },
   },
   { key: 'pricing', label: 'Pricing', href: 'pricing/' },
   {
-    key: 'company', label: 'Company', href: 'about/', small: true,
+    key: 'company', label: 'Company', href: 'about/', small: true, align: 'right',
     cols: [
-      { h: 'Company', tag: '', links: [
+      { h: '', tag: '', links: [
         ['about/', 'About Clubtech', 'Founded in Singapore'],
         ['careers/', 'Careers', 'Work at Clubtech'],
         ['delivery/', 'How we deliver', 'Five stages to live'],
+        ['support/', 'Support', 'Help for venue teams'],
         ['index.html#contact', 'Contact', 'Talk to the team'],
       ] },
     ],
@@ -382,7 +387,7 @@ ${(r.links || []).map((l) => megaLink('mega-rail-link', l)).join('\n')}
 ${r.cta ? `            <a class="button button-mint mega-cta" href="${href(r.cta[0])}" data-open-demo>${r.cta[1]}</a>` : ''}
           </div>`;
     }
-    return `        <div class="nav-item has-mega${top.small ? ' dropdown' : ''}${activeCls}">
+    return `        <div class="nav-item has-mega${top.small ? (top.align === 'left' ? ' dropdown left' : ' dropdown') : ''}${activeCls}">
           ${topA}
           <div class="mega${top.small ? ' mega-sm' : ''}" role="region" aria-label="${top.label} menu">
             <div class="mega-panel">
@@ -418,7 +423,7 @@ ${items}
         <summary>Menu</summary>
         <div class="mobile-panel">
 ${mob}
-          <a class="button button-mint m-cta" href="${href('index.html#contact')}" data-open-demo>Book a demo</a>
+          <a class="button button-mint m-cta" href="${href('index.html#contact')}" data-open-demo>Book a Demo</a>
           <a class="m-login" href="https://id.clubtechglobal.com" rel="noopener">Login</a>
         </div>
       </details>
@@ -465,6 +470,8 @@ ${links.map(([href, label]) => `        <a href="${href}">${esc(label)}</a>`).jo
       <a href="${rel}index.html" class="brand"><img src="${rel}brand/clubtech-wordmark-white-560.png" alt="Clubtech" width="190" height="48"></a>
       <div>
         <a href="${r('platform/')}">Platform</a>
+        <a href="${r('sell/')}">Sell</a>
+        <a href="${r('grow/')}">Grow</a>
         <a href="${r('solutions/')}">Solutions</a>
         <a href="${r('pricing/')}">Pricing</a>
         <a href="${r('blog/')}">Blog</a>
@@ -474,11 +481,13 @@ ${links.map(([href, label]) => `        <a href="${href}">${esc(label)}</a>`).jo
       </div>
     </div>
     <div class="footer-grid">
-${col('Platform', [[r('booking/'), 'Booking platform'], [r('events/'), 'Events & ticketing'], [r('operations/'), 'Clubtech Portal'], [r('marketing-ai/'), 'Marketing AI'], [r('integrations/'), 'Integrations'], [r('reviews/'), 'Reviews']])}
+${col('Platform', [[r('platform/#booking'), 'Booking'], [r('platform/#operations'), 'Operations & floor'], [r('platform/#guest-lists'), 'Guest lists'], [r('platform/#integrations'), 'Integrations'], [r('ai-bookings/'), 'AI-agent bookings']])}
+${col('Sell', [[r('sell/#events'), 'Events & ticketing'], [r('sell/#packages'), 'Packages & upsells'], [r('sell/#dynamic-pricing'), 'Dynamic pricing'], [r('sell/#revenue'), 'Revenue']])}
+${col('Grow', [[r('grow/#marketing-ai'), 'Marketing AI'], [r('grow/#ads'), 'Ads & attribution'], [r('grow/#guest-data'), 'Guest data'], [r('grow/#reviews'), 'Reviews']])}
 ${col('Solutions', [...solutions.map(pageLink), [`${rel}solutions/`, 'All solutions']])}
 ${col('Locations', geos.map(pageLink))}
 ${col('Compare', [...compares.map(pageLink), [`${rel}compare/`, 'All comparisons']])}
-${col('Company', [[r('about/'), 'About'], [r('careers/'), 'Careers'], [r('delivery/'), 'How we deliver'], [r('support/'), 'Support'], [`${rel}index.html#contact`, 'Contact']])}
+${col('Company', [[r('about/'), 'About'], [r('careers/'), 'Careers'], [r('delivery/'), 'How we deliver'], [r('support/'), 'Support'], [r('pricing/'), 'Pricing'], [`${rel}index.html#contact`, 'Contact']])}
     </div>
     <div class="footer-wordmark"><img src="${rel}brand/clubtech-wordmark-white-560.png" alt="Clubtech" width="1200" height="300" loading="lazy"></div>
     <p class="copyright">© 2026 Clubtech, Inc.</p>
@@ -1306,9 +1315,8 @@ function main() {
   const STATIC_PAGES = [
     ['index.html', '', null, false],
     ['platform/index.html', '../', 'platform', false],
-    ['booking/index.html', '../', 'platform', false],
-    ['operations/index.html', '../', 'platform', false],
-    ['intelligence/index.html', '../', 'platform', false],
+    ['sell/index.html', '../', 'sell', false],
+    ['grow/index.html', '../', 'grow', false],
     ['delivery/index.html', '../', 'company', false],
     ['book-a-demo/index.html', '../', null, true],
   ];
@@ -1319,6 +1327,7 @@ function main() {
     const before = readFileSync(fp, 'utf8');
     let html = before.replace(/^[ \t]*<header class="nav-wrap[^"]*">[\s\S]*?<\/header>/m, () => navMarkup(prefix, group, solid));
     html = html.replace(/^[ \t]*<footer class="footer shell">[\s\S]*?<\/footer>/m, () => footerMarkup(prefix, pages));
+    html = html.replace('<!--CONSENT-->', () => CONSENT_MARKUP);
     if (html !== before) { writeFileSync(fp, html); injected++; }
   }
 

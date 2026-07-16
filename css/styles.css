@@ -68,7 +68,7 @@ html{scroll-padding-top:96px}
 }
 
 /* Footer link columns (solutions / locations / compare) */
-.footer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:56px;padding-top:40px;border-top:1px solid rgba(255,255,255,.1)}
+.footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:24px 20px;margin-top:56px;padding-top:40px;border-top:1px solid rgba(255,255,255,.1)}
 .footer-col-h{font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,monospace;font-size:11px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:#94a3b8;margin-bottom:14px}
 .footer-col a{display:block;padding:5px 0;font-size:14px;letter-spacing:0;color:#dbe3ef}
 .footer-col a:hover{color:var(--mint)}
@@ -112,7 +112,7 @@ html{scroll-padding-top:96px}
 .mega-panel{display:flex;gap:24px;background:#0b1424;border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:24px;box-shadow:0 30px 70px rgba(2,6,23,.55)}
 .mega-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;flex:1;min-width:0}
 .mega-col{min-width:0}
-.nav .mega-h{font-family:var(--mono,ui-monospace,"SF Mono",Menlo,monospace);font-size:11px;font-weight:400;letter-spacing:.13em;text-transform:uppercase;color:var(--mint);margin:0 0 10px;padding:0 8px;display:flex;flex-direction:column;gap:3px}
+.nav .mega-h{font-family:"Albert Sans",sans-serif;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--mint);margin:0 0 10px;padding:0 8px;display:flex;flex-direction:column;gap:3px}
 .nav .mega-h span{color:#64748b;text-transform:none;letter-spacing:0;font-size:11.5px;font-weight:500}
 .nav .mega a::after{content:none}
 .nav .mega-link{display:flex;flex-direction:column;gap:2px;padding:8px;border-radius:10px;transition:background .15s ease}
@@ -130,11 +130,12 @@ html{scroll-padding-top:96px}
 .nav .mega-rail-link{display:flex;flex-direction:column;gap:1px;padding:8px 10px;border-radius:10px;transition:background .15s ease}
 .nav .mega-rail-link:hover{background:rgba(255,255,255,.06)}
 .nav .mega-rail-link:hover .mega-lt{color:var(--mint)}
-.mega-cta{margin-top:6px;height:44px;font-size:13px}
+.mega-cta{margin-top:8px;width:100%}
 
-/* Small dropdown (Company) anchors to its item, right-aligned */
-.mega-sm{width:min(320px,calc(100vw - 32px))}
+/* Small dropdowns anchor to their item — left-aligned (Platform/Sell/Grow) or right (Company) */
+.mega-sm{width:min(340px,calc(100vw - 32px))}
 .nav-item.dropdown .mega{left:auto;right:0;transform:translateY(6px)}
+.nav-item.dropdown.left .mega{left:0;right:auto}
 .nav-item.dropdown:hover .mega,.nav-item.dropdown:focus-within .mega{transform:translateY(0)}
 .mega-sm .mega-panel{padding:14px}
 .mega-sm .mega-cols{grid-template-columns:1fr}
