@@ -311,6 +311,10 @@
 .ckd.tiny .ckd-rail{display:none}
 .ckd.tiny .ckd-zones{display:none}
 .ckd.tiny .ckd-bar{left:14px;justify-content:space-between}
+.ckd.restaurant{width:min(720px,100%);height:auto!important;aspect-ratio:2/3;margin-inline:auto}
+.ckd.restaurant .ckd-stepper,.ckd.restaurant .ckd-rail,.ckd.restaurant .ckd-zones{display:none}
+.ckd.restaurant .ckd-datepill{min-width:0;flex:1}
+.ckd.restaurant .ckd-gallery>div,.ckd.restaurant .ckd-cartitem .th,.ckd.restaurant .ckd-foot .ckd-thumb{background-image:url(../assets/demo/restaurant-map-v2.webp)}
 /* narrow container mode (set by demo.js when the frame is under 760px) */
 .ckd.narrow .ckd-stepper{padding:0 16px;gap:7px;height:46px}
 .ckd.narrow .ckd-stepper span:not(.on) u{display:none}

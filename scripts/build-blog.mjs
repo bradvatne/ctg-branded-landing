@@ -72,14 +72,14 @@ function sanitizeBlogHtml(html) {
    paragraphs, **bold**, _italic_/*italic*, [text](href), `code`,
    -/* unordered lists, 1. ordered lists, > blockquotes, --- rules.
    Raw HTML in the source is escaped (the protocol strips it anyway). */
-function inlineMd(text) {
+function inlineMd(text, allowRelative = false) {
   let out = esc(text);
   out = out.replace(/`([^`]+)`/g, (_, c) => `<code>${c}</code>`);
   out = out.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
   out = out.replace(/(^|[\s(])\*([^*\s][^*]*)\*(?=[\s).,:;!?]|$)/g, '$1<em>$2</em>');
   out = out.replace(/(^|[\s(])_([^_\s][^_]*)_(?=[\s).,:;!?]|$)/g, '$1<em>$2</em>');
   out = out.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (_, label, href) => {
-    let safe = /^(https?:\/\/|\/|#|mailto:)/.test(href) ? href : '#';
+    let safe = /^(https?:\/\/|\/|#|mailto:)/.test(href) || (allowRelative && /^\.\.?\//.test(href)) ? href : '#';
     // Root-relative links come from content written for www.clubtechglobal.com;
     // on this subpath-hosted mirror they must point at the primary site.
     if (safe.startsWith('/')) safe = CANONICAL_ORIGIN + safe;
@@ -89,7 +89,7 @@ function inlineMd(text) {
   return out;
 }
 
-function renderMarkdown(md) {
+function renderMarkdown(md, allowRelative = false) {
   // HTML comments (e.g. <!-- VERIFY: ... --> author flags) stay in the
   // source but must never render — raw HTML is escaped, so without this
   // they'd appear as visible text on the published page.
@@ -102,13 +102,13 @@ function renderMarkdown(md) {
   let quote = [];
 
   const flushPara = () => {
-    if (para.length) { out.push(`<p>${inlineMd(para.join(' ').trim())}</p>`); para = []; }
+    if (para.length) { out.push(`<p>${inlineMd(para.join(' ').trim(), allowRelative)}</p>`); para = []; }
   };
   const flushList = () => {
-    if (list) { out.push(`<${list.tag}>` + list.items.map((i) => `<li>${inlineMd(i)}</li>`).join('') + `</${list.tag}>`); list = null; }
+    if (list) { out.push(`<${list.tag}>` + list.items.map((i) => `<li>${inlineMd(i, allowRelative)}</li>`).join('') + `</${list.tag}>`); list = null; }
   };
   const flushQuote = () => {
-    if (quote.length) { out.push(`<blockquote><p>${inlineMd(quote.join(' ').trim())}</p></blockquote>`); quote = []; }
+    if (quote.length) { out.push(`<blockquote><p>${inlineMd(quote.join(' ').trim(), allowRelative)}</p></blockquote>`); quote = []; }
   };
 
   const flushTable = () => {
@@ -118,8 +118,8 @@ function renderMarkdown(md) {
     const head = sepAt > 0 ? rows[0] : null;
     const body = rows.filter((r, i) => i !== sepAt && (head ? i !== 0 : true) && !r.every(c => /^:?-{3,}:?$/.test(c)));
     let html = '<div class="cmp-table"><table>';
-    if (head) html += '<thead><tr>' + head.map(c => `<th scope="col">${inlineMd(c)}</th>`).join('') + '</tr></thead>';
-    html += '<tbody>' + body.map(r => '<tr>' + r.map((c, i) => i === 0 ? `<th scope="row">${inlineMd(c)}</th>` : `<td>${inlineMd(c)}</td>`).join('') + '</tr>').join('') + '</tbody></table></div>';
+    if (head) html += '<thead><tr>' + head.map(c => `<th scope="col">${inlineMd(c, allowRelative)}</th>`).join('') + '</tr></thead>';
+    html += '<tbody>' + body.map(r => '<tr>' + r.map((c, i) => i === 0 ? `<th scope="row">${inlineMd(c, allowRelative)}</th>` : `<td>${inlineMd(c, allowRelative)}</td>`).join('') + '</tr>').join('') + '</tbody></table></div>';
     out.push(html);
     table = [];
   };
@@ -128,7 +128,7 @@ function renderMarkdown(md) {
   for (const raw of lines) {
     const line = raw.replace(/\s+$/, '');
     const h = line.match(/^(#{1,4}) (.+)$/);
-    if (h) { flushAll(); const lvl = Math.min(Math.max(h[1].length, 2), 4); out.push(`<h${lvl}>${inlineMd(h[2])}</h${lvl}>`); continue; }
+    if (h) { flushAll(); const lvl = Math.min(Math.max(h[1].length, 2), 4); out.push(`<h${lvl}>${inlineMd(h[2], allowRelative)}</h${lvl}>`); continue; }
     if (/^(-{3,}|\*{3,})$/.test(line)) { flushAll(); out.push('<hr/>'); continue; }
     const ul = line.match(/^\s*[-*] (.+)$/);
     if (ul) { flushPara(); flushQuote(); if (!list || list.tag !== 'ul') { flushList(); list = { tag: 'ul', items: [] }; } list.items.push(ul[1]); continue; }
@@ -657,7 +657,210 @@ function pageJsonLd(page) {
   return JSON.stringify(obj, null, 2);
 }
 
+/* Solution pages are product pages, not articles. Their source copy still
+   lives in content/pages/*.md, but these route-specific settings choose the
+   strongest demo surfaces and proof language for each venue, goal, or market. */
+const SOLUTION_CONFIG = {
+  'beach-clubs': {
+    group: 'venue', kicker: 'Built for beach clubs', label: 'Beach clubs',
+    heroShot: 'booking-map.webp', secondShot: 'operator-floor.webp',
+    productTitle: 'The booking and the floor share one map.',
+    productCopy: 'Guests choose the exact daybed. The operator sees that same inventory before doors open.',
+    proof: [['3D map', 'Furniture-first booking'], ['4 taps', 'Mobile checkout'], ['FINNS', 'Named venue proof']],
+  },
+  'day-club-booking-system': {
+    group: 'venue', kicker: 'Built for day clubs', label: 'Day clubs',
+    heroShot: 'pricing-calendar.webp', secondShot: 'booking-map.webp',
+    productTitle: 'Price the same deck to the daypart.',
+    productCopy: 'The Saturday pool party and the quiet midweek lounger are different products. The calendar makes that visible.',
+    proof: [['Dayparts', 'One deck, more yield'], ['Packages', 'Bottle pre-sales'], ['Prepaid', 'Saturday sold early']],
+  },
+  'hotel-pool-booking': {
+    group: 'venue', kicker: 'Built for hotel pools', label: 'Hotel pools',
+    heroShot: 'booking-map.webp', secondShot: 'operator-reservations.webp',
+    productTitle: 'One pool deck. Resident and day-guest demand.',
+    productCopy: 'Sell the exact cabana, keep inventory live for the floor, and own the direct day-pass channel.',
+    proof: [['Direct', 'Owned day-pass channel'], ['Opera', 'PMS integration'], ['Map-first', 'Exact cabana selection']],
+  },
+  'nightclub-management-software': {
+    group: 'venue', kicker: 'Built for nightclubs', label: 'Nightclubs',
+    heroShot: 'operator-floor.webp', secondShot: 'doorlist-list.webp',
+    productTitle: 'The table, the floor, and the door agree.',
+    productCopy: 'VIP sales, live allocation, guest lists, and check-in sit on one operating picture.',
+    proof: [['VIP tables', 'Pre-sold on the map'], ['Live floor', 'Allocation in one view'], ['Door list', 'QR-ready check-in']],
+  },
+  'nightclub-table-booking': {
+    group: 'venue', kicker: 'Built for VIP table sales', label: 'Nightclub tables',
+    heroShot: 'booking-map.webp', secondShot: 'operator-floor.webp',
+    productTitle: 'Sell the booth before the night starts.',
+    productCopy: 'Guests pick the exact table, stack the package, and commit before the door team ever opens the list.',
+    proof: [['Map-based', 'Exact VIP table'], ['Packages', 'Bottle service attached'], ['Prepaid', 'No-show protection']],
+  },
+  'resorts': {
+    group: 'venue', kicker: 'Built for resorts', label: 'Resorts',
+    heroShot: 'operator-reservations.webp', secondShot: 'intel-reports.webp',
+    productTitle: 'Every sellable outlet, one revenue picture.',
+    productCopy: 'Pools, cabanas, day passes, events, and beach inventory feed the same operating and reporting loop.',
+    proof: [['Multi-outlet', 'One booking surface'], ['20+ reports', 'Property-wide visibility'], ['White-label', 'The resort owns the guest']],
+  },
+  'restaurants': {
+    group: 'venue', kicker: 'Built for experience-led restaurants', label: 'Restaurants',
+    heroShot: 'restaurant-booking.webp', secondShot: 'operator-reservations.webp', demo: 'restaurant',
+    productTitle: 'Try the restaurant booking journey.',
+    productCopy: 'Pick the actual table, attach the experience, and confirm the value before arrival. This demo is fictional; the booking mechanics are the product.',
+    proof: [['Exact table', 'Map-based selection'], ['Packages', 'Minimum spend attached'], ['White-label', 'Your domain and guest data']],
+  },
+  'sunbed-booking-system': {
+    group: 'goal', kicker: 'Sell the deck in advance', label: 'Sunbed booking',
+    heroShot: 'booking-map.webp', secondShot: 'pricing-rules.webp',
+    productTitle: 'The front row should look premium before it is priced.',
+    productCopy: 'A visual map turns location into value. Pricing rules protect the same furniture across peak and quiet demand.',
+    proof: [['Exact spot', 'Guests choose the bed'], ['Dynamic', 'Price to demand'], ['Live sync', 'Sold inventory leaves the map']],
+  },
+  'event-ticketing-for-clubs': {
+    group: 'goal', kicker: 'Sell and run event nights', label: 'Event ticketing',
+    heroShot: 'events-tickets.webp', secondShot: 'events-checkout.webp',
+    productTitle: 'Ticket sale to QR check-in, in one flow.',
+    productCopy: 'Tiered tickets sit beside table bookings and guest lists, so the door receives one reconciled picture.',
+    proof: [['Tiered', 'Ticket types and value'], ['QR', 'Check-in at the door'], ['One guest', 'Record across the night']],
+  },
+  'guest-list-management-software': {
+    group: 'goal', kicker: 'Run the list and the door', label: 'Guest lists',
+    heroShot: 'doorlist-list.webp', secondShot: 'doorlist-soldout.webp',
+    productTitle: 'One list from every source.',
+    productCopy: 'Reservations, tickets, promoter lists, and priority entry arrive at the door in one live view.',
+    proof: [['One list', 'No spreadsheet merge'], ['Every guest', 'Whole-party capture'], ['Sold out', 'Priority data capture']],
+  },
+  'beach-club-booking-bali': {
+    group: 'location', kicker: 'Clubtech in Bali', label: 'Bali',
+    heroShot: 'booking-map.webp', secondShot: 'intel-attribution.webp',
+    productTitle: 'Built for the booking made after 10pm.',
+    productCopy: 'Map-first mobile booking, local payments, and attributed revenue fit the way Bali weekends are decided.',
+    proof: [['FINNS', 'Flagship proof'], ['Midtrans', 'Local payment integration'], ['Bali time', 'Operator-side delivery']],
+  },
+  'beach-club-booking-dubai': {
+    group: 'location', kicker: 'Clubtech in Dubai', label: 'Dubai',
+    heroShot: 'pricing-calendar.webp', secondShot: 'booking-map.webp',
+    productTitle: 'Make the compressed season visible.',
+    productCopy: 'Price high-demand dates deliberately, sell premium zones before arrival, and keep a multi-currency guest in one mobile flow.',
+    proof: [['Season-led', 'Demand-aware pricing'], ['Multi-currency', 'International checkout'], ['Hotel-ready', 'Pool and beach inventory']],
+  },
+  'beach-club-booking-phuket': {
+    group: 'location', kicker: 'Clubtech in Phuket', label: 'Phuket',
+    heroShot: 'booking-map.webp', secondShot: 'doorlist-soldout.webp',
+    productTitle: 'High season sells. Green season captures.',
+    productCopy: 'Pre-sell the premium weekends, then keep sold-out and priority demand working when inventory changes.',
+    proof: [['SEA proven', 'Built one island over'], ['Map-first', 'Zone-specific inventory'], ['Multi-currency', 'Every passport']],
+  },
+  'beach-club-booking-ibiza': {
+    group: 'location', kicker: 'Clubtech in Ibiza', label: 'Ibiza',
+    heroShot: 'pricing-rules.webp', secondShot: 'booking-map.webp',
+    productTitle: 'Configure the season before opening week.',
+    productCopy: 'Package ladders, minimum spends, and day-specific pricing are ready before the first flight lands.',
+    proof: [['Pre-season', 'Configured before opening'], ['VIP beds', 'Minimum spend attached'], ['Prepaid', 'Demand commits early']],
+  },
+  'beach-club-booking-mykonos': {
+    group: 'location', kicker: 'Clubtech in Mykonos', label: 'Mykonos',
+    heroShot: 'booking-map.webp', secondShot: 'intel-reports.webp',
+    productTitle: 'A short season needs fast feedback.',
+    productCopy: 'Sell ultra-premium furniture visually, then read lead time, product mix, and booking value while the season can still move.',
+    proof: [['Ultra-premium', 'The exact bed is the product'], ['20+ reports', 'Read the season live'], ['Priority', 'Capture demand after sellout']],
+  },
+};
+
+function stripHtml(value) {
+  return String(value).replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;/g, "'").trim();
+}
+
+function splitSolutionBody(html) {
+  const firstH2 = html.search(/<h2(?:\s[^>]*)?>/i);
+  const intro = firstH2 < 0 ? html : html.slice(0, firstH2);
+  const rest = firstH2 < 0 ? '' : html.slice(firstH2);
+  const sections = [];
+  const re = /<h2(?:\s[^>]*)?>([\s\S]*?)<\/h2>([\s\S]*?)(?=<h2(?:\s[^>]*)?>|$)/gi;
+  let match;
+  while ((match = re.exec(rest))) sections.push({ title: match[1], body: match[2] });
+  const faqIndex = sections.findIndex((section) => /questions operators ask/i.test(stripHtml(section.title)));
+  return { intro, sections: faqIndex < 0 ? sections : sections.slice(0, faqIndex), faq: faqIndex < 0 ? null : sections[faqIndex] };
+}
+
+function normalizeSolutionLinks(html) {
+  return String(html)
+    .replaceAll('href="../../booking/#four-tap-checkout"', 'href="../../platform/#booking"')
+    .replaceAll('href="../../booking/"', 'href="../../sell/#revenue"')
+    .replaceAll('href="../../operations/"', 'href="../../platform/#operations"')
+    .replaceAll('href="../../intelligence/#ads-integration"', 'href="../../grow/#ads"')
+    .replaceAll('href="../../intelligence/"', 'href="../../grow/#guest-data"');
+}
+
+function solutionVisual(page, config, index) {
+  const shot = index % 2 === 0 ? config.heroShot : config.secondShot;
+  if (index % 3 === 2) {
+    return `<figure class="solution-photo-card"><img src="../..${esc(page.meta.hero)}" alt="${esc(page.meta.heroAlt)}" loading="lazy" decoding="async"><figcaption>${esc(config.label)} · configured around the venue</figcaption></figure>`;
+  }
+  return `<div class="solution-shot-card"><img src="../../assets/product/${esc(shot)}" alt="Clubtech product view for ${esc(config.label)}" loading="lazy" decoding="async"><div class="solution-shot-meta"><span>${esc(config.label)} product view</span><span>Clubtech platform</span></div></div>`;
+}
+
+function renderSolutionFaq(faq) {
+  if (!faq) return '';
+  const items = [];
+  const re = /<h3(?:\s[^>]*)?>([\s\S]*?)<\/h3>([\s\S]*?)(?=<h3(?:\s[^>]*)?>|$)/gi;
+  let match;
+  while ((match = re.exec(faq.body))) items.push(`<details><summary>${match[1]}</summary><div class="solution-faq-answer">${match[2]}</div></details>`);
+  if (!items.length) return '';
+  return `<section class="solution-faq"><div class="shell solution-faq-grid"><div><p class="eyebrow">Operator questions</p><h2>${faq.title}</h2></div><div class="solution-faq-list">${items.join('')}</div></div></section>`;
+}
+
+function renderSolutionProductBand(config) {
+  const live = config.demo === 'restaurant'
+    ? `<div class="ckd" data-demo="map" data-demo-kind="restaurant" data-demo-badge="Limited demo — try it" role="application" aria-label="Interactive restaurant booking demo — choose an exact table and dining option"></div>`
+    : `<div class="solution-product-grid"><figure><img src="../../assets/product/${esc(config.heroShot)}" alt="Primary Clubtech product view for ${esc(config.label)}" loading="lazy" decoding="async"><figcaption>${esc(config.label)} booking view <span>Guest side</span></figcaption></figure><figure><img src="../../assets/product/${esc(config.secondShot)}" alt="Secondary Clubtech product view for ${esc(config.label)}" loading="lazy" decoding="async"><figcaption>Connected operating view <span>Venue side</span></figcaption></figure></div>`;
+  return `<section class="solution-product-band"><div class="shell"><div class="solution-product-heading"><h2>${esc(config.productTitle)}</h2><p>${esc(config.productCopy)}</p></div>${live}</div></section>`;
+}
+
+function renderSolutionPage(page, pages) {
+  const config = SOLUTION_CONFIG[page.meta.slug];
+  const body = normalizeSolutionLinks(sanitizeBlogHtml(renderMarkdown(page.body, true)));
+  const parts = splitSolutionBody(body);
+  const relatedPool = pages.filter((p) => p.meta.section === 'solutions' && p.meta.slug !== page.meta.slug && SOLUTION_CONFIG[p.meta.slug]?.group === config.group);
+  const related = [...relatedPool, ...pages.filter((p) => p.meta.section === 'solutions' && p.meta.slug !== page.meta.slug && !relatedPool.includes(p))].slice(0, 3);
+  const relatedCards = related.map((item) => `<a class="solution-related-card" href="../${esc(item.meta.slug)}/"><img src="../..${esc(item.meta.hero)}" alt="" loading="lazy" decoding="async"><div class="solution-related-copy"><small>${esc(SOLUTION_CONFIG[item.meta.slug]?.label || 'Solution')}</small><strong>${esc(plainTitle(item.meta.title))}</strong></div></a>`).join('');
+  const stories = parts.sections.map((section, index) => `<section class="solution-story ${index % 2 ? 'is-reverse' : ''}"><div class="shell solution-story-grid"><div class="solution-copy"><p class="eyebrow">${String(index + 1).padStart(2, '0')} · ${esc(config.label)}</p><h2>${section.title}</h2>${section.body}</div><div class="solution-visual">${solutionVisual(page, config, index)}</div></div></section>`).join('');
+  const head = headHTML({
+    title: page.meta.titleTag || `${plainTitle(page.meta.title)} | Clubtech`,
+    description: page.meta.description || page.meta.excerpt,
+    canonical: pageCanonical(page),
+    ogImage: `${SITE_ORIGIN}${page.meta.hero}`,
+    ogImageAlt: page.meta.heroAlt || plainTitle(page.meta.title),
+    jsonLd: pageJsonLd(page), rel: '../../', ogType: 'website',
+  });
+  const proof = config.proof.map(([value, label]) => `<li><strong>${esc(value)}</strong><span>${esc(label)}</span></li>`).join('');
+  const restaurantCss = config.demo === 'restaurant' ? '<link rel="stylesheet" href="../../css/demo.css">' : '';
+  const restaurantJs = config.demo === 'restaurant' ? '<script src="../../js/demo.js" defer></script>' : '';
+  const solutionStyles = `  <link rel="stylesheet" href="../../css/solutions.css">${restaurantCss ? `\n  ${restaurantCss}` : ''}`;
+  const solutionHead = head.replace('</head>', `${solutionStyles}\n</head>`);
+
+  return `${solutionHead}
+<body class="solution-page p-solutions solution-${esc(page.meta.slug)}">
+<a class="skip-link" href="#main">Skip to content</a>
+${navMarkup('../../', 'solutions')}
+<main id="main">
+  <header class="solution-hero"><div class="shell solution-hero-grid"><div><p class="solution-kicker"><i></i>${esc(config.kicker)}</p><h1>${h1Html(page.meta.title)}</h1><p class="solution-hero-copy">${esc(page.meta.excerpt)}</p><div class="solution-actions"><a class="button button-mint" href="../../book-a-demo/" data-open-demo>Book a Demo</a><a class="button button-ghost" href="#how-it-works">See how it works ↓</a></div><ul class="solution-proofline">${proof}</ul></div><div class="solution-hero-visual"><img class="solution-hero-photo" src="../..${esc(page.meta.hero)}" alt="${esc(page.meta.heroAlt)}" fetchpriority="high" decoding="async"><img class="solution-hero-shot" src="../../assets/product/${esc(config.heroShot)}" alt="Clubtech ${esc(config.label)} product experience" fetchpriority="high" decoding="async"><span class="solution-hero-label"><i></i>Product-led, configured to the venue</span></div></div></header>
+  <section class="solution-intro" id="how-it-works"><div class="shell solution-intro-grid"><div class="solution-intro-label"><p class="eyebrow">Why this fit matters</p><p>Furniture · zones · dayparts · owned guest data</p></div><div class="solution-lead">${parts.intro}</div></div></section>
+${stories}
+${renderSolutionProductBand(config)}
+${renderSolutionFaq(parts.faq)}
+  <section class="solution-related"><div class="shell"><div class="solution-related-head"><div><p class="eyebrow">Keep exploring</p><h2>Related solutions</h2></div><a href="../">See every solution ↗</a></div><div class="solution-related-grid">${relatedCards}</div></div></section>
+  <section class="closing dark-section"><img class="closing-mark" src="../../brand/clubtech-mark-white.png" alt="" aria-hidden="true" width="1200" height="1200" loading="lazy"><div class="shell centered"><p class="eyebrow">Your venue, pre-sold.</p><h2>Put your venue<br><span class="mint-text">inside the demo.</span></h2><p>Book a focused walkthrough, configured around a premium venue like yours.</p><a class="button button-mint" href="../../book-a-demo/" data-open-demo>Book a Demo</a></div></section>
+${footerMarkup('../../', pages)}
+</main>
+${CONSENT_MARKUP}
+<script src="../../js/consent.js" defer></script><script src="../../js/hubspot.js" defer></script><script src="../../js/booking.js" defer></script><script src="../../js/analytics.js" defer></script><script src="../../js/blog.js" defer></script>${restaurantJs}
+</body></html>`;
+}
+
 function renderLandingPage(page, pages) {
+  if (page.meta.section === 'solutions' && SOLUTION_CONFIG[page.meta.slug]) return renderSolutionPage(page, pages);
   const body = sanitizeBlogHtml(renderMarkdown(page.body));
   const sectionLabel = PAGE_SECTIONS[page.meta.section];
 
@@ -911,7 +1114,37 @@ function sectionIndexJsonLd(sectionKey, sectionPages) {
   }, null, 2);
 }
 
+function renderSolutionsIndex(pages) {
+  const sectionPages = pages.filter((page) => page.meta.section === 'solutions');
+  const groups = [
+    ['venue', 'Who we serve', 'One platform, shaped around the inventory each venue actually sells.'],
+    ['location', 'Where you operate', 'Destination-specific pages for compressed seasons, local payments, and international guests.'],
+    ['goal', 'What you need to run', 'Focused journeys for sunbeds, tickets, guest lists, and the door.'],
+  ];
+  const cards = (group) => sectionPages.filter((page) => SOLUTION_CONFIG[page.meta.slug]?.group === group).map((page) => {
+    const config = SOLUTION_CONFIG[page.meta.slug];
+    return `<a class="solution-card" href="${esc(page.meta.slug)}/"><img src="..${esc(page.meta.hero)}" alt="" loading="lazy" decoding="async"><span class="solution-card-arrow" aria-hidden="true">↗</span><div class="solution-card-copy"><small>${esc(config.label)}</small><strong>${esc(plainTitle(page.meta.title))}</strong><p>${esc(page.meta.excerpt)}</p></div></a>`;
+  }).join('');
+  const groupMarkup = groups.map(([key, title, copy]) => `<section class="solution-group"><div class="solution-group-head"><h2>${esc(title)}</h2><p>${esc(copy)}</p></div><div class="solution-card-grid">${cards(key)}</div></section>`).join('');
+  const head = headHTML({
+    title: 'Solutions — Clubtech',
+    description: 'Clubtech booking and revenue solutions by venue type and destination — beach clubs, day clubs, nightclubs, hotel pools, restaurants, resorts, and sunbed decks.',
+    canonical: `${SITE_ORIGIN}/solutions/`,
+    ogImage: `${SITE_ORIGIN}/assets/og/clubtech-og.jpg`,
+    ogImageAlt: 'Clubtech booking and venue operations platform',
+    jsonLd: sectionIndexJsonLd('solutions', sectionPages), rel: '../', ogType: 'website',
+  });
+  const solutionHead = head.replace('</head>', '  <link rel="stylesheet" href="../css/solutions.css">\n</head>');
+  return `${solutionHead}
+<body class="solution-page p-solutions-index"><a class="skip-link" href="#main">Skip to content</a>${navMarkup('../', 'solutions')}<main id="main">
+  <section class="index-hero solution-index-hero"><div class="shell"><p class="index-kicker"><span class="tick"></span>Solutions · ${sectionPages.length} product pages</p><h1 class="index-h1">Built for how <span class="mint-text">your venue sells.</span></h1><p class="index-sub">Sunbeds, daybeds, tables, tickets, and day passes — one platform, configured around the real inventory and the team running it.</p><div class="index-intro"><p>These are product pages, not generic industry summaries. Each one pairs the commercial story with the Clubtech booking, floor, pricing, door, or intelligence view that makes it real.</p></div><div class="solution-index-showcase"><figure><img src="../assets/product/booking-map.webp" alt="Clubtech interactive venue booking map" fetchpriority="high" decoding="async"></figure><figure><img src="../assets/product/restaurant-booking.webp" alt="Clubtech restaurant table and experience booking demo" fetchpriority="high" decoding="async"></figure></div></div></section>
+  <div class="shell solution-index-groups">${groupMarkup}</div>
+  <section class="closing dark-section"><img class="closing-mark" src="../brand/clubtech-mark-white.png" alt="" aria-hidden="true" width="1200" height="1200" loading="lazy"><div class="shell centered"><p class="eyebrow">Your venue, pre-sold.</p><h2>Put your venue<br><span class="mint-text">inside the demo.</span></h2><p>Book a focused walkthrough, configured around your floor and sellable inventory.</p><a class="button button-mint" href="../book-a-demo/" data-open-demo>Book a Demo</a></div></section>
+${footerMarkup('../', pages)}</main>${CONSENT_MARKUP}<script src="../js/consent.js" defer></script><script src="../js/hubspot.js" defer></script><script src="../js/booking.js" defer></script><script src="../js/analytics.js" defer></script><script src="../js/blog.js" defer></script></body></html>`;
+}
+
 function renderSectionIndex(sectionKey, pages) {
+  if (sectionKey === 'solutions') return renderSolutionsIndex(pages);
   const sectionPages = pages.filter((p) => p.meta.section === sectionKey);
   const label = PAGE_SECTIONS[sectionKey];
   const rows = sectionPages.map((p) => `      <a class="index-row" href="${esc(p.meta.slug)}/">

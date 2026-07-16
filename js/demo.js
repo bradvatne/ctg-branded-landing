@@ -27,7 +27,7 @@
   /* asset path relative to this script, so mounts work from any page depth */
   var SCRIPT_SRC = (document.currentScript && document.currentScript.src) || 'js/demo.js';
   var ASSET_BASE = SCRIPT_SRC.replace(/js\/demo\.js.*$/, 'assets/demo/');
-  var MAP_URL = ASSET_BASE + 'venue-real.webp';
+  var DEFAULT_MAP_URL = ASSET_BASE + 'venue-real.webp';
   var BRAND_MARK = SCRIPT_SRC.replace(/js\/demo\.js.*$/, 'brand/clubtech-mark-black-96.png');
   mounts.forEach(function (m) { createDemo(m); });
 
@@ -35,8 +35,11 @@
   var OPTS = {
     view: root.getAttribute('data-demo') || 'map',
     badge: root.getAttribute('data-demo-badge') || '',
-    mobile: root.getAttribute('data-demo-chrome') === 'mobile'
+    mobile: root.getAttribute('data-demo-chrome') === 'mobile',
+    kind: root.getAttribute('data-demo-kind') || 'beach-club'
   };
+  var IS_RESTAURANT = OPTS.kind === 'restaurant';
+  if (IS_RESTAURANT) root.classList.add('restaurant');
 
   /* ===== demo data ==================================================== */
 
@@ -71,6 +74,19 @@
     { id: 'sun8', name: 'Sunbed', num: 108, zone: 'Beachfront', x: 80.6, y: 74.0, w: 6.0, h: 7.5, cap: 2, sold: true },
     { id: 'sun9', name: 'Sunbed', num: 109, zone: 'Beachfront', x: 88.8, y: 74.0, w: 6.0, h: 7.5, cap: 2, sold: true }
   ];
+  if (IS_RESTAURANT) SPOTS = [
+    { id: 'rt1', name: 'Garden Table', num: 1, zone: 'Garden Terrace', x: 16.7, y: 36.5, w: 10.0, h: 7.0, cap: 4 },
+    { id: 'rt2', name: 'Communal Table', num: 2, zone: 'Garden Terrace', x: 37.8, y: 40.2, w: 13.0, h: 13.0, cap: 8 },
+    { id: 'rt3', name: 'Communal Table', num: 3, zone: 'Garden Terrace', x: 62.2, y: 40.2, w: 13.0, h: 13.0, cap: 8, sold: true },
+    { id: 'rt4', name: 'Garden Table', num: 4, zone: 'Garden Terrace', x: 83.5, y: 36.5, w: 10.0, h: 7.0, cap: 4 },
+    { id: 'rt5', name: 'Terrace Table', num: 5, zone: 'Main Terrace', x: 27.7, y: 58.4, w: 10.0, h: 7.0, cap: 4, sold: true },
+    { id: 'rt6', name: 'Dining Cabana', num: 6, zone: 'Main Terrace', x: 50.1, y: 56.4, w: 14.0, h: 13.5, cap: 6 },
+    { id: 'rt7', name: 'Terrace Table', num: 7, zone: 'Main Terrace', x: 74.7, y: 58.5, w: 10.0, h: 7.0, cap: 4 },
+    { id: 'rt8', name: 'Beachfront Cabana', num: 8, zone: 'Beachfront', x: 23.9, y: 75.0, w: 15.0, h: 14.0, cap: 6 },
+    { id: 'rt9', name: 'Beachfront Table', num: 9, zone: 'Beachfront', x: 45.9, y: 73.7, w: 10.0, h: 7.0, cap: 4, sold: true },
+    { id: 'rt10', name: 'Beachfront Table', num: 10, zone: 'Beachfront', x: 63.7, y: 73.7, w: 10.0, h: 7.0, cap: 4 },
+    { id: 'rt11', name: 'Beachfront Cabana', num: 11, zone: 'Beachfront', x: 81.7, y: 75.0, w: 15.0, h: 14.0, cap: 6, sold: true }
+  ];
 
   var PINS = [
     { label: 'Pool Club', color: 'teal', icon: 'party', x: 48, y: 29 },
@@ -79,12 +95,18 @@
     { label: 'Pool Bar', color: 'purple', icon: 'drink', x: 79.5, y: 21 },
     { label: 'Party Deck', color: 'purple', icon: 'drink', x: 81, y: 47 }
   ];
+  if (IS_RESTAURANT) PINS = [
+    { label: "Chef's Counter", color: 'teal', icon: 'drink', x: 47, y: 29 },
+    { label: 'Garden Terrace', color: 'purple', icon: 'party', x: 44, y: 48 },
+    { label: 'Beachfront', color: 'pink', icon: 'party', x: 39, y: 68 }
+  ];
 
   var AREAS = [
     { label: 'Beach Access', x: 5, y: 78 },
     { label: 'Beach Access', x: 93, y: 76 },
     { label: 'Dance Floor', x: 81, y: 53 }
   ];
+  if (IS_RESTAURANT) AREAS = [];
 
   var ZCARDS = [
     { status: 'Selling Fast', cls: 'fast', name: 'Pool Club' },
@@ -92,6 +114,11 @@
     { status: 'Sold Out', cls: 'sold', name: 'Beachfront' },
     { status: 'Sold Out', cls: 'sold', name: 'Sunset Deck' },
     { status: 'Sold Out', cls: 'sold', name: 'Party Pavilion' }
+  ];
+  if (IS_RESTAURANT) ZCARDS = [
+    { status: 'Available', cls: '', name: 'Garden Terrace' },
+    { status: 'Selling Fast', cls: 'fast', name: 'Main Terrace' },
+    { status: 'Limited', cls: 'fast', name: 'Beachfront' }
   ];
 
   var PKGS = [
@@ -101,6 +128,14 @@
       inc: [['na', 'No Flexible Arrival'], ['ok', '$150 in Food & Beverage Credit'], ['ok', '$100 in Party Package Value']] },
     { id: 'ult', tab: 'Ultimate Experience', name: 'Ultimate Experience', price: 680, save: 120, arrive: 'Arrive Anytime', gold: true,
       inc: [['ok', 'Flexible Arrival'], ['ok', '$300 in Food & Beverage Credit'], ['ok', 'Dedicated Host & Priority Entry']] }
+  ];
+  if (IS_RESTAURANT) PKGS = [
+    { id: 'table', tab: 'Dinner Reservation', name: 'Dinner Reservation', price: 180, save: 0, arrive: 'Arrive from 6:30pm',
+      inc: [['ok', 'Table held for two hours'], ['ok', '$180 minimum spend'], ['na', 'No set menu required']] },
+    { id: 'menu', tab: "Chef's Set Menu", name: "Chef's Set Menu", price: 260, save: 0, arrive: 'Arrive from 6:30pm', best: true,
+      inc: [['ok', 'Shared set menu'], ['ok', 'Welcome drink'], ['ok', 'Table reserved for the evening']] },
+    { id: 'occasion', tab: 'Celebration Table', name: 'Celebration Table', price: 320, save: 0, arrive: 'Arrive from 6:30pm', gold: true,
+      inc: [['ok', 'Shared set menu'], ['ok', 'Cake and flowers'], ['ok', 'Welcome bottle']] }
   ];
 
   var ADDONS = [
@@ -149,7 +184,7 @@
   /* ===== state ======================================================== */
 
   var state = {
-    day: 18, pkg: 'party', spot: null, cart: [], addons: {}, pass: 0, addonTab: 'Bottles',
+    day: 18, pkg: IS_RESTAURANT ? 'menu' : 'party', spot: null, cart: [], addons: {}, pass: 0, addonTab: 'Bottles',
     shopSel: null, timer: 600, timerId: null, view: 'map', interacted: false
   };
 
@@ -205,7 +240,7 @@
 
   /* ===== build shell ================================================== */
 
-  var MAP = MAP_URL;
+  var MAP = IS_RESTAURANT ? ASSET_BASE + 'restaurant-map-v2.webp' : DEFAULT_MAP_URL;
   var world, stage, hintEl;
   var Z = { s: 1, x: 0, y: 0 };
 
@@ -355,7 +390,7 @@
 
   /* ===== pan / zoom ==================================================== */
 
-  var MAP_AR = 1536 / 1152; // aspect ratio of the venue render
+  var MAP_AR = IS_RESTAURANT ? 1024 / 1536 : 1536 / 1152; // width / height of the venue render
 
   /* stage layout size in CSS px — clientWidth/Height ignore ancestor
      transforms (reveal animations), which getBoundingClientRect does not;
@@ -406,7 +441,9 @@
 
   function focusZone(name) {
     mark();
-    var map = { 'Pool Club': [48, 30], 'VIP Cabanas': [11, 34], 'Beachfront': [47, 62], 'Sunset Deck': [81, 47], 'Party Pavilion': [79, 22] };
+    var map = IS_RESTAURANT
+      ? { 'Garden Terrace': [50, 41], 'Main Terrace': [50, 58], 'Beachfront': [51, 75] }
+      : { 'Pool Club': [48, 30], 'VIP Cabanas': [11, 34], 'Beachfront': [47, 62], 'Sunset Deck': [81, 47], 'Party Pavilion': [79, 22] };
     var t = map[name] || [50, 50];
     sizeWorld();
     var r = stageSize();
@@ -527,19 +564,18 @@
   function openPanel(s) {
     mark();
     curSpot = s;
-    state.pkg = 'party';
+    state.pkg = IS_RESTAURANT ? 'menu' : 'party';
     var p = $('.ckd-panel');
     p.innerHTML =
       '<div class="ckd-panel-scroll">' +
         '<button type="button" class="ckd-x" aria-label="Close">✕</button>' +
         '<h2 role="presentation">' + s.name + ' – #' + s.num + '</h2>' +
-        '<div class="ckd-chiprow">' +
-          '<span class="ckd-chip blue">✦ New</span>' +
-          '<span class="ckd-chip pinkc">🎉 Party Zone</span>' +
-          '<span class="ckd-chip grey">Ground Floor</span>' +
+        '<div class="ckd-chiprow">' + (IS_RESTAURANT
+          ? '<span class="ckd-chip blue">Dinner</span><span class="ckd-chip pinkc">' + s.zone + '</span><span class="ckd-chip grey">Outdoor</span>'
+          : '<span class="ckd-chip blue">✦ New</span><span class="ckd-chip pinkc">🎉 Party Zone</span><span class="ckd-chip grey">Ground Floor</span>') +
         '</div>' +
-        '<p class="ckd-pax">' + I.pax + ' Recommended for ' + s.cap + ' People <em>· Adults Only (16+)</em></p>' +
-        '<p class="ckd-desc">A lively spot at the heart of the club — great music, cold bottles, and a front-row seat to the best energy on the coast.</p>' +
+        '<p class="ckd-pax">' + I.pax + ' Recommended for ' + s.cap + ' People' + (IS_RESTAURANT ? '' : ' <em>· Adults Only (16+)</em>') + '</p>' +
+        '<p class="ckd-desc">' + (IS_RESTAURANT ? 'Reserve this exact table, then choose the dining option that fits the night.' : 'A lively spot at the heart of the club — great music, cold bottles, and a front-row seat to the best energy on the coast.') + '</p>' +
         '<div class="ckd-gallery">' +
           '<div style="' + galleryTile(s, 300, 0) + '"><span class="play"><i>▶</i></span></div>' +
           [1, 2, 3, 4].map(function (i) { return '<div style="' + galleryTile(s, 520, i) + '"></div>'; }).join('') +
@@ -551,7 +587,7 @@
           }).join('') +
           '<span class="cal">' + I.cal + '</span>' +
         '</div>' +
-        '<h4 role="presentation" class="ckd-save">Book Online &amp; Save</h4><p>Packages</p>' +
+        '<h4 role="presentation" class="ckd-save">' + (IS_RESTAURANT ? 'Dining options' : 'Book Online &amp; Save') + '</h4><p>' + (IS_RESTAURANT ? 'Choose one for this table' : 'Packages') + '</p>' +
         '<div class="ckd-pkgtabs">' +
           PKGS.map(function (k) { return '<button type="button" data-pkgtab="' + k.id + '" class="' + (k.gold ? 'gold ' : '') + (k.id === state.pkg ? 'on' : '') + '">' + k.tab + '</button>'; }).join('') +
         '</div>' +
@@ -559,7 +595,7 @@
           PKGS.map(function (k) {
             return '<div class="ckd-pkg' + (k.id === state.pkg ? ' sel' : '') + '" data-pkg="' + k.id + '">' +
               (k.best ? '<span class="best">Best Value</span>' : '') +
-              '<span class="savechip">Book Online &amp; Save <b>' + money(k.save) + '</b></span>' +
+              '<span class="savechip">' + (IS_RESTAURANT ? 'Table-specific booking' : 'Book Online &amp; Save <b>' + money(k.save) + '</b>') + '</span>' +
               '<h5 role="presentation">' + k.name + '<i>✓</i></h5>' +
               '<p class="price">' + money(k.price) + '</p>' +
               '<p class="arrive">' + k.arrive + '</p>' +
@@ -570,7 +606,7 @@
         '</div>' +
       '</div>' +
       '<div class="ckd-panel-foot">' +
-        '<small>Includes $150 in food &amp; beverage credit</small>' +
+        '<small>' + (IS_RESTAURANT ? 'The selected option is attached to this exact table' : 'Includes $150 in food &amp; beverage credit') + '</small>' +
         '<div><button type="button" class="ckd-btn-line" data-addcart>Add to Cart ' + I.cart + '</button>' +
         '<button type="button" class="ckd-cta" data-booknow style="flex:1.2">Book Now</button></div>' +
       '</div>';

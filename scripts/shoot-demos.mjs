@@ -145,6 +145,12 @@ const MANIFEST = [
       { id: 'thread',  mount: `<div class="cks" data-supportdemo="thread" role="application" style="aspect-ratio:auto;height:660px"></div>` },
     ],
   },
+  {
+    name: 'restaurant', css: ['css/demo.css'], js: ['js/demo.js'], sel: '.ckd', width: 720,
+    states: [
+      { id: 'booking', mount: `<div class="ckd" data-demo="map" data-demo-kind="restaurant" role="application"></div>`, frameBg: '#020617' },
+    ],
+  },
 ];
 
 async function main() {
