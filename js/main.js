@@ -64,6 +64,22 @@
       });
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(function (el) { revealObserver.observe(el); });
+
+    // Deep-link / hash-navigation safeguard: the observer can miss sections that
+    // are already in view after an initial #hash jump (no scroll event fires
+    // once it attaches), leaving them stuck at opacity:0. Reveal anything at or
+    // above the fold on load and after any hash change.
+    var revealInView = function () {
+      document.querySelectorAll('.reveal:not(.is-visible)').forEach(function (el) {
+        if (el.getBoundingClientRect().top < window.innerHeight * 0.92) {
+          el.classList.add('is-visible');
+          revealObserver.unobserve(el);
+        }
+      });
+    };
+    window.addEventListener('load', revealInView);
+    window.addEventListener('hashchange', function () { setTimeout(revealInView, 350); });
+    if (location.hash) setTimeout(revealInView, 250);
   }
 
   /* --- Proof stats: count up when they scroll into view --- */
