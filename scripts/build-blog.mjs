@@ -273,6 +273,7 @@ const NAV = [
       { h: '', tag: '', links: [
         ['sell/#events', 'Events &amp; ticketing', 'Tiered tickets and QR check-in'],
         ['sell/#packages', 'Packages &amp; upsells', 'Bottles, cakes, transfers'],
+        ['sell/#gift-cards', 'Gift cards', 'Prepaid revenue, new guests'],
         ['sell/#dynamic-pricing', 'Dynamic pricing', 'Price the same seats to demand'],
         ['sell/#revenue', 'Revenue', 'The four-lever revenue playbook'],
       ] },
@@ -292,12 +293,13 @@ const NAV = [
   {
     key: 'solutions', label: 'Solutions', href: 'solutions/',
     cols: [
-      { h: 'By venue type', tag: '', links: [
+      { h: 'Who we serve', tag: '', links: [
+        ['solutions/resorts/', 'Resorts', ''],
         ['solutions/beach-clubs/', 'Beach clubs', ''],
         ['solutions/day-club-booking-system/', 'Day clubs', ''],
         ['solutions/nightclub-management-software/', 'Nightclubs', ''],
         ['solutions/hotel-pool-booking/', 'Hotel pools', ''],
-        ['solutions/sunbed-booking-system/', 'Sunbeds &amp; daybeds', ''],
+        ['solutions/restaurants/', 'Restaurants', ''],
       ] },
       { h: 'By location', tag: '', links: [
         ['solutions/beach-club-booking-bali/', 'Bali', ''],
@@ -328,22 +330,20 @@ const NAV = [
         ['blog/beach-club-booking-system-complete-guide/', 'The complete guide', ''],
         ['blog/beach-club-revenue-playbook/', 'The revenue playbook', ''],
       ] },
+      { h: 'Customer stories', tag: '', links: [
+        ['blog/finns-beach-club-case-study/', 'FINNS Beach Club', 'Millions pre-paid monthly'],
+      ] },
       { h: 'Compare', tag: '', links: [
         ['compare/sevenrooms-alternative/', 'vs SevenRooms', ''],
         ['compare/resortpass-alternative/', 'vs ResortPass', ''],
         ['compare/urvenue-alternative/', 'vs UrVenue', ''],
         ['compare/', 'All comparisons', ''],
       ] },
-      { h: 'Help &amp; support', tag: '', links: [
-        ['help/', 'Help center', 'Answers for venue teams'],
-        ['support/', 'Support', 'Message the Clubtech team'],
-        ['blog/finns-beach-club-case-study/', 'FINNS Beach Club', 'Customer story'],
-      ] },
     ],
     rail: {
-      feature: ['blog/', 'The Index', 'Everything we learn on the floor'],
+      feature: ['help/', 'Help center', 'Answers for venue teams'],
       links: [
-        ['help/', 'Help center', 'Search answers'],
+        ['support/', 'Support', 'Message the Clubtech team'],
       ],
       cta: ['index.html#contact', 'Book a Demo'],
     },
@@ -482,7 +482,7 @@ ${links.map(([href, label]) => `        <a href="${href}">${esc(label)}</a>`).jo
     </div>
     <div class="footer-grid">
 ${col('Platform', [[r('platform/#booking'), 'Booking'], [r('platform/#operations'), 'Operations & floor'], [r('platform/#guest-lists'), 'Guest lists'], [r('platform/#integrations'), 'Integrations'], [r('ai-bookings/'), 'AI-agent bookings']])}
-${col('Sell', [[r('sell/#events'), 'Events & ticketing'], [r('sell/#packages'), 'Packages & upsells'], [r('sell/#dynamic-pricing'), 'Dynamic pricing'], [r('sell/#revenue'), 'Revenue']])}
+${col('Sell', [[r('sell/#events'), 'Events & ticketing'], [r('sell/#packages'), 'Packages & upsells'], [r('sell/#gift-cards'), 'Gift cards'], [r('sell/#dynamic-pricing'), 'Dynamic pricing'], [r('sell/#revenue'), 'Revenue']])}
 ${col('Grow', [[r('grow/#marketing-ai'), 'Marketing AI'], [r('grow/#ads'), 'Ads & attribution'], [r('grow/#guest-data'), 'Guest data'], [r('grow/#reviews'), 'Reviews']])}
 ${col('Solutions', [...solutions.map(pageLink), [`${rel}solutions/`, 'All solutions']])}
 ${col('Locations', geos.map(pageLink))}
