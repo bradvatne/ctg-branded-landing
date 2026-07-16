@@ -5,6 +5,7 @@ slug: meta-conversions-api-for-venue-bookings
 date: 2026-07-06
 author: Clubtech Global
 category: Marketing
+related: /grow/#ads|/blog/ga4-for-venue-bookings/|/book-a-demo/
 excerpt: "Meta Conversions API for bookings, explained for venue operators — why pixel attribution broke, what CAPI sends, and what changes in your ad results."
 hero: /assets/blog/meta-conversions-api-for-venue-bookings.webp
 heroAlt: "Booking events flowing from a venue booking engine into ad platforms"
@@ -66,7 +67,7 @@ Server-side events change the mechanics. The abandoned-table event arrives withi
 
 ## Or your platform just does this
 
-Full disclosure of the obvious: this is one of the reasons Clubtech exists. On our platform every booking is piped to Meta, Google, and GA4 in real time as a revenue-carrying conversion event, abandoned-cart CAPI events fire within seconds with the zone, date, and price attached, and transaction values post back for value-based optimization — with no developer project, because it's the [ads workflow built into the revenue engine](/revenue.html), not an integration you commission. If your current booking provider can't tell you what events they send and when, that's your answer.
+Full disclosure: this is one of the reasons Clubtech exists. On our platform every booking is piped to Meta, Google, and GA4 in real time as a revenue-carrying conversion event, abandoned-cart CAPI events fire within seconds with the zone, date, and price attached, and transaction values post back for value-based optimization. It is the [ads workflow built into Clubtech](/grow/#ads), not a separate developer project. If your current provider cannot show which events it sends and when, ask for that boundary in writing.
 
 ## Questions operators ask
 
@@ -96,4 +97,4 @@ Send an abandoned-cart event through CAPI the moment checkout stalls, carrying t
 
 ---
 
-**See your bookings become conversion events.** 15 minutes, no pitch deck, no contracts — we'll show the ads workflow running on a venue like yours. [Book a demo](/contact.html)
+**See your bookings become conversion events.** Review the [ads workflow](/grow/#ads), then [book a demo](/book-a-demo/) to see it on a venue like yours.

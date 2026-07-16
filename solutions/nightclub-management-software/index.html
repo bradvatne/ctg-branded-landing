@@ -29,6 +29,7 @@
   <link rel="preload" href="../../fonts/albert-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="../../css/styles.css">
   <link rel="stylesheet" href="../../css/blog.css">
+  <link rel="stylesheet" href="../../css/content-blocks.css">
   <link rel="stylesheet" href="../../css/consent.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="../../css/consent.css"></noscript>
   <link rel="stylesheet" href="../../css/booking.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="../../css/booking.css"></noscript>
   <script>document.documentElement.classList.add('js')</script>
@@ -96,7 +97,7 @@
           "name": "Is there a nightclub management app that works on mobile?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Clubtech is mobile-first because 82% of bookings happen on a phone after 10pm. Guests book in four taps with sub-second load, no app install, and Apple Pay or Google Pay, and operators run the floor and door from the same platform. The venue's guests never download anything — the club management app runs in the browser on the venue's own domain."
+            "text": "Yes. Clubtech is mobile-first because 82% of bookings happen on a phone after 10pm. Guests book in four taps with no app install, and operators run the floor and door from the same platform. The venue's guests never download anything — the booking journey runs in the browser on the venue's own domain."
           }
         },
         {
@@ -153,8 +154,8 @@
             <div class="mega-col">
               <a class="mega-link" href="../../sell/#events"><span class="mega-lt">Events &amp; ticketing</span><span class="mega-ld">Tiered tickets and QR check-in</span></a>
               <a class="mega-link" href="../../sell/#packages"><span class="mega-lt">Packages &amp; upsells</span><span class="mega-ld">Bottles, cakes, transfers</span></a>
-              <a class="mega-link" href="../../sell/#gift-cards"><span class="mega-lt">Gift cards</span><span class="mega-ld">Prepaid revenue, new guests</span></a>
               <a class="mega-link" href="../../sell/#dynamic-pricing"><span class="mega-lt">Dynamic pricing</span><span class="mega-ld">Price the same seats to demand</span></a>
+              <a class="mega-link" href="../../sell/#prepayments"><span class="mega-lt">Prepayments &amp; deposits</span><span class="mega-ld">Commit revenue before arrival</span></a>
               <a class="mega-link" href="../../sell/#revenue"><span class="mega-lt">Revenue</span><span class="mega-ld">The four-lever revenue playbook</span></a>
             </div>
               </div>
@@ -167,10 +168,9 @@
             <div class="mega-panel">
               <div class="mega-cols">
             <div class="mega-col">
-              <a class="mega-link" href="../../grow/#marketing-ai"><span class="mega-lt">Marketing AI</span><span class="mega-ld">Ad attribution &amp; retargeting</span></a>
               <a class="mega-link" href="../../grow/#ads"><span class="mega-lt">Ads &amp; attribution</span><span class="mega-ld">The booking is the conversion</span></a>
+              <a class="mega-link" href="../../grow/#abandoned-recovery"><span class="mega-lt">Abandoned recovery</span><span class="mega-ld">Return to the zone, date, and price</span></a>
               <a class="mega-link" href="../../grow/#guest-data"><span class="mega-lt">Guest data &amp; reports</span><span class="mega-ld">20+ reports, data you own</span></a>
-              <a class="mega-link" href="../../grow/#reviews"><span class="mega-lt">Clubtech Reviews</span><span class="mega-ld">Post-visit guest feedback</span></a>
             </div>
               </div>
             </div>
@@ -254,7 +254,7 @@
               <a class="mega-link" href="../../careers/"><span class="mega-lt">Careers</span><span class="mega-ld">Work at Clubtech</span></a>
               <a class="mega-link" href="../../delivery/"><span class="mega-lt">How we deliver</span><span class="mega-ld">Five stages to live</span></a>
               <a class="mega-link" href="../../support/"><span class="mega-lt">Support</span><span class="mega-ld">Help for venue teams</span></a>
-              <a class="mega-link" href="../../index.html#contact"><span class="mega-lt">Contact</span><span class="mega-ld">Talk to the team</span></a>
+              <a class="mega-link" href="../../book-a-demo/"><span class="mega-lt">Contact sales</span><span class="mega-ld">Book a focused walkthrough</span></a>
             </div>
               </div>
             </div>
@@ -279,15 +279,14 @@
           <details class="m-group"><summary>Sell</summary><div>
             <a href="../../sell/#events">Events &amp; ticketing</a>
             <a href="../../sell/#packages">Packages &amp; upsells</a>
-            <a href="../../sell/#gift-cards">Gift cards</a>
             <a href="../../sell/#dynamic-pricing">Dynamic pricing</a>
+            <a href="../../sell/#prepayments">Prepayments &amp; deposits</a>
             <a href="../../sell/#revenue">Revenue</a>
           </div></details>
           <details class="m-group"><summary>Grow</summary><div>
-            <a href="../../grow/#marketing-ai">Marketing AI</a>
             <a href="../../grow/#ads">Ads &amp; attribution</a>
+            <a href="../../grow/#abandoned-recovery">Abandoned recovery</a>
             <a href="../../grow/#guest-data">Guest data &amp; reports</a>
-            <a href="../../grow/#reviews">Clubtech Reviews</a>
           </div></details>
           <details class="m-group"><summary>Solutions</summary><div>
             <a href="../../for-hotels/">Hotels &amp; resorts</a>
@@ -326,7 +325,7 @@
             <a href="../../careers/">Careers</a>
             <a href="../../delivery/">How we deliver</a>
             <a href="../../support/">Support</a>
-            <a href="../../index.html#contact">Contact</a>
+            <a href="../../book-a-demo/">Contact sales</a>
           </div></details>
           <a class="button button-mint m-cta" href="../../book-a-demo/" data-open-demo>Book a Demo</a>
           <a class="m-login" href="https://id.clubtechglobal.com" rel="noopener">Login</a>
@@ -335,42 +334,35 @@
     </nav>
   </header>
 <main id="main">
-  <header class="solution-hero"><div class="shell solution-hero-grid"><div><p class="solution-kicker"><i></i>Built for nightclubs</p><h1>The nightclub management software that <span class="mint-text">runs the night, not just the list.</span></h1><p class="solution-hero-copy">Nightclub management software that runs the whole night: VIP table booking, floor plan, door, ads, and guest data in one platform. No monthly fee.</p><div class="solution-actions"><a class="button button-mint" href="../../book-a-demo/" data-open-demo>Book a Demo</a><a class="button button-ghost" href="#how-it-works">See how it works ↓</a></div><ul class="solution-proofline"><li><strong>VIP tables</strong><span>Pre-sold on the map</span></li><li><strong>Live floor</strong><span>Allocation in one view</span></li><li><strong>Door list</strong><span>QR-ready check-in</span></li></ul></div><div class="solution-hero-visual"><img class="solution-hero-photo" src="../../assets/blog/nightclub-table-booking.webp" alt="Nightclub floor with VIP booths and dancefloor lit for a pre-sold Saturday night" fetchpriority="high" decoding="async"><img class="solution-hero-shot" src="../../assets/product/operator-floor.webp" alt="Clubtech Nightclubs product experience" fetchpriority="high" decoding="async"><span class="solution-hero-label"><i></i>Product-led, configured to the venue</span></div></div></header>
-  <section class="solution-intro" id="how-it-works"><div class="shell solution-intro-grid"><div class="solution-intro-label"><p class="eyebrow">Why this fit matters</p><p>Furniture · zones · dayparts · owned guest data</p></div><div class="solution-lead"><p>Most nightclubs run on four systems that don&#39;t talk to each other: a booking inbox, a POS, a door clipboard, and an ads account somebody logs into on Monday. Saturday&#39;s table sales live in DMs, the floor plan lives in a host&#39;s head, the guest list lives on a promoter&#39;s phone, and the spend that filled the room can&#39;t be traced to a single booking. Four tools, four blind spots, one night to get right.</p>
+  <header class="solution-hero"><div class="shell solution-hero-grid"><div><p class="solution-kicker"><i></i>Built for nightclubs</p><h1>The nightclub management software that <span class="mint-text">runs the night, not just the list.</span></h1><p class="solution-hero-copy">Nightclub management software that runs the whole night: VIP table booking, floor plan, door, ads, and guest data in one platform. No monthly fee.</p><div class="solution-actions"><a class="button button-mint" href="../../book-a-demo/" data-open-demo>Book a Demo</a><a class="button button-ghost" href="#how-it-works">See the workflow ↓</a></div><a class="solution-canonical" href="/platform/#operations">Canonical product detail <span aria-hidden="true">↗</span></a><ul class="solution-proofline"><li><strong>VIP tables</strong><span>Pre-sold on the map</span></li><li><strong>Live floor</strong><span>Allocation in one view</span></li><li><strong>Door list</strong><span>QR-ready check-in</span></li></ul></div><div class="solution-hero-visual"><div class="solution-stage-chrome"><span></span><span></span><span></span><small>Clubtech · Nightclubs</small></div><img class="solution-hero-shot" src="../../assets/product/operator-floor.webp" alt="Clubtech Nightclubs product experience" fetchpriority="high" decoding="async"><figure class="solution-hero-photo"><img src="../../assets/blog/nightclub-table-booking.webp" alt="Nightclub floor with VIP booths and dancefloor lit for a pre-sold Saturday night" fetchpriority="high" decoding="async"><figcaption>Nightclubs · venue context</figcaption></figure><span class="solution-hero-label"><i></i>Live product surface</span></div></div></header>
+  <section class="solution-intro"><div class="shell solution-intro-grid"><div class="solution-intro-label"><p class="eyebrow">The operating case</p><p>Inventory · revenue · service day · owned data</p></div><div class="solution-lead"><p>Most nightclubs run on four systems that don&#39;t talk to each other: a booking inbox, a POS, a door clipboard, and an ads account somebody logs into on Monday. Saturday&#39;s table sales live in DMs, the floor plan lives in a host&#39;s head, the guest list lives on a promoter&#39;s phone, and the spend that filled the room can&#39;t be traced to a single booking. Four tools, four blind spots, one night to get right.</p>
 <p>Nightclub management software is meant to close those gaps. Clubtech runs the whole night from one platform — VIP table booking, front-of-house operations, marketing, and guest intelligence — white-label on your own domain, with the venue owning its guest data. It&#39;s the system behind $332k in weekly GMV for venue partners in more than 7 countries: reservations, front-of-house operations, and marketing in one platform, not three stitched-together tools.</p>
 </div></div></section>
-<section class="solution-story "><div class="shell solution-story-grid"><div class="solution-copy"><p class="eyebrow">01 · Nightclubs</p><h2>One platform instead of four stitched tools</h2>
-<p>A club management system earns its place by removing handoffs, not adding logins. On Clubtech the booking map, the floor plan, and the marketing loop are the same object, so a table sold online is already placed on tonight&#39;s floor and already firing into your ads account.</p>
-<ul><li><strong>Reservations, operations, and marketing in one place.</strong> The sale, the seating, and the retargeting run off one guest record — no exports, no reconciling three dashboards on Monday.</li><li><strong>White-label on your domain.</strong> Guests book on your brand, and the guest data belongs to the venue, not to a marketplace renting you its audience.</li><li><strong>Low switching cost.</strong> It sits on top of your existing POS and PMS with no major IT changes — a club management app that runs the night, not a stack replacement.</li></ul>
-<p>For the deep-dive on the VIP table side of this — the 3D map, package ladders, and prepayment mechanics — see the dedicated <a href="https://www.clubtechglobal.com/solutions/nightclub-table-booking/" rel="noopener">nightclub table booking system</a> page. This page is the umbrella: the whole night, end to end.</p>
-</div><div class="solution-visual"><div class="solution-shot-card"><img src="../../assets/product/operator-floor.webp" alt="Clubtech product view for Nightclubs" loading="lazy" decoding="async"><div class="solution-shot-meta"><span>Nightclubs product view</span><span>Clubtech platform</span></div></div></div></div></section><section class="solution-story is-reverse"><div class="shell solution-story-grid"><div class="solution-copy"><p class="eyebrow">02 · Nightclubs</p><h2>VIP table booking that pre-sells the deck</h2>
-<p>The highest-margin inventory in the venue is the part still being sold by conversation at most clubs. Clubtech turns it into a transaction.</p>
-<ul><li><strong>Map-first, not grid-first.</strong> Guests explore your floor from a 3D birds-eye view, tap the exact booth or table, watch 360° walkthroughs of the room, and commit before the price reveals. They buy the spot, not &quot;a table.&quot;</li><li><strong>Tiered packages with stackable add-ons.</strong> Bed-only through party package to the ultimate tier, plus bottles, cakes, and transfers added in a tap — the upsell happens at booking, not at the rope.</li><li><strong>Prepayment kills the no-show table.</strong> Deposits, minimum spends, and prepayment mean the group arrives or the revenue stays with you. Dynamic pricing by demand and daypart, plus a &quot;Book Online &amp; Save&quot; spread, pulls commitment forward — so you read Saturday&#39;s floor days ahead.</li></ul>
-<p>This is the same mechanic that took FINNS Beach Club from on-the-day bookings with no financial guarantee to, in CEO Beau Whittington&#39;s words, &quot;millions of dollars worth of pre-paid bookings each month.&quot; Guaranteed inventory behaves differently from promised inventory.</p>
-</div><div class="solution-visual"><div class="solution-shot-card"><img src="../../assets/product/doorlist-list.webp" alt="Clubtech product view for Nightclubs" loading="lazy" decoding="async"><div class="solution-shot-meta"><span>Nightclubs product view</span><span>Clubtech platform</span></div></div></div></div></section><section class="solution-story "><div class="shell solution-story-grid"><div class="solution-copy"><p class="eyebrow">03 · Nightclubs</p><h2>The floor and the door, before doors open</h2>
-<p>Nightclub management software has to run the service day, not just take the reservation. Clubtech runs both sides of the rope.</p>
-<ul><li><strong>Interactive floor plan with automatic allocation.</strong> Online sales sync to an internal floor map in real time, and automatic seating allocation places parties as they book — inventory never double-sells.</li><li><strong>Door and guest-list VMS.</strong> Guest-list and visitor management replaces the clipboard and the promoters&#39; phones, and native events booking with tiered tickets and QR-code check-in runs the ticketed nights.</li><li><strong>Operator console.</strong> By 9pm it shows where tonight&#39;s revenue is sitting: which booths are prepaid, what each table ordered, who&#39;s on the list. Hosts greet confirmed parties by name instead of triaging a queue of maybes.</li></ul>
-<p>When the floor sells out, priority and free-entry capture takes the guest&#39;s details anyway — sold out is not a lost guest. See the <a href="https://www.clubtechglobal.com/operations/" rel="noopener">operations overview</a> for how the service day runs.</p>
-</div><div class="solution-visual"><figure class="solution-photo-card"><img src="../../assets/blog/nightclub-table-booking.webp" alt="Nightclub floor with VIP booths and dancefloor lit for a pre-sold Saturday night" loading="lazy" decoding="async"><figcaption>Nightclubs · configured around the venue</figcaption></figure></div></div></section><section class="solution-story is-reverse"><div class="shell solution-story-grid"><div class="solution-copy"><p class="eyebrow">04 · Nightclubs</p><h2>Marketing and guest intelligence, built in</h2>
-<p>The spend that filled the room should be traceable to the bookings it produced. On Clubtech it is.</p>
-<ul><li><strong>Real-time ads loop.</strong> Every booking fires to Meta, Google, and GA4 with revenue values posted back, so campaigns optimize toward booked dollars, not a conversion count. Abandoned-cart CAPI events fire within seconds and return the guest to the exact zone, date, and price they left. Lookalikes are seeded from your highest-LTV bookers.</li><li><strong>Every-guest data capture.</strong> The booker invites their group, and each invited guest supplies their own details — so you capture the whole party for marketing, not just the payer.</li><li><strong>20+ built-in reports.</strong> Booking volume, lead time by daypart, average value by variant and package, repeat-customer share — read in the platform, no CSV exports.</li></ul>
-<p>Because 82% of bookings happen on a phone after 10pm, the checkout is built for the group-chat hour: sub-second load, four-tap checkout, no app install, Apple Pay and Google Pay, multi-currency, with Airwallex, Opera PMS, Midtrans, and WhatsApp integrated. See the full <a href="https://www.clubtechglobal.com/platform/" rel="noopener">platform</a> for how it fits together.</p>
-<p>The commercials are plain: no monthly fee, a 4% online processing fee paid by the customer, and a one-time $2,000 setup per venue covering widget setup, configuration, and staff training. It sits on your existing POS, so switching is low-cost. <a href="https://www.clubtechglobal.com/book-a-demo/" rel="noopener">Book a demo</a> for a walkthrough built around your venue.</p>
-</div><div class="solution-visual"><div class="solution-shot-card"><img src="../../assets/product/doorlist-list.webp" alt="Clubtech product view for Nightclubs" loading="lazy" decoding="async"><div class="solution-shot-meta"><span>Nightclubs product view</span><span>Clubtech platform</span></div></div></div></div></section>
 <section class="solution-product-band"><div class="shell"><div class="solution-product-heading"><h2>The table, the floor, and the door agree.</h2><p>VIP sales, live allocation, guest lists, and check-in sit on one operating picture.</p></div><div class="solution-product-grid"><figure><img src="../../assets/product/operator-floor.webp" alt="Primary Clubtech product view for Nightclubs" loading="lazy" decoding="async"><figcaption>Nightclubs booking view <span>Guest side</span></figcaption></figure><figure><img src="../../assets/product/doorlist-list.webp" alt="Secondary Clubtech product view for Nightclubs" loading="lazy" decoding="async"><figcaption>Connected operating view <span>Venue side</span></figcaption></figure></div></div></section>
+<section class="solution-module solution-fit "><div class="shell solution-fit-layout"><div><p class="solution-module-index">01 · Operating fit</p><h2>One platform instead of four stitched tools</h2><p>A club management system earns its place by removing handoffs, not adding logins. On Clubtech the booking map, the floor plan, and the marketing loop are the same object, so a table sold online is already placed on tonight&#39;s floor and already firing into your ads account.</p>
+
+<p>For the deep-dive on the VIP table side of this — the 3D map, package ladders, and prepayment mechanics — see the dedicated <a href="https://www.clubtechglobal.com/solutions/nightclub-table-booking/" rel="noopener">nightclub table booking system</a> page. This page is the umbrella: the whole night, end to end.</p></div><ul class="solution-fit-list"><li><span>01</span><div><strong>Reservations, operations, and marketing in one place.</strong> The sale, the seating, and the retargeting run off one guest record — no exports, no reconciling three dashboards on Monday.</div></li><li><span>02</span><div><strong>White-label on your domain.</strong> Guests book on your brand, and the guest data belongs to the venue, not to a marketplace renting you its audience.</div></li><li><span>03</span><div><strong>Low switching cost.</strong> It sits on top of your existing POS and PMS with no major IT changes — a club management app that runs the night, not a stack replacement.</div></li></ul></div></section><section class="solution-module solution-workflow " id="how-it-works"><div class="shell"><div class="solution-module-head"><p class="solution-module-index">02 · Workflow</p><h2>VIP table booking that pre-sells the deck</h2><p>The highest-margin inventory in the venue is the part still being sold by conversation at most clubs. Clubtech turns it into a transaction.</p>
+
+<p>This is the same mechanic that took FINNS Beach Club from on-the-day bookings with no financial guarantee to, in CEO Beau Whittington&#39;s words, &quot;millions of dollars worth of pre-paid bookings each month.&quot; Guaranteed inventory behaves differently from promised inventory.</p></div><ol class="solution-steps"><li><span>01</span><div><strong>Map-first, not grid-first.</strong> Guests explore your floor from a 3D birds-eye view, tap the exact booth or table, watch 360° walkthroughs of the room, and commit before the price reveals. They buy the spot, not &quot;a table.&quot;</div></li><li><span>02</span><div><strong>Tiered packages with stackable add-ons.</strong> Bed-only through party package to the ultimate tier, plus bottles, cakes, and transfers added in a tap — the upsell happens at booking, not at the rope.</div></li><li><span>03</span><div><strong>Prepayment kills the no-show table.</strong> Deposits, minimum spends, and prepayment mean the group arrives or the revenue stays with you. Dynamic pricing by demand and daypart, plus a &quot;Book Online &amp; Save&quot; spread, pulls commitment forward — so you read Saturday&#39;s floor days ahead.</div></li></ol></div></section><section class="solution-module solution-capabilities "><div class="shell solution-capability-layout"><div class="solution-capability-stage"><div class="solution-stage-chrome"><span></span><span></span><span></span><small>Clubtech · Nightclubs</small></div><img src="../../assets/product/doorlist-list.webp" alt="Clubtech Nightclubs operating view" loading="lazy" decoding="async"></div><div class="solution-capability-copy"><p class="solution-module-index">03 · Product capabilities</p><h2>The floor and the door, before doors open</h2><p>Nightclub management software has to run the service day, not just take the reservation. Clubtech runs both sides of the rope.</p>
+
+<p>When the floor sells out, priority and free-entry capture takes the guest&#39;s details anyway — sold out is not a lost guest. See the <a href="https://www.clubtechglobal.com/platform/#operations" rel="noopener">operations overview</a> for how the service day runs.</p><ul class="solution-capability-list"><li><span>01</span><div><strong>Interactive floor plan with automatic allocation.</strong> Online sales sync to an internal floor map in real time, and automatic seating allocation places parties as they book — inventory never double-sells.</div></li><li><span>02</span><div><strong>Door and guest-list VMS.</strong> Guest-list and visitor management replaces the clipboard and the promoters&#39; phones, and native events booking with tiered tickets and QR-code check-in runs the ticketed nights.</div></li><li><span>03</span><div><strong>Operator console.</strong> By 9pm it shows where tonight&#39;s revenue is sitting: which booths are prepaid, what each table ordered, who&#39;s on the list. Hosts greet confirmed parties by name instead of triaging a queue of maybes.</div></li></ul></div></div></section><section class="solution-module solution-outcomes dark-section "><div class="shell"><div class="solution-module-head"><p class="solution-module-index">04 · Operator outcomes</p><h2>Marketing and guest intelligence, built in</h2><p>The spend that filled the room should be traceable to the bookings it produced. On Clubtech it is.</p>
+
+<p>Because 82% of bookings happen on a phone after 10pm, the checkout is built for the group-chat hour: four-tap checkout, no app install, wallet checkout, and multi-currency support. Exact payment and connector scope is confirmed for the venue during implementation. See the full <a href="https://www.clubtechglobal.com/platform/" rel="noopener">platform</a> for how it fits together.</p>
+<p>The commercials are plain: no monthly fee, a 4% online processing fee paid by the customer, and a one-time $2,000 setup per venue covering widget setup, configuration, and staff training. It sits on your existing POS, so switching is low-cost. <a href="https://www.clubtechglobal.com/book-a-demo/" rel="noopener">Book a demo</a> for a walkthrough built around your venue.</p></div><ul class="solution-outcome-grid"><li><span>01</span><div><strong>Real-time ads loop.</strong> Every booking fires to Meta, Google, and GA4 with revenue values posted back, so campaigns optimize toward booked dollars, not a conversion count. Abandoned-cart CAPI events fire within seconds and return the guest to the exact zone, date, and price they left. Lookalikes are seeded from your highest-LTV bookers.</div></li><li><span>02</span><div><strong>Every-guest data capture.</strong> The booker invites their group, and each invited guest supplies their own details — so you capture the whole party for marketing, not just the payer.</div></li><li><span>03</span><div><strong>20+ built-in reports.</strong> Booking volume, lead time by daypart, average value by variant and package, repeat-customer share — read in the platform, no CSV exports.</div></li></ul></div></section>
 <section class="solution-faq"><div class="shell solution-faq-grid"><div><p class="eyebrow">Operator questions</p><h2>Questions operators ask</h2></div><div class="solution-faq-list"><details><summary>What is nightclub management software?</summary><div class="solution-faq-answer">
 <p>Nightclub management software runs the operational side of a club — table bookings, the floor plan, the door and guest list, ticketing, payments, and marketing — from one system. Clubtech combines all of that into a single platform, white-label on the venue&#39;s domain, so reservations, front-of-house operations, and marketing share one guest record instead of living in four disconnected tools.</p>
 </div></details><details><summary>What should a club management system include?</summary><div class="solution-faq-answer">
 <p>At minimum: a way to sell tables, an operator floor plan that reflects those sales in real time, door and guest-list management, and reporting you can act on. Clubtech adds map-first VIP table booking, automatic seating allocation, an operator console, a real-time ads loop, and 20+ built-in reports — so the system runs the whole night, not just the reservation.</p>
 </div></details><details><summary>Is there a nightclub management app that works on mobile?</summary><div class="solution-faq-answer">
-<p>Yes. Clubtech is mobile-first because 82% of bookings happen on a phone after 10pm. Guests book in four taps with sub-second load, no app install, and Apple Pay or Google Pay, and operators run the floor and door from the same platform. The venue&#39;s guests never download anything — the club management app runs in the browser on the venue&#39;s own domain.</p>
+<p>Yes. Clubtech is mobile-first because 82% of bookings happen on a phone after 10pm. Guests book in four taps with no app install, and operators run the floor and door from the same platform. The venue&#39;s guests never download anything — the booking journey runs in the browser on the venue&#39;s own domain.</p>
 </div></details><details><summary>How does club management software reduce no-shows?</summary><div class="solution-faq-answer">
 <p>By taking payment at booking. Prepayments, deposits, and minimum spends turn a promised table into a guaranteed one — the group arrives or the revenue stays with you. Because prepayment happens days ahead, gaps surface early enough to resell the booth instead of discovering the hole at midnight.</p>
 </div></details><details><summary>Does nightclub software replace our POS?</summary><div class="solution-faq-answer">
 <p>No. Clubtech sits on top of your existing POS and PMS with no major IT changes, so switching is low-cost. It handles booking, the floor plan, the door, and marketing; your POS keeps handling in-venue transactions. The two run side by side rather than one replacing the other.</p>
 <hr/>
-<p><strong>See it on your floor plan.</strong> 15 minutes, no pitch deck, no contracts, no credit card — pre-configured to a venue like yours. <a href="mailto:info@clubtechglobal.com">Book a demo</a></p></div></details></div></div></section>
-  <section class="solution-related"><div class="shell"><div class="solution-related-head"><div><p class="eyebrow">Keep exploring</p><h2>Related solutions</h2></div><a href="../">See every solution ↗</a></div><div class="solution-related-grid"><a class="solution-related-card" href="../beach-clubs/"><img src="../../assets/blog/beach-clubs.webp" alt="" loading="lazy" decoding="async"><div class="solution-related-copy"><small>Beach clubs</small><strong>The beach club booking system that pre-sells your Saturday.</strong></div></a><a class="solution-related-card" href="../day-club-booking-system/"><img src="../../assets/blog/day-club-booking-system.webp" alt="" loading="lazy" decoding="async"><div class="solution-related-copy"><small>Day clubs</small><strong>The day club booking system that sells Saturday on Wednesday.</strong></div></a><a class="solution-related-card" href="../hotel-pool-booking/"><img src="../../assets/blog/hotel-pool-booking.webp" alt="" loading="lazy" decoding="async"><div class="solution-related-copy"><small>Hotel pools</small><strong>Hotel pool booking software that puts the deck on the P&amp;L.</strong></div></a></div></div></section>
+<p><strong>See it on your floor plan.</strong> 15 minutes, no pitch deck, no contracts, no credit card — pre-configured to a venue like yours. <a href="https://www.clubtechglobal.com/book-a-demo/" rel="noopener">Book a demo</a></p></div></details></div></div></section>
+  <section class="pathway-rail"><div class="shell"><p class="eyebrow">Connected product path</p><div class="pathway-head"><h2>See the capability, the operating fit, and the proof.</h2></div><div class="pathway-grid"><a class="pathway-card" href="/platform/#guest-lists"><span>01</span><strong>Platform</strong><p>Follow the booking from first tap to the floor.</p><i aria-hidden="true">↗</i></a><a class="pathway-card" href="/solutions/nightclub-table-booking/"><span>02</span><strong>See the operating fit</strong><p>Open the solution built around this venue or workflow.</p><i aria-hidden="true">↗</i></a><a class="pathway-card" href="/solutions/event-ticketing-for-clubs/"><span>03</span><strong>See the operating fit</strong><p>Open the solution built around this venue or workflow.</p><i aria-hidden="true">↗</i></a></div></div></section>
+  <section class="solution-related"><div class="shell"><div class="solution-related-head"><div><p class="eyebrow">Keep exploring</p><h2>Related solutions</h2></div><a href="../">See every solution ↗</a></div><div class="solution-related-grid"><a class="solution-related-card" href="../beach-clubs/"><img src="../../assets/product/booking-map.webp" alt="" loading="lazy" decoding="async"><div class="solution-related-copy"><small>Beach clubs</small><strong>The beach club booking system that pre-sells your Saturday.</strong></div><span aria-hidden="true">↗</span></a><a class="solution-related-card" href="../day-club-booking-system/"><img src="../../assets/product/pricing-calendar.webp" alt="" loading="lazy" decoding="async"><div class="solution-related-copy"><small>Day clubs</small><strong>The day club booking system that sells Saturday on Wednesday.</strong></div><span aria-hidden="true">↗</span></a><a class="solution-related-card" href="../hotel-pool-booking/"><img src="../../assets/product/booking-map.webp" alt="" loading="lazy" decoding="async"><div class="solution-related-copy"><small>Hotel pools</small><strong>Hotel pool booking software that puts the deck on the P&amp;L.</strong></div><span aria-hidden="true">↗</span></a></div></div></section>
   <section class="closing dark-section"><img class="closing-mark" src="../../brand/clubtech-mark-white.png" alt="" aria-hidden="true" width="1200" height="1200" loading="lazy"><div class="shell centered"><p class="eyebrow">Your venue, pre-sold.</p><h2>Put your venue<br><span class="mint-text">inside the demo.</span></h2><p>Book a focused walkthrough, configured around a premium venue like yours.</p><a class="button button-mint" href="../../book-a-demo/" data-open-demo>Book a Demo</a></div></section>
   <footer class="footer shell">
     <div class="footer-top">
@@ -383,7 +375,7 @@
         <a href="../../pricing/">Pricing</a>
         <a href="../../blog/">Blog</a>
         <a href="../../help/">Help</a>
-        <a href="mailto:info@clubtechglobal.com">Contact</a>
+        <a href="mailto:info@clubtechglobal.com">Email us</a>
         <a href="#" data-open-consent>Cookie preferences</a>
       </div>
     </div>
@@ -394,67 +386,36 @@
         <a href="../../platform/#operations">Operations &amp; floor</a>
         <a href="../../platform/#guest-lists">Guest lists</a>
         <a href="../../platform/#integrations">Integrations</a>
-        <a href="../../ai-bookings/">AI-agent bookings</a>
       </div>
       <div class="footer-col">
-        <p class="footer-col-h">Sell</p>
+        <p class="footer-col-h">Revenue</p>
         <a href="../../sell/#events">Events &amp; ticketing</a>
-        <a href="../../sell/#packages">Packages &amp; upsells</a>
-        <a href="../../sell/#gift-cards">Gift cards</a>
+        <a href="../../sell/#packages">Packages &amp; add-ons</a>
         <a href="../../sell/#dynamic-pricing">Dynamic pricing</a>
-        <a href="../../sell/#revenue">Revenue</a>
-      </div>
-      <div class="footer-col">
-        <p class="footer-col-h">Grow</p>
-        <a href="../../grow/#marketing-ai">Marketing AI</a>
-        <a href="../../grow/#ads">Ads &amp; attribution</a>
-        <a href="../../grow/#guest-data">Guest data</a>
-        <a href="../../grow/#reviews">Reviews</a>
+        <a href="../../sell/#revenue">Pre-paid revenue</a>
       </div>
       <div class="footer-col">
         <p class="footer-col-h">Solutions</p>
+        <a href="../../for-hotels/">Hotels &amp; resorts</a>
         <a href="../../solutions/beach-clubs/">Beach clubs</a>
-        <a href="../../solutions/day-club-booking-system/">Day clubs</a>
-        <a href="../../solutions/event-ticketing-for-clubs/">Event ticketing for clubs</a>
-        <a href="../../solutions/guest-list-management-software/">Guest list management software</a>
-        <a href="../../solutions/hotel-pool-booking/">Hotel pools</a>
-        <a href="../../solutions/nightclub-management-software/">Nightclub management software</a>
-        <a href="../../solutions/nightclub-table-booking/">Nightclub tables</a>
-        <a href="../../solutions/resorts/">Resorts</a>
-        <a href="../../solutions/restaurants/">Restaurants</a>
-        <a href="../../solutions/sunbed-booking-system/">Sunbed booking</a>
+        <a href="../../solutions/nightclub-management-software/">Nightclubs</a>
+        <a href="../../solutions/guest-list-management-software/">Guest lists</a>
         <a href="../../solutions/">All solutions</a>
       </div>
       <div class="footer-col">
-        <p class="footer-col-h">Locations</p>
-        <a href="../../solutions/beach-club-booking-bali/">Bali</a>
-        <a href="../../solutions/beach-club-booking-dubai/">Dubai</a>
-        <a href="../../solutions/beach-club-booking-ibiza/">Ibiza</a>
-        <a href="../../solutions/beach-club-booking-mykonos/">Mykonos</a>
-        <a href="../../solutions/beach-club-booking-phuket/">Phuket</a>
-      </div>
-      <div class="footer-col">
-        <p class="footer-col-h">Compare</p>
-        <a href="../../compare/access-collins-alternative/">Access collins alternative</a>
-        <a href="../../compare/book-tech-labs-alternative/">vs Book Tech Labs</a>
-        <a href="../../compare/fourvenues-alternative/">vs Fourvenues</a>
-        <a href="../../compare/hoteligy-alternative/">vs Hoteligy</a>
-        <a href="../../compare/megatix-alternative/">Megatix alternative</a>
-        <a href="../../compare/resortpass-alternative/">vs ResortPass</a>
-        <a href="../../compare/servme-alternative/">vs serVme</a>
-        <a href="../../compare/sevenrooms-alternative/">vs SevenRooms</a>
-        <a href="../../compare/tablelist-alternative/">Tablelist alternative</a>
-        <a href="../../compare/urvenue-alternative/">vs UrVenue</a>
-        <a href="../../compare/">All comparisons</a>
+        <p class="footer-col-h">Resources</p>
+        <a href="../../blog/">The Index</a>
+        <a href="../../blog/finns-beach-club-case-study/">FINNS case study</a>
+        <a href="../../compare/">Compare Clubtech</a>
+        <a href="../../help/">Help center</a>
       </div>
       <div class="footer-col">
         <p class="footer-col-h">Company</p>
         <a href="../../about/">About</a>
-        <a href="../../careers/">Careers</a>
         <a href="../../delivery/">How we deliver</a>
+        <a href="../../careers/">Careers</a>
         <a href="../../support/">Support</a>
         <a href="../../pricing/">Pricing</a>
-        <a href="../../index.html#contact">Contact</a>
       </div>
     </div>
     <div class="footer-wordmark"><img src="../../brand/clubtech-wordmark-white-560.png" alt="Clubtech" width="1200" height="300" loading="lazy"></div>

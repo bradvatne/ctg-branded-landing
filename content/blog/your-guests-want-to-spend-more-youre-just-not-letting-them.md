@@ -1,203 +1,74 @@
 ---
-title: "Your Guests Want to Spend More, You're Just Not Letting Them"
-titleTag: "Beach Club Upsells: Let Guests Spend More | Clubtech"
+title: "Let guests build the package before they arrive"
+titleTag: "Beach Club Package and Add-On Strategy | Clubtech"
 slug: your-guests-want-to-spend-more-youre-just-not-letting-them
 date: 2025-10-28
 author: Clubtech Global
 category: Marketing
-excerpt: "Stop leaving money on the table. Smart upsells turn your booking flow into a profit engine guests actually enjoy — pre-arrival, in-flow, and frictionless."
+related: /sell/#packages|/blog/beach-club-revenue-playbook/|/book-a-demo/
+excerpt: "Guests already plan the table, bottle, arrival, and occasion. Put those choices inside the booking instead of waiting for the floor team to sell them."
 hero: /assets/blog/your-guests-want-to-spend-more-youre-just-not-letting-them.webp
-heroAlt: "Champagne Pouring"
-description: "Your guests want to spend more — your booking flow is stopping them. How pre-arrival and in-flow upsells lift average spend without pressure."
+heroAlt: "Champagne being poured as part of a beach club package"
+description: "How beach clubs structure tiered packages and relevant add-ons so guests can commit more of the visit before arrival."
 ---
+The guest is not only booking furniture. They are planning who is coming, what the group will drink, whether the visit marks an occasion, and how they will arrive.
 
-Hospitality has a blind spot.
+If the booking flow sells only the daybed, the remaining choices move to the service day. The venue learns less before doors open, and the floor team has to build the package while the guest is already there.
 
-It's not service, or design, or even marketing.
+Clubtech supports tiered packages and stackable add-ons inside the booking flow. That gives the guest a way to build more of the visit before arrival.
 
-It's the moment between _"I'll book that table"_ and _"See you Saturday."_
+## Start with a clear package ladder
 
-That's where most venues lose money — not because guests don't want to spend, but because the system doesn't make it easy, seamless, or exciting to do so.
+A package ladder lets guests self-select by intent and budget. The approved Clubtech product model runs from the furniture on its own through party and higher-value experience packages, with relevant add-ons stacked on top.
 
-We've spent years studying how guests behave when booking premium experiences — from beach clubs in Bali to rooftop lounges in Sydney.
+The labels matter less than the clarity. Each tier should state:
 
-And one thing keeps showing up:
+- the exact furniture or zone;
+- the guest capacity;
+- the payment, deposit, or minimum-spend commitment;
+- what is included;
+- which extras can still be added.
 
-**People will spend more, if you give them a reason and a frictionless way to do it.**
+The next tier needs a reason to exist. More adjectives do not create more value.
 
-## The Myth of the "One and Done" Booking
+## Put the offer near the decision
 
-Most booking systems treat reservations like a transaction.
+The best time to show a package is after the guest understands the spot and before they have mentally finished the purchase. The furniture choice creates context: a front-row cabana can support a different package from a single lounger.
 
-Pick a table. Pay a deposit. Done.
+Secondary extras can appear later in the flow, including at order review, but the guest should not have to rebuild the reservation to add them.
 
-But hospitality isn't transactional. It's emotional.
+## Use add-ons the venue can deliver well
 
-Guests aren't booking furniture — they're buying a moment.
+Clubtech's approved examples include bottles, cakes, transfers, and products. Start with the items the team already sells and fulfills consistently.
 
-And in that context, the upsell isn't a "sales tactic."
+Each pre-booked item should arrive on the operator's service-day view with enough detail for the floor team to act. If the guest pays for a cake and the team sees only a higher order total, the digital sale has created an operational problem.
 
-It's an opportunity to enhance the experience _before it even begins._
+## Price commitment into the package
 
-Imagine this: a guest books a daybed. During checkout, they see a short video of your signature bottle parade — glowing sparklers, crowd cheering, that electric moment.
+Prepayments, deposits, and minimum spends turn the booking into a financial commitment. The amount and conditions should be explicit where the package is chosen.
 
-One click, and they've just added a premium bottle package to their cart.
+Dynamic pricing can then change what the same furniture earns across demand, daypart, or inventory conditions. The package still needs to make sense at each price state; a premium rate without premium value reads as a surcharge.
 
-That's not hard selling. That's storytelling — and it converts.
+## Measure the mix, not the mood
 
-## Why Traditional Systems Fail
+Track which package each zone sells, which add-ons attach, how average booking value changes, and what the team can fulfill without service failures. Use the venue's own booking data as the benchmark.
 
-Here's the uncomfortable truth:
-
-Most hospitality tech was built for restaurants, not beach clubs or nightlife.
-
-So it's built to take _orders_, not _create excitement_.
-
-Legacy systems bury upsells behind generic menus or text lists. No imagery, no emotion, no incentive.
-
-Even when operators try to promote premium items, they're fighting against a clunky interface that was never designed for that kind of experience.
-
-The result? Missed revenue. Lower spend per head. Wasted potential.
-
-You don't need "more guests."
-
-You need better digital merchandising.
-
-## What Great Upselling Looks Like
-
-Upselling isn't about pushing. It's about positioning.
-
-Here's what that looks like in practice:
-
-### 1. Contextual Timing
-
-Upsells work best when they appear naturally in the booking flow — not bolted on at the end.
-
-For example, after a guest selects their table, show them relevant add-ons:
-
-- A bottle upgrade for that section
-- A special event package for that date
-- A birthday decoration set for their booking type
-
-The timing matters. It feels personalized, not random.
-
-### 2. Visual Presentation
-
-A static list of add-ons doesn't sell — an interactive gallery does.
-
-Videos, lifestyle photos, even short clips from previous events.
-
-When guests _see_ the experience, they want to buy into it.
-
-### 3. Scarcity & Urgency
-
-Limited-time offers, "Almost Sold Out" tags, and countdown timers all create natural urgency.
-
-These aren't gimmicks; they're psychology.
-
-When designed well, they elevate perceived value and drive immediate action.
-
-### 4. Incentivized Pricing
-
-Guests love a deal, especially when it feels exclusive.
-
-Displaying the difference between standard and online prices — even a small percentage — signals value and rewards early booking.
-
-## The Operator's Perspective: Why It Matters
-
-Every extra item sold online means:
-
-- More pre-arrival revenue
-- Less dependency on floor upselling
-- Smoother operations (since the team knows what's been pre-ordered)
-
-It's not just about sales.
-
-It's about predictability and control.
-
-Operators who embrace structured upselling can forecast spend with far greater accuracy.
-
-They know, before doors even open, which sections will drive the most revenue — and can staff accordingly.
-
-That's what separates a "busy day" from a _profitable_ one.
-
-## How Clubtech Builds for Upsells
-
-We designed Clubtech's upsell flow to be irresistible — not because of tricks or gimmicks, but because it mirrors how guests already think.
-
-Our booking journey has a dedicated **Add-ons Gallery** — a clean, swipeable section built for visual engagement.
-
-Each item features:
-
-- A thumbnail and short description
-- Strikethrough "base" price vs. online discount
-- A tag showing the percentage saved
-- And a central video preview — think TikTok shop.
-
-It's built to convert attention into action.
-
-Guests can add items to their cart, browse categories, and see their spend update in real-time.
-
-A countdown timer ensures bookings aren't abandoned mid-checkout, while subtle cues ("Almost Sold Out," "Popular This Weekend") guide decisions naturally.
-
-For venues, every upsell is tracked and reportable — giving marketing and operations teams the data they need to optimize promotions.
-
-You're not guessing what works. You're watching it in real time.
-
-## The Bigger Picture: Building a Culture of Pre-Arrival Spend
-
-Upselling shouldn't be something your team has to "remember" to do.
-
-It should be baked into your digital DNA.
-
-When your booking engine is designed to drive incremental spend, it changes everything:
-
-- Guests arrive happier (they've already curated their experience)
-- Your staff spends less time pushing sales
-- Your revenue per booking climbs naturally
-
-And the perception of your brand shifts — from reactive to premium, from functional to _designed_.
-
-Because the venues that win aren't the ones with the best view.
-
-They're the ones that make spending money feel effortless.
-
-## Let Guests Be Your Marketers
-
-One underrated side effect of strong upselling: social content.
-
-When guests pre-book bottles, decor, or special moments, they're far more likely to share them.
-
-That means your upsells don't just increase revenue — they increase reach.
-
-Every parade, every birthday setup, every premium add-on becomes a piece of user-generated marketing content.
-
-And that's worth far more than a few extra dollars on the transaction.
-
-## Stop Leaving Money on the Table
-
-The hospitality industry has evolved, but too many venues are still running like it's 2015.
-
-Guests can book jets, villas, even private chefs online — but they can't pre-book a bottle at your beach club?
-
-That's the disconnect Clubtech fixes.
-
-We help venues turn their booking journey into a revenue engine — one that excites guests, streamlines operations, and unlocks the full potential of every booking.
-
-Because guests _want_ to spend more.
-
-You just need to let them.
+Clubtech does not publish a universal upsell percentage, so an article should not promise one. The useful claim is mechanical: packages and add-ons let the venue secure incremental spend inside the reservation, before arrival.
 
 ## Questions operators ask
 
-### What is upselling in a beach club booking flow?
+### What is a tiered beach club package?
 
-Upselling in a booking flow means offering relevant add-ons — premium beds, bottles, food packages, celebration extras — while the guest is completing their reservation online. The guest self-selects a richer experience before arrival, and the venue banks the upgrade instead of hoping for an on-the-day sale.
+It is a set of booking options around the same inventory, from the furniture itself to higher-value group or experience packages with defined inclusions.
 
-### When should venues present upsells?
+### Which add-ons belong in the booking flow?
 
-At the moments of highest intent: during package selection and just before checkout. Guests planning a visit are already in a buying mindset, so pre-arrival offers convert far better than on-site suggestions made while guests are settling in.
+Relevant, understandable items the venue can prepare reliably: bottles, cakes, transfers, food or beverage packages, and selected products.
 
-### Do upsells hurt the guest experience?
+### Do packages replace on-site selling?
 
-Not when they are relevant and frictionless. Guests read a well-targeted add-on — a daybed upgrade, a chilled bottle waiting at arrival — as better planning, not pressure. Irrelevant or repeated prompts are what damage trust, which is why context-aware offers matter.
+No. They secure predictable choices before arrival and give the floor team more context. On-site hospitality can still respond to what guests want during the visit.
+
+## Build the package around real inventory
+
+See [packages and add-ons](/sell/#packages) and the [beach club revenue playbook](/blog/beach-club-revenue-playbook/). To map packages onto your furniture, [book a demo](/book-a-demo/).

@@ -5,6 +5,7 @@ slug: how-to-make-a-guest-list-online
 date: 2026-07-16
 author: Clubtech Global
 category: Guides
+related: /blog/guest-list-management-for-venues/|/solutions/guest-list-management-software/|/book-a-demo/
 excerpt: "A step-by-step for making a guest list online — and the point where a venue outgrows a shared form and needs a door, QR check-in, and owned guest data."
 hero: /assets/blog/how-to-make-a-guest-list-online.webp
 heroAlt: "A host building a guest list on a tablet at a venue entrance"
@@ -70,4 +71,4 @@ When the list is running the door on a busy night. The signs are a slow queue, p
 
 ---
 
-**See it on your floor plan.** 15 minutes, no pitch deck, no contracts — we'll show up with the door already built for a venue like yours. [Book a demo](mailto:info@clubtechglobal.com)
+**See it on your floor plan.** Continue to the [guest-list solution](/solutions/guest-list-management-software/), then [book a demo](/book-a-demo/).

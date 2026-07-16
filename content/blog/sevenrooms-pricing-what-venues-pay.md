@@ -5,6 +5,7 @@ slug: sevenrooms-pricing-what-venues-pay
 date: 2026-07-16
 author: Clubtech Global
 category: Comparison
+related: /compare/sevenrooms-alternative/|/pricing/|/book-a-demo/
 excerpt: "SevenRooms doesn't publish list pricing — it's quote-based. Here's what shapes an enterprise reservations quote, and how a transparent model compares."
 hero: /assets/blog/sevenrooms-alternative.webp
 heroAlt: "A venue operator reviewing a software pricing quote on a laptop"

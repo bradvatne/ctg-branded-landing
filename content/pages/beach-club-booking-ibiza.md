@@ -1,69 +1,70 @@
 ---
-title: "The beach club booking system to sign **before Ibiza opens**"
+title: "Configure the booking system **before opening week.**"
 titleTag: "Beach Club Booking System Ibiza | Clubtech"
 slug: beach-club-booking-ibiza
+canonical: https://www.clubtechglobal.com/solutions/beach-club-booking-ibiza/
 section: solutions
-date: 2026-07-12
-excerpt: "A beach club booking system for Ibiza — VIP beds and minimum spends sold on a venue map, prepaid before opening week. Set up in the Jan–Apr window."
+canonicalFeature: /solutions/beach-clubs/
+related: /sell/#packages|/sell/#dynamic-pricing|/delivery/
+date: 2026-07-16
+excerpt: "Build the map, package ladder, minimum spends, and day-specific pricing before the first booking window opens."
 hero: /assets/blog/beach-club-booking-ibiza.webp
 heroAlt: "Ibiza beach club sunset terrace with white daybeds facing the Mediterranean"
-description: "A beach club booking system for Ibiza — VIP beds and minimum spends sold on a venue map, prepaid before opening week. Set up in the Jan–Apr window."
+description: "Clubtech helps Ibiza beach clubs configure map-first booking, packages, minimum spends, dynamic pricing, and delivery before opening week."
 ---
-Ibiza's season is a hard deadline. Opening parties land in spring, closing parties end the run in early autumn, and everything in between is finite: a fixed number of front-row beds, a fixed number of Saturdays, and a guest list that planned this trip months ago from London, Milan, Paris, and Amsterdam. A beach club booking system for Ibiza has one job — make sure the season opens pre-sold instead of hopeful — and one window to get installed: the quiet months before the island switches on.
+The useful time to decide how a beach club sells its premium inventory is before the first high-demand date reaches the door.
 
-That's why the decision belongs to January through April. Change booking systems in July and you're rebuilding the engine mid-flight. Sign in the pre-season and opening week starts with the map live, the team trained, and the first month's VIP rows already paid for.
+For Ibiza operators, this page focuses on the pre-opening configuration job: map the venue, define packages and minimum spends, set pricing rules, connect the required systems, and train the team.
 
-## The daybed is the ticket
+## Workflow — Build the selling system before the season starts
 
-Ibiza runs on reserved furniture the way arenas run on seats. The VIP bed, the front-row pair, the cabana with the sunset angle — guests don't want entry, they want *that spot*, and they'll commit to it weeks out if you let them.
+1. **Onboarding:** confirm venue details, sellable zones, imagery, packages, payments, and access.
+2. **Build:** turn the floor into the 3D booking map and configure inventory, package, and pricing rules.
+3. **Training:** prepare the operator team to manage bookings, allocation, guest lists, and the service-day console.
+4. **Go-live:** launch the white-label booking journey on the venue's domain.
+5. **Optimize:** use the 90-day optimize phase to read lead time, product mix, and booking value.
 
-A map-first booking flow sells exactly that. Guests explore your venue on an interactive map, open a 360° walkthrough of the zone, tap the bed they want, and prepay — with the minimum spend attached at booking, not negotiated at the door. Tiered packages ladder the commitment upward: bed only, party package, ultimate — with stackable add-ons like bottles and transfers chosen at checkout, when the group chat is excited, not on the deck when they're settled.
+[See the delivery program](/delivery/)
 
-Two things change when the bed is sold this way:
+## Capabilities — Package and price the exact position
 
-1. **The no-show stops being your problem.** A prepaid front row with a minimum spend attached either arrives or has already paid you. In a market where a walked bed on an August Saturday is unrecoverable, that's the single biggest revenue leak closed.
-2. **Pricing becomes an instrument.** Dynamic pricing earns more from the same beds on the dates that deserve it — opening week, peak August, closing weekends — while "Book Online & Save" spreads give the June midweek a reason to fill early. You can't add furniture and you can't stretch the calendar; yield per bed per sellable day is the only lever, and it finally has a handle.
+- The booking map sells a specific bed, cabana, table, or zone rather than a generic reservation.
+- Tiered packages and approved add-ons move pre-arrival spend into checkout.
+- Deposits, prepayments, and minimum spends commit the booking.
+- Dynamic pricing distinguishes dates, dayparts, and inventory by demand.
 
-## Built for a guest list that books before it flies
+[Explore packages and add-ons](/sell/#packages)
 
-Ibiza's crowd is overwhelmingly international and overwhelmingly pre-planned: the flight, the villa, and the big beach day are locked in from a phone abroad long before anyone lands. Across Clubtech venues, 82% of bookings happen on a phone after 10pm — for an Ibiza venue that's a Tuesday night in Manchester deciding where Saturday-after-next happens. If your booking flow is a DM thread or an enquiry form, that intent forms, wanders, and lands somewhere faster.
+## Outcomes — Open with a readable book, not a blank floor
 
-Clubtech loads in under a second and takes a guest from map to paid confirmation in four taps, with Apple Pay, Google Pay, and multi-currency card support — so the checkout feels local to a guest list that flies in from a dozen countries. And it's white-label throughout: your domain, your design, your guest data. Guests searching your venue's name plus "booking" land on you, not a marketplace that rents your own demand back to you.
+Before doors open, the operator can see what inventory is sold, which packages were chosen, and where the remaining demand sits. Booking volume, lead time, and product mix then give the revenue team information it can use while the selling calendar is still active.
 
-The data loop compounds all season. Every booking fires to Meta, Google, and GA4 in real time with revenue attached; lookalike audiences build from your highest-value guests, not follower counts; abandoned bookings retarget within seconds, returning a browser to the exact bed, date, and price they left. Party details are captured beyond just the booker, so a table of eight grows the database by eight — and the whole picture sits in 20+ built-in reports: lead time by daypart, average value by package, repeat-guest share, origin markets. By August you're pricing September on evidence.
+[Explore guest intelligence](/grow/#guest-data)
 
-The commercials fit a seasonal business: no monthly fee, and setup covers configuration and staff training. There's no subscription bleeding through the closed months — the platform earns when the deck sells.
+## Fit — A planned rollout, not a last-minute widget
 
-## Proven where the season is even harsher
+Clubtech is configured with the venue through onboarding, build, training, go-live, and optimization. It sits on top of the existing stack with zero major IT changes, with exact connector behavior confirmed during implementation.
 
-Clubtech's flagship proof point is FINNS Beach Club in Bali — one of the most-searched beach clubs in the world — where the platform took the venue from on-the-day bookings with no financial guarantee to millions of dollars of pre-paid bookings each month. Bali is a different market, but the mechanics that moved — map-first booking, prepayment, package ladders, priority capture when zones sell out — are the same ones an Ibiza deck runs on, compressed into five months instead of twelve. Clubtech supports venue partners in more than seven countries and processes $332k in weekly GMV; the [platform overview](../../platform/) shows the full engine, and the same model is live for short-season Mediterranean markets like [Mykonos](https://www.clubtechglobal.com/solutions/beach-club-booking-mykonos/).
-
-## The pre-season checklist
-
-Between January and April, an Ibiza operator can have all of this stood up without touching a live service day: venue map built and walkthroughs shot, zones and minimum spends configured, package tiers and add-ons loaded, price calendar set through closing, the team trained on the operator console, and the booking page live on your domain capturing early demand — because a meaningful share of peak-season front rows will sell before your first DJ soundchecks. Setup covers configuration and staff training, and it sits on top of your existing POS and PMS stack rather than replacing it, so there's no IT project standing between a winter decision and a spring opening.
+No specific Ibiza opening dates, venue results, customer names, or market statistics are claimed here.
 
 ## Questions operators ask
 
-### When should an Ibiza beach club switch booking systems?
+### When should an Ibiza venue configure Clubtech?
 
-January through April, before opening week. Pre-season is when the venue map gets built, zones and minimum spends get configured, and staff get trained without a live deck at stake — and it's when early demand for opening parties and peak weekends can already be captured. Switching mid-season means migrating bookings under load; switching in winter means opening pre-sold.
-
-### How do guests book Ibiza beach clubs?
-
-Mostly in advance, from abroad, on a phone. Guests search the venue name plus "booking," pick a specific bed or cabana on an interactive venue map, choose a package, and prepay — often weeks before their flight. On Clubtech that whole flow is four taps with Apple Pay, Google Pay, or card, no app install, confirmation in seconds.
+Before the opening booking window. The team needs time to map inventory, define packages and pricing, complete technical review, and train operators.
 
 ### Can VIP beds and minimum spends be sold online?
 
-Yes — that's the core of the model. Each zone on the venue map carries its own pricing and minimum spend, committed and prepaid at booking rather than negotiated at the door. Tiered packages and stackable add-ons like bottles sell the upgrade at checkout, and dynamic pricing moves rates across the calendar so peak dates earn what they're worth.
+Yes. Exact furniture can carry tiered packages, deposits, prepayment, and minimum spends inside the booking journey.
 
-### What does a beach club booking system cost?
+### Does Clubtech replace the existing POS or PMS?
 
-Clubtech has no monthly fee. Setup covers the booking widget, system configuration, and staff training. For a business that's closed half the year, no subscription through the winter matters: the platform earns only when it's selling your furniture. [Book a demo](../../book-a-demo/) for a quote built around your venue.
+No. It sits on top of the existing stack rather than requiring a replacement project.
 
-### Does it replace our existing POS or PMS?
+### What does Clubtech cost?
 
-No. Clubtech sits on top of the stack you already run, integrating with existing POS and PMS systems — including Opera PMS for hotel-attached venues — with no major IT changes. That's what makes a January decision realistic: the booking layer goes live in weeks, and the tools your floor team already knows stay where they are.
+There is no monthly fee. The public model is a 4% online processing fee paid by the customer and a $2,000 one-time set-up fee per venue. [See pricing](/pricing/).
 
 ---
 
-**See your venue on Clubtech.** 15 minutes, no pitch deck, no contracts — we'll show up with the map already built for a venue like yours. [Book a demo](mailto:info@clubtechglobal.com)
+**Build the selling system before opening week.** [Book a venue-specific demo](/book-a-demo/).

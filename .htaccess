@@ -1,5 +1,8 @@
 # Clubtech branded landing — Apache runtime config (ignored by GitHub Pages)
 ErrorDocument 404 /404.html
 
-# Pricing is no longer published — send it to the book-a-demo flow.
-RedirectMatch 301 ^/pricing/?$ /book-a-demo/
+# Retired feature routes. Keep the HTML stubs as non-Apache fallbacks, but the
+# production server must send a real permanent redirect before serving them.
+RedirectMatch 301 ^/booking/?$ /platform/#booking
+RedirectMatch 301 ^/operations/?$ /platform/#operations
+RedirectMatch 301 ^/intelligence/?$ /grow/#guest-data

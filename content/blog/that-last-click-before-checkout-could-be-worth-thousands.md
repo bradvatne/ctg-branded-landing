@@ -1,128 +1,73 @@
 ---
-title: "That Last Click Before Checkout Could Be Worth Thousands"
-titleTag: "Last-Click Checkout Upsells for Venues | Clubtech"
+title: "The order-review step: one last useful offer before payment"
+titleTag: "Checkout Upsells for Venue Bookings | Clubtech"
 slug: that-last-click-before-checkout-could-be-worth-thousands
 date: 2025-12-01
 author: Clubtech Global
 category: Marketing
-excerpt: "Clubtech turns the final seconds before checkout into a high-intent revenue moment with context-aware upsells built directly into the booking flow."
+related: /sell/#packages|/blog/beach-club-revenue-playbook/|/book-a-demo/
+excerpt: "The order-review step can carry one relevant add-on without turning checkout into a catalogue. Here is how to use that moment well."
 hero: /assets/blog/that-last-click-before-checkout-could-be-worth-thousands.webp
-heroAlt: "Woman at a beach club online shopping"
-description: "The order-review step is the highest-intent moment in any booking flow. How context-aware last-click upsells add thousands in weekly revenue."
+heroAlt: "Guest reviewing a beach club booking on a phone"
+description: "How venues use the order-review step for relevant bottles, cakes, transfers, and package add-ons without slowing payment."
 ---
+The order-review step has one job: let the guest confirm the booking and pay. It can also carry one final, relevant offer, provided that offer does not make the guest reconsider the whole purchase.
 
-Every operator knows the booking journey isn't over until payment clears.
+For a beach club or premium venue, that may be a bottle matched to the package, a cake for a celebration, or a transfer tied to the arrival. Clubtech supports stackable add-ons inside the booking flow. The venue decides what belongs there.
 
-But the smartest ones know it's not _done_ even then.
+## Why the moment matters
 
-Because that **last moment before checkout** — when your guest is already committed, already in buying mode — is where serious revenue lives.
+By order review, the guest has chosen the date, furniture, and package. The remaining decision should be small. A relevant add-on feels like finishing the plan; an unrelated catalogue feels like another checkout.
 
-Most booking systems ignore it.
+That distinction is the operating rule. Do not ask the guest to solve a second booking problem seconds before payment.
 
-Clubtech builds for it.
+## What belongs at order review
 
-## The Power of "One More Thing"
+Good final-step offers share three traits:
 
-Think about your own behavior online.
+- **They fit the booking.** A group cabana can support a bottle package. A birthday booking can support a cake.
+- **They are easy to understand.** The guest knows what is included and what it costs without opening another page.
+- **They do not interrupt payment.** Adding or declining the offer keeps the guest in the same booking flow.
 
-You're about to confirm an order, and suddenly you see: _"Recommended for you."_
+Core package selection should happen earlier. Order review is for a small finishing choice, not the venue's full product catalogue.
 
-A travel site offers lounge access.
+## What does not belong there
 
-A hotel adds late checkout.
+Avoid unrelated products, vague urgency, and offers that need a member of staff to explain them. Do not use false scarcity. If availability is genuinely limited, connect the message to real inventory.
 
-You click.
+The review step is also the wrong place to introduce a complicated upgrade that changes the furniture, arrival time, or party rules. Those choices belong where the guest can compare them properly.
 
-That tiny moment of impulse — low friction, high intent — is one of the most profitable pieces of digital real estate in any online experience.
+## Measure against completion
 
-For beach clubs and premium venues, it's no different. Guests who've just locked in their seating are primed to upgrade. They're picturing the day — the view, the bottle, the arrival — and they're seconds away from spending a little more to make it better.
+An add-on is not useful if it increases attachment but reduces completed bookings. Track both:
 
-That's exactly where Clubtech's **"Recommended for your booking"** section lives.
+- checkout completion;
+- add-on attachment;
+- order value;
+- fulfillment problems and refunds.
 
-## The Last-Minute Upsell Engine
+The venue's own results should decide which offer stays. Clubtech does not publish a universal uplift for this placement, and the page should not imply one.
 
-On the **Order Review** page — right before payment — Clubtech automatically displays a curated selection of high-margin add-ons.
+## Connect the order to the floor
 
-Think: premium bottles, celebration packages, or merchandise.
+Every pre-booked item must appear clearly in the service-day workflow. The point is not only to collect payment. The floor team needs to know which table has the bottle, which cabana has the cake, and which arrival includes a transfer.
 
-These aren't random suggestions. They're context-aware recommendations, tailored to what the guest has already booked.
-
-Reserved a poolside daybed? You'll see bottle service options that fit that vibe.
-
-Booked a large cabana? Expect bundle offers that match group bookings.
-
-It feels personal, not pushy. Which is exactly why it converts.
-
-Venues running this feature consistently report high take rates — bottle add-ons being the standout performer. In some cases, this single section adds **thousands of dollars in incremental revenue each week**, with zero extra effort from staff.
-
-## Why It Works
-
-It's not about persuasion — it's about _timing._
-
-Guests at checkout are in what behavioral economists call the **"implementation mindset."** They've made the decision to buy. Their friction tolerance drops. Their emotional investment peaks.
-
-Add an offer that's:
-
-- Visually enticing (think product photo or video),
-- Logically relevant ("Goes perfectly with your table selection"), and
-- Convenient to add ("1-click to include"),
-
-…and you've created the perfect storm for conversion.
-
-That's what Clubtech does by design. The upsell isn't a pop-up or a distraction — it's woven naturally into the booking flow. A small, elegant suggestion that often leads to big returns.
-
-## The Psychology of a Perfect Upsell
-
-Last-minute upsells work because they meet three key principles:
-
-1. **Contextual Fit** – The offer has to make sense in the moment. Guests don't want random suggestions; they want enhancements that feel obvious.
-2. **Ease of Action** – No redirects, no typing, no new screens. Just click, add, done.
-3. **Visual Urgency** – Subtle design cues — a discount tag, a limited availability note, a bottle image — trigger quick, confident decisions.
-
-Clubtech's checkout flow nails all three. The "Recommended for your booking" section feels like part of the guest experience, not a marketing gimmick.
-
-## Real Revenue, Not Just Features
-
-For venues running on Clubtech, the results are tangible.
-
-Operators report that bottle add-ons from this section outperform all other upsell placements — even pre-arrival campaigns. Because guests at this stage aren't _considering_ spending more. They're _ready_ to.
-
-That readiness translates directly to pre-arrival revenue and higher average order value.
-
-When a guest adds a $250 bottle at checkout, that's $250 guaranteed — not weather-dependent, not reliant on in-venue sales. It's locked in.
-
-Multiply that by hundreds of weekly bookings, and that last click before checkout really can be worth thousands.
-
-## Why Most Systems Miss This
-
-Most booking platforms treat checkout as an endpoint. Clubtech treats it as an opportunity.
-
-Instead of letting guests exit after payment, we give them one last moment of discovery — one last "yes."
-
-That's what differentiates a passive booking system from a **revenue engine.**
-
-## The Takeaway
-
-In hospitality, the difference between a good system and a great one isn't how it handles bookings — it's how it maximizes them.
-
-That's why the smartest venues don't leave money on the table.
-
-They build their checkout flow to _add_ to it.
-
-And with Clubtech, that last click isn't just another upsell — it's a high-converting revenue driver designed into the guest experience from day one.
-
-Because when every detail is built for conversion, **even the smallest moment can move your bottom line.**
+That handoff is what turns a checkout offer into a product the venue can deliver consistently.
 
 ## Questions operators ask
 
-### What is a last-click upsell?
+### What is a checkout upsell?
 
-A last-click upsell is a context-aware offer shown at the order-review step, seconds before payment — when the guest is already committed to the booking. Because intent peaks at that moment, a relevant add-on converts at rates the rest of the funnel cannot match.
+It is a relevant add-on offered during order review, after the guest has selected the main booking but before payment.
 
-### Why is the order-review step so valuable?
+### Which offers work best?
 
-The guest has chosen their date, spot, and package and is in buying mode. One more relevant item — a bottle, a cake, a transfer — feels like completing the plan rather than a new purchasing decision, so attach rates are dramatically higher than for on-arrival offers.
+Offers with an obvious connection to the booking: bottles, cakes, transfers, or a simple package extra. The exact mix should come from the venue's own order data.
 
-### Which add-ons work best at checkout?
+### How many offers should appear?
 
-Items that need zero extra explanation and have obvious fit: bottle packages matched to the booked zone, celebration extras for dates that look like occasions, transfers, and upgrade-style add-ons. Relevance is the lever — generic catalogues underperform curated, contextual offers.
+Keep the final step restrained. One strong offer, or a very short set, protects payment clarity better than a long catalogue.
+
+## Use the final step with restraint
+
+See how Clubtech handles [packages and add-ons](/sell/#packages), then use the [revenue playbook](/blog/beach-club-revenue-playbook/) to place the tactic in the wider revenue stack. To test the flow, [book a demo](/book-a-demo/).

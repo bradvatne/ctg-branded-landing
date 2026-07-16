@@ -1,12 +1,28 @@
 # Clubtech — branded landing page
 
-Plain static site: hand-written HTML, CSS, and JavaScript. No frameworks, no runtime dependencies.
+Plain static site: hand-written HTML, generated HTML, CSS, and JavaScript. No framework and no production runtime dependencies.
 
 - `index.html` — the landing page
 - `css/styles.css` — design system ported from the original deck-aligned styles
 - `css/blog.css` — "The Index" blog design
 - `js/main.js` / `js/blog.js` — scroll interactions, deferred hero-video loading, category filter
 - `brand/`, `video/`, `assets/blog/` — assets (hero video re-encoded to 30 fps, ~1.5 MB, faststart, real poster frame)
+
+## Authoring and generated output
+
+Edit the source, then regenerate. Do not hand-edit generated routes.
+
+- Hand-built pages: `index.html`, `platform/`, `sell/`, `grow/`, `delivery/`, `book-a-demo/`.
+- Root landing sources: `content/landing/*.md` → `/<slug>/index.html`.
+- Solution/comparison sources: `content/pages/*.md` → `solutions/` and `compare/`.
+- Editorial sources: `content/blog/*.md` → `blog/`.
+- Shared renderer and chrome: `scripts/build-blog.mjs`.
+- Public claim and pathway configuration: `scripts/site-config.mjs`.
+- Generated route/link audit: `npm run audit:site`.
+
+The generator rewrites all generated directories and injects shared navigation
+and footer markup into the hand-built pages. Preserve unrelated worktree changes
+and review the generated diff after every build.
 
 ## Blog
 
@@ -21,9 +37,15 @@ npm run build:blog
 
 `scripts/build-blog.mjs` (zero dependencies — built-in markdown renderer) emits
 `blog/<slug>/index.html`, the `blog/index.html` directory page, and
-`sitemap.xml`. Commit the source AND the generated output. Posts canonicalize
-to the originals on www.clubtechglobal.com so this mirror doesn't compete with
-the primary blog in search.
+the landing, solution, comparison, `sitemap.xml`, and `llms.txt` outputs. Commit
+the source and generated output together. The site is self-canonical at
+`www.clubtechglobal.com`.
+
+Run the complete local verification with:
+
+```
+npm run verify
+```
 
 ## Deploy
 

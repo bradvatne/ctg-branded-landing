@@ -1,38 +1,75 @@
 ---
-title: Come build the platform **premium venues run on.**
+title: Build closer to **the venue floor.**
 titleTag: Careers at Clubtech | Clubtech
 slug: careers
 date: 2026-07-16
 group: company
+layout: careers
+ctaType: careers
+ctaHref: mailto:info@clubtechglobal.com?subject=Careers%20at%20Clubtech
+ctaLabel: Introduce yourself
 eyebrow: Company · Careers
-excerpt: We hire operators and builders — people who have worked a floor or shipped software, and want to change how premium venues sell. Small team, real venues, high-touch delivery.
-description: Careers at Clubtech — we hire operators and builders who want to change how premium venues sell. Reach out even when no formal role is posted.
+excerpt: Clubtech hires operators and builders who want their work close to the venues, teams, and commercial problems it serves.
+description: Careers at Clubtech for operators and builders who want to work close to premium venues and the product those teams use.
 cta2href: about/
 cta2label: About Clubtech
 ---
 
-## Who we look for
+## The work
 
-Clubtech is built by people who understand both sides of the counter — the operators who have run a Saturday service, and the builders who ship the software that runs it. We care less about a specific résumé than about whether you have felt the problem: the walk-up that never showed, the revenue that leaked at the door, the guest data a marketplace kept.
+Clubtech builds booking, operations, and marketing software for premium venues. The work reaches the booking journey, the floor on service day, and the commercial decisions venue teams make before the weekend.
 
-## How we work
+That keeps product work close to its consequence. A change can affect how a guest chooses a daybed, how a team allocates the floor, or how a venue reads demand.
 
-We are a small team that works close to real venues. Delivery is high-touch, so the people who build the platform also see it go live on a floor and hear what breaks. If you want distance between your work and its impact, this is not the place. If you want the opposite, it is.
+## Who fits here
 
-## Open roles
+### Operators
 
-We hire as we grow, so there is not always a formal opening posted. That does not mean we are not looking. If you would change how premium venues sell — whether you build, sell, design, or operate — tell us what you would do and how to reach you at info@clubtechglobal.com.
+You understand service-day pressure, sellable inventory, guest flow, and the difference between a feature that sounds useful and one a venue team will actually use.
 
-## Questions operators ask
+### Builders
 
-### Does Clubtech have open roles right now?
+You can turn a real operating problem into reliable software, clear design, useful data, or a buying journey that respects the operator's time.
 
-We hire as we grow, so formal openings come and go. When you would genuinely move the needle for how venues sell, we want to hear from you regardless of whether a role is posted.
+### Commercial thinkers
 
-### What is it like to work at Clubtech?
+You can connect product detail to revenue, delivery, and customer outcomes without hiding behind SaaS language.
 
-Small team, real venues, high-touch delivery. The people who build the product see it go live on a floor, which keeps the work close to the problem it solves.
+## How Clubtech works
 
-### How do I get in touch?
+Clubtech is a focused team working across product and high-touch venue delivery. The platform is configured, trained, launched, and optimized with the operator rather than handed over as an off-the-shelf license.
 
-Email info@clubtechglobal.com with what you would build or change and how to reach you.
+[See how Clubtech delivers](/delivery/)
+
+## Open roles and expressions of interest
+
+Formal openings may not always be listed. If your experience belongs close to this problem, send a short introduction to info@clubtechglobal.com.
+
+Include:
+
+- the kind of work you do;
+- what you would improve or build at Clubtech;
+- one relevant example of your work;
+- where you are based and how to reach you.
+
+[Introduce yourself](mailto:info@clubtechglobal.com?subject=Careers%20at%20Clubtech)
+
+## Before you apply
+
+- [Read about Clubtech](/about/)
+- [See the platform](/platform/)
+- [Understand the delivery model](/delivery/)
+
+## Questions candidates ask
+
+### Are roles always posted here?
+
+No. Clubtech hires as the team grows, so formal openings may come and go. Relevant expressions of interest are still welcome.
+
+### What should I send?
+
+Send a short introduction, the work you do, what you would contribute, one relevant example, and your contact details.
+
+### Where do I apply?
+
+Email info@clubtechglobal.com with the subject “Careers at Clubtech.”

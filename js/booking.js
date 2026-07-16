@@ -66,15 +66,15 @@
       '      <label class="bk-field"><span>Work email</span><input name="email" type="email" autocomplete="email" required></label>' +
       '      <label class="bk-field"><span>Phone <em>(optional)</em></span><input name="phone" type="tel" autocomplete="tel" placeholder="+62 812 …"></label>' +
       '      <label class="bk-field"><span>What should we prepare? <em>(optional)</em></span><textarea name="description" rows="2"></textarea></label>' +
-      '      <p class="bk-error" hidden>Please fill in your name, venue, and a valid email.</p>' +
+      '      <p class="bk-error" role="alert" hidden>Please fill in your name, venue, and a valid email.</p>' +
       '      <button type="submit" class="button button-mint bk-submit">Pick a Time</button>' +
       '      <p class="bk-fine">No contracts · no credit card · we only use your details to reply</p>' +
       '    </form>' +
       '  </div>' +
       '  <div class="bk-step" data-step="schedule" hidden>' +
       '    <span class="bk-kicker">Book a demo</span>' +
-      '    <h2 class="bk-h">Pick a time <span class="mint-text">that suits you.</span></h2>' +
-      '    <div class="bk-cal"></div>' +
+      '    <h2 class="bk-h" tabindex="-1">Pick a time <span class="mint-text">that suits you.</span></h2>' +
+      '    <div class="bk-cal" aria-live="polite"><p class="bk-cal-status">Loading the scheduler…</p></div>' +
       '    <p class="bk-alt">Trouble with the calendar? <a href="' + SCHEDULER + '" target="_blank" rel="noopener">Open the scheduler in a new tab</a>.</p>' +
       '  </div>';
   }
@@ -104,8 +104,25 @@
       e.preventDefault();
       var lead = readLead(form);
       var err = root.querySelector('.bk-error');
+      var required = [
+        form.querySelector('[name="firstname"]'),
+        form.querySelector('[name="lastname"]'),
+        form.querySelector('[name="company"]'),
+        form.querySelector('[name="email"]')
+      ];
+      for (var i = 0; i < required.length; i++) {
+        if (required[i]) required[i].removeAttribute('aria-invalid');
+      }
       if (!lead.firstname || !lead.lastname || !lead.company || !validEmail(lead.email)) {
         if (err) err.hidden = false;
+        var invalid = !lead.firstname ? required[0]
+          : !lead.lastname ? required[1]
+          : !lead.company ? required[2]
+          : required[3];
+        if (invalid) {
+          invalid.setAttribute('aria-invalid', 'true');
+          invalid.focus();
+        }
         return;
       }
       if (err) err.hidden = true;
@@ -143,6 +160,14 @@
       iframe.title = 'Book a demo — pick a time';
       iframe.loading = 'eager';
       iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+      iframe.addEventListener('load', function () {
+        var status = cal.querySelector('.bk-cal-status');
+        if (status) status.remove();
+      });
+      iframe.addEventListener('error', function () {
+        var status = cal.querySelector('.bk-cal-status');
+        if (status) status.textContent = 'The embedded calendar could not load. Use the direct scheduler link below.';
+      });
       cal.appendChild(iframe);
     }
 
@@ -151,11 +176,18 @@
     // Widen: modal card, or the inline container itself.
     (root.closest('.bk-card') || root).classList.add('bk-wide');
     track('scheduler_shown');
+    var heading = schedStep.querySelector('.bk-h');
+    if (heading) heading.focus();
   }
 
   /* ===== modal mount (once, lazily) =================================== */
 
   var modal = null;
+  var returnFocus = null;
+
+  function focusableWithin(el) {
+    return el.querySelectorAll('a[href],button:not([disabled]),input:not([disabled]),textarea:not([disabled]),select:not([disabled]),[tabindex]:not([tabindex="-1"])');
+  }
 
   function buildModal() {
     if (modal) return modal;
@@ -184,6 +216,18 @@
     card.querySelector('.bk-close').addEventListener('click', closeModal);
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && !modal.hidden) closeModal();
+      if (e.key !== 'Tab' || modal.hidden) return;
+      var items = focusableWithin(card);
+      if (!items.length) return;
+      var first = items[0];
+      var last = items[items.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     });
     wireFlow(card);
     return modal;
@@ -191,6 +235,7 @@
 
   function openModal(trigger) {
     buildModal();
+    returnFocus = document.activeElement;
     modal.hidden = false;
     document.body.style.overflow = 'hidden';
     track('demo_open', { trigger: trigger || 'unknown' });
@@ -202,6 +247,8 @@
     if (!modal) return;
     modal.hidden = true;
     document.body.style.overflow = '';
+    if (returnFocus && typeof returnFocus.focus === 'function') returnFocus.focus();
+    returnFocus = null;
   }
 
   /* ===== inline mount(s) ============================================== */
@@ -239,6 +286,7 @@
   document.addEventListener('click', function (e) {
     var t = e.target.closest && e.target.closest('[data-open-demo]');
     if (!t) return;
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
     e.preventDefault();
     var section = t.closest('section, header, footer, nav');
     openModal((section && (section.id || section.className.split(/\s+/)[0])) || 'page');

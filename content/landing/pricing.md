@@ -1,42 +1,80 @@
 ---
-title: Priced to grow **with you, not before you.**
+title: No monthly fee. **Clear from day one.**
 titleTag: Pricing — No Monthly Fee | Clubtech
 slug: pricing
 date: 2026-07-16
 group: pricing
+layout: pricing
+ctaType: demo
+ctaHref: book-a-demo/
+ctaLabel: See pricing on your venue
 eyebrow: Pricing
-excerpt: No monthly fee. A 4% online processing fee paid by the guest, and a one-time setup per venue. Clubtech earns when your online revenue grows — not before it does.
-description: Clubtech pricing — no monthly fee, a 4% online processing fee paid by the customer, and a $2,000 one-time setup per venue covering widget setup, configuration, and staff training.
-cta2href: revenue/
-cta2label: See the revenue playbook
+excerpt: No monthly fee. A 4% online processing fee paid by the customer, plus a $2,000 one-time set-up fee per venue.
+description: Clubtech pricing: no monthly fee, a 4% online processing fee paid by the customer, and a $2,000 one-time set-up fee per venue covering widget setup, system configuration, and staff training.
+cta2href: platform/
+cta2label: See the platform
 ---
 
-## No monthly fee
+## The complete public pricing model
 
-Clubtech does not charge a monthly license. The platform is designed to earn when your online revenue grows, which means the incentive is aligned from day one: we make money when you make more of it.
+### No monthly fee
 
-## What it costs
+There is no monthly software license fee.
 
-**No monthly fee.** Nothing to pay just to keep the lights on.
+### 4% online processing fee
 
-**4% online processing fee, paid by the customer.** The processing fee sits with the guest at checkout, not on the venue's margin.
+The customer pays the 4% online processing fee at checkout.
 
-**$2,000 one-time setup per venue.** A single setup fee covers widget setup, system configuration, and staff training — the work that gets a venue live and the team confident on the platform.
+### $2,000 one-time set-up fee per venue
 
-## A quote built around your venue
+The venue pays one set-up fee for each venue launched on Clubtech.
 
-Because every venue sells differently, the best way to see the numbers against your own floor is a short demo — 15 minutes, no contracts, no credit card, pre-configured to a venue like yours.
+## What the set-up fee covers
+
+- widget setup;
+- system configuration for how the venue sells;
+- staff training.
+
+No other inclusion is implied by the public set-up price. The rollout scope and integration requirements are confirmed with the venue before implementation.
+
+[See how rollout works](/delivery/)
+
+## See the connected platform
+
+The Clubtech platform connects:
+
+- white-label booking on the venue's domain;
+- the 3D birds-eye booking map and exact inventory;
+- packages, add-ons, prepayments, and dynamic pricing;
+- front-of-house floor operations and allocation;
+- guest data, attribution, and 20+ reports.
+
+[Explore the platform](/platform/)
+
+## See it against your own venue
+
+A Clubtech demo takes 15 minutes, requires no contract or credit card, and is pre-configured to a venue like yours. The team can show the product and explain the public pricing against the way your venue sells.
+
+[Book a demo](/book-a-demo/)
 
 ## Questions operators ask
 
 ### How much does Clubtech cost?
 
-There is no monthly fee. Guests pay a 4% online processing fee at checkout, and there is a one-time setup fee of $2,000 per venue covering widget setup, configuration, and staff training. A demo gives you the full picture against your own venue.
+There is no monthly fee. The customer pays a 4% online processing fee, and the venue pays a $2,000 one-time set-up fee per venue.
+
+### Who pays the 4% online processing fee?
+
+The customer pays it at checkout.
+
+### What does the $2,000 set-up fee cover?
+
+Widget setup, system configuration, and staff training.
 
 ### Is there a monthly subscription?
 
-No. Clubtech does not charge a monthly license fee — the model is built so the platform earns as your online revenue grows.
+No. Clubtech does not charge a monthly software license fee.
 
-### What does the setup fee cover?
+### Is the set-up fee charged once for a group?
 
-The $2,000 one-time setup per venue covers the widget setup, the system configuration for how your venue sells, and training your team so they are confident running the platform from go-live.
+The public price is $2,000 once per venue, not once per group.

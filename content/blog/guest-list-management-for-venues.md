@@ -5,6 +5,7 @@ slug: guest-list-management-for-venues
 date: 2026-07-16
 author: Clubtech Global
 category: Guides
+related: /platform/#guest-lists|/solutions/guest-list-management-software/|/book-a-demo/
 excerpt: "Guest list management for venues, explained for operators — the door workflow, capturing the whole party, priority capture when sold out, and where the spreadsheet breaks."
 hero: /assets/blog/nightclub-table-booking.webp
 heroAlt: "Door staff checking a guest list at a nightclub entrance"
@@ -93,4 +94,4 @@ Sold out does not have to mean a lost guest. When furniture sells out, Clubtech 
 
 No. Clubtech sits on top of your existing POS and PMS with no major IT changes and integrates with the tools you already run. Switching cost is low because it does not replace your stack — it adds the booking, door, and marketing layer on top of it.
 
-**See your guest list turn into a database.** 15 minutes, no pitch deck, no contracts. [Book a demo](mailto:info@clubtechglobal.com)
+**See your guest list turn into a database.** Start with the [guest-list workflow](/platform/#guest-lists), then [book a demo](/book-a-demo/).

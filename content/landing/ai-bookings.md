@@ -1,38 +1,71 @@
 ---
-title: When their AI books, **your venue takes the revenue.**
-titleTag: AI-Agent Bookings for Venues (Emerging) | Clubtech
+title: Built for bookings today. **Building for agents next.**
+titleTag: AI-Agent Bookings for Venues — Emerging Capability | Clubtech
 slug: ai-bookings
 date: 2026-07-16
 group: platform
-eyebrow: Platform · AI-agent bookings
-excerpt: Guests are starting to plan through AI assistants, not search boxes. Clubtech is building toward bookings an agent can complete on your behalf — so you capture the demand when the agent arrives.
-description: Clubtech is building toward AI-agent-ready bookings through a Model Context Protocol server — an emerging capability designed for the era when guests plan through AI assistants.
-cta2href: booking/
-cta2label: See the booking journey
+layout: emerging
+ctaType: learn
+ctaHref: platform/#ai-agent
+ctaLabel: See the AI status
+eyebrow: Platform · Emerging capability
+excerpt: Clubtech takes direct venue bookings today. Its MCP booking project is the emerging path for AI agents—not a generally available consumer booking feature.
+description: Clubtech is building toward AI-agent bookings through an MCP booking project. The capability is emerging and is not generally available to consumers today.
+cta2href: platform/#booking
+cta2label: See booking today
 ---
 
-## The search box is not the only front door anymore
+## The boundary, stated plainly
 
-A growing share of guests start a plan by asking an assistant, not by typing into a search box. "Book a daybed at a beach club in Canggu on Saturday" is becoming a request an AI is expected to complete — not just answer. The venues ready for that moment will take the booking; the rest will be a link the assistant never clicks.
+### Available today
 
-## What we are building
+Clubtech takes direct, mobile-first bookings under the venue's brand. Guests choose exact inventory on a 3D map, add packages, and pay before arrival. The booking connects to venue operations, guest data, and marketing attribution.
 
-Clubtech has built a Model Context Protocol (MCP) booking server — the interface that lets an AI agent complete a real booking against the platform, not just describe one. It is the supply side of the same bet: when a guest's assistant is ready to book, the venue on Clubtech can capture the revenue directly.
+### Emerging, not generally available
 
-## Honest about where this stands
+Clubtech has an MCP booking project that is being built toward agent-completed bookings. It is not a production deployment and guests cannot generally ask a consumer AI assistant to complete a Clubtech booking today.
 
-This is an emerging capability, not a shipped, generally available feature. We are building toward AI-agent bookings and designing for the agent era. We are not claiming guests book your venue through a consumer AI assistant today — and we will say clearly when that changes.
+That distinction stays visible until the capability ships.
+
+## What MCP changes
+
+Model Context Protocol gives an AI agent a structured way to use an external tool. For venue booking, the intended path is straightforward:
+
+1. A guest asks an assistant for a venue, date, and type of inventory.
+2. The agent checks the booking options exposed by Clubtech.
+3. The guest confirms the selection and payment details.
+4. The agent completes the booking against the same venue inventory used by the direct channel.
+
+Steps two through four describe the direction of the MCP project, not a generally available guest journey.
+
+## The platform underneath already matters
+
+An agent channel is only useful when the underlying booking system knows what the venue sells. Clubtech already models exact furniture and zones, packages and add-ons, live availability, payment, and the venue's own guest relationship.
+
+[See the current booking platform](/platform/#booking)
+
+## Why Clubtech is working on it
+
+Discovery is moving beyond search results toward assistants that are expected to act. Clubtech is building the supply-side interface so its venue inventory can be ready when agent-completed bookings become a dependable guest channel.
+
+The near-term product remains the direct, white-label booking journey. The MCP project is a forward-looking extension of that system, not a substitute for it.
+
+## Follow the current product
+
+- [See how guests book today](/platform/#booking)
+- [Explore the operator platform](/platform/)
+- [See the emerging AI-agent section](/platform/#ai-agent)
 
 ## Questions operators ask
 
-### Can guests book my venue through an AI assistant today?
+### Can guests book a Clubtech venue through an AI assistant today?
 
-Not yet as a generally available consumer feature. Clubtech has built the booking interface an agent would use — an MCP server — and is building toward agent-completed bookings. We position this as emerging, and we will say plainly when it ships.
+Not as a generally available consumer feature. Clubtech has an MCP booking project and is building toward agent-completed bookings, but there is no production deployment yet.
 
-### What is an MCP booking server?
+### What is Model Context Protocol?
 
-Model Context Protocol is a standard that lets AI agents use external tools. Clubtech's MCP booking server exposes venue booking to an agent, so an assistant could move from recommending a venue to completing a paid booking against it.
+Model Context Protocol is a standard that lets an AI agent use an external tool through a structured interface. Clubtech's project applies that model to venue inventory and booking.
 
-### Why does this matter now?
+### Does this change the booking platform available now?
 
-Because guest behavior is shifting toward answer engines and assistants. Building the supply-side capability early means a venue is positioned to capture agent-driven demand as it grows, rather than retrofitting once competitors already have.
+No. The current product remains the venue's direct, white-label booking channel, connected to floor operations, guest data, and marketing attribution.

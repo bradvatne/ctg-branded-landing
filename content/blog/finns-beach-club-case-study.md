@@ -5,6 +5,7 @@ slug: finns-beach-club-case-study
 date: 2026-07-06
 author: Clubtech Global
 category: Case study
+related: /solutions/beach-clubs/|/platform/#booking|/book-a-demo/
 excerpt: "How FINNS Beach Club revenue went from on-the-day chaos to millions in pre-paid bookings monthly — the exact booking mechanics, from Clubtech."
 hero: /assets/blog/finns-beach-club-case-study.webp
 heroAlt: "FINNS Beach Club Bali pool and daybed flagship at golden hour"
@@ -33,7 +34,7 @@ Beau Whittington, CEO of FINNS Beach Club, puts the turn in one sentence:
 
 That is the before-and-after in full. Same beach, same furniture, same brand. What changed is *when* the revenue is committed. Money that used to arrive — or not — on the day now lands days and weeks ahead, guaranteed, with a named guest and a paid order attached to every daybed.
 
-Clubtech's homepage carries the headline figures behind that quote — transactions processed, growth in pre-booked bottle purchases, conversion versus legacy booking widgets, guest profiles captured and retargetable. <!-- VERIFY: exact FINNS/platform stats — homepage counters animate from zero; publish real figures with FINNS sign-off -->
+The cleared proof is the named CEO quote above. This case study does not infer an uplift percentage, transaction count, or bottle-sales figure that FINNS has not approved publicly.
 
 ## The mechanics that did it
 
@@ -49,7 +50,7 @@ An online-versus-door spread gives guests a concrete reason to commit early rath
 
 ### Packages turn a bed into a basket
 
-Inventory is tiered — bed only, party package, ultimate experience — with stackable add-ons like bottles, cakes, and transfers bolted onto the same checkout. Guests self-select upward when the upgrade is one tap at booking rather than an upsell conversation on a busy deck. The result shows up as pre-booked bottle revenue: committed before the guest has even landed in Bali. <!-- VERIFY: pre-booked bottle purchase growth figure for FINNS -->
+Inventory can be tiered — bed only, party package, ultimate experience — with stackable add-ons like bottles, cakes, and transfers in the same checkout. The mechanism moves package and add-on decisions into the booking flow, before the guest arrives. No FINNS-specific add-on uplift is claimed here without an approved figure.
 
 ### Sold out stopped meaning goodbye
 
@@ -63,7 +64,7 @@ FINNS is a flagship, not a unicorn. The mechanics are venue-size-agnostic:
 
 - **The pre-paid shift compounds.** Every booking moved from on-the-day to pre-paid is a no-show eliminated, a data point gained, and a night you can staff with confidence. The [beach club revenue playbook](/blog/beach-club-revenue-playbook/) covers the full pricing and package architecture.
 - **The map works at any scale.** A forty-bed deck benefits from spot-selection psychology the same way a beachfront giant does — premium rows sell out first instead of last. If sunbeds are your inventory, start with the [sunbed booking system](/solutions/sunbed-booking-system/) page.
-- **Mobile is non-negotiable.** 82% of bookings happen on a phone after 10pm. The checkout that captured FINNS's late-night demand — sub-second load, no app install, four taps to paid — is the same [platform](/platform.html) configured to your venue.
+- **Mobile is non-negotiable.** 82% of bookings happen on a phone after 10pm. The checkout that captured FINNS's late-night demand — sub-second load, no app install, four taps to paid — is the same [Clubtech platform](/platform/#booking) configured to your venue.
 
 ## Questions operators ask
 
@@ -81,4 +82,4 @@ FINNS runs on Clubtech, a white-label booking and revenue platform for premium v
 
 ---
 
-**See the FINNS playbook on your floor plan.** 15 minutes, no pitch deck, no contracts — the platform arrives pre-configured to a venue like yours. [Book a demo](/contact.html)
+**See the FINNS workflow on your floor plan.** Review the [beach club solution](/solutions/beach-clubs/), then [book a demo](/book-a-demo/) configured around a venue like yours.

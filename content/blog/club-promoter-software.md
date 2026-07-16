@@ -5,6 +5,7 @@ slug: club-promoter-software
 date: 2026-07-16
 author: Clubtech Global
 category: Guides
+related: /platform/#guest-lists|/solutions/nightclub-management-software/|/compare/fourvenues-alternative/
 excerpt: "Club promoter software manages lists and comps — but the guest data usually walks out on the promoter's phone. Here's what to look for, and where a booking platform fits."
 hero: /assets/blog/club-promoter-software.webp
 heroAlt: "A promoter checking guests in against a list at a nightclub entrance"
@@ -76,4 +77,4 @@ Guests are checked in with a QR-code tap against the live list, rather than a ho
 
 ---
 
-**See it on your floor plan.** 15 minutes, no pitch deck, no contracts — we'll show up with the door already built for a venue like yours. [Book a demo](mailto:info@clubtechglobal.com)
+**See it on your floor plan.** Review [nightclub management](/solutions/nightclub-management-software/), then [book a demo](/book-a-demo/) around your door workflow.

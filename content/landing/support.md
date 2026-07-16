@@ -1,43 +1,64 @@
 ---
-title: A real support channel, **not a chat that scrolls away.**
+title: Raise the issue. **Keep it on the record.**
 titleTag: Clubtech Support — Help for Venue Teams | Clubtech
 slug: support
 date: 2026-07-16
 group: platform
-demo: support
+layout: support
+ctaType: support
+ctaHref: mailto:info@clubtechglobal.com?subject=Venue%20support
+ctaLabel: Email support
 eyebrow: Platform · Clubtech Support
-excerpt: Message the Clubtech team from your own portal, see every conversation and ticket status update live, and never lose an issue in a WhatsApp thread again.
-description: Clubtech Support gives venue teams a real support channel — message the Clubtech team, track ticket status live in a passwordless web portal, and keep every issue on the record.
+excerpt: Clubtech venue customers have a dedicated ticketing system where issues can be raised and tracked without losing the history in a message thread.
+description: Clubtech Support is the dedicated ticketing system for venue customers, keeping issues and ticket history in one place.
 cta2href: help/
-cta2label: Visit the help center
+cta2label: Browse the help center
 ---
 
-## The fear is 11pm on a Saturday
+## Support for existing venue teams
 
-The venue is full, something breaks, and the question is simple: who do I reach, and will this get tracked? Clubtech Support answers it. Venue teams have a dedicated channel to raise and follow issues — on the record, in a real system, not buried in a message thread that scrolls away by morning.
+Clubtech Support is the dedicated ticketing system for venue customers. It keeps an issue, its history, and its status on the record instead of leaving the team to reconstruct what happened from a message thread.
 
-## Your portal, your view of every issue
+Existing venue teams should use the Clubtech Support access already provided to their venue.
 
-Each venue gets a web portal that shows its own conversations with Clubtech and the live status of its support tickets. Sign in with a code sent to your email — no password to manage. Send a message, attach a screenshot, and watch the thread and ticket status update in real time, without refreshing.
+## How to raise an issue
 
-## Reach us where you already are
+1. Use the Clubtech Support access provided to your venue.
+2. Describe what happened, where it happened, and when it started.
+3. Include the affected booking, event, device, or team workflow when relevant.
+4. Follow the ticket history in the dedicated support system.
 
-Conversations run over WhatsApp and the portal, so a venue can message from the channel it already uses and still get the history, the tracking, and the status in one place.
+If you do not have the correct access, contact your Clubtech account lead. You can also email info@clubtechglobal.com so the request can be directed correctly.
 
-## Real people behind it
+[Contact Clubtech about venue support](mailto:info@clubtechglobal.com?subject=Venue%20support)
 
-Every conversation is worked by the Clubtech team from a single console, so an issue you raise is a ticket someone owns — not a message hoping to be seen.
+## What to include
 
-## Questions operators ask
+- venue name;
+- the affected product area;
+- what the team expected to happen;
+- what happened instead;
+- when the issue began;
+- any relevant booking or event reference.
 
-### How do I contact Clubtech support?
+Clear context helps the team start with the right part of the system.
 
-Message the Clubtech team through WhatsApp or your venue's support portal. Both feed the same system, so wherever you start, the conversation and its ticket are tracked.
+## Looking for product guidance?
 
-### Do I need a password for the support portal?
+The [Help Center](/help/) routes common questions to booking, operations, revenue, guest data, delivery, and pricing. It also separates self-service product information from an account-specific support issue.
 
-No. Sign in with a six-digit code sent to the email your Clubtech contact is registered with — passwordless, and the code expires shortly after it is sent.
+## Support is part of delivery
 
-### Can I see the status of an issue I raised?
+Every Clubtech rollout has a dedicated account lead and a staged program covering onboarding, build, training, go-live, and a 90-day optimize phase.
 
-Yes. The portal shows the live status of your support tickets and updates your conversations in real time, so you can see where an issue stands without chasing it.
+[See the delivery program](/delivery/)
+
+## Questions venue teams ask
+
+### Is Clubtech Support a real ticketing system?
+
+Yes. The support and ticketing system is live for venue customers. Existing venue teams should use the access already provided to their venue.
+
+### What if I cannot access support?
+
+Contact your Clubtech account lead or email info@clubtechglobal.com so the request can be directed correctly.

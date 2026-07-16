@@ -5,6 +5,7 @@ slug: online-guest-list-vs-rsvp-tools
 date: 2026-07-16
 author: Clubtech Global
 category: Guides
+related: /blog/guest-list-management-for-venues/|/solutions/guest-list-management-software/|/platform/#guest-lists
 excerpt: "Online guest list vs generic RSVP management — when a form is fine, and when a venue needs door check-in, every-guest data, and prepayment."
 hero: /assets/blog/nightclub-table-booking.webp
 heroAlt: "Door host checking in guests against a live guest list on a tablet"

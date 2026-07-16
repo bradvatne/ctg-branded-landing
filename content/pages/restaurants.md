@@ -1,41 +1,76 @@
 ---
-title: "For restaurants that sell **an experience, not just a table.**"
+title: "For restaurants that sell **a specific experience.**"
 titleTag: "Restaurant Experience & Table Booking Platform | Clubtech"
 slug: restaurants
 canonical: https://www.clubtechglobal.com/solutions/restaurants/
 section: solutions
+canonicalFeature: /platform/#booking
+related: /sell/#packages|/grow/#guest-data|/delivery/
 date: 2026-07-16
-excerpt: "For premium restaurants that sell terraces, beachfront tables, private areas, and minimum-spend experiences — booked and pre-paid on your own brand, not a covers marketplace."
+excerpt: "A narrow fit for experience-led restaurants selling a specific terrace, beachfront table, private area, package, or minimum spend."
 hero: /assets/blog/nightclub-table-booking.webp
 heroAlt: "Premium restaurant terrace with a table booking flow on a phone"
-description: "Clubtech is a booking and revenue platform for experience-led restaurants: sell terraces, private areas, and minimum-spend tables on a map, with prepayment and owned guest data."
+description: "Clubtech fits experience-led restaurants selling exact tables or zones with packages, prepayment, white-label booking, and owned guest data."
 ---
-Plenty of tools take a restaurant reservation. Very few help a restaurant sell the thing that actually makes the night: the beachfront table, the terrace at sunset, the private area for twelve, the minimum-spend experience. That is not a cover at 8pm — it is a specific spot, on a specific date, at a specific value. Clubtech is built for exactly that.
+Clubtech is not positioned as a general covers-and-time-slots reservation book. Its restaurant fit is narrower: venues where the location and package are part of the product, such as a specific terrace, beachfront table, private area, or minimum-spend experience.
 
-This is not a covers-and-time-slots reservation book. Guests choose the actual table or zone on a 3D birds-eye map of the room and terrace, pick a package or minimum spend, and prepay — on the restaurant's own domain, before they arrive. Reservations, front-of-house operations, and marketing run in one platform, white-label, with every guest captured. It is the model premium beach clubs and day clubs already run, applied to restaurants that sell more than a seat.
+The interactive restaurant journey on this page uses a fictional venue. It demonstrates approved Clubtech booking mechanics; it is not a customer deployment or proof claim.
 
-## Sell the spot and the spend, not just the slot
+## Workflow — Sell the table, zone, and package together
 
-- **Guests book the exact table or zone.** Terrace, beachfront, private room — chosen on the map, with what makes it special shown before price.
-- **Packages and minimum spends do the selling.** Tiered experiences and stackable add-ons — bottles, set menus, occasions — captured at booking, not negotiated on arrival.
-- **Prepayment and deposits kill the no-show** on the tables you can least afford to lose.
+1. **Show the actual table or zone.** Guests choose from a 3D birds-eye map instead of requesting a generic cover count.
+2. **Attach the experience.** Packages, approved add-ons, deposits, and minimum spends sit inside the booking flow.
+3. **Take commitment before arrival.** Prepayment protects inventory that carries a specific value.
+4. **Connect the booking to operations.** Online inventory updates the internal floor plan and operator view.
 
-## Owned demand, not a marketplace listing
+[See the canonical booking capability](/platform/#booking)
 
-- **White-label** — the booking runs on your domain and design; the guest is yours, and so is the data.
-- **Every guest in the party is captured**, so a table of ten grows your database by ten, not one.
-- **The booking is the conversion** — every reservation posts to Meta, Google, and GA4 with its value, so campaigns optimize on revenue.
+## Fit — Narrow by design
+
+This model fits when the venue sells a particular position, zone, or package. A restaurant that primarily needs standard cover management may be better served by a dining-first reservation tool.
+
+Clubtech should be evaluated where map-based selection, prepayment, packages, owned guest data, and connected marketing materially change the sale.
+
+## Capabilities — Approved mechanics, no restaurant-only invention
+
+- exact table or zone selection on the booking map;
+- tiered packages and stackable approved add-ons;
+- prepayments, deposits, and minimum spends;
+- white-label booking on the venue's domain;
+- every-guest capture, attribution, and guest intelligence.
+
+[Explore packages and add-ons](/sell/#packages)
+
+## Proof — A fictional demo, clearly labeled
+
+The restaurant demo is fictional. It shows how the product handles exact inventory, packages, and checkout, but it does not claim a named restaurant customer, restaurant revenue result, or restaurant-specific integration.
+
+Clubtech's named customer proof remains FINNS Beach Club, and its public company proof remains $332k in weekly GMV across venue partners in more than seven countries.
+
+## Outcomes — Own the booking and the guest relationship
+
+The booking stays under the venue's brand, every guest can enter the venue's database, and booking value can post to Meta, Google Ads, and GA4 for attribution.
+
+[Explore guest data and attribution](/grow/#guest-data)
 
 ## Questions operators ask
 
-### Is Clubtech a restaurant reservation system like the covers tools?
+### Is Clubtech a general restaurant reservation system?
 
-Not quite. Clubtech is for restaurants that sell an experience — a specific terrace, beachfront table, private area, or minimum-spend booking — rather than generic covers and time slots. If your value is the spot and the spend, not just the seat count, this is built for you.
+No. Clubtech is positioned here for experience-led restaurants that sell exact tables, zones, packages, or minimum-spend inventory.
 
-### Can we take prepayment and minimum spends?
+### Is the restaurant demo a real customer venue?
 
-Yes. Packages, minimum spends, and deposits are collected inside the booking flow before arrival, which secures the high-value tables and reduces no-shows.
+No. It is a fictional demonstration of approved Clubtech booking mechanics.
 
-### Does it run on our own brand?
+### Can the booking run under the restaurant's brand?
 
-Yes. Clubtech is white-label: the booking experience runs on the restaurant's own domain and design, and every guest record belongs to the restaurant, not a marketplace.
+Yes. Clubtech is white-label: the booking runs on the venue's domain and design, and the guest data belongs to the venue.
+
+### Can a venue take deposits or minimum spends?
+
+Yes. Prepayments, deposits, minimum spends, packages, and approved add-ons are supported inside the booking flow.
+
+---
+
+**See whether the model fits your venue.** [Book a focused demo](/book-a-demo/).

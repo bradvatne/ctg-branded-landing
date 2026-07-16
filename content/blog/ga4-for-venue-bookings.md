@@ -5,6 +5,7 @@ slug: ga4-for-venue-bookings
 date: 2026-07-06
 author: Clubtech Global
 category: Marketing
+related: /grow/#ads|/blog/meta-conversions-api-for-venue-bookings/|/book-a-demo/
 excerpt: "GA4 for venue bookings, explained for operators — the event model, booker audiences, and GM reports, plus why your GA4 numbers never match the books."
 hero: /assets/blog/ga4-for-venue-bookings.webp
 heroAlt: "GA4 report tracking venue booking revenue by source"
@@ -91,4 +92,4 @@ Yes — and it's the report worth building first. With a revenue-carrying purcha
 
 ---
 
-**See your bookings flow into GA4, Meta, and Google in real time.** 15 minutes, no pitch deck, no contracts. [Book a demo](/contact.html)
+**See your bookings flow into GA4, Meta, and Google in real time.** Review the [attribution workflow](/grow/#ads), then [book a demo](/book-a-demo/).

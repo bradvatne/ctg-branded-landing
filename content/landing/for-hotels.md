@@ -1,57 +1,102 @@
 ---
-title: The day-pass and pool channel **your hotel actually owns.**
+title: Turn the pool into **an owned revenue channel.**
 titleTag: Clubtech for Hotels — Pool & Day-Pass Booking | Clubtech
 slug: for-hotels
 date: 2026-07-16
 group: solutions
+layout: segment
+ctaType: demo
+ctaHref: book-a-demo/
+ctaLabel: Book a hotel demo
 demo: booking
 eyebrow: Solutions · Hotels & resorts
-excerpt: Sell cabanas, daybeds, and day passes on your own branded channel, post resident spend to the Opera folio, and keep the guest data — instead of renting it back from a marketplace.
-description: Clubtech gives hotels and resorts an owned pool and day-pass booking channel — map-first cabana and daybed booking, Opera PMS folio posting, brand-standard white-label, and full guest data. No monthly fee.
+excerpt: Pre-sell cabanas, daybeds, and day passes under the hotel's brand, with controlled inventory, prepayment, and guest data that stays with the property.
+description: Clubtech gives hotels and resorts an owned pool and day-pass booking channel with exact-inventory booking, prepayment, packages, white-label delivery, and guest data.
 hero: /assets/blog/hotel-pool-booking.webp
 heroAlt: A resort pool deck with cabanas and daybeds booked on a phone
 cta2href: solutions/hotel-pool-booking/
 cta2label: See hotel pool booking
 ---
-## The pool is a revenue center, not an amenity
 
-Most hotels treat the pool and the beach as an amenity that happens to take walk-ups. The result is idle capacity midweek, day-pass demand that leaks to a marketplace, and a resident who pays for a cabana in cash the front desk never sees. A property sells the room, then leaves its highest-margin daytime inventory to chance.
+## One property, two buying concerns
 
-Clubtech turns that inventory into an owned, pre-sold channel — cabanas, daybeds, and day passes booked on a 3D map, under your brand, on your domain, with the guest data and the folio staying in your systems.
+### For F&B and commercial teams
 
-## Own the day-pass channel, don't rent it
+Control the inventory available to outside guests by date and daypart. Pre-sell cabanas, daybeds, and day passes, then add packages, minimum spends, and extras inside the booking flow.
 
-A day-pass marketplace fills midweek shade, but it takes a commission and it owns the guest — the email, the spend history, the reason to come back. Clubtech is the other model: the booking happens on your channel, the guest record is yours, and there is no marketplace standing between the hotel and the person on your daybed. Fill the same capacity without giving away the relationship.
+### For hotel IT
 
-## Resident bookings post to the folio
+Keep the guest journey under the hotel's brand and add Clubtech on top of the existing stack rather than replacing the PMS or POS. Opera PMS is an approved integration; its exact scope is confirmed for each property during technical review.
 
-When a staying guest reserves a cabana or runs a tab on the deck, the charge posts to their room folio through the Opera PMS integration — so daytime spend lands on the bill they already hold, and the front desk sees one reconciled account at checkout. Multi-currency is native, and the booking flow is white-label to your brand standard.
+## Sell the exact pool inventory
 
-## Zero major IT changes
+A generic day pass does not show a guest what they are buying. Clubtech puts the pool deck on a 3D birds-eye map so the guest can choose a specific cabana, daybed, or zone.
 
-Clubtech sits on top of the stack you already run rather than replacing it. There is no rip-and-replace project and no new PMS to learn — it adds a booking-and-revenue layer on top of Opera and your existing POS. IT signs off on an integration, not a migration.
+The hotel controls what is available, when it can be booked, and which package sits against it. Online inventory stays connected to the operator floor plan.
 
-## Four revenue levers, on daytime inventory
+[See the hotel-pool workflow](/solutions/hotel-pool-booking/)
 
-- **Prepayment and deposits** turn a held cabana into committed revenue instead of a maybe.
-- **Packages and add-ons** — bottles, cabana upgrades, food-and-beverage credit — sold inside the booking.
-- **Dynamic pricing** for the weekend front row versus the midweek shade line.
-- **Abandoned-booking retargeting** brings back the guest who browsed a date and left without paying.
+## Keep the channel under the hotel brand
 
-## Questions operators ask
+The booking runs on the hotel's domain, in its design, with its guest data. Every-guest capture can grow the property's marketable audience beyond the person who paid.
 
-### Does it integrate with Opera PMS?
+A marketplace can still be useful for discovery. Clubtech is the direct channel for properties that want the booking, the relationship, and the return visit to stay in-house.
 
-Yes. Resident bookings and on-deck spend can post to the room folio through the Opera PMS integration, so daytime revenue lands on the guest's existing bill. Integration availability is confirmed for your property on the demo.
+## Four ways to work the same inventory
 
-### How is this different from a day-pass marketplace?
+### Commit revenue before arrival
 
-A marketplace lists your pool alongside competitors, takes a commission, and keeps the guest relationship. Clubtech is your own branded channel: the booking, the guest data, and the repeat-visit relationship stay with the hotel.
+Use prepayments, deposits, and minimum spends to turn held inventory into committed bookings.
 
-### Will it disrupt our existing systems?
+### Build packages around the stay
 
-No. Clubtech adds a layer on top of your existing PMS and POS with no major IT changes — an integration, not a migration.
+Sell bottles, cakes, transfers, products, and other approved add-ons inside the booking flow.
 
-### What does it cost?
+### Price by demand
 
-No monthly fee. A 4% online processing fee, paid by the guest, and a one-time $2,000 setup per property. Pricing is built per venue and shared on the demo.
+Set rates by demand, daypart, and inventory instead of treating every cabana and every date the same.
+
+### Recover unfinished bookings
+
+Abandoned-booking events can return a guest to the exact zone, date, and price they left.
+
+[Explore the revenue system](/sell/)
+
+## From pool booking to property insight
+
+Clubtech captures booking patterns including revenue by hour, lead time, product mix, and origin markets. The platform includes 20+ reports so commercial and operations teams can read demand without treating the booking log as the end of the story.
+
+[Explore guest data and reporting](/grow/#guest-data)
+
+## Technical fit without a replacement project
+
+Clubtech is designed to sit on top of the property's existing POS and PMS stack with zero major IT changes. The technical review confirms the integration scope, data flow, payments, and operating responsibilities for the property before rollout.
+
+[See the delivery program](/delivery/)
+
+## Choose the hotel pathway
+
+- [Pool and day-pass booking](/solutions/hotel-pool-booking/)
+- [Resort-wide operating fit](/solutions/resorts/)
+- [Platform and integrations](/platform/#integrations)
+- [Book a hotel-specific demo](/book-a-demo/)
+
+## Questions hotel teams ask
+
+### Can the hotel control resident and outside-guest inventory?
+
+Clubtech controls sellable inventory by date and daypart. The exact resident and outside-guest rules are configured with the property during implementation.
+
+### Does Clubtech integrate with Opera PMS?
+
+Opera PMS is an approved integration. The exact integration depth, data flow, and operating workflow are confirmed for the property during technical review.
+
+### Does Clubtech replace the hotel's PMS or POS?
+
+No. Clubtech sits on top of the existing stack rather than requiring a rip-and-replace project.
+
+### What does Clubtech cost?
+
+There is no monthly fee. The public commercial model is a 4% online processing fee paid by the customer and a $2,000 one-time set-up fee per venue.
+
+[See complete pricing](/pricing/)

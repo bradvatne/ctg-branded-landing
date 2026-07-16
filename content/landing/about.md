@@ -1,42 +1,89 @@
 ---
-title: Built on the venue floor, **in Singapore.**
+title: Built for the venue floor. **Founded in Singapore.**
 titleTag: About Clubtech — Booking & Revenue for Premium Venues | Clubtech
 slug: about
 date: 2026-07-16
 group: company
+layout: company
+ctaType: learn
+ctaHref: platform/
+ctaLabel: See the platform
 eyebrow: Company · About
-excerpt: Founded in Singapore, processing $332k in weekly GMV across venue partners in more than seven countries. Clubtech is the booking and revenue platform for venues that sell furniture, zones, and dayparts.
-description: Clubtech was founded in Singapore and processes $332k in weekly GMV across venue partners in 7+ countries — the booking and revenue platform for beach clubs, day clubs, nightclubs, and hotel pools.
+excerpt: Clubtech is the booking and revenue platform for premium venues, processing $332k in weekly GMV across partners in more than seven countries.
+description: Founded in Singapore, Clubtech is the booking and revenue platform for premium venues, processing $332k in weekly GMV across partners in more than seven countries.
 cta2href: delivery/
 cta2label: How we deliver
 ---
 
-## Who we are
+## Clubtech at a glance
 
-Clubtech was founded in Singapore and processes $332k in weekly GMV across venue partners in more than seven countries. We build the booking and revenue platform for premium venues — beach clubs, day clubs, nightclubs, and hotel pools — the kind that sell a specific daybed, in a specific zone, on a specific date, at a specific price.
+**Founded in Singapore.**
 
-## What we believe
+**$332k in weekly GMV.**
 
-Furniture, zones, and dayparts are the product. Most booking software was built for covers and time slots; we model what these venues actually sell, and we sell it under the venue's own brand. The booking a guest makes is the most valuable signal a venue has — of revenue, of demand, and of who to market to next — so the platform treats it that way.
+**Venue partners in more than seven countries.**
 
-## How we work
+Clubtech builds the booking and revenue platform for premium venues: beach clubs, day clubs, nightclubs, and hotel pools.
 
-Clubtech is not off-the-shelf software you are left to configure alone. Every rollout is a staged program with a dedicated account lead — onboarding, build, training, go-live, and a 90-day optimize phase. We implement and support the platform; we do not just license it.
+## Built around what a venue actually sells
 
-## Trusted by
+A premium venue does not sell a generic reservation. It sells a particular daybed, cabana, table, zone, package, or daypart.
 
-FINNS · Ravana Pool Club · Luna Beach Club · Sol Rooftop · 4Play · Kàvo · Barra Cuda · lasmari
+Clubtech models that inventory on a 3D birds-eye map. Guests choose the spot, add a package, and commit before arrival. Online inventory stays connected to the operator floor plan, guest data, and marketing attribution.
+
+[See how the platform works](/platform/)
+
+## One platform from booking to follow-up
+
+### Reservations under the venue's brand
+
+The booking runs on the venue's domain, in its design, with its guest data. Prepayments, packages, add-ons, and dynamic pricing turn the booking journey into an owned revenue channel.
+
+[Explore pre-sold revenue](/sell/)
+
+### Operations connected to online inventory
+
+The internal floor plan, automatic seating allocation, and service-day operator console show the team what is booked before doors open.
+
+[Explore venue operations](/platform/#operations)
+
+### Revenue attached to marketing
+
+Bookings post to Meta, Google Ads, and GA4 with their value attached. Guest and booking patterns become an audience the venue can understand and market to again.
+
+[Explore guest data and attribution](/grow/)
+
+## Delivery is part of the product
+
+Clubtech does not hand over a login and leave the venue to configure the rest. A dedicated account lead takes each rollout through onboarding, build, training, go-live, and a 90-day optimize phase.
+
+[See the delivery program](/delivery/)
+
+## Trusted by venue operators
+
+FINNS · Luna Beach Club · Sol Rooftop · Barra Cuda · Ravana Pool Club · 4Play · Kàvo · lasmari
+
+FINNS CEO Beau Whittington describes the shift from on-the-day bookings with no financial guarantee to millions of dollars in pre-paid bookings each month.
+
+[Read the FINNS case study](/blog/finns-beach-club-case-study/)
+
+## Choose the next view
+
+- [See the complete platform](/platform/)
+- [Explore solutions by venue and workflow](/solutions/)
+- [See how Clubtech is delivered](/delivery/)
+- [Book a venue-specific demo](/book-a-demo/)
 
 ## Questions operators ask
 
-### Where is Clubtech based?
+### Where was Clubtech founded?
 
-Clubtech was founded in Singapore and supports venue partners in more than seven countries.
+Clubtech was founded in Singapore and now supports venue partners in more than seven countries.
 
 ### What kinds of venues use Clubtech?
 
-Premium venues that sell furniture, zones, and dayparts — beach clubs, day clubs, nightclubs, and hotel pools — including FINNS Beach Club and other venues across Southeast Asia and beyond.
+Premium venues that sell furniture, zones, packages, and dayparts, including beach clubs, day clubs, nightclubs, and hotel pools.
 
-### What does Clubtech do?
+### What does the platform connect?
 
-It is a booking and revenue platform: online reservations on a 3D venue map, front-of-house floor operations, and marketing attribution in one system, run under the venue's own brand.
+White-label reservations, front-of-house operations, and marketing live in one platform. The same booking can reserve exact inventory, update the floor, capture guest data, and post revenue back to the venue's marketing tools.

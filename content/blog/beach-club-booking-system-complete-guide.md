@@ -5,6 +5,7 @@ slug: beach-club-booking-system-complete-guide
 date: 2026-07-06
 author: Clubtech Global
 category: Guides
+related: /platform/#booking|/solutions/beach-clubs/|/book-a-demo/
 excerpt: "What a beach club booking system does, what to pay for, and the 12 questions to ask any vendor — the complete operator's guide to pre-selling your venue."
 hero: /assets/blog/beach-club-booking-system-complete-guide.webp
 heroAlt: "Guest exploring an interactive beach club booking map on a phone"
@@ -34,7 +35,7 @@ A bed is a starting price, not a product. Tiered packages — bed only, party pa
 
 ### 3. Payments
 
-Prepayment is the entire point. The system should take full payment or deposits at booking, in the wallets your guests actually use — Apple Pay, Google Pay, cards, and regional rails like Midtrans for Southeast Asia. Clubtech integrates Airwallex, Midtrans, Apple Pay, and Google Pay, and for hotel venues connects to Opera PMS so resident bookings land on the folio.
+Prepayment is the entire point. The system should take full payment or deposits at booking, in the wallets your guests actually use — Apple Pay, Google Pay, cards, and regional rails like Midtrans for Southeast Asia. Clubtech integrates Airwallex, Midtrans, Apple Pay, and Google Pay, and supports an Opera PMS integration boundary for hotel venues. Confirm the exact resident-booking and folio workflow for the property during technical discovery.
 
 ### 4. Guest intelligence
 
@@ -58,7 +59,7 @@ And the flow has to survive its real environment: 82% of bookings happen on a ph
 
 Run the numbers on one piece of furniture. A $450 daybed reserved by phone with no payment is not $450 of revenue — it's a coin flip. If the party walks at 2pm, you've held premium inventory through your peak selling window and released it after the buyers have gone. That's $450 you never see again, plus the drinks and food that group would have ordered.
 
-Prepayment converts the coin flip into banked revenue: the guest arrives, or the money stays with you either way. <!-- VERIFY: standard cancellation/refund posture to state publicly. --> And an early-commitment mechanic — Clubtech's "Book Online & Save" — pulls demand forward by giving guests a reason to pay now rather than gamble on walk-up, which hands you predictable revenue and capacity data days in advance. You staff Saturday from bookings, not from a weather app.
+Prepayment converts a provisional reservation into a financial commitment, subject to the venue's stated cancellation and refund terms. An early-commitment mechanic — Clubtech's "Book Online & Save" — pulls demand forward by giving guests a reason to pay now rather than gamble on walk-up, which gives the venue revenue and capacity data days in advance. You staff Saturday from bookings, not from a weather app.
 
 One more leak worth plugging: sold out should never mean goodbye. When furniture is gone, a priority-entry or free-entry flow captures the guest's booking intent and contact details anyway. The guest you couldn't seat this Saturday is a warm, reachable lead for the next one — instead of an anonymous person your doorman turned away. The full revenue architecture — tiers, minimum spends, pricing ladders — gets its own treatment in our [beach club revenue playbook](/blog/beach-club-revenue-playbook/).
 
@@ -93,7 +94,7 @@ Build makes sense if booking software *is* your business — a group running man
 
 FINNS Beach Club in Bali — routinely ranked among the world's best — runs on Clubtech. Beau Whittington, FINNS's CEO, describes the shift plainly: "We have grown from simple on-the-day bookings with no financial guarantee… to now having millions of dollars worth of pre-paid bookings each month."
 
-Same venue, same furniture. What changed was the selling window: map-based booking, Book Online & Save, and tiered packages moved revenue from day-of hope to weeks-ahead certainty, with millions of guest profiles captured and retargetable along the way. <!-- VERIFY: exact FINNS stats — transactions processed, pre-booked bottle uplift, conversion vs legacy widgets — confirm figures with Brad before publish. --> The full breakdown is in the [FINNS case study](/blog/finns-beach-club-case-study/), and the deck-level mechanics are covered in our [sunbed booking system page](/solutions/sunbed-booking-system/).
+Same venue, same furniture. What changed was the selling window: map-based booking, Book Online & Save, and tiered packages moved revenue from day-of hope to pre-paid bookings. The cleared proof is FINNS CEO Beau Whittington's account of growing from on-the-day bookings with no financial guarantee to millions of dollars worth of pre-paid bookings each month. The full breakdown is in the [FINNS case study](/blog/finns-beach-club-case-study/), and the deck-level mechanics are covered in our [sunbed booking system page](/solutions/sunbed-booking-system/).
 
 ## Questions operators ask
 
@@ -111,7 +112,7 @@ You can build a basic calendar-and-checkout flow in-house, and for a small venue
 
 ### How much does a beach club booking system cost?
 
-<!-- VERIFY: Clubtech pricing posture — quote-only vs published tiers; confirm what can be stated publicly. --> Across the category, pricing typically runs from low-cost per-booking tools for simple sunbed allocation up to enterprise platform agreements. The better question is net cost: a platform that pre-sells premium zones, recovers abandoned carts, and feeds your ad accounts usually pays for itself out of revenue it created.
+Clubtech has no monthly fee. The online processing fee is 4%, paid by the customer, and the one-time $2,000 setup fee per venue covers widget setup, system configuration, and staff training. When comparing vendors, put every subscription, transaction fee, setup charge, payment fee, and required integration on one sheet.
 
 ### How do I book FINNS Beach Club?
 
@@ -119,4 +120,4 @@ Guests book FINNS directly at [bookings.finnsbeachclub.com](https://bookings.fin
 
 ---
 
-**See your venue pre-sold.** 15 minutes, no pitch deck, no contracts — we'll walk you through the [platform](/platform.html) pre-configured for a venue like yours. [Book a demo](/contact.html)
+**See your venue pre-sold.** Review the [Clubtech platform](/platform/#booking), then see it configured for a venue like yours. [Book a demo](/book-a-demo/)

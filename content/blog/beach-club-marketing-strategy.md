@@ -5,6 +5,7 @@ slug: beach-club-marketing-strategy
 date: 2026-07-06
 author: Clubtech Global
 category: Marketing
+related: /grow/#ads|/blog/meta-conversions-api-for-venue-bookings/|/book-a-demo/
 excerpt: "Beach club marketing strategy for operators — the bookings-first ads loop, first-party data, and the five numbers a GM should watch every week."
 hero: /assets/blog/beach-club-marketing-strategy.webp
 heroAlt: "Beach club marketing dashboard showing bookings as the conversion event"
@@ -143,4 +144,4 @@ Fast, and in two channels. Fire the abandoned-cart event to Meta within seconds 
 
 ---
 
-**See the loop running on your venue.** 15 minutes, no pitch deck, no contracts — pre-configured for a venue like yours. [Book a demo](/contact.html)
+**See the loop running on your venue.** Continue to the [Clubtech attribution workflow](/grow/#ads), then [book a demo](/book-a-demo/).

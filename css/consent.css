@@ -44,8 +44,16 @@
 .cc-prefs-actions .cc-btn-link:hover{color:var(--heading)}
 
 @media(max-width:600px){
-  .cc-banner{left:10px;bottom:10px;width:calc(100vw - 20px);padding:20px}
-  .cc-prefs-inner{padding:26px 20px}
+  .cc-banner{left:8px;bottom:8px;width:calc(100vw - 16px);max-height:min(36vh,240px);overflow-y:auto;padding:13px 14px;border-radius:18px}
+  .cc-banner-head{font-size:16px}
+  .cc-banner-body{margin-top:5px;font-size:11.5px;line-height:1.35}
+  .cc-banner-actions{display:grid;grid-template-columns:1fr 1.35fr .8fr;gap:5px;margin-top:10px}
+  .cc-banner-actions .cc-btn{padding:9px 5px;font-size:10.5px;white-space:nowrap}
+  .cc-banner-actions .cc-btn-link{grid-column:auto;padding:5px}
+  .cc-prefs{padding:8px;align-items:flex-end}
+  .cc-prefs-inner{max-height:calc(100vh - 16px);padding:24px 18px;border-radius:22px}
+  .cc-prefs-actions{display:grid;grid-template-columns:1fr 1fr}
+  .cc-prefs-actions .cc-btn-primary{grid-column:1/-1}
 }
 @media(prefers-reduced-motion:reduce){
   .cc-btn:hover{transform:none}

@@ -1,54 +1,98 @@
 ---
-title: Answers for **venue teams.**
+title: Find the right answer, **then take the next step.**
 titleTag: Help Center — Clubtech Booking Platform
 slug: help
 date: 2026-07-16
 group: resources
+layout: help
+ctaType: help
+ctaHref: support/
+ctaLabel: Get venue support
 eyebrow: Resources · Help center
-excerpt: The questions operators ask most about how Clubtech works — bookings, payments, guest data, events, no-shows, and how to get set up. For account-specific help, reach the team.
-description: Clubtech help center — plain answers to the most common questions about bookings, payments, guest data ownership, events, no-shows, and getting a venue set up on the platform.
-cta2href: support/
-cta2label: Contact support
+excerpt: Start with booking, operations, revenue, guest data, delivery, or support. Evaluators and existing venue teams take different paths from here.
+description: Clubtech help center for venue teams and evaluators, with clear paths to booking, operations, revenue, guest data, delivery, pricing, and support.
+cta2href: platform/
+cta2label: Explore the platform
 ---
 
-## Start here
+## Choose your path
 
-This page answers the questions venue teams ask most about how the platform works. For anything specific to your venue or account, message the Clubtech team through Clubtech Support — the button above takes you there.
+### I work at a Clubtech venue
 
-## Questions operators ask
+Go to [Clubtech Support](/support/) for an account or venue issue. Use the support access provided to your venue, or contact your Clubtech account lead if you cannot reach it.
 
-### How do I get my venue set up on Clubtech?
+### I am evaluating Clubtech
 
-Setup is a staged rollout with a dedicated account lead: onboarding, build, training, go-live, and a 90-day optimize phase. A one-time setup fee per venue covers the widget setup, configuring how your venue sells, and training your team. It starts with a short demo configured to a venue like yours.
+Start with the [platform overview](/platform/), check [public pricing](/pricing/), or [book a demo configured around your venue](/book-a-demo/).
+
+## Browse by task
+
+### Booking and exact inventory
+
+See how guests choose a daybed, cabana, table, or zone on a 3D birds-eye map, add a package, and pay before arrival.
+
+[Explore booking](/platform/#booking)
+
+### Floor operations and allocation
+
+See the internal floor plan, automatic seating allocation, service-day operator console, and real-time inventory connection.
+
+[Explore operations](/platform/#operations)
+
+### Packages, pricing, and prepayment
+
+See how prepayments, add-ons, dynamic pricing, and abandoned-booking recovery work across the booking journey.
+
+[Explore revenue tools](/sell/)
+
+### Guest lists, events, and the door
+
+See guest-list and visitor management, event ticketing, priority entry, and QR-code check-in.
+
+[Explore guest lists](/platform/#guest-lists)
+
+### Guest data, attribution, and reports
+
+See how bookings post revenue to Meta, Google Ads, and GA4, and how every-guest data becomes reporting and an owned audience.
+
+[Explore guest data](/grow/#guest-data)
+
+### Setup, training, and go-live
+
+See the staged delivery program from onboarding and build through training, go-live, and the 90-day optimize phase.
+
+[Explore delivery](/delivery/)
+
+## Common evaluator questions
 
 ### How do guests book?
 
-Guests explore a 3D birds-eye map of the venue, pick the exact daybed, table, or zone, choose a package, stack add-ons, and pay — in four taps, on their phone, with no app install. Prepayment clears inside the flow before they arrive.
-
-### What payment methods does Clubtech support?
-
-Multi-currency card processing through Airwallex, Apple Pay and Google Pay for wallet checkout, and Midtrans for Southeast Asian methods — QRIS, GoPay, and OVO. Guests pay the way their market pays.
-
-### Does Clubtech replace our POS or PMS?
-
-No. Clubtech sits on top of your existing POS and PMS with no major IT changes, and integrates with Opera PMS. It takes over the booking journey, the live floor plan, and the marketing loop while your current systems keep running.
+Guests explore a 3D birds-eye map, select exact inventory, choose a package and approved add-ons, and pay on their phone without installing an app.
 
 ### Who owns the guest data?
 
-The venue. Clubtech is white-label — the booking runs on your domain, in your design, and every guest record belongs to you. Because the booker invites their group, the whole party enters your database, not just the person who paid.
+The venue. Clubtech is white-label: the booking runs on the venue's domain, in its design, and the guest data belongs to the venue.
+
+### Does Clubtech replace the POS or PMS?
+
+No. Clubtech sits on top of the existing stack with zero major IT changes. Integration scope is confirmed during technical review.
 
 ### How does Clubtech reduce no-shows?
 
-Prepayments, deposits, and minimum spends are collected inside the booking flow, so a reservation is money committed to a specific spot on a specific date. That gives guests a reason to show up or cancel early enough for the venue to resell.
+Prepayments, deposits, and minimum spends commit revenue to the booking before arrival.
 
-### Can we sell tickets to events?
+### Can Clubtech sell event tickets?
 
-Yes. Events and ticketing run on the same platform and inventory as reservations — tiered tickets, QR-code check-in at the door, and priority-entry capture when an event sells out.
+Yes. Clubtech supports tiered event tickets and QR-code check-in alongside venue reservations.
 
-### How does the marketing side work?
+### What does it cost?
 
-Every booking fires to Meta, Google Ads, and GA4 in real time with its revenue attached, so campaigns optimize on money rather than clicks. Abandoned bookings retarget automatically, and lookalike audiences are seeded from your highest-value guests.
+There is no monthly fee. Customers pay a 4% online processing fee, and the venue pays a $2,000 one-time set-up fee covering widget setup, system configuration, and staff training.
 
-### How do I reach a real person for help?
+[See complete pricing](/pricing/)
 
-Message the Clubtech team through Clubtech Support, on WhatsApp or your venue's support portal. You sign in to the portal with a code sent to your email — no password — and can see the live status of your tickets there.
+## Still need help?
+
+- Existing venue team: [go to Clubtech Support](/support/).
+- Evaluating the platform: [book a venue-specific demo](/book-a-demo/).
+- Looking for a feature: [explore the full platform](/platform/).

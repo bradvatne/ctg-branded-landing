@@ -5,6 +5,7 @@ slug: door-check-in-qr-scanning-for-venues
 date: 2026-07-16
 author: Clubtech Global
 category: Guides
+related: /platform/#check-in|/sell/#events|/solutions/event-ticketing-for-clubs/
 excerpt: "Door check-in and QR scanning for venues — event check-in, guest check-in, priority capture when sold out, and how booking to door to database connects."
 hero: /assets/blog/nightclub-table-booking.webp
 heroAlt: "Door host scanning a guest's QR code at a venue entrance"
@@ -18,7 +19,7 @@ A note on intent, because search mixes two things. This is about **venue door ch
 
 ## Event check-in that starts as a QR code, not a clipboard
 
-For events and ticketed nights, check-in should begin the moment the guest buys, not the moment they arrive. Clubtech's [events and ticketing](https://www.clubtechglobal.com/operations/) issues a QR code with every ticket, and that code is the whole check-in.
+For events and ticketed nights, check-in should begin the moment the guest buys, not the moment they arrive. Clubtech's [events and ticketing](/sell/#events) issues a QR code with every ticket, and that code carries the booking into [service-day check-in](/platform/#check-in).
 
 - **QR-code check-in.** The guest presents the code, the host scans it, and the record confirms instantly. No name search, no scroll-and-squint, no line backing up while someone spells their surname twice.
 - **Tiered tickets, one scan.** General, priority, and package tickets all resolve through the same scan, so the door knows which tier walked in without a separate list for each.

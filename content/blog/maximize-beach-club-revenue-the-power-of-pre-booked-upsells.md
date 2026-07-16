@@ -1,78 +1,76 @@
 ---
-title: "Maximize Beach Club Revenue: The Power of Pre-Booked Upsells"
-titleTag: "Pre-Booked Upsells: Maximize Beach Club Revenue | Clubtech"
+title: "Pre-booked upsells for beach clubs: sell the package before arrival"
+titleTag: "Pre-Booked Upsells for Beach Clubs | Clubtech"
 slug: maximize-beach-club-revenue-the-power-of-pre-booked-upsells
 date: 2025-10-15
 author: Clubtech Global
 category: Marketing
-excerpt: "Pre-booked upsells unlock new revenue, smoother operations, and stronger guest satisfaction. Why presenting add-ons during the booking flow — not on arrival — changes the math."
+related: /sell/#packages|/blog/beach-club-revenue-playbook/|/book-a-demo/
+excerpt: "Present bottles, cakes, transfers, and other relevant add-ons during the booking flow, when the guest is already planning the day."
 hero: /assets/blog/maximize-beach-club-revenue-the-power-of-pre-booked-upsells.webp
-heroAlt: "Woman lounging at a beach club"
-description: "Present add-ons during booking, not on arrival. Pre-booked upsells lift revenue, smooth operations, and raise guest satisfaction."
+heroAlt: "Guest relaxing on a daybed at a beach club"
+description: "How beach clubs use packages and pre-booked add-ons to secure more spend before arrival and give the floor team a clearer plan."
 ---
+A daybed booking is the base transaction, not the ceiling. The guest is already choosing how Saturday will look. That is the right moment to offer the bottle, cake, transfer, or package that completes the plan.
 
-The allure of sun, sand, and sea makes beach clubs a highly desirable destination. However, in a competitive market, relying solely on cover charges or basic sunbed rentals leaves significant revenue on the table. Forward-thinking operators understand that optimizing the guest journey _before_ arrival is key. Implementing a strategy for pre-booked upsells — offering merchandise, premium beverages, and food add-ons during the online booking process — is a powerful lever for maximizing profitability and enhancing the guest experience.
+Waiting until arrival hands that decision to the busiest part of the day. The guest is settling in, the floor team is moving, and the premium item may no longer be available. Pre-booked upsells move the choice into the booking flow, where the guest has time and the venue can prepare.
 
-## The Problem: Untapped Revenue Potential in Every Booking
+## What a pre-booked upsell is
 
-Many beach clubs focus heavily on securing the initial booking — the sunbed, the cabana, the table. While essential, this often represents only the baseline revenue potential for that guest or group. The traditional model waits for guests to arrive before attempting to upsell drinks, food, or merchandise.
+A pre-booked upsell is a relevant add-on purchased with the reservation. Clubtech supports tiered packages and stackable add-ons such as bottles, cakes, transfers, and products.
 
-This approach presents several challenges:
+The structure can be simple:
 
-- **On-the-Spot Decision Fatigue:** Guests arriving might be focused on settling in, not immediately considering add-on purchases.
-- **Operational Strain:** Handling numerous ad-hoc requests for specific bottles, platters, or merchandise during peak hours puts pressure on staff and can lead to service delays.
-- **Inventory Uncertainty:** Popular items, especially premium bottles or limited merchandise, might sell out, leading to missed revenue and guest disappointment.
-- **Lost Opportunity:** Guests are often in a high-intent purchasing mode _during_ the booking process, excited about their upcoming visit and more receptive to enhancing their experience. Failing to capitalize on this moment is a significant missed opportunity.
+1. The guest chooses the exact furniture or zone.
+2. The booking flow presents packages that fit that inventory.
+3. The guest adds any relevant extras.
+4. The complete order is paid before arrival.
 
-Relying only on point-of-sale transactions means you're not leveraging the full potential of each reservation secured through your booking engine.
+The operator sees more of the expected spend before doors open, and the service team knows what has already been ordered.
 
-## The Solution: Integrating Upsells into the Booking Flow
+## Build packages before building a catalogue
 
-The strategic solution is to integrate attractive upsell options directly into your online booking system. By presenting guests with relevant add-ons _before_ they confirm their reservation, you tap into their pre-arrival excitement and planning mindset. This proactive approach transforms your booking engine from a simple reservation tool into a dynamic revenue generation platform.
+A long list creates work for the guest. Start with a small package ladder tied to the venue's real buying patterns:
 
-## Key Benefits of Pre-Booked Upsells
+- the furniture on its own;
+- the furniture plus an entry-level beverage or food package;
+- a higher-value group or celebration package;
+- a short list of stackable extras.
 
-Implementing pre-booked upsells delivers tangible benefits across operations, finance, and guest satisfaction.
+The names and contents should be concrete. State what is included, how many guests it suits, and what the guest still needs to choose on arrival. Do not hide a weak offer behind a clever label.
 
-### Driving Significant Increases in Average Revenue Per Guest (ARPG)
+## Match the offer to the booking
 
-The most direct benefit is a boost to your bottom line. When guests add a bottle of premium champagne, a gourmet food platter, or exclusive branded merchandise to their booking, their total spend increases before they even set foot on your property. **This strategy directly increases the Average Revenue Per Guest (ARPG)**, a critical metric for hospitality businesses. Studies consistently show that customers are more likely to purchase add-ons when presented conveniently during the initial transaction phase.
+A transfer is relevant to an airport-arrival booking. A cake is relevant to a celebration. A bottle package may fit a cabana better than a single lounger. Relevance matters more than catalogue size.
 
-### Enhancing the Guest Experience Through Convenience
+The same rule applies to timing. Put the core package close to the furniture decision. Keep secondary extras available without forcing the guest through repeated prompts.
 
-Modern consumers value convenience and personalization. Allowing guests to pre-select their preferred champagne, reserve a specific welcome platter, or purchase branded towels offers a seamless, elevated experience. They arrive knowing their preferences are catered for, reducing wait times and decision-making upon arrival. This perceived added value contributes significantly to overall guest satisfaction and loyalty.
+## The operational value
 
-### Improving Operational Efficiency and Inventory Management
+Pre-booked items do more than increase the order value. They give the venue a clearer preparation list before service. The team can see which cabanas have bottles, which groups ordered cakes, and which arrivals include transfers.
 
-Pre-booking high-value items provides crucial operational advantages.
+That does not replace on-site hospitality. It removes predictable orders from the peak-hour scramble and lets the floor team focus on the requests that could not be planned.
 
-- **Predictive Ordering:** Knowing in advance which premium bottles, food platters, or merchandise items are reserved allows for more accurate purchasing and inventory management, reducing waste and preventing stockouts.
-- **Streamlined Service:** Staff can prepare pre-ordered items ahead of time, ensuring prompt delivery upon guest arrival. This alleviates pressure during busy periods and allows servers to focus on providing attentive service rather than order-taking for pre-planned elements.
-- **Guaranteed Revenue:** Securing payment for upsells upfront mitigates the risk associated with no-shows or last-minute cancellations for these specific high-cost items. **This transforms potential revenue into guaranteed income.**
+## Measure the offer honestly
 
-## Examples of Effective Pre-Booked Upsells
+Track package mix, add-on attachment, order value, and cancellations by product. Keep offers that guests buy and the team can deliver well. Remove clutter that slows the booking without producing a useful order.
 
-Consider offering a curated selection of add-ons that align with your brand and guest expectations:
-
-- **Beverage Packages:** Bottles of champagne, premium rosé, buckets of beer, or spirit bottle service.
-- **Food Platters:** Sushi selections, fruit platters, charcuterie boards, or signature appetizer combos.
-- **Merchandise:** Branded towels, hats, tote bags, sunscreen, or exclusive apparel.
-- **Comfort & Convenience:** Premium towel service, reserved shaded areas, or amenity kits.
-
-## The Takeaway: Unlock Profitability with Smart Booking Technology
-
-Integrating pre-booked upsells isn't just a feature; it's a core revenue strategy for modern beach clubs and restaurants. By leveraging technology to offer enticing add-ons during the booking process, you cater to guest desires for convenience, improve operational flow, and significantly boost your ARPG. **Don't leave money on the table — transform your booking process into a profit center.**
+No universal uplift should be assumed. The result depends on the inventory, price, presentation, and guest mix. The useful benchmark is the venue's own booking data before and after each offer change.
 
 ## Questions operators ask
 
-### What are pre-booked upsells?
+### What should a beach club sell as an add-on?
 
-Pre-booked upsells are add-ons — premium beverages, food platters, merchandise, celebration packages — purchased during the online booking rather than on arrival. The revenue is secured in advance, and the venue knows exactly what to prepare for each reservation.
+Start with items guests already buy: bottles, cakes, transfers, food or beverage packages, and relevant products. Tie each offer to the furniture or package already selected.
 
-### Why offer add-ons before arrival instead of on-site?
+### Why sell add-ons before arrival?
 
-Guests are most receptive while planning, and pre-orders remove on-the-day friction: no decision fatigue at the door, no ad-hoc pressure on staff at peak hours, no premium bottle selling out before the guest who wanted it arrives. The math favors the booking flow.
+The guest is already planning and paying, while the venue gains preparation time and better visibility into expected pre-arrival spend.
 
-### What should beach clubs offer as booking add-ons?
+### How many add-ons should we offer?
 
-Start with what guests already buy on-site: bottle and beverage packages, food platters, cabana upgrades, and occasion extras like cakes or decorations. Tie each offer to the booked product so it reads as enhancing the day, then let the attach-rate data guide the catalogue.
+Enough to cover the obvious use cases, not every item on the venue menu. Start small, measure attachment, and remove options that create more friction than revenue.
+
+## Build the package ladder
+
+Continue to [packages and add-ons](/sell/#packages) or the broader [beach club revenue playbook](/blog/beach-club-revenue-playbook/). To see the flow on your inventory, [book a demo](/book-a-demo/).

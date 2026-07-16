@@ -5,6 +5,7 @@ slug: beach-club-revenue-playbook
 date: 2026-07-06
 author: Clubtech Global
 category: Revenue
+related: /sell/|/blog/dynamic-pricing-for-beach-clubs/|/book-a-demo/
 excerpt: "How to increase beach club revenue: the full stack from entry fees to minimum spends, plus the pricing moves that pre-sell your venue days ahead."
 hero: /assets/blog/beach-club-revenue-playbook.webp
 heroAlt: "Beach club revenue tiers from sunbeds to ultimate packages"
@@ -26,7 +27,7 @@ Most operators run two or three revenue streams and leave the rest on the deck. 
 
 **4. Packages.** Bed only → party package → ultimate experience. A tier ladder does the upselling for you: guests self-select upward when the next rung is one tap at booking, not a pitch on the deck. On Clubtech, packages are the default selling unit, not an afterthought bolted onto a bed rental.
 
-**5. Add-ons.** Bottles, cakes, transfers. Individually small, collectively meaningful — and dramatically more likely to sell at booking time, when the guest is planning a celebration, than at the venue, when they're already settled. FINNS Beach Club saw pre-booked bottle purchases climb once bottles became a booking-flow decision instead of a table-side one. <!-- VERIFY: exact pre-booked bottle uplift figure — homepage counter, confirm with Brad -->
+**5. Add-ons.** Bottles, cakes, transfers. They create revenue on top of the reservation and give the venue a preparation list before service. Measure attachment against the venue's own baseline; no universal uplift or FINNS-specific bottle figure is claimed here.
 
 **6. Events.** Ticketed nights, takeovers, brand partnerships. Events monetize the same real estate a second time — the daypart economics of one venue, two sellable days per day.
 
@@ -111,8 +112,8 @@ Model each revenue stream separately rather than one blended line: furniture uni
 
 ### How profitable is a beach club?
 
-Profitability varies enormously with location, season length, and revenue mix — venues with strong pre-sold packages and F&B attach materially outperform walk-up-driven clubs on margin. <!-- VERIFY: credible industry profit-margin ranges to cite — do not publish without a source --> The structural drivers an operator controls are the pre-sold share of revenue, furniture tier architecture, minimum-spend enforcement, and how many of the six revenue streams are actually switched on.
+Profitability varies with location, season length, cost structure, and revenue mix, so a universal margin range would mislead. The structural drivers an operator can measure directly are the pre-sold share of revenue, furniture tier architecture, minimum-spend enforcement, and which revenue streams are active.
 
 ---
 
-**See your revenue stack on Clubtech.** 15 minutes, no pitch deck, no contracts — we'll arrive with the platform pre-configured for a venue like yours. [Book a demo](/contact.html)
+**See the four revenue levers working together.** Continue to [Clubtech Sell](/sell/), then [book a demo](/book-a-demo/) configured around a venue like yours.

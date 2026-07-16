@@ -168,23 +168,36 @@
 
   /* ── UI ───────────────────────────────────────────────────────── */
   function qs(sel) { return document.querySelector(sel); }
+  let prefsReturnFocus = null;
+  let bodyOverflowBeforePrefs = '';
+
+  function focusableWithin(el) {
+    return el.querySelectorAll('button:not([disabled]),a[href],input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])');
+  }
 
   function showBanner() { const el = qs('#cc-banner'); if (el) el.removeAttribute('hidden'); }
   function hideBanner() { const el = qs('#cc-banner'); if (el) el.setAttribute('hidden', ''); }
   function showPrefs(currentPrefs) {
     const el = qs('#cc-prefs');
     if (!el) return;
+    prefsReturnFocus = document.activeElement;
+    bodyOverflowBeforePrefs = document.body.style.overflow;
     el.removeAttribute('hidden');
     document.body.style.overflow = 'hidden';
     const aToggle = qs('#cc-toggle-analytics');
     const mToggle = qs('#cc-toggle-marketing');
     if (aToggle) aToggle.checked = !!currentPrefs.analytics;
     if (mToggle) mToggle.checked = !!currentPrefs.marketing;
+    const close = qs('#cc-prefs-close');
+    if (close) close.focus();
   }
   function hidePrefs() {
     const el = qs('#cc-prefs');
     if (el) el.setAttribute('hidden', '');
-    document.body.style.overflow = '';
+    document.body.style.overflow = bodyOverflowBeforePrefs;
+    if (prefsReturnFocus && typeof prefsReturnFocus.focus === 'function') prefsReturnFocus.focus();
+    prefsReturnFocus = null;
+    bodyOverflowBeforePrefs = '';
   }
 
   function acceptAll() {
@@ -252,6 +265,18 @@
     document.addEventListener('keydown', function (e) {
       const p = qs('#cc-prefs');
       if (e.key === 'Escape' && p && !p.hasAttribute('hidden')) hidePrefs();
+      if (e.key !== 'Tab' || !p || p.hasAttribute('hidden')) return;
+      const items = focusableWithin(p);
+      if (!items.length) return;
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     });
     document.addEventListener('click', function (e) {
       const t = e.target.closest && e.target.closest('[data-open-consent]');

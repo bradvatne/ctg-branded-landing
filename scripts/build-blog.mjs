@@ -1,22 +1,19 @@
 #!/usr/bin/env node
-/* Clubtech branded landing — blog build.
-   Ports the ctg-landingpage blog protocol (content/blog/*.md → blog/) with
-   zero dependencies: a built-in markdown renderer replaces marked, and the
-   listing is emitted as final static HTML (no PHP cache layer).
+/* Clubtech website static build.
+   Compiles editorial, landing, solution, and comparison sources with zero
+   dependencies. A built-in Markdown renderer emits final static HTML.
 
    Emits:
      blog/<slug>/index.html   (one page per post)
      blog/index.html          (the directory/listing page)
-     sitemap.xml
+     sitemap.xml + llms.txt
 
    Frontmatter (flat key: value lines, optional quotes — NOT full YAML):
    title, titleTag, slug, date, author, category, excerpt, hero, heroAlt,
    description. A "## Questions operators ask" section emits FAQPage JSON-LD.
 
-   Canonicals: every post canonicalizes to the original article on
-   www.clubtechglobal.com — this Pages site is a branded mirror and must not
-   compete with the primary blog in search. For the same reason sitemap.xml
-   lists only this site's own indexable URLs (/ and /blog/), not the posts.
+   Canonicals: www.clubtechglobal.com is the primary, self-canonical site.
+   Every indexable route belongs in sitemap.xml.
 
    Usage: node scripts/build-blog.mjs   (or: npm run build:blog)
 */
@@ -24,6 +21,13 @@
 import { readFileSync, writeFileSync, readdirSync, mkdirSync, rmSync, existsSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import {
+  BLOG_PATHWAYS,
+  CAPABILITIES,
+  COMPARISON_CONFIG,
+  FOOTER_GROUPS,
+  LANDING_CONFIG,
+} from './site-config.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
@@ -66,6 +70,24 @@ function sanitizeBlogHtml(html) {
     .replace(/\son\w+\s*=\s*[^\s>]+/gi, '')
     .replace(/\b(href|src|action|formaction)\s*=\s*(["'])\s*(?:javascript|data|vbscript):[^"']*\2/gi, '$1="#"');
 }
+
+/* Normalize retired and pre-rebuild destinations at the rendering boundary.
+   Sources are still repaired directly, but this prevents a missed legacy link
+   from shipping as a 404 or a meta-refresh hop. */
+function normalizeInternalLinks(html) {
+  return String(html)
+    .replaceAll('/platform.html', '/platform/')
+    .replaceAll('/contact.html', '/book-a-demo/')
+    .replaceAll('/revenue.html', '/sell/#revenue')
+    .replaceAll('/revenue/', '/sell/#revenue')
+    .replaceAll('/booking/#every-guest-data', '/platform/#guest-lists')
+    .replaceAll('/booking/', '/platform/#booking')
+    .replaceAll('/operations/', '/platform/#operations')
+    .replaceAll('/intelligence/', '/grow/#guest-data');
+}
+
+const splitMetaList = (value) => String(value || '').split('|').map((item) => item.trim()).filter(Boolean);
+const routeHref = (rel, route) => /^(?:https?:|mailto:|tel:|#|\/)/.test(route) ? route : `${rel}${route}`;
 
 /* ─── Minimal markdown renderer ──────────────────────────────── */
 /* Covers the authoring subset the blog protocol allows: ##/### headings,
@@ -278,8 +300,8 @@ const NAV = [
       { h: '', tag: '', links: [
         ['sell/#events', 'Events &amp; ticketing', 'Tiered tickets and QR check-in'],
         ['sell/#packages', 'Packages &amp; upsells', 'Bottles, cakes, transfers'],
-        ['sell/#gift-cards', 'Gift cards', 'Prepaid revenue, new guests'],
         ['sell/#dynamic-pricing', 'Dynamic pricing', 'Price the same seats to demand'],
+        ['sell/#prepayments', 'Prepayments &amp; deposits', 'Commit revenue before arrival'],
         ['sell/#revenue', 'Revenue', 'The four-lever revenue playbook'],
       ] },
     ],
@@ -288,10 +310,9 @@ const NAV = [
     key: 'grow', label: 'Grow', href: 'grow/', small: true, align: 'left',
     cols: [
       { h: '', tag: '', links: [
-        ['grow/#marketing-ai', 'Marketing AI', 'Ad attribution &amp; retargeting'],
         ['grow/#ads', 'Ads &amp; attribution', 'The booking is the conversion'],
+        ['grow/#abandoned-recovery', 'Abandoned recovery', 'Return to the zone, date, and price'],
         ['grow/#guest-data', 'Guest data &amp; reports', '20+ reports, data you own'],
-        ['grow/#reviews', 'Clubtech Reviews', 'Post-visit guest feedback'],
       ] },
     ],
   },
@@ -363,7 +384,7 @@ const NAV = [
         ['careers/', 'Careers', 'Work at Clubtech'],
         ['delivery/', 'How we deliver', 'Five stages to live'],
         ['support/', 'Support', 'Help for venue teams'],
-        ['index.html#contact', 'Contact', 'Talk to the team'],
+        ['book-a-demo/', 'Contact sales', 'Book a focused walkthrough'],
       ] },
     ],
   },
@@ -464,12 +485,8 @@ const shortLabel = (slug) =>
 function footerMarkup(rel, pages = []) {
   const col = (title, links) => `      <div class="footer-col">
         <p class="footer-col-h">${esc(title)}</p>
-${links.map(([href, label]) => `        <a href="${href}">${esc(label)}</a>`).join('\n')}
+${links.map(([href, label]) => `        <a href="${routeHref(rel, href)}">${esc(label)}</a>`).join('\n')}
       </div>`;
-  const solutions = pages.filter((p) => p.meta.section === 'solutions' && !p.meta.slug.startsWith(GEO_PREFIX));
-  const geos = pages.filter((p) => p.meta.section === 'solutions' && p.meta.slug.startsWith(GEO_PREFIX));
-  const compares = pages.filter((p) => p.meta.section === 'compare');
-  const pageLink = (p) => [`${rel}${p.meta.section}/${p.meta.slug}/`, shortLabel(p.meta.slug)];
   const r = (s) => `${rel}${s}`;
   return `  <footer class="footer shell">
     <div class="footer-top">
@@ -482,18 +499,12 @@ ${links.map(([href, label]) => `        <a href="${href}">${esc(label)}</a>`).jo
         <a href="${r('pricing/')}">Pricing</a>
         <a href="${r('blog/')}">Blog</a>
         <a href="${r('help/')}">Help</a>
-        <a href="mailto:info@clubtechglobal.com">Contact</a>
+        <a href="mailto:info@clubtechglobal.com">Email us</a>
         <a href="#" data-open-consent>Cookie preferences</a>
       </div>
     </div>
     <div class="footer-grid">
-${col('Platform', [[r('platform/#booking'), 'Booking'], [r('platform/#operations'), 'Operations & floor'], [r('platform/#guest-lists'), 'Guest lists'], [r('platform/#integrations'), 'Integrations'], [r('ai-bookings/'), 'AI-agent bookings']])}
-${col('Sell', [[r('sell/#events'), 'Events & ticketing'], [r('sell/#packages'), 'Packages & upsells'], [r('sell/#gift-cards'), 'Gift cards'], [r('sell/#dynamic-pricing'), 'Dynamic pricing'], [r('sell/#revenue'), 'Revenue']])}
-${col('Grow', [[r('grow/#marketing-ai'), 'Marketing AI'], [r('grow/#ads'), 'Ads & attribution'], [r('grow/#guest-data'), 'Guest data'], [r('grow/#reviews'), 'Reviews']])}
-${col('Solutions', [...solutions.map(pageLink), [`${rel}solutions/`, 'All solutions']])}
-${col('Locations', geos.map(pageLink))}
-${col('Compare', [...compares.map(pageLink), [`${rel}compare/`, 'All comparisons']])}
-${col('Company', [[r('about/'), 'About'], [r('careers/'), 'Careers'], [r('delivery/'), 'How we deliver'], [r('support/'), 'Support'], [r('pricing/'), 'Pricing'], [`${rel}index.html#contact`, 'Contact']])}
+${FOOTER_GROUPS.map(([title, links]) => col(title, links)).join('\n')}
     </div>
     <div class="footer-wordmark"><img src="${rel}brand/clubtech-wordmark-white-560.png" alt="Clubtech" width="1200" height="300" loading="lazy"></div>
     <p class="copyright">© 2026 Clubtech, Inc.</p>
@@ -589,6 +600,7 @@ function headHTML({ title, description, canonical, ogImage, ogImageAlt, jsonLd, 
   <link rel="preload" href="${rel}fonts/albert-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="${rel}css/styles.css">
   <link rel="stylesheet" href="${rel}css/blog.css">
+  <link rel="stylesheet" href="${rel}css/content-blocks.css">
   <link rel="stylesheet" href="${rel}css/consent.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="${rel}css/consent.css"></noscript>
   <link rel="stylesheet" href="${rel}css/booking.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="${rel}css/booking.css"></noscript>
   <script>document.documentElement.classList.add('js')</script>
@@ -779,7 +791,16 @@ function splitSolutionBody(html) {
   const sections = [];
   const re = /<h2(?:\s[^>]*)?>([\s\S]*?)<\/h2>([\s\S]*?)(?=<h2(?:\s[^>]*)?>|$)/gi;
   let match;
-  while ((match = re.exec(rest))) sections.push({ title: match[1], body: match[2] });
+  while ((match = re.exec(rest))) {
+    const rawTitle = match[1];
+    const cleanTitle = stripHtml(rawTitle);
+    const moduleMatch = cleanTitle.match(/^(Workflow|Capabilities|Outcomes|Fit|Proof)\s*(?:—|:|-)\s*(.+)$/i);
+    sections.push({
+      key: moduleMatch ? moduleMatch[1].toLowerCase() : 'detail',
+      title: moduleMatch ? esc(moduleMatch[2]) : rawTitle,
+      body: match[2],
+    });
+  }
   const faqIndex = sections.findIndex((section) => /questions operators ask/i.test(stripHtml(section.title)));
   return { intro, sections: faqIndex < 0 ? sections : sections.slice(0, faqIndex), faq: faqIndex < 0 ? null : sections[faqIndex] };
 }
@@ -793,12 +814,36 @@ function normalizeSolutionLinks(html) {
     .replaceAll('href="../../intelligence/"', 'href="../../grow/#guest-data"');
 }
 
-function solutionVisual(page, config, index) {
-  const shot = index % 2 === 0 ? config.heroShot : config.secondShot;
-  if (index % 3 === 2) {
-    return `<figure class="solution-photo-card"><img src="../..${esc(page.meta.hero)}" alt="${esc(page.meta.heroAlt)}" loading="lazy" decoding="async"><figcaption>${esc(config.label)} · configured around the venue</figcaption></figure>`;
+function solutionBodyParts(body) {
+  const items = [];
+  const itemRe = /<li>([\s\S]*?)<\/li>/gi;
+  let match;
+  while ((match = itemRe.exec(body))) items.push(match[1]);
+  const lead = body.replace(/<(?:ul|ol)>[\s\S]*?<\/(?:ul|ol)>/gi, '').trim();
+  return { lead, items };
+}
+
+function renderSolutionModule(section, config, index) {
+  const { lead, items } = solutionBodyParts(section.body);
+  const count = String(index + 1).padStart(2, '0');
+  const itemCards = items.map((item, itemIndex) => `<li><span>${String(itemIndex + 1).padStart(2, '0')}</span><div>${item}</div></li>`).join('');
+
+  if (section.key === 'workflow') {
+    return `<section class="solution-module solution-workflow ${items.length ? '' : 'is-copy-only'}" id="how-it-works"><div class="shell"><div class="solution-module-head"><p class="solution-module-index">${count} · Workflow</p><h2>${section.title}</h2>${lead}</div>${items.length ? `<ol class="solution-steps">${itemCards}</ol>` : ''}</div></section>`;
   }
-  return `<div class="solution-shot-card"><img src="../../assets/product/${esc(shot)}" alt="Clubtech product view for ${esc(config.label)}" loading="lazy" decoding="async"><div class="solution-shot-meta"><span>${esc(config.label)} product view</span><span>Clubtech platform</span></div></div>`;
+  if (section.key === 'capabilities') {
+    return `<section class="solution-module solution-capabilities ${items.length ? '' : 'is-copy-only'}"><div class="shell solution-capability-layout"><div class="solution-capability-stage"><div class="solution-stage-chrome"><span></span><span></span><span></span><small>Clubtech · ${esc(config.label)}</small></div><img src="../../assets/product/${esc(config.secondShot)}" alt="Clubtech ${esc(config.label)} operating view" loading="lazy" decoding="async"></div><div class="solution-capability-copy"><p class="solution-module-index">${count} · Product capabilities</p><h2>${section.title}</h2>${lead}${items.length ? `<ul class="solution-capability-list">${itemCards}</ul>` : ''}</div></div></section>`;
+  }
+  if (section.key === 'outcomes') {
+    return `<section class="solution-module solution-outcomes dark-section ${items.length ? '' : 'is-copy-only'}"><div class="shell"><div class="solution-module-head"><p class="solution-module-index">${count} · Operator outcomes</p><h2>${section.title}</h2>${lead}</div>${items.length ? `<ul class="solution-outcome-grid">${itemCards}</ul>` : ''}</div></section>`;
+  }
+  if (section.key === 'fit') {
+    return `<section class="solution-module solution-fit ${items.length ? '' : 'is-copy-only'}"><div class="shell solution-fit-layout"><div><p class="solution-module-index">${count} · Operating fit</p><h2>${section.title}</h2>${items.length ? lead : ''}</div>${items.length ? `<ul class="solution-fit-list">${itemCards}</ul>` : `<div class="solution-fit-copy">${lead}</div>`}</div></section>`;
+  }
+  if (section.key === 'proof') {
+    return `<section class="solution-module solution-proof"><div class="shell solution-proof-panel"><div><p class="solution-module-index">${count} · Credible proof</p><h2>${section.title}</h2></div><div class="solution-proof-copy">${section.body}</div></div></section>`;
+  }
+  return `<section class="solution-module solution-detail"><div class="shell solution-detail-layout"><div><p class="solution-module-index">${count} · ${esc(config.label)}</p><h2>${section.title}</h2></div><div>${section.body}</div></div></section>`;
 }
 
 function renderSolutionFaq(faq) {
@@ -824,8 +869,12 @@ function renderSolutionPage(page, pages) {
   const parts = splitSolutionBody(body);
   const relatedPool = pages.filter((p) => p.meta.section === 'solutions' && p.meta.slug !== page.meta.slug && SOLUTION_CONFIG[p.meta.slug]?.group === config.group);
   const related = [...relatedPool, ...pages.filter((p) => p.meta.section === 'solutions' && p.meta.slug !== page.meta.slug && !relatedPool.includes(p))].slice(0, 3);
-  const relatedCards = related.map((item) => `<a class="solution-related-card" href="../${esc(item.meta.slug)}/"><img src="../..${esc(item.meta.hero)}" alt="" loading="lazy" decoding="async"><div class="solution-related-copy"><small>${esc(SOLUTION_CONFIG[item.meta.slug]?.label || 'Solution')}</small><strong>${esc(plainTitle(item.meta.title))}</strong></div></a>`).join('');
-  const stories = parts.sections.map((section, index) => `<section class="solution-story ${index % 2 ? 'is-reverse' : ''}"><div class="shell solution-story-grid"><div class="solution-copy"><p class="eyebrow">${String(index + 1).padStart(2, '0')} · ${esc(config.label)}</p><h2>${section.title}</h2>${section.body}</div><div class="solution-visual">${solutionVisual(page, config, index)}</div></div></section>`).join('');
+  const pathways = splitMetaList(page.meta.related);
+  const relatedCards = related.map((item) => {
+    const relatedConfig = SOLUTION_CONFIG[item.meta.slug];
+    return `<a class="solution-related-card" href="../${esc(item.meta.slug)}/"><img src="../../assets/product/${esc(relatedConfig?.heroShot || 'booking-map.webp')}" alt="" loading="lazy" decoding="async"><div class="solution-related-copy"><small>${esc(relatedConfig?.label || 'Solution')}</small><strong>${esc(plainTitle(item.meta.title))}</strong></div><span aria-hidden="true">↗</span></a>`;
+  }).join('');
+  const modules = parts.sections.map((section, index) => renderSolutionModule(section, config, index)).join('');
   const head = headHTML({
     title: page.meta.titleTag || `${plainTitle(page.meta.title)} | Clubtech`,
     description: page.meta.description || page.meta.excerpt,
@@ -845,11 +894,12 @@ function renderSolutionPage(page, pages) {
 <a class="skip-link" href="#main">Skip to content</a>
 ${navMarkup('../../', 'solutions')}
 <main id="main">
-  <header class="solution-hero"><div class="shell solution-hero-grid"><div><p class="solution-kicker"><i></i>${esc(config.kicker)}</p><h1>${h1Html(page.meta.title)}</h1><p class="solution-hero-copy">${esc(page.meta.excerpt)}</p><div class="solution-actions"><a class="button button-mint" href="../../book-a-demo/" data-open-demo>Book a Demo</a><a class="button button-ghost" href="#how-it-works">See how it works ↓</a></div><ul class="solution-proofline">${proof}</ul></div><div class="solution-hero-visual"><img class="solution-hero-photo" src="../..${esc(page.meta.hero)}" alt="${esc(page.meta.heroAlt)}" fetchpriority="high" decoding="async"><img class="solution-hero-shot" src="../../assets/product/${esc(config.heroShot)}" alt="Clubtech ${esc(config.label)} product experience" fetchpriority="high" decoding="async"><span class="solution-hero-label"><i></i>Product-led, configured to the venue</span></div></div></header>
-  <section class="solution-intro" id="how-it-works"><div class="shell solution-intro-grid"><div class="solution-intro-label"><p class="eyebrow">Why this fit matters</p><p>Furniture · zones · dayparts · owned guest data</p></div><div class="solution-lead">${parts.intro}</div></div></section>
-${stories}
+  <header class="solution-hero"><div class="shell solution-hero-grid"><div><p class="solution-kicker"><i></i>${esc(config.kicker)}</p><h1>${h1Html(page.meta.title)}</h1><p class="solution-hero-copy">${esc(page.meta.excerpt)}</p><div class="solution-actions"><a class="button button-mint" href="../../book-a-demo/" data-open-demo>Book a Demo</a><a class="button button-ghost" href="#how-it-works">See the workflow ↓</a></div>${page.meta.canonicalFeature ? `<a class="solution-canonical" href="${esc(routeHref('../../', page.meta.canonicalFeature))}">Canonical product detail <span aria-hidden="true">↗</span></a>` : ''}<ul class="solution-proofline">${proof}</ul></div><div class="solution-hero-visual"><div class="solution-stage-chrome"><span></span><span></span><span></span><small>Clubtech · ${esc(config.label)}</small></div><img class="solution-hero-shot" src="../../assets/product/${esc(config.heroShot)}" alt="Clubtech ${esc(config.label)} product experience" fetchpriority="high" decoding="async"><figure class="solution-hero-photo"><img src="../..${esc(page.meta.hero)}" alt="${esc(page.meta.heroAlt)}" fetchpriority="high" decoding="async"><figcaption>${esc(config.label)} · venue context</figcaption></figure><span class="solution-hero-label"><i></i>Live product surface</span></div></div></header>
+  <section class="solution-intro"><div class="shell solution-intro-grid"><div class="solution-intro-label"><p class="eyebrow">The operating case</p><p>Inventory · revenue · service day · owned data</p></div><div class="solution-lead">${parts.intro}</div></div></section>
 ${renderSolutionProductBand(config)}
+${modules}
 ${renderSolutionFaq(parts.faq)}
+  ${renderPathwayRail(pathways, '../../', 'Connected product path', 'See the capability, the operating fit, and the proof.')}
   <section class="solution-related"><div class="shell"><div class="solution-related-head"><div><p class="eyebrow">Keep exploring</p><h2>Related solutions</h2></div><a href="../">See every solution ↗</a></div><div class="solution-related-grid">${relatedCards}</div></div></section>
   <section class="closing dark-section"><img class="closing-mark" src="../../brand/clubtech-mark-white.png" alt="" aria-hidden="true" width="1200" height="1200" loading="lazy"><div class="shell centered"><p class="eyebrow">Your venue, pre-sold.</p><h2>Put your venue<br><span class="mint-text">inside the demo.</span></h2><p>Book a focused walkthrough, configured around a premium venue like yours.</p><a class="button button-mint" href="../../book-a-demo/" data-open-demo>Book a Demo</a></div></section>
 ${footerMarkup('../../', pages)}
@@ -859,9 +909,76 @@ ${CONSENT_MARKUP}
 </body></html>`;
 }
 
+const ROUTE_LABELS = {
+  'book-a-demo/': ['Book a Demo', 'See Clubtech configured around your venue.'],
+  'platform/': ['Platform', 'Follow the booking from first tap to the floor.'],
+  'sell/': ['Sell', 'See the revenue mechanics behind the reservation.'],
+  'grow/': ['Grow', 'Connect booking value, guest data, and reporting.'],
+  'delivery/': ['Delivery', 'See how Clubtech gets a venue live.'],
+  'pricing/': ['Pricing', 'Review the cleared public commercials.'],
+  'for-hotels/': ['For hotels', 'See the owned pool and day-pass model.'],
+  'support/': ['Support', 'Reach the Clubtech team for venue-specific help.'],
+  'help/': ['Help center', 'Get plain answers about the platform.'],
+};
+
+function routeCard(route) {
+  const normalized = String(route).replace(/^\//, '');
+  const base = normalized.split('#')[0];
+  if (ROUTE_LABELS[base]) return ROUTE_LABELS[base];
+  if (normalized.startsWith('solutions/')) return ['See the operating fit', 'Open the solution built around this venue or workflow.'];
+  if (normalized.startsWith('compare/')) return ['Compare the fit', 'See where each operating model is the stronger choice.'];
+  if (normalized.startsWith('blog/')) return ['Read the playbook', 'Go deeper on the operator decision behind this page.'];
+  const capability = Object.values(CAPABILITIES).find((item) => item.canonical === normalized);
+  if (capability) return [capability.label, 'See the approved product capability in its canonical home.'];
+  return ['Keep exploring', 'Continue to the next relevant Clubtech page.'];
+}
+
+function renderPathwayRail(routes, rel, eyebrow = 'Next step', heading = 'Keep the decision moving.') {
+  const unique = [...new Set(routes.filter(Boolean))].slice(0, 3);
+  if (!unique.length) return '';
+  const cards = unique.map((route, index) => {
+    const [label, copy] = routeCard(route);
+    return `<a class="pathway-card" href="${esc(routeHref(rel, route))}"><span>0${index + 1}</span><strong>${esc(label)}</strong><p>${esc(copy)}</p><i aria-hidden="true">↗</i></a>`;
+  }).join('');
+  return `<section class="pathway-rail"><div class="shell"><p class="eyebrow">${esc(eyebrow)}</p><div class="pathway-head"><h2>${esc(heading)}</h2></div><div class="pathway-grid">${cards}</div></div></section>`;
+}
+
+function renderComparisonPage(page, pages) {
+  const config = COMPARISON_CONFIG[page.meta.slug] || {};
+  const capability = CAPABILITIES[config.capability] || CAPABILITIES.booking;
+  const body = normalizeInternalLinks(sanitizeBlogHtml(renderMarkdown(page.body, true)));
+  const related = splitMetaList(page.meta.related);
+  const pathways = related.length ? related : [config.solution, capability.canonical, 'delivery/'];
+  const verified = page.meta.verificationDate
+    ? `<p class="comparison-verified">Competitor details checked ${esc(page.meta.verificationDate)}${page.meta.verificationSource ? ` · <a href="${esc(page.meta.verificationSource)}" rel="noopener">primary source</a>` : ''}</p>`
+    : '<p class="comparison-verified is-pending">Competitor details require a current primary-source check before the next factual update.</p>';
+  const head = headHTML({
+    title: page.meta.titleTag || `${plainTitle(page.meta.title)} | Clubtech`,
+    description: page.meta.description || page.meta.excerpt,
+    canonical: pageCanonical(page),
+    ogImage: `${SITE_ORIGIN}${page.meta.hero}`,
+    ogImageAlt: page.meta.heroAlt || plainTitle(page.meta.title),
+    jsonLd: pageJsonLd(page), rel: '../../', ogType: 'website',
+  });
+  return `${head}
+<body class="comparison-page p-compare"><a class="skip-link" href="#main">Skip to content</a>
+${navMarkup('../../', 'resources')}
+<main id="main">
+  <header class="comparison-hero"><div class="shell comparison-hero-grid"><div><p class="solution-kicker"><i></i>Fair-fit comparison</p><h1>${h1Html(page.meta.title)}</h1><p class="comparison-sub">${esc(page.meta.excerpt)}</p><div class="solution-actions"><a class="button button-mint" href="../../book-a-demo/" data-open-demo>Book a Demo</a><a class="button button-ghost" href="../../${esc(config.solution || 'platform/')}">See the relevant solution</a></div>${verified}</div><div class="comparison-visual"><img class="comparison-venue" src="../..${esc(page.meta.hero)}" alt="${esc(page.meta.heroAlt)}" fetchpriority="high" decoding="async"><img class="comparison-product" src="../../assets/product/${esc(config.proof || capability.asset || 'booking-map.webp')}" alt="Clubtech ${esc(capability.label)} product view" fetchpriority="high" decoding="async"><span>Clubtech product proof</span></div></div></header>
+  <section class="comparison-thesis"><div class="shell"><p>Decision first.</p><h2>Choose the operating model that fits the inventory—not the loudest feature list.</h2></div></section>
+  <article class="comparison-article"><div class="shell comparison-body"><aside><p class="eyebrow">What Clubtech owns</p><h2>${esc(capability.label)}</h2><p>The full product explanation lives on the canonical capability page. This comparison stays focused on fit.</p><a href="../../${esc(capability.canonical)}">See the capability ↗</a></aside><div class="post-body">${body}</div></div></article>
+  <section class="comparison-proof-band"><div class="shell"><div><p class="eyebrow">Product proof</p><h2>See the Clubtech side of the decision.</h2><p>${esc(capability.label)} is shown in the actual product, not described as a checklist.</p></div><figure><img src="../../assets/product/${esc(config.proof || capability.asset || 'booking-map.webp')}" alt="Clubtech ${esc(capability.label)} interface" loading="lazy" decoding="async"><figcaption>Clubtech · ${esc(capability.label)}</figcaption></figure></div></section>
+  ${renderPathwayRail(pathways, '../../', 'Evaluation pathway', 'Fit, product, then implementation.')}
+  <section class="closing dark-section"><img class="closing-mark" src="../../brand/clubtech-mark-white.png" alt="" aria-hidden="true" width="1200" height="1200" loading="lazy"><div class="shell centered"><p class="eyebrow">Compare it on your floor.</p><h2>See Clubtech on <span class="mint-text">your own inventory.</span></h2><p>Book a focused walkthrough configured around the venue you actually run.</p><a class="button button-mint" href="../../book-a-demo/" data-open-demo>Book a Demo</a></div></section>
+${footerMarkup('../../', pages)}</main>${CONSENT_MARKUP}
+<script src="../../js/consent.js" defer></script><script src="../../js/hubspot.js" defer></script><script src="../../js/booking.js" defer></script><script src="../../js/analytics.js" defer></script><script src="../../js/blog.js" defer></script>
+</body></html>`;
+}
+
 function renderLandingPage(page, pages) {
   if (page.meta.section === 'solutions' && SOLUTION_CONFIG[page.meta.slug]) return renderSolutionPage(page, pages);
-  const body = sanitizeBlogHtml(renderMarkdown(page.body));
+  if (page.meta.section === 'compare') return renderComparisonPage(page, pages);
+  const body = normalizeInternalLinks(sanitizeBlogHtml(renderMarkdown(page.body)));
   const sectionLabel = PAGE_SECTIONS[page.meta.section];
 
   const others = pages.filter((p) => p.meta.section === page.meta.section && p.meta.slug !== page.meta.slug).slice(0, 4);
@@ -906,7 +1023,7 @@ ${navMarkup('../../', page.meta.section === 'solutions' ? 'solutions' : 'resourc
         <h1>${h1Html(page.meta.title)}</h1>
         <p class="post-sub">${esc(page.meta.excerpt)}</p>
         <div class="post-hero-actions">
-          <a class="button button-mint" href="mailto:info@clubtechglobal.com" data-open-demo>Book a Demo</a>
+          <a class="button button-mint" href="../../book-a-demo/" data-open-demo>Book a Demo</a>
           <a class="button button-ghost" href="../../platform/">See the Platform</a>
         </div>
       </div>
@@ -927,7 +1044,7 @@ ${moreSection}
       <p class="eyebrow">Your venue, pre-sold.</p>
       <h2>Stop reading about it.<br><span class="mint-text">See it live.</span></h2>
       <p>Book a focused walkthrough, configured around a premium venue like yours.</p>
-      <a class="button button-mint" href="mailto:info@clubtechglobal.com" data-open-demo>Book a Demo</a>
+      <a class="button button-mint" href="../book-a-demo/" data-open-demo>Book a Demo</a>
     </div>
   </section>
 
@@ -999,21 +1116,52 @@ const DEMO_EMBED = {
   booking:  { css: 'css/demo.css',     js: 'js/demo.js',     mount: '<div class="ckd" data-demo="map" role="application" aria-label="Interactive booking demo" style="height:720px;background-image:url(../assets/demo/venue-real.webp);background-size:cover;background-position:center"></div>' },
 };
 
+const LANDING_ASSET = {
+  about: 'booking-map.webp',
+  'ai-bookings': 'booking-map.webp',
+  'for-hotels': 'operator-reservations.webp',
+  help: 'operator-floor.webp',
+  pricing: 'pricing-calendar.webp',
+};
+
+function splitHtmlBlocks(html) {
+  const firstH2 = html.search(/<h2(?:\s[^>]*)?>/i);
+  const intro = firstH2 < 0 ? html : html.slice(0, firstH2);
+  const rest = firstH2 < 0 ? '' : html.slice(firstH2);
+  const blocks = [];
+  const re = /<h2(?:\s[^>]*)?>([\s\S]*?)<\/h2>([\s\S]*?)(?=<h2(?:\s[^>]*)?>|$)/gi;
+  let match;
+  while ((match = re.exec(rest))) blocks.push({ title: match[1], body: match[2] });
+  return { intro, blocks };
+}
+
+function renderLandingBlocks(parts, layout) {
+  return parts.blocks.map((block, index) => {
+    const title = stripHtml(block.title);
+    const questionBlock = /questions|frequently asked/i.test(title);
+    const tone = questionBlock ? 'is-faq' : index % 3 === 1 ? 'is-dark' : index % 3 === 2 ? 'is-soft' : 'is-light';
+    return `<section class="landing-block ${tone}" id="${esc(title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''))}"><div class="shell landing-block-grid"><div class="landing-block-head"><p class="landing-block-index">${String(index + 1).padStart(2, '0')} · ${esc(layout)}</p><h2>${block.title}</h2></div><div class="landing-block-body">${block.body}</div></div></section>`;
+  }).join('');
+}
+
 function renderRootPage(page, landings, pages) {
-  const body = sanitizeBlogHtml(renderMarkdown(page.body));
+  const body = normalizeInternalLinks(sanitizeBlogHtml(renderMarkdown(page.body, true)));
+  const parts = splitHtmlBlocks(body);
+  const config = LANDING_CONFIG[page.meta.slug] || { layout: page.meta.layout || 'standard', primary: ['book-a-demo/', 'Book a Demo'], secondary: ['platform/', 'See the platform'], related: ['platform/', 'delivery/', 'book-a-demo/'] };
+  const layout = page.meta.layout || config.layout || 'standard';
   const eyebrow = page.meta.eyebrow || LANDING_LABEL[page.meta.group] || 'Clubtech';
   const demo = page.meta.demo ? DEMO_EMBED[page.meta.demo] : null;
   const demoMarkup = demo ? `
   <section class="section shell" aria-label="Product demo">
-    <link rel="stylesheet" href="../${demo.css}">
     ${demo.mount}
     <script src="../${demo.js}" defer></script>
   </section>` : '';
-  const cta2 = page.meta.cta2href ? [page.meta.cta2href, page.meta.cta2label || 'Learn more'] : ['platform/', 'See the platform'];
-  const heroMedia = page.meta.hero ? `
-    <div class="shell post-hero-media">
-      <img src="..${esc(page.meta.hero)}" alt="${esc(page.meta.heroAlt || plainTitle(page.meta.title))}" fetchpriority="high" decoding="async" width="1600" height="1067">
-    </div>` : '';
+  const primary = page.meta.ctaHref ? [page.meta.ctaHref, page.meta.ctaLabel || 'Continue'] : config.primary;
+  const secondary = page.meta.cta2href ? [page.meta.cta2href, page.meta.cta2label || 'Learn more'] : config.secondary;
+  const productAsset = LANDING_ASSET[page.meta.slug];
+  const primaryDemo = page.meta.ctaType === 'demo' || primary[0] === 'book-a-demo/';
+  const closing = config.closing || ['Your venue, pre-sold.', 'Put your venue inside the demo.', 'Book a Demo'];
+  const related = splitMetaList(page.meta.related);
 
   const head = headHTML({
     title: page.meta.titleTag || `${plainTitle(page.meta.title)} | Clubtech`,
@@ -1025,38 +1173,24 @@ function renderRootPage(page, landings, pages) {
     rel: '../',
     ogType: 'website',
   });
+  const landingHead = demo ? head.replace('</head>', `  <link rel="stylesheet" href="../${demo.css}">\n</head>`) : head;
 
-  return `${head}
-<body class="blog-post p-landing">
+  return `${landingHead}
+<body class="landing-page p-landing landing-${esc(layout)}">
 <a class="skip-link" href="#main">Skip to content</a>
 ${navMarkup('../', page.meta.group || null)}
 <main id="main">
-
-  <article>
-    <header class="post-hero">
-      <div class="shell post-hero-inner">
-        <p class="post-tags"><span class="index-cat">${esc(eyebrow)}</span></p>
-        <h1>${h1Html(page.meta.title)}</h1>
-        <p class="post-sub">${esc(page.meta.excerpt)}</p>
-        <div class="post-hero-actions">
-          <a class="button button-mint" href="mailto:info@clubtechglobal.com" data-open-demo>Book a Demo</a>
-          <a class="button button-ghost" href="../${cta2[0]}">${esc(cta2[1])}</a>
-        </div>
-      </div>
-    </header>
-${heroMedia}
-    <div class="shell post-body">
-${body}
-    </div>
-  </article>
+  <header class="landing-hero"><div class="shell landing-hero-grid"><div><p class="solution-kicker"><i></i>${esc(eyebrow)}</p><h1>${h1Html(page.meta.title)}</h1><p class="landing-sub">${esc(page.meta.excerpt)}</p><div class="solution-actions"><a class="button button-mint" href="${esc(routeHref('../', primary[0]))}"${primaryDemo ? ' data-open-demo' : ''}>${esc(primary[1])}</a><a class="button button-ghost" href="${esc(routeHref('../', secondary[0]))}">${esc(secondary[1])}</a></div></div>${productAsset || page.meta.hero ? `<div class="landing-hero-visual">${productAsset ? `<div class="solution-stage-chrome"><span></span><span></span><span></span><small>Clubtech · ${esc(layout)}</small></div><img class="landing-product" src="../assets/product/${esc(productAsset)}" alt="Clubtech product view for ${esc(plainTitle(page.meta.title))}" fetchpriority="high" decoding="async">` : ''}${page.meta.hero ? `<img class="landing-context" src="..${esc(page.meta.hero)}" alt="${esc(page.meta.heroAlt || plainTitle(page.meta.title))}" fetchpriority="high" decoding="async">` : ''}</div>` : ''}</div></header>
+${parts.intro.trim() ? `  <section class="landing-intro"><div class="shell landing-intro-copy">${parts.intro}</div></section>\n` : ''}${renderLandingBlocks(parts, layout)}
 ${demoMarkup}
+  ${renderPathwayRail(related.length ? related : config.related || [], '../', 'Related pathway', 'The next useful page, not more noise.')}
   <section class="closing dark-section blog-closing">
     <img class="closing-mark" src="../brand/clubtech-mark-white.png" alt="" aria-hidden="true" width="1200" height="1200" loading="lazy">
     <div class="shell centered">
-      <p class="eyebrow">Your venue, pre-sold.</p>
-      <h2>Stop reading about it.<br><span class="mint-text">See it live.</span></h2>
-      <p>Book a focused walkthrough, configured around a premium venue like yours.</p>
-      <a class="button button-mint" href="mailto:info@clubtechglobal.com" data-open-demo>Book a Demo</a>
+      <p class="eyebrow">${esc(closing[0])}</p>
+      <h2>${esc(closing[1])}</h2>
+      <p>${esc(page.meta.excerpt)}</p>
+      <a class="button button-mint" href="${esc(routeHref('../', primary[0]))}"${primaryDemo ? ' data-open-demo' : ''}>${esc(closing[2] || primary[1])}</a>
     </div>
   </section>
 
@@ -1117,15 +1251,15 @@ function sectionIndexJsonLd(sectionKey, sectionPages) {
 function renderSolutionsIndex(pages) {
   const sectionPages = pages.filter((page) => page.meta.section === 'solutions');
   const groups = [
-    ['venue', 'Who we serve', 'One platform, shaped around the inventory each venue actually sells.'],
-    ['location', 'Where you operate', 'Destination-specific pages for compressed seasons, local payments, and international guests.'],
-    ['goal', 'What you need to run', 'Focused journeys for sunbeds, tickets, guest lists, and the door.'],
+    ['venue', 'By venue', 'Start with the inventory your team sells: daybeds, cabanas, tables, pool access, or a whole resort.'],
+    ['location', 'By destination', 'See how the same product handles compressed seasons, local payments, and international guests.'],
+    ['goal', 'By operational need', 'Go straight to the workflow: sunbeds, ticketing, guest lists, and the door.'],
   ];
-  const cards = (group) => sectionPages.filter((page) => SOLUTION_CONFIG[page.meta.slug]?.group === group).map((page) => {
+  const cards = (group) => sectionPages.filter((page) => SOLUTION_CONFIG[page.meta.slug]?.group === group).map((page, index) => {
     const config = SOLUTION_CONFIG[page.meta.slug];
-    return `<a class="solution-card" href="${esc(page.meta.slug)}/"><img src="..${esc(page.meta.hero)}" alt="" loading="lazy" decoding="async"><span class="solution-card-arrow" aria-hidden="true">↗</span><div class="solution-card-copy"><small>${esc(config.label)}</small><strong>${esc(plainTitle(page.meta.title))}</strong><p>${esc(page.meta.excerpt)}</p></div></a>`;
+    return `<a class="solution-card ${index === 0 ? 'is-featured' : ''}" href="${esc(page.meta.slug)}/"><div class="solution-card-visual"><img src="../assets/product/${esc(config.heroShot)}" alt="" loading="lazy" decoding="async"><span>${esc(config.kicker)}</span></div><div class="solution-card-copy"><small>${esc(config.label)}</small><strong>${esc(plainTitle(page.meta.title))}</strong><p>${esc(page.meta.excerpt)}</p><span class="solution-card-link">Explore ${esc(config.label)} <i aria-hidden="true">↗</i></span></div></a>`;
   }).join('');
-  const groupMarkup = groups.map(([key, title, copy]) => `<section class="solution-group"><div class="solution-group-head"><h2>${esc(title)}</h2><p>${esc(copy)}</p></div><div class="solution-card-grid">${cards(key)}</div></section>`).join('');
+  const groupMarkup = groups.map(([key, title, copy], index) => `<section class="solution-group solution-group-${esc(key)}" id="${esc(key)}"><div class="solution-group-head"><div><p class="solution-module-index">0${index + 1} · Solutions</p><h2>${esc(title)}</h2></div><p>${esc(copy)}</p></div><div class="solution-card-grid">${cards(key)}</div></section>`).join('');
   const head = headHTML({
     title: 'Solutions — Clubtech',
     description: 'Clubtech booking and revenue solutions by venue type and destination — beach clubs, day clubs, nightclubs, hotel pools, restaurants, resorts, and sunbed decks.',
@@ -1137,14 +1271,49 @@ function renderSolutionsIndex(pages) {
   const solutionHead = head.replace('</head>', '  <link rel="stylesheet" href="../css/solutions.css">\n</head>');
   return `${solutionHead}
 <body class="solution-page p-solutions-index"><a class="skip-link" href="#main">Skip to content</a>${navMarkup('../', 'solutions')}<main id="main">
-  <section class="index-hero solution-index-hero"><div class="shell"><p class="index-kicker"><span class="tick"></span>Solutions · ${sectionPages.length} product pages</p><h1 class="index-h1">Built for how <span class="mint-text">your venue sells.</span></h1><p class="index-sub">Sunbeds, daybeds, tables, tickets, and day passes — one platform, configured around the real inventory and the team running it.</p><div class="index-intro"><p>These are product pages, not generic industry summaries. Each one pairs the commercial story with the Clubtech booking, floor, pricing, door, or intelligence view that makes it real.</p></div><div class="solution-index-showcase"><figure><img src="../assets/product/booking-map.webp" alt="Clubtech interactive venue booking map" fetchpriority="high" decoding="async"></figure><figure><img src="../assets/product/restaurant-booking.webp" alt="Clubtech restaurant table and experience booking demo" fetchpriority="high" decoding="async"></figure></div></div></section>
+  <section class="index-hero solution-index-hero"><div class="shell solution-index-hero-grid"><div><p class="index-kicker"><span class="tick"></span>Solutions · ${sectionPages.length} product pages</p><h1 class="index-h1">Built for how <span class="mint-text">your venue sells.</span></h1><p class="index-sub">Sunbeds, daybeds, tables, tickets, and day passes — one platform, configured around the real inventory and the team running it.</p><div class="solution-hub-nav" aria-label="Browse solutions"><a href="#venue">By venue <span>↘</span></a><a href="#location">By destination <span>↘</span></a><a href="#goal">By operational need <span>↘</span></a></div></div><div class="solution-index-showcase"><div class="solution-stage-chrome"><span></span><span></span><span></span><small>Clubtech · booking map</small></div><img src="../assets/product/booking-map.webp" alt="Clubtech interactive venue booking map" fetchpriority="high" decoding="async"><div class="solution-index-callout"><strong>The booking is the product.</strong><span>Exact inventory · prepayment · live floor</span></div></div></div></section>
+  <section class="solution-index-thesis"><div class="shell"><p>One platform, three ways in.</p><h2>Choose the venue, the market, or the workflow. The product stays connected from booking to floor to guest data.</h2></div></section>
   <div class="shell solution-index-groups">${groupMarkup}</div>
   <section class="closing dark-section"><img class="closing-mark" src="../brand/clubtech-mark-white.png" alt="" aria-hidden="true" width="1200" height="1200" loading="lazy"><div class="shell centered"><p class="eyebrow">Your venue, pre-sold.</p><h2>Put your venue<br><span class="mint-text">inside the demo.</span></h2><p>Book a focused walkthrough, configured around your floor and sellable inventory.</p><a class="button button-mint" href="../book-a-demo/" data-open-demo>Book a Demo</a></div></section>
 ${footerMarkup('../', pages)}</main>${CONSENT_MARKUP}<script src="../js/consent.js" defer></script><script src="../js/hubspot.js" defer></script><script src="../js/booking.js" defer></script><script src="../js/analytics.js" defer></script><script src="../js/blog.js" defer></script></body></html>`;
 }
 
+function renderCompareIndex(pages) {
+  const comparisonPages = pages.filter((page) => page.meta.section === 'compare');
+  const groups = [
+    ['Furniture and reservations', ['sevenrooms-alternative', 'book-tech-labs-alternative', 'access-collins-alternative', 'servme-alternative']],
+    ['Hotels and direct channels', ['resortpass-alternative', 'urvenue-alternative', 'hoteligy-alternative']],
+    ['Nightlife and ticketing', ['fourvenues-alternative', 'megatix-alternative', 'tablelist-alternative']],
+  ];
+  const bySlug = new Map(comparisonPages.map((page) => [page.meta.slug, page]));
+  const groupMarkup = groups.map(([title, slugs], groupIndex) => {
+    const cards = slugs.map((slug, index) => {
+      const page = bySlug.get(slug);
+      if (!page) return '';
+      const config = COMPARISON_CONFIG[slug] || {};
+      return `<a class="compare-card ${index === 0 ? 'is-priority' : ''}" href="${esc(slug)}/"><span class="compare-card-num">0${index + 1}</span><div><small>${esc(title)}</small><h3>${esc(plainTitle(page.meta.title))}</h3><p>${esc(page.meta.excerpt)}</p><span>Compare the fit ↗</span></div><img src="../assets/product/${esc(config.proof || 'booking-map.webp')}" alt="" loading="lazy" decoding="async"></a>`;
+    }).join('');
+    return `<section class="compare-group"><div class="compare-group-head"><p>0${groupIndex + 1} · Operating model</p><h2>${esc(title)}</h2></div><div class="compare-card-grid">${cards}</div></section>`;
+  }).join('');
+  const head = headHTML({
+    title: 'Compare Clubtech — fair-fit platform comparisons',
+    description: 'Fair, factual comparisons of Clubtech with venue booking, hotel day-pass, nightlife, ticketing, and restaurant platforms.',
+    canonical: `${SITE_ORIGIN}/compare/`, ogImage: `${SITE_ORIGIN}/assets/og/clubtech-og.jpg`,
+    ogImageAlt: 'Compare Clubtech with other venue platforms',
+    jsonLd: sectionIndexJsonLd('compare', comparisonPages), rel: '../', ogType: 'website',
+  });
+  return `${head}<body class="compare-index"><a class="skip-link" href="#main">Skip to content</a>${navMarkup('../', 'resources')}<main id="main">
+  <section class="comparison-hero compare-index-hero"><div class="shell comparison-hero-grid"><div><p class="solution-kicker"><i></i>Compare Clubtech</p><h1>Choose by operating model, <span class="mint-text">not feature count.</span></h1><p class="comparison-sub">These comparisons say where another platform fits better, where Clubtech fits better, and what to verify before you move.</p><div class="solution-actions"><a class="button button-mint" href="../book-a-demo/" data-open-demo>Book a Demo</a><a class="button button-ghost" href="../platform/">See the Platform</a></div></div><div class="comparison-principles"><p>Fair-fit doctrine</p><ol><li><span>01</span>Start with the inventory.</li><li><span>02</span>Separate verified fact from interpretation.</li><li><span>03</span>Show coexistence when it makes sense.</li></ol></div></div></section>
+  <section class="comparison-thesis"><div class="shell"><p>The short version.</p><h2>Restaurant covers, ticket drops, resort portfolios, and exact furniture are different buying problems.</h2></div></section>
+  <div class="shell compare-groups">${groupMarkup}</div>
+  ${renderPathwayRail(['platform/', 'solutions/', 'delivery/'], '../', 'Before the shortlist', 'See the product, the fit, and the rollout.')}
+  <section class="closing dark-section"><img class="closing-mark" src="../brand/clubtech-mark-white.png" alt="" aria-hidden="true" width="1200" height="1200" loading="lazy"><div class="shell centered"><p class="eyebrow">Compare it on your floor.</p><h2>See Clubtech on <span class="mint-text">your own inventory.</span></h2><p>A focused walkthrough is more useful than another checklist.</p><a class="button button-mint" href="../book-a-demo/" data-open-demo>Book a Demo</a></div></section>
+${footerMarkup('../', pages)}</main>${CONSENT_MARKUP}<script src="../js/consent.js" defer></script><script src="../js/hubspot.js" defer></script><script src="../js/booking.js" defer></script><script src="../js/analytics.js" defer></script><script src="../js/blog.js" defer></script></body></html>`;
+}
+
 function renderSectionIndex(sectionKey, pages) {
   if (sectionKey === 'solutions') return renderSolutionsIndex(pages);
+  if (sectionKey === 'compare') return renderCompareIndex(pages);
   const sectionPages = pages.filter((p) => p.meta.section === sectionKey);
   const label = PAGE_SECTIONS[sectionKey];
   const rows = sectionPages.map((p) => `      <a class="index-row" href="${esc(p.meta.slug)}/">
@@ -1196,7 +1365,7 @@ ${rows}
       <p class="eyebrow">Your venue, pre-sold.</p>
       <h2>Stop reading about it.<br><span class="mint-text">See it live.</span></h2>
       <p>Book a focused walkthrough, configured around a premium venue like yours.</p>
-      <a class="button button-mint" href="mailto:info@clubtechglobal.com" data-open-demo>Book a Demo</a>
+      <a class="button button-mint" href="../book-a-demo/" data-open-demo>Book a Demo</a>
     </div>
   </section>
 
@@ -1287,13 +1456,15 @@ ${rows}
     <p class="index-empty" hidden>Nothing in this category yet.</p>
   </section>
 
+  ${renderPathwayRail(['platform/', 'sell/', 'grow/'], '../', 'Product pathways', 'Booking, revenue, and guest intelligence.')}
+
   <section class="closing dark-section blog-closing">
     <img class="closing-mark" src="../brand/clubtech-mark-white.png" alt="" aria-hidden="true" width="1200" height="1200" loading="lazy" decoding="async">
     <div class="shell centered">
       <p class="eyebrow">Your venue, pre-sold.</p>
       <h2>Stop reading about it.<br><span class="mint-text">See it live.</span></h2>
       <p>Book a focused walkthrough, configured around a premium venue like yours.</p>
-      <a class="button button-mint" href="mailto:info@clubtechglobal.com" data-open-demo>Book a Demo</a>
+      <a class="button button-mint" href="../book-a-demo/" data-open-demo>Book a Demo</a>
     </div>
   </section>
 
@@ -1313,18 +1484,15 @@ ${CONSENT_MARKUP}
 /* ─── Post page ──────────────────────────────────────────────── */
 function renderPost(post, posts, pages) {
   const canonical = `${CANONICAL_ORIGIN}/blog/${post.meta.slug}/`;
-  const body = sanitizeBlogHtml(renderMarkdown(post.body));
+  const body = normalizeInternalLinks(sanitizeBlogHtml(renderMarkdown(post.body, true)));
   const readMin = readMinutes(post.body);
-
-  const others = posts.filter((p) => p.meta.slug !== post.meta.slug).slice(0, 3);
-  const moreRows = others.map((p) => `      <a class="index-row" href="../${esc(p.meta.slug)}/">
-        <span class="index-main">
-          <span class="index-title">${esc(p.meta.title)}</span>
-          <span class="index-meta"><span class="index-cat">${esc(p.meta.category)}</span><span>${esc(shortDate(p.meta.date))}</span></span>
-        </span>
-        <img class="index-thumb" src="../..${esc(p.meta.hero)}" alt="" loading="lazy" decoding="async" width="190" height="120">
-        <span class="index-arrow" aria-hidden="true">↗</span>
-      </a>`).join('\n');
+  const explicitRelated = splitMetaList(post.meta.related);
+  const pathways = explicitRelated.length ? explicitRelated : BLOG_PATHWAYS[post.meta.slug] || ['platform/', 'solutions/', 'book-a-demo/'];
+  const pathwayText = pathways.join(' ');
+  const proofAsset = /guest-list|check-in|door/.test(pathwayText) ? 'doorlist-list.webp'
+    : /dynamic-pricing|sell\/#/.test(pathwayText) ? 'pricing-rules.webp'
+      : /grow\/#/.test(pathwayText) ? 'intel-attribution.webp'
+        : 'booking-map.webp';
 
   const head = headHTML({
     title: post.meta.titleTag || `${post.meta.title} | Clubtech`,
@@ -1361,12 +1529,8 @@ ${body}
     </div>
   </article>
 
-  <section class="shell post-more" aria-label="More entries">
-    <h2 class="post-more-h">More from the index</h2>
-    <div class="index-list">
-${moreRows}
-    </div>
-  </section>
+  <section class="article-proof-band"><div class="shell"><div><p class="eyebrow">The product path</p><h2>See the mechanism behind the playbook.</h2><p>The article answers the operating question. The product surface shows where Clubtech carries it into the booking, floor, or data loop.</p></div><figure><img src="../../assets/product/${proofAsset}" alt="Clubtech product interface related to ${esc(post.meta.title)}" loading="lazy" decoding="async"><figcaption>Clubtech · product proof</figcaption></figure></div></section>
+  ${renderPathwayRail(pathways, '../../', 'Continue by intent', 'Learn, see the product, then decide.')}
 
   <section class="closing dark-section blog-closing">
     <img class="closing-mark" src="../../brand/clubtech-mark-white.png" alt="" aria-hidden="true" width="1200" height="1200" loading="lazy" decoding="async">
@@ -1374,7 +1538,7 @@ ${moreRows}
       <p class="eyebrow">Your venue, pre-sold.</p>
       <h2>Stop reading about it.<br><span class="mint-text">See it live.</span></h2>
       <p>Book a focused walkthrough, configured around a premium venue like yours.</p>
-      <a class="button button-mint" href="mailto:info@clubtechglobal.com" data-open-demo>Book a Demo</a>
+      <a class="button button-mint" href="../../book-a-demo/" data-open-demo>Book a Demo</a>
     </div>
   </section>
 
@@ -1444,8 +1608,8 @@ function renderLlmsTxt(posts, pages, landings = []) {
 Key facts:
 - Guests select the exact furniture, zone, and daypart on a 3D interactive map and pay before arrival.
 - Revenue levers: prepayments and deposits, upsells and add-ons, dynamic pricing, abandoned-booking retargeting.
-- Commercials: no monthly fee — the platform earns when the venue's online revenue grows; pricing is built per venue and shared on a quick demo (book at ${SITE_ORIGIN}/book-a-demo/).
-- Integrations: Opera PMS, Airwallex, Midtrans (QRIS, GoPay, OVO), Apple Pay, Google Pay, Meta Ads, Google Ads, GA4, WhatsApp.
+- Commercials: no monthly fee; a 4% online processing fee paid by the customer; and a $2,000 one-time setup fee per venue covering widget setup, system configuration, and staff training.
+- Integrations cover POS/PMS, payments, marketing attribution, and messaging. Availability is confirmed per venue and market during implementation.
 - Delivery: five stages (onboarding, build, training, go-live, optimize) with a dedicated account lead and 90-day hypercare.
 - Contact: info@clubtechglobal.com · main site: https://www.clubtechglobal.com/
 
@@ -1454,9 +1618,10 @@ Key facts:
 - [Landing page](${SITE_ORIGIN}/): platform overview, booking journey, operations, commercials, FAQ
 - [Platform](${SITE_ORIGIN}/platform/): the all-in-one system — booking, front-of-house operations, guest lists and door check-in, integrations
 - [Sell](${SITE_ORIGIN}/sell/): revenue capture — events and ticketing, packages and upsells, dynamic pricing, and the four revenue levers
-- [Grow](${SITE_ORIGIN}/grow/): the marketing engine — value-based ad attribution, guest data and 20+ reports, and Clubtech Reviews
+- [Grow](${SITE_ORIGIN}/grow/): value-based ad attribution, abandoned-booking recovery, owned guest data, and 20+ reports
 - [Delivery](${SITE_ORIGIN}/delivery/): five-stage rollout with a dedicated account lead and 90-day hypercare
-- [Book a demo](${SITE_ORIGIN}/book-a-demo/): a 15-minute demo configured around your venue — no monthly fee, and pricing built per venue is shared on the call
+- [Pricing](${SITE_ORIGIN}/pricing/): no monthly fee, 4% online processing paid by the customer, and a $2,000 one-time setup per venue
+- [Book a demo](${SITE_ORIGIN}/book-a-demo/): a focused walkthrough configured around your venue
 - [The Index (blog)](${SITE_ORIGIN}/blog/): operator playbooks on booking UX, revenue capture, and guest data`];
   if (landings.length) {
     lines.push('\n## Product & platform\n');
@@ -1493,6 +1658,30 @@ function validateEntry(file, meta) {
   }
 }
 
+function validatePageContract(file, meta, body, family) {
+  if (family === 'landing') {
+    for (const key of ['layout', 'ctaType', 'ctaHref', 'ctaLabel']) {
+      if (!meta[key]) throw new Error(`${file}: missing ${key} frontmatter required by the root landing renderer`);
+    }
+  }
+  if (meta.section === 'solutions') {
+    if (!/^## Workflow\s*(?:—|:|-)/m.test(body)) throw new Error(`${file}: solution pages require a "## Workflow — ..." module`);
+    if (!/^## (?:Capabilities|Outcomes|Fit|Proof)\s*(?:—|:|-)/m.test(body)) {
+      throw new Error(`${file}: solution pages require at least one Capabilities, Outcomes, Fit, or Proof module`);
+    }
+    if (!meta.canonicalFeature) throw new Error(`${file}: solution pages require canonicalFeature frontmatter`);
+    if (splitMetaList(meta.related).length !== 3) throw new Error(`${file}: solution pages require exactly three pipe-delimited related routes`);
+  }
+  if (meta.section === 'compare') {
+    if (!meta.verificationDate || !meta.verificationSource) throw new Error(`${file}: comparison pages require verificationDate and verificationSource`);
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(meta.verificationDate)) throw new Error(`${file}: verificationDate must use YYYY-MM-DD`);
+    if (splitMetaList(meta.related).length !== 3) throw new Error(`${file}: comparison pages require exactly three pipe-delimited related routes`);
+  }
+  if (family === 'blog' && splitMetaList(meta.related).length !== 3) {
+    throw new Error(`${file}: blog posts require exactly three pipe-delimited related routes`);
+  }
+}
+
 function main() {
   if (!existsSync(CONTENT_DIR)) {
     console.error(`Missing ${CONTENT_DIR}`);
@@ -1508,6 +1697,7 @@ function main() {
     const raw = readFileSync(join(CONTENT_DIR, file), 'utf8');
     const { meta, body } = parseFrontmatter(raw);
     validateEntry(file, meta);
+    validatePageContract(file, meta, body, 'blog');
     const heroPath = join(ROOT, meta.hero.replace(/^\//, ''));
     if (!existsSync(heroPath)) {
       throw new Error(`${file}: hero image ${meta.hero} not found`);
@@ -1524,6 +1714,7 @@ function main() {
     if (!PAGE_SECTIONS[meta.section]) {
       throw new Error(`${file}: invalid section "${meta.section}" — must be one of ${Object.keys(PAGE_SECTIONS).join('|')}`);
     }
+    validatePageContract(file, meta, body, 'page');
     const heroPath = join(ROOT, meta.hero.replace(/^\//, ''));
     if (!existsSync(heroPath)) {
       throw new Error(`${file}: hero image ${meta.hero} not found`);
@@ -1538,6 +1729,7 @@ function main() {
     const raw = readFileSync(join(LANDING_DIR, file), 'utf8');
     const { meta, body } = parseFrontmatter(raw);
     validateEntry(file, meta);
+    validatePageContract(file, meta, body, 'landing');
     if (meta.hero) {
       const heroPath = join(ROOT, meta.hero.replace(/^\//, ''));
       if (!existsSync(heroPath)) throw new Error(`${file}: hero image ${meta.hero} not found`);
@@ -1597,6 +1789,7 @@ function main() {
     let html = before.replace(/^[ \t]*<header class="nav-wrap[^"]*">[\s\S]*?<\/header>/m, () => navMarkup(prefix, group, solid));
     html = html.replace(/^[ \t]*<footer class="footer shell">[\s\S]*?<\/footer>/m, () => footerMarkup(prefix, pages));
     html = html.replace('<!--CONSENT-->', () => CONSENT_MARKUP);
+    html = normalizeInternalLinks(html);
     if (html !== before) { writeFileSync(fp, html); injected++; }
   }
 

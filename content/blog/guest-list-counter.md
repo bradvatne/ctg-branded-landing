@@ -5,6 +5,7 @@ slug: guest-list-counter
 date: 2026-07-16
 author: Clubtech Global
 category: Guides
+related: /blog/guest-list-management-for-venues/|/platform/#guest-lists|/book-a-demo/
 excerpt: "A guest list counter tells you how many are in. A venue needs to know how many, who, and what they're worth — captured while the door is moving."
 hero: /assets/blog/guest-list-counter.webp
 heroAlt: "A door host tracking a live headcount against a guest list at a venue"
@@ -67,4 +68,4 @@ For fire-code compliance, a count is the minimum. For running the business, it i
 
 ---
 
-**See it on your floor plan.** 15 minutes, no pitch deck, no contracts — we'll show up with the door already built for a venue like yours. [Book a demo](mailto:info@clubtechglobal.com)
+**Move from a count to an owned guest record.** Read the [guest-list management guide](/blog/guest-list-management-for-venues/), then [book a demo](/book-a-demo/).
