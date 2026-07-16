@@ -77,9 +77,23 @@
         }
       });
     };
-    window.addEventListener('load', revealInView);
+    // Deterministically settle an initial #hash: Chrome's native initial
+    // hash-scroll is unreliable with smooth scrolling + reveal gating, so jump
+    // to the target ourselves and reveal whatever ends up in view.
+    var settleHash = function () {
+      revealInView();
+      if (location.hash) {
+        var target = null;
+        try { target = document.querySelector(location.hash); } catch (e) {}
+        if (target) {
+          target.scrollIntoView({ behavior: 'auto', block: 'start' });
+          setTimeout(revealInView, 60);
+        }
+      }
+    };
+    window.addEventListener('load', settleHash);
     window.addEventListener('hashchange', function () { setTimeout(revealInView, 350); });
-    if (location.hash) setTimeout(revealInView, 250);
+    if (location.hash) setTimeout(settleHash, 200);
   }
 
   /* --- Proof stats: count up when they scroll into view --- */
