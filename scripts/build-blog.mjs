@@ -241,9 +241,14 @@ function listingJsonLd(posts) {
 
 /* ─── Shared chrome ──────────────────────────────────────────── */
 /* Standalone feature pages at the site root (hand-written, not generated). */
+/* The hand-written pillar + delivery pages (Booking/Operations/Intelligence were
+   folded into Platform/Grow anchors in the nav rebuild; their old paths survive
+   only as noindex redirect stubs and must NOT be advertised in sitemap/llms).
+   Root landing pages (about, pricing, careers, help, support, ai-bookings) are
+   emitted from the `landings` array separately — do not duplicate them here. */
 const FEATURE_PAGES = [
-  ['platform', 'Platform'], ['booking', 'Booking'], ['operations', 'Operations'],
-  ['intelligence', 'Intelligence'], ['delivery', 'Delivery'],
+  ['platform', 'Platform'], ['sell', 'Sell'], ['grow', 'Grow'],
+  ['delivery', 'Delivery'],
 ];
 
 /* ─── Navigation model ───────────────────────────────────────
@@ -294,6 +299,7 @@ const NAV = [
     key: 'solutions', label: 'Solutions', href: 'solutions/',
     cols: [
       { h: 'Who we serve', tag: '', links: [
+        ['for-hotels/', 'Hotels &amp; resorts', ''],
         ['solutions/resorts/', 'Resorts', ''],
         ['solutions/beach-clubs/', 'Beach clubs', ''],
         ['solutions/day-club-booking-system/', 'Day clubs', ''],
@@ -319,7 +325,7 @@ const NAV = [
       links: [
         ['compare/', 'Compare Clubtech', 'See how we stack up'],
       ],
-      cta: ['index.html#contact', 'Book a Demo'],
+      cta: ['book-a-demo/', 'Book a Demo'],
     },
   },
   {
@@ -345,7 +351,7 @@ const NAV = [
       links: [
         ['support/', 'Support', 'Message the Clubtech team'],
       ],
-      cta: ['index.html#contact', 'Book a Demo'],
+      cta: ['book-a-demo/', 'Book a Demo'],
     },
   },
   { key: 'pricing', label: 'Pricing', href: 'pricing/' },
@@ -417,13 +423,13 @@ ${items}
       </div>
       <div class="nav-actions">
         <a class="nav-login" href="https://id.clubtechglobal.com" rel="noopener">Login</a>
-        <a class="button button-dark nav-cta" href="${href('index.html#contact')}" data-open-demo>Book a Demo</a>
+        <a class="button button-dark nav-cta" href="${href('book-a-demo/')}" data-open-demo>Book a Demo</a>
       </div>
       <details class="mobile-menu">
         <summary>Menu</summary>
         <div class="mobile-panel">
 ${mob}
-          <a class="button button-mint m-cta" href="${href('index.html#contact')}" data-open-demo>Book a Demo</a>
+          <a class="button button-mint m-cta" href="${href('book-a-demo/')}" data-open-demo>Book a Demo</a>
           <a class="m-login" href="https://id.clubtechglobal.com" rel="noopener">Login</a>
         </div>
       </details>
@@ -781,9 +787,25 @@ function rootJsonLd(page) {
   return JSON.stringify(obj, null, 2);
 }
 
+/* Optional interactive product demo a root landing page can embed via a
+   `demo:` frontmatter key. The demos are the same self-contained JS/CSS the
+   hand-written pillar pages mount; the <link> is emitted in-body (valid HTML5)
+   so headHTML stays untouched. */
+const DEMO_EMBED = {
+  support:  { css: 'css/support.css',  js: 'js/support.js',  mount: '<div class="cks" data-supportdemo="tickets" data-supportdemo-badge="Live support console" role="application" aria-label="Clubtech Support console demo — a ticket list and thread, portal and WhatsApp in one place" style="aspect-ratio:auto;height:640px"></div>' },
+  booking:  { css: 'css/demo.css',     js: 'js/demo.js',     mount: '<div class="ckd" data-demo="map" role="application" aria-label="Interactive booking demo" style="height:720px;background-image:url(../assets/demo/venue-real.webp);background-size:cover;background-position:center"></div>' },
+};
+
 function renderRootPage(page, landings, pages) {
   const body = sanitizeBlogHtml(renderMarkdown(page.body));
   const eyebrow = page.meta.eyebrow || LANDING_LABEL[page.meta.group] || 'Clubtech';
+  const demo = page.meta.demo ? DEMO_EMBED[page.meta.demo] : null;
+  const demoMarkup = demo ? `
+  <section class="section shell" aria-label="Product demo">
+    <link rel="stylesheet" href="../${demo.css}">
+    ${demo.mount}
+    <script src="../${demo.js}" defer></script>
+  </section>` : '';
   const cta2 = page.meta.cta2href ? [page.meta.cta2href, page.meta.cta2label || 'Learn more'] : ['platform/', 'See the platform'];
   const heroMedia = page.meta.hero ? `
     <div class="shell post-hero-media">
@@ -824,7 +846,7 @@ ${heroMedia}
 ${body}
     </div>
   </article>
-
+${demoMarkup}
   <section class="closing dark-section blog-closing">
     <img class="closing-mark" src="../brand/clubtech-mark-white.png" alt="" aria-hidden="true" width="1200" height="1200" loading="lazy">
     <div class="shell centered">
@@ -858,6 +880,20 @@ const SECTION_HERO = {
     h1: 'Clubtech, <span class="mint-text">compared fairly.</span>',
     sub: 'Honest, fair-fit comparisons. Where an alternative is the better tool for your venue, these pages say so.',
   },
+};
+
+/* Overview prose rendered above the tile list on each hub page. Grounded in the
+   vault positioning (furniture/zones/dayparts model; furniture-first + native
+   ads-loop wedge; fair-comparison doctrine). Kept short — the tiles do the rest. */
+const SECTION_INTRO = {
+  solutions: [
+    'Venues run on furniture, zones, and dayparts — a front-row daybed, a swim-up cabana, a VIP table, sold by date and time. Clubtech models that inventory the way each venue type actually sells it, then pre-sells it on a 3D birds-eye map under your own brand.',
+    'The pages below are the same platform configured for a specific venue type or destination. The mechanics carry across all of them: guests pick the exact spot, prepay before arrival, and every booking feeds your ads and guest data with real revenue attached.',
+  ],
+  compare: [
+    'Plenty of platforms take prepaid bookings, and a few do furniture-first white-label. What none of them pair is furniture-first booking with a native, server-side ads-revenue loop — every booking posted back to Meta, Google, and GA4 with its real value.',
+    'These comparisons are written to be fair. Where an alternative is the better fit for your venue — restaurant covers, US casino resorts, midweek day-pass fill — the page says so. We win on fit, not noise.',
+  ],
 };
 
 function sectionIndexJsonLd(sectionKey, sectionPages) {
@@ -911,6 +947,7 @@ ${navMarkup('../', sectionKey === 'solutions' ? 'solutions' : 'resources')}
       <p class="index-kicker"><span class="tick"></span>${esc(label)} · ${sectionPages.length} pages</p>
       <h1 class="index-h1">${SECTION_HERO[sectionKey].h1}</h1>
       <p class="index-sub">${esc(SECTION_HERO[sectionKey].sub)}</p>
+      ${SECTION_INTRO[sectionKey] ? `<div class="index-intro">${SECTION_INTRO[sectionKey].map((p) => `<p>${esc(p)}</p>`).join('')}</div>` : ''}
     </div>
   </section>
 
@@ -1182,10 +1219,9 @@ Key facts:
 ## Pages
 
 - [Landing page](${SITE_ORIGIN}/): platform overview, booking journey, operations, commercials, FAQ
-- [Platform](${SITE_ORIGIN}/platform/): the all-in-one platform — reservations, front of house, and marketing
-- [Booking](${SITE_ORIGIN}/booking/): the guest booking journey — 3D map, packages, add-ons, dynamic pricing, gift cards
-- [Operations](${SITE_ORIGIN}/operations/): floor plan, seating allocation, inventory sync, guest lists
-- [Intelligence](${SITE_ORIGIN}/intelligence/): guest data, 20+ reports, Meta/Google/GA4 attribution
+- [Platform](${SITE_ORIGIN}/platform/): the all-in-one system — booking, front-of-house operations, guest lists and door check-in, integrations
+- [Sell](${SITE_ORIGIN}/sell/): revenue capture — events and ticketing, packages and upsells, dynamic pricing, and the four revenue levers
+- [Grow](${SITE_ORIGIN}/grow/): the marketing engine — value-based ad attribution, guest data and 20+ reports, and Clubtech Reviews
 - [Delivery](${SITE_ORIGIN}/delivery/): five-stage rollout with a dedicated account lead and 90-day hypercare
 - [Book a demo](${SITE_ORIGIN}/book-a-demo/): a 15-minute demo configured around your venue — no monthly fee, and pricing built per venue is shared on the call
 - [The Index (blog)](${SITE_ORIGIN}/blog/): operator playbooks on booking UX, revenue capture, and guest data`];

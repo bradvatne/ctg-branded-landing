@@ -1,0 +1,222 @@
+/* Clubtech branded landing — Events & Ticketing demo (.cke-).
+   Same design language as the guest booking demo (css/demo.css) and the
+   operator console (css/operator.css): Albert Sans, white cards on soft
+   neutral surfaces, #1c1c1c primaries, rounded pills, restrained shadows.
+   Guest-facing event ticketing view. Namespace: .cke- (never .ckd-/.cko-).
+   Accents kept minimal: green for included / selected, indigo tint for the
+   VIP tier, amber for scarcity, red for sold-out. */
+
+.cke{position:relative;isolation:isolate;width:100%;aspect-ratio:4/3;background:#f6f6f4;border-radius:24px;overflow:hidden;box-shadow:18px 18px 0 var(--lav);font-family:"Albert Sans",system-ui,sans-serif;letter-spacing:0;color:#1c1c1c;font-size:14px;line-height:1.35;user-select:none;-webkit-user-select:none;display:flex;flex-direction:column}
+.feature-row .cke{aspect-ratio:auto;height:610px}
+.hero-grid .cke{aspect-ratio:auto;height:640px;min-height:560px}
+.cke *{box-sizing:border-box}
+.cke :where(button){font:inherit;border:0;background:none;color:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent;letter-spacing:0}
+.cke img{display:block}
+.cke [hidden]{display:none!important}
+.cke h2,.cke h3,.cke h4{margin:0;color:#1c1c1c}
+.cke p{margin:0;font-size:13px}
+
+.cke-surface{position:absolute;inset:0;display:flex;flex-direction:column;background:#fff}
+
+/* ═══ app bar + stepper ═══ */
+.cke-appbar{flex:none;display:flex;align-items:center;gap:12px;padding:11px 16px;background:#fff;border-bottom:1px solid #f0f0f0}
+.cke-logo{width:40px;height:40px;border-radius:50%;background:#fff;border:1px solid #ececec;display:grid;place-items:center;flex:none}
+.cke-logo img{width:20px;height:20px;object-fit:contain}
+.cke-datepill{height:40px;padding:0 16px;border-radius:999px;border:1px solid #e6e6e6;display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;white-space:nowrap}
+.cke-datepill svg{width:15px;height:15px;flex:none}
+.cke-stepper{margin:0 auto;display:flex;align-items:center;gap:9px;white-space:nowrap}
+.cke-stepper span{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;color:#9b9b9b}
+.cke-stepper span svg{width:17px;height:17px}
+.cke-stepper span.on{color:#1c1c1c}
+.cke-stepper u{text-decoration:none}
+.cke-stepper i{width:14px;height:1.5px;border-radius:999px;background:#e0e0e0;font-style:normal}
+.cke-cluster{display:flex;align-items:center;gap:8px}
+.cke-count{position:relative;display:inline-flex;align-items:center;gap:7px;height:40px;padding:0 15px;border-radius:999px;background:#f4f4f2;font-size:12.5px;font-weight:600}
+.cke-count svg{width:17px;height:17px}
+.cke-count b{font-weight:800}
+
+/* ═══ bottom bar (running total + primary CTA) ═══ */
+.cke-bar{flex:none;display:flex;align-items:center;gap:14px;padding:12px 16px;background:#fff;border-top:1px solid #f0f0f0}
+.cke-back{display:inline-flex;align-items:center;gap:4px;height:46px;padding:0 18px 0 12px;border-radius:999px;border:1px solid #e2e2e2;font-size:13.5px;font-weight:600}
+.cke-back svg{width:16px;height:16px}
+.cke-bar-tot{margin-left:auto;text-align:right;line-height:1.15}
+.cke-bar-tot span{display:block;font-size:11px;color:#767676;font-weight:600}
+.cke-bar-tot b{font-size:17px;font-weight:800}
+.cke-cta{height:48px;padding:0 26px;border-radius:999px;background:#1c1c1c;color:#fff;font-size:14px;font-weight:600;white-space:nowrap;transition:background .15s}
+.cke-cta:hover{background:#000}
+
+/* ═══ full-surface body (upgrade / checkout / confirm) ═══ */
+.cke-body{flex:1;overflow-y:auto;padding:22px 26px}
+.cke-h2{font-size:22px;font-weight:800;letter-spacing:-.01em}
+.cke-h3{font-size:17px;font-weight:800}
+.cke-sub{margin-top:7px;font-size:12.5px;color:#6e6e6e;font-weight:500;line-height:1.5;max-width:560px}
+.cke-lbl{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8a8a8a;margin:16px 0 4px}
+
+/* ═══ TICKETS — event page (default, screenshot-ready) ═══ */
+.cke-event{flex:1;display:flex;align-items:stretch;min-height:0}
+
+/* poster / event info */
+.cke-poster{flex:0 0 44%;position:relative;background-size:cover;background-position:center;color:#fff;padding:26px;display:flex;flex-direction:column;justify-content:flex-end;min-height:0;overflow:hidden}
+.cke-poster-in{position:relative;z-index:1}
+.cke-eyebrow{display:inline-flex;align-items:center;height:26px;padding:0 12px;border-radius:999px;background:rgba(255,255,255,.16);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.28);font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.cke-poster .cke-title{margin-top:14px;font-size:34px;line-height:.98;font-weight:800;letter-spacing:-.02em;color:#fff}
+.cke-poster .cke-title span{display:block;font-size:19px;font-weight:600;color:rgba(255,255,255,.82);letter-spacing:0;margin-top:4px}
+.cke-meta{margin-top:18px;display:flex;flex-direction:column;gap:8px}
+.cke-meta p{display:flex;align-items:center;gap:9px;font-size:12.5px;font-weight:600;color:rgba(255,255,255,.92)}
+.cke-meta svg{width:15px;height:15px;flex:none;opacity:.85}
+.cke-lineup{margin-top:16px;display:flex;flex-direction:column;gap:1px;border-top:1px solid rgba(255,255,255,.18)}
+.cke-lineup span{display:flex;align-items:center;gap:12px;padding:8px 0;font-size:12.5px;font-weight:500;color:rgba(255,255,255,.86);border-bottom:1px solid rgba(255,255,255,.12)}
+.cke-lineup b{min-width:44px;font-weight:700;color:#fff}
+.cke-syncnote{display:flex;align-items:flex-start;gap:8px;margin-top:16px;font-size:11.5px;font-weight:500;color:rgba(255,255,255,.8);line-height:1.45}
+.cke-syncnote svg{width:14px;height:14px;flex:none;margin-top:1px;opacity:.85}
+
+/* ticket tiers */
+.cke-tickets{flex:1;height:100%;min-height:0;min-width:0;display:flex;flex-direction:column;background:#fff}
+.cke-tickets-scroll{flex:1;overflow-y:auto;padding:16px 24px 10px}
+.cke-tier{display:flex;align-items:center;gap:16px;justify-content:space-between;border:1px solid #e8e8e8;border-radius:16px;padding:11px 16px;margin-top:9px;transition:border-color .15s,background .15s}
+.cke-tier-main{min-width:0}
+.cke-tier-head{display:flex;align-items:center;gap:9px}
+.cke-tier-head h4{font-size:15px;font-weight:700}
+.cke-tier-note{margin-top:4px;font-size:12px;color:#6e6e6e;font-weight:500;line-height:1.4}
+.cke-tier-side{flex:none;display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.cke-price{font-size:16px;font-weight:800}
+.cke-tier.best{border-color:#c9d1ff;background:linear-gradient(180deg,#f6f8ff,#fff)}
+.cke-tier.active{border-color:#18a957;box-shadow:inset 0 0 0 1px #18a957}
+.cke-tier.soldout .cke-tier-head h4,.cke-tier.soldout .cke-tier-note,.cke-tier.soldout .cke-price{color:#9b9b9b}
+
+.cke-tag{display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:999px;font-size:10px;font-weight:700;letter-spacing:.02em}
+.cke-tag.hot{background:#eef1ff;color:#3a4fd0}
+.cke-tag.sold{background:#fdecec;color:#e02d3c}
+
+/* quantity stepper */
+.cke-qty{display:inline-flex;align-items:center;gap:2px;border:1px solid #e2e2e2;border-radius:999px;padding:3px}
+.cke-step{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;color:#1c1c1c;transition:background .12s}
+.cke-step:hover{background:#f2f2f0}
+.cke-step svg{width:15px;height:15px}
+.cke-step[disabled]{opacity:.32;cursor:default}
+.cke-step[disabled]:hover{background:none}
+.cke-qty b{min-width:24px;text-align:center;font-size:14px;font-weight:800;font-variant-numeric:tabular-nums}
+
+/* priority-list capture (sold-out tier) */
+.cke-priority{display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 15px;border-radius:999px;border:1px solid #e2e2e2;font-size:12px;font-weight:600;white-space:nowrap;transition:background .15s,border-color .15s}
+.cke-priority svg{width:15px;height:15px}
+.cke-priority:hover{border-color:#1c1c1c}
+.cke-priority.on{background:#1c1c1c;border-color:#1c1c1c;color:#fff}
+
+/* table upgrade teaser */
+.cke-table-teaser{display:flex;align-items:center;gap:14px;width:100%;text-align:left;border:1px dashed #cfd3da;border-radius:16px;padding:12px 16px;margin:14px 0 4px;background:#fafbfc;transition:border-color .15s,background .15s}
+.cke-table-teaser:hover{border-color:#1c1c1c;background:#f6f7f9}
+.cke-teaser-ic{flex:none;width:40px;height:40px;border-radius:12px;background:#eef1ff;color:#3a4fd0;display:grid;place-items:center}
+.cke-teaser-ic svg{width:20px;height:20px}
+.cke-teaser-txt{flex:1;min-width:0}
+.cke-teaser-txt b{font-size:13.5px;font-weight:700}
+.cke-teaser-txt p{margin-top:2px;font-size:11.5px;color:#6e6e6e;font-weight:500}
+.cke-from{flex:none;display:inline-flex;align-items:center;gap:2px;font-size:12.5px;font-weight:700;white-space:nowrap}
+.cke-from svg{width:15px;height:15px;color:#9b9b9b}
+
+/* ═══ UPGRADE — ticket → table ═══ */
+.cke-upgrade-head{max-width:620px}
+.cke-tables{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+.cke-tablecard{display:flex;flex-direction:column;border:1.5px solid #e6e6e6;border-radius:18px;padding:16px;background:#fff;cursor:pointer;transition:border-color .15s,box-shadow .15s}
+.cke-tablecard:hover{border-color:#c7c7c7}
+.cke-tablecard.on{border-color:#1c1c1c;box-shadow:inset 0 0 0 1px #1c1c1c}
+.cke-tablecard-top{display:flex;align-items:flex-start;gap:11px}
+.cke-tablecard-ic{flex:none;width:38px;height:38px;border-radius:11px;background:#f4f4f2;display:grid;place-items:center}
+.cke-tablecard-ic svg{width:19px;height:19px}
+.cke-tablecard-name{flex:1;min-width:0}
+.cke-tablecard-name h4{font-size:14.5px;font-weight:700}
+.cke-tablecard-name p{margin-top:3px;font-size:11.5px;color:#6e6e6e;font-weight:500;line-height:1.4}
+.cke-radio{flex:none;width:24px;height:24px;border-radius:50%;border:1.5px solid #d5d5d5;display:grid;place-items:center;color:#fff}
+.cke-tablecard.on .cke-radio{background:#1c1c1c;border-color:#1c1c1c}
+.cke-radio svg{width:14px;height:14px}
+.cke-incl{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-direction:column;gap:9px}
+.cke-incl li{display:flex;align-items:center;gap:9px;font-size:12px;font-weight:500;color:#3f3f46}
+.cke-incl li svg{width:16px;height:16px;flex:none;color:#18a957}
+.cke-tablecard-foot{display:flex;align-items:center;justify-content:space-between;margin-top:16px;padding-top:13px;border-top:1px solid #f0f0f0}
+.cke-tablecard-foot .cke-price{font-size:17px}
+.cke-select{font-size:12px;font-weight:700;color:#6e6e6e}
+.cke-tablecard.on .cke-select{color:#18a957}
+.cke-keep{width:100%;height:48px;margin-top:16px;border-radius:14px;border:1px dashed #d5d5d5;background:#fff;font-size:13px;font-weight:600;color:#3f3f46;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.cke-keep svg{width:16px;height:16px;color:#18a957}
+.cke-keep.on{border-style:solid;border-color:#1c1c1c;color:#1c1c1c}
+
+/* ═══ CHECKOUT — order review ═══ */
+.cke-checkout-cols{display:grid;grid-template-columns:1.15fr .85fr;gap:20px;align-items:start}
+.cke-order{border:1px solid #ececec;border-radius:18px;padding:18px 20px;background:#fff}
+.cke-order-ev{display:flex;align-items:center;gap:11px;padding-bottom:14px;border-bottom:1px solid #f0f0f0}
+.cke-order-ev svg{width:20px;height:20px;flex:none;color:#3a4fd0}
+.cke-order-ev b{display:block;font-size:14px;font-weight:700}
+.cke-order-ev span{display:block;margin-top:2px;font-size:11.5px;color:#6e6e6e;font-weight:500}
+.cke-line{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 0;border-bottom:1px dashed #ececec}
+.cke-line-txt{min-width:0}
+.cke-line-txt b{font-size:13.5px;font-weight:700}
+.cke-line-txt b em{font-style:normal;color:#6e6e6e;font-weight:600}
+.cke-line-txt span{display:block;margin-top:2px;font-size:11.5px;color:#6e6e6e;font-weight:500}
+.cke-line-pr{flex:none;font-size:14.5px;font-weight:800}
+.cke-line-table .cke-line-txt b{color:#3a4fd0}
+.cke-empty{padding:10px 0;font-size:12.5px;color:#9b9b9b;font-weight:500}
+.cke-sums{margin-top:14px}
+.cke-sumrow{display:flex;justify-content:space-between;gap:12px;margin-top:8px;font-size:12.5px;font-weight:500;color:#4b4b52}
+.cke-sumrow b{font-weight:600;color:#1c1c1c}
+.cke-sumrow.grand{margin-top:13px;padding-top:13px;border-top:1px solid #ececec;font-size:14px}
+.cke-sumrow.grand span{font-weight:700}
+.cke-sumrow.grand b{font-size:18px;font-weight:800}
+
+.cke-next{display:flex;flex-direction:column;gap:12px}
+.cke-guest{border:1px solid #ececec;border-radius:16px;padding:14px 16px}
+.cke-guest .cke-lbl{margin-top:0}
+.cke-frow{display:flex;gap:10px}
+.cke-field{display:block;flex:1;margin-top:10px}
+.cke-field span{display:block;font-size:11.5px;font-weight:700;margin-bottom:6px}
+.cke-field input{width:100%;height:42px;border:1px solid #e2e2e2;border-radius:10px;padding:0 12px;font:inherit;font-size:12.5px;color:#1c1c1c;background:#fff}
+.cke-field input::placeholder{color:#9b9b9b}
+.cke-field input:focus{outline:2px solid #1c1c1c;outline-offset:-1px}
+.cke-next-card{display:flex;gap:11px;border:1px solid #ececec;border-radius:14px;padding:13px 15px;background:#fbfbfa}
+.cke-next-card>svg{width:22px;height:22px;flex:none;color:#1c1c1c;margin-top:1px}
+.cke-next-card b{font-size:12.5px;font-weight:700}
+.cke-next-card p{margin-top:3px;font-size:11px;color:#6e6e6e;font-weight:500;line-height:1.45}
+
+/* ═══ CONFIRM — QR success ═══ */
+.cke-confirm{display:flex;align-items:center;justify-content:center}
+.cke-confirm-in{text-align:center;max-width:400px;display:flex;flex-direction:column;align-items:center}
+.cke-qrbox{width:154px;height:154px;padding:13px;background:#fff;border:1px solid #ececec;border-radius:20px;box-shadow:0 10px 30px rgba(2,6,23,.08)}
+.cke-qrbox svg{width:100%;height:100%;display:block}
+.cke-confirm-in h2{margin-top:20px}
+.cke-confirm-in p{margin-top:9px;font-size:13px;color:#3f3f46;font-weight:500;line-height:1.5}
+.cke-tagline{margin-top:16px;background:#ede4ff;color:#5b3fbf;border-radius:999px;padding:7px 15px;font-size:11px;font-weight:700}
+.cke-ghost{margin-top:18px;height:46px;padding:0 24px;border-radius:999px;background:#1c1c1c;color:#fff;font-size:13.5px;font-weight:600;transition:background .15s}
+.cke-ghost:hover{background:#000}
+
+/* ═══ annotation badge (matches sibling demos) ═══ */
+.cke-badge{position:absolute;top:0;left:30px;transform:translateY(-52%) rotate(-2deg);z-index:80;display:inline-flex;align-items:center;gap:8px;background:var(--lav);color:var(--navy);font-size:12px;font-weight:600;letter-spacing:0;padding:9px 16px;border-radius:999px;box-shadow:4px 4px 0 rgba(2,6,23,.85);pointer-events:none}
+.cke-badge.right{left:auto;right:30px;transform:translateY(-52%) rotate(2deg)}
+.cke-badge i{width:8px;height:8px;border-radius:50%;background:var(--indigo);animation:demo-badge-blink 1.8s ease-in-out infinite}
+
+/* ═══ responsive (container-query driven via JS classes) ═══ */
+.cke.cke-narrow .cke-stepper{display:none}
+.cke.cke-narrow .cke-appbar{gap:9px;padding:10px 12px}
+.cke.cke-narrow .cke-datepill{padding:0 12px;font-size:12px}
+.cke.cke-narrow .cke-event{flex-direction:column}
+.cke.cke-narrow .cke-poster{flex:0 0 auto;min-height:210px;padding:20px}
+.cke.cke-narrow .cke-tickets{height:auto}
+.cke.cke-narrow .cke-title{font-size:27px}
+.cke.cke-narrow .cke-lineup{display:none}
+.cke.cke-narrow .cke-tables{grid-template-columns:1fr}
+.cke.cke-narrow .cke-checkout-cols{grid-template-columns:1fr;gap:14px}
+.cke.cke-tiny .cke-count{display:none}
+.cke.cke-tiny .cke-datepill span{display:none}
+.cke.cke-tiny .cke-datepill{padding:0 12px}
+.cke.cke-tiny .cke-bar{gap:10px;padding:10px 12px}
+.cke.cke-tiny .cke-cta{padding:0 18px}
+.cke.cke-tiny .cke-body{padding:18px 16px}
+.cke.cke-tiny .cke-tickets-scroll{padding:18px 16px 10px}
+
+@media(max-width:600px){
+  .cke{aspect-ratio:auto;height:600px}
+  .feature-row .cke{height:600px}
+}
+@media (prefers-reduced-motion: reduce){
+  .cke-badge i{animation:none}
+  .cke-cta,.cke-priority,.cke-tablecard,.cke-tier,.cke-table-teaser{transition:none}
+}
+.cke-form,.cke-guest,.cke-confirm-in{user-select:text;-webkit-user-select:text}

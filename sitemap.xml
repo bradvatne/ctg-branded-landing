@@ -13,19 +13,13 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.clubtechglobal.com/booking/</loc>
+    <loc>https://www.clubtechglobal.com/sell/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.clubtechglobal.com/operations/</loc>
-    <lastmod>2026-07-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.clubtechglobal.com/intelligence/</loc>
+    <loc>https://www.clubtechglobal.com/grow/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -350,6 +344,12 @@
   </url>
   <url>
     <loc>https://www.clubtechglobal.com/careers/</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.clubtechglobal.com/for-hotels/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

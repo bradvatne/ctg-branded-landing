@@ -4,6 +4,7 @@ titleTag: Clubtech Support — Help for Venue Teams | Clubtech
 slug: support
 date: 2026-07-16
 group: platform
+demo: support
 eyebrow: Platform · Clubtech Support
 excerpt: Message the Clubtech team from your own portal, see every conversation and ticket status update live, and never lose an issue in a WhatsApp thread again.
 description: Clubtech Support gives venue teams a real support channel — message the Clubtech team, track ticket status live in a passwordless web portal, and keep every issue on the record.

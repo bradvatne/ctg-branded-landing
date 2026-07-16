@@ -1,0 +1,241 @@
+/* Clubtech branded landing — door list & VMS check-in demo (.ckdl-).
+   Front-of-house companion to the operator console (css/operator.css):
+   same Albert Sans, white surfaces on #f6f6f4, #1c1c1c primaries, soft
+   shadows. One reconciled door list — reservations, event tickets,
+   promoter lists and priority/free-entry — with QR check-in and a live
+   arrived count. Source hues: indigo reservation · violet ticket · amber
+   promoter · green priority. Arrival status runs on teal. */
+
+.ckdl{position:relative;isolation:isolate;width:100%;aspect-ratio:4/3;background:#f6f6f4;border-radius:24px;overflow:hidden;box-shadow:18px 18px 0 var(--lav);font-family:"Albert Sans",system-ui,sans-serif;letter-spacing:0;color:#1c1c1c;font-size:14px;line-height:1.35;user-select:none;-webkit-user-select:none;display:flex;flex-direction:column}
+.feature-row .ckdl{aspect-ratio:auto;height:610px}
+.feature-row.reverse .ckdl{box-shadow:-18px 18px 0 var(--lav)}
+.hero-grid .ckdl{aspect-ratio:auto;height:640px;min-height:560px}
+.ckdl *{box-sizing:border-box}
+.ckdl :where(button){font:inherit;border:0;background:none;color:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent;letter-spacing:0}
+.ckdl img{display:block}
+.ckdl svg{width:15px;height:15px}
+.ckdl [hidden]{display:none!important}
+
+/* ═══ toolbar ═══ */
+.ckdl-bar{flex:none;display:flex;align-items:center;gap:8px;padding:10px 12px 8px;background:#fff;border-bottom:1px solid #ececec;flex-wrap:wrap}
+.ckdl-logo{width:36px;height:36px;border-radius:50%;background:#fff;border:1px solid #ececec;display:grid;place-items:center;flex:none}
+.ckdl-logo img{width:19px;height:19px;object-fit:contain}
+.ckdl-title{display:flex;flex-direction:column;line-height:1.12;margin-right:4px}
+.ckdl-title b{font-size:14px;font-weight:800}
+.ckdl-title span{font-size:10px;font-weight:600;color:#9b9b9b;letter-spacing:.02em}
+.ckdl-datepill{height:38px;padding:0 14px;border-radius:999px;border:1px solid #e2e2e2;display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;white-space:nowrap}
+.ckdl-search{flex:1;min-width:150px;height:38px;display:flex;align-items:center;gap:8px;border:1px solid #e2e2e2;border-radius:999px;padding:0 14px;color:#9b9b9b}
+.ckdl-search input{flex:1;min-width:0;border:0;outline:0;background:none;font:inherit;font-size:12.5px;color:#1c1c1c}
+.ckdl-search input::placeholder{color:#9b9b9b}
+.ckdl-livepill{display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 15px;border-radius:999px;background:#0d3d33;color:#dcfff2;font-size:12px;font-weight:600;white-space:nowrap}
+.ckdl-livepill .live{width:7px;height:7px;border-radius:50%;background:#5dfec2;box-shadow:0 0 0 0 rgba(93,254,194,.6);animation:ckdl-live 1.9s ease-in-out infinite}
+.ckdl-livepill b{font-size:16px;font-weight:800;color:#5dfec2}
+.ckdl-livepill em{font-style:normal;font-size:12px;font-weight:600;color:#7fb8a8}
+@keyframes ckdl-live{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(93,254,194,.55)}50%{opacity:.7;box-shadow:0 0 0 5px rgba(93,254,194,0)}}
+
+/* day-strip popover */
+.ckdl-daypop{position:absolute;z-index:70;top:56px;left:calc(50% + 40px);transform:translateX(-50%);display:none;gap:6px;background:#fff;border-radius:14px;padding:8px;box-shadow:0 14px 40px rgba(0,0,0,.18)}
+.ckdl-daypop.open{display:flex}
+.ckdl-daypop button{width:48px;border:1.5px solid #e2e2e2;border-radius:11px;padding:7px 0;text-align:center}
+.ckdl-daypop button b{display:block;font-size:14px;font-weight:700}
+.ckdl-daypop button span{display:block;font-size:9.5px;font-weight:600;color:#6e6e6e}
+.ckdl-daypop button.sel{border-color:#1c1c1c;border-width:2px;background:#f7f7f5}
+
+/* ═══ reconciliation strip ═══ */
+.ckdl-recon{flex:none;display:flex;align-items:center;gap:10px 12px;padding:9px 14px;background:#fff;border-bottom:1px solid #ececec;flex-wrap:wrap}
+.ckdl-recon-h{font-size:9.5px;font-weight:800;text-transform:uppercase;letter-spacing:.09em;color:#9b9b9b;white-space:nowrap}
+.ckdl-srcfilter{display:flex;gap:6px;flex-wrap:wrap}
+.ckdl-fc{height:30px;padding:0 11px;border-radius:999px;border:1px solid #e2e2e2;background:#fff;font-size:11.5px;font-weight:600;color:#3f3f46;display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
+.ckdl-fc .dot{width:8px;height:8px;border-radius:3px;flex:none}
+.ckdl-fc b{font-weight:800;color:#1c1c1c}
+.ckdl-fc.on{background:#1c1c1c;border-color:#1c1c1c;color:#fff}
+.ckdl-fc.on b{color:#fff}
+.ckdl-cap{margin-left:auto;min-width:196px;flex:0 1 220px}
+.ckdl-cap-top{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.ckdl-cap-top span{font-size:9.5px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:#9b9b9b}
+.ckdl-cap-top b{font-size:11.5px;font-weight:800}
+.ckdl-meter{position:relative;height:8px;margin-top:5px;border-radius:999px;background:#eceae4;overflow:hidden}
+.ckdl-meter .sold{position:absolute;left:0;top:0;bottom:0;background:#f6a417;border-radius:999px;transition:width .4s ease}
+.ckdl-meter .in{position:absolute;left:0;top:0;bottom:0;background:#14b8a6;border-radius:999px;transition:width .4s ease}
+.ckdl-cap-key{display:flex;gap:12px;margin-top:5px}
+.ckdl-cap-key span{display:inline-flex;align-items:center;gap:5px;font-size:9.5px;font-weight:600;color:#6e6e6e}
+.ckdl-cap-key i{width:8px;height:8px;border-radius:2px}
+.ckdl-cap-key i.in{background:#14b8a6}
+.ckdl-cap-key i.sold{background:#f6a417}
+
+/* ═══ list surface ═══ */
+.ckdl-list{flex:1;min-width:0;overflow-y:auto;background:#fff}
+.ckdl-row,.ckdl-hrow{display:grid;grid-template-columns:30px minmax(120px,1.5fr) 104px minmax(96px,1.05fr) 124px;gap:11px;align-items:center}
+.ckdl-hrow{position:sticky;top:0;z-index:2;padding:9px 16px;background:#faf9f6;border-bottom:1px solid #ececec}
+.ckdl-hrow span{font-size:9.5px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#9b9b9b}
+.ckdl-rows{display:flex;flex-direction:column}
+.ckdl-row{padding:11px 16px;border-bottom:1px solid #f1f0ec;cursor:pointer;transition:background .12s}
+.ckdl-row:hover{background:#faf9f6}
+.ckdl-row:last-child{border-bottom:0}
+
+/* check control */
+.ckdl-check{width:30px;height:30px;flex:none;border-radius:50%;border:2px solid #d3d6dd;display:grid;place-items:center;color:transparent;transition:border-color .15s,background .15s}
+.ckdl-check:hover{border-color:#14b8a6}
+.ckdl-check svg{width:14px;height:14px}
+.ckdl-row.partial .ckdl-check{border-color:#14b8a6}
+.ckdl-row.partial .ckdl-check::after{content:"";width:9px;height:9px;border-radius:50%;background:#14b8a6}
+.ckdl-row.arrived .ckdl-check{border-color:#14b8a6;background:#14b8a6;color:#fff}
+
+/* guest cell */
+.ckdl-guest{display:flex;align-items:center;gap:10px;min-width:0}
+.ckdl-ava{width:34px;height:34px;flex:none;border-radius:50%;background:#eceef3;color:#42506a;font-size:11.5px;font-weight:800;display:grid;place-items:center}
+.ckdl-ava.sm{width:30px;height:30px;font-size:10.5px}
+.ckdl-ava.lg{width:46px;height:46px;font-size:15px}
+.ckdl-guest>div{min-width:0}
+.ckdl-guest h5{margin:0;font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ckdl-guest h5 em,.ckdl-psub em,.ckdl-modal-body h4 em,h3 em{font-style:normal;font-weight:700;color:#6e6e6e;font-size:.82em}
+.ckdl-guest p{margin:2px 0 0;font-size:10.5px;color:#6e6e6e;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* source badge */
+.ckdl-src{display:inline-flex;align-items:center;height:22px;padding:0 9px;border-radius:999px;font-size:10px;font-weight:700;white-space:nowrap}
+.ckdl-src.res{background:#e8ecff;color:#3a4ec0}
+.ckdl-src.tkt{background:#f1e9fb;color:#7c3aed}
+.ckdl-src.pro{background:#fdf1da;color:#a9700d}
+.ckdl-src.pri{background:#e6f8ee;color:#158a4a}
+
+/* destination */
+.ckdl-dest{min-width:0}
+.ckdl-dest b{display:block;font-size:12px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ckdl-dest span{display:block;font-size:10px;color:#6e6e6e;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* arrived cell (count + status + progress bar) */
+.ckdl-arr-top{display:flex;align-items:baseline;gap:7px}
+.ckdl-arr-top b{font-size:12.5px;font-weight:800;white-space:nowrap}
+.ckdl-arr-top span{font-size:10px;font-weight:700;white-space:nowrap}
+.ckdl-arr.expected .ckdl-arr-top b{color:#8a94a3}
+.ckdl-arr.expected .ckdl-arr-top span{color:#8a94a3}
+.ckdl-arr.partial .ckdl-arr-top span,.ckdl-arr.arrived .ckdl-arr-top span{color:#0d7a6c}
+.ckdl-arr i{display:block;margin-top:5px;height:6px;border-radius:999px;background:#eceae4;overflow:hidden}
+.ckdl-arr i b{display:block;height:100%;border-radius:999px;background:#14b8a6;transition:width .35s ease}
+
+/* status chip */
+.ckdl-chip{display:inline-flex;align-items:center;height:24px;padding:0 10px;border-radius:999px;font-size:10.5px;font-weight:700;white-space:nowrap}
+.ckdl-chip.expected{background:#eef1f5;color:#586274}
+.ckdl-chip.partial{background:#e0f5f2;color:#0d7a6c}
+.ckdl-chip.arrived{background:#14b8a6;color:#fff}
+
+.ckdl-empty{margin:34px 16px;font-size:12.5px;color:#6e6e6e;text-align:center}
+
+/* ═══ sold-out priority capture ═══ */
+.ckdl-soldwrap{border-bottom:1px solid #f1f0ec}
+.ckdl-sold{display:flex;gap:12px;align-items:flex-start;margin:12px 14px 0;padding:13px 15px;border-radius:14px;background:#fff8ec;border:1px solid #f6e0b3}
+.ckdl-sold .ic{width:34px;height:34px;flex:none;border-radius:50%;background:#fdecc6;color:#c98a1b;display:grid;place-items:center}
+.ckdl-sold .ic svg{width:17px;height:17px}
+.ckdl-sold h4{margin:0;font-size:13px;font-weight:800}
+.ckdl-sold p{margin:4px 0 0;font-size:11px;color:#7a5a1e;font-weight:500;line-height:1.5}
+.ckdl-capture{display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap;margin:11px 14px 13px;padding:12px 14px;border:1px solid #ececec;border-radius:14px;background:#fff}
+.ckdl-cfield{display:block;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:#6e6e6e}
+.ckdl-cfield.grow{flex:1 1 150px;min-width:0}
+.ckdl-cfield input,.ckdl-cfield select{display:block;width:100%;margin-top:5px;height:38px;border:1px solid #e2e2e2;border-radius:10px;padding:0 11px;font:inherit;font-size:12.5px;font-weight:600;color:#1c1c1c;background:#fff;text-transform:none;letter-spacing:0}
+.ckdl-cfield select{min-width:74px}
+.ckdl-cfield input:focus,.ckdl-cfield select:focus{outline:2px solid #1c1c1c;outline-offset:-1px}
+
+/* ═══ shared buttons ═══ */
+.ckdl-btn{height:46px;border-radius:999px;font-size:13px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:0 18px}
+.ckdl-btn.dark{background:#1c1c1c;color:#fff}
+.ckdl-btn.dark:hover{background:#000}
+.ckdl-btn.line{border:1px solid #e2e2e2;background:#fff}
+.ckdl-btn.line:hover{background:#f7f7f5}
+.ckdl-btn.done{background:#e0f5f2;color:#0d7a6c;cursor:default}
+.ckdl-btn.sm{height:40px;font-size:12px;padding:0 15px;flex:none}
+.ckdl-btn svg{width:16px;height:16px}
+
+/* ═══ party panel (whole-party capture) ═══ */
+.ckdl-panel{position:absolute;right:0;top:0;bottom:0;z-index:55;width:min(380px,94%);background:#fff;padding:18px 18px 16px;overflow-y:auto;transform:translateX(103%);transition:transform .35s cubic-bezier(.22,.8,.3,1);box-shadow:-20px 0 50px rgba(0,0,0,.16)}
+.ckdl-panel.open{transform:none}
+.ckdl-panel h3{margin:0 26px 0 0;font-size:17px;font-weight:800}
+.ckdl-x{position:absolute;top:14px;right:14px;width:28px;height:28px;display:grid;place-items:center;color:#6e6e6e;font-size:14px}
+.ckdl-x::after{content:"";position:absolute;inset:-9px}
+.ckdl-psub{margin:9px 0 0;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.ckdl-pmeta{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:14px}
+.ckdl-pmeta>div{background:#f7f7f5;border-radius:12px;padding:9px 11px}
+.ckdl-pmeta>div:first-child{grid-column:1/-1}
+.ckdl-pmeta span{display:block;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#9b9b9b}
+.ckdl-pmeta b{display:block;margin-top:2px;font-size:13px;font-weight:700}
+.ckdl-rosterhead{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-top:16px}
+.ckdl-rosterhead b{font-size:13px;font-weight:800}
+.ckdl-rosterhead span{font-size:10.5px;font-weight:600;color:#6e6e6e}
+.ckdl-rosternote{margin:6px 0 4px;font-size:10.5px;color:#6e6e6e;font-weight:500;line-height:1.5}
+.ckdl-roster{margin-top:4px}
+.ckdl-mem{display:flex;align-items:center;gap:11px;padding:10px 0;border-bottom:1px dashed #e2e2e2}
+.ckdl-memtoggle{width:26px;height:26px;flex:none;border-radius:50%;border:2px solid #d3d6dd;display:grid;place-items:center;color:transparent;transition:border-color .15s,background .15s}
+.ckdl-memtoggle:hover{border-color:#14b8a6}
+.ckdl-memtoggle svg{width:13px;height:13px}
+.ckdl-mem.in .ckdl-memtoggle{border-color:#14b8a6;background:#14b8a6;color:#fff}
+.ckdl-mem .mx{flex:1;min-width:0}
+.ckdl-mem h6{margin:0;font-size:12.5px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ckdl-mem h6 em{font-style:normal;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:#3a4ec0;background:#e8ecff;border-radius:5px;padding:1px 5px;margin-left:6px;vertical-align:1px}
+.ckdl-mem p{margin:2px 0 0;font-size:10px;font-weight:600}
+.ckdl-mem p.ok{color:#158a4a}
+.ckdl-mem p.wait{color:#c98a1b}
+.ckdl-memstate{font-size:10px;font-weight:800;color:#0d7a6c;text-transform:uppercase;letter-spacing:.05em}
+.ckdl-pfoot{margin-top:16px}
+.ckdl-pfoot .ckdl-btn{width:100%}
+
+/* ═══ QR check-in modal ═══ */
+.ckdl-scrim{position:absolute;inset:0;z-index:60;background:rgba(10,10,12,.5);display:none;align-items:center;justify-content:center;padding:14px}
+.ckdl-scrim.open{display:flex}
+.ckdl-modal{width:min(440px,100%);max-height:96%;background:#fff;border-radius:18px;display:flex;flex-direction:column;box-shadow:0 30px 80px rgba(0,0,0,.4);overflow:hidden}
+.ckdl-modal-head{flex:none;position:relative;padding:15px 20px 12px;border-bottom:1px solid #ececec}
+.ckdl-modal-head h3{margin:0;font-size:16px;font-weight:800}
+.ckdl-modal-body{flex:1;overflow-y:auto;padding:16px 20px 8px;text-align:center}
+.ckdl-qrwrap{display:flex;flex-direction:column;align-items:center;gap:9px}
+.ckdl-qr{width:132px;height:132px;padding:9px;background:#fff;border:1px solid #ececec;border-radius:16px;box-shadow:0 8px 24px rgba(15,23,42,.08)}
+.ckdl-qr svg{width:100%;height:100%;display:block}
+.ckdl-qrtag{display:inline-flex;align-items:center;gap:6px;font-size:10.5px;font-weight:700;color:#0d7a6c;background:#e0f5f2;padding:5px 11px;border-radius:999px}
+.ckdl-qrtag svg{width:13px;height:13px}
+.ckdl-qmatch{display:flex;align-items:center;gap:11px;text-align:left;margin-top:16px;padding:12px 13px;border:1px solid #ececec;border-radius:14px}
+.ckdl-qmatch h4{margin:0;font-size:14.5px;font-weight:800}
+.ckdl-qmatch p{margin:3px 0 0;display:flex;align-items:center;gap:6px;font-size:11px;color:#3f3f46;font-weight:500}
+.ckdl-qmatch>.ckdl-chip{margin-left:auto;flex:none}
+.ckdl-qroster-h{margin:16px 0 0;font-size:9.5px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#9b9b9b;text-align:left}
+.ckdl-qroster{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.ckdl-qmem{display:inline-flex;align-items:center;gap:5px;height:28px;padding:0 11px 0 6px;border-radius:999px;background:#f2f2f0;font-size:11px;font-weight:600;color:#3f3f46}
+.ckdl-qmem i{width:16px;height:16px;border-radius:50%;border:1.5px solid #cdd1d8;display:grid;place-items:center;color:transparent}
+.ckdl-qmem i svg{width:10px;height:10px}
+.ckdl-qmem.in{background:#e0f5f2;color:#0d7a6c}
+.ckdl-qmem.in i{border-color:#14b8a6;background:#14b8a6;color:#fff}
+.ckdl-qcount{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:16px;padding:11px;border-radius:14px;background:#0d3d33;color:#dcfff2}
+.ckdl-qcount span{font-size:11px;font-weight:600;color:#9fd6c7}
+.ckdl-qcount b{font-size:20px;font-weight:800;color:#5dfec2}
+.ckdl-qcount em{font-style:normal;font-size:12px;font-weight:600;color:#7fb8a8}
+.ckdl-modal-foot{flex:none;display:flex;gap:10px;padding:12px 20px 16px;border-top:1px solid #ececec}
+.ckdl-modal-foot .ckdl-btn{flex:1}
+.ckdl-modal-foot .ckdl-btn.dark,.ckdl-modal-foot .ckdl-btn.done{flex:1.6}
+
+/* ═══ toast & badge ═══ */
+.ckdl-toast{position:absolute;z-index:80;left:50%;bottom:18px;transform:translate(-50%,10px);background:#1c1c1cf0;color:#fff;font-size:12.5px;font-weight:600;padding:11px 18px;border-radius:999px;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;max-width:88%;text-align:center}
+.ckdl-toast.show{opacity:1;transform:translate(-50%,0)}
+.ckdl-badge{position:absolute;top:0;left:30px;transform:translateY(-52%) rotate(-2deg);z-index:80;display:inline-flex;align-items:center;gap:8px;background:var(--lav);color:var(--navy);font-size:12px;font-weight:600;letter-spacing:0;padding:9px 16px;border-radius:999px;box-shadow:4px 4px 0 rgba(2,6,23,.85);pointer-events:none}
+.ckdl-badge.right{left:auto;right:30px;transform:translateY(-52%) rotate(2deg)}
+.ckdl-badge i{width:8px;height:8px;border-radius:50%;background:var(--indigo);animation:demo-badge-blink 1.8s ease-in-out infinite}
+.demo-badge-host:has(.ckdl-scrim.open) .ckdl-badge,.demo-badge-host:has(.ckdl.tiny .ckdl-panel.open) .ckdl-badge{opacity:0;transition:opacity .25s}
+
+/* ═══ narrow frames ═══ */
+.ckdl.tiny .ckdl-title span{display:none}
+.ckdl.tiny .ckdl-livepill em{display:none}
+.ckdl.tiny .ckdl-cap{flex-basis:100%;margin-left:0}
+.ckdl.tiny .ckdl-row,.ckdl.tiny .ckdl-hrow{grid-template-columns:30px minmax(0,1.5fr) 116px;gap:10px}
+.ckdl.tiny .ckdl-hrow span:nth-child(3),.ckdl.tiny .ckdl-hrow span:nth-child(4){display:none}
+.ckdl.tiny .ckdl-src,.ckdl.tiny .ckdl-dest{display:none}
+.ckdl.tiny .ckdl-panel{width:100%}
+
+@media(max-width:600px){
+  .ckdl,.hero-grid .ckdl,.feature-row .ckdl{aspect-ratio:auto;height:600px}
+  .ckdl-datepill span{display:none}
+  .ckdl-recon-h{width:100%}
+  .ckdl-capture{flex-direction:column;align-items:stretch}
+  .ckdl-capture .ckdl-btn{width:100%}
+}
+
+@media (prefers-reduced-motion: reduce){
+  .ckdl-livepill .live{animation:none}
+  .ckdl-badge i{animation:none}
+  .ckdl-panel,.ckdl-toast,.ckdl-meter .sold,.ckdl-meter .in,.ckdl-prog i b{transition:none}
+}
+.ckdl-modal,.ckdl-mem,.ckdl-row{user-select:text;-webkit-user-select:text}

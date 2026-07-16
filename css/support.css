@@ -1,0 +1,157 @@
+/* Clubtech branded landing — support console demo (.cks-).
+   Lighter companion to the operator console (css/operator.css) and guest
+   intelligence dashboard (css/intel.css): same design language — Albert
+   Sans, white cards on a soft canvas, #1c1c1c primaries, soft shadows.
+   Two-pane console: ticket list (left) + message thread (right).
+   Status colors: amber open · indigo in progress · green resolved. */
+
+.cks{position:relative;isolation:isolate;width:100%;aspect-ratio:4/3;background:#f6f6f4;border-radius:24px;overflow:hidden;box-shadow:18px 18px 0 var(--lav);font-family:"Albert Sans",system-ui,sans-serif;letter-spacing:0;color:#1c1c1c;font-size:14px;line-height:1.35;user-select:none;-webkit-user-select:none;display:flex;flex-direction:column}
+.feature-row .cks{aspect-ratio:auto;height:610px}
+.hero-grid .cks{aspect-ratio:auto;height:640px;min-height:560px}
+.cks *{box-sizing:border-box}
+.cks :where(button){font:inherit;border:0;background:none;color:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent;letter-spacing:0}
+.cks img{display:block}
+.cks svg{width:15px;height:15px}
+.cks [hidden]{display:none!important}
+
+/* ═══ team-console header ═══ */
+.cks-top{flex:none;display:flex;align-items:center;gap:12px;padding:11px 16px;background:#fff;border-bottom:1px solid #ececec}
+.cks-brand{display:flex;align-items:center;gap:10px;min-width:0}
+.cks-logo{width:34px;height:34px;flex:none;border-radius:50%;background:#fff;border:1px solid #ececec;display:grid;place-items:center}
+.cks-logo img{width:18px;height:18px;object-fit:contain}
+.cks-brandtxt{display:flex;flex-direction:column;min-width:0}
+.cks-brandtxt b{font-size:15px;font-weight:800;line-height:1.15}
+.cks-brandtxt span{font-size:11px;font-weight:600;color:#6e6e6e;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cks-who{margin-left:auto;display:flex;align-items:center;gap:12px}
+.cks-stack{display:flex}
+.cks-stack .cks-av{margin-left:-8px;box-shadow:0 0 0 2px #fff}
+.cks-stack .cks-av:first-child{margin-left:0}
+.cks-av{width:30px;height:30px;flex:none;border-radius:50%;display:grid;place-items:center;font-size:10.5px;font-weight:800;letter-spacing:.02em}
+.cks-av.sm{width:26px;height:26px;font-size:9.5px}
+.cks-av.a{background:#e8ecff;color:#3a55d0}
+.cks-av.b{background:#e0f5f2;color:#0d7a6c}
+.cks-av.c{background:#fdf3dd;color:#b9791a}
+.cks-av.more{background:#f0f0ee;color:#6e6e6e}
+.cks-av.brand{background:#fff;border:1px solid #ececec}
+.cks-av.brand img{width:17px;height:17px;object-fit:contain}
+.cks-me{display:flex;align-items:center;gap:8px;height:40px;padding:0 13px 0 6px;border-radius:999px;border:1px solid #ececec}
+.cks-metxt{display:flex;flex-direction:column;line-height:1.12}
+.cks-metxt b{font-size:12px;font-weight:700}
+.cks-metxt span{font-size:10px;font-weight:600;color:#6e6e6e}
+
+/* ═══ body split ═══ */
+.cks-body{flex:1;display:flex;min-height:0}
+
+/* ── ticket list ── */
+.cks-list{flex:none;width:326px;display:flex;flex-direction:column;min-height:0;background:#fff;border-right:1px solid #ececec}
+.cks-listhead{flex:none;padding:12px 14px 10px;border-bottom:1px solid #f0f0f0;display:flex;flex-direction:column;gap:9px}
+.cks-tabs{display:flex;gap:5px;overflow-x:auto;scrollbar-width:none}
+.cks-tabs::-webkit-scrollbar{display:none}
+.cks-tabs button{flex:none;height:30px;padding:0 12px;border-radius:999px;border:1px solid #e2e2e2;background:#fff;font-size:11.5px;font-weight:600;color:#3f3f46;white-space:nowrap}
+.cks-tabs button.on{background:#1c1c1c;border-color:#1c1c1c;color:#fff}
+.cks-search{display:flex;align-items:center;gap:8px;height:36px;border:1px solid #e2e2e2;border-radius:10px;padding:0 11px;color:#9b9b9b}
+.cks-search input{flex:1;min-width:0;border:0;outline:0;background:none;font:inherit;font-size:12.5px;font-weight:500;color:#1c1c1c}
+.cks-search input::placeholder{color:#9b9b9b}
+.cks-scroll{flex:1;min-height:0;overflow-y:auto}
+.cks-tk{display:block;width:100%;text-align:left;padding:12px 14px;border-bottom:1px solid #f2f2f0;position:relative}
+.cks-tk:hover{background:#fafaf8}
+.cks-tk.on{background:#f6f7fb;box-shadow:inset 3px 0 0 #1c1c1c}
+.cks-tk-top{display:flex;align-items:flex-start;gap:8px}
+.cks-tk-subj{flex:1;min-width:0;font-size:13px;font-weight:700;line-height:1.3}
+.cks-tk-prev{display:block;margin-top:5px;font-size:11.5px;font-weight:500;color:#6e6e6e;line-height:1.4;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cks-tk-meta{display:flex;align-items:center;gap:8px;margin-top:8px}
+.cks-when{font-size:10.5px;font-weight:600;color:#9b9b9b;white-space:nowrap}
+.cks-foot{flex:none;display:flex;gap:8px;align-items:flex-start;padding:11px 14px;border-top:1px solid #f0f0f0;background:#fbfbf9}
+.cks-foot svg{width:14px;height:14px;flex:none;margin-top:1px;color:#8a8a8a}
+.cks-foot span{font-size:10px;font-weight:500;color:#8a8a8a;line-height:1.5}
+.cks-empty{margin:26px 16px;font-size:12.5px;font-weight:500;color:#6e6e6e;text-align:center;line-height:1.5}
+
+/* status badges */
+.cks-st{flex:none;display:inline-flex;align-items:center;gap:5px;height:21px;padding:0 9px;border-radius:999px;font-size:10px;font-weight:700;white-space:nowrap}
+.cks-st::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.cks-st.open{background:#fdf3dd;color:#b9791a}
+.cks-st.progress{background:#e8ecff;color:#3a55d0}
+.cks-st.resolved{background:#e7f8ee;color:#158a4a}
+
+/* channel tags */
+.cks-chan{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;font-weight:600;color:#6e6e6e;white-space:nowrap}
+.cks-chan svg{width:13px;height:13px}
+.cks-chan.whatsapp svg{color:#1f9d55}
+.cks-chan.portal svg{color:#586274}
+.cks-dot{width:3px;height:3px;border-radius:50%;background:#cfcfca;flex:none}
+
+/* ── thread detail ── */
+.cks-detail{flex:1;min-width:0;display:flex;flex-direction:column;min-height:0;background:#f6f6f4}
+.cks-th-top{flex:none;display:flex;flex-direction:column;gap:11px;padding:14px 16px;background:#fff;border-bottom:1px solid #ececec}
+.cks-th-head{display:flex;align-items:center;gap:10px}
+.cks-back{display:none;width:32px;height:32px;flex:none;border-radius:9px;border:1px solid #e2e2e2;place-items:center;color:#3f3f46}
+.cks-th-subj{flex:1;min-width:0;margin:0;font-size:16px;font-weight:800;line-height:1.25}
+.cks-th-sub{display:flex;align-items:center;gap:9px 14px;flex-wrap:wrap}
+.cks-th-meta{flex:1;min-width:0;display:flex;align-items:center;gap:8px;font-size:10.5px;font-weight:600;color:#6e6e6e;flex-wrap:wrap}
+.cks-seg{flex:none;display:flex;background:#f2f2f0;border-radius:999px;padding:3px}
+.cks-seg button{height:30px;padding:0 12px;border-radius:999px;font-size:11px;font-weight:700;color:#6e6e6e;white-space:nowrap}
+.cks-seg button[data-st="open"].on{background:#c98a1b;color:#fff}
+.cks-seg button[data-st="progress"].on{background:#3a55d0;color:#fff}
+.cks-seg button[data-st="resolved"].on{background:#158a4a;color:#fff}
+
+/* message thread */
+.cks-thread{flex:1;min-height:0;overflow-y:auto;padding:16px 18px;display:flex;flex-direction:column;gap:14px}
+.cks-day{align-self:center;font-size:10px;font-weight:700;color:#7c7c7c;text-transform:uppercase;letter-spacing:.08em;background:#ececea;padding:4px 12px;border-radius:999px}
+.cks-msg{display:flex;gap:9px;max-width:82%}
+.cks-msg.in{align-self:flex-start}
+.cks-msg.out{align-self:flex-end;flex-direction:row-reverse}
+.cks-mwrap{min-width:0}
+.cks-mtop{display:flex;align-items:baseline;gap:7px;margin-bottom:4px}
+.cks-msg.out .cks-mtop{flex-direction:row-reverse}
+.cks-mtop b{font-size:11.5px;font-weight:700}
+.cks-mtop span{font-size:10px;font-weight:600;color:#9b9b9b}
+.cks-bub{padding:9px 13px;border-radius:15px;font-size:12.5px;font-weight:500;line-height:1.5}
+.cks-msg.in .cks-bub{background:#fff;border:1px solid #ececec;border-top-left-radius:5px;color:#1c1c1c}
+.cks-msg.out .cks-bub{background:#1c1c1c;color:#fff;border-top-right-radius:5px}
+
+/* composer */
+.cks-compose{flex:none;display:flex;align-items:center;gap:9px;padding:12px 16px;background:#fff;border-top:1px solid #ececec}
+.cks-compose input{flex:1;min-width:0;height:42px;border:1px solid #e2e2e2;border-radius:999px;padding:0 16px;font:inherit;font-size:12.5px;font-weight:500;color:#1c1c1c;background:#fff}
+.cks-compose input::placeholder{color:#9b9b9b}
+.cks-compose input:focus{outline:2px solid #1c1c1c;outline-offset:-1px}
+.cks-send{width:42px;height:42px;flex:none;border-radius:50%;background:#1c1c1c;color:#fff;display:grid;place-items:center}
+.cks-send:hover{background:#000}
+.cks-send svg{width:17px;height:17px}
+
+/* ═══ toast ═══ */
+.cks-toast{position:absolute;z-index:80;left:50%;bottom:18px;transform:translate(-50%,10px);background:#1c1c1cf0;color:#fff;font-size:12.5px;font-weight:600;padding:11px 18px;border-radius:999px;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;max-width:88%;text-align:center}
+.cks-toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* ═══ pinned demo badge ═══ */
+.cks-badge{position:absolute;top:0;left:30px;transform:translateY(-52%) rotate(-2deg);z-index:80;display:inline-flex;align-items:center;gap:8px;background:var(--lav);color:var(--navy);font-size:12px;font-weight:600;letter-spacing:0;padding:9px 16px;border-radius:999px;box-shadow:4px 4px 0 rgba(2,6,23,.85);pointer-events:none}
+.cks-badge.right{left:auto;right:30px;transform:translateY(-52%) rotate(2deg)}
+.cks-badge i{width:8px;height:8px;border-radius:50%;background:var(--indigo);animation:demo-badge-blink 1.8s ease-in-out infinite}
+
+/* ═══ narrow frames ═══ */
+.cks.tiny .cks-list{width:100%;border-right:0}
+.cks.tiny .cks-detail{display:none}
+.cks.tiny.v-thread .cks-list{display:none}
+.cks.tiny.v-thread .cks-detail{display:flex}
+.cks.tiny .cks-back{display:grid}
+.cks.tiny .cks-msg{max-width:90%}
+.cks.tiny .cks-me{padding:0;border:0}
+.cks.tiny .cks-me .cks-metxt{display:none}
+
+@media(max-width:600px){
+  .cks,.feature-row .cks,.hero-grid .cks{aspect-ratio:auto;height:620px;min-height:0}
+  .cks-me{padding:0;border:0}
+  .cks-me .cks-metxt{display:none}
+  .cks-list{width:100%;border-right:0}
+  .cks-detail{display:none}
+  .cks.v-thread .cks-list{display:none}
+  .cks.v-thread .cks-detail{display:flex}
+  .cks-back{display:grid}
+}
+
+@media (prefers-reduced-motion: reduce){
+  .cks-toast{transition:none}
+  .cks-badge i{animation:none}
+}
+
+/* keep conversational text selectable, like the sibling demos */
+.cks-bub,.cks-th-subj,.cks-tk-subj,.cks-th-meta{user-select:text;-webkit-user-select:text}

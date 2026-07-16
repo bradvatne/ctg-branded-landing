@@ -15,6 +15,8 @@
 @keyframes tick{70%{box-shadow:0 0 0 12px rgba(93,254,194,0)}100%{box-shadow:0 0 0 0 rgba(93,254,194,0)}}
 .index-h1{color:var(--white);font-size:clamp(52px,7vw,110px);line-height:.9;margin-top:26px}
 .index-sub{max-width:560px;margin-top:26px;font-size:19px;line-height:1.45;font-weight:600;color:#94a3b8}
+.index-intro{max-width:680px;margin-top:24px;display:grid;gap:14px}
+.index-intro p{margin:0;font-size:16px;line-height:1.65;color:#cbd5e1}
 .index-marquee{border-top:1px solid rgba(255,255,255,.1);padding-block:13px;overflow:hidden}
 .index-marquee-track{display:flex;white-space:nowrap;width:max-content;animation:marquee 36s linear infinite}
 .index-marquee-track span{font-family:var(--mono);font-size:12px;letter-spacing:.22em;color:rgba(202,205,252,.5);padding-right:8px}
