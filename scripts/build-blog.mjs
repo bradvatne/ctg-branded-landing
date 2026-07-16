@@ -246,28 +246,180 @@ const FEATURE_PAGES = [
   ['intelligence', 'Intelligence'], ['delivery', 'Delivery'],
 ];
 
-/* rel = path prefix back to the site root ('../' listing, '../../' posts). */
-function navMarkup(rel, active = 'blog') {
-  const links = FEATURE_PAGES.map(([slug, label]) => [`${rel}${slug}/`, label]);
-  const items = links.map(([href, label]) => `        <a href="${href}">${label}</a>`).join('\n');
-  const mobItems = links.map(([href, label]) => `          <a href="${href}">${label}</a>`).join('\n');
-  return `  <header class="nav-wrap scrolled">
+/* ─── Navigation model ───────────────────────────────────────
+   Single source of truth for the site nav. Each top-level item is
+   either a plain link (Pricing) or a hover mega-menu (cols + rail).
+   Link targets are root-relative suffixes ('events/', 'blog/'); they
+   get the page's `rel` prefix at render time. http/mailto pass through.
+   Rendered identically for every page (static + generated) so the nav
+   never drifts. Mobile collapses each mega into a <details> accordion. */
+const NAV = [
+  {
+    key: 'platform', label: 'Platform', href: 'platform/',
+    cols: [
+      { h: 'Sell', tag: 'Turn demand into pre-paid bookings', links: [
+        ['booking/', 'Booking platform', '3D birds-eye map — guests buy the spot'],
+        ['events/', 'Events &amp; ticketing', 'Tiered tickets and QR check-in'],
+        ['packages/', 'Packages &amp; upsells', 'Bottles, cakes, transfers'],
+        ['dynamic-pricing/', 'Dynamic pricing', 'Price the same seats to demand'],
+      ] },
+      { h: 'Operate', tag: "Run the floor on the venue's real map", links: [
+        ['operations/', 'Clubtech Portal', 'The venue-admin dashboard'],
+        ['solutions/guest-list-management-software/', 'Guest lists &amp; VMS', 'Door lists, whole-party capture'],
+        ['check-in/', 'Door &amp; check-in', 'QR scanning at the door'],
+      ] },
+      { h: 'Grow', tag: 'Turn bookings into a marketing engine', links: [
+        ['marketing-ai/', 'Marketing AI', 'Ad attribution &amp; auto-retargeting'],
+        ['intelligence/', 'Ads &amp; attribution', 'The booking is the conversion'],
+        ['guest-data/', 'Guest data &amp; reports', '20+ reports, data you own'],
+        ['reviews/', 'Clubtech Reviews', 'Capture post-visit guest feedback'],
+      ] },
+    ],
+    rail: {
+      feature: ['revenue/', 'Revenue', 'The four-lever revenue playbook'],
+      links: [
+        ['integrations/', 'Integrations', 'POS, PMS, payments, ads'],
+        ['support/', 'Clubtech Support', 'A real channel for your team'],
+        ['delivery/', 'How we deliver', 'Five stages to live, one lead'],
+        ['ai-bookings/', 'AI-agent bookings', 'Built for the agent era'],
+      ],
+      cta: ['index.html#contact', 'Book a demo'],
+    },
+  },
+  {
+    key: 'solutions', label: 'Solutions', href: 'solutions/',
+    cols: [
+      { h: 'By venue type', tag: '', links: [
+        ['solutions/beach-clubs/', 'Beach clubs', ''],
+        ['solutions/day-club-booking-system/', 'Day clubs', ''],
+        ['solutions/nightclub-management-software/', 'Nightclubs', ''],
+        ['solutions/hotel-pool-booking/', 'Hotel pools', ''],
+        ['solutions/sunbed-booking-system/', 'Sunbeds &amp; daybeds', ''],
+      ] },
+      { h: 'By location', tag: '', links: [
+        ['solutions/beach-club-booking-bali/', 'Bali', ''],
+        ['solutions/beach-club-booking-dubai/', 'Dubai', ''],
+        ['solutions/beach-club-booking-phuket/', 'Phuket', ''],
+        ['solutions/beach-club-booking-ibiza/', 'Ibiza', ''],
+        ['solutions/beach-club-booking-mykonos/', 'Mykonos', ''],
+      ] },
+      { h: 'By goal', tag: '', links: [
+        ['revenue/', 'Grow revenue', ''],
+        ['solutions/guest-list-management-software/', 'Manage guest lists', ''],
+        ['events/', 'Fill events &amp; tickets', ''],
+      ] },
+    ],
+    rail: {
+      feature: ['solutions/', 'All solutions', 'Every venue type and destination'],
+      links: [
+        ['compare/', 'Compare Clubtech', 'See how we stack up'],
+      ],
+      cta: ['index.html#contact', 'Book a demo'],
+    },
+  },
+  {
+    key: 'resources', label: 'Resources', href: 'blog/',
+    cols: [
+      { h: 'Learn', tag: '', links: [
+        ['blog/', 'Blog &amp; playbooks', 'Operator playbooks and guides'],
+        ['blog/beach-club-booking-system-complete-guide/', 'The complete guide', ''],
+        ['blog/beach-club-revenue-playbook/', 'The revenue playbook', ''],
+      ] },
+      { h: 'Compare', tag: '', links: [
+        ['compare/sevenrooms-alternative/', 'vs SevenRooms', ''],
+        ['compare/resortpass-alternative/', 'vs ResortPass', ''],
+        ['compare/urvenue-alternative/', 'vs UrVenue', ''],
+        ['compare/', 'All comparisons', ''],
+      ] },
+      { h: 'Help &amp; stories', tag: '', links: [
+        ['help/', 'Help center', 'Answers for venue teams'],
+        ['blog/finns-beach-club-case-study/', 'FINNS Beach Club', 'Customer story'],
+      ] },
+    ],
+    rail: {
+      feature: ['blog/', 'The Index', 'Everything we learn on the floor'],
+      links: [
+        ['help/', 'Help center', 'Search answers'],
+      ],
+      cta: ['index.html#contact', 'Book a demo'],
+    },
+  },
+  { key: 'pricing', label: 'Pricing', href: 'pricing/' },
+  {
+    key: 'company', label: 'Company', href: 'about/', small: true,
+    cols: [
+      { h: 'Company', tag: '', links: [
+        ['about/', 'About Clubtech', 'Founded in Singapore'],
+        ['careers/', 'Careers', 'Work at Clubtech'],
+        ['delivery/', 'How we deliver', 'Five stages to live'],
+        ['index.html#contact', 'Contact', 'Talk to the team'],
+      ] },
+    ],
+  },
+];
+
+/* rel = path prefix back to the site root ('' root, '../' one level, '../../' posts).
+   active = top-level key to highlight. solid = bake the scrolled (solid) nav
+   for pages that don't load js/main.js (all generated + root landing pages). */
+function navMarkup(rel, active = null, solid = true) {
+  const href = (s) => /^(https?:|mailto:|tel:)/.test(s) ? s : `${rel}${s}`;
+  const megaLink = (cls, [h, t, d]) =>
+    `              <a class="${cls}" href="${href(h)}"><span class="mega-lt">${t}</span>${d ? `<span class="mega-ld">${d}</span>` : ''}</a>`;
+  const item = (top) => {
+    const activeCls = active === top.key ? ' is-active' : '';
+    const caret = top.cols ? '<svg class="nav-caret" width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>' : '';
+    const topA = `<a class="nav-top" href="${href(top.href)}"${top.cols ? ' aria-haspopup="true" aria-expanded="false"' : ''}>${top.label}${caret}</a>`;
+    if (!top.cols) return `        <div class="nav-item${activeCls}">${topA}</div>`;
+    const cols = top.cols.map((c) => `            <div class="mega-col">
+${c.h ? `              <p class="mega-h">${c.h}${c.tag ? `<span>${c.tag}</span>` : ''}</p>\n` : ''}${c.links.map((l) => megaLink('mega-link', l)).join('\n')}
+            </div>`).join('\n');
+    let rail = '';
+    if (top.rail) {
+      const r = top.rail;
+      rail = `          <div class="mega-rail">
+            <a class="mega-feature" href="${href(r.feature[0])}"><span class="mega-feature-k">${r.feature[1]}</span><span class="mega-feature-t">${r.feature[2]}</span></a>
+${(r.links || []).map((l) => megaLink('mega-rail-link', l)).join('\n')}
+${r.cta ? `            <a class="button button-mint mega-cta" href="${href(r.cta[0])}" data-open-demo>${r.cta[1]}</a>` : ''}
+          </div>`;
+    }
+    return `        <div class="nav-item has-mega${top.small ? ' dropdown' : ''}${activeCls}">
+          ${topA}
+          <div class="mega${top.small ? ' mega-sm' : ''}" role="region" aria-label="${top.label} menu">
+            <div class="mega-panel">
+              <div class="mega-cols">
+${cols}
+              </div>
+${rail}            </div>
+          </div>
+        </div>`;
+  };
+  const items = NAV.map(item).join('\n');
+  const mob = NAV.map((top) => {
+    if (!top.cols) return `          <a href="${href(top.href)}">${top.label}</a>`;
+    const links = [];
+    top.cols.forEach((c) => c.links.forEach((l) => links.push(`            <a href="${href(l[0])}">${l[1]}</a>`)));
+    if (top.rail) {
+      links.push(`            <a href="${href(top.rail.feature[0])}">${top.rail.feature[1]}</a>`);
+      (top.rail.links || []).forEach((l) => links.push(`            <a href="${href(l[0])}">${l[1]}</a>`));
+    }
+    return `          <details class="m-group"><summary>${top.label}</summary><div>\n${links.join('\n')}\n          </div></details>`;
+  }).join('\n');
+  return `  <header class="nav-wrap${solid ? ' scrolled' : ''}">
     <nav class="nav" aria-label="Main navigation">
-      <a href="${rel}index.html" class="brand" aria-label="Clubtech home"><img src="${rel}brand/clubtech-wordmark-white-560.png" alt="Clubtech" width="176" height="44"></a>
+      <a href="${href('index.html')}" class="brand" aria-label="Clubtech home"><img src="${rel}brand/clubtech-wordmark-white-560.png" alt="Clubtech" width="176" height="44"></a>
       <div class="nav-links">
 ${items}
-        <a href="${rel}solutions/"${active === 'solutions' ? ' class="nav-active"' : ''}>Solutions</a>
-        <a href="${rel}blog/"${active === 'blog' ? ' class="nav-active"' : ''}>Blog</a>
       </div>
-      <a class="button button-dark nav-cta" href="${rel}index.html#contact" data-open-demo>Book a Demo</a>
+      <div class="nav-actions">
+        <a class="nav-login" href="https://id.clubtechglobal.com" rel="noopener">Login</a>
+        <a class="button button-dark nav-cta" href="${href('index.html#contact')}" data-open-demo>Book a Demo</a>
+      </div>
       <details class="mobile-menu">
         <summary>Menu</summary>
-        <div>
-${mobItems}
-          <a href="${rel}solutions/">Solutions</a>
-          <a href="${rel}compare/">Compare</a>
-          <a href="${rel}blog/">Blog</a>
-          <a href="${rel}index.html#contact" data-open-demo>Book a demo</a>
+        <div class="mobile-panel">
+${mob}
+          <a class="button button-mint m-cta" href="${href('index.html#contact')}" data-open-demo>Book a demo</a>
+          <a class="m-login" href="https://id.clubtechglobal.com" rel="noopener">Login</a>
         </div>
       </details>
     </nav>
@@ -307,20 +459,26 @@ ${links.map(([href, label]) => `        <a href="${href}">${esc(label)}</a>`).jo
   const geos = pages.filter((p) => p.meta.section === 'solutions' && p.meta.slug.startsWith(GEO_PREFIX));
   const compares = pages.filter((p) => p.meta.section === 'compare');
   const pageLink = (p) => [`${rel}${p.meta.section}/${p.meta.slug}/`, shortLabel(p.meta.slug)];
+  const r = (s) => `${rel}${s}`;
   return `  <footer class="footer shell">
     <div class="footer-top">
       <a href="${rel}index.html" class="brand"><img src="${rel}brand/clubtech-wordmark-white-560.png" alt="Clubtech" width="190" height="48"></a>
       <div>
-${FEATURE_PAGES.map(([slug, label]) => `        <a href="${rel}${slug}/">${label}</a>`).join('\n')}
-        <a href="${rel}blog/">Blog</a>
+        <a href="${r('platform/')}">Platform</a>
+        <a href="${r('solutions/')}">Solutions</a>
+        <a href="${r('pricing/')}">Pricing</a>
+        <a href="${r('blog/')}">Blog</a>
+        <a href="${r('help/')}">Help</a>
         <a href="mailto:info@clubtechglobal.com">Contact</a>
         <a href="#" data-open-consent>Cookie preferences</a>
       </div>
     </div>
     <div class="footer-grid">
+${col('Platform', [[r('booking/'), 'Booking platform'], [r('events/'), 'Events & ticketing'], [r('operations/'), 'Clubtech Portal'], [r('marketing-ai/'), 'Marketing AI'], [r('integrations/'), 'Integrations'], [r('reviews/'), 'Reviews']])}
 ${col('Solutions', [...solutions.map(pageLink), [`${rel}solutions/`, 'All solutions']])}
 ${col('Locations', geos.map(pageLink))}
 ${col('Compare', [...compares.map(pageLink), [`${rel}compare/`, 'All comparisons']])}
+${col('Company', [[r('about/'), 'About'], [r('careers/'), 'Careers'], [r('delivery/'), 'How we deliver'], [r('support/'), 'Support'], [`${rel}index.html#contact`, 'Contact']])}
     </div>
     <div class="footer-wordmark"><img src="${rel}brand/clubtech-wordmark-white-560.png" alt="Clubtech" width="1200" height="300" loading="lazy"></div>
     <p class="copyright">© 2026 Clubtech, Inc.</p>
@@ -520,7 +678,7 @@ ${moreRows}
   return `${head}
 <body class="blog-post p-${esc(page.meta.section)}">
 <a class="skip-link" href="#main">Skip to content</a>
-${navMarkup('../../', page.meta.section === 'solutions' ? 'solutions' : null)}
+${navMarkup('../../', page.meta.section === 'solutions' ? 'solutions' : 'resources')}
 <main id="main">
 
   <article>
@@ -563,6 +721,119 @@ ${CONSENT_MARKUP}
 <script src="../../js/booking.js" defer></script>
 <script src="../../js/analytics.js" defer></script>
 <script src="../../js/blog.js" defer></script>
+</body>
+</html>
+`;
+}
+
+/* ─── Root landing pages (content/landing/*.md → /<slug>/) ───── */
+/* Flat product/company pages that live at the site root next to the
+   hand-written feature pages. Self-canonical, reuse the blog post-hero +
+   post-body chrome. Frontmatter adds: group (nav highlight + eyebrow),
+   eyebrow (override), optional hero/heroAlt, cta2href/cta2label. */
+const LANDING_LABEL = { platform: 'Platform', company: 'Company', resources: 'Resources', pricing: 'Pricing', solutions: 'Solutions' };
+
+function rootJsonLd(page) {
+  const url = `${SITE_ORIGIN}/${page.meta.slug}/`;
+  const faqs = extractFaqs(page.body);
+  const webpage = {
+    '@type': 'WebPage',
+    '@id': url,
+    name: page.meta.titleTag || plainTitle(page.meta.title),
+    headline: plainTitle(page.meta.title),
+    description: page.meta.description || page.meta.excerpt,
+    datePublished: page.meta.date,
+    dateModified: page.meta.date,
+    about: { '@type': 'Organization', name: 'Clubtech', url: `${CANONICAL_ORIGIN}/` },
+    url,
+  };
+  if (page.meta.hero) webpage.image = `${SITE_ORIGIN}${page.meta.hero}`;
+  const obj = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      webpage,
+      {
+        '@type': 'BreadcrumbList',
+        '@id': `${url}#breadcrumbs`,
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_ORIGIN}/` },
+          { '@type': 'ListItem', position: 2, name: plainTitle(page.meta.title), item: url },
+        ],
+      },
+    ],
+  };
+  if (faqs.length) {
+    obj['@graph'].push({
+      '@type': 'FAQPage',
+      '@id': `${url}#faq`,
+      mainEntity: faqs.map(({ q, a }) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+    });
+  }
+  return JSON.stringify(obj, null, 2);
+}
+
+function renderRootPage(page, landings, pages) {
+  const body = sanitizeBlogHtml(renderMarkdown(page.body));
+  const eyebrow = page.meta.eyebrow || LANDING_LABEL[page.meta.group] || 'Clubtech';
+  const cta2 = page.meta.cta2href ? [page.meta.cta2href, page.meta.cta2label || 'Learn more'] : ['platform/', 'See the platform'];
+  const heroMedia = page.meta.hero ? `
+    <div class="shell post-hero-media">
+      <img src="..${esc(page.meta.hero)}" alt="${esc(page.meta.heroAlt || plainTitle(page.meta.title))}" fetchpriority="high" decoding="async" width="1600" height="1067">
+    </div>` : '';
+
+  const head = headHTML({
+    title: page.meta.titleTag || `${plainTitle(page.meta.title)} | Clubtech`,
+    description: page.meta.description || page.meta.excerpt,
+    canonical: `${SITE_ORIGIN}/${page.meta.slug}/`,
+    ogImage: page.meta.hero ? `${SITE_ORIGIN}${page.meta.hero}` : `${SITE_ORIGIN}/assets/og/clubtech-og.jpg`,
+    ogImageAlt: page.meta.heroAlt || plainTitle(page.meta.title),
+    jsonLd: rootJsonLd(page),
+    rel: '../',
+    ogType: 'website',
+  });
+
+  return `${head}
+<body class="blog-post p-landing">
+<a class="skip-link" href="#main">Skip to content</a>
+${navMarkup('../', page.meta.group || null)}
+<main id="main">
+
+  <article>
+    <header class="post-hero">
+      <div class="shell post-hero-inner">
+        <p class="post-tags"><span class="index-cat">${esc(eyebrow)}</span></p>
+        <h1>${h1Html(page.meta.title)}</h1>
+        <p class="post-sub">${esc(page.meta.excerpt)}</p>
+        <div class="post-hero-actions">
+          <a class="button button-mint" href="mailto:info@clubtechglobal.com" data-open-demo>Book a Demo</a>
+          <a class="button button-ghost" href="../${cta2[0]}">${esc(cta2[1])}</a>
+        </div>
+      </div>
+    </header>
+${heroMedia}
+    <div class="shell post-body">
+${body}
+    </div>
+  </article>
+
+  <section class="closing dark-section blog-closing">
+    <img class="closing-mark" src="../brand/clubtech-mark-white.png" alt="" aria-hidden="true" width="1200" height="1200" loading="lazy">
+    <div class="shell centered">
+      <p class="eyebrow">Your venue, pre-sold.</p>
+      <h2>Stop reading about it.<br><span class="mint-text">See it live.</span></h2>
+      <p>Book a focused walkthrough, configured around a premium venue like yours.</p>
+      <a class="button button-mint" href="mailto:info@clubtechglobal.com" data-open-demo>Book a Demo</a>
+    </div>
+  </section>
+
+${footerMarkup('../', pages)}
+</main>
+${CONSENT_MARKUP}
+<script src="../js/consent.js" defer></script>
+<script src="../js/hubspot.js" defer></script>
+<script src="../js/booking.js" defer></script>
+<script src="../js/analytics.js" defer></script>
+<script src="../js/blog.js" defer></script>
 </body>
 </html>
 `;
@@ -623,7 +894,7 @@ function renderSectionIndex(sectionKey, pages) {
   return `${head}
 <body class="blog-index p-${esc(sectionKey)}-index">
 <a class="skip-link" href="#main">Skip to content</a>
-${navMarkup('../', sectionKey === 'solutions' ? 'solutions' : null)}
+${navMarkup('../', sectionKey === 'solutions' ? 'solutions' : 'resources')}
 <main id="main">
 
   <section class="index-hero">
@@ -699,7 +970,7 @@ function renderListing(posts, pages) {
   return `${head}
 <body class="blog-index">
 <a class="skip-link" href="#main">Skip to content</a>
-${navMarkup('../')}
+${navMarkup('../', 'resources')}
 <main id="main">
 
   <section class="index-hero">
@@ -789,7 +1060,7 @@ function renderPost(post, posts, pages) {
   return `${head}
 <body class="blog-post">
 <a class="skip-link" href="#main">Skip to content</a>
-${navMarkup('../../')}
+${navMarkup('../../', 'resources')}
 <main id="main">
 
   <article>
@@ -845,7 +1116,7 @@ ${CONSENT_MARKUP}
 /* Pages whose canonical points at another origin are excluded; now that the
    site serves www.clubtechglobal.com itself, those canonicals are self-
    canonical and everything (incl. blog posts) belongs in the sitemap. */
-function renderSitemap(posts, pages) {
+function renderSitemap(posts, pages, landings = []) {
   const latest = posts[0]?.meta.date || '2026-01-01';
   const entries = [
     { loc: `${SITE_ORIGIN}/`, lastmod: latest, changefreq: 'weekly', priority: '1.0' },
@@ -865,6 +1136,12 @@ function renderSitemap(posts, pages) {
       changefreq: 'monthly',
       priority: '0.8',
     })),
+    ...landings.map((p) => ({
+      loc: `${SITE_ORIGIN}/${p.meta.slug}/`,
+      lastmod: p.meta.date,
+      changefreq: 'monthly',
+      priority: '0.8',
+    })),
   ];
   const xml = entries.map((e) => `  <url>
     <loc>${e.loc}</loc>
@@ -880,7 +1157,7 @@ ${xml}
 }
 
 /* ─── llms.txt (AEO) ─────────────────────────────────────────── */
-function renderLlmsTxt(posts, pages) {
+function renderLlmsTxt(posts, pages, landings = []) {
   const lines = [`# Clubtech — Your venue, pre-sold
 
 > Clubtech is an all-in-one booking and revenue operations platform for premium venues — beach clubs, day clubs, nightclubs, and hotel pools. Online reservations with a 3D birds-eye venue map, front-of-house floor operations, and marketing attribution in a single system. Founded in Singapore; processes $332k in weekly GMV across venue partners in 7+ countries.
@@ -903,6 +1180,12 @@ Key facts:
 - [Delivery](${SITE_ORIGIN}/delivery/): five-stage rollout with a dedicated account lead and 90-day hypercare
 - [Book a demo](${SITE_ORIGIN}/book-a-demo/): a 15-minute demo configured around your venue — no monthly fee, and pricing built per venue is shared on the call
 - [The Index (blog)](${SITE_ORIGIN}/blog/): operator playbooks on booking UX, revenue capture, and guest data`];
+  if (landings.length) {
+    lines.push('\n## Product & platform\n');
+    for (const p of landings) {
+      lines.push(`- [${plainTitle(p.meta.title)}](${SITE_ORIGIN}/${p.meta.slug}/): ${p.meta.excerpt}`);
+    }
+  }
   for (const sectionKey of Object.keys(PAGE_SECTIONS)) {
     const sectionPages = pages.filter((p) => p.meta.section === sectionKey);
     if (!sectionPages.length) continue;
@@ -970,6 +1253,20 @@ function main() {
     return { file, meta, body };
   }).sort((a, b) => (a.meta.slug < b.meta.slug ? -1 : 1));
 
+  // Root landing pages (content/landing/*.md → /<slug>/).
+  const LANDING_DIR = join(ROOT, 'content', 'landing');
+  const landingFiles = existsSync(LANDING_DIR) ? readdirSync(LANDING_DIR).filter((f) => f.endsWith('.md')) : [];
+  const landings = landingFiles.map((file) => {
+    const raw = readFileSync(join(LANDING_DIR, file), 'utf8');
+    const { meta, body } = parseFrontmatter(raw);
+    validateEntry(file, meta);
+    if (meta.hero) {
+      const heroPath = join(ROOT, meta.hero.replace(/^\//, ''));
+      if (!existsSync(heroPath)) throw new Error(`${file}: hero image ${meta.hero} not found`);
+    }
+    return { file, meta, body };
+  }).sort((a, b) => (a.meta.slug < b.meta.slug ? -1 : 1));
+
   // Wipe and regenerate build output dirs.
   if (existsSync(OUT_DIR)) rmSync(OUT_DIR, { recursive: true, force: true });
   mkdirSync(OUT_DIR, { recursive: true });
@@ -995,11 +1292,43 @@ function main() {
     writeFileSync(join(ROOT, sectionKey, 'index.html'), renderSectionIndex(sectionKey, pages));
   }
 
-  writeFileSync(join(ROOT, 'sitemap.xml'), renderSitemap(posts, pages));
-  writeFileSync(join(ROOT, 'llms.txt'), renderLlmsTxt(posts, pages));
+  // Root landing pages (flat /<slug>/ next to the hand-written feature pages).
+  for (const lp of landings) {
+    const dir = join(ROOT, lp.meta.slug);
+    mkdirSync(dir, { recursive: true });
+    writeFileSync(join(dir, 'index.html'), renderRootPage(lp, landings, pages));
+  }
+
+  // Inject the shared nav + footer into the hand-written static pages so the
+  // mega-menu never drifts. Idempotent: matches the current <header>/<footer>
+  // block (whether original or previously injected) and rewrites it in place.
+  // Function replacers avoid $-token interpretation in the markup.
+  const STATIC_PAGES = [
+    ['index.html', '', null, false],
+    ['platform/index.html', '../', 'platform', false],
+    ['booking/index.html', '../', 'platform', false],
+    ['operations/index.html', '../', 'platform', false],
+    ['intelligence/index.html', '../', 'platform', false],
+    ['delivery/index.html', '../', 'company', false],
+    ['book-a-demo/index.html', '../', null, true],
+  ];
+  let injected = 0;
+  for (const [file, prefix, group, solid] of STATIC_PAGES) {
+    const fp = join(ROOT, file);
+    if (!existsSync(fp)) continue;
+    const before = readFileSync(fp, 'utf8');
+    let html = before.replace(/^[ \t]*<header class="nav-wrap[^"]*">[\s\S]*?<\/header>/m, () => navMarkup(prefix, group, solid));
+    html = html.replace(/^[ \t]*<footer class="footer shell">[\s\S]*?<\/footer>/m, () => footerMarkup(prefix, pages));
+    if (html !== before) { writeFileSync(fp, html); injected++; }
+  }
+
+  writeFileSync(join(ROOT, 'sitemap.xml'), renderSitemap(posts, pages, landings));
+  writeFileSync(join(ROOT, 'llms.txt'), renderLlmsTxt(posts, pages, landings));
 
   console.log(`Built ${posts.length} posts + listing → blog/`);
-  console.log(`Built ${pages.length} landing pages → ${Object.keys(PAGE_SECTIONS).map((s) => s + '/').join(' + ')}`);
+  console.log(`Built ${pages.length} section pages → ${Object.keys(PAGE_SECTIONS).map((s) => s + '/').join(' + ')}`);
+  console.log(`Built ${landings.length} root landing pages → /<slug>/`);
+  console.log(`Injected shared nav + footer into ${injected} static pages`);
   console.log('Refreshed sitemap.xml + llms.txt');
 }
 

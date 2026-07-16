@@ -2,3 +2,5 @@
 .vinext/
 .wrangler/
 node_modules/
+output/
+.playwright-cli/
