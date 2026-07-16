@@ -178,7 +178,7 @@
 .ckdl-pfoot .ckdl-btn{width:100%}
 
 /* ═══ QR check-in modal ═══ */
-.ckdl-scrim{position:absolute;inset:0;z-index:60;background:rgba(10,10,12,.5);display:none;align-items:center;justify-content:center;padding:14px}
+.ckdl-scrim{position:absolute;inset:0;z-index:60;background:rgba(15,20,38,.42);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:14px}
 .ckdl-scrim.open{display:flex}
 .ckdl-modal{width:min(440px,100%);max-height:96%;background:#fff;border-radius:18px;display:flex;flex-direction:column;box-shadow:0 30px 80px rgba(0,0,0,.4);overflow:hidden}
 .ckdl-modal-head{flex:none;position:relative;padding:15px 20px 12px;border-bottom:1px solid #ececec}
