@@ -1,6 +1,10 @@
 (function () {
   'use strict';
 
+  // Own scroll position so the browser doesn't restore it to 0 after load and
+  // fight our deep-link (#hash) jump below.
+  if ('scrollRestoration' in history) { try { history.scrollRestoration = 'manual'; } catch (e) {} }
+
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* --- Hero video: fetch after page load, play only while on screen --- */
@@ -82,18 +86,20 @@
     // to the target ourselves and reveal whatever ends up in view.
     var settleHash = function () {
       revealInView();
-      if (location.hash) {
-        var target = null;
-        try { target = document.querySelector(location.hash); } catch (e) {}
-        if (target) {
-          target.scrollIntoView({ behavior: 'auto', block: 'start' });
-          setTimeout(revealInView, 60);
-        }
-      }
+      if (!location.hash) return;
+      var target = null;
+      try { target = document.querySelector(location.hash); } catch (e) { return; }
+      if (!target) return;
+      var tries = 0;
+      (function jump() {
+        target.scrollIntoView({ behavior: 'auto', block: 'start' });
+        revealInView();
+        if (++tries < 6) setTimeout(jump, 110);
+      })();
     };
     window.addEventListener('load', settleHash);
     window.addEventListener('hashchange', function () { setTimeout(revealInView, 350); });
-    if (location.hash) setTimeout(settleHash, 200);
+    if (location.hash) { settleHash(); setTimeout(settleHash, 300); }
   }
 
   /* --- Proof stats: count up when they scroll into view --- */
