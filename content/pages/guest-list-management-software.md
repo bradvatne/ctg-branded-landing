@@ -15,6 +15,8 @@ It's 11:40pm and the door is a bottleneck. A host is scrolling a phone with four
 
 Most guest list management systems fix only half of that. They speed up the door and forget the database. For a premium venue the guest list is not a spreadsheet you check names off: it's the door, plus every-guest data capture, plus priority entry, plus QR check-in — and it should live inside the booking platform, not beside it. Clubtech is that system, built for the operator: reservations, front-of-house operations, and marketing in one platform, processing $332k in weekly GMV for venue partners in more than 7 countries.
 
+The guest-facing use case sits separately. [Guest List Now](https://www.guestlistnow.com/) helps people discover Bali nightlife, read venue reviews, and find guest-list bookings. Clubtech is the operator layer described below: the live list, the door, the floor, and the database the venue owns.
+
 ## Workflow — The door, run from one screen
 
 Guest list and visitor management (VMS) replaces the clipboard, the printout, and the five promoters' phones with a single live list. The host at the rope works from what the operator console already knows.
@@ -78,4 +80,4 @@ On Clubtech, yes — they're the same system. QR check-in marks guests off the l
 
 ---
 
-**See it on your floor plan.** 15 minutes, no pitch deck, no contracts — we'll show up with the door already built for a venue like yours. [Book a demo](/book-a-demo/)
+**See it on your floor plan.** 15 minutes, no contracts — we'll show up with the door already built for a venue like yours. [Book a demo](/book-a-demo/)

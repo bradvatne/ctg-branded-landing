@@ -25,6 +25,8 @@ For a personal event, any of these makes a guest list online in a few steps:
 
 That's a working online guest list. For most people, stop here.
 
+If you want to join a Bali nightlife list rather than build one, [Guest List Now](https://www.guestlistnow.com/) is the guest-facing route for venue reviews and guest-list bookings.
+
 ## Where a venue outgrows the form
 
 A beach club or nightclub is a different problem. The same "make a list online" approach breaks in four predictable ways:

@@ -87,4 +87,4 @@ Sold out does not mean the door stops capturing. Priority and free-entry data ca
 
 Yes. The operator console shows the whole service day — tables, packages, and ticketed arrivals — against an interactive floor plan before doors open. Seating is allocated automatically and inventory stays in sync as guests scan in, so the door confirms the plan rather than improvising against it.
 
-**See the door as a data moment on your own floor plan.** 15 minutes, no pitch deck, no contracts. [Book a demo](https://www.clubtechglobal.com/book-a-demo/).
+**See the door as a data moment on your own floor plan.** 15 minutes, no contracts. [Book a demo](https://www.clubtechglobal.com/book-a-demo/).

@@ -83,4 +83,4 @@ A minimum spend is a committed food-and-beverage amount attached to premium furn
 
 ---
 
-**See your venue pre-sold.** 15 minutes, no pitch deck, no contracts — we'll show up with the platform configured for a venue like yours. [Book a demo](/book-a-demo/)
+**See your venue pre-sold.** 15 minutes, no contracts — we'll show up with the platform configured for a venue like yours. [Book a demo](/book-a-demo/)

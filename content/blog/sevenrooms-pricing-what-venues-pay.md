@@ -80,4 +80,4 @@ SevenRooms is an excellent dining CRM and works well for multi-room restaurant g
 
 Clubtech is explicit about the process: discovery first, scope second, commercial proposal third. Bring the real inventory, payments, integrations, and rollout requirements so the proposal reflects the operation instead of a generic tier.
 
-**See it on your floor plan.** 15 minutes, no pitch deck, no contracts, no credit card. [Book a demo](https://www.clubtechglobal.com/book-a-demo/).
+**See it on your floor plan.** 15 minutes, no contracts, no credit card. [Book a demo](https://www.clubtechglobal.com/book-a-demo/).

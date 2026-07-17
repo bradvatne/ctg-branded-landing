@@ -81,4 +81,4 @@ No. Clubtech sits on top of your existing POS and PMS with no major IT changes, 
 
 ---
 
-**See it on your floor plan.** 15 minutes, no pitch deck, no contracts, no credit card — pre-configured to a venue like yours. [Book a demo](/book-a-demo/)
+**See it on your floor plan.** 15 minutes, no contracts, no credit card — pre-configured to a venue like yours. [Book a demo](/book-a-demo/)

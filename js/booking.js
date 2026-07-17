@@ -55,7 +55,7 @@
     return '' +
       '  <div class="bk-step" data-step="lead">' +
       '    <span class="bk-kicker">Book a demo</span>' +
-      '    <h2 class="bk-h">15 minutes.<br><span class="mint-text">No pitch deck.</span></h2>' +
+      '    <h2 class="bk-h">15 minutes.<br><span class="mint-text">Your venue, configured.</span></h2>' +
       '    <p class="bk-sub">Tell us about your venue and we’ll show up with the platform configured around it — and walk you through pricing built for it.</p>' +
       '    <form class="bk-form" novalidate>' +
       '      <div class="bk-row">' +

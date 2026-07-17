@@ -15,6 +15,8 @@ An operator wants to "make a guest list online," so they reach for the first gen
 
 The gap is not about features. It is about what the tool is built to protect. An RSVP form protects a headcount. A venue needs to protect inventory, capture every guest, and turn the night into data it can sell against next week. Here is how to tell which problem you have.
 
+For guests looking for Bali nightlife, venue reviews, and a list to join, start with [Guest List Now](https://www.guestlistnow.com/). The comparison below is for operators deciding how the list should run once it reaches the door.
+
 ## When a generic RSVP form is genuinely the right tool
 
 Plenty of gatherings do not need a booking system, and it would be dishonest to pretend otherwise. If your event looks like one of these, use the free form:
@@ -51,7 +53,7 @@ The point of capturing guests is what happens after they leave. Clubtech's guest
 
 The commercials are built after discovery. Clubtech maps the venue, guest-list operation, payments, POS/PMS boundary, integrations, and rollout before returning with a tailored proposal. It sits on top of the existing stack rather than replacing it. FINNS Beach Club runs on it — CEO Beau Whittington: "We have grown from simple on-the-day bookings with no financial guarantee to now having millions of dollars worth of pre-paid bookings each month."
 
-If you are deciding between a form and a real system, the fastest way to know is to see your own floor plan in it. [Book a 15-minute demo](/book-a-demo/) — no pitch deck, no contracts, no credit card.
+If you are deciding between a form and a real system, the fastest way to know is to see your own floor plan in it. [Book a 15-minute demo](/book-a-demo/) — no contracts, no credit card.
 
 ## Questions operators ask
 
@@ -75,4 +77,4 @@ A name on a form is a promise, and promises do not always show up. Attaching pre
 
 For genuinely free, private, or community events, keep the free tool — that is the honest fit. Use Clubtech for the nights that carry revenue: paid entry, table bookings, minimum spends, and any event where the guest data should feed your reporting and ads.
 
-**See it on your own floor plan.** 15 minutes, no pitch deck, no contracts, no credit card. [Book a demo](/book-a-demo/)
+**See it on your own floor plan.** 15 minutes, no contracts, no credit card. [Book a demo](/book-a-demo/)

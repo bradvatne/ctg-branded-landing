@@ -2,7 +2,7 @@
 /* Static output audit: sitemap routes, page invariants, internal destinations,
    fragments, and local assets. No network or third-party packages required. */
 
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -14,6 +14,9 @@ const confidentialCommercialPatterns = [
   /no monthly fee/i,
   /4% online processing fee/i,
   /\$2,?000 one-time (?:set-?up|setup) fee/i,
+];
+const bannedPublicCopyPatterns = [
+  /no[\s-]+pitch[\s-]+deck/i,
 ];
 
 const fail = (route, message) => failures.push(`${route}: ${message}`);
@@ -69,6 +72,9 @@ for (const pathname of routes) {
 
   for (const pattern of confidentialCommercialPatterns) {
     if (pattern.test(decodeHtml(html))) fail(pathname, `confidential commercial claim exposed: ${pattern}`);
+  }
+  for (const pattern of bannedPublicCopyPatterns) {
+    if (pattern.test(decodeHtml(html))) fail(pathname, `banned public copy exposed: ${pattern}`);
   }
 
   const canonicalMatch = html.match(/<link\s+rel="canonical"\s+href="([^"]+)"/i);
@@ -144,6 +150,24 @@ for (const publicTextFile of ['llms.txt', 'agents.txt']) {
   const contents = readFileSync(join(ROOT, publicTextFile), 'utf8');
   for (const pattern of confidentialCommercialPatterns) {
     if (pattern.test(contents)) fail(`/${publicTextFile}`, `confidential commercial claim exposed: ${pattern}`);
+  }
+  for (const pattern of bannedPublicCopyPatterns) {
+    if (pattern.test(contents)) fail(`/${publicTextFile}`, `banned public copy exposed: ${pattern}`);
+  }
+}
+
+const collectCopySources = (dir) => readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
+  const path = join(dir, entry.name);
+  if (entry.isDirectory()) return collectCopySources(path);
+  return /\.(?:md|js|txt|html)$/i.test(entry.name) ? [path] : [];
+});
+
+for (const sourceRoot of ['content', 'js']) {
+  for (const file of collectCopySources(join(ROOT, sourceRoot))) {
+    const contents = readFileSync(file, 'utf8');
+    for (const pattern of bannedPublicCopyPatterns) {
+      if (pattern.test(contents)) fail(`/${file.slice(ROOT.length + 1)}`, `banned public copy exposed: ${pattern}`);
+    }
   }
 }
 

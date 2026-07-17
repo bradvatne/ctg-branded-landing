@@ -82,4 +82,4 @@ It absorbs it. Clubtech includes guest-list and visitor management alongside tab
 
 ---
 
-**See your floor plan on Clubtech.** 15 minutes, no pitch deck, no contracts — we'll show up with the map already built for a venue like yours. [Book a demo](/book-a-demo/)
+**See your floor plan on Clubtech.** 15 minutes, no contracts — we'll show up with the map already built for a venue like yours. [Book a demo](/book-a-demo/)

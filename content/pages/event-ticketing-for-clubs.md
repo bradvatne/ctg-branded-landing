@@ -71,4 +71,4 @@ The commercial proposal follows the confirmed event and venue scope. Ticketing-o
 
 ---
 
-**See it on your floor plan.** 15 minutes, no pitch deck, no contracts — we'll show up with ticketing and the door already built for a venue like yours. [Book a demo](/book-a-demo/)
+**See it on your floor plan.** 15 minutes, no contracts — we'll show up with ticketing and the door already built for a venue like yours. [Book a demo](/book-a-demo/)

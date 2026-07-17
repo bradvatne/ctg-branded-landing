@@ -135,5 +135,5 @@ export const FOOTER_GROUPS = [
   ['Marketing', [['grow/#ads', 'Ads & attribution'], ['grow/#abandoned-recovery', 'Abandoned recovery'], ['grow/#guest-data', 'Guest data & reports'], ['grow/', 'Marketing overview']]],
   ['Solutions', [['for-hotels/', 'Hotels & resorts'], ['solutions/beach-clubs/', 'Beach clubs'], ['solutions/nightclub-management-software/', 'Nightclubs'], ['solutions/guest-list-management-software/', 'Guest lists'], ['solutions/', 'All solutions']]],
   ['Resources', [['blog/', 'The Index'], ['blog/finns-beach-club-case-study/', 'FINNS case study'], ['compare/', 'Compare Clubtech'], ['help/', 'Help center']]],
-  ['Company', [['about/', 'About'], ['delivery/', 'How we deliver'], ['careers/', 'Careers'], ['support/', 'Support'], ['pricing/', 'Commercial fit']]],
+  ['Company', [['about/', 'About'], ['delivery/', 'How we deliver'], ['careers/', 'Careers'], ['support/', 'Support'], ['pricing/', 'Commercial fit'], ['https://www.guestlistnow.com/', 'Guest List Now ↗']]],
 ];

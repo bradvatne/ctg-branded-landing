@@ -80,4 +80,4 @@ Take payment at booking. A group with money down shows up, or the revenue stays 
 
 ---
 
-**See your venue on Clubtech.** 15 minutes, no pitch deck, no contracts — the platform arrives pre-configured for a day club like yours. [Book a demo](/book-a-demo/)
+**See your venue on Clubtech.** 15 minutes, no contracts — the platform arrives pre-configured for a day club like yours. [Book a demo](/book-a-demo/)

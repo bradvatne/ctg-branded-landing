@@ -81,4 +81,4 @@ Yes — resorts can allocate sunbeds through reservation software instead of rel
 
 ---
 
-**See your deck on Clubtech.** 15 minutes, no pitch deck, no contracts — we'll show up with the map already built for a venue like yours. [Book a demo](/book-a-demo/)
+**See your deck on Clubtech.** 15 minutes, no contracts — we'll show up with the map already built for a venue like yours. [Book a demo](/book-a-demo/)

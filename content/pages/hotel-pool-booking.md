@@ -74,4 +74,4 @@ Opera PMS is on Clubtech's approved integration roster, and Clubtech sits on top
 
 ---
 
-**See your pool on Clubtech.** 15 minutes, no pitch deck, no contracts — we'll arrive with the map already built for a property like yours. [Book a demo](/book-a-demo/)
+**See your pool on Clubtech.** 15 minutes, no contracts — we'll arrive with the map already built for a property like yours. [Book a demo](/book-a-demo/)

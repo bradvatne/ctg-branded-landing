@@ -15,6 +15,8 @@ It is 11:40pm on a Friday and there are two lists at your door. One is a shared 
 
 That is what most venues call guest list management. It is not software. It is a set of habits held together by memory and goodwill, and it fails at the moment volume is highest and mistakes cost the most.
 
+[Guest List Now](https://www.guestlistnow.com/) covers the guest-facing side: discovering Bali nightlife, reading venue reviews, and finding guest-list bookings. This guide stays on the operator side — running the list, the door, and the guest data after the name is added.
+
 ## What guest list management actually means for a venue
 
 A generic RSVP or event tool answers one question: is this person coming, yes or no. That is fine for a conference. It is not enough for a premium venue, where the guest list is tied to furniture, entry priority, spend, and a service day that runs on a clock.
