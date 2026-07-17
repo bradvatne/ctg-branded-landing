@@ -2,10 +2,10 @@
    pathways. The homepage remains the visual benchmark; these blocks provide
    intentional variety without copying its exact composition everywhere. */
 
-.solution-kicker{display:flex;align-items:center;gap:10px;margin:0 0 22px;font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mint)}
+.solution-kicker{display:inline-flex;align-items:center;gap:10px;min-height:35px;margin:0 0 24px;padding:7px 15px 7px 12px;border:1px solid rgba(93,254,194,.22);border-radius:999px;background:rgba(93,254,194,.08);font-family:"Albert Sans",sans-serif;font-size:14px;font-weight:750;letter-spacing:0;color:var(--mint)}
 .solution-kicker i{width:8px;height:8px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 7px rgba(93,254,194,.12)}
 .solution-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
-.solution-canonical{display:inline-flex;align-items:center;gap:8px;margin-top:18px;color:var(--mint);font:700 11px/1.3 ui-monospace,"SF Mono",monospace;letter-spacing:.08em;text-transform:uppercase}
+.solution-canonical{display:inline-flex;align-items:center;gap:8px;margin-top:18px;color:var(--mint);font:750 14px/1.3 "Albert Sans",sans-serif;letter-spacing:0}
 .solution-stage-chrome{display:flex;align-items:center;gap:6px;padding:11px 14px;border-bottom:1px solid rgba(255,255,255,.12);background:rgba(2,6,23,.96);color:#cbd5e1}
 .solution-stage-chrome>span{width:7px;height:7px;border-radius:50%;background:#475569}
 .solution-stage-chrome>span:first-child{background:var(--mint)}
@@ -31,8 +31,8 @@
 .landing-block.is-faq{background:#f4f5ff}
 .landing-block-grid{display:grid;grid-template-columns:minmax(250px,.55fr) minmax(0,1fr);gap:86px;align-items:start}
 .landing-block-head{position:sticky;top:118px}
-.landing-block-index{margin:0 0 18px;color:var(--indigo);font:700 11px/1.3 ui-monospace,"SF Mono",monospace;letter-spacing:.12em;text-transform:uppercase}
-.landing-block.is-dark .landing-block-index{color:var(--mint)}
+.landing-block-index{display:inline-flex;align-items:center;min-height:34px;margin:0 0 20px;padding:7px 14px;border-radius:999px;background:var(--lime);color:var(--navy);font:750 14px/1.3 "Albert Sans",sans-serif;letter-spacing:0}
+.landing-block.is-dark .landing-block-index{background:rgba(93,254,194,.12);color:var(--mint);border:1px solid rgba(93,254,194,.24)}
 .landing-block h2{margin:0;color:var(--heading);font-size:clamp(38px,4.5vw,64px);line-height:.98;letter-spacing:-.06em}
 .landing-block.is-dark h2{color:#fff}
 .landing-block-body{font-size:17px;line-height:1.65}
@@ -45,7 +45,7 @@
 .landing-block-body li{position:relative;min-height:118px;padding:22px 22px 22px 54px;border:1px solid var(--line);border-radius:20px;background:#fff;color:var(--body)}
 .landing-block-body li::before{content:"✓";position:absolute;left:20px;top:21px;width:25px;height:25px;display:grid;place-items:center;border-radius:50%;background:var(--mint);color:var(--navy);font-size:12px;font-weight:900}
 .landing-block-body ol li{counter-increment:landing-list}
-.landing-block-body ol li::before{content:counter(landing-list,decimal-leading-zero);background:var(--lime);font:800 9px/1 Albert Sans,sans-serif}
+.landing-block-body ol li::before{content:counter(landing-list);background:var(--lime);font:800 11px/1 "Albert Sans",sans-serif}
 .landing-block.is-dark .landing-block-body li{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.14);color:#dce5f1}
 .landing-block-body blockquote{margin:30px 0;padding:28px;border-radius:22px;background:var(--navy);color:#fff;font-size:22px;font-weight:700;line-height:1.42}
 .landing-block.is-dark .landing-block-body blockquote{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12)}
@@ -61,8 +61,8 @@
 .pathway-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .pathway-card{position:relative;display:flex;flex-direction:column;min-height:250px;padding:24px;border:1px solid var(--line);border-radius:22px;background:#fff;color:var(--heading);transition:transform .2s,box-shadow .2s}
 .pathway-card:hover{transform:translateY(-4px);box-shadow:0 20px 50px rgba(65,94,226,.14)}
-.pathway-card>span{color:var(--indigo);font:700 11px/1 ui-monospace,"SF Mono",monospace;letter-spacing:.1em}
-.pathway-card strong{max-width:260px;margin-top:42px;font-size:25px;line-height:1.02;letter-spacing:-.035em}
+.pathway-card>span{display:inline-flex;align-items:center;align-self:flex-start;min-height:30px;padding:6px 11px;border-radius:999px;background:#eef0ff;color:var(--indigo);font:750 12px/1 "Albert Sans",sans-serif;letter-spacing:0}
+.pathway-card strong{max-width:260px;margin-top:34px;font-size:25px;line-height:1.02;letter-spacing:-.035em}
 .pathway-card p{margin:12px 36px 0 0;color:var(--muted);font-size:15px;line-height:1.48}
 .pathway-card i{position:absolute;right:22px;bottom:20px;color:var(--indigo);font-style:normal;font-size:22px}
 

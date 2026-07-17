@@ -23,7 +23,7 @@ The interactive restaurant journey on this page uses a fictional venue. It demon
 3. **Take commitment before arrival.** Prepayment protects inventory that carries a specific value.
 4. **Connect the booking to operations.** Online inventory updates the internal floor plan and operator view.
 
-[See the canonical booking capability](/platform/#booking)
+[See the booking platform](/platform/#booking)
 
 ## Fit — Narrow by design
 

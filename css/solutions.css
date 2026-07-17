@@ -9,7 +9,7 @@
 .solution-hero{position:relative;overflow:hidden;background:var(--navy);color:#cbd5e1;padding:150px 0 88px}
 .solution-hero::before{content:"";position:absolute;inset:auto -16% -72% 34%;height:860px;border-radius:50%;background:radial-gradient(circle,rgba(65,94,226,.26),rgba(93,254,194,.08) 40%,transparent 69%);pointer-events:none}
 .solution-hero-grid{position:relative;display:grid;grid-template-columns:minmax(0,.86fr) minmax(520px,1.14fr);gap:72px;align-items:center}
-.solution-kicker{display:flex;align-items:center;gap:10px;margin:0 0 22px;font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mint)}
+.solution-kicker{display:inline-flex;align-items:center;gap:10px;min-height:35px;margin:0 0 24px;padding:7px 15px 7px 12px;border:1px solid rgba(93,254,194,.22);border-radius:999px;background:rgba(93,254,194,.08);font-family:"Albert Sans",sans-serif;font-size:14px;font-weight:750;letter-spacing:0;color:var(--mint)}
 .solution-kicker i,.solution-hero-label i{width:8px;height:8px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 7px rgba(93,254,194,.12)}
 .solution-hero h1{max-width:760px;color:#fff;font-size:clamp(48px,5.25vw,80px);line-height:.93;letter-spacing:-.074em}
 .solution-hero-copy{max-width:650px;margin:24px 0 0;font-size:19px;line-height:1.5;font-weight:600;color:#aeb9cb}
@@ -56,9 +56,10 @@
 
 /* Semantic content modules */
 .solution-module{padding:106px 0}
-.solution-module-index{margin:0 0 18px;color:var(--indigo);font:700 11px/1.2 ui-monospace,"SF Mono",SFMono-Regular,Menlo,monospace;letter-spacing:.11em;text-transform:uppercase}
+.solution-module-index{display:inline-flex;align-items:center;min-height:34px;width:max-content;margin:0 0 20px;padding:7px 14px;border-radius:999px;background:var(--lime);color:var(--navy);font:750 14px/1.2 "Albert Sans",sans-serif;letter-spacing:0}
 .solution-module h2{font-size:clamp(40px,4.8vw,66px);line-height:.97;letter-spacing:-.059em}
 .solution-module p,.solution-module li{font-size:17px;line-height:1.62}
+.solution-module .solution-module-index{font-size:14px;line-height:1.2}
 .solution-module a{color:var(--indigo);font-weight:750;border-bottom:1px solid rgba(65,94,226,.35)}
 .solution-module-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,.48fr);column-gap:72px;align-items:end;margin-bottom:48px}
 .solution-module-head .solution-module-index{grid-column:1/-1}
@@ -70,7 +71,7 @@
 .solution-workflow{background:#f4f5ff}
 .solution-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:0;padding:0;list-style:none;counter-reset:none}
 .solution-steps>li{position:relative;min-height:230px;padding:28px 26px;border:1px solid #cbd0f5;border-radius:24px;background:linear-gradient(165deg,#fff,#e6e8ff)}
-.solution-steps>li>span{display:grid;place-items:center;width:42px;height:42px;margin-bottom:36px;border-radius:50%;background:var(--lime);color:var(--navy);font:800 11px/1 ui-monospace,"SF Mono",SFMono-Regular,Menlo,monospace}
+.solution-steps>li>span{display:grid;place-items:center;width:42px;height:42px;margin-bottom:36px;border-radius:50%;background:var(--lime);color:var(--navy);font:800 13px/1 "Albert Sans",sans-serif}
 .solution-steps>li div{color:var(--body)}
 .solution-steps>li strong{display:block;margin-bottom:8px;font-size:20px;line-height:1.15}
 
@@ -83,16 +84,16 @@
 .solution-capability-copy>p:not(.solution-module-index){margin:0 0 28px;color:var(--muted)}
 .solution-capability-list{display:grid;gap:0;margin:0;padding:0;list-style:none;border-top:1px solid var(--line)}
 .solution-capability-list>li{display:grid;grid-template-columns:34px 1fr;gap:16px;padding:19px 0;border-bottom:1px solid var(--line)}
-.solution-capability-list>li>span{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--mint);color:var(--navy);font:800 9px/1 ui-monospace,"SF Mono",SFMono-Regular,Menlo,monospace}
+.solution-capability-list>li>span{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--mint);color:var(--navy);font:800 11px/1 "Albert Sans",sans-serif}
 .solution-capability-list strong{display:block;margin-bottom:3px;font-size:18px;line-height:1.2}
 
 .solution-outcomes{background:var(--navy);color:#aeb9cb}
-.solution-outcomes .solution-module-index{color:var(--mint)}
+.solution-outcomes .solution-module-index{background:rgba(93,254,194,.12);color:var(--mint);border:1px solid rgba(93,254,194,.24)}
 .solution-outcomes h2,.solution-outcomes strong{color:#fff}
 .solution-outcomes .solution-module-head>p:not(.solution-module-index){color:#aeb9cb}
 .solution-outcome-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0;padding:0;list-style:none}
 .solution-outcome-grid>li{min-height:230px;padding:28px;border:1px solid #26324a;border-radius:22px;background:linear-gradient(145deg,rgba(65,94,226,.18),rgba(255,255,255,.025))}
-.solution-outcome-grid>li>span{display:block;margin-bottom:52px;color:var(--mint);font:700 11px/1 ui-monospace,"SF Mono",SFMono-Regular,Menlo,monospace}
+.solution-outcome-grid>li>span{display:grid;place-items:center;width:34px;height:34px;margin-bottom:52px;border-radius:50%;background:rgba(93,254,194,.12);color:var(--mint);font:800 12px/1 "Albert Sans",sans-serif}
 .solution-outcome-grid strong{display:block;margin-bottom:8px;font-size:20px;line-height:1.15}
 
 .solution-fit{background:linear-gradient(165deg,#f4f5ff,var(--lav))}
@@ -101,7 +102,14 @@
 .solution-fit-layout>div>p:not(.solution-module-index){color:var(--body)}
 .solution-fit-list{display:grid;gap:12px;margin:0;padding:0;list-style:none}
 .solution-fit-list>li{display:grid;grid-template-columns:42px 1fr;gap:16px;padding:20px;border:1px solid rgba(65,94,226,.18);border-radius:18px;background:rgba(255,255,255,.7)}
-.solution-fit-list>li>span{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--navy);color:var(--mint);font:700 9px/1 ui-monospace,"SF Mono",SFMono-Regular,Menlo,monospace}
+.solution-fit-list>li>span{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--navy);color:var(--mint);font:800 11px/1 "Albert Sans",sans-serif}
+
+/* Bali's booking story carries the full commercial journey. Give the eight
+   mechanics room to scan without turning the section into a long blog list. */
+.solution-beach-club-booking-bali .solution-capability-layout{grid-template-columns:minmax(330px,.72fr) minmax(0,1.28fr);gap:60px;align-items:start}
+.solution-beach-club-booking-bali .solution-capability-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;border:0}
+.solution-beach-club-booking-bali .solution-capability-list>li{grid-template-columns:34px 1fr;align-content:start;min-height:190px;padding:20px;border:1px solid var(--line);border-radius:19px;background:#fff}
+.solution-beach-club-booking-bali .solution-capability-list strong{font-size:17px}
 .solution-fit-list strong{display:block;margin-bottom:3px;font-size:18px}
 .solution-fit-copy{padding:28px 30px;border:1px solid rgba(65,94,226,.18);border-radius:22px;background:rgba(255,255,255,.68)}
 .solution-fit-copy p:first-child{margin-top:0}.solution-fit-copy p:last-child{margin-bottom:0}
@@ -190,6 +198,7 @@
   .solution-hero-visual{width:min(760px,100%)}
   .solution-index-showcase{width:min(760px,100%)}
   .solution-capability-layout{grid-template-columns:1fr;gap:56px}.solution-capability-stage{position:relative;top:auto}
+  .solution-beach-club-booking-bali .solution-capability-layout{grid-template-columns:1fr}
   .solution-card-grid{grid-template-columns:repeat(2,1fr)}
   .solution-group-venue .solution-card:first-child{grid-column:span 2}
 }
@@ -214,6 +223,7 @@
   .solution-steps,.solution-outcome-grid{grid-template-columns:1fr}.solution-steps>li,.solution-outcome-grid>li{min-height:0}
   .solution-steps>li>span,.solution-outcome-grid>li>span{margin-bottom:26px}
   .solution-capability-layout{gap:46px}.solution-capability-stage{padding:42px 10px 10px;box-shadow:9px 9px 0 var(--lav)}
+  .solution-beach-club-booking-bali .solution-capability-list{grid-template-columns:1fr}.solution-beach-club-booking-bali .solution-capability-list>li{min-height:0}
   .solution-fit-list>li{grid-template-columns:34px 1fr;padding:16px}.solution-fit-list>li>span{width:30px;height:30px}
   .solution-proof-panel{padding:30px 24px;box-shadow:8px 8px 0 var(--indigo)}
   .solution-faq{padding:76px 0}.solution-faq summary{font-size:17px}.solution-faq-answer{padding-right:0}

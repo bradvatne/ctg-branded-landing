@@ -23,14 +23,18 @@ This page applies that proven operating model to the inventory a Bali beach club
 3. **Commit before arrival.** Prepayments, deposits, and minimum spends turn a held spot into committed revenue.
 4. **Send the sale to the floor.** Online inventory syncs to the internal floor plan so the operator sees what is booked before doors open.
 
-[See the canonical booking capability](/platform/#booking)
+[See the booking platform](/platform/#booking)
 
-## Capabilities — One booking, four connected jobs
+## Capabilities — One booking. Eight commercial jobs.
 
-- **Revenue:** prepayments, packages, dynamic pricing, and abandoned-booking recovery work across the booking journey.
-- **Operations:** the venue map, automatic allocation, and operator console share live inventory.
-- **Marketing:** bookings post to Meta, Google Ads, and GA4 with their value attached.
-- **Guest ownership:** the booking stays under the venue's brand, domain, and guest-data ownership.
+- **Sell the experience before the price.** A 3D birds-eye map turns the venue into the product. Guests see the pool edge, the view, the shade, and the exact daybed or cabana they are buying.
+- **Grow the order while intent is high.** A TikTok-style mobile shop puts bottle videos and packages inside the journey. It has driven an 80% increase in bottle add-ons across the product.
+- **Make payment feel instant.** Multi-currency checkout runs through Stripe, with Apple Pay and Google Pay for one-tap wallet approval. The complete booking journey takes four taps.
+- **Pull cash and certainty forward.** Prepayments, deposits, and minimum spends secure the furniture before arrival, giving the venue predictable working float and a clearer capacity forecast.
+- **Know the whole party.** The booker invites the group and each guest supplies their own details. A booking for eight can create eight owned guest profiles, not one payer record.
+- **Recover the booking that nearly happened.** WhatsApp and email abandoned-booking journeys return the guest to the exact zone, date, and price they left.
+- **Show marketing what revenue looks like.** Paid bookings post back to Meta, Google Ads, TikTok, and GA4 with their value attached, helping the venue find and build audiences around its highest-spending guests.
+- **Turn patterns into decisions.** More than 20 reports show lead time, product mix, origin markets, repeat share, and revenue by hour, while the same live inventory runs allocation, the operator console, and the service day.
 
 [Explore the revenue mechanics](/sell/#revenue)
 

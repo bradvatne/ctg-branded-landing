@@ -23,7 +23,7 @@ For Phuket operators, this page focuses on that pricing-and-demand job. It does 
 3. **Set pricing by demand.** Rates can vary by date, daypart, and inventory rather than remaining flat.
 4. **Take prepayment.** Deposits, prepayments, and minimum spends commit revenue before arrival.
 
-[See the canonical booking flow](/platform/#booking)
+[See the booking flow](/platform/#booking)
 
 ## Outcomes — The operator sees demand while it can still act
 

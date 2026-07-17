@@ -825,25 +825,33 @@ function solutionBodyParts(body) {
 
 function renderSolutionModule(section, config, index) {
   const { lead, items } = solutionBodyParts(section.body);
-  const count = String(index + 1).padStart(2, '0');
-  const itemCards = items.map((item, itemIndex) => `<li><span>${String(itemIndex + 1).padStart(2, '0')}</span><div>${item}</div></li>`).join('');
+  const itemCards = items.map((item, itemIndex) => `<li><span>${itemIndex + 1}</span><div>${item}</div></li>`).join('');
 
   if (section.key === 'workflow') {
-    return `<section class="solution-module solution-workflow ${items.length ? '' : 'is-copy-only'}" id="how-it-works"><div class="shell"><div class="solution-module-head"><p class="solution-module-index">${count} · Workflow</p><h2>${section.title}</h2>${lead}</div>${items.length ? `<ol class="solution-steps">${itemCards}</ol>` : ''}</div></section>`;
+    return `<section class="solution-module solution-workflow ${items.length ? '' : 'is-copy-only'}" id="how-it-works"><div class="shell"><div class="solution-module-head"><p class="solution-module-index">How it works</p><h2>${section.title}</h2>${lead}</div>${items.length ? `<ol class="solution-steps">${itemCards}</ol>` : ''}</div></section>`;
   }
   if (section.key === 'capabilities') {
-    return `<section class="solution-module solution-capabilities ${items.length ? '' : 'is-copy-only'}"><div class="shell solution-capability-layout"><div class="solution-capability-stage"><div class="solution-stage-chrome"><span></span><span></span><span></span><small>Clubtech · ${esc(config.label)}</small></div><img src="../../assets/product/${esc(config.secondShot)}" alt="Clubtech ${esc(config.label)} operating view" loading="lazy" decoding="async"></div><div class="solution-capability-copy"><p class="solution-module-index">${count} · Product capabilities</p><h2>${section.title}</h2>${lead}${items.length ? `<ul class="solution-capability-list">${itemCards}</ul>` : ''}</div></div></section>`;
+    return `<section class="solution-module solution-capabilities ${items.length ? '' : 'is-copy-only'}"><div class="shell solution-capability-layout"><div class="solution-capability-stage"><div class="solution-stage-chrome"><span></span><span></span><span></span><small>Clubtech · ${esc(config.label)}</small></div><img src="../../assets/product/${esc(config.secondShot)}" alt="Clubtech ${esc(config.label)} operating view" loading="lazy" decoding="async"></div><div class="solution-capability-copy"><p class="solution-module-index">Across the booking journey</p><h2>${section.title}</h2>${lead}${items.length ? `<ul class="solution-capability-list">${itemCards}</ul>` : ''}</div></div></section>`;
   }
   if (section.key === 'outcomes') {
-    return `<section class="solution-module solution-outcomes dark-section ${items.length ? '' : 'is-copy-only'}"><div class="shell"><div class="solution-module-head"><p class="solution-module-index">${count} · Operator outcomes</p><h2>${section.title}</h2>${lead}</div>${items.length ? `<ul class="solution-outcome-grid">${itemCards}</ul>` : ''}</div></section>`;
+    return `<section class="solution-module solution-outcomes dark-section ${items.length ? '' : 'is-copy-only'}"><div class="shell"><div class="solution-module-head"><p class="solution-module-index">Operator outcomes</p><h2>${section.title}</h2>${lead}</div>${items.length ? `<ul class="solution-outcome-grid">${itemCards}</ul>` : ''}</div></section>`;
   }
   if (section.key === 'fit') {
-    return `<section class="solution-module solution-fit ${items.length ? '' : 'is-copy-only'}"><div class="shell solution-fit-layout"><div><p class="solution-module-index">${count} · Operating fit</p><h2>${section.title}</h2>${items.length ? lead : ''}</div>${items.length ? `<ul class="solution-fit-list">${itemCards}</ul>` : `<div class="solution-fit-copy">${lead}</div>`}</div></section>`;
+    return `<section class="solution-module solution-fit ${items.length ? '' : 'is-copy-only'}"><div class="shell solution-fit-layout"><div><p class="solution-module-index">Where it fits</p><h2>${section.title}</h2>${items.length ? lead : ''}</div>${items.length ? `<ul class="solution-fit-list">${itemCards}</ul>` : `<div class="solution-fit-copy">${lead}</div>`}</div></section>`;
   }
   if (section.key === 'proof') {
-    return `<section class="solution-module solution-proof"><div class="shell solution-proof-panel"><div><p class="solution-module-index">${count} · Credible proof</p><h2>${section.title}</h2></div><div class="solution-proof-copy">${section.body}</div></div></section>`;
+    return `<section class="solution-module solution-proof"><div class="shell solution-proof-panel"><div><p class="solution-module-index">The proof</p><h2>${section.title}</h2></div><div class="solution-proof-copy">${section.body}</div></div></section>`;
   }
-  return `<section class="solution-module solution-detail"><div class="shell solution-detail-layout"><div><p class="solution-module-index">${count} · ${esc(config.label)}</p><h2>${section.title}</h2></div><div>${section.body}</div></div></section>`;
+  return `<section class="solution-module solution-detail"><div class="shell solution-detail-layout"><div><p class="solution-module-index">In detail</p><h2>${section.title}</h2></div><div>${section.body}</div></div></section>`;
+}
+
+function canonicalFeatureLabel(route) {
+  const normalized = String(route || '').replace(/^\//, '');
+  const capability = Object.values(CAPABILITIES).find((item) => item.canonical === normalized);
+  if (capability) return `Explore ${capability.label}`;
+  if (normalized.startsWith('solutions/')) return 'See the complete solution';
+  const [label] = routeCard(normalized);
+  return `Explore ${label}`;
 }
 
 function renderSolutionFaq(faq) {
@@ -894,7 +902,7 @@ function renderSolutionPage(page, pages) {
 <a class="skip-link" href="#main">Skip to content</a>
 ${navMarkup('../../', 'solutions')}
 <main id="main">
-  <header class="solution-hero"><div class="shell solution-hero-grid"><div><p class="solution-kicker"><i></i>${esc(config.kicker)}</p><h1>${h1Html(page.meta.title)}</h1><p class="solution-hero-copy">${esc(page.meta.excerpt)}</p><div class="solution-actions"><a class="button button-mint" href="../../book-a-demo/" data-open-demo>Book a Demo</a><a class="button button-ghost" href="#how-it-works">See the workflow ↓</a></div>${page.meta.canonicalFeature ? `<a class="solution-canonical" href="${esc(routeHref('../../', page.meta.canonicalFeature))}">Canonical product detail <span aria-hidden="true">↗</span></a>` : ''}<ul class="solution-proofline">${proof}</ul></div><div class="solution-hero-visual"><div class="solution-stage-chrome"><span></span><span></span><span></span><small>Clubtech · ${esc(config.label)}</small></div><img class="solution-hero-shot" src="../../assets/product/${esc(config.heroShot)}" alt="Clubtech ${esc(config.label)} product experience" fetchpriority="high" decoding="async"><figure class="solution-hero-photo"><img src="../..${esc(page.meta.hero)}" alt="${esc(page.meta.heroAlt)}" fetchpriority="high" decoding="async"><figcaption>${esc(config.label)} · venue context</figcaption></figure><span class="solution-hero-label"><i></i>Live product surface</span></div></div></header>
+  <header class="solution-hero"><div class="shell solution-hero-grid"><div><p class="solution-kicker"><i></i>${esc(config.kicker)}</p><h1>${h1Html(page.meta.title)}</h1><p class="solution-hero-copy">${esc(page.meta.excerpt)}</p><div class="solution-actions"><a class="button button-mint" href="../../book-a-demo/" data-open-demo>Book a Demo</a><a class="button button-ghost" href="#how-it-works">See the workflow ↓</a></div>${page.meta.canonicalFeature ? `<a class="solution-canonical" href="${esc(routeHref('../../', page.meta.canonicalFeature))}">${esc(canonicalFeatureLabel(page.meta.canonicalFeature))} <span aria-hidden="true">↗</span></a>` : ''}<ul class="solution-proofline">${proof}</ul></div><div class="solution-hero-visual"><div class="solution-stage-chrome"><span></span><span></span><span></span><small>Clubtech · ${esc(config.label)}</small></div><img class="solution-hero-shot" src="../../assets/product/${esc(config.heroShot)}" alt="Clubtech ${esc(config.label)} product experience" fetchpriority="high" decoding="async"><figure class="solution-hero-photo"><img src="../..${esc(page.meta.hero)}" alt="${esc(page.meta.heroAlt)}" fetchpriority="high" decoding="async"><figcaption>${esc(config.label)} · venue context</figcaption></figure><span class="solution-hero-label"><i></i>Live product surface</span></div></div></header>
   <section class="solution-intro"><div class="shell solution-intro-grid"><div class="solution-intro-label"><p class="eyebrow">The operating case</p><p>Inventory · revenue · service day · owned data</p></div><div class="solution-lead">${parts.intro}</div></div></section>
 ${renderSolutionProductBand(config)}
 ${modules}
@@ -936,9 +944,13 @@ function routeCard(route) {
 function renderPathwayRail(routes, rel, eyebrow = 'Next step', heading = 'Keep the decision moving.') {
   const unique = [...new Set(routes.filter(Boolean))].slice(0, 3);
   if (!unique.length) return '';
-  const cards = unique.map((route, index) => {
+  const cards = unique.map((route) => {
     const [label, copy] = routeCard(route);
-    return `<a class="pathway-card" href="${esc(routeHref(rel, route))}"><span>0${index + 1}</span><strong>${esc(label)}</strong><p>${esc(copy)}</p><i aria-hidden="true">↗</i></a>`;
+    const normalized = String(route).replace(/^\//, '');
+    const base = normalized.split('#')[0];
+    const rootTypes = { 'platform/': 'Product', 'sell/': 'Revenue', 'grow/': 'Marketing', 'delivery/': 'Delivery', 'pricing/': 'Pricing', 'for-hotels/': 'Solution', 'help/': 'Support', 'support/': 'Support', 'about/': 'Company', 'careers/': 'Company', 'book-a-demo/': 'Next step' };
+    const type = normalized.startsWith('solutions/') ? 'Solution' : normalized.startsWith('compare/') ? 'Comparison' : normalized.startsWith('blog/') ? 'Guide' : rootTypes[base] || 'Explore';
+    return `<a class="pathway-card" href="${esc(routeHref(rel, route))}"><span>${esc(type)}</span><strong>${esc(label)}</strong><p>${esc(copy)}</p><i aria-hidden="true">↗</i></a>`;
   }).join('');
   return `<section class="pathway-rail"><div class="shell"><p class="eyebrow">${esc(eyebrow)}</p><div class="pathway-head"><h2>${esc(heading)}</h2></div><div class="pathway-grid">${cards}</div></div></section>`;
 }
@@ -1140,7 +1152,8 @@ function renderLandingBlocks(parts, layout) {
     const title = stripHtml(block.title);
     const questionBlock = /questions|frequently asked/i.test(title);
     const tone = questionBlock ? 'is-faq' : index % 3 === 1 ? 'is-dark' : index % 3 === 2 ? 'is-soft' : 'is-light';
-    return `<section class="landing-block ${tone}" id="${esc(title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''))}"><div class="shell landing-block-grid"><div class="landing-block-head"><p class="landing-block-index">${String(index + 1).padStart(2, '0')} · ${esc(layout)}</p><h2>${block.title}</h2></div><div class="landing-block-body">${block.body}</div></div></section>`;
+    const label = questionBlock ? 'Operator questions' : index === 0 ? 'The essentials' : index % 3 === 1 ? 'How it works' : 'What to know';
+    return `<section class="landing-block ${tone}" id="${esc(title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''))}"><div class="shell landing-block-grid"><div class="landing-block-head"><p class="landing-block-index">${esc(label)}</p><h2>${block.title}</h2></div><div class="landing-block-body">${block.body}</div></div></section>`;
   }).join('');
 }
 
@@ -1259,7 +1272,7 @@ function renderSolutionsIndex(pages) {
     const config = SOLUTION_CONFIG[page.meta.slug];
     return `<a class="solution-card ${index === 0 ? 'is-featured' : ''}" href="${esc(page.meta.slug)}/"><div class="solution-card-visual"><img src="../assets/product/${esc(config.heroShot)}" alt="" loading="lazy" decoding="async"><span>${esc(config.kicker)}</span></div><div class="solution-card-copy"><small>${esc(config.label)}</small><strong>${esc(plainTitle(page.meta.title))}</strong><p>${esc(page.meta.excerpt)}</p><span class="solution-card-link">Explore ${esc(config.label)} <i aria-hidden="true">↗</i></span></div></a>`;
   }).join('');
-  const groupMarkup = groups.map(([key, title, copy], index) => `<section class="solution-group solution-group-${esc(key)}" id="${esc(key)}"><div class="solution-group-head"><div><p class="solution-module-index">0${index + 1} · Solutions</p><h2>${esc(title)}</h2></div><p>${esc(copy)}</p></div><div class="solution-card-grid">${cards(key)}</div></section>`).join('');
+  const groupMarkup = groups.map(([key, title, copy]) => `<section class="solution-group solution-group-${esc(key)}" id="${esc(key)}"><div class="solution-group-head"><div><p class="solution-module-index">Find your fit</p><h2>${esc(title)}</h2></div><p>${esc(copy)}</p></div><div class="solution-card-grid">${cards(key)}</div></section>`).join('');
   const head = headHTML({
     title: 'Solutions — Clubtech',
     description: 'Clubtech booking and revenue solutions by venue type and destination — beach clubs, day clubs, nightclubs, hotel pools, restaurants, resorts, and sunbed decks.',

@@ -24,7 +24,7 @@ For Mykonos operators, this page focuses on that fast-feedback job. It does not 
 4. **Follow the booking into the floor.** Sold inventory updates the internal floor plan and operator view.
 5. **Read the result.** Guest intelligence and 20+ reports show booking volume, lead time, product mix, and repeat behavior.
 
-[See the canonical booking capability](/platform/#booking)
+[See the booking platform](/platform/#booking)
 
 ## Outcomes — Decisions inside the selling window
 
