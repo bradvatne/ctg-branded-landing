@@ -36,7 +36,7 @@ Build your GA4 audiences down the funnel instead:
 
 - **Purchasers, last 180 days** — your core seed for Google Ads lookalike-style expansion and your exclusion list for prospecting (stop paying to reach people who already booked this month).
 - **High-value purchasers** — filter on purchase revenue above your package threshold. Small audience, disproportionate signal.
-- **Checkout abandoners** — reached `begin_checkout`, no `purchase` in the last 7 days. This is retargeting inventory with intent already proven.
+- **[Checkout abandoners](/grow/#abandoned-recovery)** — reached `begin_checkout`, no `purchase` in the last 7 days. This is retargeting inventory with intent already proven.
 - **Repeat bookers** — two or more purchases. These guests justify their own creative and their own offer.
 
 Link GA4 to Google Ads and these audiences become bid signals, not just reports. This is the same funnel-inversion logic that runs through a modern [beach club marketing strategy](/blog/beach-club-marketing-strategy/): the booking is the conversion, so the booking defines the audience.

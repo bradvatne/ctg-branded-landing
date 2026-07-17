@@ -137,3 +137,12 @@ export const FOOTER_GROUPS = [
   ['Resources', [['blog/', 'The Index'], ['blog/finns-beach-club-case-study/', 'FINNS case study'], ['compare/', 'Compare Clubtech'], ['help/', 'Help center']]],
   ['Company', [['about/', 'About'], ['delivery/', 'How we deliver'], ['careers/', 'Careers'], ['support/', 'Support'], ['pricing/', 'Commercial fit'], ['https://www.guestlistnow.com/', 'Guest List Now ↗']]],
 ];
+
+/* Leadership team shown on the About page (assets/team/*.png). */
+export const TEAM = [
+  { img: 'ctg_profile_teguh.png', name: 'Teguh Santoso', role: 'Chief Technology Officer', blurb: 'Leads engineering and platform architecture — the booking, operations, and data systems Clubtech runs on.' },
+  { img: 'ctg_profile_kaiesh2.png', name: 'Kaiesh Vohra', role: 'Chief Operating Officer', blurb: 'Runs operations and delivery, so every venue launch and rollout lands on time.' },
+  { img: 'ctg_profile_jack.png', name: 'Jack Herringe', role: 'Senior Manager', blurb: 'Oversees venue partnerships and day-to-day account management across the portfolio.' },
+  { img: 'ctg_profile_brad.png', name: 'Brad Vatne', role: 'Solutions Architect', blurb: 'Designs how Clubtech fits each venue — integrations, configuration, and technical rollout.' },
+  { img: 'ctg_profile_gus.png', name: 'Gus Murray', role: 'Business Development', blurb: 'Leads growth and new venue partnerships across Clubtech’s markets.' },
+];

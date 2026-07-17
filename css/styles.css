@@ -177,3 +177,13 @@ html{scroll-padding-top:96px;background:#020617}
   .m-group{padding-bottom:6px}
   .m-login{border-bottom:0!important;color:#94a3b8!important;text-align:center;font-size:13px!important}
 }
+
+/* About — leadership team */
+.team-section{padding:64px 0}
+.team-section h2{font-size:clamp(28px,4vw,40px);letter-spacing:-.03em;max-width:820px}
+.team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:22px;margin-top:40px}
+.team-card{padding:32px 26px;border-radius:24px;background:linear-gradient(165deg,#f4f5ff,var(--lav));border:1px solid #c4c8f5;text-align:center;display:flex;flex-direction:column;align-items:center}
+.team-avatar{width:96px;height:96px;border-radius:50%;object-fit:cover;border:3px solid #fff;box-shadow:0 0 0 1px #c4c8f5,0 12px 26px rgba(2,6,23,.10);background:#e7e9ff}
+.team-card h3{margin-top:20px;font-size:22px;letter-spacing:-.03em}
+.team-role{margin-top:6px;font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--indigo)}
+.team-blurb{margin-top:14px;font-size:15px;line-height:1.5;color:var(--muted);font-weight:600}

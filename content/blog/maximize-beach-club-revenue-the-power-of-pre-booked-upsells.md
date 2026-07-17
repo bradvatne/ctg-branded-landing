@@ -47,7 +47,7 @@ The same rule applies to timing. Put the core package close to the furniture dec
 
 ## The operational value
 
-Pre-booked items do more than increase the order value. They give the venue a clearer preparation list before service. The team can see which cabanas have bottles, which groups ordered cakes, and which arrivals include transfers.
+Pre-booked items do more than increase the [order value](/sell/#revenue). They give the venue a clearer preparation list before service. The team can see which cabanas have bottles, which groups ordered cakes, and which arrivals include transfers.
 
 That does not replace on-site hospitality. It removes predictable orders from the peak-hour scramble and lets the floor team focus on the requests that could not be planned.
 

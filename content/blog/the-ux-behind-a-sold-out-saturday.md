@@ -53,7 +53,7 @@ Sold out is an inventory state, not the end of the marketing journey.
 
 ## Connect booking UX to the floor
 
-The guest experience and the operating experience are one chain. Exact furniture selected online must remain exact furniture on the internal floor plan. Inventory sync, allocation, and the operator console keep front of house working from the same booking the guest made.
+The guest experience and the operating experience are one chain. Exact furniture selected online must remain exact furniture on the internal floor plan. Inventory sync, allocation, and [the operator console](/platform/#operations) keep front of house working from the same booking the guest made.
 
 That handoff is part of UX even though the guest never sees the console. A clear checkout that produces a confused service day is not a successful flow.
 

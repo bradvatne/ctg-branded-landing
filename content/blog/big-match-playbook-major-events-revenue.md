@@ -34,7 +34,7 @@ Your sellable inventory is the furniture, and an event is when it commands its h
 
 ### 2. Attach a minimum spend and take the money up front
 
-An event weekend is exactly when prepayments, deposits, and minimum spends earn their keep. A prime cabana in front of the screen carries a minimum spend that reflects what the seat is worth that day. A deposit — or full prepayment — means the booking is committed, so a fully-booked venue actually runs full instead of leaking 20% to no-shows. The guest who has already paid shows up, spends to the minimum, and frees you from chasing confirmations the morning of.
+An event weekend is exactly when [prepayments, deposits, and minimum spends](/sell/#prepayments) earn their keep. A prime cabana in front of the screen carries a minimum spend that reflects what the seat is worth that day. A deposit — or full prepayment — means the booking is committed, so a fully-booked venue actually runs full instead of leaking 20% to no-shows. The guest who has already paid shows up, spends to the minimum, and frees you from chasing confirmations the morning of.
 
 ### 3. Capture the guests you can't seat
 

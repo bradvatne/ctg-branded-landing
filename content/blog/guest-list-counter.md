@@ -35,7 +35,7 @@ Here's the gap. A counter says 240 people are in. It can't say which 240, what t
 
 ## Count the door, capture the guest
 
-The fix is to make the count a by-product of check-in rather than a separate task. When guests are checked in against a live list, the headcount takes care of itself — and every count is also a captured guest.
+The fix is to make the count a by-product of check-in rather than a separate task. When guests are checked in against a [live list](https://www.clubtechglobal.com/platform/#guest-lists), the headcount takes care of itself — and every count is also a captured guest.
 
 - **The count is automatic.** QR [door check-in](https://www.clubtechglobal.com/blog/door-check-in-qr-scanning-for-venues/) marks each guest off the live list with a tap, so the running total is exact without anyone working a clicker.
 - **Every count is a record.** Because the booker invites their group and each guest supplies their own details, the people you're counting are the people you're capturing — a table of eight is eight records, not one line on a tally.

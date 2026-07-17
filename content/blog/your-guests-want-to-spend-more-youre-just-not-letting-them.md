@@ -47,7 +47,7 @@ Each pre-booked item should arrive on the operator's service-day view with enoug
 
 Prepayments, deposits, and minimum spends turn the booking into a financial commitment. The amount and conditions should be explicit where the package is chosen.
 
-Dynamic pricing can then change what the same furniture earns across demand, daypart, or inventory conditions. The package still needs to make sense at each price state; a premium rate without premium value reads as a surcharge.
+[Dynamic pricing](/sell/#dynamic-pricing) can then change what the same furniture earns across demand, daypart, or inventory conditions. The package still needs to make sense at each price state; a premium rate without premium value reads as a surcharge.
 
 ## Measure the mix, not the mood
 

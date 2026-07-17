@@ -43,7 +43,7 @@ An add-on is not useful if it increases attachment but reduces completed booking
 
 - checkout completion;
 - add-on attachment;
-- order value;
+- [order value](/sell/#revenue);
 - fulfillment problems and refunds.
 
 The venue's own results should decide which offer stays. Clubtech does not publish a universal uplift for this placement, and the page should not imply one.

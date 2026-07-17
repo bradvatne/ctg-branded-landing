@@ -27,6 +27,7 @@ import {
   COMPARISON_CONFIG,
   FOOTER_GROUPS,
   LANDING_CONFIG,
+  TEAM,
 } from './site-config.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -944,6 +945,16 @@ function routeCard(route) {
   return ['Keep exploring', 'Continue to the next relevant Clubtech page.'];
 }
 
+function renderTeamSection() {
+  const cards = TEAM.map((m) => `      <article class="team-card"><img class="team-avatar" src="../assets/team/${esc(m.img)}" alt="${esc(m.name)}" width="96" height="96" loading="lazy" decoding="async"><h3>${esc(m.name)}</h3><p class="team-role">${esc(m.role)}</p><p class="team-blurb">${esc(m.blurb)}</p></article>`).join('\n');
+  return `  <section class="team-section"><div class="shell">
+    <h2>The people who <span class="indigo-text">run the build.</span></h2>
+    <div class="team-grid">
+${cards}
+    </div>
+  </div></section>`;
+}
+
 function renderPathwayRail(routes, rel, eyebrow = 'Next step', heading = 'Keep the decision moving.') {
   const unique = [...new Set(routes.filter(Boolean))].slice(0, 3);
   if (!unique.length) return '';
@@ -1213,6 +1224,7 @@ ${navMarkup('../', page.meta.group || null)}
 <main id="main">
   <header class="landing-hero"><div class="shell landing-hero-grid"><div><p class="solution-kicker"><i></i>${esc(eyebrow)}</p><h1>${h1Html(page.meta.title)}</h1><p class="landing-sub">${esc(page.meta.excerpt)}</p><div class="solution-actions"><a class="button button-mint" href="${esc(routeHref('../', primary[0]))}"${primaryDemo ? ' data-open-demo' : ''}>${esc(primary[1])}</a><a class="button button-ghost" href="${esc(routeHref('../', secondary[0]))}">${esc(secondary[1])}</a></div></div>${productAsset || page.meta.hero ? `<div class="landing-hero-visual">${productAsset ? `<div class="solution-stage-chrome"><span></span><span></span><span></span><small>Clubtech · ${esc(stageLabel)}</small></div><img class="landing-product" src="../assets/product/${esc(productAsset)}" alt="Clubtech product view for ${esc(plainTitle(page.meta.title))}" fetchpriority="high" decoding="async">` : ''}${page.meta.hero ? `<img class="landing-context" src="..${esc(page.meta.hero)}" alt="${esc(page.meta.heroAlt || plainTitle(page.meta.title))}" fetchpriority="high" decoding="async">` : ''}</div>` : ''}</div></header>
 ${parts.intro.trim() ? `  <section class="landing-intro"><div class="shell landing-intro-copy">${parts.intro}</div></section>\n` : ''}${renderLandingBlocks(parts, layout)}
+${page.meta.slug === 'about' ? renderTeamSection() : ''}
 ${demoMarkup}
   ${renderPathwayRail(related.length ? related : config.related || [], '../', 'Related pathway', 'The next useful page, not more noise.')}
   <section class="closing dark-section blog-closing">
