@@ -90,6 +90,21 @@ export const LANDING_CONFIG = {
     closing: ['Keep the issue on the record.', 'Tell the Clubtech team what is happening at your venue.', 'Email support'],
     related: ['help/', 'delivery/', 'platform/'],
   },
+  privacy: {
+    layout: 'legal', primary: ['book-a-demo/', 'Book a Demo'], secondary: ['platform/', 'See the platform'],
+    closing: ['Questions about your data?', 'Reach the team, or see the platform your data runs on.', 'Book a Demo'],
+    related: ['cookies/', 'terms/', 'about/'],
+  },
+  terms: {
+    layout: 'legal', primary: ['book-a-demo/', 'Book a Demo'], secondary: ['platform/', 'See the platform'],
+    closing: ['Questions about these terms?', 'Reach the team, or see the platform.', 'Book a Demo'],
+    related: ['privacy/', 'cookies/', 'about/'],
+  },
+  cookies: {
+    layout: 'legal', primary: ['book-a-demo/', 'Book a Demo'], secondary: ['platform/', 'See the platform'],
+    closing: ['Manage your cookie choices anytime.', 'Reach the team, or see the platform.', 'Book a Demo'],
+    related: ['privacy/', 'terms/', 'about/'],
+  },
 };
 
 export const COMPARISON_CONFIG = {
@@ -136,6 +151,7 @@ export const FOOTER_GROUPS = [
   ['Solutions', [['for-hotels/', 'Hotels & resorts'], ['solutions/beach-clubs/', 'Beach clubs'], ['solutions/nightclub-management-software/', 'Nightclubs'], ['solutions/guest-list-management-software/', 'Guest lists'], ['solutions/', 'All solutions']]],
   ['Resources', [['blog/', 'The Index'], ['blog/finns-beach-club-case-study/', 'FINNS case study'], ['compare/', 'Compare Clubtech'], ['help/', 'Help center']]],
   ['Company', [['about/', 'About'], ['delivery/', 'How we deliver'], ['careers/', 'Careers'], ['support/', 'Support'], ['pricing/', 'Commercial fit'], ['https://www.guestlistnow.com/', 'Guest List Now ↗']]],
+  ['Legal', [['privacy/', 'Privacy'], ['terms/', 'Terms'], ['cookies/', 'Cookies']]],
 ];
 
 /* Leadership team shown on the About page (assets/team/*.png). */
