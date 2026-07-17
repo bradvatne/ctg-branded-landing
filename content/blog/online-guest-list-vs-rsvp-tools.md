@@ -49,7 +49,7 @@ A form counts intentions. A booking system protects the spot. Prepayments, depos
 
 The point of capturing guests is what happens after they leave. Clubtech's guest data feeds 20-plus built-in reports — booking volume, lead time by daypart, average value by package, repeat-customer share — with no CSV exports to stitch together. The same first-party data seeds your ads: bookings post back to Meta, Google, and GA4 in real time with revenue values. A dead RSVP list cannot do any of that.
 
-The commercials are built for a venue, not a subscription you forget you are paying: no monthly fee, a 4% online processing fee paid by the customer, and a one-time $2,000 set-up fee per venue covering widget setup, configuration, and staff training. It sits on top of your existing POS and PMS with no major IT change. FINNS Beach Club runs on it — CEO Beau Whittington: "We have grown from simple on-the-day bookings with no financial guarantee to now having millions of dollars worth of pre-paid bookings each month."
+The commercials are built after discovery. Clubtech maps the venue, guest-list operation, payments, POS/PMS boundary, integrations, and rollout before returning with a tailored proposal. It sits on top of the existing stack rather than replacing it. FINNS Beach Club runs on it — CEO Beau Whittington: "We have grown from simple on-the-day bookings with no financial guarantee to now having millions of dollars worth of pre-paid bookings each month."
 
 If you are deciding between a form and a real system, the fastest way to know is to see your own floor plan in it. [Book a 15-minute demo](/book-a-demo/) — no pitch deck, no contracts, no credit card.
 

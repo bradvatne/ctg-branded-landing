@@ -6,7 +6,7 @@ section: solutions
 canonicalFeature: /platform/#operations
 related: /platform/#guest-lists|/solutions/nightclub-table-booking/|/solutions/event-ticketing-for-clubs/
 date: 2026-07-16
-excerpt: "Nightclub management software that runs the whole night: VIP table booking, floor plan, door, ads, and guest data in one platform. No monthly fee."
+excerpt: "Nightclub management software that runs the whole night: VIP table booking, floor plan, door, ads, and guest data in one platform."
 hero: /assets/blog/nightclub-table-booking.webp
 heroAlt: "Nightclub floor with VIP booths and dancefloor lit for a pre-sold Saturday night"
 description: "Nightclub management software for operators: VIP table booking, interactive floor plan, door VMS, real-time ads loop, and 20+ reports in one platform."
@@ -55,7 +55,7 @@ The spend that filled the room should be traceable to the bookings it produced. 
 
 Because 82% of bookings happen on a phone after 10pm, the checkout is built for the group-chat hour: four-tap checkout, no app install, wallet checkout, and multi-currency support. Exact payment and connector scope is confirmed for the venue during implementation. See the full [platform](/platform/) for how it fits together.
 
-The commercials are plain: no monthly fee, a 4% online processing fee paid by the customer, and a one-time $2,000 setup per venue covering widget setup, configuration, and staff training. It sits on your existing POS, so switching is low-cost. [Book a demo](/book-a-demo/) for a walkthrough built around your venue.
+Commercials follow discovery. We map tables, tickets, payments, POS boundaries, door operations, integrations, and rollout, then return with a proposal built around the confirmed operation. [Book a discovery call](/book-a-demo/) using one real service night.
 
 ## Questions operators ask
 

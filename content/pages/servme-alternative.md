@@ -31,7 +31,7 @@ For a restaurant-led operation that values guest recognition, table control, and
 | Revenue setup | Packages, add-ons, prepayments, deposits, minimum spends, and dynamic pricing | Booking rules, payments, CRM, and POS-linked guest spend; confirm package depth |
 | Service day | Online inventory, internal floor plan, automatic allocation, and operator console | Reservations, waitlist, walk-ins, table management, and guest profiles |
 | Marketing | Revenue-valued bookings to Meta, Google, and GA4; abandoned-booking events | Built-in CRM and email/SMS marketing |
-| Commercials | No monthly fee; 4% online fee paid by the customer; $2,000 one-time setup | Zero commission on online bookings; confirm subscription and implementation terms |
+| Commercials | Scoped to the venue and confirmed after discovery | Zero commission on online bookings; confirm subscription and implementation terms |
 
 ## Where Clubtech fits
 
@@ -47,7 +47,7 @@ For a switch, test the whole guest and operator journey: direct channel, exact i
 
 ## Product and next-step pathway
 
-Review [Platform](/platform/) for the booking-to-floor chain. If the concept sells a dining experience with premium inventory, read the [restaurant solution](/solutions/restaurants/). If the deck is the product, use the relevant [solutions route](/solutions/) and [book a demo](/book-a-demo/).
+Review [Bookings](/platform/) for the booking-to-floor chain. If the concept sells a dining experience with premium inventory, read the [restaurant solution](/solutions/restaurants/). If the deck is the product, use the relevant [solutions route](/solutions/) and [book a demo](/book-a-demo/).
 
 ## Questions operators ask
 

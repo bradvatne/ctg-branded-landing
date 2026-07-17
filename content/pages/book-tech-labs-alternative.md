@@ -31,7 +31,7 @@ It belongs on a serious shortlist when the priority is a visual guest booking fl
 | Service day | Live inventory sync, internal floor plan, automatic allocation, and operator console | Ask to see the operational console behind the guest flow |
 | Marketing loop | Booking revenue to Meta, Google, and GA4; abandoned-booking events within seconds | Confirm current server-side attribution and recovery workflow |
 | Delivery | Setup includes widget configuration and staff training | Confirm implementation scope, data migration, and training |
-| Clubtech commercial model | No monthly fee; 4% online fee paid by the customer; $2,000 one-time setup | Confirm directly with Book Tech Labs |
+| Commercials | Scoped to the venue and confirmed after discovery | Confirm directly with Book Tech Labs |
 
 ## Where Clubtech fits
 
@@ -53,7 +53,7 @@ Coexistence may make sense during a staged migration, but running two guest book
 
 ## Product and next-step pathway
 
-Review the [Clubtech platform](/platform/) for the complete guest-to-operator workflow, then the [Grow attribution loop](/grow/#ads) for the layer outside the booking engine. [Book a demo](/book-a-demo/) with the same five questions you put to Book Tech Labs.
+Review [Bookings](/platform/) for the complete guest-to-operator workflow, then [Marketing attribution](/grow/#ads) for the layer outside the booking engine. [Book a demo](/book-a-demo/) with the same five questions you put to Book Tech Labs.
 
 ## Questions operators ask
 

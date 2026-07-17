@@ -31,7 +31,7 @@ That makes it a defensible choice for restaurants, bars, pubs, and multi-site ho
 | Revenue setup | Prepayments, deposits, minimum spends, packages, add-ons, and dynamic pricing | Payments, pre-orders, minimum spends, offers, and booking rules |
 | Service day | Online inventory sync, internal floor plan, allocation, and operator console | Diary, floorplan, run sheets, check-in, and booking management |
 | Marketing loop | Booking values sent to Meta, Google, and GA4; abandoned-booking events | Reporting and guest data inside the Access booking workflow |
-| Clubtech commercial model | No monthly fee; 4% online fee paid by the customer; $2,000 one-time setup | Confirm current Access pricing directly with the vendor |
+| Commercials | Scoped to the venue and confirmed after discovery | Confirm current Access pricing directly with the vendor |
 
 ## Where Clubtech fits
 

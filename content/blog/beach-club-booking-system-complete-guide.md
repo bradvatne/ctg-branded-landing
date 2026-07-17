@@ -112,7 +112,7 @@ You can build a basic calendar-and-checkout flow in-house, and for a small venue
 
 ### How much does a beach club booking system cost?
 
-Clubtech has no monthly fee. The online processing fee is 4%, paid by the customer, and the one-time $2,000 setup fee per venue covers widget setup, system configuration, and staff training. When comparing vendors, put every subscription, transaction fee, setup charge, payment fee, and required integration on one sheet.
+Clubtech scopes commercials after discovery. The venue, inventory, booking journey, payments, integrations, and rollout are mapped before the team returns with a tailored proposal. When comparing vendors, put every subscription, transaction fee, setup charge, payment fee, required integration, and delivery commitment on one sheet.
 
 ### How do I book FINNS Beach Club?
 

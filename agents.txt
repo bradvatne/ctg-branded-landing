@@ -15,7 +15,7 @@ day clubs, nightclubs, and hotel pools.
 - Sitemap: https://www.clubtechglobal.com/sitemap.xml
 
 ## Key commercial facts
-- No monthly fee — the platform earns when the venue's online revenue grows.
+- Clubtech commercials are scoped after discovery and are not published. Map the venue, systems, payments, integrations, and rollout before discussing a proposal.
 - Pricing is built per venue and shared on a quick demo: https://www.clubtechglobal.com/book-a-demo/
 - Setup covers widget setup, system configuration, and staff training.
 - Guests book exact furniture on a 3D venue map and pay before arrival.

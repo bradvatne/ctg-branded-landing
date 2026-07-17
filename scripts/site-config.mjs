@@ -81,8 +81,8 @@ export const LANDING_CONFIG = {
     related: ['support/', 'platform/', 'delivery/'],
   },
   pricing: {
-    layout: 'pricing', primary: ['book-a-demo/', 'Book a Demo'], secondary: ['sell/#revenue', 'See the revenue model'],
-    closing: ['No monthly fee.', 'See the commercials against your own inventory.', 'Book a Demo'],
+    layout: 'pricing', primary: ['book-a-demo/', 'Book a discovery call'], secondary: ['sell/#revenue', 'See the revenue model'],
+    closing: ['Built around your venue.', 'Shape the right commercial model together.', 'Book a discovery call'],
     related: ['sell/#revenue', 'delivery/', 'book-a-demo/'],
   },
   support: {
@@ -130,9 +130,10 @@ export const BLOG_PATHWAYS = {
 };
 
 export const FOOTER_GROUPS = [
-  ['Platform', [['platform/#booking', 'Booking'], ['platform/#operations', 'Operations & floor'], ['platform/#guest-lists', 'Guest lists'], ['platform/#integrations', 'Integrations']]],
+  ['Bookings', [['platform/#booking', 'Booking experience'], ['platform/#operations', 'Operations & floor'], ['platform/#guest-lists', 'Guest lists'], ['platform/#integrations', 'Integrations']]],
   ['Revenue', [['sell/#events', 'Events & ticketing'], ['sell/#packages', 'Packages & add-ons'], ['sell/#dynamic-pricing', 'Dynamic pricing'], ['sell/#revenue', 'Pre-paid revenue']]],
+  ['Marketing', [['grow/#ads', 'Ads & attribution'], ['grow/#abandoned-recovery', 'Abandoned recovery'], ['grow/#guest-data', 'Guest data & reports'], ['grow/', 'Marketing overview']]],
   ['Solutions', [['for-hotels/', 'Hotels & resorts'], ['solutions/beach-clubs/', 'Beach clubs'], ['solutions/nightclub-management-software/', 'Nightclubs'], ['solutions/guest-list-management-software/', 'Guest lists'], ['solutions/', 'All solutions']]],
   ['Resources', [['blog/', 'The Index'], ['blog/finns-beach-club-case-study/', 'FINNS case study'], ['compare/', 'Compare Clubtech'], ['help/', 'Help center']]],
-  ['Company', [['about/', 'About'], ['delivery/', 'How we deliver'], ['careers/', 'Careers'], ['support/', 'Support'], ['pricing/', 'Pricing']]],
+  ['Company', [['about/', 'About'], ['delivery/', 'How we deliver'], ['careers/', 'Careers'], ['support/', 'Support'], ['pricing/', 'Commercial fit']]],
 ];

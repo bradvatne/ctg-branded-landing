@@ -10,7 +10,7 @@ ctaHref: support/
 ctaLabel: Get venue support
 eyebrow: Resources · Help center
 excerpt: Start with booking, operations, revenue, guest data, delivery, or support. Evaluators and existing venue teams take different paths from here.
-description: Clubtech help center for venue teams and evaluators, with clear paths to booking, operations, revenue, guest data, delivery, pricing, and support.
+description: Clubtech help center for venue teams and evaluators, with clear paths to bookings, revenue, marketing, delivery, commercial fit, and support.
 cta2href: platform/
 cta2label: Explore the platform
 ---
@@ -23,7 +23,7 @@ Go to [Clubtech Support](/support/) for an account or venue issue. Use the suppo
 
 ### I am evaluating Clubtech
 
-Start with the [platform overview](/platform/), check [public pricing](/pricing/), or [book a demo configured around your venue](/book-a-demo/).
+Start with the [Bookings overview](/platform/), see [how commercial scoping works](/pricing/), or [book a discovery call configured around your venue](/book-a-demo/).
 
 ## Browse by task
 
@@ -85,11 +85,11 @@ Prepayments, deposits, and minimum spends commit revenue to the booking before a
 
 Yes. Clubtech supports tiered event tickets and QR-code check-in alongside venue reservations.
 
-### What does it cost?
+### How are commercials scoped?
 
-There is no monthly fee. Customers pay a 4% online processing fee, and the venue pays a $2,000 one-time set-up fee covering widget setup, system configuration, and staff training.
+Commercials follow discovery. We map the inventory, booking journey, systems, payments, integrations, and rollout, then return with a proposal built around the confirmed operation.
 
-[See complete pricing](/pricing/)
+[See how commercial scoping works](/pricing/)
 
 ## Still need help?
 

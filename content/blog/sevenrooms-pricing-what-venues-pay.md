@@ -56,7 +56,7 @@ To be fair, this isn't either/or for every group. A restaurant group with a beac
 
 ## What Clubtech costs — printed, not quoted
 
-Because you came here for a number, here's ours, in full: no monthly fee, a 4% online processing fee paid by the customer, and a $2,000 one-time set-up fee per venue that covers widget setup, configuration, and staff training. It sits on top of your existing POS and PMS with no major IT changes — it doesn't replace your stack. You can read that on the page before you ever speak to sales.
+Clubtech does not publish a generic rate card. We map the venue, inventory, payments, integrations, and rollout first, then return with a commercial proposal built around the confirmed operation. It sits on top of your existing POS and PMS with no major IT changes — it does not replace your stack.
 
 ## Questions operators ask
 
@@ -78,6 +78,6 @@ SevenRooms is an excellent dining CRM and works well for multi-room restaurant g
 
 ### How does Clubtech's pricing compare?
 
-Clubtech is transparent: no monthly fee, a 4% processing fee paid by the customer, and a $2,000 one-time set-up fee per venue. There's no quote to decode and no per-room math to reverse-engineer — the number is the same one you can read before you book a demo.
+Clubtech is explicit about the process: discovery first, scope second, commercial proposal third. Bring the real inventory, payments, integrations, and rollout requirements so the proposal reflects the operation instead of a generic tier.
 
 **See it on your floor plan.** 15 minutes, no pitch deck, no contracts, no credit card. [Book a demo](https://www.clubtechglobal.com/book-a-demo/).

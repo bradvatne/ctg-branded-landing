@@ -10,7 +10,7 @@ date: 2026-07-12
 excerpt: "Sell VIP tables and bottle service before doors open. Map-based table booking with prepayment, packages, and guest data — built for the operator."
 hero: /assets/blog/nightclub-table-booking.webp
 heroAlt: "Nightclub VIP tables with bottle service under low light"
-description: "Nightclub table booking software for operators: map-based VIP tables, bottle service packages, prepayment, and guest data. No monthly fee."
+description: "Nightclub table booking software for operators: map-based VIP tables, bottle service packages, prepayment, and guest data."
 ---
 Right now, somewhere in your Instagram inbox, a group is asking about a table for Saturday. A promoter will answer eventually, a host will pencil something in, and at 11:30pm you'll find out whether they meant it. No payment, no attribution, no data — a four-figure booth held on a handshake made in a DM.
 
@@ -56,7 +56,7 @@ More than 20 built-in reports turn the reservation log into guest intelligence: 
 
 If you run a daytime concept alongside the club, the same engine handles the [day club booking flow](https://www.clubtechglobal.com/solutions/day-club-booking-system/) — one inventory, two dayparts, one guest database.
 
-The commercials: no monthly fee, with setup covering the booking widget, configuration, and staff training, and the platform earning when you sell. It sits on top of your existing POS with no major IT changes. [Book a demo](../../book-a-demo/) for a quote built around your venue.
+Commercials follow discovery. We map the tables, packages, payments, POS boundary, integrations, teams, and rollout, then return with a proposal built around the confirmed operation. [Book a discovery call](../../book-a-demo/) using one real service night.
 
 ## Questions operators ask
 

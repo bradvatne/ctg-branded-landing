@@ -1,43 +1,54 @@
 ---
-title: No monthly fee. **Clear from day one.**
-titleTag: Pricing — No Monthly Fee | Clubtech
+title: Commercials built around **your venue.**
+titleTag: Commercial fit | Clubtech
 slug: pricing
-date: 2026-07-16
+date: 2026-07-17
 group: pricing
 layout: pricing
 ctaType: demo
 ctaHref: book-a-demo/
-ctaLabel: See pricing on your venue
-eyebrow: Pricing
-excerpt: No monthly fee. A 4% online processing fee paid by the customer, plus a $2,000 one-time set-up fee per venue.
-description: Clubtech pricing: no monthly fee, a 4% online processing fee paid by the customer, and a $2,000 one-time set-up fee per venue covering widget setup, system configuration, and staff training.
+ctaLabel: Book a discovery call
+eyebrow: Commercial fit
+excerpt: We map the venue, the systems around it, and the rollout required. Then we return with a commercial proposal built around the real operation.
+description: Book a Clubtech discovery call to scope your inventory, booking journey, integrations, payments, and rollout before receiving a tailored commercial proposal.
 cta2href: platform/
 cta2label: See the platform
 ---
 
-## The complete public pricing model
+## Why discovery comes first
 
-### No monthly fee
+Clubtech is built around the venue it runs. The commercial model follows the same rule.
 
-There is no monthly software license fee.
+### The inventory is different
 
-### 4% online processing fee
+A beach club selling daybeds by zone is not the same build as a nightclub selling tables and tickets, or a hotel opening pool inventory to outside guests.
 
-The customer pays the 4% online processing fee at checkout.
+### The stack is different
 
-### $2,000 one-time set-up fee per venue
+Payments, POS, PMS, marketing systems, markets, and currencies change the implementation boundary.
 
-The venue pays one set-up fee for each venue launched on Clubtech.
+### The rollout is different
 
-## What the set-up fee covers
+The booking journey, floor operation, training plan, and launch support are scoped against the team that will use them.
 
-- widget setup;
-- system configuration for how the venue sells;
-- staff training.
+## What we map on the call
 
-No other inclusion is implied by the public set-up price. The rollout scope and integration requirements are confirmed with the venue before implementation.
+- the furniture, zones, dayparts, packages, and events you sell;
+- the guest journey from first tap to payment;
+- the systems Clubtech needs to sit alongside;
+- the markets, currencies, and payment methods involved;
+- the reservations, floor, door, and marketing teams in the rollout;
+- the launch sequence and support required after go-live.
 
 [See how rollout works](/delivery/)
+
+## What you receive
+
+After discovery, the Clubtech team returns with a commercial proposal tied to the real scope. No generic software tier. No number detached from the operation it needs to run.
+
+The proposal connects the build to the outcome: pre-sold inventory, live floor operations, owned guest data, and a marketing loop with booking value attached.
+
+[Book a discovery call](/book-a-demo/)
 
 ## See the connected platform
 
@@ -51,30 +62,20 @@ The Clubtech platform connects:
 
 [Explore the platform](/platform/)
 
-## See it against your own venue
-
-A Clubtech demo takes 15 minutes, requires no contract or credit card, and is pre-configured to a venue like yours. The team can show the product and explain the public pricing against the way your venue sells.
-
-[Book a demo](/book-a-demo/)
-
 ## Questions operators ask
 
-### How much does Clubtech cost?
+### Why does Clubtech not publish a rate card?
 
-There is no monthly fee. The customer pays a 4% online processing fee, and the venue pays a $2,000 one-time set-up fee per venue.
+The work changes with the venue. Inventory, booking flows, markets, payments, integrations, training, and rollout all affect the scope. A generic rate card would hide the part that matters.
 
-### Who pays the 4% online processing fee?
+### What happens on the discovery call?
 
-The customer pays it at checkout.
+We map what the venue sells, how guests buy it, which systems surround the booking, and which teams run the service day. The call gives both sides a real implementation boundary.
 
-### What does the $2,000 set-up fee cover?
+### What shapes the commercial proposal?
 
-Widget setup, system configuration, and staff training.
+The proposal follows the confirmed inventory, integrations, payment requirements, markets, rollout, and support scope. It is built around the operation, not a generic software tier.
 
-### Is there a monthly subscription?
+### When do we receive a proposal?
 
-No. Clubtech does not charge a monthly software license fee.
-
-### Is the set-up fee charged once for a group?
-
-The public price is $2,000 once per venue, not once per group.
+After the discovery call and scope review. The Clubtech team returns with the recommended build, delivery boundary, and commercial proposal together so the number has operating context.

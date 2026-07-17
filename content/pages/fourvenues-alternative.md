@@ -31,7 +31,7 @@ For a nightclub, festival, or promoter-led event program, that breadth is a seri
 | Distribution | Venue website and owned paid channels | Website, promoters, organizers, and connected sales channels |
 | Revenue controls | Packages, add-ons, prepayments, deposits, minimum spends, dynamic pricing | Tickets, add-ons, price jumps, passes, and reservations |
 | Marketing data | Revenue-valued bookings to Meta, Google, and GA4; abandoned-booking events | CRM, campaign tools, reporting, and platform integrations |
-| Commercials | No monthly fee; 4% online fee paid by the customer; $2,000 one-time setup | Confirm current pricing directly with Fourvenues |
+| Commercials | Scoped to the venue and confirmed after discovery | Confirm current pricing directly with Fourvenues |
 
 ## Where Clubtech fits
 

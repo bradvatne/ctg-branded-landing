@@ -31,7 +31,7 @@ For a resort digitizing many guest touchpoints at once, that breadth is valuable
 | Revenue controls | Packages, add-ons, prepayments, deposits, minimum spends, and dynamic pricing | Confirm current pool pricing and upsell controls in the product demo |
 | Acquisition | White-label direct booking with revenue-valued advertising events | Primarily an in-stay guest-service layer; confirm external acquisition flow |
 | Operations | Live pool inventory, internal floor plan, and allocation | Broad hotel service and content management |
-| Commercials | No monthly fee; 4% online fee paid by the customer; $2,000 one-time setup | Confirm current pricing directly with Hoteligy |
+| Commercials | Scoped to the venue and confirmed after discovery | Confirm current pricing directly with Hoteligy |
 
 ## Where Clubtech fits
 

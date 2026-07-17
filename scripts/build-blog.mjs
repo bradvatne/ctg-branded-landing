@@ -186,19 +186,19 @@ function mdToPlain(md) {
   return md
     .replace(/<!--[\s\S]*?-->/g, '')
     .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
-    .replace(/[*_`]/g, '')
+    .replace(/[*`]/g, '')
     .replace(/\s+/g, ' ')
     .trim();
 }
 function extractFaqs(body) {
-  const secMatch = body.match(/^## Questions operators ask\s*$([\s\S]*?)(?=^## |(?![\s\S]))/m);
+  const secMatch = body.match(/^## ([^\n]*(?:questions|frequently asked)[^\n]*)\s*$([\s\S]*?)(?=^## |(?![\s\S]))/im);
   if (!secMatch) return [];
   const faqs = [];
   // Answers stop at the next question, a horizontal rule, or EOF — without
   // the ^--- stop, a trailing rule + CTA line bleeds into the last answer.
   const re = /^### (.+)$([\s\S]*?)(?=^### |^-{3,}\s*$|(?![\s\S]))/gm;
   let m;
-  while ((m = re.exec(secMatch[1])) !== null) {
+  while ((m = re.exec(secMatch[2])) !== null) {
     const q = mdToPlain(m[1]);
     const a = mdToPlain(m[2]);
     if (q && a) faqs.push({ q, a });
@@ -269,7 +269,7 @@ function listingJsonLd(posts) {
    Root landing pages (about, pricing, careers, help, support, ai-bookings) are
    emitted from the `landings` array separately — do not duplicate them here. */
 const FEATURE_PAGES = [
-  ['platform', 'Platform'], ['sell', 'Sell'], ['grow', 'Grow'],
+  ['platform', 'Bookings'], ['sell', 'Revenue'], ['grow', 'Marketing'],
   ['delivery', 'Delivery'],
 ];
 
@@ -282,39 +282,38 @@ const FEATURE_PAGES = [
    never drifts. Mobile collapses each mega into a <details> accordion. */
 const NAV = [
   {
-    key: 'platform', label: 'Platform', href: 'platform/', small: true, align: 'left',
+    key: 'platform', label: 'Platform', href: 'platform/',
     cols: [
-      { h: '', tag: '', links: [
-        ['platform/#booking', 'Booking platform', '3D birds-eye booking map'],
+      { h: 'Bookings', tag: 'The guest journey', links: [
+        ['platform/', 'Bookings overview', 'From first tap to the service day'],
+        ['platform/#booking', '3D booking map', 'Exact furniture, zones, and packages'],
         ['platform/#operations', 'Operations &amp; floor', 'Portal, floor plan, allocation'],
         ['platform/#guest-lists', 'Guest lists &amp; VMS', 'Door lists, whole-party capture'],
         ['platform/#check-in', 'Door &amp; check-in', 'QR scanning at the door'],
         ['platform/#integrations', 'Integrations', 'POS, PMS, payments, ads'],
-        ['ai-bookings/', 'AI-agent bookings', 'Built for the agent era'],
       ] },
-    ],
-  },
-  {
-    key: 'sell', label: 'Sell', href: 'sell/', small: true, align: 'left',
-    cols: [
-      { h: '', tag: '', links: [
+      { h: 'Revenue', tag: 'The commercial engine', links: [
+        ['sell/', 'Revenue overview', 'Every lever around the reservation'],
         ['sell/#events', 'Events &amp; ticketing', 'Tiered tickets and QR check-in'],
         ['sell/#packages', 'Packages &amp; upsells', 'Bottles, cakes, transfers'],
         ['sell/#dynamic-pricing', 'Dynamic pricing', 'Price the same seats to demand'],
         ['sell/#prepayments', 'Prepayments &amp; deposits', 'Commit revenue before arrival'],
-        ['sell/#revenue', 'Revenue', 'The four-lever revenue playbook'],
       ] },
-    ],
-  },
-  {
-    key: 'grow', label: 'Grow', href: 'grow/', small: true, align: 'left',
-    cols: [
-      { h: '', tag: '', links: [
+      { h: 'Marketing', tag: 'The demand loop', links: [
+        ['grow/', 'Marketing overview', 'Turn each booking into better demand'],
         ['grow/#ads', 'Ads &amp; attribution', 'The booking is the conversion'],
         ['grow/#abandoned-recovery', 'Abandoned recovery', 'Return to the zone, date, and price'],
         ['grow/#guest-data', 'Guest data &amp; reports', '20+ reports, data you own'],
+        ['ai-bookings/', 'AI-agent bookings', 'Built for the agent era'],
       ] },
     ],
+    rail: {
+      feature: ['platform/', 'Platform overview', 'Bookings, revenue, and marketing in one system'],
+      links: [
+        ['delivery/', 'How we deliver', 'Built around the venue you run'],
+      ],
+      cta: ['book-a-demo/', 'Book a Demo'],
+    },
   },
   {
     key: 'solutions', label: 'Solutions', href: 'solutions/',
@@ -375,7 +374,7 @@ const NAV = [
       cta: ['book-a-demo/', 'Book a Demo'],
     },
   },
-  { key: 'pricing', label: 'Pricing', href: 'pricing/' },
+  { key: 'pricing', label: 'Commercials', href: 'pricing/' },
   {
     key: 'company', label: 'Company', href: 'about/', small: true, align: 'right',
     cols: [
@@ -429,7 +428,10 @@ ${rail}            </div>
   const mob = NAV.map((top) => {
     if (!top.cols) return `          <a href="${href(top.href)}">${top.label}</a>`;
     const links = [];
-    top.cols.forEach((c) => c.links.forEach((l) => links.push(`            <a href="${href(l[0])}">${l[1]}</a>`)));
+    top.cols.forEach((c) => {
+      if (c.h) links.push(`            <p class="m-subhead">${c.h}</p>`);
+      c.links.forEach((l) => links.push(`            <a href="${href(l[0])}">${l[1]}</a>`));
+    });
     if (top.rail) {
       links.push(`            <a href="${href(top.rail.feature[0])}">${top.rail.feature[1]}</a>`);
       (top.rail.links || []).forEach((l) => links.push(`            <a href="${href(l[0])}">${l[1]}</a>`));
@@ -492,11 +494,11 @@ ${links.map(([href, label]) => `        <a href="${routeHref(rel, href)}">${esc(
     <div class="footer-top">
       <a href="${rel}index.html" class="brand"><img src="${rel}brand/clubtech-wordmark-white-560.png" alt="Clubtech" width="190" height="48"></a>
       <div>
-        <a href="${r('platform/')}">Platform</a>
-        <a href="${r('sell/')}">Sell</a>
-        <a href="${r('grow/')}">Grow</a>
+        <a href="${r('platform/')}">Bookings</a>
+        <a href="${r('sell/')}">Revenue</a>
+        <a href="${r('grow/')}">Marketing</a>
         <a href="${r('solutions/')}">Solutions</a>
-        <a href="${r('pricing/')}">Pricing</a>
+        <a href="${r('pricing/')}">Commercials</a>
         <a href="${r('blog/')}">Blog</a>
         <a href="${r('help/')}">Help</a>
         <a href="mailto:info@clubtechglobal.com">Email us</a>
@@ -857,9 +859,10 @@ function canonicalFeatureLabel(route) {
 function renderSolutionFaq(faq) {
   if (!faq) return '';
   const items = [];
+  const body = faq.body.split('<hr/>', 1)[0];
   const re = /<h3(?:\s[^>]*)?>([\s\S]*?)<\/h3>([\s\S]*?)(?=<h3(?:\s[^>]*)?>|$)/gi;
   let match;
-  while ((match = re.exec(faq.body))) items.push(`<details><summary>${match[1]}</summary><div class="solution-faq-answer">${match[2]}</div></details>`);
+  while ((match = re.exec(body))) items.push(`<details><summary>${match[1]}</summary><div class="solution-faq-answer">${match[2]}</div></details>`);
   if (!items.length) return '';
   return `<section class="solution-faq"><div class="shell solution-faq-grid"><div><p class="eyebrow">Operator questions</p><h2>${faq.title}</h2></div><div class="solution-faq-list">${items.join('')}</div></div></section>`;
 }
@@ -919,11 +922,11 @@ ${CONSENT_MARKUP}
 
 const ROUTE_LABELS = {
   'book-a-demo/': ['Book a Demo', 'See Clubtech configured around your venue.'],
-  'platform/': ['Platform', 'Follow the booking from first tap to the floor.'],
-  'sell/': ['Sell', 'See the revenue mechanics behind the reservation.'],
-  'grow/': ['Grow', 'Connect booking value, guest data, and reporting.'],
+  'platform/': ['Bookings', 'Follow the booking from first tap to the floor.'],
+  'sell/': ['Revenue', 'See the revenue mechanics behind the reservation.'],
+  'grow/': ['Marketing', 'Connect booking value, guest data, and reporting.'],
   'delivery/': ['Delivery', 'See how Clubtech gets a venue live.'],
-  'pricing/': ['Pricing', 'Review the cleared public commercials.'],
+  'pricing/': ['Commercial fit', 'Shape the rollout and commercials around your venue.'],
   'for-hotels/': ['For hotels', 'See the owned pool and day-pass model.'],
   'support/': ['Support', 'Reach the Clubtech team for venue-specific help.'],
   'help/': ['Help center', 'Get plain answers about the platform.'],
@@ -948,7 +951,7 @@ function renderPathwayRail(routes, rel, eyebrow = 'Next step', heading = 'Keep t
     const [label, copy] = routeCard(route);
     const normalized = String(route).replace(/^\//, '');
     const base = normalized.split('#')[0];
-    const rootTypes = { 'platform/': 'Product', 'sell/': 'Revenue', 'grow/': 'Marketing', 'delivery/': 'Delivery', 'pricing/': 'Pricing', 'for-hotels/': 'Solution', 'help/': 'Support', 'support/': 'Support', 'about/': 'Company', 'careers/': 'Company', 'book-a-demo/': 'Next step' };
+    const rootTypes = { 'platform/': 'Bookings', 'sell/': 'Revenue', 'grow/': 'Marketing', 'delivery/': 'Delivery', 'pricing/': 'Commercials', 'for-hotels/': 'Solution', 'help/': 'Support', 'support/': 'Support', 'about/': 'Company', 'careers/': 'Company', 'book-a-demo/': 'Next step' };
     const type = normalized.startsWith('solutions/') ? 'Solution' : normalized.startsWith('compare/') ? 'Comparison' : normalized.startsWith('blog/') ? 'Guide' : rootTypes[base] || 'Explore';
     return `<a class="pathway-card" href="${esc(routeHref(rel, route))}"><span>${esc(type)}</span><strong>${esc(label)}</strong><p>${esc(copy)}</p><i aria-hidden="true">↗</i></a>`;
   }).join('');
@@ -1078,22 +1081,24 @@ ${CONSENT_MARKUP}
    hand-written feature pages. Self-canonical, reuse the blog post-hero +
    post-body chrome. Frontmatter adds: group (nav highlight + eyebrow),
    eyebrow (override), optional hero/heroAlt, cta2href/cta2label. */
-const LANDING_LABEL = { platform: 'Platform', company: 'Company', resources: 'Resources', pricing: 'Pricing', solutions: 'Solutions' };
+const LANDING_LABEL = { platform: 'Platform', company: 'Company', resources: 'Resources', pricing: 'Commercial fit', solutions: 'Solutions' };
 
 function rootJsonLd(page) {
   const url = `${SITE_ORIGIN}/${page.meta.slug}/`;
   const faqs = extractFaqs(page.body);
   const webpage = {
     '@type': 'WebPage',
-    '@id': url,
+    '@id': `${url}#webpage`,
     name: page.meta.titleTag || plainTitle(page.meta.title),
     headline: plainTitle(page.meta.title),
     description: page.meta.description || page.meta.excerpt,
     datePublished: page.meta.date,
     dateModified: page.meta.date,
-    about: { '@type': 'Organization', name: 'Clubtech', url: `${CANONICAL_ORIGIN}/` },
+    isPartOf: { '@id': `${CANONICAL_ORIGIN}/#website` },
+    about: { '@id': `${CANONICAL_ORIGIN}/#organization` },
     url,
   };
+  if (faqs.length) webpage.mainEntity = { '@id': `${url}#faq` };
   if (page.meta.hero) webpage.image = `${SITE_ORIGIN}${page.meta.hero}`;
   const obj = {
     '@context': 'https://schema.org',
@@ -1113,6 +1118,8 @@ function rootJsonLd(page) {
     obj['@graph'].push({
       '@type': 'FAQPage',
       '@id': `${url}#faq`,
+      url,
+      isPartOf: { '@id': `${CANONICAL_ORIGIN}/#website` },
       mainEntity: faqs.map(({ q, a }) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
     });
   }
@@ -1151,6 +1158,16 @@ function renderLandingBlocks(parts, layout) {
   return parts.blocks.map((block, index) => {
     const title = stripHtml(block.title);
     const questionBlock = /questions|frequently asked/i.test(title);
+    if (questionBlock) {
+      const items = [];
+      const body = block.body.split('<hr/>', 1)[0];
+      const re = /<h3(?:\s[^>]*)?>([\s\S]*?)<\/h3>([\s\S]*?)(?=<h3(?:\s[^>]*)?>|$)/gi;
+      let match;
+      while ((match = re.exec(body))) {
+        items.push(`<details class="faq-item"><summary><h3>${match[1]}</h3><span class="faq-toggle" aria-hidden="true">+</span></summary><div class="landing-faq-answer">${match[2]}</div></details>`);
+      }
+      return `<section class="landing-block is-faq" id="${esc(title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''))}"><div class="shell landing-block-grid"><div class="landing-block-head"><p class="landing-block-index">Operator questions</p><h2>${block.title}</h2></div><div class="faq-list landing-faq-list">${items.join('')}</div></div></section>`;
+    }
     const tone = questionBlock ? 'is-faq' : index % 3 === 1 ? 'is-dark' : index % 3 === 2 ? 'is-soft' : 'is-light';
     const label = questionBlock ? 'Operator questions' : index === 0 ? 'The essentials' : index % 3 === 1 ? 'How it works' : 'What to know';
     return `<section class="landing-block ${tone}" id="${esc(title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''))}"><div class="shell landing-block-grid"><div class="landing-block-head"><p class="landing-block-index">${esc(label)}</p><h2>${block.title}</h2></div><div class="landing-block-body">${block.body}</div></div></section>`;
@@ -1162,6 +1179,7 @@ function renderRootPage(page, landings, pages) {
   const parts = splitHtmlBlocks(body);
   const config = LANDING_CONFIG[page.meta.slug] || { layout: page.meta.layout || 'standard', primary: ['book-a-demo/', 'Book a Demo'], secondary: ['platform/', 'See the platform'], related: ['platform/', 'delivery/', 'book-a-demo/'] };
   const layout = page.meta.layout || config.layout || 'standard';
+  const stageLabel = layout === 'pricing' ? 'commercial fit' : layout;
   const eyebrow = page.meta.eyebrow || LANDING_LABEL[page.meta.group] || 'Clubtech';
   const demo = page.meta.demo ? DEMO_EMBED[page.meta.demo] : null;
   const demoMarkup = demo ? `
@@ -1193,7 +1211,7 @@ function renderRootPage(page, landings, pages) {
 <a class="skip-link" href="#main">Skip to content</a>
 ${navMarkup('../', page.meta.group || null)}
 <main id="main">
-  <header class="landing-hero"><div class="shell landing-hero-grid"><div><p class="solution-kicker"><i></i>${esc(eyebrow)}</p><h1>${h1Html(page.meta.title)}</h1><p class="landing-sub">${esc(page.meta.excerpt)}</p><div class="solution-actions"><a class="button button-mint" href="${esc(routeHref('../', primary[0]))}"${primaryDemo ? ' data-open-demo' : ''}>${esc(primary[1])}</a><a class="button button-ghost" href="${esc(routeHref('../', secondary[0]))}">${esc(secondary[1])}</a></div></div>${productAsset || page.meta.hero ? `<div class="landing-hero-visual">${productAsset ? `<div class="solution-stage-chrome"><span></span><span></span><span></span><small>Clubtech · ${esc(layout)}</small></div><img class="landing-product" src="../assets/product/${esc(productAsset)}" alt="Clubtech product view for ${esc(plainTitle(page.meta.title))}" fetchpriority="high" decoding="async">` : ''}${page.meta.hero ? `<img class="landing-context" src="..${esc(page.meta.hero)}" alt="${esc(page.meta.heroAlt || plainTitle(page.meta.title))}" fetchpriority="high" decoding="async">` : ''}</div>` : ''}</div></header>
+  <header class="landing-hero"><div class="shell landing-hero-grid"><div><p class="solution-kicker"><i></i>${esc(eyebrow)}</p><h1>${h1Html(page.meta.title)}</h1><p class="landing-sub">${esc(page.meta.excerpt)}</p><div class="solution-actions"><a class="button button-mint" href="${esc(routeHref('../', primary[0]))}"${primaryDemo ? ' data-open-demo' : ''}>${esc(primary[1])}</a><a class="button button-ghost" href="${esc(routeHref('../', secondary[0]))}">${esc(secondary[1])}</a></div></div>${productAsset || page.meta.hero ? `<div class="landing-hero-visual">${productAsset ? `<div class="solution-stage-chrome"><span></span><span></span><span></span><small>Clubtech · ${esc(stageLabel)}</small></div><img class="landing-product" src="../assets/product/${esc(productAsset)}" alt="Clubtech product view for ${esc(plainTitle(page.meta.title))}" fetchpriority="high" decoding="async">` : ''}${page.meta.hero ? `<img class="landing-context" src="..${esc(page.meta.hero)}" alt="${esc(page.meta.heroAlt || plainTitle(page.meta.title))}" fetchpriority="high" decoding="async">` : ''}</div>` : ''}</div></header>
 ${parts.intro.trim() ? `  <section class="landing-intro"><div class="shell landing-intro-copy">${parts.intro}</div></section>\n` : ''}${renderLandingBlocks(parts, layout)}
 ${demoMarkup}
   ${renderPathwayRail(related.length ? related : config.related || [], '../', 'Related pathway', 'The next useful page, not more noise.')}
@@ -1621,7 +1639,7 @@ function renderLlmsTxt(posts, pages, landings = []) {
 Key facts:
 - Guests select the exact furniture, zone, and daypart on a 3D interactive map and pay before arrival.
 - Revenue levers: prepayments and deposits, upsells and add-ons, dynamic pricing, abandoned-booking retargeting.
-- Commercials: no monthly fee; a 4% online processing fee paid by the customer; and a $2,000 one-time setup fee per venue covering widget setup, system configuration, and staff training.
+- Commercials are scoped after discovery. Clubtech maps the venue, systems, payments, integrations, and rollout, then returns with a proposal built around the confirmed operation.
 - Integrations cover POS/PMS, payments, marketing attribution, and messaging. Availability is confirmed per venue and market during implementation.
 - Delivery: five stages (onboarding, build, training, go-live, optimize) with a dedicated account lead and 90-day hypercare.
 - Contact: info@clubtechglobal.com · main site: https://www.clubtechglobal.com/
@@ -1629,12 +1647,12 @@ Key facts:
 ## Pages
 
 - [Landing page](${SITE_ORIGIN}/): platform overview, booking journey, operations, commercials, FAQ
-- [Platform](${SITE_ORIGIN}/platform/): the all-in-one system — booking, front-of-house operations, guest lists and door check-in, integrations
-- [Sell](${SITE_ORIGIN}/sell/): revenue capture — events and ticketing, packages and upsells, dynamic pricing, and the four revenue levers
-- [Grow](${SITE_ORIGIN}/grow/): value-based ad attribution, abandoned-booking recovery, owned guest data, and 20+ reports
+- [Bookings](${SITE_ORIGIN}/platform/): the guest journey, front-of-house operations, guest lists, door check-in, and integrations
+- [Revenue](${SITE_ORIGIN}/sell/): revenue capture through events, packages, upsells, dynamic pricing, prepayments, and recovery
+- [Marketing](${SITE_ORIGIN}/grow/): value-based attribution, abandoned-booking recovery, owned guest data, and 20+ reports
 - [Delivery](${SITE_ORIGIN}/delivery/): five-stage rollout with a dedicated account lead and 90-day hypercare
-- [Pricing](${SITE_ORIGIN}/pricing/): no monthly fee, 4% online processing paid by the customer, and a $2,000 one-time setup per venue
-- [Book a demo](${SITE_ORIGIN}/book-a-demo/): a focused walkthrough configured around your venue
+- [Commercial fit](${SITE_ORIGIN}/pricing/): how discovery becomes a venue-scoped commercial proposal
+- [Book a discovery call](${SITE_ORIGIN}/book-a-demo/): a focused walkthrough configured around your venue
 - [The Index (blog)](${SITE_ORIGIN}/blog/): operator playbooks on booking UX, revenue capture, and guest data`];
   if (landings.length) {
     lines.push('\n## Product & platform\n');
@@ -1789,10 +1807,11 @@ function main() {
   const STATIC_PAGES = [
     ['index.html', '', null, false],
     ['platform/index.html', '../', 'platform', false],
-    ['sell/index.html', '../', 'sell', false],
-    ['grow/index.html', '../', 'grow', false],
+    ['sell/index.html', '../', 'platform', false],
+    ['grow/index.html', '../', 'platform', false],
     ['delivery/index.html', '../', 'company', false],
     ['book-a-demo/index.html', '../', null, true],
+    ['404.html', '', null, true],
   ];
   let injected = 0;
   for (const [file, prefix, group, solid] of STATIC_PAGES) {

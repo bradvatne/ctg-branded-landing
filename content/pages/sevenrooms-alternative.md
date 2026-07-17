@@ -32,13 +32,13 @@ For dining-led operators whose teams use preference and visit history to drive r
 | Revenue setup | Packages, add-ons, prepayments, deposits, minimum spends, and dynamic pricing | Events, experiences, prepaid upgrades, and reservation controls |
 | Guest data | Every-guest capture plus booking and revenue behavior | Detailed restaurant guest profiles, preferences, visit history, and POS-linked data |
 | Marketing | Revenue-valued bookings to Meta, Google, and GA4; abandoned-booking events | CRM segments, email marketing, and automated guest engagement |
-| Commercials | No monthly fee; 4% online fee paid by the customer; $2,000 one-time setup | Quote-based; evaluate the current proposal and included modules |
+| Commercials | Scoped to the venue and confirmed after discovery | Quote-based; evaluate the current proposal and included modules |
 
 ## Where Clubtech fits
 
 Clubtech fits when furniture is not an internal table assignment but the product the guest chooses and buys. Front row, pool edge, shade line, and sunset zone can carry different value. The guest sees that difference on a 3D map, commits to the exact spot, adds the package, and the reservation lands on the operating floor.
 
-That workflow is shown on [Platform: booking](/platform/#booking) and the [beach club solution](/solutions/beach-clubs/). The attribution layer is on [Grow](/grow/#ads).
+That workflow is shown under [Bookings](/platform/#booking) and the [beach club solution](/solutions/beach-clubs/). The attribution layer is under [Marketing](/grow/#ads).
 
 ## Coexistence and switching considerations
 
@@ -48,7 +48,7 @@ If evaluating a switch, compare the same inventory and buying moment. Ask how gu
 
 ## Product and next-step pathway
 
-Use the [beach club solution](/solutions/beach-clubs/) for the complete furniture-led journey, [Platform](/platform/) for the operating system, and the [pricing guide](/blog/sevenrooms-pricing-what-venues-pay/) for quote evaluation. Then [book a demo](/book-a-demo/) using one real package and floor plan.
+Use the [beach club solution](/solutions/beach-clubs/) for the complete furniture-led journey, [Bookings](/platform/) for the operating system, and the [SevenRooms pricing guide](/blog/sevenrooms-pricing-what-venues-pay/) for quote evaluation. Then [book a demo](/book-a-demo/) using one real package and floor plan.
 
 ## Questions operators ask
 

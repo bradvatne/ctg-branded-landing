@@ -40,18 +40,22 @@
   "@graph": [
     {
       "@type": "WebPage",
-      "@id": "https://www.clubtechglobal.com/ai-bookings/",
+      "@id": "https://www.clubtechglobal.com/ai-bookings/#webpage",
       "name": "AI-Agent Bookings for Venues — Emerging Capability | Clubtech",
       "headline": "Built for bookings today. Building for agents next.",
       "description": "Clubtech is building toward AI-agent bookings through an MCP booking project. The capability is emerging and is not generally available to consumers today.",
       "datePublished": "2026-07-16",
       "dateModified": "2026-07-16",
-      "about": {
-        "@type": "Organization",
-        "name": "Clubtech",
-        "url": "https://www.clubtechglobal.com/"
+      "isPartOf": {
+        "@id": "https://www.clubtechglobal.com/#website"
       },
-      "url": "https://www.clubtechglobal.com/ai-bookings/"
+      "about": {
+        "@id": "https://www.clubtechglobal.com/#organization"
+      },
+      "url": "https://www.clubtechglobal.com/ai-bookings/",
+      "mainEntity": {
+        "@id": "https://www.clubtechglobal.com/ai-bookings/#faq"
+      }
     },
     {
       "@type": "BreadcrumbList",
@@ -74,6 +78,10 @@
     {
       "@type": "FAQPage",
       "@id": "https://www.clubtechglobal.com/ai-bookings/#faq",
+      "url": "https://www.clubtechglobal.com/ai-bookings/",
+      "isPartOf": {
+        "@id": "https://www.clubtechglobal.com/#website"
+      },
       "mainEntity": [
         {
           "@type": "Question",
@@ -111,51 +119,42 @@
     <nav class="nav" aria-label="Main navigation">
       <a href="../index.html" class="brand" aria-label="Clubtech home"><img src="../brand/clubtech-wordmark-white-560.png" alt="Clubtech" width="176" height="44"></a>
       <div class="nav-links">
-        <div class="nav-item has-mega dropdown left is-active">
+        <div class="nav-item has-mega is-active">
           <a class="nav-top" href="../platform/" aria-haspopup="true" aria-expanded="false">Platform<svg class="nav-caret" width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></a>
-          <div class="mega mega-sm" role="region" aria-label="Platform menu">
+          <div class="mega" role="region" aria-label="Platform menu">
             <div class="mega-panel">
               <div class="mega-cols">
             <div class="mega-col">
-              <a class="mega-link" href="../platform/#booking"><span class="mega-lt">Booking platform</span><span class="mega-ld">3D birds-eye booking map</span></a>
+              <p class="mega-h">Bookings<span>The guest journey</span></p>
+              <a class="mega-link" href="../platform/"><span class="mega-lt">Bookings overview</span><span class="mega-ld">From first tap to the service day</span></a>
+              <a class="mega-link" href="../platform/#booking"><span class="mega-lt">3D booking map</span><span class="mega-ld">Exact furniture, zones, and packages</span></a>
               <a class="mega-link" href="../platform/#operations"><span class="mega-lt">Operations &amp; floor</span><span class="mega-ld">Portal, floor plan, allocation</span></a>
               <a class="mega-link" href="../platform/#guest-lists"><span class="mega-lt">Guest lists &amp; VMS</span><span class="mega-ld">Door lists, whole-party capture</span></a>
               <a class="mega-link" href="../platform/#check-in"><span class="mega-lt">Door &amp; check-in</span><span class="mega-ld">QR scanning at the door</span></a>
               <a class="mega-link" href="../platform/#integrations"><span class="mega-lt">Integrations</span><span class="mega-ld">POS, PMS, payments, ads</span></a>
-              <a class="mega-link" href="../ai-bookings/"><span class="mega-lt">AI-agent bookings</span><span class="mega-ld">Built for the agent era</span></a>
             </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="nav-item has-mega dropdown left">
-          <a class="nav-top" href="../sell/" aria-haspopup="true" aria-expanded="false">Sell<svg class="nav-caret" width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></a>
-          <div class="mega mega-sm" role="region" aria-label="Sell menu">
-            <div class="mega-panel">
-              <div class="mega-cols">
             <div class="mega-col">
+              <p class="mega-h">Revenue<span>The commercial engine</span></p>
+              <a class="mega-link" href="../sell/"><span class="mega-lt">Revenue overview</span><span class="mega-ld">Every lever around the reservation</span></a>
               <a class="mega-link" href="../sell/#events"><span class="mega-lt">Events &amp; ticketing</span><span class="mega-ld">Tiered tickets and QR check-in</span></a>
               <a class="mega-link" href="../sell/#packages"><span class="mega-lt">Packages &amp; upsells</span><span class="mega-ld">Bottles, cakes, transfers</span></a>
               <a class="mega-link" href="../sell/#dynamic-pricing"><span class="mega-lt">Dynamic pricing</span><span class="mega-ld">Price the same seats to demand</span></a>
               <a class="mega-link" href="../sell/#prepayments"><span class="mega-lt">Prepayments &amp; deposits</span><span class="mega-ld">Commit revenue before arrival</span></a>
-              <a class="mega-link" href="../sell/#revenue"><span class="mega-lt">Revenue</span><span class="mega-ld">The four-lever revenue playbook</span></a>
             </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="nav-item has-mega dropdown left">
-          <a class="nav-top" href="../grow/" aria-haspopup="true" aria-expanded="false">Grow<svg class="nav-caret" width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></a>
-          <div class="mega mega-sm" role="region" aria-label="Grow menu">
-            <div class="mega-panel">
-              <div class="mega-cols">
             <div class="mega-col">
+              <p class="mega-h">Marketing<span>The demand loop</span></p>
+              <a class="mega-link" href="../grow/"><span class="mega-lt">Marketing overview</span><span class="mega-ld">Turn each booking into better demand</span></a>
               <a class="mega-link" href="../grow/#ads"><span class="mega-lt">Ads &amp; attribution</span><span class="mega-ld">The booking is the conversion</span></a>
               <a class="mega-link" href="../grow/#abandoned-recovery"><span class="mega-lt">Abandoned recovery</span><span class="mega-ld">Return to the zone, date, and price</span></a>
               <a class="mega-link" href="../grow/#guest-data"><span class="mega-lt">Guest data &amp; reports</span><span class="mega-ld">20+ reports, data you own</span></a>
+              <a class="mega-link" href="../ai-bookings/"><span class="mega-lt">AI-agent bookings</span><span class="mega-ld">Built for the agent era</span></a>
             </div>
               </div>
-            </div>
+          <div class="mega-rail">
+            <a class="mega-feature" href="../platform/"><span class="mega-feature-k">Platform overview</span><span class="mega-feature-t">Bookings, revenue, and marketing in one system</span></a>
+              <a class="mega-rail-link" href="../delivery/"><span class="mega-lt">How we deliver</span><span class="mega-ld">Built around the venue you run</span></a>
+            <a class="button button-mint mega-cta" href="../book-a-demo/" data-open-demo>Book a Demo</a>
+          </div>            </div>
           </div>
         </div>
         <div class="nav-item has-mega">
@@ -225,7 +224,7 @@
           </div>            </div>
           </div>
         </div>
-        <div class="nav-item"><a class="nav-top" href="../pricing/">Pricing</a></div>
+        <div class="nav-item"><a class="nav-top" href="../pricing/">Commercials</a></div>
         <div class="nav-item has-mega dropdown">
           <a class="nav-top" href="../about/" aria-haspopup="true" aria-expanded="false">Company<svg class="nav-caret" width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></a>
           <div class="mega mega-sm" role="region" aria-label="Company menu">
@@ -251,26 +250,30 @@
         <summary>Menu</summary>
         <div class="mobile-panel">
           <details class="m-group"><summary>Platform</summary><div>
-            <a href="../platform/#booking">Booking platform</a>
+            <p class="m-subhead">Bookings</p>
+            <a href="../platform/">Bookings overview</a>
+            <a href="../platform/#booking">3D booking map</a>
             <a href="../platform/#operations">Operations &amp; floor</a>
             <a href="../platform/#guest-lists">Guest lists &amp; VMS</a>
             <a href="../platform/#check-in">Door &amp; check-in</a>
             <a href="../platform/#integrations">Integrations</a>
-            <a href="../ai-bookings/">AI-agent bookings</a>
-          </div></details>
-          <details class="m-group"><summary>Sell</summary><div>
+            <p class="m-subhead">Revenue</p>
+            <a href="../sell/">Revenue overview</a>
             <a href="../sell/#events">Events &amp; ticketing</a>
             <a href="../sell/#packages">Packages &amp; upsells</a>
             <a href="../sell/#dynamic-pricing">Dynamic pricing</a>
             <a href="../sell/#prepayments">Prepayments &amp; deposits</a>
-            <a href="../sell/#revenue">Revenue</a>
-          </div></details>
-          <details class="m-group"><summary>Grow</summary><div>
+            <p class="m-subhead">Marketing</p>
+            <a href="../grow/">Marketing overview</a>
             <a href="../grow/#ads">Ads &amp; attribution</a>
             <a href="../grow/#abandoned-recovery">Abandoned recovery</a>
             <a href="../grow/#guest-data">Guest data &amp; reports</a>
+            <a href="../ai-bookings/">AI-agent bookings</a>
+            <a href="../platform/">Platform overview</a>
+            <a href="../delivery/">How we deliver</a>
           </div></details>
           <details class="m-group"><summary>Solutions</summary><div>
+            <p class="m-subhead">Who we serve</p>
             <a href="../for-hotels/">Hotels &amp; resorts</a>
             <a href="../solutions/resorts/">Resorts</a>
             <a href="../solutions/beach-clubs/">Beach clubs</a>
@@ -278,11 +281,13 @@
             <a href="../solutions/nightclub-management-software/">Nightclubs</a>
             <a href="../solutions/hotel-pool-booking/">Hotel pools</a>
             <a href="../solutions/restaurants/">Restaurants</a>
+            <p class="m-subhead">By location</p>
             <a href="../solutions/beach-club-booking-bali/">Bali</a>
             <a href="../solutions/beach-club-booking-dubai/">Dubai</a>
             <a href="../solutions/beach-club-booking-phuket/">Phuket</a>
             <a href="../solutions/beach-club-booking-ibiza/">Ibiza</a>
             <a href="../solutions/beach-club-booking-mykonos/">Mykonos</a>
+            <p class="m-subhead">By goal</p>
             <a href="../sell/#revenue">Grow revenue</a>
             <a href="../solutions/guest-list-management-software/">Manage guest lists</a>
             <a href="../sell/#events">Fill events &amp; tickets</a>
@@ -290,10 +295,13 @@
             <a href="../compare/">Compare Clubtech</a>
           </div></details>
           <details class="m-group"><summary>Resources</summary><div>
+            <p class="m-subhead">Learn</p>
             <a href="../blog/">Blog &amp; playbooks</a>
             <a href="../blog/beach-club-booking-system-complete-guide/">The complete guide</a>
             <a href="../blog/beach-club-revenue-playbook/">The revenue playbook</a>
+            <p class="m-subhead">Customer stories</p>
             <a href="../blog/finns-beach-club-case-study/">FINNS Beach Club</a>
+            <p class="m-subhead">Compare</p>
             <a href="../compare/sevenrooms-alternative/">vs SevenRooms</a>
             <a href="../compare/resortpass-alternative/">vs ResortPass</a>
             <a href="../compare/urvenue-alternative/">vs UrVenue</a>
@@ -301,7 +309,7 @@
             <a href="../help/">Help center</a>
             <a href="../support/">Support</a>
           </div></details>
-          <a href="../pricing/">Pricing</a>
+          <a href="../pricing/">Commercials</a>
           <details class="m-group"><summary>Company</summary><div>
             <a href="../about/">About Clubtech</a>
             <a href="../careers/">Careers</a>
@@ -335,15 +343,14 @@
 <p>The near-term product remains the direct, white-label booking journey. The MCP project is a forward-looking extension of that system, not a substitute for it.</p>
 </div></div></section><section class="landing-block is-dark" id="follow-the-current-product"><div class="shell landing-block-grid"><div class="landing-block-head"><p class="landing-block-index">How it works</p><h2>Follow the current product</h2></div><div class="landing-block-body">
 <ul><li><a href="https://www.clubtechglobal.com/platform/#booking" rel="noopener">See how guests book today</a></li><li><a href="https://www.clubtechglobal.com/platform/" rel="noopener">Explore the operator platform</a></li><li><a href="https://www.clubtechglobal.com/platform/#ai-agent" rel="noopener">See the emerging AI-agent section</a></li></ul>
-</div></div></section><section class="landing-block is-faq" id="questions-operators-ask"><div class="shell landing-block-grid"><div class="landing-block-head"><p class="landing-block-index">Operator questions</p><h2>Questions operators ask</h2></div><div class="landing-block-body">
-<h3>Can guests book a Clubtech venue through an AI assistant today?</h3>
+</div></div></section><section class="landing-block is-faq" id="questions-operators-ask"><div class="shell landing-block-grid"><div class="landing-block-head"><p class="landing-block-index">Operator questions</p><h2>Questions operators ask</h2></div><div class="faq-list landing-faq-list"><details class="faq-item"><summary><h3>Can guests book a Clubtech venue through an AI assistant today?</h3><span class="faq-toggle" aria-hidden="true">+</span></summary><div class="landing-faq-answer">
 <p>Not as a generally available consumer feature. Clubtech has an MCP booking project and is building toward agent-completed bookings, but there is no production deployment yet.</p>
-<h3>What is Model Context Protocol?</h3>
+</div></details><details class="faq-item"><summary><h3>What is Model Context Protocol?</h3><span class="faq-toggle" aria-hidden="true">+</span></summary><div class="landing-faq-answer">
 <p>Model Context Protocol is a standard that lets an AI agent use an external tool through a structured interface. Clubtech&#39;s project applies that model to venue inventory and booking.</p>
-<h3>Does this change the booking platform available now?</h3>
-<p>No. The current product remains the venue&#39;s direct, white-label booking channel, connected to floor operations, guest data, and marketing attribution.</p></div></div></section>
+</div></details><details class="faq-item"><summary><h3>Does this change the booking platform available now?</h3><span class="faq-toggle" aria-hidden="true">+</span></summary><div class="landing-faq-answer">
+<p>No. The current product remains the venue&#39;s direct, white-label booking channel, connected to floor operations, guest data, and marketing attribution.</p></div></details></div></div></section>
 
-  <section class="pathway-rail"><div class="shell"><p class="eyebrow">Related pathway</p><div class="pathway-head"><h2>The next useful page, not more noise.</h2></div><div class="pathway-grid"><a class="pathway-card" href="../platform/"><span>Product</span><strong>Platform</strong><p>Follow the booking from first tap to the floor.</p><i aria-hidden="true">↗</i></a><a class="pathway-card" href="../platform/#integrations"><span>Product</span><strong>Platform</strong><p>Follow the booking from first tap to the floor.</p><i aria-hidden="true">↗</i></a><a class="pathway-card" href="../book-a-demo/"><span>Next step</span><strong>Book a Demo</strong><p>See Clubtech configured around your venue.</p><i aria-hidden="true">↗</i></a></div></div></section>
+  <section class="pathway-rail"><div class="shell"><p class="eyebrow">Related pathway</p><div class="pathway-head"><h2>The next useful page, not more noise.</h2></div><div class="pathway-grid"><a class="pathway-card" href="../platform/"><span>Bookings</span><strong>Bookings</strong><p>Follow the booking from first tap to the floor.</p><i aria-hidden="true">↗</i></a><a class="pathway-card" href="../platform/#integrations"><span>Bookings</span><strong>Bookings</strong><p>Follow the booking from first tap to the floor.</p><i aria-hidden="true">↗</i></a><a class="pathway-card" href="../book-a-demo/"><span>Next step</span><strong>Book a Demo</strong><p>See Clubtech configured around your venue.</p><i aria-hidden="true">↗</i></a></div></div></section>
   <section class="closing dark-section blog-closing">
     <img class="closing-mark" src="../brand/clubtech-mark-white.png" alt="" aria-hidden="true" width="1200" height="1200" loading="lazy">
     <div class="shell centered">
@@ -358,11 +365,11 @@
     <div class="footer-top">
       <a href="../index.html" class="brand"><img src="../brand/clubtech-wordmark-white-560.png" alt="Clubtech" width="190" height="48"></a>
       <div>
-        <a href="../platform/">Platform</a>
-        <a href="../sell/">Sell</a>
-        <a href="../grow/">Grow</a>
+        <a href="../platform/">Bookings</a>
+        <a href="../sell/">Revenue</a>
+        <a href="../grow/">Marketing</a>
         <a href="../solutions/">Solutions</a>
-        <a href="../pricing/">Pricing</a>
+        <a href="../pricing/">Commercials</a>
         <a href="../blog/">Blog</a>
         <a href="../help/">Help</a>
         <a href="mailto:info@clubtechglobal.com">Email us</a>
@@ -371,8 +378,8 @@
     </div>
     <div class="footer-grid">
       <div class="footer-col">
-        <p class="footer-col-h">Platform</p>
-        <a href="../platform/#booking">Booking</a>
+        <p class="footer-col-h">Bookings</p>
+        <a href="../platform/#booking">Booking experience</a>
         <a href="../platform/#operations">Operations &amp; floor</a>
         <a href="../platform/#guest-lists">Guest lists</a>
         <a href="../platform/#integrations">Integrations</a>
@@ -383,6 +390,13 @@
         <a href="../sell/#packages">Packages &amp; add-ons</a>
         <a href="../sell/#dynamic-pricing">Dynamic pricing</a>
         <a href="../sell/#revenue">Pre-paid revenue</a>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-h">Marketing</p>
+        <a href="../grow/#ads">Ads &amp; attribution</a>
+        <a href="../grow/#abandoned-recovery">Abandoned recovery</a>
+        <a href="../grow/#guest-data">Guest data &amp; reports</a>
+        <a href="../grow/">Marketing overview</a>
       </div>
       <div class="footer-col">
         <p class="footer-col-h">Solutions</p>
@@ -405,7 +419,7 @@
         <a href="../delivery/">How we deliver</a>
         <a href="../careers/">Careers</a>
         <a href="../support/">Support</a>
-        <a href="../pricing/">Pricing</a>
+        <a href="../pricing/">Commercial fit</a>
       </div>
     </div>
     <div class="footer-wordmark"><img src="../brand/clubtech-wordmark-white-560.png" alt="Clubtech" width="1200" height="300" loading="lazy"></div>

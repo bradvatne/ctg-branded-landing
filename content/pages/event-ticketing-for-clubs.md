@@ -9,7 +9,7 @@ date: 2026-07-16
 excerpt: "Event ticketing software for clubs: tiered tickets, QR check-in at the door, every-guest data capture, and the ads loop — in the same platform as your table bookings."
 hero: /assets/blog/event-ticketing-for-clubs.webp
 heroAlt: "Guests being scanned in with a QR ticket at a nightclub door"
-description: "Event ticketing for clubs: tiered tickets, QR-code check-in, every-guest data capture, and real-time ad attribution in one platform. No monthly fee."
+description: "Event ticketing for clubs: tiered tickets, QR-code check-in, every-guest data capture, and real-time ad attribution in one platform."
 ---
 A club sells 600 tickets to a Saturday headliner and, by Monday, knows almost nothing about the night. The ticketing site holds 600 email addresses it won't hand over cleanly. The door ran on a printed manifest and a highlighter. The tables that sold alongside the tickets sat in a different system. And the ad spend that filled the room can't be traced to a single ticket. The event sold out and still left the venue poorer in data than it should be.
 
@@ -45,7 +45,7 @@ When an event sells out, the ticketing usually stops working for you — the "so
 
 A ticket sale is a conversion, so Clubtech treats it like one. Bookings and ticket revenue fire to Meta, Google, and GA4 in real time with the revenue value posted back, so campaigns optimize toward booked dollars rather than clicks. Abandoned-checkout events fire within seconds, and lookalike audiences are seeded from your highest-value buyers, not your follower count. The night's data then lands in more than 20 built-in reports — sales by tier, lead time, average value — without exporting a spreadsheet. See the [attribution loop](/grow/#ads) or the [door operation](/platform/#check-in).
 
-The commercials are the same as the rest of the platform: no monthly fee, a 4% online processing fee paid by the customer, and a $2,000 one-time setup fee per venue covering widget setup, configuration, and staff training.
+Commercials are scoped to the venue. Discovery maps the event inventory, booking flow, payments, integrations, door operation, and rollout before Clubtech returns with a tailored proposal.
 
 ## Questions operators ask
 
@@ -67,7 +67,7 @@ The venue does. Clubtech is white-label on your own domain, so the ticket buyer 
 
 ### What does club event ticketing cost?
 
-There's no monthly fee. Clubtech charges a 4% online processing fee paid by the customer and a one-time $2,000 setup fee per venue that covers widget setup, system configuration, and staff training. Pricing is the same whether you're selling event tickets, table bookings, or both.
+The commercial proposal follows the confirmed event and venue scope. Ticketing-only, furniture-led booking, and a connected model are different operating jobs, so the proposal is built after discovery rather than pulled from a generic tier.
 
 ---
 

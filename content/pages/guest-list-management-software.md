@@ -9,7 +9,7 @@ date: 2026-07-16
 excerpt: "A guest list management system that captures every guest at the door, checks them in by QR, and turns the list into a marketable database — not a spreadsheet."
 hero: /assets/blog/nightclub-table-booking.webp
 heroAlt: "Nightclub door with a host checking guests in against a live list"
-description: "Guest list management software for premium venues: every-guest data capture, QR check-in, operator floor plan, and guest intelligence — no monthly fee."
+description: "Guest list management software for premium venues: every-guest data capture, QR check-in, operator floor plan, and guest intelligence."
 ---
 It's 11:40pm and the door is a bottleneck. A host is scrolling a phone with four promoter lists open, a printout is smudged from the drizzle, and a group of six is arguing that their names are "definitely on it." Somewhere behind the rope, a prepaid table sits empty because nobody at the door can see it. The guest list — the thing that's supposed to control who gets in — is the slowest, least reliable object in the building.
 
@@ -52,7 +52,7 @@ That data drives the ads loop. Bookings fire to Meta, Google, and GA4 in real ti
 
 A standalone list app or a spreadsheet does one thing: it holds names. It doesn't sell the table, capture the group, allocate the floor, or feed your ads. So the door runs on one tool, the reservations on another, and the marketing on a third — and the guest data never lives in one place. Clubtech is one platform where the [nightclub table booking](https://www.clubtechglobal.com/solutions/nightclub-table-booking/) map, the [day club booking system](/solutions/day-club-booking-system/), the door, and the database are the same object. It sits on top of your existing POS and PMS with no major IT changes — it connects the parts that used to be blind to each other.
 
-The commercials: no monthly fee, a 4% online processing fee paid by the customer, and a $2,000 one-time setup fee per venue that covers widget setup, configuration, and staff training. [Book a demo](https://www.clubtechglobal.com/book-a-demo/) for a walkthrough built around your floor.
+Commercials follow discovery. We map the lists, invitation flow, door operation, payments, integrations, and rollout, then return with a proposal built around the confirmed scope. [Book a discovery call](https://www.clubtechglobal.com/book-a-demo/) using your floor and guest-list workflow.
 
 ## Questions operators ask
 

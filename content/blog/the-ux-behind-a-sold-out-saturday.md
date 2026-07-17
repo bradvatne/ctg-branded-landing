@@ -73,4 +73,4 @@ The commitment should be clear when the package is selected and repeated at orde
 
 ## Review the complete flow
 
-Use the [beach club booking-system guide](/blog/beach-club-booking-system-complete-guide/) for vendor questions and [Platform](/platform/#booking) for the Clubtech workflow. To test it on a venue like yours, [book a demo](/book-a-demo/).
+Use the [beach club booking-system guide](/blog/beach-club-booking-system-complete-guide/) for vendor questions and [Bookings](/platform/#booking) for the Clubtech workflow. To test it on a venue like yours, [book a demo](/book-a-demo/).

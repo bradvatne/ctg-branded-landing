@@ -61,9 +61,9 @@ Yes. Exact furniture can carry tiered packages, deposits, prepayment, and minimu
 
 No. It sits on top of the existing stack rather than requiring a replacement project.
 
-### What does Clubtech cost?
+### How are Clubtech commercials scoped?
 
-There is no monthly fee. The public model is a 4% online processing fee paid by the customer and a $2,000 one-time set-up fee per venue. [See pricing](/pricing/).
+Commercials follow discovery. We map the seasonal inventory, payments, integrations, teams, and rollout, then return with a proposal built around the confirmed operation. [See how commercial scoping works](/pricing/).
 
 ---
 

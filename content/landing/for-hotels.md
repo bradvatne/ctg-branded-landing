@@ -95,8 +95,8 @@ Opera PMS is an approved integration. The exact integration depth, data flow, an
 
 No. Clubtech sits on top of the existing stack rather than requiring a rip-and-replace project.
 
-### What does Clubtech cost?
+### How are hotel commercials scoped?
 
-There is no monthly fee. The public commercial model is a 4% online processing fee paid by the customer and a $2,000 one-time set-up fee per venue.
+Commercials are scoped to the property. Discovery maps the pool and beach inventory, resident and outside-guest journeys, payments, PMS boundary, integrations, and rollout before Clubtech returns with a tailored proposal.
 
-[See complete pricing](/pricing/)
+[See how commercial scoping works](/pricing/)

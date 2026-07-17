@@ -63,7 +63,7 @@ Clubtech's **every-guest data capture** means the booker invites their group, an
 
 Booking, door, and database are one record, so the guest you scanned tonight is the guest you can market to, seat faster, and recognize next time.
 
-Clubtech is an all-in-one booking, revenue, front-of-house operations, and marketing platform for premium venues, and it sits on top of your existing POS and PMS with no major IT changes — it does not replace your stack. There is no monthly fee. The online processing fee is 4%, paid by the customer, and there is a one-time $2,000 set-up fee per venue that covers widget setup, configuration, and staff training. If you want to see the door work on your own floor plan, a demo runs 15 minutes with no pitch deck, no contracts, and no credit card. [Book a demo](https://www.clubtechglobal.com/book-a-demo/).
+Clubtech is an all-in-one booking, revenue, front-of-house operations, and marketing platform for premium venues, and it sits on top of your existing POS and PMS with no major IT changes — it does not replace your stack. Commercials follow discovery: the venue, door operation, payments, integrations, and rollout are mapped before Clubtech returns with a tailored proposal. If you want to see the door work on your own floor plan, [book a discovery call](https://www.clubtechglobal.com/book-a-demo/).
 
 ## Questions operators ask
 

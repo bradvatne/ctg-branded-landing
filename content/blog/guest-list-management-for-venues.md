@@ -70,7 +70,7 @@ A shared list works for a launch party. It breaks the night you actually need it
 
 The moment any of these is costing you real revenue or real time is the moment guest list software earns its place. And it does not require replacing your stack — Clubtech sits on top of your existing POS and PMS with no major IT changes.
 
-The commercials are straightforward: no monthly fee, a 4% online processing fee paid by the customer, and a $2,000 one-time set-up fee per venue that covers widget setup, configuration, and staff training. See it running on a floor plan like yours in 15 minutes — no pitch deck, no contracts, no credit card.
+Commercials follow discovery. We map the guest-list workflow, floor, payments, integrations, teams, and rollout, then return with a proposal built around the confirmed operation. See it running on a floor plan like yours in a focused discovery call.
 
 ## Questions operators ask
 

@@ -66,9 +66,9 @@ Yes. The 3D birds-eye booking map lets guests select exact furniture or zones be
 
 Yes. Clubtech is white-label: the booking runs on the venue's domain and design, and the guest data belongs to the venue.
 
-### How much does Clubtech cost?
+### How are Clubtech commercials scoped?
 
-There is no monthly fee. The public model is a 4% online processing fee paid by the customer and a $2,000 one-time set-up fee per venue covering widget setup, system configuration, and staff training. [See pricing](/pricing/).
+Commercials follow discovery. We map the venue, inventory, payments, integrations, teams, and rollout, then return with a proposal built around the confirmed operation. [See how commercial scoping works](/pricing/).
 
 ---
 

@@ -31,7 +31,7 @@ That transparency and nightlife focus make it a defensible choice for a single-p
 | Floor operations | Guest map tied to live inventory, allocation, and operator floor plan | Interactive drag-and-drop operator floorplan and reservation workflow |
 | Revenue setup | Packages, add-ons, prepayments, deposits, minimum spends, and dynamic pricing | VIP reservations, deposits, admissions, tickets, and plan-dependent tools |
 | Marketing | Every-guest capture plus revenue-valued Meta, Google, and GA4 events | CRM, customer profiles, analytics, and data exports |
-| Commercials | No monthly fee; 4% online fee paid by the customer; $2,000 one-time setup | $99, $299, and $499 monthly plans shown publicly; verify current inclusions |
+| Commercials | Scoped to the venue and confirmed after discovery | $99, $299, and $499 monthly plans shown publicly; verify current inclusions |
 
 ## Where Clubtech fits
 

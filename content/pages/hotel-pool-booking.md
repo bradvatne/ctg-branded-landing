@@ -48,7 +48,7 @@ Direct software inverts that. Your domain, your pricing, your guest profiles —
 
 Hotels already run rooms on data. A pre-sold deck gives the same discipline to the pool: more than 20 built-in reports cover booking volume, lead time by daypart, average value by furniture type, and repeat share. It's the difference between generic venue booking software and a system that understands furniture, zones, and dayparts as the actual inventory. The [guest intelligence overview](/grow/#guest-data) owns the reporting detail.
 
-The commercials fit a hotel's ancillary math: no monthly fee, with setup covering the booking widget, configuration, and staff training, and the platform earning when you sell. FINNS Beach Club — whose CEO Beau Whittington describes moving from on-the-day bookings with no financial guarantee to millions of dollars in pre-paid bookings each month — runs the same engine at resort scale.
+Commercials follow discovery: the property inventory, resident and outside-guest journeys, payments, PMS boundary, integrations, and rollout are scoped before Clubtech returns with a tailored proposal. FINNS Beach Club — whose CEO Beau Whittington describes moving from on-the-day bookings with no financial guarantee to millions of dollars in pre-paid bookings each month — runs the same engine at resort scale.
 
 ## Questions operators ask
 
@@ -66,7 +66,7 @@ Charge for scarcity, not access. Standard loungers can remain part of the reside
 
 ### What does hotel pool booking software cost?
 
-Clubtech has no monthly fee. Setup covers the booking widget, system configuration, and staff training, and the platform earns when you sell. For a hotel, that means the deck becomes a revenue line without adding a fixed software subscription to the cost base. [Book a demo](../../book-a-demo/) for a quote built around your property.
+Clubtech scopes the property before proposing commercials. We map the deck, resident and outside-guest journeys, payments, PMS boundary, integrations, and rollout, then return with the recommended build and proposal together. [Book a discovery call](../../book-a-demo/) using your property inventory.
 
 ### Does Clubtech integrate with Opera PMS?
 

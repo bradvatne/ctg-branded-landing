@@ -10,7 +10,7 @@ date: 2026-07-12
 excerpt: "Sell every sunbed before the towels hit the deck. Map-based booking, prepayment, and guest data — why premium decks from Cannes to Mykonos pre-sell."
 hero: /assets/blog/sunbed-booking-system.webp
 heroAlt: "Aerial view of a beach club deck with rows of reserved daybeds at golden hour"
-description: "Sunbed booking software that pre-sells your deck: map-based reservations, prepayment, guest data. No monthly fee — how premium venues run it."
+description: "Sunbed booking software that pre-sells your deck: map-based reservations, prepayment, guest data, and live floor operations."
 ---
 Every morning, from Cannes to Nice to Mykonos, the same scene: guests stalking the deck at 7am, towels claiming sunbeds that won't be sat on until noon. Operators treat it as an etiquette problem. It isn't. It's inventory being allocated for free, by whoever wakes up earliest, with no payment, no data, and no guarantee anyone shows up.
 
@@ -55,7 +55,7 @@ For resort and hotel decks, the same map handles resident reservations, outside-
 
 ## Proof — What it costs
 
-No monthly fee, and the platform earns when you sell. Setup covers the booking widget, system configuration, and staff training. Clubtech sits on top of your existing POS and PMS rather than replacing them, and runs white-label — your domain, your design, your guest data. The [platform overview](../../platform/) shows how the pieces fit.
+Clubtech sits on top of your existing POS and PMS rather than replacing them, and runs white-label — your domain, your design, your guest data. Commercials follow discovery: inventory, payments, integrations, teams, and rollout are mapped before a proposal is built. The [Bookings overview](../../platform/) shows how the pieces fit.
 
 ## Questions operators ask
 
@@ -73,7 +73,7 @@ Yes — advance payment is the point. Prepaid sunbeds eliminate no-shows, bank t
 
 ### What is the best sunbed booking app for a beach club?
 
-The best sunbed booking system depends on what your deck earns. Lightweight apps handle time-slot reservations, which suits a small pool with a handful of loungers. If the deck is a profit center, you need map-based selection, tiered packages, prepayment, PMS integration, and marketing data — Clubtech is built around exactly that inventory, with no monthly fee.
+The best sunbed booking system depends on what your deck earns. Lightweight apps handle time-slot reservations, which suits a small pool with a handful of loungers. If the deck is a profit center, you need map-based selection, tiered packages, prepayment, PMS integration, and marketing data — Clubtech is built around exactly that inventory.
 
 ### Do hotels use sunbed reservation software?
 

@@ -54,7 +54,7 @@ Each booking fires to Meta, Google, and GA4 in real time, with revenue posted ba
 
 And because 82% of bookings happen on a phone after 10pm — the group chat hour — the checkout is built for that moment: no app install, wallet checkout, done in four taps. The [mobile booking experience](/platform/#booking) shows the flow end to end.
 
-The commercials match the model: no monthly fee, with setup covering the booking widget, configuration, and staff training, and the platform earning when you sell. Clubtech sits on top of your existing POS with no major IT changes. [Book a demo](../../book-a-demo/) for a quote built around your venue.
+Commercials follow discovery. We map the deck, dayparts, packages, payments, POS boundary, integrations, teams, and rollout, then return with a proposal built around the confirmed operation. [Book a discovery call](../../book-a-demo/) using one real trading day.
 
 ## Questions operators ask
 

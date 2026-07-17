@@ -31,7 +31,7 @@ For festivals, concerts, attractions, and one-off venue events, that is a credib
 | Revenue controls | Packages, add-ons, dynamic pricing, prepayments, deposits, and minimum spends | Ticket tiers, products, vouchers, and organizer-configured payment options |
 | Door | Native ticketing with QR-code check-in plus guest-list workflows | Ticket scanning and event access tools |
 | Customer data | Venue-owned, white-label, with every-guest capture | Organizer-owned data and white-label sales from the organizer website |
-| Commercials | No monthly fee; 4% online fee paid by the customer; $2,000 one-time setup | Confirm current event and payment fees directly with Megatix |
+| Commercials | Scoped to the venue and confirmed after discovery | Confirm current event and payment fees directly with Megatix |
 
 ## Where Clubtech fits
 
@@ -47,7 +47,7 @@ If considering a full switch, test ticket creation, high-volume entry, refunds, 
 
 ## Product and next-step pathway
 
-Start at [Sell: events and ticketing](/sell/#events) for the commercial setup, then [Platform: check-in](/platform/#check-in) for the door. If the event also sells cabanas or tables, review the [day-club solution](/solutions/day-club-booking-system/) and [book a demo](/book-a-demo/).
+Start under [Revenue: events and ticketing](/sell/#events) for the commercial setup, then [Bookings: check-in](/platform/#check-in) for the door. If the event also sells cabanas or tables, review the [day-club solution](/solutions/day-club-booking-system/) and [book a demo](/book-a-demo/).
 
 ## Questions operators ask
 

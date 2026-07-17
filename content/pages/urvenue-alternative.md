@@ -32,7 +32,7 @@ For a property that wants one experience layer across cabanas, dining, activitie
 | Distribution | Direct white-label channel and the venue's paid media | Direct experiences plus UrVenue's distribution marketplace |
 | Revenue controls | Packages, add-ons, prepayments, deposits, minimum spends, and dynamic pricing | Real-time inventory and yielding; confirm controls by module |
 | Marketing | Revenue-valued Meta, Google, and GA4 events; abandoned-booking events | Integrated marketing tools; confirm event and ad-platform detail in the demo |
-| Commercials | No monthly fee; 4% online fee paid by the customer; $2,000 one-time setup | Quote-based; confirm modules, services, integrations, and implementation |
+| Commercials | Scoped to the venue and confirmed after discovery | Quote-based; confirm modules, services, integrations, and implementation |
 
 ## Where Clubtech fits
 

@@ -10,7 +10,7 @@ date: 2026-07-12
 excerpt: "The beach club booking system premium venues run — 3D map booking, packages, prepayment, guest data. See how FINNS pre-sells millions every month."
 hero: /assets/blog/beach-clubs.webp
 heroAlt: "Premium beach club with an interactive map booking flow on a phone"
-description: "The beach club booking system premium venues run: 3D map booking, packages, prepayment, guest data. No monthly fee. See how FINNS pre-sells millions."
+description: "The beach club booking system premium venues run: 3D map booking, packages, prepayment, guest data. See how FINNS pre-sells millions."
 ---
 A beach club doesn't lose money at the door. It loses money in the gap between a guest deciding to come and a guest actually paying — the DM that never converts, the daybed held on a promise, the front row allocated by whoever texted the manager first. A $450 daybed that walks at 2pm is $450 you never see again.
 
@@ -53,7 +53,7 @@ It is designed to sit on top of the venue's existing POS and PMS with zero major
 
 FINNS Beach Club in Bali runs this model at scale. CEO Beau Whittington puts it plainly: from simple on-the-day bookings with no financial guarantee to millions of dollars worth of pre-paid bookings each month. Same beach, same furniture — a different selling window.
 
-The commercials are aligned with that outcome: no monthly fee, and setup covers the booking widget, configuration, and staff training. Clubtech earns when you sell. [Book a demo](../../book-a-demo/) for a quote built around your venue.
+Commercials follow discovery. We map the deck, zones, packages, payments, integrations, service-day teams, and rollout, then return with a proposal built around the confirmed operation. [Book a discovery call](../../book-a-demo/) using your venue inventory.
 
 ## Questions operators ask
 
@@ -63,7 +63,7 @@ A beach club booking system lets guests choose and pay for specific daybeds, cab
 
 ### How much does a beach club booking system cost?
 
-Clubtech has no monthly fee. Setup covers the booking widget, system configuration, and staff training, and the platform earns when you sell. That structure means the platform's revenue scales with your bookings rather than sitting on your P&L as fixed software cost.
+Clubtech scopes the venue before proposing commercials. The inventory, booking journey, payments, integrations, service-day operation, and rollout are mapped first so the proposal has operating context.
 
 ### How do you increase beach club revenue with a booking system?
 

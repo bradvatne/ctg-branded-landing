@@ -116,4 +116,4 @@ Profitability varies with location, season length, cost structure, and revenue m
 
 ---
 
-**See the four revenue levers working together.** Continue to [Clubtech Sell](/sell/), then [book a demo](/book-a-demo/) configured around a venue like yours.
+**See the four revenue levers working together.** Continue to [Clubtech Revenue](/sell/), then [book a demo](/book-a-demo/) configured around a venue like yours.

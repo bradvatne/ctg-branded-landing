@@ -32,7 +32,7 @@ That discovery can be valuable for a property entering the day-pass category or 
 | Inventory | Exact daybeds, cabanas, tables, zones, and dayparts | Day passes, cabanas, daybeds, spa products, day rooms, and packages listed by the property |
 | Revenue controls | Tiered packages, stackable add-ons, prepayments, deposits, minimum spends, and dynamic pricing | Property-managed product inventory and pricing in the partner portal |
 | Guest data | Venue-owned; every invited guest can supply their own details | Marketplace booking and partner reservation data; confirm permitted use in the agreement |
-| Commercials | No monthly fee; 4% online fee paid by the customer; $2,000 one-time setup | Confirm commission, processing, and agreement terms with ResortPass |
+| Commercials | Scoped to the venue and confirmed after discovery | Confirm commission, processing, and agreement terms with ResortPass |
 
 ## Where Clubtech fits
 
