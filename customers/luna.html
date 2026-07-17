@@ -117,6 +117,13 @@
     .luna-pull blockquote .hl{color:var(--navy)}
     .luna-pull-meta{margin-top:34px;font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.72)}
 
+    /* Growth / trend cards */
+    .luna-growth{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:52px}
+    .luna-grow{border:1px solid var(--line);border-radius:24px;padding:34px;background:linear-gradient(165deg,#f4f5ff,var(--lav))}
+    .luna-grow-n{font-size:clamp(38px,4vw,56px);line-height:.92;font-weight:800;letter-spacing:-.05em;color:var(--indigo);display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+    .luna-grow-n .to{color:var(--navy);opacity:.38;font-size:.7em}
+    .luna-grow p{margin-top:16px;color:var(--muted);font-weight:600;font-size:15px;line-height:1.45}
+
     /* JS reveal — fail-safe: only hides once our script marks html.luna-js */
     html.luna-js .luna-rise{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,.61,.36,1);transition-delay:var(--d,0s)}
     html.luna-js .luna-rise.is-in{opacity:1;transform:none}
@@ -129,6 +136,7 @@
       .luna-stat-grid{grid-template-columns:1fr 1fr}
       .luna-facts{grid-template-columns:1fr}
       .luna-modes{grid-template-columns:1fr}
+      .luna-growth{grid-template-columns:1fr}
     }
     @media(max-width:700px){
       .luna-hero{padding-top:150px}
@@ -370,20 +378,43 @@
     <div class="luna-wrap">
       <div class="luna-stat-grid">
         <div class="luna-stat feature luna-rise">
-          <div class="luna-num" data-count="99.7" data-decimals="1"><span class="u">%</span></div>
-          <p>of booking revenue came from pre-reserved furniture — daybeds, sunbeds and cabanas, paid for before arrival.</p>
+          <div class="luna-num" data-count="2.6" data-decimals="1" data-prefix="Rp"><span class="u">M</span></div>
+          <p>average order value. Each reservation is a complete, pre-paid order — with add-ons and packages sold in the same flow, not just a table held at the door.</p>
         </div>
         <div class="luna-stat luna-rise" style="--d:.06s">
           <div class="luna-num" data-count="63"><span class="u">%</span></div>
           <p>of furniture bookings were premium tiers. Given the choice on the map, guests reliably trade up.</p>
         </div>
         <div class="luna-stat luna-rise" style="--d:.12s">
-          <div class="luna-num" data-count="21"><span class="u">%</span></div>
-          <p>of every booking was for a single day — Saturday. The engine absorbs the peak with no queue at the door.</p>
+          <div class="luna-num" data-count="8"><span class="u">%</span></div>
+          <p>of visitors who open Luna's booking map complete a paid booking — a standout rate for a high-ticket, pre-paid reservation.</p>
         </div>
         <div class="luna-stat luna-rise" style="--d:.18s">
           <div class="luna-num" data-count="50"><span class="u">%+</span></div>
           <p>of bookings were made the same day as the visit — walk-up demand, captured as paid, tracked reservations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GROWTH / TREND -->
+  <section class="luna-sec">
+    <div class="luna-wrap">
+      <span class="luna-eyebrow luna-rise">Not a one-off</span>
+      <h2 class="luna-h luna-rise" style="--d:.06s">A fortnight like this<br>isn't luck.</h2>
+      <p class="luna-lead luna-rise" style="--d:.12s">Zoom out from the fifteen days to the full month — and the year behind it — and the line only points one way: more of Luna's visitors turning into paid, pre-booked guests.</p>
+      <div class="luna-growth">
+        <div class="luna-grow luna-rise" style="--d:.06s">
+          <div class="luna-grow-n">2.1%<span class="to">→</span>7.9%</div>
+          <p>visitor-to-booking conversion, Jan 2025 to Feb 2026. Luna's map converts close to four times better than it did a year ago.</p>
+        </div>
+        <div class="luna-grow luna-rise" style="--d:.12s">
+          <div class="luna-grow-n">≈2×</div>
+          <p>the online bookings per month versus early 2025 — from roughly 420 a month to around 900.</p>
+        </div>
+        <div class="luna-grow luna-rise" style="--d:.18s">
+          <div class="luna-grow-n">Rp1.88B</div>
+          <p>in online bookings across February alone — the fuller month behind the fifteen-day headline.</p>
         </div>
       </div>
     </div>
