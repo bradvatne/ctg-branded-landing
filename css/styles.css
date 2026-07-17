@@ -41,6 +41,7 @@ summary{display:flex}
 .pricing-quote:before{content:"";position:absolute;z-index:0;width:560px;height:560px;top:-220px;right:-160px;background:radial-gradient(circle,rgba(93,254,194,.16),transparent 62%);pointer-events:none}
 .pricing-intro{position:relative;z-index:1}
 .pricing-intro h2{margin-top:4px}
+.pricing-intro>.eyebrow{color:var(--navy)}
 .pricing-intro>p{font-size:20px;line-height:1.5;color:#aeb9cb;font-weight:600;margin-top:24px;max-width:460px}
 .price-cta{position:relative;z-index:1;padding:38px;border-radius:26px;background:linear-gradient(160deg,rgba(65,94,226,.26),rgba(2,6,23,.15));border:1px solid rgba(93,254,194,.28);box-shadow:0 24px 60px rgba(2,6,23,.45);color:#cbd5e1;display:flex;flex-direction:column}
 .price-cta:before{content:"";position:absolute;left:38px;right:38px;top:0;height:2px;border-radius:0 0 4px 4px;background:linear-gradient(90deg,transparent,var(--mint),transparent)}

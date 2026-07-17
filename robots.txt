@@ -1,6 +1,6 @@
 # Clubtech branded landing — crawling welcome, AI ingestion welcome (AEO).
-# Machine-readable site summary for LLMs/agents: /ctg-branded-landing/llms.txt
-# Agent policy: /ctg-branded-landing/agents.txt
+# Machine-readable site summary for LLMs/agents: /llms.txt
+# Agent policy: /agents.txt
 
 User-agent: *
 Allow: /

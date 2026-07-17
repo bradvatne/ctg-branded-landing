@@ -399,7 +399,7 @@ function navMarkup(rel, active = null, solid = true) {
   const item = (top) => {
     const activeCls = active === top.key ? ' is-active' : '';
     const caret = top.cols ? '<svg class="nav-caret" width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>' : '';
-    const topA = `<a class="nav-top" href="${href(top.href)}"${top.cols ? ' aria-haspopup="true" aria-expanded="false"' : ''}>${top.label}${caret}</a>`;
+    const topA = `<a class="nav-top" href="${href(top.href)}"${top.cols ? ' aria-haspopup="true"' : ''}>${top.label}${caret}</a>`;
     if (!top.cols) return `        <div class="nav-item${activeCls}">${topA}</div>`;
     const cols = top.cols.map((c) => `            <div class="mega-col">
 ${c.h ? `              <p class="mega-h">${c.h}${c.tag ? `<span>${c.tag}</span>` : ''}</p>\n` : ''}${c.links.map((l) => megaLink('mega-link', l)).join('\n')}
@@ -543,7 +543,7 @@ const CONSENT_MARKUP = `<div class="cc-banner" id="cc-banner" role="region" aria
         <div class="cc-cat-head">
           <div class="cc-cat-title">Analytics</div>
           <label class="cc-switch">
-            <input type="checkbox" id="cc-toggle-analytics">
+            <input type="checkbox" id="cc-toggle-analytics" aria-label="Analytics cookies">
             <span class="cc-switch-slider"></span>
           </label>
         </div>
@@ -554,12 +554,12 @@ const CONSENT_MARKUP = `<div class="cc-banner" id="cc-banner" role="region" aria
         <div class="cc-cat-head">
           <div class="cc-cat-title">Marketing</div>
           <label class="cc-switch">
-            <input type="checkbox" id="cc-toggle-marketing">
+            <input type="checkbox" id="cc-toggle-marketing" aria-label="Marketing cookies">
             <span class="cc-switch-slider"></span>
           </label>
         </div>
         <div class="cc-cat-desc">Measures the performance of paid campaigns and lets us show you relevant ads on other platforms.</div>
-        <div class="cc-cat-vendors">Vendors · Google Ads · Meta Pixel</div>
+        <div class="cc-cat-vendors">Vendors · Google Ads · Meta Pixel · HubSpot</div>
       </div>
     </div>
     <div class="cc-prefs-actions">

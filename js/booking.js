@@ -277,7 +277,7 @@
   window.addEventListener('message', function (e) {
     var d = e && e.data;
     if (!d || d.meetingBookSucceeded !== true) return;       // HubSpot Meetings success signal
-    if (!/hubspot\.com$/i.test(originHost(e.origin))) return; // trust only HubSpot origins
+    if (!/(^|\.)hubspot\.com$/i.test(originHost(e.origin))) return; // trust only HubSpot origins
     track('demo_booked', { source: 'hubspot_meetings' });
   }, false);
 

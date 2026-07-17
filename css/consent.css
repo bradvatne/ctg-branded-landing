@@ -28,7 +28,7 @@
 .cc-cat-title{font-weight:800;color:var(--heading)}
 .cc-locked{font-size:12px;font-weight:800;color:var(--indigo);text-transform:uppercase;letter-spacing:.06em}
 .cc-cat-desc{margin-top:8px;font-size:13px;line-height:1.5;color:var(--muted)}
-.cc-cat-vendors{margin-top:8px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#94a3b8}
+.cc-cat-vendors{margin-top:8px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 
 .cc-switch{position:relative;display:inline-block;width:46px;height:26px;flex:none}
 .cc-switch input{opacity:0;width:0;height:0}

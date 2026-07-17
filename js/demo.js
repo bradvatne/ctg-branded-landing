@@ -24,6 +24,9 @@
   var mounts = [].slice.call(document.querySelectorAll('[data-demo]'));
   if (!mounts.length) return;
 
+  /* Honor reduced-motion: don't autoplay the ambient product-demo videos. */
+  var PRM = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+
   /* asset path relative to this script, so mounts work from any page depth */
   var SCRIPT_SRC = (document.currentScript && document.currentScript.src) || 'js/demo.js';
   var ASSET_BASE = SCRIPT_SRC.replace(/js\/demo\.js.*$/, 'assets/demo/');
@@ -163,6 +166,7 @@
   /* innerHTML-parsed <video autoplay muted> doesn't always start in Chrome —
      nudge playback explicitly */
   function nudgeVideo(scope) {
+    if (PRM) return;
     $$('video', scope).forEach(function (vid) {
       vid.muted = true;
       var p = vid.play();
@@ -623,6 +627,7 @@
       state.pkg = id;
       $$('[data-pkgtab]', p).forEach(function (t) { t.classList.toggle('on', t.getAttribute('data-pkgtab') === id); });
       $$('[data-pkg]', p).forEach(function (c) { c.classList.toggle('sel', c.getAttribute('data-pkg') === id); });
+      track('demo_pkg_select', { spot: s.id, pkg: id });
     }
     $$('[data-pkgtab]', p).forEach(function (t) { t.addEventListener('click', function () { selectPkg(t.getAttribute('data-pkgtab')); }); });
     $$('[data-pkg]', p).forEach(function (c) { c.addEventListener('click', function () { selectPkg(c.getAttribute('data-pkg')); }); });
@@ -703,6 +708,7 @@
   function showView(name) {
     mark();
     $$('.ckd-view').forEach(function (v) { v.classList.remove('open'); });
+    track('demo_view', { view: name });
     if (name === 'map') return;
     var v = $('[data-view="' + name + '"]');
     if (name === 'addons') renderAddons(v);
@@ -710,7 +716,6 @@
     if (name === 'confirm') renderConfirm(v);
     if (name === 'success') renderSuccess(v);
     v.classList.add('open');
-    track('demo_view', { view: name });
   }
 
   function wireAppbar(v) {
@@ -743,7 +748,7 @@
         '</div>' +
         '<div class="ckd-feature" style="' + mediaBg(feat) + '">' +
           (feat.video
-            ? '<video class="featvid" autoplay muted loop playsinline src="' + ASSET_BASE + feat.video + '"></video>'
+            ? '<video class="featvid" ' + (PRM ? '' : 'autoplay ') + 'muted loop playsinline src="' + ASSET_BASE + feat.video + '"></video>'
             : (feat.img ? '' : '<span class="big">' + feat.emoji + '</span>')) +
           '<h4 role="presentation">' + feat.name + '</h4>' + (feat.was ? '<s>' + money(feat.was) + '</s>' : '') +
           '<p class="fp">' + money(feat.price) + '</p>' + (feat.save ? '<span class="savechip">' + feat.save + '</span>' : '') +
@@ -783,7 +788,7 @@
     v.innerHTML =
       '<div class="ckd-shop">' +
         (sel.video
-          ? '<video class="media" autoplay muted loop playsinline' + (sel.img ? ' poster="' + ASSET_BASE + sel.img + '" style="' + mediaBg(sel) + '"' : '') + ' src="' + ASSET_BASE + sel.video + '"></video>'
+          ? '<video class="media" ' + (PRM ? '' : 'autoplay ') + 'muted loop playsinline' + (sel.img ? ' poster="' + ASSET_BASE + sel.img + '" style="' + mediaBg(sel) + '"' : '') + ' src="' + ASSET_BASE + sel.video + '"></video>'
           : '<div class="media" style="' + mediaBg(sel) + '"></div>') +
         '<div class="ckd-shop-top">' +
           '<button type="button" class="ckd-shop-back" data-back aria-label="Back to map">‹</button>' +
@@ -880,12 +885,13 @@
       b.addEventListener('click', function () {
         var c = state.cart.splice(+b.getAttribute('data-rm'), 1)[0];
         if (c) { var sp = $('[data-id="' + c.spot + '"]'); if (sp) sp.classList.remove('picked'); }
+        track('demo_cart_remove', { type: 'furniture', spot: c && c.spot });
         if (!state.cart.length) { showView('map'); } else renderReview(v);
         renderBar();
       });
     });
     $$('[data-rma]', v).forEach(function (b) {
-      b.addEventListener('click', function () { delete state.addons[b.getAttribute('data-rma')]; renderReview(v); renderBar(); });
+      b.addEventListener('click', function () { track('demo_cart_remove', { type: 'addon', addon: b.getAttribute('data-rma') }); delete state.addons[b.getAttribute('data-rma')]; renderReview(v); renderBar(); });
     });
     $('[data-more]', v).addEventListener('click', function () { showView('map'); });
     $('[data-proceed]', v).addEventListener('click', function () { showView('confirm'); });
@@ -1058,14 +1064,15 @@
         b.addEventListener('click', function () {
           var c = state.cart.splice(+b.getAttribute('data-rmf'), 1)[0];
           if (c) { var sp = $('[data-id="' + c.spot + '"]'); if (sp) sp.classList.remove('picked'); }
+          track('demo_cart_remove', { type: 'furniture', spot: c && c.spot });
           renderBar(); openSheet('cart');
         });
       });
       $$('[data-rmc]', s).forEach(function (b) {
-        b.addEventListener('click', function () { delete state.addons[b.getAttribute('data-rmc')]; renderBar(); openSheet('cart'); });
+        b.addEventListener('click', function () { track('demo_cart_remove', { type: 'addon', addon: b.getAttribute('data-rmc') }); delete state.addons[b.getAttribute('data-rmc')]; renderBar(); openSheet('cart'); });
       });
       var rp = $('[data-rmp]', s);
-      if (rp) rp.addEventListener('click', function () { state.pass = 0; renderBar(); openSheet('cart'); });
+      if (rp) rp.addEventListener('click', function () { track('demo_cart_remove', { type: 'pass' }); state.pass = 0; renderBar(); openSheet('cart'); });
     }
     $('.ckd-x', s).addEventListener('click', closeSheet);
     $('.ckd-sheetscrim').classList.add('open');
