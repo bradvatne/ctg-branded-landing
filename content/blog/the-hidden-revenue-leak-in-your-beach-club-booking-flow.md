@@ -52,7 +52,7 @@ Now attach a $200 deposit at booking. If no-shows drop from 15% to 7% — well i
 
 Prepayment fails when it feels like a toll booth bolted onto the end of checkout. It works when the guest is already committed before the payment step appears.
 
-On [the platform](/platform.html), guests explore your venue on an interactive map, watch 360° walkthroughs of the zones, and pick the exact bed they want. By the time payment appears, they're not evaluating a deposit — they're protecting a spot they've already chosen. Checkout is four taps on a phone, with Apple Pay and Google Pay, no app install; that matters when 82% of bookings happen on a phone after 10pm. The same map-first mechanics run our [sunbed booking system](/solutions/sunbed-booking-system/) for hotel and beach-club decks.
+On [the platform](/platform/), guests explore your venue on [an interactive map](/booking/#interactive-booking-map), watch 360° walkthroughs of the zones, and pick the exact bed they want. By the time payment appears, they're not evaluating a deposit — they're protecting a spot they've already chosen. [Checkout is four taps on a phone](/booking/#four-tap-checkout), with Apple Pay and Google Pay, no app install; that matters when 82% of bookings happen on a phone after 10pm. The same map-first mechanics run our [sunbed booking system](/solutions/sunbed-booking-system/) for hotel and beach-club decks.
 
 Two more leaks close at the same time. A guest who bails at payment triggers an abandoned-cart event to Meta within seconds, and dynamic ads return them to the exact zone, date, and price they left behind. And when the deck sells out, priority entry captures the guest's contact details anyway — demand you'd otherwise never know existed, ready for the next quiet Tuesday. Because guest intelligence is built in — booking volume, lead time by daypart, average value by variant — you watch the no-show rate fall in the same view you use to price the deck.
 
@@ -92,4 +92,4 @@ You keep the revenue, per whatever cancellation policy you publish — retained 
 
 ---
 
-**See the leak close on your own numbers.** 15 minutes, no pitch deck, no contracts — we'll show up with the platform already configured to a venue like yours. [Book a demo](/contact.html)
+**See the leak close on your own numbers.** 15 minutes, no pitch deck, no contracts — we'll show up with the platform already configured to a venue like yours. [Book a demo](/book-a-demo/)

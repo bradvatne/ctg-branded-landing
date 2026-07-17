@@ -32,13 +32,13 @@ You don't need to buy data. If you sell beds online, every booking is telling yo
 - **Season and events.** School holidays, a festival weekend, a headline act at the club next door — these are demand spikes you can see coming weeks out.
 - **Sell-out order.** Which zones go first? The zone that always sells out by Thursday is your clearest repricing candidate.
 
-On Clubtech this intelligence is built in — daily booking volume, lead time by daypart, and average value by variant, segmented and trending without anyone exporting a CSV.
+On Clubtech this intelligence is built in — [daily booking volume, lead time by daypart, and average value by variant, segmented and trending](/intelligence/#reports) without anyone exporting a CSV.
 
 ## "Book Online & Save" is dynamic pricing v1
 
-If a full pricing model feels like a leap, start with the version already proven on premium decks: a spread between the online price and the walk-up price.
+If a full pricing model feels like a leap, start with the version already proven on premium decks: [a spread between the online price and the walk-up price](/booking/#book-online-and-save).
 
-That spread is dynamic pricing with training wheels. It prices the same bed two ways based on when the guest commits — early commitment costs less, day-of costs more. The guest reads it as a reward. You bank the deeper benefits: revenue locked in before the weather app opens, capacity data days in advance, and a paid booking instead of a hopeful walk-up. It's the same early-commitment mechanic covered in [our beach club revenue playbook](/blog/beach-club-revenue-playbook/), and it's the fastest pricing change most venues can ship.
+That spread is [dynamic pricing](/booking/#dynamic-pricing) with training wheels. It prices the same bed two ways based on when the guest commits — early commitment costs less, day-of costs more. The guest reads it as a reward. You bank the deeper benefits: revenue locked in before the weather app opens, capacity data days in advance, and a paid booking instead of a hopeful walk-up. It's the same early-commitment mechanic covered in [our beach club revenue playbook](/blog/beach-club-revenue-playbook/), and it's the fastest pricing change most venues can ship.
 
 Once the spread is live, the next moves are increments, not leaps: widen it for peak Saturdays, narrow it midweek, and let observed lead times tell you when a day has earned a higher base price. <!-- VERIFY: whether operators can schedule date-specific price changes in advance inside the platform, or set them manually per date -->
 
@@ -96,4 +96,4 @@ On a schedule you set, ahead of time — not in real time while guests browse. R
 
 ---
 
-**See your pricing on Clubtech.** 15 minutes, no pitch deck, no contracts — we'll walk your tier ladder on a platform pre-configured for a venue like yours. [Book a demo](/contact.html)
+**See your pricing on Clubtech.** 15 minutes, no pitch deck, no contracts — we'll walk your tier ladder on a platform pre-configured for a venue like yours. [Book a demo](/book-a-demo/)

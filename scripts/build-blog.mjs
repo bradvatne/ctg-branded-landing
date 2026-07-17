@@ -259,6 +259,7 @@ ${items}
         <a href="${rel}solutions/"${active === 'solutions' ? ' class="nav-active"' : ''}>Solutions</a>
         <a href="${rel}blog/"${active === 'blog' ? ' class="nav-active"' : ''}>Blog</a>
       </div>
+      <a class="button nav-login" href="https://portal.clubtechglobal.com">Log in</a>
       <a class="button button-dark nav-cta" href="${rel}index.html#contact" data-open-demo>Book a Demo</a>
       <details class="mobile-menu">
         <summary>Menu</summary>
@@ -267,6 +268,7 @@ ${mobItems}
           <a href="${rel}solutions/">Solutions</a>
           <a href="${rel}compare/">Compare</a>
           <a href="${rel}blog/">Blog</a>
+          <a href="https://portal.clubtechglobal.com">Log in</a>
           <a href="${rel}index.html#contact" data-open-demo>Book a demo</a>
         </div>
       </details>
@@ -323,6 +325,7 @@ ${col('Locations', geos.map(pageLink))}
 ${col('Compare', [...compares.map(pageLink), [`${rel}compare/`, 'All comparisons']])}
     </div>
     <div class="footer-wordmark"><img src="${rel}brand/clubtech-wordmark-white-560.png" alt="Clubtech" width="1200" height="300" loading="lazy"></div>
+    <nav class="footer-legal" aria-label="Company and legal"><a href="/about/">About</a><a href="/careers/">Careers</a><a href="/privacy/">Privacy</a><a href="/cookies/">Cookies</a><a href="/terms/">Terms</a></nav>
     <p class="copyright">© 2026 Clubtech, Inc.</p>
   </footer>`;
 }
@@ -852,6 +855,11 @@ function renderSitemap(posts, pages) {
     ...FEATURE_PAGES.map(([slug]) => ({ loc: `${SITE_ORIGIN}/${slug}/`, lastmod: latest, changefreq: 'monthly', priority: '0.8' })),
     { loc: `${SITE_ORIGIN}/book-a-demo/`, lastmod: latest, changefreq: 'monthly', priority: '0.8' },
     { loc: `${SITE_ORIGIN}/blog/`, lastmod: latest, changefreq: 'weekly', priority: '0.8' },
+    { loc: `${SITE_ORIGIN}/about/`, lastmod: latest, changefreq: 'monthly', priority: '0.6' },
+    { loc: `${SITE_ORIGIN}/careers/`, lastmod: latest, changefreq: 'weekly', priority: '0.6' },
+    { loc: `${SITE_ORIGIN}/privacy/`, lastmod: latest, changefreq: 'yearly', priority: '0.3' },
+    { loc: `${SITE_ORIGIN}/cookies/`, lastmod: latest, changefreq: 'yearly', priority: '0.3' },
+    { loc: `${SITE_ORIGIN}/terms/`, lastmod: latest, changefreq: 'yearly', priority: '0.3' },
     ...Object.keys(PAGE_SECTIONS).map((sec) => ({ loc: `${SITE_ORIGIN}/${sec}/`, lastmod: latest, changefreq: 'weekly', priority: '0.7' })),
     ...posts.map((p) => ({
       loc: `${SITE_ORIGIN}/blog/${p.meta.slug}/`,

@@ -26,7 +26,7 @@ Strip away the demos and every serious platform has five layers. The gaps betwee
 
 ### 1. The map
 
-Guests should buy a *spot*, not a quantity. A real venue map lets guests explore zones, compare the front row to the shade line, and tap the exact bed they want. On Clubtech, guests can watch 360° walkthroughs of a zone before they commit — they're emotionally invested in their Saturday before the price ever appears. More on why this matters in the conversion section below.
+Guests should buy a *spot*, not a quantity. A real venue map lets guests explore zones, compare the front row to the shade line, and [tap the exact bed they want](/booking/#interactive-booking-map). On Clubtech, guests can watch 360° walkthroughs of a zone before they commit — they're emotionally invested in their Saturday before the price ever appears. More on why this matters in the conversion section below.
 
 ### 2. Packages and add-ons
 
@@ -38,7 +38,7 @@ Prepayment is the entire point. The system should take full payment or deposits 
 
 ### 4. Guest intelligence
 
-Every booking should teach you something: daily booking volume, lead time by daypart, average value by package variant, repeat-customer share. The test is whether you can see these segmented and trending *inside the platform*, or whether "reporting" means exporting a CSV and rebuilding the same spreadsheet every Monday. If your GM can't answer "how far out do our Saturday cabanas sell, and is that lead time growing?" in one screen, the data layer is decorative.
+Every booking should teach you something: daily booking volume, lead time by daypart, average value by package variant, repeat-customer share. The test is whether you can see these [segmented and trending](/intelligence/#reports) *inside the platform*, or whether "reporting" means exporting a CSV and rebuilding the same spreadsheet every Monday. If your GM can't answer "how far out do our Saturday cabanas sell, and is that lead time growing?" in one screen, the data layer is decorative.
 
 ### 5. Ads events
 
@@ -119,4 +119,4 @@ Guests book FINNS directly at [bookings.finnsbeachclub.com](https://bookings.fin
 
 ---
 
-**See your venue pre-sold.** 15 minutes, no pitch deck, no contracts — we'll walk you through the [platform](/platform.html) pre-configured for a venue like yours. [Book a demo](/contact.html)
+**See your venue pre-sold.** 15 minutes, no pitch deck, no contracts — we'll walk you through the [platform](/platform/) pre-configured for a venue like yours. [Book a demo](/book-a-demo/)

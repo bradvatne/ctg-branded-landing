@@ -37,11 +37,11 @@ That tiny moment of impulse — low friction, high intent — is one of the most
 
 For beach clubs and premium venues, it's no different. Guests who've just locked in their seating are primed to upgrade. They're picturing the day — the view, the bottle, the arrival — and they're seconds away from spending a little more to make it better.
 
-That's exactly where Clubtech's **"Recommended for your booking"** section lives.
+That's exactly where Clubtech's [**"Recommended for your booking"**](/booking/#upsells-add-ons) section lives.
 
 ## The Last-Minute Upsell Engine
 
-On the **Order Review** page — right before payment — Clubtech automatically displays a curated selection of high-margin add-ons.
+On the [**Order Review**](/booking/#four-tap-checkout) page — right before payment — Clubtech automatically displays a curated selection of high-margin add-ons.
 
 Think: premium bottles, celebration packages, or merchandise.
 
@@ -49,7 +49,7 @@ These aren't random suggestions. They're context-aware recommendations, tailored
 
 Reserved a poolside daybed? You'll see bottle service options that fit that vibe.
 
-Booked a large cabana? Expect bundle offers that match group bookings.
+Booked a large cabana? Expect [bundle offers that match group bookings](/booking/#tiered-packages).
 
 It feels personal, not pushy. Which is exactly why it converts.
 

@@ -32,7 +32,7 @@ Paid social and search work for beach clubs when they run as a loop, not a serie
 
 ### Motion 1 — prospecting seeded by your best guests
 
-Broad targeting with a good seed beats narrow interest-stacking. The seed that matters is your own booking history: guests ranked by lifetime value, not by follower count. Lookalike audiences built from your highest-LTV bookers point the platform at people who behave like your cabana buyers, not people who once tagged a beach. On Clubtech, those audiences are built from booking data automatically; if you're running your own stack, export your top spenders and seed lookalikes from them — never from your full email list, which is diluted by one-time bargain hunters.
+Broad targeting with a good seed beats narrow interest-stacking. The seed that matters is your own booking history: guests ranked by lifetime value, not by follower count. [Lookalike audiences](/intelligence/#lookalike-audiences) built from your highest-LTV bookers point the platform at people who behave like your cabana buyers, not people who once tagged a beach. On Clubtech, those audiences are built from booking data automatically; if you're running your own stack, export your top spenders and seed lookalikes from them — never from your full email list, which is diluted by one-time bargain hunters.
 
 ### Motion 2 — retargeting the browsers who didn't book
 
@@ -88,8 +88,8 @@ Every motion above gets cheaper and sharper with better guest data — and beach
 
 Three practices turn that into a compounding asset:
 
-1. **Capture the guest even when you can't take the money.** Sold-out nights are the biggest data days of your season. Priority-entry and free-entry capture flows mean the guest who found the front row gone still leaves a name and contact details — a warm audience for the next shoulder-season campaign instead of a stranger who bounced.
-2. **Own the relationship on your own domain.** Marketplace and aggregator bookings fill beds but the guest belongs to the marketplace. A white-label booking flow — your domain, your design, your guest data — means every booking enriches an asset you keep.
+1. **Capture the guest even when you can't take the money.** Sold-out nights are the biggest data days of your season. [Priority-entry](/booking/#priority-entry) and free-entry capture flows mean the guest who found the front row gone still leaves a name and contact details — a warm audience for the next shoulder-season campaign instead of a stranger who bounced.
+2. **Own the relationship on your own domain.** Marketplace and aggregator bookings fill beds but the guest belongs to the marketplace. A [white-label booking flow](/platform/#white-label) — your domain, your design, your guest data — means every booking enriches an asset you keep.
 3. **Segment on booking behavior, not demographics.** Repeat-customer share, average value by package variant, lead time by daypart — these are marketing segments, not just ops reports. The guest who books cabanas three weeks out gets the pre-season pre-sale email; the guest who books day-of gets the weather-window push.
 
 We've written before about [why first-party data is the future of beach club marketing](/blog/why-first-party-data-is-the-future-of-beach-club-marketing/) — the short version is that ad platforms rent you targeting, and your booking data is the only targeting you own.
@@ -143,4 +143,4 @@ Fast, and in two channels. Fire the abandoned-cart event to Meta within seconds 
 
 ---
 
-**See the loop running on your venue.** 15 minutes, no pitch deck, no contracts — pre-configured for a venue like yours. [Book a demo](/contact.html)
+**See the loop running on your venue.** 15 minutes, no pitch deck, no contracts — pre-configured for a venue like yours. [Book a demo](/book-a-demo/)

@@ -101,7 +101,7 @@ When designed well, they elevate perceived value and drive immediate action.
 
 Guests love a deal, especially when it feels exclusive.
 
-Displaying the difference between standard and online prices — even a small percentage — signals value and rewards early booking.
+Displaying the difference between standard and online prices — even a small percentage — signals value and [rewards early booking](/booking/#book-online-and-save).
 
 ## The Operator's Perspective: Why It Matters
 
@@ -125,7 +125,7 @@ That's what separates a "busy day" from a _profitable_ one.
 
 We designed Clubtech's upsell flow to be irresistible — not because of tricks or gimmicks, but because it mirrors how guests already think.
 
-Our booking journey has a dedicated **Add-ons Gallery** — a clean, swipeable section built for visual engagement.
+Our booking journey has a dedicated [**Add-ons Gallery**](/booking/#upsells-add-ons) — a clean, swipeable section built for visual engagement.
 
 Each item features:
 
@@ -140,7 +140,7 @@ Guests can add items to their cart, browse categories, and see their spend updat
 
 A countdown timer ensures bookings aren't abandoned mid-checkout, while subtle cues ("Almost Sold Out," "Popular This Weekend") guide decisions naturally.
 
-For venues, every upsell is tracked and reportable — giving marketing and operations teams the data they need to optimize promotions.
+For venues, every upsell is [tracked and reportable](/intelligence/#reports) — giving marketing and operations teams the data they need to optimize promotions.
 
 You're not guessing what works. You're watching it in real time.
 

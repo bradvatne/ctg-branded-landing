@@ -41,7 +41,7 @@ There was no single trick. FINNS's booking flow stacks four mechanics, and each 
 
 ### Guests buy the spot, not a ticket
 
-FINNS sells through an interactive venue map. Guests explore zones on their phone, tap the exact daybed or cabana they want, and watch 360° walkthroughs of the area before committing. By the time a price appears, the guest isn't evaluating "a booking" — they're protecting the specific spot they've already pictured themselves in. That emotional commitment before the price reveal is why map-first flows out-convert grid-and-dropdown widgets, a pattern we break down in the [complete guide to beach club booking systems](/blog/beach-club-booking-system-complete-guide/).
+FINNS sells through an interactive venue map. Guests explore zones on their phone, [tap the exact daybed or cabana they want](/booking/#interactive-booking-map), and watch 360° walkthroughs of the area before committing. By the time a price appears, the guest isn't evaluating "a booking" — they're protecting the specific spot they've already pictured themselves in. That emotional commitment before the price reveal is why map-first flows out-convert grid-and-dropdown widgets, a pattern we break down in the [complete guide to beach club booking systems](/blog/beach-club-booking-system-complete-guide/).
 
 ### Book Online & Save pulls demand forward
 
@@ -49,7 +49,7 @@ An online-versus-door spread gives guests a concrete reason to commit early rath
 
 ### Packages turn a bed into a basket
 
-Inventory is tiered — bed only, party package, ultimate experience — with stackable add-ons like bottles, cakes, and transfers bolted onto the same checkout. Guests self-select upward when the upgrade is one tap at booking rather than an upsell conversation on a busy deck. The result shows up as pre-booked bottle revenue: committed before the guest has even landed in Bali. <!-- VERIFY: pre-booked bottle purchase growth figure for FINNS -->
+Inventory is tiered — bed only, party package, ultimate experience — with [stackable add-ons like bottles, cakes, and transfers](/booking/#upsells-add-ons) bolted onto the same checkout. Guests self-select upward when the upgrade is one tap at booking rather than an upsell conversation on a busy deck. The result shows up as pre-booked bottle revenue: committed before the guest has even landed in Bali. <!-- VERIFY: pre-booked bottle purchase growth figure for FINNS -->
 
 ### Sold out stopped meaning goodbye
 
@@ -63,7 +63,7 @@ FINNS is a flagship, not a unicorn. The mechanics are venue-size-agnostic:
 
 - **The pre-paid shift compounds.** Every booking moved from on-the-day to pre-paid is a no-show eliminated, a data point gained, and a night you can staff with confidence. The [beach club revenue playbook](/blog/beach-club-revenue-playbook/) covers the full pricing and package architecture.
 - **The map works at any scale.** A forty-bed deck benefits from spot-selection psychology the same way a beachfront giant does — premium rows sell out first instead of last. If sunbeds are your inventory, start with the [sunbed booking system](/solutions/sunbed-booking-system/) page.
-- **Mobile is non-negotiable.** 82% of bookings happen on a phone after 10pm. The checkout that captured FINNS's late-night demand — sub-second load, no app install, four taps to paid — is the same [platform](/platform.html) configured to your venue.
+- **Mobile is non-negotiable.** 82% of bookings happen on a phone after 10pm. The checkout that captured FINNS's late-night demand — sub-second load, no app install, four taps to paid — is the same [platform](/platform/) configured to your venue.
 
 ## Questions operators ask
 
@@ -81,4 +81,4 @@ FINNS runs on Clubtech, a white-label booking and revenue platform for premium v
 
 ---
 
-**See the FINNS playbook on your floor plan.** 15 minutes, no pitch deck, no contracts — the platform arrives pre-configured to a venue like yours. [Book a demo](/contact.html)
+**See the FINNS playbook on your floor plan.** 15 minutes, no pitch deck, no contracts — the platform arrives pre-configured to a venue like yours. [Book a demo](/book-a-demo/)

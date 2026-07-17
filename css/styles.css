@@ -74,3 +74,11 @@ html{scroll-padding-top:96px}
 @keyframes demo-badge-blink{0%,100%{opacity:1}50%{opacity:.3}}
 .demo-badge-host:has(.ckd.tiny .ckd-panel.open) .ckd-badge,.demo-badge-host:has(.ckd.tiny .ckd-view.open) .ckd-badge,.demo-badge-host:has(.ckd-scrim.open) .ckd-badge{opacity:0}
 @media (prefers-reduced-motion: reduce){.ckd-badge i,.cko-badge i,.cki-badge i{animation:none}}
+
+/* nav-login + footer-legal (added by wiring pass) */
+.nav .button.nav-login{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,.22);height:46px;padding:9px 18px;margin-right:8px}
+.nav .button.nav-login:hover{background:rgba(255,255,255,.08);box-shadow:none;transform:translateY(-1px)}
+@media(max-width:900px){.nav .button.nav-login{display:none}}
+.footer-legal{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 20px;margin-bottom:14px}
+.footer-legal a{font-size:14px;color:#94a3b8;letter-spacing:0}
+.footer-legal a:hover{color:var(--mint)}

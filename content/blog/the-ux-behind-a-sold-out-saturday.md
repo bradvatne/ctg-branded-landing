@@ -42,7 +42,7 @@ These may sound like small details, but together they decide whether a guest com
 
 A booking engine isn't just a tech tool — it's a sales funnel. When it's designed well, it creates predictable, pre-arrival revenue that operators can count on week after week.
 
-Every confirmed booking represents guaranteed float, accurate staffing forecasts, and better inventory management. That's the kind of consistency most venues chase through discounts or events — but smart UX delivers it every day.
+Every confirmed booking represents guaranteed float, accurate staffing forecasts, and [better inventory management](/operations/#inventory-sync). That's the kind of consistency most venues chase through discounts or events — but smart UX delivers it every day.
 
 We've seen it happen: after optimizing booking flow, one of our clients increased online bottle purchases significantly, secured more upfront spend, and reduced dependence on last-minute walk-ins.
 
@@ -52,13 +52,13 @@ More than 70% of bookings now come from mobile. Yet many venues still optimize f
 
 That's not mobile UX. That's compromise.
 
-Mobile design should be _native_, not adapted. We focus on single-hand navigation, instant feedback, and thumb-ready buttons. Guests should be able to select their furniture, review packages, and pay in under a minute — no pinch-zooming, no guesswork.
+Mobile design should be _native_, not adapted. We focus on single-hand navigation, instant feedback, and thumb-ready buttons. Guests should be able to select their furniture, review packages, and [pay in under a minute](/booking/#four-tap-checkout) — no pinch-zooming, no guesswork.
 
 When the interface feels natural, trust goes up and drop-off goes down.
 
 ## Flow that matches the experience
 
-Every Clubtech booking journey follows a rhythm: _Select Furniture → Add-ons → Review → Confirm._
+Every Clubtech booking journey follows a rhythm: _[Select Furniture](/booking/#interactive-booking-map) → Add-ons → Review → Confirm._
 
 Each step is intentional. No dead ends. No redundant fields. The design guides the guest through a visual story of the venue — what they'll see, what they'll drink, where they'll sit.
 

@@ -29,7 +29,7 @@ The operators who win these weekends stop rationing inventory at the door and st
 
 ### 1. Pre-sell the furniture, not just the entry
 
-Your sellable inventory is the furniture, and an event is when it commands its highest price — the same logic behind [dynamic pricing for beach clubs](/blog/dynamic-pricing-for-beach-clubs/), applied to a fixed date. Build event-specific packages the way you'd build any tiered offer — bed only, party package, ultimate — with stackable add-ons like bottles, cakes, and transfers. Put them on an interactive map so guests pick the exact daybed or table in front of the main screen, and let early commitment pricing ("Book Online & Save") pull demand forward. The result is predictable revenue and real capacity data days before the event, instead of a guess.
+Your sellable inventory is the furniture, and an event is when it commands its highest price — the same logic behind [dynamic pricing for beach clubs](/blog/dynamic-pricing-for-beach-clubs/), applied to a fixed date. Build [event-specific packages](/booking/#events-ticketing) the way you'd build any tiered offer — bed only, party package, ultimate — with stackable add-ons like bottles, cakes, and transfers. Put them on [an interactive map](/booking/#interactive-booking-map) so guests pick the exact daybed or table in front of the main screen, and let early commitment pricing ("Book Online & Save") pull demand forward. The result is predictable revenue and real capacity data days before the event, instead of a guess.
 
 ### 2. Attach a minimum spend and take the money up front
 
@@ -41,7 +41,7 @@ Prime furniture sells out first on a big event, and that's a signal, not a dead 
 
 ### 4. Make the booking do your marketing
 
-Every event booking should be more than a reservation — it should be a data point that compounds. When a booking fires to Meta, Google, and GA4 in real time with its revenue value posted back, your ad platforms optimize toward the guests who actually buy high-value packages, not toward clicks. Abandoned checkouts trigger recovery within seconds, and dynamic ads return the guest to the exact zone, date, and price they were looking at. You spend the run-up to the event acquiring bookers, not impressions.
+Every event booking should be more than a reservation — it should be a data point that compounds. When a booking fires to Meta, Google, and GA4 in real time with its revenue value posted back, your ad platforms optimize toward the guests who actually buy high-value packages, not toward clicks. [Abandoned checkouts trigger recovery within seconds](/intelligence/#abandoned-booking-retargeting), and dynamic ads return the guest to the exact zone, date, and price they were looking at. You spend the run-up to the event acquiring bookers, not impressions.
 
 ### 5. Own the data so the next event is easier
 
@@ -77,4 +77,4 @@ Own the guest data. On a white-label booking flow, every event booker is a named
 
 ## Turn your next big event into pre-sold revenue
 
-The next marquee event on the calendar will fill your venue regardless. Whether it fills as committed, pre-paid, owned revenue is a decision you make now. [Book a 30-minute demo](/contact.html) and we'll walk through how Clubtech turns event demand into a repeatable revenue system for your venue.
+The next marquee event on the calendar will fill your venue regardless. Whether it fills as committed, pre-paid, owned revenue is a decision you make now. [Book a 30-minute demo](/book-a-demo/) and we'll walk through how Clubtech turns event demand into a repeatable revenue system for your venue.

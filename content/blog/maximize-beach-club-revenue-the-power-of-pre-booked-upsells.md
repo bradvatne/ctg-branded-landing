@@ -11,7 +11,7 @@ heroAlt: "Woman lounging at a beach club"
 description: "Present add-ons during booking, not on arrival. Pre-booked upsells lift revenue, smooth operations, and raise guest satisfaction."
 ---
 
-The allure of sun, sand, and sea makes beach clubs a highly desirable destination. However, in a competitive market, relying solely on cover charges or basic sunbed rentals leaves significant revenue on the table. Forward-thinking operators understand that optimizing the guest journey _before_ arrival is key. Implementing a strategy for pre-booked upsells — offering merchandise, premium beverages, and food add-ons during the online booking process — is a powerful lever for maximizing profitability and enhancing the guest experience.
+The allure of sun, sand, and sea makes beach clubs a highly desirable destination. However, in a competitive market, relying solely on cover charges or basic sunbed rentals leaves significant revenue on the table. Forward-thinking operators understand that optimizing the guest journey _before_ arrival is key. Implementing a strategy for [pre-booked upsells](/booking/#upsells-add-ons) — offering merchandise, premium beverages, and food add-ons during the online booking process — is a powerful lever for maximizing profitability and enhancing the guest experience.
 
 ## The Problem: Untapped Revenue Potential in Every Booking
 
@@ -46,9 +46,9 @@ Modern consumers value convenience and personalization. Allowing guests to pre-s
 
 Pre-booking high-value items provides crucial operational advantages.
 
-- **Predictive Ordering:** Knowing in advance which premium bottles, food platters, or merchandise items are reserved allows for more accurate purchasing and inventory management, reducing waste and preventing stockouts.
+- **Predictive Ordering:** Knowing in advance which premium bottles, food platters, or merchandise items are reserved allows for more accurate purchasing and [inventory management](/operations/#inventory-sync), reducing waste and preventing stockouts.
 - **Streamlined Service:** Staff can prepare pre-ordered items ahead of time, ensuring prompt delivery upon guest arrival. This alleviates pressure during busy periods and allows servers to focus on providing attentive service rather than order-taking for pre-planned elements.
-- **Guaranteed Revenue:** Securing payment for upsells upfront mitigates the risk associated with no-shows or last-minute cancellations for these specific high-cost items. **This transforms potential revenue into guaranteed income.**
+- **Guaranteed Revenue:** [Securing payment for upsells upfront](/booking/#four-tap-checkout) mitigates the risk associated with no-shows or last-minute cancellations for these specific high-cost items. **This transforms potential revenue into guaranteed income.**
 
 ## Examples of Effective Pre-Booked Upsells
 

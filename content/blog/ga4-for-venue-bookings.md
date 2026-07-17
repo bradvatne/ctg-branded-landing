@@ -20,7 +20,7 @@ GA4's ecommerce events map onto a booking flow better than most operators expect
 
 - **`view_item`** — a guest opens a zone or a specific bed. The "item" is the furniture variant: front-row daybed, swim-up bed, cabana.
 - **`add_to_cart`** — they select the bed and a date. Date matters: pass it as an item parameter, because a cabana for this Saturday and the same cabana for a rainy Tuesday are different products economically.
-- **`begin_checkout`** — they hit the payment step. The gap between this and purchase is your abandoned-cart pool, and it's where paid recovery lives — more on that in our guide to the [Meta Conversions API for venue bookings](/blog/meta-conversions-api-for-venue-bookings/).
+- **`begin_checkout`** — they hit [the payment step](/booking/#four-tap-checkout). The gap between this and purchase is your abandoned-cart pool, and it's where paid recovery lives — more on that in our guide to the [Meta Conversions API for venue bookings](/blog/meta-conversions-api-for-venue-bookings/).
 - **`purchase`** — the booking, with real transaction value, currency, and an ID you can reconcile against your booking system.
 
 Two additions make this venue-grade rather than shop-grade. First, carry **custom dimensions** on the purchase event: visit date (not just booking date), daypart, zone, and package tier. Second, derive **lead time** — days between booking and visit — because it drives everything from staffing to pricing, and GA4 will never compute it for you unless you send the raw material.
@@ -38,7 +38,7 @@ Build your GA4 audiences down the funnel instead:
 - **Checkout abandoners** — reached `begin_checkout`, no `purchase` in the last 7 days. This is retargeting inventory with intent already proven.
 - **Repeat bookers** — two or more purchases. These guests justify their own creative and their own offer.
 
-Link GA4 to Google Ads and these audiences become bid signals, not just reports. This is the same funnel-inversion logic that runs through a modern [beach club marketing strategy](/blog/beach-club-marketing-strategy/): the booking is the conversion, so the booking defines the audience.
+[Link GA4 to Google Ads](/intelligence/#ads-integration) and these audiences become bid signals, not just reports. This is the same funnel-inversion logic that runs through a modern [beach club marketing strategy](/blog/beach-club-marketing-strategy/): the booking is the conversion, so the booking defines the audience.
 
 One honest caveat: GA4 audiences are only as good as consent rates and cookie survival allow. They will always undercount. Use them for direction and campaign fuel, not as your system of record.
 
@@ -50,7 +50,7 @@ GA4 ships with dozens of reports. A venue GM needs three, and two of them you ha
 2. **Lead time distribution.** If you're passing booking-to-visit lead time as a dimension, you can see how far ahead each channel books — and the differences between channels are usually bigger than operators expect. This shapes when you spend, not just where.
 3. **Daypart and zone performance.** Which zones sell out first, which dayparts drag, and what average booking value looks like per variant — the demand map your pricing decisions should sit on.
 
-If building these by hand sounds like a second job: this is a place where the platform matters. Clubtech pipes bookings into GA4 as conversion events in real time, alongside Meta and Google Ads, and surfaces the operator view — daily booking volume, lead time by daypart, average value by variant, repeat-customer share — natively, without CSV exports. GA4 becomes the cross-channel check, not the only window you have.
+If building these by hand sounds like a second job: this is a place where the platform matters. Clubtech pipes bookings into GA4 as conversion events in real time, alongside Meta and Google Ads, and surfaces [the operator view](/intelligence/#reports) — daily booking volume, lead time by daypart, average value by variant, repeat-customer share — natively, without CSV exports. GA4 becomes the cross-channel check, not the only window you have.
 
 ## Common tracking lies (and how to catch them)
 
@@ -91,4 +91,4 @@ Yes — and it's the report worth building first. With a revenue-carrying purcha
 
 ---
 
-**See your bookings flow into GA4, Meta, and Google in real time.** 15 minutes, no pitch deck, no contracts. [Book a demo](/contact.html)
+**See your bookings flow into GA4, Meta, and Google in real time.** 15 minutes, no pitch deck, no contracts. [Book a demo](/book-a-demo/)

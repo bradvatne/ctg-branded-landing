@@ -26,7 +26,7 @@ Most operators run two or three revenue streams and leave the rest on the deck. 
 
 **4. Packages.** Bed only → party package → ultimate experience. A tier ladder does the upselling for you: guests self-select upward when the next rung is one tap at booking, not a pitch on the deck. On Clubtech, packages are the default selling unit, not an afterthought bolted onto a bed rental.
 
-**5. Add-ons.** Bottles, cakes, transfers. Individually small, collectively meaningful — and dramatically more likely to sell at booking time, when the guest is planning a celebration, than at the venue, when they're already settled. FINNS Beach Club saw pre-booked bottle purchases climb once bottles became a booking-flow decision instead of a table-side one. <!-- VERIFY: exact pre-booked bottle uplift figure — homepage counter, confirm with Brad -->
+**5. Add-ons.** [Bottles, cakes, transfers](/booking/#upsells-add-ons). Individually small, collectively meaningful — and dramatically more likely to sell at booking time, when the guest is planning a celebration, than at the venue, when they're already settled. FINNS Beach Club saw pre-booked bottle purchases climb once bottles became a booking-flow decision instead of a table-side one. <!-- VERIFY: exact pre-booked bottle uplift figure — homepage counter, confirm with Brad -->
 
 **6. Events.** Ticketed nights, takeovers, brand partnerships. Events monetize the same real estate a second time — the daypart economics of one venue, two sellable days per day.
 
@@ -41,7 +41,7 @@ The mechanics that work:
 - **Tier by position, not by furniture type.** Two identical daybeds are not worth the same minimum if one fronts the pool and one faces the service corridor. Guests already know this; your pricing should too.
 - **Anchor the minimum inside a package.** "AED 2,000 minimum spend" is friction. "Party package: daybed, two bottles, fruit platter — counts toward your AED 2,000 minimum" is a plan. Same number, entirely different psychology.
 - **Collect it, or part of it, at booking.** A minimum spend enforced by a clipboard at the door gets negotiated. A minimum spend prepaid online gets honored — the guest arrives already invested, and typically spends past it.
-- **Let the data set the number.** When you can see average value by package variant and by zone — segmented, trending, without exporting a CSV — the right minimum stops being a guess. It's last month's actuals plus ambition.
+- **Let the data set the number.** When you can see [average value by package variant and by zone — segmented, trending, without exporting a CSV](/intelligence/#reports) — the right minimum stops being a guess. It's last month's actuals plus ambition.
 
 ## The pre-sold venue: why revenue certainty beats walk-up hope
 
@@ -67,7 +67,7 @@ Build the ladder instead:
 3. **Premium tier** — front row, cabanas, party packages with bottles and add-ons. Priced with confidence; on a map-first booking flow the premium zones sell out first, not last, because guests are buying the exact spot they can see, not a category on a dropdown.
 4. **Ceiling tier** — the ultimate experience. Even if it rarely sells, it anchors everything below it.
 
-Then put a spread between online and door pricing. "Book Online & Save" is not a discount program — it's dynamic pricing with training wheels. You're charging less for certainty (a prepaid booking three days out) and more for spontaneity (a walk-up on a sold-out Saturday), which is exactly how every mature perishable-inventory business prices. When you're ready to go further — pricing by lead time, daypart, weekday, and season — the demand signals are already in your booking data. That's the next step up, and we've covered it in depth in our guide to [dynamic pricing for beach clubs](/blog/dynamic-pricing-for-beach-clubs/).
+Then put a spread between online and door pricing. "Book Online & Save" is not a discount program — it's [dynamic pricing](/booking/#dynamic-pricing) with training wheels. You're charging less for certainty (a prepaid booking three days out) and more for spontaneity (a walk-up on a sold-out Saturday), which is exactly how every mature perishable-inventory business prices. When you're ready to go further — pricing by lead time, daypart, weekday, and season — the demand signals are already in your booking data. That's the next step up, and we've covered it in depth in our guide to [dynamic pricing for beach clubs](/blog/dynamic-pricing-for-beach-clubs/).
 
 One guardrail: never let pricing punish loyalty. The spread should reward commitment, not ambush your regulars at the door.
 
@@ -115,4 +115,4 @@ Profitability varies enormously with location, season length, and revenue mix �
 
 ---
 
-**See your revenue stack on Clubtech.** 15 minutes, no pitch deck, no contracts — we'll arrive with the platform pre-configured for a venue like yours. [Book a demo](/contact.html)
+**See your revenue stack on Clubtech.** 15 minutes, no pitch deck, no contracts — we'll arrive with the platform pre-configured for a venue like yours. [Book a demo](/book-a-demo/)

@@ -43,7 +43,7 @@ CAPI doesn't replace the pixel; the standard setup runs both, and Meta deduplica
 Generic CAPI guides assume you sell sneakers. A venue's event model is different, because your inventory is a date, a zone, and a piece of furniture:
 
 - **Booking confirmed** — the conversion event, with real revenue attached. Not "lead," not "landing page view." The booking is the conversion.
-- **Abandoned cart, with context** — a guest who picked a front-row daybed for Saturday and bailed at checkout is your highest-intent audience of the week. An abandoned-cart event that carries the zone, date, and price lets dynamic ads bring them back to the exact spot they left behind, not a generic "come back" banner.
+- **[Abandoned cart, with context](/intelligence/#abandoned-booking-retargeting)** — a guest who picked a front-row daybed for Saturday and bailed at checkout is your highest-intent audience of the week. An abandoned-cart event that carries the zone, date, and price lets dynamic ads bring them back to the exact spot they left behind, not a generic "come back" banner.
 - **Revenue posted back** — when actual transaction values flow to Meta (CAPI revenue, and Enhanced Conversions on the Google side), you unlock value-based optimization: the algorithm stops hunting for people likely to book anything and starts hunting for people who look like your $1,000-plus bookers.
 
 That last event is where nightclubs and day clubs leave the most money on the table. The DM-and-doorman era of [VIP table booking](https://www.clubtechglobal.com/solutions/nightclub-table-booking/) produced zero events — unattributed, unguaranteed, unretargetable. Every table sold through a real booking flow is a revenue-carrying signal your next campaign learns from.
@@ -52,7 +52,7 @@ That last event is where nightclubs and day clubs leave the most money on the ta
 
 When complete, valued events flow back to Meta, three things move:
 
-- **Optimization sharpens.** Meta's delivery system finds more of the guests who actually book, because it can finally see who books. Lookalike audiences seeded from your highest-LTV guests outperform lookalikes seeded from page visitors, because spending is a stronger signal than browsing.
+- **Optimization sharpens.** Meta's delivery system finds more of the guests who actually book, because it can finally see who books. [Lookalike audiences](/intelligence/#lookalike-audiences) seeded from your highest-LTV guests outperform lookalikes seeded from page visitors, because spending is a stronger signal than browsing.
 - **Retargeting pools stop leaking.** Browsers who never fired a pixel event were invisible before; now they land in your audiences. Abandoned-cart recovery becomes a system rather than a hope.
 - **Reporting converges on the truth.** The gap between "bookings in my system" and "conversions in Ads Manager" narrows, which means budget decisions — which campaign, which market, which creative — get made on real revenue instead of vibes.
 
@@ -66,7 +66,7 @@ Server-side events change the mechanics. The abandoned-table event arrives withi
 
 ## Or your platform just does this
 
-Full disclosure of the obvious: this is one of the reasons Clubtech exists. On our platform every booking is piped to Meta, Google, and GA4 in real time as a revenue-carrying conversion event, abandoned-cart CAPI events fire within seconds with the zone, date, and price attached, and transaction values post back for value-based optimization — with no developer project, because it's the [ads workflow built into the revenue engine](/revenue.html), not an integration you commission. If your current booking provider can't tell you what events they send and when, that's your answer.
+Full disclosure of the obvious: this is one of the reasons Clubtech exists. On our platform every booking is piped to Meta, Google, and GA4 in real time as a revenue-carrying conversion event, abandoned-cart CAPI events fire within seconds with the zone, date, and price attached, and transaction values post back for value-based optimization — with no developer project, because it's the [ads workflow built into the revenue engine](/intelligence/#ads-integration), not an integration you commission. If your current booking provider can't tell you what events they send and when, that's your answer.
 
 ## Questions operators ask
 
@@ -96,4 +96,4 @@ Send an abandoned-cart event through CAPI the moment checkout stalls, carrying t
 
 ---
 
-**See your bookings become conversion events.** 15 minutes, no pitch deck, no contracts — we'll show the ads workflow running on a venue like yours. [Book a demo](/contact.html)
+**See your bookings become conversion events.** 15 minutes, no pitch deck, no contracts — we'll show the ads workflow running on a venue like yours. [Book a demo](/book-a-demo/)

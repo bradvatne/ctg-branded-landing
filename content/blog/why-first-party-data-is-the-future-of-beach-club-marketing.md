@@ -30,7 +30,7 @@ First-party data is the information your guests and potential customers share di
 
 ## The Power of Knowing Your Guest: Benefits of First-Party Data
 
-Harnessing first-party data unlocks significant advantages for beach club marketing:
+[Harnessing first-party data](/intelligence/#guest-intelligence) unlocks significant advantages for beach club marketing:
 
 - **Unmatched Accuracy and Relevance:** You know exactly where the data came from and that it pertains directly to individuals interested in your venue. **This eliminates guesswork and ensures marketing efforts reach a qualified audience.**
 - **Deep Personalization:** First-party data allows for highly personalized marketing and guest experiences. Imagine sending targeted promotions for sunset cocktails to guests who previously booked evening slots, or offering early booking access for daybeds to frequent visitors. This level of detail is impossible with generic third-party data.
@@ -43,7 +43,7 @@ Harnessing first-party data unlocks significant advantages for beach club market
 
 Effectively collecting first-party data requires leveraging various touchpoints throughout the guest journey:
 
-- **Your Online Booking Engine:** This is arguably your most valuable first-party data source. A sophisticated system like **Clubtech is inherently designed to capture rich first-party data** during the reservation process. This includes:
+- **Your Online Booking Engine:** This is arguably your most valuable first-party data source. A sophisticated system like **Clubtech is inherently designed to [capture rich first-party data](/booking/#every-guest-data)** during the reservation process. This includes:
   - Contact Information (Name, Email, Phone)
   - Booking History (Dates, Times, Party Size)
   - Asset Preferences (Specific Daybeds, Cabanas, Table Types)
@@ -64,7 +64,7 @@ Effectively collecting first-party data requires leveraging various touchpoints 
 
 ## The Takeaway: Own Your Audience, Own Your Future
 
-The shift away from third-party cookies signals a move towards more authentic, consent-based marketing. For beach clubs, building a robust first-party data strategy is paramount for navigating this new era successfully. By leveraging direct insights from your guests, you can create more personalized experiences, execute highly targeted marketing campaigns, foster lasting loyalty, and ultimately, drive sustainable revenue growth. **Investing in tools and processes to ethically collect and activate your first-party data is investing in the future resilience and success of your venue.**
+The shift away from third-party cookies signals a move towards more authentic, consent-based marketing. For beach clubs, [building a robust first-party data strategy](/intelligence/#owned-data) is paramount for navigating this new era successfully. By leveraging direct insights from your guests, you can create more personalized experiences, execute highly targeted marketing campaigns, foster lasting loyalty, and ultimately, drive sustainable revenue growth. **Investing in tools and processes to ethically collect and activate your first-party data is investing in the future resilience and success of your venue.**
 
 ## Questions operators ask
 
