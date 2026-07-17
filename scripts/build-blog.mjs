@@ -31,6 +31,41 @@ import {
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
+
+/* Zero-dep intrinsic image size (webp VP8/VP8L/VP8X, png, jpeg) so generated
+   pages can emit width/height + OG dimensions. Returns null if unparseable. */
+function readImgSize(absPath) {
+  try {
+    const b = readFileSync(absPath);
+    if (b.length >= 24 && b[0] === 0x89 && b[1] === 0x50 && b[2] === 0x4e && b[3] === 0x47)
+      return { w: b.readUInt32BE(16), h: b.readUInt32BE(20) };
+    if (b.length >= 30 && b.toString('ascii', 0, 4) === 'RIFF' && b.toString('ascii', 8, 12) === 'WEBP') {
+      const fmt = b.toString('ascii', 12, 16);
+      if (fmt === 'VP8 ') return { w: b.readUInt16LE(26) & 0x3fff, h: b.readUInt16LE(28) & 0x3fff };
+      if (fmt === 'VP8L') return {
+        w: 1 + (b[21] | ((b[22] & 0x3f) << 8)),
+        h: 1 + (((b[22] & 0xc0) >> 6) | (b[23] << 2) | ((b[24] & 0x0f) << 10)),
+      };
+      if (fmt === 'VP8X') return {
+        w: 1 + (b[24] | (b[25] << 8) | (b[26] << 16)),
+        h: 1 + (b[27] | (b[28] << 8) | (b[29] << 16)),
+      };
+    }
+    if (b.length >= 4 && b[0] === 0xff && b[1] === 0xd8) {
+      let o = 2;
+      while (o < b.length - 8) {
+        if (b[o] !== 0xff) { o++; continue; }
+        const m = b[o + 1];
+        if (m >= 0xc0 && m <= 0xcf && m !== 0xc4 && m !== 0xc8 && m !== 0xcc)
+          return { h: b.readUInt16BE(o + 5), w: b.readUInt16BE(o + 7) };
+        o += 2 + b.readUInt16BE(o + 2);
+      }
+    }
+  } catch (_) {}
+  return null;
+}
+const imgDims = (rootRel) => readImgSize(join(ROOT, String(rootRel).replace(/^\/+/, '')));
+const dimsAttr = (rootRel) => { const d = imgDims(rootRel); return d ? ` width="${d.w}" height="${d.h}"` : ''; };
 const CONTENT_DIR = join(ROOT, 'content', 'blog');
 const PAGES_DIR = join(ROOT, 'content', 'pages');
 const OUT_DIR = join(ROOT, 'blog');
@@ -547,8 +582,8 @@ const CONSENT_MARKUP = `<div class="cc-banner" id="cc-banner" role="region" aria
             <span class="cc-switch-slider"></span>
           </label>
         </div>
-        <div class="cc-cat-desc">Helps us understand which pages are useful, where visitors drop off, and how to improve the product.</div>
-        <div class="cc-cat-vendors">Vendors · Google Analytics 4</div>
+        <div class="cc-cat-desc">Helps us understand which pages are useful, where visitors drop off, and how to improve the product. Includes anonymized session replays (PostHog).</div>
+        <div class="cc-cat-vendors">Vendors · Google Analytics 4 · PostHog</div>
       </div>
       <div class="cc-cat">
         <div class="cc-cat-head">
@@ -592,11 +627,12 @@ function headHTML({ title, description, canonical, ogImage, ogImageAlt, jsonLd, 
   <meta property="og:title" content="${esc(title)}">
   <meta property="og:description" content="${esc(description)}">
   <meta property="og:image" content="${esc(ogImage)}">
-  <meta property="og:image:alt" content="${esc(ogImageAlt)}">
+  <meta property="og:image:alt" content="${esc(ogImageAlt)}">${(() => { const d = imgDims(String(ogImage).replace(/^https?:\/\/[^/]+\//, '')); return d ? `\n  <meta property="og:image:width" content="${d.w}">\n  <meta property="og:image:height" content="${d.h}">` : ''; })()}
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${esc(title)}">
   <meta name="twitter:description" content="${esc(description)}">
   <meta name="twitter:image" content="${esc(ogImage)}">
+  <meta name="twitter:image:alt" content="${esc(ogImageAlt)}">
   <meta name="twitter:image:alt" content="${esc(ogImageAlt)}">
 
   <link rel="preload" href="${rel}fonts/albert-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -905,7 +941,7 @@ function renderSolutionPage(page, pages) {
 <a class="skip-link" href="#main">Skip to content</a>
 ${navMarkup('../../', 'solutions')}
 <main id="main">
-  <header class="solution-hero"><div class="shell solution-hero-grid"><div><p class="solution-kicker"><i></i>${esc(config.kicker)}</p><h1>${h1Html(page.meta.title)}</h1><p class="solution-hero-copy">${esc(page.meta.excerpt)}</p><div class="solution-actions"><a class="button button-mint" href="../../book-a-demo/" data-open-demo>Book a Demo</a><a class="button button-ghost" href="#how-it-works">See the workflow ↓</a></div>${page.meta.canonicalFeature ? `<a class="solution-canonical" href="${esc(routeHref('../../', page.meta.canonicalFeature))}">${esc(canonicalFeatureLabel(page.meta.canonicalFeature))} <span aria-hidden="true">↗</span></a>` : ''}<ul class="solution-proofline">${proof}</ul></div><div class="solution-hero-visual"><div class="solution-stage-chrome"><span></span><span></span><span></span><small>Clubtech · ${esc(config.label)}</small></div><img class="solution-hero-shot" src="../../assets/product/${esc(config.heroShot)}" alt="Clubtech ${esc(config.label)} product experience" fetchpriority="high" decoding="async"><figure class="solution-hero-photo"><img src="../..${esc(page.meta.hero)}" alt="${esc(page.meta.heroAlt)}" fetchpriority="high" decoding="async"><figcaption>${esc(config.label)} · venue context</figcaption></figure><span class="solution-hero-label"><i></i>Live product surface</span></div></div></header>
+  <header class="solution-hero"><div class="shell solution-hero-grid"><div><p class="solution-kicker"><i></i>${esc(config.kicker)}</p><h1>${h1Html(page.meta.title)}</h1><p class="solution-hero-copy">${esc(page.meta.excerpt)}</p><div class="solution-actions"><a class="button button-mint" href="../../book-a-demo/" data-open-demo>Book a Demo</a><a class="button button-ghost" href="#how-it-works">See the workflow ↓</a></div>${page.meta.canonicalFeature ? `<a class="solution-canonical" href="${esc(routeHref('../../', page.meta.canonicalFeature))}">${esc(canonicalFeatureLabel(page.meta.canonicalFeature))} <span aria-hidden="true">↗</span></a>` : ''}<ul class="solution-proofline">${proof}</ul></div><div class="solution-hero-visual"><div class="solution-stage-chrome"><span></span><span></span><span></span><small>Clubtech · ${esc(config.label)}</small></div><img class="solution-hero-shot" src="../../assets/product/${esc(config.heroShot)}" alt="Clubtech ${esc(config.label)} product experience" fetchpriority="high" decoding="async"${dimsAttr('assets/product/' + config.heroShot)}><figure class="solution-hero-photo"><img src="../..${esc(page.meta.hero)}" alt="${esc(page.meta.heroAlt)}" decoding="async"${dimsAttr(page.meta.hero)}><figcaption>${esc(config.label)} · venue context</figcaption></figure><span class="solution-hero-label"><i></i>Live product surface</span></div></div></header>
   <section class="solution-intro"><div class="shell solution-intro-grid"><div class="solution-intro-label"><p class="eyebrow">The operating case</p><p>Inventory · revenue · service day · owned data</p></div><div class="solution-lead">${parts.intro}</div></div></section>
 ${renderSolutionProductBand(config)}
 ${modules}
@@ -913,8 +949,8 @@ ${renderSolutionFaq(parts.faq)}
   ${renderPathwayRail(pathways, '../../', 'Connected product path', 'See the capability, the operating fit, and the proof.')}
   <section class="solution-related"><div class="shell"><div class="solution-related-head"><div><p class="eyebrow">Keep exploring</p><h2>Related solutions</h2></div><a href="../">See every solution ↗</a></div><div class="solution-related-grid">${relatedCards}</div></div></section>
   <section class="closing dark-section"><img class="closing-mark" src="../../brand/clubtech-mark-white.png" alt="" aria-hidden="true" width="1200" height="1200" loading="lazy"><div class="shell centered"><p class="eyebrow">Your venue, pre-sold.</p><h2>Put your venue<br><span class="mint-text">inside the demo.</span></h2><p>Book a focused walkthrough, configured around a premium venue like yours.</p><a class="button button-mint" href="../../book-a-demo/" data-open-demo>Book a Demo</a></div></section>
-${footerMarkup('../../', pages)}
 </main>
+${footerMarkup('../../', pages)}
 ${CONSENT_MARKUP}
 <script src="../../js/consent.js" defer></script><script src="../../js/hubspot.js" defer></script><script src="../../js/booking.js" defer></script><script src="../../js/analytics.js" defer></script><script src="../../js/blog.js" defer></script>${restaurantJs}
 </body></html>`;
@@ -979,13 +1015,13 @@ function renderComparisonPage(page, pages) {
 <body class="comparison-page p-compare"><a class="skip-link" href="#main">Skip to content</a>
 ${navMarkup('../../', 'resources')}
 <main id="main">
-  <header class="comparison-hero"><div class="shell comparison-hero-grid"><div><p class="solution-kicker"><i></i>Fair-fit comparison</p><h1>${h1Html(page.meta.title)}</h1><p class="comparison-sub">${esc(page.meta.excerpt)}</p><div class="solution-actions"><a class="button button-mint" href="../../book-a-demo/" data-open-demo>Book a Demo</a><a class="button button-ghost" href="../../${esc(config.solution || 'platform/')}">See the relevant solution</a></div>${verified}</div><div class="comparison-visual"><img class="comparison-venue" src="../..${esc(page.meta.hero)}" alt="${esc(page.meta.heroAlt)}" fetchpriority="high" decoding="async"><img class="comparison-product" src="../../assets/product/${esc(config.proof || capability.asset || 'booking-map.webp')}" alt="Clubtech ${esc(capability.label)} product view" fetchpriority="high" decoding="async"><span>Clubtech product proof</span></div></div></header>
+  <header class="comparison-hero"><div class="shell comparison-hero-grid"><div><p class="solution-kicker"><i></i>Fair-fit comparison</p><h1>${h1Html(page.meta.title)}</h1><p class="comparison-sub">${esc(page.meta.excerpt)}</p><div class="solution-actions"><a class="button button-mint" href="../../book-a-demo/" data-open-demo>Book a Demo</a><a class="button button-ghost" href="../../${esc(config.solution || 'platform/')}">See the relevant solution</a></div>${verified}</div><div class="comparison-visual"><img class="comparison-venue" src="../..${esc(page.meta.hero)}" alt="${esc(page.meta.heroAlt)}" fetchpriority="high" decoding="async"${dimsAttr(page.meta.hero)}><img class="comparison-product" src="../../assets/product/${esc(config.proof || capability.asset || 'booking-map.webp')}" alt="Clubtech ${esc(capability.label)} product view" decoding="async"${dimsAttr('assets/product/' + (config.proof || capability.asset || 'booking-map.webp'))}><span>Clubtech product proof</span></div></div></header>
   <section class="comparison-thesis"><div class="shell"><p>Decision first.</p><h2>Choose the operating model that fits the inventory—not the loudest feature list.</h2></div></section>
   <article class="comparison-article"><div class="shell comparison-body"><aside><p class="eyebrow">What Clubtech owns</p><h2>${esc(capability.label)}</h2><p>The full product explanation lives on the canonical capability page. This comparison stays focused on fit.</p><a href="../../${esc(capability.canonical)}">See the capability ↗</a></aside><div class="post-body">${body}</div></div></article>
   <section class="comparison-proof-band"><div class="shell"><div><p class="eyebrow">Product proof</p><h2>See the Clubtech side of the decision.</h2><p>${esc(capability.label)} is shown in the actual product, not described as a checklist.</p></div><figure><img src="../../assets/product/${esc(config.proof || capability.asset || 'booking-map.webp')}" alt="Clubtech ${esc(capability.label)} interface" loading="lazy" decoding="async"><figcaption>Clubtech · ${esc(capability.label)}</figcaption></figure></div></section>
   ${renderPathwayRail(pathways, '../../', 'Evaluation pathway', 'Fit, product, then implementation.')}
   <section class="closing dark-section"><img class="closing-mark" src="../../brand/clubtech-mark-white.png" alt="" aria-hidden="true" width="1200" height="1200" loading="lazy"><div class="shell centered"><p class="eyebrow">Compare it on your floor.</p><h2>See Clubtech on <span class="mint-text">your own inventory.</span></h2><p>Book a focused walkthrough configured around the venue you actually run.</p><a class="button button-mint" href="../../book-a-demo/" data-open-demo>Book a Demo</a></div></section>
-${footerMarkup('../../', pages)}</main>${CONSENT_MARKUP}
+</main>${footerMarkup('../../', pages)}${CONSENT_MARKUP}
 <script src="../../js/consent.js" defer></script><script src="../../js/hubspot.js" defer></script><script src="../../js/booking.js" defer></script><script src="../../js/analytics.js" defer></script><script src="../../js/blog.js" defer></script>
 </body></html>`;
 }
@@ -1045,7 +1081,7 @@ ${navMarkup('../../', page.meta.section === 'solutions' ? 'solutions' : 'resourc
     </header>
 
     <div class="shell post-hero-media">
-      <img src="../..${esc(page.meta.hero)}" alt="${esc(page.meta.heroAlt)}" fetchpriority="high" decoding="async" width="1600" height="1067">
+      <img src="../..${esc(page.meta.hero)}" alt="${esc(page.meta.heroAlt)}" fetchpriority="high" decoding="async"${dimsAttr(page.meta.hero)}>
     </div>
 
     <div class="shell post-body">
@@ -1063,8 +1099,8 @@ ${moreSection}
     </div>
   </section>
 
-${footerMarkup('../../', pages)}
 </main>
+${footerMarkup('../../', pages)}
 ${CONSENT_MARKUP}
 <script src="../../js/consent.js" defer></script>
 <script src="../../js/hubspot.js" defer></script>
@@ -1211,7 +1247,7 @@ function renderRootPage(page, landings, pages) {
 <a class="skip-link" href="#main">Skip to content</a>
 ${navMarkup('../', page.meta.group || null)}
 <main id="main">
-  <header class="landing-hero"><div class="shell landing-hero-grid"><div><p class="solution-kicker"><i></i>${esc(eyebrow)}</p><h1>${h1Html(page.meta.title)}</h1><p class="landing-sub">${esc(page.meta.excerpt)}</p><div class="solution-actions"><a class="button button-mint" href="${esc(routeHref('../', primary[0]))}"${primaryDemo ? ' data-open-demo' : ''}>${esc(primary[1])}</a><a class="button button-ghost" href="${esc(routeHref('../', secondary[0]))}">${esc(secondary[1])}</a></div></div>${productAsset || page.meta.hero ? `<div class="landing-hero-visual">${productAsset ? `<div class="solution-stage-chrome"><span></span><span></span><span></span><small>Clubtech · ${esc(stageLabel)}</small></div><img class="landing-product" src="../assets/product/${esc(productAsset)}" alt="Clubtech product view for ${esc(plainTitle(page.meta.title))}" fetchpriority="high" decoding="async">` : ''}${page.meta.hero ? `<img class="landing-context" src="..${esc(page.meta.hero)}" alt="${esc(page.meta.heroAlt || plainTitle(page.meta.title))}" fetchpriority="high" decoding="async">` : ''}</div>` : ''}</div></header>
+  <header class="landing-hero"><div class="shell landing-hero-grid"><div><p class="solution-kicker"><i></i>${esc(eyebrow)}</p><h1>${h1Html(page.meta.title)}</h1><p class="landing-sub">${esc(page.meta.excerpt)}</p><div class="solution-actions"><a class="button button-mint" href="${esc(routeHref('../', primary[0]))}"${primaryDemo ? ' data-open-demo' : ''}>${esc(primary[1])}</a><a class="button button-ghost" href="${esc(routeHref('../', secondary[0]))}">${esc(secondary[1])}</a></div></div>${productAsset || page.meta.hero ? `<div class="landing-hero-visual">${productAsset ? `<div class="solution-stage-chrome"><span></span><span></span><span></span><small>Clubtech · ${esc(stageLabel)}</small></div><img class="landing-product" src="../assets/product/${esc(productAsset)}" alt="Clubtech product view for ${esc(plainTitle(page.meta.title))}" fetchpriority="high" decoding="async"${dimsAttr('assets/product/' + productAsset)}>` : ''}${page.meta.hero ? `<img class="landing-context" src="..${esc(page.meta.hero)}" alt="${esc(page.meta.heroAlt || plainTitle(page.meta.title))}" decoding="async"${dimsAttr(page.meta.hero)}>` : ''}</div>` : ''}</div></header>
 ${parts.intro.trim() ? `  <section class="landing-intro"><div class="shell landing-intro-copy">${parts.intro}</div></section>\n` : ''}${renderLandingBlocks(parts, layout)}
 ${demoMarkup}
   ${renderPathwayRail(related.length ? related : config.related || [], '../', 'Related pathway', 'The next useful page, not more noise.')}
@@ -1225,8 +1261,8 @@ ${demoMarkup}
     </div>
   </section>
 
-${footerMarkup('../', pages)}
 </main>
+${footerMarkup('../', pages)}
 ${CONSENT_MARKUP}
 <script src="../js/consent.js" defer></script>
 <script src="../js/hubspot.js" defer></script>
@@ -1302,11 +1338,11 @@ function renderSolutionsIndex(pages) {
   const solutionHead = head.replace('</head>', '  <link rel="stylesheet" href="../css/solutions.css">\n</head>');
   return `${solutionHead}
 <body class="solution-page p-solutions-index"><a class="skip-link" href="#main">Skip to content</a>${navMarkup('../', 'solutions')}<main id="main">
-  <section class="index-hero solution-index-hero"><div class="shell solution-index-hero-grid"><div><p class="index-kicker"><span class="tick"></span>Solutions · ${sectionPages.length} product pages</p><h1 class="index-h1">Built for how <span class="mint-text">your venue sells.</span></h1><p class="index-sub">Sunbeds, daybeds, tables, tickets, and day passes — one platform, configured around the real inventory and the team running it.</p><div class="solution-hub-nav" aria-label="Browse solutions"><a href="#venue">By venue <span>↘</span></a><a href="#location">By destination <span>↘</span></a><a href="#goal">By operational need <span>↘</span></a></div></div><div class="solution-index-showcase"><div class="solution-stage-chrome"><span></span><span></span><span></span><small>Clubtech · booking map</small></div><img src="../assets/product/booking-map.webp" alt="Clubtech interactive venue booking map" fetchpriority="high" decoding="async"><div class="solution-index-callout"><strong>The booking is the product.</strong><span>Exact inventory · prepayment · live floor</span></div></div></div></section>
+  <section class="index-hero solution-index-hero"><div class="shell solution-index-hero-grid"><div><p class="index-kicker"><span class="tick"></span>Solutions · ${sectionPages.length} product pages</p><h1 class="index-h1">Built for how <span class="mint-text">your venue sells.</span></h1><p class="index-sub">Sunbeds, daybeds, tables, tickets, and day passes — one platform, configured around the real inventory and the team running it.</p><div class="solution-hub-nav" aria-label="Browse solutions"><a href="#venue">By venue <span>↘</span></a><a href="#location">By destination <span>↘</span></a><a href="#goal">By operational need <span>↘</span></a></div></div><div class="solution-index-showcase"><div class="solution-stage-chrome"><span></span><span></span><span></span><small>Clubtech · booking map</small></div><img src="../assets/product/booking-map.webp" alt="Clubtech interactive venue booking map" fetchpriority="high" decoding="async"${dimsAttr('assets/product/booking-map.webp')}><div class="solution-index-callout"><strong>The booking is the product.</strong><span>Exact inventory · prepayment · live floor</span></div></div></div></section>
   <section class="solution-index-thesis"><div class="shell"><p>One platform, three ways in.</p><h2>Choose the venue, the market, or the workflow. The product stays connected from booking to floor to guest data.</h2></div></section>
   <div class="shell solution-index-groups">${groupMarkup}</div>
   <section class="closing dark-section"><img class="closing-mark" src="../brand/clubtech-mark-white.png" alt="" aria-hidden="true" width="1200" height="1200" loading="lazy"><div class="shell centered"><p class="eyebrow">Your venue, pre-sold.</p><h2>Put your venue<br><span class="mint-text">inside the demo.</span></h2><p>Book a focused walkthrough, configured around your floor and sellable inventory.</p><a class="button button-mint" href="../book-a-demo/" data-open-demo>Book a Demo</a></div></section>
-${footerMarkup('../', pages)}</main>${CONSENT_MARKUP}<script src="../js/consent.js" defer></script><script src="../js/hubspot.js" defer></script><script src="../js/booking.js" defer></script><script src="../js/analytics.js" defer></script><script src="../js/blog.js" defer></script></body></html>`;
+</main>${footerMarkup('../', pages)}${CONSENT_MARKUP}<script src="../js/consent.js" defer></script><script src="../js/hubspot.js" defer></script><script src="../js/booking.js" defer></script><script src="../js/analytics.js" defer></script><script src="../js/blog.js" defer></script></body></html>`;
 }
 
 function renderCompareIndex(pages) {
@@ -1339,7 +1375,7 @@ function renderCompareIndex(pages) {
   <div class="shell compare-groups">${groupMarkup}</div>
   ${renderPathwayRail(['platform/', 'solutions/', 'delivery/'], '../', 'Before the shortlist', 'See the product, the fit, and the rollout.')}
   <section class="closing dark-section"><img class="closing-mark" src="../brand/clubtech-mark-white.png" alt="" aria-hidden="true" width="1200" height="1200" loading="lazy"><div class="shell centered"><p class="eyebrow">Compare it on your floor.</p><h2>See Clubtech on <span class="mint-text">your own inventory.</span></h2><p>A focused walkthrough is more useful than another checklist.</p><a class="button button-mint" href="../book-a-demo/" data-open-demo>Book a Demo</a></div></section>
-${footerMarkup('../', pages)}</main>${CONSENT_MARKUP}<script src="../js/consent.js" defer></script><script src="../js/hubspot.js" defer></script><script src="../js/booking.js" defer></script><script src="../js/analytics.js" defer></script><script src="../js/blog.js" defer></script></body></html>`;
+</main>${footerMarkup('../', pages)}${CONSENT_MARKUP}<script src="../js/consent.js" defer></script><script src="../js/hubspot.js" defer></script><script src="../js/booking.js" defer></script><script src="../js/analytics.js" defer></script><script src="../js/blog.js" defer></script></body></html>`;
 }
 
 function renderSectionIndex(sectionKey, pages) {
@@ -1400,8 +1436,8 @@ ${rows}
     </div>
   </section>
 
-${footerMarkup('../', pages)}
 </main>
+${footerMarkup('../', pages)}
 ${CONSENT_MARKUP}
 <script src="../js/consent.js" defer></script>
 <script src="../js/hubspot.js" defer></script>
@@ -1499,8 +1535,8 @@ ${rows}
     </div>
   </section>
 
-${footerMarkup('../', pages)}
 </main>
+${footerMarkup('../', pages)}
 ${CONSENT_MARKUP}
 <script src="../js/consent.js" defer></script>
 <script src="../js/hubspot.js" defer></script>
@@ -1552,7 +1588,7 @@ ${navMarkup('../../', 'resources')}
     </header>
 
     <div class="shell post-hero-media">
-      <img src="../..${esc(post.meta.hero)}" alt="${esc(post.meta.heroAlt)}" fetchpriority="high" decoding="async" width="1600" height="1067">
+      <img src="../..${esc(post.meta.hero)}" alt="${esc(post.meta.heroAlt)}" fetchpriority="high" decoding="async"${dimsAttr(post.meta.hero)}>
     </div>
 
     <div class="shell post-body">
@@ -1573,8 +1609,8 @@ ${body}
     </div>
   </section>
 
-${footerMarkup('../../', pages)}
 </main>
+${footerMarkup('../../', pages)}
 ${CONSENT_MARKUP}
 <script src="../../js/consent.js" defer></script>
 <script src="../../js/hubspot.js" defer></script>
@@ -1820,6 +1856,8 @@ function main() {
     const before = readFileSync(fp, 'utf8');
     let html = before.replace(/^[ \t]*<header class="nav-wrap[^"]*">[\s\S]*?<\/header>/m, () => navMarkup(prefix, group, solid));
     html = html.replace(/^[ \t]*<footer class="footer shell">[\s\S]*?<\/footer>/m, () => footerMarkup(prefix, pages));
+    // Move the footer out of <main> so it maps to the contentinfo landmark.
+    html = html.replace(/(^[ \t]*<footer class="footer shell">[\s\S]*?<\/footer>)\s*<\/main>/m, '</main>\n$1');
     html = html.replace('<!--CONSENT-->', () => CONSENT_MARKUP);
     html = normalizeInternalLinks(html);
     if (html !== before) { writeFileSync(fp, html); injected++; }
