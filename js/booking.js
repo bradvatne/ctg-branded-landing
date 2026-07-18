@@ -46,6 +46,25 @@
     try { if (window.CTGHubSpot && window.CTGHubSpot.identify) window.CTGHubSpot.identify(traits); } catch (_) {}
   }
 
+  /* Enhanced Conversions: push a SHA-256 hash of the normalized email onto the
+     dataLayer so GTM's Google Ads user-provided-data tag ("Ads - EC user_data")
+     can attach it to the demo conversions. The RAW email never enters the
+     dataLayer — only the hash. Async; fired at form submit so it is present
+     before the later demo_booked conversion. */
+  function pushEmailHash(email) {
+    try {
+      var norm = String(email || '').trim().toLowerCase();
+      if (!norm || !window.crypto || !window.crypto.subtle) return;
+      window.crypto.subtle.digest('SHA-256', new TextEncoder().encode(norm)).then(function (buf) {
+        var hex = Array.prototype.map.call(new Uint8Array(buf), function (b) {
+          return b.toString(16).padStart(2, '0');
+        }).join('');
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ em_sha256: hex });
+      }).catch(function () {});
+    } catch (_) {}
+  }
+
   function validEmail(v) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
   }
@@ -197,6 +216,10 @@
       // PRIMARY: server-side capture. Consent-independent, survives no-booking,
       // and runs first so the lead is on its way before anything else.
       sendLead(form, lead);
+
+      // Enhanced Conversions: hash the email onto the dataLayer now so it is
+      // available before the demo_booked conversion fires (raw email is never pushed).
+      pushEmailHash(lead.email);
 
       // SECONDARY: stitch identity onto the consent-gated pixel and log the
       // funnel step (both no-op without marketing consent).
