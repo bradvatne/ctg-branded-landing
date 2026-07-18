@@ -522,7 +522,9 @@ const shortLabel = (slug) =>
 function footerMarkup(rel, pages = []) {
   const col = (title, links) => `      <div class="footer-col">
         <p class="footer-col-h">${esc(title)}</p>
-${links.map(([href, label]) => `        <a href="${routeHref(rel, href)}">${esc(label)}</a>`).join('\n')}
+${links.map(([href, label]) => href === '#cookie-preferences'
+    ? `        <a href="#" data-open-consent>${esc(label)}</a>`
+    : `        <a href="${routeHref(rel, href)}">${esc(label)}</a>`).join('\n')}
       </div>`;
   const r = (s) => `${rel}${s}`;
   return `  <footer class="footer shell">
@@ -537,7 +539,6 @@ ${links.map(([href, label]) => `        <a href="${routeHref(rel, href)}">${esc(
         <a href="${r('blog/')}">Blog</a>
         <a href="${r('help/')}">Help</a>
         <a href="mailto:info@clubtechglobal.com">Email us</a>
-        <a href="#" data-open-consent>Cookie preferences</a>
       </div>
     </div>
     <div class="footer-grid">
@@ -556,7 +557,7 @@ const CONSENT_MARKUP = `<div class="cc-banner" id="cc-banner" role="region" aria
   <div class="cc-banner-actions">
     <button type="button" class="cc-btn cc-btn-primary" id="cc-accept">Accept all</button>
     <button type="button" class="cc-btn cc-btn-ghost" id="cc-reject">Reject non-essential</button>
-    <button type="button" class="cc-btn cc-btn-link" id="cc-customize">Customize</button>
+    <button type="button" class="cc-btn cc-btn-link" id="cc-customize">Edit preferences</button>
   </div>
 </div>
 
@@ -1846,6 +1847,8 @@ function main() {
     ['sell/index.html', '../', 'platform', false],
     ['grow/index.html', '../', 'platform', false],
     ['delivery/index.html', '../', 'company', false],
+    ['terms/index.html', '../', null, false],
+    ['cookies/index.html', '../', null, false],
     ['book-a-demo/index.html', '../', null, true],
     ['404.html', '', null, true],
   ];

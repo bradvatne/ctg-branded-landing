@@ -7,6 +7,10 @@ RedirectMatch 301 ^/booking/?$ /platform/#booking
 RedirectMatch 301 ^/operations/?$ /platform/#operations
 RedirectMatch 301 ^/intelligence/?$ /grow/#ads
 
+# Legal pages moved from the old flat files to directory routes.
+RedirectMatch 301 ^/terms\.html$ /terms/
+RedirectMatch 301 ^/cookies\.html$ /cookies/
+
 # Baseline security headers (no-op if mod_headers is absent, so this can never 500).
 # CSP is intentionally NOT set here — add it at Cloudflare in Report-Only first
 # (see the launch report for a ready-to-paste policy covering GTM/GA4/Ads/Meta/HubSpot

@@ -136,4 +136,7 @@ export const FOOTER_GROUPS = [
   ['Solutions', [['for-hotels/', 'Hotels & resorts'], ['solutions/beach-clubs/', 'Beach clubs'], ['solutions/nightclub-management-software/', 'Nightclubs'], ['solutions/guest-list-management-software/', 'Guest lists'], ['solutions/', 'All solutions']]],
   ['Resources', [['blog/', 'The Index'], ['blog/finns-beach-club-case-study/', 'FINNS case study'], ['compare/', 'Compare Clubtech'], ['help/', 'Help center']]],
   ['Company', [['about/', 'About'], ['delivery/', 'How we deliver'], ['careers/', 'Careers'], ['support/', 'Support'], ['pricing/', 'Commercial fit'], ['https://www.guestlistnow.com/', 'Guest List Now ↗']]],
+  // Cookie preferences uses the #cookie-preferences sentinel — footerMarkup()
+  // renders it as a data-open-consent link that reopens the consent panel.
+  ['Legal', [['terms/', 'Terms'], ['cookies/', 'Cookies'], ['#cookie-preferences', 'Cookie preferences']]],
 ];
