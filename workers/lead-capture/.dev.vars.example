@@ -1,0 +1,6 @@
+# Copy to `.dev.vars` for local `wrangler dev` (never commit the real file).
+# In production these are set as Cloudflare secrets, NOT vars — see README.md.
+HUBSPOT_TOKEN="pat-na2-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+# Optional — enables the native HubSpot Forms Submissions API in addition to
+# the CRM write:
+# HUBSPOT_FORM_GUID="00000000-0000-0000-0000-000000000000"

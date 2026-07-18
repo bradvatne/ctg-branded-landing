@@ -31,6 +31,7 @@
   'use strict';
 
   var SCHEDULER = 'https://meetings-na2.hubspot.com/gus-murray/round-robin-scheduler';
+  var LEAD_ENDPOINT = '/api/lead'; // same-origin Cloudflare Worker — server-side capture (consent-independent)
 
   function track(name, props) {
     try {
@@ -66,9 +67,14 @@
       '      <label class="bk-field"><span>Work email</span><input name="email" type="email" autocomplete="email" required></label>' +
       '      <label class="bk-field"><span>Phone <em>(optional)</em></span><input name="phone" type="tel" autocomplete="tel" placeholder="+62 812 …"></label>' +
       '      <label class="bk-field"><span>What should we prepare? <em>(optional)</em></span><textarea name="description" rows="2"></textarea></label>' +
+      // Honeypot: hidden from humans, tempting to bots. A filled value is dropped server-side.
+      '      <div class="bk-hp" aria-hidden="true"><label>Company website<input type="text" name="company_url" tabindex="-1" autocomplete="off"></label></div>' +
       '      <p class="bk-error" role="alert" hidden>Please fill in your name, venue, and a valid email.</p>' +
       '      <button type="submit" class="button button-mint bk-submit">Pick a Time</button>' +
       '      <p class="bk-fine">No contracts · no credit card · we only use your details to reply</p>' +
+      // Privacy note. TODO(copy owner): confirm legal basis (legitimate interest / contract)
+      // and link the Privacy Policy here once the page exists.
+      '      <p class="bk-privacy">We only use these details to reply about your demo — we don’t sell or share them.</p>' +
       '    </form>' +
       '  </div>' +
       '  <div class="bk-step" data-step="schedule" hidden>' +
@@ -94,6 +100,67 @@
       email: get('email'),
       description: get('description'),
     };
+  }
+
+  /* First-touch attribution captured (functionally, no consent) by consent.js. */
+  function attribution() {
+    var out = {};
+    try {
+      var a = window.CTGAttribution && window.CTGAttribution.get && window.CTGAttribution.get();
+      if (a) {
+        ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content',
+          'gclid', 'fbclid', 'msclkid', 'ttclid', 'li_fat_id'].forEach(function (k) {
+          if (a[k]) out[k] = a[k];
+        });
+      }
+    } catch (_) {}
+    return out;
+  }
+
+  /* HubSpot pixel cookie — present only if marketing consent was granted. */
+  function hubspotutk() {
+    try {
+      var m = document.cookie.match(/(?:^|;\s*)hubspotutk=([^;]+)/);
+      return m ? decodeURIComponent(m[1]) : '';
+    } catch (_) { return ''; }
+  }
+
+  /* PRIMARY capture: server-side write to HubSpot via the same-origin /api/lead
+     Worker. Fire-and-forget — records a success/fail state (for analytics) but
+     never blocks the UI, so a lead lands even when cookies are rejected and the
+     visitor never books. keepalive lets it finish if the tab closes on submit. */
+  function sendLead(form, lead) {
+    var hp = form.querySelector('[name="company_url"]');
+    var payload = {
+      firstname: lead.firstname,
+      lastname: lead.lastname,
+      company: lead.company,
+      email: lead.email,
+      phone: lead.phone,
+      description: lead.description,
+      company_url: hp ? String(hp.value || '') : '', // honeypot — must stay empty
+      page: location.pathname,
+      pageName: document.title,
+      hutk: hubspotutk()
+    };
+    var utm = attribution();
+    for (var k in utm) if (Object.prototype.hasOwnProperty.call(utm, k)) payload[k] = utm[k];
+
+    try {
+      fetch(LEAD_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+        keepalive: true,
+        credentials: 'omit'
+      }).then(function (r) {
+        track(r && r.ok ? 'lead_captured' : 'lead_capture_failed', { status: r ? r.status : 0 });
+      }).catch(function () {
+        track('lead_capture_failed', { status: 0 });
+      });
+    } catch (_) {
+      track('lead_capture_failed', { status: 0 });
+    }
   }
 
   /* root = the element that contains the two .bk-step blocks. */
@@ -127,7 +194,12 @@
       }
       if (err) err.hidden = true;
 
-      // Stitch identity onto the consent-gated pixel and log the funnel step.
+      // PRIMARY: server-side capture. Consent-independent, survives no-booking,
+      // and runs first so the lead is on its way before anything else.
+      sendLead(form, lead);
+
+      // SECONDARY: stitch identity onto the consent-gated pixel and log the
+      // funnel step (both no-op without marketing consent).
       identify({
         email: lead.email,
         firstname: lead.firstname,
