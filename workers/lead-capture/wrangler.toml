@@ -1,0 +1,41 @@
+# Clubtech lead-capture Worker — POST /api/lead
+# Deploy:  cd workers/lead-capture && npx wrangler deploy
+# Secrets: npx wrangler secret put HUBSPOT_TOKEN   (see README.md)
+
+name = "ctg-lead-capture"
+main = "worker.js"
+compatibility_date = "2025-06-01"
+
+# Intercept /api/lead on the prod zone (already fronted by Cloudflare) BEFORE
+# it reaches the static Apache origin, which has no /api. Both apex and www are
+# listed; the zone_name must be the Cloudflare zone that owns the hostname.
+routes = [
+  { pattern = "www.clubtechglobal.com/api/lead", zone_name = "clubtechglobal.com" },
+  { pattern = "clubtechglobal.com/api/lead",     zone_name = "clubtechglobal.com" },
+]
+
+# Per-colo abuse guard. namespace_id is any account-unique integer you pick.
+# period must be 10 or 60 (seconds). 5 submits / 60s / IP is plenty for a
+# genuine demo request and throttles scripted abuse.
+[[ratelimits]]
+name = "LEAD_LIMITER"
+namespace_id = "1001"
+
+  [ratelimits.simple]
+  limit = 5
+  period = 60
+
+# Non-secret config. Secrets (HUBSPOT_TOKEN, optionally HUBSPOT_FORM_GUID) are
+# set with `wrangler secret put` and are NOT stored here.
+[vars]
+HUBSPOT_PORTAL_ID = "242607066"
+# Extra browser origins allowed to POST (comma-separated, full origins). The
+# prod hosts (www/apex clubtechglobal.com) are always allowed in code; add
+# staging/preview here only if you want them to hit prod HubSpot.
+ALLOWED_ORIGINS = ""
+
+# ── Optional overrides (uncomment to use) ────────────────────────────────
+# HUBSPOT_API_BASE   = "https://api.hubapi.com"   # CRM host (default is correct for na2)
+# HUBSPOT_FORMS_HOST = "https://api.hsforms.com"   # Forms API host
+# To also fire the native HubSpot Forms Submissions API, set the form GUID as a
+# secret:  npx wrangler secret put HUBSPOT_FORM_GUID

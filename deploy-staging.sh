@@ -27,12 +27,15 @@ echo "🚀 Staging release $STAMP (landingpage.tapbooknow.com)"
 ssh -o BatchMode=yes staging "mkdir -p '$REL/dist/frontend'"
 
 echo "⬆️  Rsyncing site → $REL/dist/frontend"
-rsync -e "ssh -o BatchMode=yes" -az --delete \
+rsync -e "ssh -o BatchMode=yes" -az --delete --delete-excluded \
   --exclude='.env*' --exclude='logs' --exclude='uploads' --exclude='storage' \
   --exclude='.git/' --exclude='.claude/' --exclude='.DS_Store' \
   --exclude='node_modules/' --exclude='package.json' --exclude='package-lock.json' \
   --exclude='scripts/' --exclude='content/' \
   --exclude='README.md' --exclude='deploy-staging.sh' --exclude='deploy/' \
+  --exclude='*.md' --exclude='.gitignore' --exclude='.gitattributes' \
+  --exclude='output/' --exclude='.playwright-cli/' --exclude='.vinext/' --exclude='.wrangler/' \
+  --exclude='__test_probe.js' \
   ./ "staging:$REL/dist/frontend/"
 
 echo "🗂  Preserving SEOdeck (separate repo) + staging robots override"

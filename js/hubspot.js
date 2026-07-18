@@ -25,6 +25,7 @@
   window._hsq = window._hsq || [];
 
   var trackingLoaded = false;
+  var STORE_KEY = 'ctg-hs-pending';
 
   function loadTracking() {
     if (trackingLoaded) return;
@@ -35,6 +36,20 @@
     s.defer = true;
     s.src = CONFIG.trackingSrc;
     document.head.appendChild(s);
+    replayPending();
+  }
+
+  // A lead submitted before marketing consent is persisted; replay it once the
+  // pixel loads (this session or a later visit) so the contact still lands.
+  function replayPending() {
+    var raw = null;
+    try { raw = localStorage.getItem(STORE_KEY); } catch (_) {}
+    if (!raw) return;
+    try {
+      var t = JSON.parse(raw);
+      if (t && t.email) { window._hsq.push(['identify', t]); window._hsq.push(['trackPageView']); }
+    } catch (_) {}
+    try { localStorage.removeItem(STORE_KEY); } catch (_) {}
   }
 
   function wireConsent() {
@@ -50,6 +65,10 @@
     if (!traits || !traits.email) return;
     window._hsq.push(['identify', traits]);
     window._hsq.push(['trackPageView']);
+    if (!trackingLoaded) {
+      // No marketing consent yet — persist so a later opt-in still lands the lead.
+      try { localStorage.setItem(STORE_KEY, JSON.stringify(traits)); } catch (_) {}
+    }
   }
 
   function trackEvent(name, properties) {

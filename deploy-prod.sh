@@ -47,6 +47,16 @@ if ls "$ROOT_DIR"/.env* >/dev/null 2>&1; then
   echo "refusing: .env* present in the repo tree; keep prod secrets out"; exit 1
 fi
 
+# Ship exactly $COMMIT: refuse a dirty working tree and require an explicit branch.
+if [ -n "$(git -C "$ROOT_DIR" status --porcelain)" ]; then
+  echo "refusing: working tree is dirty — commit or stash so the deploy matches $COMMIT"; exit 1
+fi
+DEPLOY_BRANCH="$(git -C "$ROOT_DIR" rev-parse --abbrev-ref HEAD)"
+if [ "$DEPLOY_BRANCH" != "main" ] && [ "${ALLOW_NONMAIN_DEPLOY:-0}" != "1" ]; then
+  echo "refusing: on branch '$DEPLOY_BRANCH', not 'main'. Set ALLOW_NONMAIN_DEPLOY=1 to deploy this branch intentionally."; exit 1
+fi
+echo "  Branch:     $DEPLOY_BRANCH"
+
 command -v limactl >/dev/null 2>&1 || { echo "limactl is required on the Mac"; exit 1; }
 # shellcheck disable=SC2016 # hostname/whoami must expand on the production host
 limactl shell ctg-prod-ssh -- ssh -o BatchMode=yes -o ConnectTimeout=12 prod \
@@ -86,11 +96,19 @@ rsync -a --delete --delete-excluded \
   --exclude 'content/' --exclude 'scripts/' --exclude 'deploy/' \
   --exclude 'deploy-staging.sh' --exclude 'deploy-prod.sh' --exclude 'known_hosts.deploy' \
   --exclude 'README.md' --exclude 'package.json' --exclude 'package-lock.json' \
+  --exclude '*.md' --exclude '.gitignore' --exclude '.gitattributes' \
+  --exclude 'output/' --exclude '.playwright-cli/' --exclude '.vinext/' --exclude '.wrangler/' \
+  --exclude '__test_probe.js' \
   "$ROOT_DIR/" "$LOCAL_SOURCE_DIR/"
 if find "$LOCAL_SOURCE_DIR" \( -name '.env*' -o -name '*_env.php' -o -name 'wsec_env.php' \
      -o -name 'id_rsa' -o -name 'id_ed25519' -o -name '*.pem' -o -name '*.key' \
      -o -iname '*secret*' -o -iname '*credential*' \) -print -quit | grep -q .; then
   echo "refusing: secret-shaped file present in rendered source"; exit 1
+fi
+# Belt-and-suspenders: no internal/dev files may reach the public tree.
+if find "$LOCAL_SOURCE_DIR" \( -name '*.md' -o -path '*/output/*' \
+     -o -path '*/.playwright-cli/*' -o -name '__test_probe.js' \) -print -quit | grep -q .; then
+  echo "refusing: internal/dev file (markdown/output/playwright/probe) leaked into rendered source"; exit 1
 fi
 (
   cd "$LOCAL_SOURCE_DIR"
