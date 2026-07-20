@@ -29,6 +29,10 @@
 .bk-error{color:#b42318;font-size:13px;font-weight:700;margin:-2px 0 0}
 .bk-submit{margin-top:6px;width:100%;border:0;cursor:pointer;font-family:inherit}
 .bk-fine{text-align:center;font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#475569;margin-top:2px}
+.bk-privacy{text-align:center;font-size:11px;line-height:1.4;font-weight:600;color:#64748b;margin:6px 0 0}
+.bk-privacy a{color:var(--indigo);border-bottom:1px solid rgba(65,94,226,.35)}
+/* Honeypot — off-canvas, never shown to or focusable by humans. */
+.bk-hp{position:absolute!important;left:-9999px!important;top:auto;width:1px;height:1px;overflow:hidden}
 
 .bk-cal{margin-top:22px;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--white);min-height:620px}
 .bk-cal iframe{display:block;width:100%;height:660px;border:0}
@@ -43,3 +47,27 @@
   .bk-cal iframe{height:560px}
   .bk-cal-status{min-height:560px}
 }
+
+/* Grid/flex overflow guard: inputs must be allowed to shrink inside the
+   two-column name row, otherwise their intrinsic width breaks the card
+   (the "Last name" field was spilling off the right edge). */
+.bk-row{min-width:0}
+.bk-field{min-width:0}
+.bk-field input,.bk-field textarea{width:100%;max-width:100%;box-sizing:border-box}
+
+/* ── /book-a-demo/ hero checklist ─────────────────────────────────────
+   .demo-points had no styles and rendered as a raw browser list. */
+.demo-points{list-style:none;margin:28px 0 0;padding:0;display:flex;flex-direction:column;gap:14px}
+.demo-points li{position:relative;padding-left:36px;font-size:16px;line-height:1.45;font-weight:600;color:#cbd5e1}
+.demo-points li::before{content:"";position:absolute;left:0;top:1px;width:23px;height:23px;border-radius:50%;background:var(--mint);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5' fill='none' stroke='%23020617' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center;background-size:16px 16px}
+
+/* ── /book-a-demo/ "explore before the call" site-map (dark section) ── */
+.explore-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:4px}
+.explore-card{display:flex;flex-direction:column;gap:8px;padding:24px 24px 26px;border-radius:20px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.11);text-decoration:none;transition:background .2s ease,border-color .2s ease,transform .2s ease}
+.explore-card:hover{background:rgba(255,255,255,.08);border-color:rgba(93,254,194,.55);transform:translateY(-2px)}
+.explore-card .ec-t{display:flex;align-items:center;gap:8px;font-size:17px;font-weight:800;letter-spacing:-.03em;color:var(--white)}
+.explore-card .ec-t::after{content:"→";margin-left:auto;color:var(--mint);opacity:0;transform:translateX(-4px);transition:opacity .2s ease,transform .2s ease;font-weight:700}
+.explore-card:hover .ec-t::after{opacity:1;transform:translateX(0)}
+.explore-card .ec-d{font-size:14px;line-height:1.45;font-weight:600;color:#9fb0c9}
+@media(max-width:900px){.explore-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.explore-grid{grid-template-columns:1fr}}

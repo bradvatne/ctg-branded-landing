@@ -57,6 +57,18 @@ Google LLC
                 Analytics
                 [policies.google.com/privacy](https://policies.google.com/privacy)
 
+                PostHog
+PostHog, Inc.
+                Product analytics — session-level event funnels and anonymized session replays
+                Analytics
+                [posthog.com/privacy](https://posthog.com/privacy)
+
+                Microsoft Clarity
+Microsoft Corporation
+                Session replays & heatmaps
+                Analytics
+                [privacy.microsoft.com](https://privacy.microsoft.com/en-us/privacystatement)
+
                 Google Ads
 Google LLC
                 Conversion measurement for paid search
@@ -101,6 +113,21 @@ HubSpot, Inc.
                 Google Ads
                 Conversion linker
                 3 months
+
+                ph_*
+                PostHog
+                Anonymous session and event tracking
+                1 year
+
+                _clck
+                Microsoft Clarity (clarity.ms)
+                Persists the Clarity user ID across visits
+                1 year
+
+                _clsk
+                Microsoft Clarity (clarity.ms)
+                Connects page views from the same visit into one session replay
+                1 day
 
                 _fbp
                 Meta Pixel

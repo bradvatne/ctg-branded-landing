@@ -120,19 +120,11 @@
   }
 
   /* ── Vendor loaders ───────────────────────────────────────────── */
+  /* NOTE: Google Ads (AW-17041977260) is configured by the Google tag
+     inside GTM (container GTM-56T5JJJV) — GTM is the SINGLE owner of the
+     Ads tag. Do NOT re-add a loadGoogleAds()/gtag('config', AW…) here or
+     the Ads tag loads twice. CONFIG.googleAds.id is kept for reference. */
   let gtmLoaded = false;
-  let adsLoaded = false;
-
-  function loadGoogleAds() {
-    if (adsLoaded || !CONFIG.googleAds.id) return;
-    adsLoaded = true;
-    const s = document.createElement('script');
-    s.async = true;
-    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + CONFIG.googleAds.id;
-    document.head.appendChild(s);
-    gtag('js', new Date());
-    gtag('config', CONFIG.googleAds.id);
-  }
 
   function loadGTM() {
     if (gtmLoaded || !CONFIG.gtm.id) return;
@@ -160,7 +152,6 @@
 
     if (prefs.analytics || prefs.marketing) {
       loadGTM();
-      loadGoogleAds();
     }
 
     window.dispatchEvent(new CustomEvent('ctg:consent', { detail: prefs }));
@@ -220,7 +211,7 @@
     const parts = location.hostname.split('.');
     const domains = ['', location.hostname, '.' + location.hostname];
     if (parts.length >= 2) domains.push('.' + parts.slice(-2).join('.'));
-    const matches = (n) => /^_ga(_|$)|^_gid$|^_gcl_/.test(n) || n === '_fbp' || n === '_fbc' || /^_uet/.test(n);
+    const matches = (n) => /^_ga(_|$)|^_gid$|^_gcl_/.test(n) || n === '_fbp' || n === '_fbc' || /^_uet/.test(n) || /^ph_/.test(n) || n === '_clck' || n === '_clsk';
     document.cookie.split(';').forEach(function (c) {
       const name = c.split('=')[0].trim();
       if (!matches(name)) return;
@@ -229,6 +220,11 @@
         document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/' + dAttr;
       });
     });
+    try {
+      Object.keys(localStorage).forEach(function (k) {
+        if (/^ph_/.test(k)) localStorage.removeItem(k);
+      });
+    } catch (_) {}
   }
 
   function saveFromPrefs() {

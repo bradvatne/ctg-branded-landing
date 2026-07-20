@@ -421,6 +421,7 @@
       state.status[s.id] = 'free';
       toast('Booking cancelled — #' + s.num + ' back on sale');
     }
+    track('opdemo_action', { spot: s.id, act: act, status: state.status[s.id] });
     paint();
     openBed(s);
   }
@@ -459,6 +460,7 @@
         e.stopPropagation();
         var b = bookingFor(btn.getAttribute('data-opcheck'));
         b.status = 'checked'; state.status[b.spot] = 'checked';
+        track('opdemo_quickcheck', { spot: b.spot });
         paint(); openList();
         toast(b.guest + ' checked in — ' + b.pax + ' pax');
       });

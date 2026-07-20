@@ -488,7 +488,9 @@ const shortLabel = (slug) =>
 function footerMarkup(rel, pages = []) {
   const col = (title, links) => `      <div class="footer-col">
         <p class="footer-col-h">${esc(title)}</p>
-${links.map(([href, label]) => `        <a href="${routeHref(rel, href)}">${esc(label)}</a>`).join('\n')}
+${links.map(([href, label]) => href === '#cookie-preferences'
+    ? `        <a href="#" data-open-consent>${esc(label)}</a>`
+    : `        <a href="${routeHref(rel, href)}">${esc(label)}</a>`).join('\n')}
       </div>`;
   const r = (s) => `${rel}${s}`;
   return `  <footer class="footer shell">
@@ -503,7 +505,6 @@ ${links.map(([href, label]) => `        <a href="${routeHref(rel, href)}">${esc(
         <a href="${r('blog/')}">Blog</a>
         <a href="${r('help/')}">Help</a>
         <a href="mailto:info@clubtechglobal.com">Email us</a>
-        <a href="#" data-open-consent>Cookie preferences</a>
       </div>
     </div>
     <div class="footer-grid">
@@ -522,7 +523,7 @@ const CONSENT_MARKUP = `<div class="cc-banner" id="cc-banner" role="region" aria
   <div class="cc-banner-actions">
     <button type="button" class="cc-btn cc-btn-primary" id="cc-accept">Accept all</button>
     <button type="button" class="cc-btn cc-btn-ghost" id="cc-reject">Reject non-essential</button>
-    <button type="button" class="cc-btn cc-btn-link" id="cc-customize">Customize</button>
+    <button type="button" class="cc-btn cc-btn-link" id="cc-customize">Edit preferences</button>
   </div>
 </div>
 
@@ -548,8 +549,8 @@ const CONSENT_MARKUP = `<div class="cc-banner" id="cc-banner" role="region" aria
             <span class="cc-switch-slider"></span>
           </label>
         </div>
-        <div class="cc-cat-desc">Helps us understand which pages are useful, where visitors drop off, and how to improve the product.</div>
-        <div class="cc-cat-vendors">Vendors · Google Analytics 4</div>
+        <div class="cc-cat-desc">Helps us understand which pages are useful, where visitors drop off, and how to improve the product. Includes anonymized session replays (PostHog) and session replays &amp; heatmaps (Microsoft Clarity).</div>
+        <div class="cc-cat-vendors">Vendors · Google Analytics 4 · PostHog · Microsoft Clarity</div>
       </div>
       <div class="cc-cat">
         <div class="cc-cat-head">

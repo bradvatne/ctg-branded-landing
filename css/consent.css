@@ -11,8 +11,9 @@
 .cc-btn:hover{transform:translateY(-1px)}
 .cc-btn-primary{background:var(--mint);color:var(--navy)}
 .cc-btn-ghost{background:rgba(255,255,255,.1);color:var(--white);border:1px solid rgba(255,255,255,.18)}
-.cc-btn-link{background:transparent;color:#94a3b8;text-decoration:underline;text-underline-offset:3px}
-.cc-btn-link:hover{color:var(--white)}
+/* Plain hyperlink text — no button background/box; hugs its label. */
+.cc-btn-link{background:transparent;color:#94a3b8;text-decoration:underline;text-underline-offset:3px;padding:12px 2px;border-radius:0}
+.cc-btn-link:hover{color:var(--white);transform:none}
 
 .cc-prefs{position:fixed;z-index:70;inset:0;background:rgba(2,6,23,.6);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:20px}
 .cc-prefs[hidden]{display:none}
@@ -28,7 +29,7 @@
 .cc-cat-title{font-weight:800;color:var(--heading)}
 .cc-locked{font-size:12px;font-weight:800;color:var(--indigo);text-transform:uppercase;letter-spacing:.06em}
 .cc-cat-desc{margin-top:8px;font-size:13px;line-height:1.5;color:var(--muted)}
-.cc-cat-vendors{margin-top:8px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#94a3b8}
+.cc-cat-vendors{margin-top:8px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 
 .cc-switch{position:relative;display:inline-block;width:46px;height:26px;flex:none}
 .cc-switch input{opacity:0;width:0;height:0}

@@ -5,4 +5,20 @@ ErrorDocument 404 /404.html
 # production server must send a real permanent redirect before serving them.
 RedirectMatch 301 ^/booking/?$ /platform/#booking
 RedirectMatch 301 ^/operations/?$ /platform/#operations
-RedirectMatch 301 ^/intelligence/?$ /grow/#guest-data
+RedirectMatch 301 ^/intelligence/?$ /grow/#ads
+
+# Legal pages moved from the old flat files to directory routes.
+RedirectMatch 301 ^/terms\.html$ /terms/
+RedirectMatch 301 ^/cookies\.html$ /cookies/
+
+# Baseline security headers (no-op if mod_headers is absent, so this can never 500).
+# CSP is intentionally NOT set here — add it at Cloudflare in Report-Only first
+# (see the launch report for a ready-to-paste policy covering GTM/GA4/Ads/Meta/HubSpot
+# + the HubSpot meetings iframe), then enforce.
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+</IfModule>
