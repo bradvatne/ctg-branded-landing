@@ -154,7 +154,7 @@
 /* Solutions hub */
 .solution-index-hero{padding:152px 0 98px;background:var(--navy);color:#cbd5e1}
 .solution-index-hero-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(500px,1.1fr);gap:72px;align-items:center}
-.solution-index-hero .index-h1{max-width:780px}.solution-index-hero .index-sub{max-width:680px}
+.solution-index-hero .index-h1{max-width:780px;color:var(--white)}.solution-index-hero .index-sub{max-width:680px}
 .solution-hub-nav{display:grid;gap:0;margin-top:36px;border-top:1px solid rgba(255,255,255,.14)}
 .solution-hub-nav a{display:flex;justify-content:space-between;align-items:center;padding:15px 2px;border-bottom:1px solid rgba(255,255,255,.14);color:#fff;font-size:14px;font-weight:700}
 .solution-hub-nav span{color:var(--mint)}
