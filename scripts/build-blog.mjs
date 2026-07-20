@@ -359,6 +359,7 @@ const NAV = [
       ] },
       { h: 'Customer stories', tag: '', links: [
         ['blog/finns-beach-club-case-study/', 'FINNS Beach Club', 'Millions pre-paid monthly'],
+        ['customers/luna.html', 'Luna Beach Club', 'Booked &amp; paid before arrival'],
       ] },
       { h: 'Compare', tag: '', links: [
         ['compare/sevenrooms-alternative/', 'vs SevenRooms', ''],
@@ -446,7 +447,7 @@ ${rail}            </div>
 ${items}
       </div>
       <div class="nav-actions">
-        <a class="nav-login" href="https://id.clubtechglobal.com" rel="noopener">Login</a>
+        <a class="nav-login" href="https://portal.clubtechglobal.com" rel="noopener">Login</a>
         <a class="button button-dark nav-cta" href="${href('book-a-demo/')}" data-open-demo>Book a Demo</a>
       </div>
       <details class="mobile-menu">
@@ -454,7 +455,7 @@ ${items}
         <div class="mobile-panel">
 ${mob}
           <a class="button button-mint m-cta" href="${href('book-a-demo/')}" data-open-demo>Book a Demo</a>
-          <a class="m-login" href="https://id.clubtechglobal.com" rel="noopener">Login</a>
+          <a class="m-login" href="https://portal.clubtechglobal.com" rel="noopener">Login</a>
         </div>
       </details>
     </nav>
@@ -907,7 +908,7 @@ function renderSolutionPage(page, pages) {
 <a class="skip-link" href="#main">Skip to content</a>
 ${navMarkup('../../', 'solutions')}
 <main id="main">
-  <header class="solution-hero"><div class="shell solution-hero-grid"><div><p class="solution-kicker"><i></i>${esc(config.kicker)}</p><h1>${h1Html(page.meta.title)}</h1><p class="solution-hero-copy">${esc(page.meta.excerpt)}</p><div class="solution-actions"><a class="button button-mint" href="../../book-a-demo/" data-open-demo>Book a Demo</a><a class="button button-ghost" href="#how-it-works">See the workflow ↓</a></div>${page.meta.canonicalFeature ? `<a class="solution-canonical" href="${esc(routeHref('../../', page.meta.canonicalFeature))}">${esc(canonicalFeatureLabel(page.meta.canonicalFeature))} <span aria-hidden="true">↗</span></a>` : ''}<ul class="solution-proofline">${proof}</ul></div><div class="solution-hero-visual"><div class="solution-stage-chrome"><span></span><span></span><span></span><small>Clubtech · ${esc(config.label)}</small></div><img class="solution-hero-shot" src="../../assets/product/${esc(config.heroShot)}" alt="Clubtech ${esc(config.label)} product experience" fetchpriority="high" decoding="async"><figure class="solution-hero-photo"><img src="../..${esc(page.meta.hero)}" alt="${esc(page.meta.heroAlt)}" fetchpriority="high" decoding="async"><figcaption>${esc(config.label)} · venue context</figcaption></figure><span class="solution-hero-label"><i></i>Live product surface</span></div></div></header>
+  <header class="solution-hero"><div class="shell solution-hero-grid"><div><h1>${h1Html(page.meta.title)}</h1><p class="solution-hero-copy">${esc(page.meta.excerpt)}</p><div class="solution-actions"><a class="button button-mint" href="../../book-a-demo/" data-open-demo>Book a Demo</a><a class="button button-ghost" href="#how-it-works">See the workflow ↓</a></div>${page.meta.canonicalFeature ? `<a class="solution-canonical" href="${esc(routeHref('../../', page.meta.canonicalFeature))}">${esc(canonicalFeatureLabel(page.meta.canonicalFeature))} <span aria-hidden="true">↗</span></a>` : ''}<ul class="solution-proofline">${proof}</ul></div><div class="solution-hero-visual"><div class="solution-stage-chrome"><span></span><span></span><span></span><small>Clubtech · ${esc(config.label)}</small></div><img class="solution-hero-shot" src="../../assets/product/${esc(config.heroShot)}" alt="Clubtech ${esc(config.label)} product experience" fetchpriority="high" decoding="async"><figure class="solution-hero-photo"><img src="../..${esc(page.meta.hero)}" alt="${esc(page.meta.heroAlt)}" fetchpriority="high" decoding="async"><figcaption>${esc(config.label)} · venue context</figcaption></figure></div></div></header>
   <section class="solution-intro"><div class="shell solution-intro-grid"><div class="solution-intro-label"><p class="eyebrow">The operating case</p><p>Inventory · revenue · service day · owned data</p></div><div class="solution-lead">${parts.intro}</div></div></section>
 ${renderSolutionProductBand(config)}
 ${modules}
@@ -991,7 +992,7 @@ function renderComparisonPage(page, pages) {
 <body class="comparison-page p-compare"><a class="skip-link" href="#main">Skip to content</a>
 ${navMarkup('../../', 'resources')}
 <main id="main">
-  <header class="comparison-hero"><div class="shell comparison-hero-grid"><div><p class="solution-kicker"><i></i>Fair-fit comparison</p><h1>${h1Html(page.meta.title)}</h1><p class="comparison-sub">${esc(page.meta.excerpt)}</p><div class="solution-actions"><a class="button button-mint" href="../../book-a-demo/" data-open-demo>Book a Demo</a><a class="button button-ghost" href="../../${esc(config.solution || 'platform/')}">See the relevant solution</a></div>${verified}</div><div class="comparison-visual"><img class="comparison-venue" src="../..${esc(page.meta.hero)}" alt="${esc(page.meta.heroAlt)}" fetchpriority="high" decoding="async"><img class="comparison-product" src="../../assets/product/${esc(config.proof || capability.asset || 'booking-map.webp')}" alt="Clubtech ${esc(capability.label)} product view" fetchpriority="high" decoding="async"><span>Clubtech product proof</span></div></div></header>
+  <header class="comparison-hero"><div class="shell comparison-hero-grid"><div><h1>${h1Html(page.meta.title)}</h1><p class="comparison-sub">${esc(page.meta.excerpt)}</p><div class="solution-actions"><a class="button button-mint" href="../../book-a-demo/" data-open-demo>Book a Demo</a><a class="button button-ghost" href="../../${esc(config.solution || 'platform/')}">See the relevant solution</a></div>${verified}</div><div class="comparison-visual"><img class="comparison-venue" src="../..${esc(page.meta.hero)}" alt="${esc(page.meta.heroAlt)}" fetchpriority="high" decoding="async"><img class="comparison-product" src="../../assets/product/${esc(config.proof || capability.asset || 'booking-map.webp')}" alt="Clubtech ${esc(capability.label)} product view" fetchpriority="high" decoding="async"></div></div></header>
   <section class="comparison-thesis"><div class="shell"><p>Decision first.</p><h2>Choose the operating model that fits the inventory—not the loudest feature list.</h2></div></section>
   <article class="comparison-article"><div class="shell comparison-body"><aside><p class="eyebrow">What Clubtech owns</p><h2>${esc(capability.label)}</h2><p>The full product explanation lives on the canonical capability page. This comparison stays focused on fit.</p><a href="../../${esc(capability.canonical)}">See the capability ↗</a></aside><div class="post-body">${body}</div></div></article>
   <section class="comparison-proof-band"><div class="shell"><div><p class="eyebrow">Product proof</p><h2>See the Clubtech side of the decision.</h2><p>${esc(capability.label)} is shown in the actual product, not described as a checklist.</p></div><figure><img src="../../assets/product/${esc(config.proof || capability.asset || 'booking-map.webp')}" alt="Clubtech ${esc(capability.label)} interface" loading="lazy" decoding="async"><figcaption>Clubtech · ${esc(capability.label)}</figcaption></figure></div></section>
@@ -1216,6 +1217,15 @@ function renderRootPage(page, landings, pages) {
     rel: '../',
     ogType: 'website',
   });
+  let landingBlocksHtml = renderLandingBlocks(parts, layout);
+  if (page.meta.slug === 'about') {
+    // Meet-the-team belongs near the top of the about page, not after the FAQ.
+    const cut = landingBlocksHtml.indexOf('</section>');
+    const team = `\n${renderTeamSection()}`;
+    landingBlocksHtml = cut >= 0
+      ? landingBlocksHtml.slice(0, cut + 10) + team + landingBlocksHtml.slice(cut + 10)
+      : landingBlocksHtml + team;
+  }
   const landingHead = demo ? head.replace('</head>', `  <link rel="stylesheet" href="../${demo.css}">\n</head>`) : head;
 
   return `${landingHead}
@@ -1223,11 +1233,10 @@ function renderRootPage(page, landings, pages) {
 <a class="skip-link" href="#main">Skip to content</a>
 ${navMarkup('../', page.meta.group || null)}
 <main id="main">
-  <header class="landing-hero"><div class="shell landing-hero-grid"><div><p class="solution-kicker"><i></i>${esc(eyebrow)}</p><h1>${h1Html(page.meta.title)}</h1><p class="landing-sub">${esc(page.meta.excerpt)}</p><div class="solution-actions"><a class="button button-mint" href="${esc(routeHref('../', primary[0]))}"${primaryDemo ? ' data-open-demo' : ''}>${esc(primary[1])}</a><a class="button button-ghost" href="${esc(routeHref('../', secondary[0]))}">${esc(secondary[1])}</a></div></div>${productAsset || page.meta.hero ? `<div class="landing-hero-visual">${productAsset ? `<div class="solution-stage-chrome"><span></span><span></span><span></span><small>Clubtech · ${esc(stageLabel)}</small></div><img class="landing-product" src="../assets/product/${esc(productAsset)}" alt="Clubtech product view for ${esc(plainTitle(page.meta.title))}" fetchpriority="high" decoding="async">` : ''}${page.meta.hero ? `<img class="landing-context" src="..${esc(page.meta.hero)}" alt="${esc(page.meta.heroAlt || plainTitle(page.meta.title))}" fetchpriority="high" decoding="async">` : ''}</div>` : ''}</div></header>
+  <header class="landing-hero"><div class="shell landing-hero-grid"><div><h1>${h1Html(page.meta.title)}</h1><p class="landing-sub">${esc(page.meta.excerpt)}</p><div class="solution-actions"><a class="button button-mint" href="${esc(routeHref('../', primary[0]))}"${primaryDemo ? ' data-open-demo' : ''}>${esc(primary[1])}</a><a class="button button-ghost" href="${esc(routeHref('../', secondary[0]))}">${esc(secondary[1])}</a></div></div>${productAsset || page.meta.hero ? `<div class="landing-hero-visual">${productAsset ? `<div class="solution-stage-chrome"><span></span><span></span><span></span><small>Clubtech · ${esc(stageLabel)}</small></div><img class="landing-product" src="../assets/product/${esc(productAsset)}" alt="Clubtech product view for ${esc(plainTitle(page.meta.title))}" fetchpriority="high" decoding="async">` : ''}${page.meta.hero ? `<img class="landing-context" src="..${esc(page.meta.hero)}" alt="${esc(page.meta.heroAlt || plainTitle(page.meta.title))}" fetchpriority="high" decoding="async">` : ''}</div>` : ''}</div></header>
 ${layout === 'legal'
     ? `  <div class="legal-body shell"><article class="legal-prose">\n${body}\n  </article></div>`
-    : `${parts.intro.trim() ? `  <section class="landing-intro"><div class="shell landing-intro-copy">${parts.intro}</div></section>\n` : ''}${renderLandingBlocks(parts, layout)}
-${page.meta.slug === 'about' ? renderTeamSection() : ''}`}
+    : `${parts.intro.trim() ? `  <section class="landing-intro"><div class="shell landing-intro-copy">${parts.intro}</div></section>\n` : ''}${landingBlocksHtml}`}
 ${demoMarkup}
   ${renderPathwayRail(related.length ? related : config.related || [], '../', 'Related pathway', 'The next useful page, not more noise.')}
   <section class="closing dark-section blog-closing">
@@ -1303,7 +1312,7 @@ function renderSolutionsIndex(pages) {
   ];
   const cards = (group) => sectionPages.filter((page) => SOLUTION_CONFIG[page.meta.slug]?.group === group).map((page, index) => {
     const config = SOLUTION_CONFIG[page.meta.slug];
-    return `<a class="solution-card ${index === 0 ? 'is-featured' : ''}" href="${esc(page.meta.slug)}/"><div class="solution-card-visual"><img src="../assets/product/${esc(config.heroShot)}" alt="" loading="lazy" decoding="async"><span>${esc(config.kicker)}</span></div><div class="solution-card-copy"><small>${esc(config.label)}</small><strong>${esc(plainTitle(page.meta.title))}</strong><p>${esc(page.meta.excerpt)}</p><span class="solution-card-link">Explore ${esc(config.label)} <i aria-hidden="true">↗</i></span></div></a>`;
+    return `<a class="solution-card ${index === 0 ? 'is-featured' : ''}" href="${esc(page.meta.slug)}/"><div class="solution-card-visual"><img src="../assets/product/${esc(config.heroShot)}" alt="" loading="lazy" decoding="async"></div><div class="solution-card-copy"><small>${esc(config.label)}</small><strong>${esc(plainTitle(page.meta.title))}</strong><p>${esc(page.meta.excerpt)}</p><span class="solution-card-link">Explore ${esc(config.label)} <i aria-hidden="true">↗</i></span></div></a>`;
   }).join('');
   const groupMarkup = groups.map(([key, title, copy]) => `<section class="solution-group solution-group-${esc(key)}" id="${esc(key)}"><div class="solution-group-head"><div><p class="solution-module-index">Find your fit</p><h2>${esc(title)}</h2></div><p>${esc(copy)}</p></div><div class="solution-card-grid">${cards(key)}</div></section>`).join('');
   const head = headHTML({
@@ -1317,7 +1326,7 @@ function renderSolutionsIndex(pages) {
   const solutionHead = head.replace('</head>', '  <link rel="stylesheet" href="../css/solutions.css">\n</head>');
   return `${solutionHead}
 <body class="solution-page p-solutions-index"><a class="skip-link" href="#main">Skip to content</a>${navMarkup('../', 'solutions')}<main id="main">
-  <section class="index-hero solution-index-hero"><div class="shell solution-index-hero-grid"><div><p class="index-kicker"><span class="tick"></span>Solutions · ${sectionPages.length} product pages</p><h1 class="index-h1">Built for how <span class="mint-text">your venue sells.</span></h1><p class="index-sub">Sunbeds, daybeds, tables, tickets, and day passes — one platform, configured around the real inventory and the team running it.</p><div class="solution-hub-nav" aria-label="Browse solutions"><a href="#venue">By venue <span>↘</span></a><a href="#location">By destination <span>↘</span></a><a href="#goal">By operational need <span>↘</span></a></div></div><div class="solution-index-showcase"><div class="solution-stage-chrome"><span></span><span></span><span></span><small>Clubtech · booking map</small></div><img src="../assets/product/booking-map.webp" alt="Clubtech interactive venue booking map" fetchpriority="high" decoding="async"><div class="solution-index-callout"><strong>The booking is the product.</strong><span>Exact inventory · prepayment · live floor</span></div></div></div></section>
+  <section class="index-hero solution-index-hero"><div class="shell solution-index-hero-grid"><div><h1 class="index-h1">Built for how <span class="mint-text">your venue sells.</span></h1><p class="index-sub">Sunbeds, daybeds, tables, tickets, and day passes — one platform, configured around the real inventory and the team running it.</p><div class="solution-hub-nav" aria-label="Browse solutions"><a href="#venue">By venue <span>↘</span></a><a href="#location">By destination <span>↘</span></a><a href="#goal">By operational need <span>↘</span></a></div></div><div class="solution-index-showcase"><div class="solution-stage-chrome"><span></span><span></span><span></span><small>Clubtech · booking map</small></div><img src="../assets/product/booking-map.webp" alt="Clubtech interactive venue booking map" fetchpriority="high" decoding="async"><div class="solution-index-callout"><strong>The booking is the product.</strong><span>Exact inventory · prepayment · live floor</span></div></div></div></section>
   <section class="solution-index-thesis"><div class="shell"><p>One platform, three ways in.</p><h2>Choose the venue, the market, or the workflow. The product stays connected from booking to floor to guest data.</h2></div></section>
   <div class="shell solution-index-groups">${groupMarkup}</div>
   <section class="closing dark-section"><img class="closing-mark" src="../brand/clubtech-mark-white.png" alt="" aria-hidden="true" width="1200" height="1200" loading="lazy"><div class="shell centered"><p class="eyebrow">Your venue, pre-sold.</p><h2>Put your venue<br><span class="mint-text">inside the demo.</span></h2><p>Book a focused walkthrough, configured around your floor and sellable inventory.</p><a class="button button-mint" href="../book-a-demo/" data-open-demo>Book a Demo</a></div></section>
@@ -1392,7 +1401,7 @@ ${navMarkup('../', sectionKey === 'solutions' ? 'solutions' : 'resources')}
 
   <section class="index-hero">
     <div class="shell">
-      <p class="index-kicker"><span class="tick"></span>${esc(label)} · ${sectionPages.length} pages</p>
+      
       <h1 class="index-h1">${SECTION_HERO[sectionKey].h1}</h1>
       <p class="index-sub">${esc(SECTION_HERO[sectionKey].sub)}</p>
       ${SECTION_INTRO[sectionKey] ? `<div class="index-intro">${SECTION_INTRO[sectionKey].map((p) => `<p>${esc(p)}</p>`).join('')}</div>` : ''}
@@ -1469,7 +1478,7 @@ ${navMarkup('../', 'resources')}
 
   <section class="index-hero">
     <div class="shell">
-      <p class="index-kicker"><span class="tick"></span>The Clubtech index · ${posts.length} entries</p>
+      
       <h1 class="index-h1">Playbooks for<br>venues that <span class="mint-text">sell out.</span></h1>
       <p class="index-sub">Booking UX, revenue capture, guest data. Everything we learn on the floor of premium venues, written down.</p>
     </div>
