@@ -19,12 +19,11 @@
    Identity/events are delegated to window.CTGHubSpot (consent-gated
    pixel) and window.CTGTrack when present.
 
-   Two mount modes, one flow:
-     • Modal   — any element with [data-open-demo] opens the flow in an
-                 overlay. Built lazily on first open.
-     • Inline  — any element with [data-demo-inline] renders the same
-                 two-step flow directly on the page, so /book-a-demo/
-                 can be direct-linked (ads, emails). Rendered on load.
+   One mount mode:
+     • Inline — any element with [data-demo-inline] renders the two-step
+                flow directly on the page. All "Book a Demo" CTAs are
+                plain links to /book-a-demo/ (no modal — every path lands
+                on the direct-linkable page: ads, emails, nav).
    ────────────────────────────────────────────────────────────────────── */
 
 (function () {
@@ -268,82 +267,10 @@
 
     leadStep.hidden = true;
     schedStep.hidden = false;
-    // Widen: modal card, or the inline container itself.
-    (root.closest('.bk-card') || root).classList.add('bk-wide');
+    root.classList.add('bk-wide'); // widen the inline container for the calendar
     track('scheduler_shown');
     var heading = schedStep.querySelector('.bk-h');
     if (heading) heading.focus();
-  }
-
-  /* ===== modal mount (once, lazily) =================================== */
-
-  var modal = null;
-  var returnFocus = null;
-
-  function focusableWithin(el) {
-    return el.querySelectorAll('a[href],button:not([disabled]),input:not([disabled]),textarea:not([disabled]),select:not([disabled]),[tabindex]:not([tabindex="-1"])');
-  }
-
-  function buildModal() {
-    if (modal) return modal;
-    modal = document.createElement('div');
-    modal.className = 'bk-back';
-    modal.id = 'bk-modal';
-    modal.setAttribute('role', 'dialog');
-    modal.setAttribute('aria-modal', 'true');
-    modal.setAttribute('aria-labelledby', 'bk-title');
-    modal.hidden = true;
-    modal.innerHTML =
-      '<div class="bk-card">' +
-      '  <button type="button" class="bk-close" aria-label="Close">✕</button>' +
-      stepsHTML() +
-      '</div>';
-    document.body.appendChild(modal);
-
-    var card = modal.querySelector('.bk-card');
-    // Give the modal title an id for aria-labelledby.
-    var h = card.querySelector('[data-step="lead"] .bk-h');
-    if (h) h.id = 'bk-title';
-
-    modal.addEventListener('click', function (e) {
-      if (e.target === modal) closeModal();
-    });
-    card.querySelector('.bk-close').addEventListener('click', closeModal);
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && !modal.hidden) closeModal();
-      if (e.key !== 'Tab' || modal.hidden) return;
-      var items = focusableWithin(card);
-      if (!items.length) return;
-      var first = items[0];
-      var last = items[items.length - 1];
-      if (e.shiftKey && document.activeElement === first) {
-        e.preventDefault();
-        last.focus();
-      } else if (!e.shiftKey && document.activeElement === last) {
-        e.preventDefault();
-        first.focus();
-      }
-    });
-    wireFlow(card);
-    return modal;
-  }
-
-  function openModal(trigger) {
-    buildModal();
-    returnFocus = document.activeElement;
-    modal.hidden = false;
-    document.body.style.overflow = 'hidden';
-    track('demo_open', { trigger: trigger || 'unknown' });
-    var first = modal.querySelector('input[name="firstname"]');
-    if (first) setTimeout(function () { first.focus(); }, 60);
-  }
-
-  function closeModal() {
-    if (!modal) return;
-    modal.hidden = true;
-    document.body.style.overflow = '';
-    if (returnFocus && typeof returnFocus.focus === 'function') returnFocus.focus();
-    returnFocus = null;
   }
 
   /* ===== inline mount(s) ============================================== */
@@ -375,17 +302,6 @@
     if (!/(^|\.)hubspot\.com$/i.test(originHost(e.origin))) return; // trust only HubSpot origins
     track('demo_booked', { source: 'hubspot_meetings' });
   }, false);
-
-  /* ===== trigger wiring =============================================== */
-
-  document.addEventListener('click', function (e) {
-    var t = e.target.closest && e.target.closest('[data-open-demo]');
-    if (!t) return;
-    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-    e.preventDefault();
-    var section = t.closest('section, header, footer, nav');
-    openModal((section && (section.id || section.className.split(/\s+/)[0])) || 'page');
-  });
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initInline);

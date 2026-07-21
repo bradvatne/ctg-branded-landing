@@ -1,17 +1,10 @@
-/* Booking modal — branded lead form + scheduler step, on the site tokens */
+/* Booking flow — branded lead form + scheduler step, on the site tokens */
 
-.bk-back{position:fixed;z-index:80;inset:0;background:rgba(2,6,23,.62);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;padding:20px}
-.bk-back[hidden]{display:none}
-.bk-card{position:relative;width:min(520px,100%);max-height:calc(100vh - 40px);overflow-y:auto;background:var(--paper);border-radius:28px;padding:38px;transition:width .3s ease}
-.bk-card.bk-wide{width:min(760px,100%)}
-
-/* Inline mount (e.g. /book-a-demo/) — same flow, rendered on the page */
+/* Inline mount (/book-a-demo/) — the flow renders directly on the page */
 .bk-inline{background:var(--paper);border-radius:28px;padding:38px;width:100%;max-width:520px;margin:0 auto}
 .bk-inline.bk-wide{max-width:760px}
 .bk-inline .bk-kicker{margin-bottom:2px}
 @media(max-width:600px){.bk-inline{padding:28px 20px;border-radius:24px}}
-.bk-close{position:absolute;top:18px;right:18px;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:transparent;cursor:pointer;display:grid;place-items:center;color:var(--heading);font-size:16px;line-height:1;z-index:1}
-.bk-close:hover{background:var(--navy);color:var(--mint);border-color:var(--navy)}
 .bk-kicker{display:inline-flex;align-items:center;padding:6px 13px;border-radius:999px;background:var(--lime);color:var(--navy);font-size:13px;font-weight:800}
 .bk-h{margin-top:16px;font-size:clamp(28px,3.4vw,40px);line-height:1;letter-spacing:-.05em}
 .bk-h .mint-text{color:var(--indigo)}
@@ -41,8 +34,6 @@
 .bk-alt a{color:var(--indigo);font-weight:700;border-bottom:1px solid rgba(65,94,226,.35)}
 
 @media(max-width:600px){
-  .bk-back{padding:0;align-items:flex-end}
-  .bk-card{border-radius:24px 24px 0 0;max-height:94vh;padding:28px 20px}
   .bk-row{grid-template-columns:1fr}
   .bk-cal iframe{height:560px}
   .bk-cal-status{min-height:560px}
