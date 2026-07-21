@@ -438,9 +438,12 @@ html{scroll-padding-top:96px;background:#020617}
    side by side; the short flagship quote (-lg) renders display-size,
    the longer story quote reads at body-plus size. */
 .quote-duo{display:grid;grid-template-columns:1fr 1fr;gap:20px;width:min(1420px,calc(100% - 32px));margin:96px auto}
-.quote-duo .quote-card{margin:0;padding:56px 52px;border-radius:32px;background:linear-gradient(180deg,var(--peri),var(--lav));display:flex;flex-direction:column;gap:38px}
-.quote-duo blockquote{margin:0;max-width:none;font-size:clamp(20px,1.9vw,27px);line-height:1.22;letter-spacing:-.045em;text-align:left}
-.quote-duo .quote-card-lg blockquote{font-size:clamp(30px,2.9vw,44px);line-height:1.08;letter-spacing:-.055em}
+.quote-duo .quote-card{position:relative;overflow:hidden;margin:0;padding:56px 52px;border-radius:32px;background:linear-gradient(180deg,var(--peri),var(--lav));display:flex;flex-direction:column;gap:38px}
+/* Oversized transparent quote-mark watermark, top-right of each card. */
+.quote-duo .quote-card::before{content:"\201C";position:absolute;top:-.28em;right:.06em;font-family:Georgia,"Times New Roman",serif;font-size:clamp(140px,16vw,220px);line-height:1;color:var(--white);opacity:.16;pointer-events:none;z-index:0}
+.quote-duo blockquote,.quote-duo .quote-meta{position:relative;z-index:1}
+.quote-duo blockquote{margin:0;max-width:none;font-size:clamp(20px,1.9vw,27px);line-height:1.26;letter-spacing:-.045em;text-align:left;font-weight:500;font-style:italic}
+.quote-duo .quote-card-lg blockquote{font-size:clamp(30px,2.9vw,44px);line-height:1.12;letter-spacing:-.055em}
 .quote-duo .quote-meta{margin-top:auto;justify-content:flex-start}
 @media(max-width:900px){.quote-duo{grid-template-columns:1fr;width:calc(100% - 32px);margin-block:56px}.quote-duo .quote-card{padding:38px 30px}}
 
