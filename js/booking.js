@@ -6,8 +6,9 @@
    that proxy is not reachable cross-origin from this mirror, so this
    version uses the flow's own documented degradation path:
 
-     1. Branded lead form (firstname, lastname, company, email, phone,
-        notes) — pure Clubtech UI, no HubSpot chrome.
+     1. Branded lead form (name, company, email, phone, notes) — pure
+        Clubtech UI, no HubSpot chrome. The single Name field is split
+        into firstname/lastname for HubSpot on submit.
      2. HubSpot meetings scheduler embed (Gus's round-robin link),
         prefilled from step 1. Booking a slot creates the contact in
         HubSpot — the same guarantee the primary flow relies on when
@@ -74,13 +75,10 @@
     return '' +
       '  <div class="bk-step" data-step="lead">' +
       '    <span class="bk-kicker">Book a demo</span>' +
-      '    <h2 class="bk-h">15 minutes.<br><span class="mint-text">Your venue, configured.</span></h2>' +
-      '    <p class="bk-sub">Tell us about your venue and we’ll show up with the platform configured around it — and walk you through pricing built for it.</p>' +
+      '    <h2 class="bk-h">Your venue, <span class="mint-text">doing more.</span></h2>' +
+      '    <p class="bk-sub">Find out how you can bring in more bookings, more revenue per bed, and unlock powerful marketing under your own brand.</p>' +
       '    <form class="bk-form" novalidate>' +
-      '      <div class="bk-row">' +
-      '        <label class="bk-field"><span>First name</span><input name="firstname" autocomplete="given-name" required></label>' +
-      '        <label class="bk-field"><span>Last name</span><input name="lastname" autocomplete="family-name" required></label>' +
-      '      </div>' +
+      '      <label class="bk-field"><span>Name</span><input name="name" autocomplete="name" required></label>' +
       '      <label class="bk-field"><span>Venue or company</span><input name="company" autocomplete="organization" required placeholder="e.g. Finns Beach Club"></label>' +
       '      <label class="bk-field"><span>Work email</span><input name="email" type="email" autocomplete="email" required></label>' +
       '      <label class="bk-field"><span>Phone <em>(optional)</em></span><input name="phone" type="tel" autocomplete="tel" placeholder="+62 812 …"></label>' +
@@ -89,10 +87,6 @@
       '      <div class="bk-hp" aria-hidden="true"><label>Company website<input type="text" name="company_url" tabindex="-1" autocomplete="off"></label></div>' +
       '      <p class="bk-error" role="alert" hidden>Please fill in your name, venue, and a valid email.</p>' +
       '      <button type="submit" class="button button-mint bk-submit">Pick a Time</button>' +
-      '      <p class="bk-fine">No contracts · no credit card · we only use your details to reply</p>' +
-      // Privacy note. TODO(copy owner): confirm legal basis (legitimate interest / contract)
-      // and link the Privacy Policy here once the page exists.
-      '      <p class="bk-privacy">We only use these details to reply about your demo — we don’t sell or share them.</p>' +
       '    </form>' +
       '  </div>' +
       '  <div class="bk-step" data-step="schedule" hidden>' +
@@ -110,9 +104,14 @@
       var f = formEl.querySelector('[name="' + name + '"]');
       return f ? String(f.value || '').trim() : '';
     };
+    // Single Name field, split for HubSpot: first word → firstname,
+    // the rest → lastname (may be empty — the worker treats it as optional).
+    var name = get('name');
+    var parts = name.split(/\s+/);
     return {
-      firstname: get('firstname'),
-      lastname: get('lastname'),
+      name: name,
+      firstname: parts[0] || '',
+      lastname: parts.slice(1).join(' '),
       company: get('company'),
       phone: get('phone'),
       email: get('email'),
@@ -190,20 +189,18 @@
       var lead = readLead(form);
       var err = root.querySelector('.bk-error');
       var required = [
-        form.querySelector('[name="firstname"]'),
-        form.querySelector('[name="lastname"]'),
+        form.querySelector('[name="name"]'),
         form.querySelector('[name="company"]'),
         form.querySelector('[name="email"]')
       ];
       for (var i = 0; i < required.length; i++) {
         if (required[i]) required[i].removeAttribute('aria-invalid');
       }
-      if (!lead.firstname || !lead.lastname || !lead.company || !validEmail(lead.email)) {
+      if (!lead.name || !lead.company || !validEmail(lead.email)) {
         if (err) err.hidden = false;
-        var invalid = !lead.firstname ? required[0]
-          : !lead.lastname ? required[1]
-          : !lead.company ? required[2]
-          : required[3];
+        var invalid = !lead.name ? required[0]
+          : !lead.company ? required[1]
+          : required[2];
         if (invalid) {
           invalid.setAttribute('aria-invalid', 'true');
           invalid.focus();
