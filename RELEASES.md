@@ -12,6 +12,18 @@ Running log of what shipped to **staging** (`landingpage.tapbooknow.com`), newes
 
 <!-- release-log:staging (release-staging.sh inserts new entries directly below this line) -->
 
+## 20260721T112614Z — staging
+Commit `717f6f6` · 8 change(s) since `a3a0a8c` · [compare](https://github.com/clubtechglobal/ctg-branded-landing/compare/a3a0a8c...717f6f6)
+
+- Reviews: quote-mark watermark, italic quote text, Gabriel GM title (`717f6f6`)
+- Lead form: single Name field, new pitch copy, drop fine print (`74b1079`)
+- Reviews + client logo strip: Gabriel (Sol Rooftop) quote, venue logo watermarks (`043ec08`)
+- Book a Demo: remove modal, all CTAs navigate to /book-a-demo/ (`1385b2b`)
+- chore: ignore design-sync tooling artifacts (`a22a032`)
+- release: add staging release-cycle tooling (`d0c6d90`)
+- solutions/dubai: swap product-band demos to match captions (`3196849`)
+- Brand polish: strip pill kickers/eyebrows, fix solutions h1 contrast, nav updates (`5576c5c`)
+
 ---
 
 ## Baseline — 2026-07-21
