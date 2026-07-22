@@ -9,7 +9,7 @@
      1. Branded lead form (name, company, email, phone, notes) — pure
         Clubtech UI, no HubSpot chrome. The single Name field is split
         into firstname/lastname for HubSpot on submit.
-     2. HubSpot meetings scheduler embed (Gus's round-robin link),
+     2. HubSpot meetings scheduler embed (Gus's personal link),
         prefilled from step 1. Booking a slot creates the contact in
         HubSpot — the same guarantee the primary flow relies on when
         its lead write fails.
@@ -30,7 +30,7 @@
 (function () {
   'use strict';
 
-  var SCHEDULER = 'https://meetings-na2.hubspot.com/gus-murray/round-robin-scheduler';
+  var SCHEDULER = 'https://meetings-na2.hubspot.com/gus-murray';
   var LEAD_ENDPOINT = '/api/lead'; // same-origin Cloudflare Worker — server-side capture (consent-independent)
 
   function track(name, props) {
