@@ -14,7 +14,7 @@ description: "Sunbed booking software that pre-sells your deck: map-based reserv
 ---
 Every morning, from Cannes to Nice to Mykonos, the same scene: guests stalking the deck at 7am, towels claiming sunbeds that won't be sat on until noon. Operators treat it as an etiquette problem. It isn't. It's inventory being allocated for free, by whoever wakes up earliest, with no payment, no data, and no guarantee anyone shows up.
 
-A sunbed booking system replaces the towel with a transaction. Guests reserve and pay for a specific sunbed, daybed, or cabana before they arrive — chosen from an interactive map of your venue, prepaid, with their contact details landing in your database. Clubtech is that system, built as one platform for reservations, front-of-house operations, and marketing. It processes $332k in weekly GMV for venue partners in more than 7 countries, and the deck is the product it was designed around.
+A sunbed booking system replaces the towel with a transaction. Guests reserve and pay for a specific sunbed, daybed, or cabana before they arrive — chosen from an interactive map of your venue, prepaid, with their contact details landing in your database. Clubtech is that system, built as one platform for reservations, front-of-house operations, and marketing. It processes $875k in weekly GMV for venue partners in more than 7 countries, and the deck is the product it was designed around.
 
 ## Workflow — How guests book a sunbed on Clubtech
 

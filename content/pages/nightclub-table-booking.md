@@ -14,7 +14,7 @@ description: "Nightclub table booking software for operators: map-based VIP tabl
 ---
 Right now, somewhere in your Instagram inbox, a group is asking about a table for Saturday. A promoter will answer eventually, a host will pencil something in, and at 11:30pm you'll find out whether they meant it. No payment, no attribution, no data — a four-figure booth held on a handshake made in a DM.
 
-A nightclub table booking system replaces that handshake with a transaction. Guests pick the exact table on a 3D birds-eye map of your floor, choose a bottle service package, and prepay — days before the night. Clubtech is that system, built for the operator: reservations, front-of-house operations, and marketing in one platform, white-label on your own domain, processing $332k in weekly GMV for venue partners in more than 7 countries.
+A nightclub table booking system replaces that handshake with a transaction. Guests pick the exact table on a 3D birds-eye map of your floor, choose a bottle service package, and prepay — days before the night. Clubtech is that system, built for the operator: reservations, front-of-house operations, and marketing in one platform, white-label on your own domain, processing $875k in weekly GMV for venue partners in more than 7 countries.
 
 ## What the DM era actually costs
 

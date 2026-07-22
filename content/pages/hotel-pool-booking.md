@@ -14,7 +14,7 @@ description: "Hotel pool and sunbed booking software the property owns: resident
 ---
 Your pool is the most photographed, least monetized square meterage in the hotel. It sells rooms on the booking sites, fills the property's Instagram tags, and then — most days — gives its inventory away to whoever drapes a towel first.
 
-Hotel pool booking software turns the deck into what it already is everywhere else on the P&L: sellable inventory with a price, an owner, and a report. On Clubtech, guests book a specific sunbed, daybed, or cabana from a 3D birds-eye map of your pool, prepay or charge to the room, and land in your database. It's software the hotel owns — your domain, your design, your guest data — not a marketplace listing you rent. Clubtech runs this model for venue partners in more than 7 countries, processing $332k in weekly GMV.
+Hotel pool booking software turns the deck into what it already is everywhere else on the P&L: sellable inventory with a price, an owner, and a report. On Clubtech, guests book a specific sunbed, daybed, or cabana from a 3D birds-eye map of your pool, prepay or charge to the room, and land in your database. It's software the hotel owns — your domain, your design, your guest data — not a marketplace listing you rent. Clubtech runs this model for venue partners in more than 7 countries, processing $875k in weekly GMV.
 
 ## Outcomes — Three revenue layers hiding in one pool deck
 

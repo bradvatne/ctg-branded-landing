@@ -48,7 +48,7 @@ The homepage should remain the standard, not the universal layout.
 1. **Outcome before inventory.** Each section names an operator outcome, then shows the product mechanism. “Know what is booked before the doors open” works because it leads with the job, not the console feature list.
 2. **A real product surface per major promise.** The map, floor, dashboard, mobile flow, and demo form make claims tangible. Generated pages should inherit this proof discipline.
 3. **One idea per visual beat.** Dark and light bands separate Booking, Revenue, Operations, Guest data, Intelligence, Delivery, Pricing, and Proof. The rhythm is varied without becoming decorative.
-4. **Specific, restrained proof.** `$332k`, `7+`, `20+`, named clients, and the cleared FINNS quote appear where they answer doubt. Illustrative dashboard numbers must stay visibly illustrative and never become claimed results.
+4. **Specific, restrained proof.** `$875k`, `7+`, `20+`, named clients, and the cleared FINNS quote appear where they answer doubt. Illustrative dashboard numbers must stay visibly illustrative and never become claimed results.
 5. **Product imagery has a narrative role.** A screenshot is not decoration. Captions and nearby copy should tell the reader what to notice, who uses it, and what changes next.
 6. **Short routes to action.** A visitor can move from overview to a pillar, then to a demo. Every other family needs the same natural handoff without cloning the homepage.
 7. **Mobile is recomposed, not shrunk.** Product frames stack, proof stays legible, and the next action remains close. Consent must stop obscuring this first-screen flow.

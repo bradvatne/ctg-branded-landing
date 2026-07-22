@@ -14,7 +14,7 @@ description: "The beach club booking system premium venues run: 3D map booking, 
 ---
 A beach club doesn't lose money at the door. It loses money in the gap between a guest deciding to come and a guest actually paying — the DM that never converts, the daybed held on a promise, the front row allocated by whoever texted the manager first. A $450 daybed that walks at 2pm is $450 you never see again.
 
-A beach club booking system closes that gap. Guests choose the exact daybed, cabana, or table on a 3D birds-eye map of your venue, pick a package, and prepay — days before doors open. Clubtech is that system: reservations, front-of-house operations, and marketing in one platform, white-label on your own domain, processing $332k in weekly GMV across venue partners in more than 7 countries. The best beach clubs don't hope for a full Saturday. They sell it in advance.
+A beach club booking system closes that gap. Guests choose the exact daybed, cabana, or table on a 3D birds-eye map of your venue, pick a package, and prepay — days before doors open. Clubtech is that system: reservations, front-of-house operations, and marketing in one platform, white-label on your own domain, processing $875k in weekly GMV across venue partners in more than 7 countries. The best beach clubs don't hope for a full Saturday. They sell it in advance.
 
 ## Workflow — The booking flow that sells the premium zones first
 

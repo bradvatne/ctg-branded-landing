@@ -45,7 +45,7 @@ Clubtech should be evaluated where map-based selection, prepayment, packages, ow
 
 The restaurant demo is fictional. It shows how the product handles exact inventory, packages, and checkout, but it does not claim a named restaurant customer, restaurant revenue result, or restaurant-specific integration.
 
-Clubtech's named customer proof remains FINNS Beach Club, and its public company proof remains $332k in weekly GMV across venue partners in more than seven countries.
+Clubtech's named customer proof remains FINNS Beach Club, and its public company proof remains $875k in weekly GMV across venue partners in more than seven countries.
 
 ## Outcomes — Own the booking and the guest relationship
 

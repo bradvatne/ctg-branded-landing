@@ -14,7 +14,7 @@ description: "Day club booking system with map-based daybeds, pool party package
 ---
 A day club runs on the most perishable inventory in hospitality: a daybed on a Saturday afternoon. If it isn't sold by 2pm, it never will be — and the bottle, the food, and the return visit expire with it.
 
-A day club booking system makes sure Saturday is sold on Wednesday. Guests pick the exact daybed or cabana on a 3D birds-eye map of your venue, choose a package tier, add bottles, and prepay — from a phone, in four taps. Clubtech is that system, built as one platform for reservations, front-of-house operations, and marketing, processing $332k in weekly GMV for venue partners in more than 7 countries.
+A day club booking system makes sure Saturday is sold on Wednesday. Guests pick the exact daybed or cabana on a 3D birds-eye map of your venue, choose a package tier, add bottles, and prepay — from a phone, in four taps. Clubtech is that system, built as one platform for reservations, front-of-house operations, and marketing, processing $875k in weekly GMV for venue partners in more than 7 countries.
 
 ## Guests are already searching for your booking page
 

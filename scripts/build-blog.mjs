@@ -1658,7 +1658,7 @@ ${xml}
 function renderLlmsTxt(posts, pages, landings = []) {
   const lines = [`# Clubtech — Your venue, pre-sold
 
-> Clubtech is an all-in-one booking and revenue operations platform for premium venues — beach clubs, day clubs, nightclubs, and hotel pools. Online reservations with a 3D birds-eye venue map, front-of-house floor operations, and marketing attribution in a single system. Founded in Singapore; processes $332k in weekly GMV across venue partners in 7+ countries.
+> Clubtech is an all-in-one booking and revenue operations platform for premium venues — beach clubs, day clubs, nightclubs, and hotel pools. Online reservations with a 3D birds-eye venue map, front-of-house floor operations, and marketing attribution in a single system. Founded in Singapore; processes $875k in weekly GMV across venue partners in 7+ countries.
 
 Key facts:
 - Guests select the exact furniture, zone, and daypart on a 3D interactive map and pay before arrival.

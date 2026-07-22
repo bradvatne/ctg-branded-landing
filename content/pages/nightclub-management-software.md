@@ -13,7 +13,7 @@ description: "Nightclub management software for operators: VIP table booking, in
 ---
 Most nightclubs run on four systems that don't talk to each other: a booking inbox, a POS, a door clipboard, and an ads account somebody logs into on Monday. Saturday's table sales live in DMs, the floor plan lives in a host's head, the guest list lives on a promoter's phone, and the spend that filled the room can't be traced to a single booking. Four tools, four blind spots, one night to get right.
 
-Nightclub management software is meant to close those gaps. Clubtech runs the whole night from one platform — VIP table booking, front-of-house operations, marketing, and guest intelligence — white-label on your own domain, with the venue owning its guest data. It's the system behind $332k in weekly GMV for venue partners in more than 7 countries: reservations, front-of-house operations, and marketing in one platform, not three stitched-together tools.
+Nightclub management software is meant to close those gaps. Clubtech runs the whole night from one platform — VIP table booking, front-of-house operations, marketing, and guest intelligence — white-label on your own domain, with the venue owning its guest data. It's the system behind $875k in weekly GMV for venue partners in more than 7 countries: reservations, front-of-house operations, and marketing in one platform, not three stitched-together tools.
 
 ## Fit — One platform instead of four stitched tools
 

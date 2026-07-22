@@ -13,7 +13,7 @@ description: "Event ticketing for clubs: tiered tickets, QR-code check-in, every
 ---
 A club sells 600 tickets to a Saturday headliner and, by Monday, knows almost nothing about the night. The ticketing site holds 600 email addresses it won't hand over cleanly. The door ran on a printed manifest and a highlighter. The tables that sold alongside the tickets sat in a different system. And the ad spend that filled the room can't be traced to a single ticket. The event sold out and still left the venue poorer in data than it should be.
 
-Event ticketing for clubs should do more than take the money. Clubtech runs the ticket, the door, and the guest record on one platform — tiered tickets, QR-code check-in, and every-guest data capture, sitting alongside the same [nightclub table booking](https://www.clubtechglobal.com/solutions/nightclub-table-booking/) map that pre-sells your decks. It's the system behind $332k in weekly GMV for venue partners in more than 7 countries: reservations, front-of-house operations, and marketing in one place, not three tools that never talk.
+Event ticketing for clubs should do more than take the money. Clubtech runs the ticket, the door, and the guest record on one platform — tiered tickets, QR-code check-in, and every-guest data capture, sitting alongside the same [nightclub table booking](https://www.clubtechglobal.com/solutions/nightclub-table-booking/) map that pre-sells your decks. It's the system behind $875k in weekly GMV for venue partners in more than 7 countries: reservations, front-of-house operations, and marketing in one place, not three tools that never talk.
 
 ## Workflow — Tickets and tables on the same platform
 

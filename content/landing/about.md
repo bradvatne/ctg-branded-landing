@@ -9,8 +9,8 @@ ctaType: learn
 ctaHref: platform/
 ctaLabel: See the platform
 eyebrow: Company · About
-excerpt: Clubtech is the booking and revenue platform for premium venues, processing $332k in weekly GMV across partners in more than seven countries.
-description: Founded in Singapore, Clubtech is the booking and revenue platform for premium venues, processing $332k in weekly GMV across partners in more than seven countries.
+excerpt: Clubtech is the booking and revenue platform for premium venues, processing $875k in weekly GMV across partners in more than seven countries.
+description: Founded in Singapore, Clubtech is the booking and revenue platform for premium venues, processing $875k in weekly GMV across partners in more than seven countries.
 cta2href: delivery/
 cta2label: How we deliver
 ---
@@ -19,7 +19,7 @@ cta2label: How we deliver
 
 **Founded in Singapore.**
 
-**$332k in weekly GMV.**
+**$875k in weekly GMV.**
 
 **Venue partners in more than seven countries.**
 

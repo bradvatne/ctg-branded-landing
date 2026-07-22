@@ -43,7 +43,7 @@ A grid reduces every position to a quantity. Clubtech keeps location visible: th
 
 ## Proof — Platform proof without a Mykonos claim
 
-Clubtech processes $332k in weekly GMV across venue partners in more than seven countries. FINNS Beach Club is the named public customer proof, with its CEO describing millions of dollars in pre-paid bookings each month after moving away from on-the-day bookings with no financial guarantee.
+Clubtech processes $875k in weekly GMV across venue partners in more than seven countries. FINNS Beach Club is the named public customer proof, with its CEO describing millions of dollars in pre-paid bookings each month after moving away from on-the-day bookings with no financial guarantee.
 
 Those facts prove the product model. They are not presented as a Mykonos customer result.
 
