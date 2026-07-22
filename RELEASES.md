@@ -12,6 +12,12 @@ Running log of what shipped to **staging** (`landingpage.tapbooknow.com`), newes
 
 <!-- release-log:staging (release-staging.sh inserts new entries directly below this line) -->
 
+## 20260722T030506Z — staging
+Commit `8afa38f` · 2 change(s) since `de4427f` · [compare](https://github.com/clubtechglobal/ctg-branded-landing/compare/de4427f...8afa38f)
+
+- Ads landing: FINNS retargeting image + fix demo scheduler (Indy → Gus) (`8afa38f`)
+- Book a Demo: add second inline booking form below FAQ (`39d11bd`)
+
 ## 20260721T112614Z — staging
 Commit `717f6f6` · 8 change(s) since `a3a0a8c` · [compare](https://github.com/clubtechglobal/ctg-branded-landing/compare/a3a0a8c...717f6f6)
 
