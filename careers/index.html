@@ -112,6 +112,29 @@
   ]
 }
   </script>
+
+  <style>
+    .careers-roles{display:grid;gap:16px;margin:6px 0 36px}
+    .role-card{border:1px solid var(--line);border-radius:20px;padding:26px 28px;background:#fff;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px 28px;align-items:center}
+    .role-main{min-width:0}
+    .role-card h3{margin:0;font-size:23px;line-height:1.15;color:var(--heading)}
+    .role-meta{display:flex;flex-wrap:wrap;gap:6px 10px;margin:12px 0 0;color:var(--muted);font-size:14px;font-weight:700;letter-spacing:0}
+    .role-meta span{display:inline-flex;align-items:center}
+    .role-meta span:not(:first-child)::before{content:"·";margin-right:10px;color:var(--grey)}
+    .role-desc{margin:14px 0 0;color:var(--body);font-size:16px;line-height:1.5;max-width:62ch}
+    .careers-roles .role-tags{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0;padding:0;list-style:none;grid-template-columns:none}
+    .careers-roles .role-tags li{min-height:0;padding:6px 13px;border:0;border-radius:999px;background:var(--lime);color:var(--navy);font-size:12.5px;font-weight:700;letter-spacing:0}
+    .careers-roles .role-tags li::before{content:none}
+    .careers-roles .role-tags li.more{background:transparent;color:var(--muted);padding-left:2px}
+    .role-apply{justify-self:end}
+    .careers-roles .role-apply .button{color:var(--navy);text-decoration:none}
+    .role-portal-note{font-size:15px;color:var(--muted)}
+    @media(max-width:720px){
+      .role-card{grid-template-columns:1fr;padding:24px 22px}
+      .role-apply{justify-self:stretch}
+      .careers-roles .role-apply .button{width:100%}
+    }
+  </style>
 </head>
 <body class="landing-page p-landing landing-careers">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -326,8 +349,63 @@
     </nav>
   </header>
 <main id="main">
-  <header class="landing-hero"><div class="shell landing-hero-grid"><div><h1>Build closer to <span class="mint-text">the venue floor.</span></h1><p class="landing-sub">Clubtech hires operators and builders who want their work close to the venues, teams, and commercial problems it serves.</p><div class="solution-actions"><a class="button button-mint" href="mailto:info@clubtechglobal.com?subject=Careers%20at%20Clubtech">Introduce yourself</a><a class="button button-ghost" href="../about/">About Clubtech</a></div></div></div></header>
-<section class="landing-block is-light" id="the-work"><div class="shell landing-block-grid"><div class="landing-block-head"><p class="landing-block-index">The essentials</p><h2>The work</h2></div><div class="landing-block-body">
+  <header class="landing-hero"><div class="shell landing-hero-grid"><div><h1>Build closer to <span class="mint-text">the venue floor.</span></h1><p class="landing-sub">Clubtech hires operators and builders who want their work close to the venues, teams, and commercial problems it serves.</p><div class="solution-actions"><a class="button button-mint" href="#open-roles">See open roles</a><a class="button button-ghost" href="mailto:info@clubtechglobal.com?subject=Careers%20at%20Clubtech">Introduce yourself</a></div></div></div></header>
+<section class="landing-block is-soft" id="open-roles"><div class="shell landing-block-grid"><div class="landing-block-head"><p class="landing-block-index">Open roles</p><h2>Open roles</h2></div><div class="landing-block-body">
+<p>These roles are open now. Applications are handled on our talent portal — select <strong>Apply now</strong> on any role to apply there directly.</p>
+<div class="careers-roles">
+
+  <div class="role-card">
+    <div class="role-main">
+      <h3>Sales Development Representative</h3>
+      <p class="role-meta"><span>Onsite · Bali</span><span>Full-time</span><span>Mid-level · 3+ years</span></p>
+      <p class="role-desc">Open and qualify conversations with premium venues, and set up the product walkthroughs that move operators toward Clubtech.</p>
+    </div>
+    <div class="role-apply"><a class="button button-mint" href="https://talent.mitra-it.com/careers/mitra-it" target="_blank" rel="noopener" aria-label="Apply now for Sales Development Representative">Apply now</a></div>
+  </div>
+
+  <div class="role-card">
+    <div class="role-main">
+      <h3>Product Support</h3>
+      <p class="role-meta"><span>Remote · Singapore</span><span>Full-time</span><span>Mid-level · 3+ years</span></p>
+      <p class="role-desc">Help venue teams get the most from the platform — answer questions, reproduce and test issues, and feed real usability findings back to product.</p>
+      <ul class="role-tags"><li>Teamwork</li><li>Testing</li><li>Usability Testing</li><li>Communication</li><li class="more">+1 more</li></ul>
+    </div>
+    <div class="role-apply"><a class="button button-mint" href="https://talent.mitra-it.com/careers/mitra-it" target="_blank" rel="noopener" aria-label="Apply now for Product Support">Apply now</a></div>
+  </div>
+
+  <div class="role-card">
+    <div class="role-main">
+      <h3>Back-End Developer</h3>
+      <p class="role-meta"><span>Onsite · Bali</span><span>Full-time</span><span>Mid-level · 3+ years</span></p>
+      <p class="role-desc">Build and maintain the Laravel and PHP services and APIs behind bookings, operations, and revenue, with MySQL at the core.</p>
+      <ul class="role-tags"><li>Laravel</li><li>PHP</li><li>MySQL</li><li>API Development</li><li class="more">+8 more</li></ul>
+    </div>
+    <div class="role-apply"><a class="button button-mint" href="https://talent.mitra-it.com/careers/mitra-it" target="_blank" rel="noopener" aria-label="Apply now for Back-End Developer">Apply now</a></div>
+  </div>
+
+  <div class="role-card">
+    <div class="role-main">
+      <h3>Front-End Developer</h3>
+      <p class="role-meta"><span>Onsite · Bali</span><span>Full-time</span><span>Mid-level · 3+ years</span></p>
+      <p class="role-desc">Build the guest booking journey and operator interfaces in React, Next.js, and TypeScript — close to how venues actually use the product.</p>
+      <ul class="role-tags"><li>React</li><li>Next.js</li><li>TypeScript</li><li>TanStack Query</li><li class="more">+7 more</li></ul>
+    </div>
+    <div class="role-apply"><a class="button button-mint" href="https://talent.mitra-it.com/careers/mitra-it" target="_blank" rel="noopener" aria-label="Apply now for Front-End Developer">Apply now</a></div>
+  </div>
+
+  <div class="role-card">
+    <div class="role-main">
+      <h3>DevOps Engineer</h3>
+      <p class="role-meta"><span>Remote · Singapore</span><span>Full-time</span><span>Mid-level · 3+ years</span></p>
+      <p class="role-desc">Run and harden the cloud infrastructure across AWS, Azure, and GCP — the networking, DNS, CDN, SSL, and storage that keep the platform reliable.</p>
+      <ul class="role-tags"><li>AWS</li><li>Azure</li><li>GCP</li><li>Firewall, DNS, CDN, SSL, S3</li><li class="more">+1 more</li></ul>
+    </div>
+    <div class="role-apply"><a class="button button-mint" href="https://talent.mitra-it.com/careers/mitra-it" target="_blank" rel="noopener" aria-label="Apply now for DevOps Engineer">Apply now</a></div>
+  </div>
+
+</div>
+<p class="role-portal-note">See every open role and apply on the <a href="https://talent.mitra-it.com/careers/mitra-it" target="_blank" rel="noopener">Mitra IT talent portal ↗</a>.</p>
+</div></div></section><section class="landing-block is-light" id="the-work"><div class="shell landing-block-grid"><div class="landing-block-head"><p class="landing-block-index">The essentials</p><h2>The work</h2></div><div class="landing-block-body">
 <p>Clubtech builds booking, operations, and marketing software for premium venues. The work reaches the booking journey, the floor on service day, and the commercial decisions venue teams make before the weekend.</p>
 <p>That keeps product work close to its consequence. A change can affect how a guest chooses a daybed, how a team allocates the floor, or how a venue reads demand.</p>
 </div></div></section><section class="landing-block is-dark" id="who-fits-here"><div class="shell landing-block-grid"><div class="landing-block-head"><p class="landing-block-index">How it works</p><h2>Who fits here</h2></div><div class="landing-block-body">
@@ -340,8 +418,8 @@
 </div></div></section><section class="landing-block is-soft" id="how-clubtech-works"><div class="shell landing-block-grid"><div class="landing-block-head"><p class="landing-block-index">What to know</p><h2>How Clubtech works</h2></div><div class="landing-block-body">
 <p>Clubtech is a focused team working across product and high-touch venue delivery. The platform is configured, trained, launched, and optimized with the operator rather than handed over as an off-the-shelf license.</p>
 <p><a href="https://www.clubtechglobal.com/delivery/" rel="noopener">See how Clubtech delivers</a></p>
-</div></div></section><section class="landing-block is-light" id="open-roles-and-expressions-of-interest"><div class="shell landing-block-grid"><div class="landing-block-head"><p class="landing-block-index">What to know</p><h2>Open roles and expressions of interest</h2></div><div class="landing-block-body">
-<p>Formal openings may not always be listed. If your experience belongs close to this problem, send a short introduction to info@clubtechglobal.com.</p>
+</div></div></section><section class="landing-block is-light" id="expressions-of-interest"><div class="shell landing-block-grid"><div class="landing-block-head"><p class="landing-block-index">What to know</p><h2>Don&#39;t see your role?</h2></div><div class="landing-block-body">
+<p>Not every role is always listed. If your experience belongs close to this problem, send a short introduction to info@clubtechglobal.com.</p>
 <p>Include:</p>
 <ul><li>the kind of work you do;</li><li>what you would improve or build at Clubtech;</li><li>one relevant example of your work;</li><li>where you are based and how to reach you.</li></ul>
 <p><a href="mailto:info@clubtechglobal.com?subject=Careers%20at%20Clubtech">Introduce yourself</a></p>
