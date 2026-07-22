@@ -98,6 +98,7 @@ rsync -a --delete --delete-excluded \
   --exclude 'README.md' --exclude 'package.json' --exclude 'package-lock.json' \
   --exclude '*.md' --exclude '.gitignore' --exclude '.gitattributes' \
   --exclude 'output/' --exclude '.playwright-cli/' --exclude '.vinext/' --exclude '.wrangler/' \
+  --exclude '.design-sync/' --exclude 'ds/' --exclude 'ds-bundle/' --exclude '.ds-sync/' \
   --exclude '__test_probe.js' \
   "$ROOT_DIR/" "$LOCAL_SOURCE_DIR/"
 if find "$LOCAL_SOURCE_DIR" \( -name '.env*' -o -name '*_env.php' -o -name 'wsec_env.php' \

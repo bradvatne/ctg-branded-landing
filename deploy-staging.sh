@@ -35,6 +35,7 @@ rsync -e "ssh -o BatchMode=yes" -az --delete --delete-excluded \
   --exclude='README.md' --exclude='deploy-staging.sh' --exclude='deploy/' \
   --exclude='*.md' --exclude='.gitignore' --exclude='.gitattributes' \
   --exclude='output/' --exclude='.playwright-cli/' --exclude='.vinext/' --exclude='.wrangler/' \
+  --exclude='.design-sync/' --exclude='ds/' --exclude='ds-bundle/' --exclude='.ds-sync/' \
   --exclude='__test_probe.js' \
   ./ "staging:$REL/dist/frontend/"
 
