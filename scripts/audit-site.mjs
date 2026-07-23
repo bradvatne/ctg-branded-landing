@@ -64,6 +64,21 @@ for (const pathname of routes) {
   }
   const html = readFileSync(file, 'utf8');
   const count = (pattern) => (html.match(pattern) || []).length;
+  const head = html.match(/<head\b[^>]*>([\s\S]*?)<\/head>/i)?.[1] || '';
+  const headScripts = [...head.matchAll(/<script\b([^>]*)>/gi)]
+    .filter((match) => !/\btype=["']application\/ld\+json["']/i.test(match[1]));
+  const consentBootstraps = headScripts.filter((match) =>
+    /\bsrc=["'][^"']*js\/consent-bootstrap\.js["']/i.test(match[1]));
+  if (consentBootstraps.length !== 1) {
+    fail(pathname, `expected one consent bootstrap in <head>, found ${consentBootstraps.length}`);
+  } else {
+    if (!/\bdata-cfasync=["']false["']/i.test(consentBootstraps[0][1])) {
+      fail(pathname, 'consent bootstrap must opt out of Cloudflare script rewriting');
+    }
+    if (headScripts[0]?.index !== consentBootstraps[0].index) {
+      fail(pathname, 'consent bootstrap must be the first executable <head> script');
+    }
+  }
   if (count(/<main\b/gi) !== 1) fail(pathname, 'expected exactly one <main>');
   if (count(/<h1\b/gi) !== 1) fail(pathname, 'expected exactly one <h1>');
   if (count(/<title>[^<]+<\/title>/gi) !== 1) fail(pathname, 'missing or duplicate <title>');
@@ -169,6 +184,21 @@ for (const sourceRoot of ['content', 'js']) {
       if (pattern.test(contents)) fail(`/${file.slice(ROOT.length + 1)}`, `banned public copy exposed: ${pattern}`);
     }
   }
+}
+
+const consentSource = readFileSync(join(ROOT, 'js', 'consent.js'), 'utf8');
+const consentBootstrapSource = readFileSync(join(ROOT, 'js', 'consent-bootstrap.js'), 'utf8');
+if (/googletagmanager\.com\/gtm\.js/i.test(consentSource)) {
+  fail('/js/consent.js', 'GTM must use the configured first-party gateway');
+}
+if (!/gatewayPath:\s*['"]\/metrics\/['"]/.test(consentSource) ||
+    !/CONFIG\.gtm\.gatewayPath\s*\+\s*['"]\?id=/.test(consentSource)) {
+  fail('/js/consent.js', 'missing consent-gated /metrics/ GTM loader');
+}
+if (!/gtag\(['"]consent['"],\s*['"]default['"]/.test(consentBootstrapSource) ||
+    !/analytics_storage:\s*['"]denied['"]/.test(consentBootstrapSource) ||
+    !/ad_storage:\s*['"]denied['"]/.test(consentBootstrapSource)) {
+  fail('/js/consent-bootstrap.js', 'missing denied Consent Mode v2 defaults');
 }
 
 if (failures.length) {

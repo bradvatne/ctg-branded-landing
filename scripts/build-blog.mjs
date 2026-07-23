@@ -608,6 +608,7 @@ function headHTML({ title, description, canonical, ogImage, ogImageAlt, jsonLd, 
   <link rel="stylesheet" href="${rel}css/content-blocks.css">
   <link rel="stylesheet" href="${rel}css/consent.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="${rel}css/consent.css"></noscript>
   <link rel="stylesheet" href="${rel}css/booking.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="${rel}css/booking.css"></noscript>
+  <script src="${rel}js/consent-bootstrap.js" data-cfasync="false"></script>
   <script>document.documentElement.classList.add('js')</script>
 
   <script type="application/ld+json">
