@@ -18,38 +18,47 @@ rollback.
 TLS reuses the existing Cloudflare origin cert (`cf-star-clubtechglobal-com`,
 wildcard). No cert changes.
 
-## One-shot upload (from the Mac repo checkout)
+## Routine redeploy — single-script protocol (from the Mac repo checkout)
 
 ```bash
-./deploy-prod.sh
+./deploy-prod.sh --activate-only
 ```
 
 The helper streams through the dedicated `ctg-prod-ssh` VM without putting the
 repo or rendered scripts on that VM. It keeps an inspectable durable source at
 `/home/brad/ctg-deploy/src/`, copies the reviewed tree to
-`/tmp/ctg-branded-landing-src-<ts>`, and atomically lands three checksum-verified
-uniquely timestamped `admin-run-*.sh` scripts in `/tmp` (Deploy-Watch posts each
-fresh queue to Slack instead of confusing it with an older filename). Each
-script carries the exact GitHub commit, ordered next-step instructions, and a
-fresh 14-day guard.
+`/tmp/ctg-branded-landing-src-<ts>`, and atomically lands one checksum-verified,
+uniquely timestamped activation script in `/tmp`. Deploy-Watch posts that single
+handoff to Slack. The script carries the exact GitHub commit and a fresh 14-day
+guard.
 The source contains `SHA256SUMS`; the uploader verifies it after transport and
 the root activator verifies it again before creating a release.
 
-Before landing a new queue, remove only obsolete pending handoffs and branded
-payloads (never system scripts or root-owned logs):
+Kaiesh/root runs the one printed command:
 
 ```bash
-find /tmp -maxdepth 1 -user brad -type f -name 'admin-run-*.sh' -delete
-find /tmp -maxdepth 1 -user brad -type d -name 'ctg-branded-landing-src-*' -exec rm -rf -- {} +
+sudo bash /tmp/admin-run-branded-activate-<ts>.sh /tmp/ctg-branded-landing-src-<ts>
 ```
 
-## Kaiesh/root runs, in order
+Activation copies the source into `releases/<stamp>`, flips `current`, checks
+`/` and `/book-a-demo/`, and automatically restores the previous `current`
+target if either health check fails.
+
+## First-time setup or full vhost rebuild only
 
 ```bash
-sudo bash /tmp/admin-run-branded-provision-<ts>.sh                                   # once per box
-sudo bash /tmp/admin-run-branded-activate-<ts>.sh /tmp/ctg-branded-landing-src-<ts>  # populate current
-sudo bash /tmp/admin-run-branded-cutover-<ts>.sh                                     # THE live switch
+./deploy-prod.sh --initial
 ```
+
+This explicitly lands the original three-step queue:
+
+```bash
+sudo bash /tmp/admin-run-branded-provision-<ts>.sh
+sudo bash /tmp/admin-run-branded-activate-<ts>.sh /tmp/ctg-branded-landing-src-<ts>
+sudo bash /tmp/admin-run-branded-cutover-<ts>.sh
+```
+
+Do not use `--initial` for a routine content or frontend release.
 
 - **provision** — creates the docroot + writes the vhost **disabled**. No live change.
 - **activate** — copies the source into `releases/<stamp>`, strips non-runtime

@@ -4,14 +4,21 @@
 # the dedicated ctg-prod-ssh VM; the repo and rendered scripts never persist in
 # that VM. No tarballs — the source is an inspectable directory tree.
 #
-# Uploads:
+# Routine redeploy (default; one watched root script):
+#   ./deploy-prod.sh --activate-only
+#
+# First-time host setup/cutover only (three ordered root scripts):
+#   ./deploy-prod.sh --initial
+#
+# Routine redeploy uploads:
 #   /home/brad/ctg-deploy/src/ctg-branded-landing-<timestamp> (durable source)
 #   /tmp/ctg-branded-landing-src-<timestamp>          (reviewed source copy)
-#   /tmp/admin-run-branded-provision-<timestamp>.sh   (deploy/prod-provision.sh)
 #   /tmp/admin-run-branded-activate-<timestamp>.sh    (deploy/prod-activate.sh)
+# Initial mode additionally uploads:
+#   /tmp/admin-run-branded-provision-<timestamp>.sh   (deploy/prod-provision.sh)
 #   /tmp/admin-run-branded-cutover-<timestamp>.sh     (deploy/prod-cutover.sh)
 #
-# Run order for Kaiesh/root on the prod host (once each, in order):
+# Initial run order for Kaiesh/root on the prod host (once each, in order):
 #   sudo bash /tmp/admin-run-branded-provision-<timestamp>.sh
 #   sudo bash /tmp/admin-run-branded-activate-<timestamp>.sh /tmp/ctg-branded-landing-src-<timestamp>
 #   sudo bash /tmp/admin-run-branded-cutover-<timestamp>.sh
@@ -19,6 +26,12 @@
 # Run from the Mac repo checkout. Production remains reachable only through
 # ctg-prod-ssh; this script refuses when that VM or its prod alias is unavailable.
 set -euo pipefail
+
+MODE="${1:---activate-only}"
+case "$MODE" in
+  --activate-only|--initial) ;;
+  *) echo "usage: $0 [--activate-only|--initial]"; exit 1 ;;
+esac
 
 REMOTE_TMP="/tmp"
 APP_NAME="ctg-branded-landing"
@@ -40,7 +53,9 @@ trap 'rm -rf "$RENDER_DIR"' EXIT
 
 [ -f "$ROOT_DIR/index.html" ] || { echo "missing index.html; run from repo root"; exit 1; }
 [ -f "$ROOT_DIR/book-a-demo/index.html" ] || { echo "missing book-a-demo/index.html"; exit 1; }
-for s in prod-provision prod-activate prod-cutover; do
+REQUIRED_SCRIPTS=(prod-activate)
+[ "$MODE" = "--initial" ] && REQUIRED_SCRIPTS=(prod-provision prod-activate prod-cutover)
+for s in "${REQUIRED_SCRIPTS[@]}"; do
   [ -f "$ROOT_DIR/deploy/$s.sh" ] || { echo "missing deploy/$s.sh"; exit 1; }
 done
 if ls "$ROOT_DIR"/.env* >/dev/null 2>&1; then
@@ -66,6 +81,12 @@ limactl shell ctg-prod-ssh -- ssh -o BatchMode=yes -o ConnectTimeout=12 prod \
 prod_ssh() {
   limactl shell ctg-prod-ssh -- ssh -o BatchMode=yes prod "$@"
 }
+
+if [ "$MODE" = "--activate-only" ]; then
+  prod_ssh "test -L /var/www/sites/ctg-branded-landing/current \
+    && test -e /etc/apache2/sites-enabled/ctg-branded-landing-le-ssl.conf" \
+    || { echo "activate-only refused: branded current/vhost is not live; inspect before using --initial"; exit 1; }
+fi
 
 cat > "$RSYNC_RSH" <<'RSH'
 #!/usr/bin/env bash
@@ -128,10 +149,16 @@ prod_ssh "cd '$DURABLE_SOURCE_DIR' && sha256sum -c SHA256SUMS"
 echo "Copying reviewed durable source to the watched /tmp handoff area"
 prod_ssh "rm -rf '$REMOTE_SOURCE_DIR' && cp -a '$DURABLE_SOURCE_DIR' '$REMOTE_SOURCE_DIR'"
 
-echo "Rendering and landing fresh admin-run scripts"
-for pair in "prod-provision:${PROVISION_SCRIPT%.sh}" \
-            "prod-activate:${ACTIVATE_SCRIPT%.sh}" \
-            "prod-cutover:${CUTOVER_SCRIPT%.sh}"; do
+echo "Rendering and landing fresh admin-run script(s)"
+SCRIPT_PAIRS=("prod-activate:${ACTIVATE_SCRIPT%.sh}")
+if [ "$MODE" = "--initial" ]; then
+  SCRIPT_PAIRS=(
+    "prod-provision:${PROVISION_SCRIPT%.sh}"
+    "prod-activate:${ACTIVATE_SCRIPT%.sh}"
+    "prod-cutover:${CUTOVER_SCRIPT%.sh}"
+  )
+fi
+for pair in "${SCRIPT_PAIRS[@]}"; do
   src="${pair%%:*}"; dst="${pair##*:}"
   rendered="$RENDER_DIR/$dst.sh"
   sed -e "s/CREATED_EPOCH=__STAMP__/CREATED_EPOCH=$STAMP_EPOCH/" \
@@ -140,6 +167,10 @@ for pair in "prod-provision:${PROVISION_SCRIPT%.sh}" \
       -e "s#__ACTIVATE_SCRIPT__#$ACTIVATE_SCRIPT#g" \
       -e "s#__CUTOVER_SCRIPT__#$CUTOVER_SCRIPT#g" \
       "$ROOT_DIR/deploy/$src.sh" > "$rendered"
+  if [ "$MODE" = "--activate-only" ] && [ "$src" = "prod-activate" ]; then
+    sed -i.bak -e '/^# AFTER:/d' -e '/^echo "NEXT:/d' "$rendered"
+    rm -f "$rendered.bak"
+  fi
   bash -n "$rendered"
   local_sha="$(shasum -a 256 "$rendered" | awk '{print $1}')"
   prod_ssh "mkdir -p /home/brad/ctg-deploy/steps && cat > '/home/brad/ctg-deploy/steps/$dst.sh'" < "$rendered"
@@ -154,11 +185,20 @@ echo "Verifying uploaded tree"
 prod_ssh "cd '$REMOTE_SOURCE_DIR' && sha256sum -c SHA256SUMS >/dev/null && test -f index.html && test -f book-a-demo/index.html && echo '  manifest + tree OK'"
 
 echo ""
-echo "Upload complete. Kaiesh/root runs these on prod, in order:"
-echo ""
-echo "  sudo bash /tmp/$PROVISION_SCRIPT"
-echo "  sudo bash /tmp/$ACTIVATE_SCRIPT $REMOTE_SOURCE_DIR"
-echo "  sudo bash /tmp/$CUTOVER_SCRIPT"
-echo ""
-echo "deploy-watch will post each to Slack. The cutover is the live switch;"
-echo "it health-checks www.clubtechglobal.com and auto-reverts on failure."
+if [ "$MODE" = "--activate-only" ]; then
+  echo "Upload complete. Kaiesh/root runs this single production script:"
+  echo ""
+  echo "  sudo bash /tmp/$ACTIVATE_SCRIPT $REMOTE_SOURCE_DIR"
+  echo ""
+  echo "deploy-watch will post it to Slack. Activation health-checks"
+  echo "www.clubtechglobal.com and auto-rolls back current on failure."
+else
+  echo "Upload complete. Kaiesh/root runs these on prod, in order:"
+  echo ""
+  echo "  sudo bash /tmp/$PROVISION_SCRIPT"
+  echo "  sudo bash /tmp/$ACTIVATE_SCRIPT $REMOTE_SOURCE_DIR"
+  echo "  sudo bash /tmp/$CUTOVER_SCRIPT"
+  echo ""
+  echo "deploy-watch will post each to Slack. The cutover is the live switch;"
+  echo "it health-checks www.clubtechglobal.com and auto-reverts on failure."
+fi
