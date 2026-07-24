@@ -12,6 +12,23 @@ Running log of what shipped to **staging** (`landingpage.tapbooknow.com`), newes
 
 <!-- release-log:staging (release-staging.sh inserts new entries directly below this line) -->
 
+## 20260724T010505Z — staging
+Commit `b82ce80` · 13 change(s) since `e4d7ea6` · [compare](https://github.com/clubtechglobal/ctg-branded-landing/compare/e4d7ea6...b82ce80)
+
+- Make release log insertion portable (`b82ce80`)
+- Fix staging release summary collection (`d0c453c`)
+- Make staging release script macOS-compatible (`96a01bb`)
+- Consolidate verified lead tracking (`ecbd15c`)
+- release: staging 20260724T002320Z (1 change(s) since b01ba5e) (`71982d0`)
+- Fix consent analytics initialization (`fac4e56`)
+- release: staging 20260723T233722Z (6 change(s) since e4d7ea6) (`b01ba5e`)
+- Animate client logo clouds and streamline prod redeploy (`4dec665`)
+- fix: gate Google tags behind consent (`0486111`)
+- Book-a-demo: reflow sections + fix invisible demo-card heading (`3da6a54`)
+- Company stat: bump weekly GMV proof $332k -> $875k across site (`4aef70b`)
+- Careers: add open roles listings from Mitra IT talent portal (`ec10307`)
+- deploy: fully ignore + exclude design-system tooling dirs (`c4465f3`)
+
 ## 20260724T002320Z — staging
 Commit `fac4e56` · 1 change(s) since `b01ba5e` · [compare](https://github.com/clubtechglobal/ctg-branded-landing/compare/b01ba5e...fac4e56)
 
