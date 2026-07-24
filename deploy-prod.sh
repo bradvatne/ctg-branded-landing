@@ -114,7 +114,7 @@ mkdir -p "$LOCAL_SOURCE_DIR"
 rsync -a --delete --delete-excluded \
   --exclude '.git/' --exclude '.claude/' --exclude '.DS_Store' \
   --exclude '.env*' --exclude 'node_modules/' \
-  --exclude 'content/' --exclude 'scripts/' --exclude 'deploy/' \
+  --exclude 'content/' --exclude 'scripts/' --exclude 'deploy/' --exclude 'workers/' \
   --exclude 'deploy-staging.sh' --exclude 'deploy-prod.sh' --exclude 'known_hosts.deploy' \
   --exclude 'README.md' --exclude 'package.json' --exclude 'package-lock.json' \
   --exclude '*.md' --exclude '.gitignore' --exclude '.gitattributes' \
@@ -131,6 +131,9 @@ fi
 if find "$LOCAL_SOURCE_DIR" \( -name '*.md' -o -path '*/output/*' \
      -o -path '*/.playwright-cli/*' -o -name '__test_probe.js' \) -print -quit | grep -q .; then
   echo "refusing: internal/dev file (markdown/output/playwright/probe) leaked into rendered source"; exit 1
+fi
+if [ -e "$LOCAL_SOURCE_DIR/workers" ]; then
+  echo "refusing: Worker source leaked into the public site tree"; exit 1
 fi
 (
   cd "$LOCAL_SOURCE_DIR"

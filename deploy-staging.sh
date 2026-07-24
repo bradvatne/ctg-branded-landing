@@ -31,7 +31,7 @@ rsync -e "ssh -o BatchMode=yes" -az --delete --delete-excluded \
   --exclude='.env*' --exclude='logs' --exclude='uploads' --exclude='storage' \
   --exclude='.git/' --exclude='.claude/' --exclude='.DS_Store' \
   --exclude='node_modules/' --exclude='package.json' --exclude='package-lock.json' \
-  --exclude='scripts/' --exclude='content/' \
+  --exclude='scripts/' --exclude='content/' --exclude='workers/' \
   --exclude='README.md' --exclude='deploy-staging.sh' --exclude='deploy/' \
   --exclude='*.md' --exclude='.gitignore' --exclude='.gitattributes' \
   --exclude='output/' --exclude='.playwright-cli/' --exclude='.vinext/' --exclude='.wrangler/' \
@@ -43,6 +43,7 @@ echo "🗂  Preserving SEOdeck (separate repo) + staging robots override"
 ssh -o BatchMode=yes staging "
   cp -a '$SITE_ROOT/current/dist/frontend/SEOdeck' '$REL/dist/frontend/SEOdeck' 2>/dev/null || echo '   (no SEOdeck in current release)'
   printf 'User-agent: *\nDisallow: /\n' > '$REL/dist/frontend/robots.txt'
+  test ! -e '$REL/dist/frontend/workers'
 "
 
 echo ""
