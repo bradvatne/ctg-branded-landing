@@ -108,8 +108,18 @@ fi
 
 # ── 1/2/3: running log commit + push ─────────────────────────────────────────
 MARKER="<!-- release-log:staging"
-awk -v entry="$RELEASES_ENTRY" -v marker="$MARKER" \
-  'index($0, marker){print; print entry; next} {print}' RELEASES.md > RELEASES.md.tmp
+ENTRY_FILE="$(mktemp)"
+printf '%s\n' "$RELEASES_ENTRY" > "$ENTRY_FILE"
+awk -v entryfile="$ENTRY_FILE" -v marker="$MARKER" '
+  index($0, marker) {
+    print
+    while ((getline line < entryfile) > 0) print line
+    close(entryfile)
+    next
+  }
+  {print}
+' RELEASES.md > RELEASES.md.tmp
+rm -f "$ENTRY_FILE"
 mv RELEASES.md.tmp RELEASES.md
 git add RELEASES.md
 git commit -q -m "release: staging $STAMP ($COUNT change(s) since $BASE)"
