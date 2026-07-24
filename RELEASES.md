@@ -12,6 +12,11 @@ Running log of what shipped to **staging** (`landingpage.tapbooknow.com`), newes
 
 <!-- release-log:staging (release-staging.sh inserts new entries directly below this line) -->
 
+## 20260724T002320Z — staging
+Commit `fac4e56` · 1 change(s) since `b01ba5e` · [compare](https://github.com/clubtechglobal/ctg-branded-landing/compare/b01ba5e...fac4e56)
+
+- Fix consent analytics initialization (`fac4e56`)
+
 ## 20260723T233722Z — staging
 Commit `4dec665` · 6 change(s) since `e4d7ea6` · [compare](https://github.com/clubtechglobal/ctg-branded-landing/compare/e4d7ea6...4dec665)
 
