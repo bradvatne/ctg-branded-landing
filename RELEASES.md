@@ -12,6 +12,11 @@ Running log of what shipped to **staging** (`landingpage.tapbooknow.com`), newes
 
 <!-- release-log:staging (release-staging.sh inserts new entries directly below this line) -->
 
+## 20260724T010759Z — staging
+Commit `3b691f1` · 1 change(s) since `2b14105` · [compare](https://github.com/clubtechglobal/ctg-branded-landing/compare/2b14105...3b691f1)
+
+- Exclude Worker source from public deploys (`3b691f1`)
+
 ## 20260724T010505Z — staging
 Commit `b82ce80` · 13 change(s) since `e4d7ea6` · [compare](https://github.com/clubtechglobal/ctg-branded-landing/compare/e4d7ea6...b82ce80)
 
