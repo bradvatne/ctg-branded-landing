@@ -70,7 +70,7 @@ CHANGELOG="$(git log --no-merges --pretty=format:"- %s (\`%h\`)" "$TAG"..HEAD)"
 # Use a Bash 3-compatible read loop because macOS still ships Bash 3.2.
 SUBJECTS=()
 while IFS= read -r subject; do
-  SUBJECTS[${#SUBJECTS[@]}]="$subject"
+  [ -n "$subject" ] && SUBJECTS[${#SUBJECTS[@]}]="$subject"
 done < <(git log --no-merges --pretty=format:"%s%n" "$TAG"..HEAD)
 SUMMARY="$(printf "%s; " "${SUBJECTS[@]:0:3}" | sed "s/; $//")"
 [ "${#SUBJECTS[@]}" -gt 3 ] && SUMMARY="$SUMMARY (+$(( ${#SUBJECTS[@]} - 3 )) more)"
