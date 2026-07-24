@@ -54,7 +54,10 @@
 
   function wireConsent() {
     function maybeLoad(prefs) {
-      if (prefs && prefs.marketing) loadTracking();
+      var production = window.CTGConsent &&
+        window.CTGConsent.isProductionHost &&
+        window.CTGConsent.isProductionHost();
+      if (production && prefs && prefs.marketing) loadTracking();
     }
     var stored = window.CTGConsent && window.CTGConsent.get && window.CTGConsent.get();
     if (stored && stored.prefs) maybeLoad(stored.prefs);
