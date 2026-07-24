@@ -32,6 +32,7 @@
 
   var SCHEDULER = 'https://meetings-na2.hubspot.com/gus-murray';
   var LEAD_ENDPOINT = '/api/lead'; // same-origin Cloudflare Worker — server-side capture (consent-independent)
+  var demoBookedTracked = false;
 
   function track(name, props) {
     try {
@@ -297,6 +298,8 @@
     var d = e && e.data;
     if (!d || d.meetingBookSucceeded !== true) return;       // HubSpot Meetings success signal
     if (!/(^|\.)hubspot\.com$/i.test(originHost(e.origin))) return; // trust only HubSpot origins
+    if (demoBookedTracked) return;                            // HubSpot may repeat its success message
+    demoBookedTracked = true;
     track('demo_booked', { source: 'hubspot_meetings' });
   }, false);
 

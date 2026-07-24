@@ -1,11 +1,10 @@
 /* ──────────────────────────────────────────────────────────────────────
    Clubtech branded landing — Cookie Consent (GDPR / ePrivacy compliant)
 
-   Ported from ctg-landingpage consent.js. Loads Google Tag Manager only
-   after consent; the GTM container fans out to GA4 / Meta Pixel / etc.
+   Ported from ctg-landingpage consent.js. Loads the production Google Tag
+   Manager container only on the canonical production host and after consent;
+   the GTM container fans out to GA4 / Meta Pixel / etc.
    Granular consent state propagates via Google Consent Mode v2.
-   Same GTM container + Ads tag as www.clubtechglobal.com — traffic from
-   this host is distinguished by hostname in GA4.
    ────────────────────────────────────────────────────────────────────── */
 
 (function () {
@@ -17,7 +16,8 @@
     consentVersion: '2',
     storageKey: 'ctg-consent',
     attributionKey: 'ctg-attribution',
-    attributionTtlMs: 30 * 24 * 60 * 60 * 1000
+    attributionTtlMs: 30 * 24 * 60 * 60 * 1000,
+    productionHosts: ['www.clubtechglobal.com']
   };
 
   /* ── First-touch attribution (functional, no PII) ─────────────── */
@@ -128,9 +128,16 @@
      Ads tag. Do NOT re-add a loadGoogleAds()/gtag('config', AW…) here or
      the Ads tag loads twice. CONFIG.googleAds.id is kept for reference. */
   let gtmLoaded = false;
+  let consentReadyPushed = false;
+
+  function isProductionHost() {
+    return CONFIG.productionHosts.indexOf(
+      String(location.hostname || '').toLowerCase()
+    ) !== -1;
+  }
 
   function loadGTM() {
-    if (gtmLoaded || !CONFIG.gtm.id) return;
+    if (gtmLoaded || !CONFIG.gtm.id || !isProductionHost()) return false;
     gtmLoaded = true;
     (function (w, d, s, l, i) {
       w[l] = w[l] || [];
@@ -142,6 +149,17 @@
       j.src = CONFIG.gtm.gatewayPath + '?id=' + encodeURIComponent(i) + dl;
       f.parentNode.insertBefore(j, f);
     })(window, document, 'script', 'dataLayer', CONFIG.gtm.id);
+    return true;
+  }
+
+  function pushConsentReady(prefs) {
+    if (consentReadyPushed || !isProductionHost()) return;
+    consentReadyPushed = true;
+    window.dataLayer.push({
+      event: 'consent_update',
+      analytics: !!prefs.analytics,
+      marketing: !!prefs.marketing
+    });
   }
 
   /* ── Apply consent ────────────────────────────────────────────── */
@@ -153,8 +171,12 @@
       ad_personalization: prefs.marketing ? 'granted' : 'denied'
     });
 
-    if (prefs.analytics || prefs.marketing) {
+    if ((prefs.analytics || prefs.marketing) && isProductionHost()) {
       loadGTM();
+      // The container's initialization trigger must follow gtm.js in the
+      // queue. consent.js owns this event so a stored choice cannot race the
+      // deferred analytics.js listener on a returning page view.
+      pushConsentReady(prefs);
     }
 
     window.dispatchEvent(new CustomEvent('ctg:consent', { detail: prefs }));
@@ -197,6 +219,10 @@
   function acceptAll() {
     const prefs = { analytics: true, marketing: true };
     writeStored(prefs);
+    if (gtmLoaded) {
+      location.reload();
+      return;
+    }
     applyConsent(prefs);
     hideBanner(); hidePrefs();
   }
@@ -238,6 +264,10 @@
       marketing: mToggle ? mToggle.checked : false
     };
     writeStored(prefs);
+    if (gtmLoaded) {
+      location.reload();
+      return;
+    }
     applyConsent(prefs);
     hideBanner(); hidePrefs();
   }
@@ -288,6 +318,7 @@
     acceptAll: acceptAll,
     rejectAll: rejectAll,
     get: function () { return readStored(); },
+    isProductionHost: isProductionHost,
     reset: function () {
       try { localStorage.removeItem(CONFIG.storageKey); } catch (_) {}
       location.reload();

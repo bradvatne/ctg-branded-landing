@@ -188,6 +188,9 @@ for (const sourceRoot of ['content', 'js']) {
 
 const consentSource = readFileSync(join(ROOT, 'js', 'consent.js'), 'utf8');
 const consentBootstrapSource = readFileSync(join(ROOT, 'js', 'consent-bootstrap.js'), 'utf8');
+const analyticsSource = readFileSync(join(ROOT, 'js', 'analytics.js'), 'utf8');
+const bookingSource = readFileSync(join(ROOT, 'js', 'booking.js'), 'utf8');
+const hubspotSource = readFileSync(join(ROOT, 'js', 'hubspot.js'), 'utf8');
 if (/googletagmanager\.com\/gtm\.js/i.test(consentSource)) {
   fail('/js/consent.js', 'GTM must use the configured first-party gateway');
 }
@@ -199,6 +202,26 @@ if (!/gtag\(['"]consent['"],\s*['"]default['"]/.test(consentBootstrapSource) ||
     !/analytics_storage:\s*['"]denied['"]/.test(consentBootstrapSource) ||
     !/ad_storage:\s*['"]denied['"]/.test(consentBootstrapSource)) {
   fail('/js/consent-bootstrap.js', 'missing denied Consent Mode v2 defaults');
+}
+if (!/productionHosts:\s*\[\s*['"]www\.clubtechglobal\.com['"]\s*\]/.test(consentSource) ||
+    !/!isProductionHost\(\)/.test(consentSource) ||
+    !/isProductionHost:\s*isProductionHost/.test(consentSource)) {
+  fail('/js/consent.js', 'production GTM loader must be hostname-gated');
+}
+if (!/window\.dataLayer\.push\(\{\s*event:\s*['"]consent_update['"]/.test(consentSource)) {
+  fail('/js/consent.js', 'consent owner must queue the GTM initialization event');
+}
+if (/ctg:consent|track\(['"]page_view['"]/.test(analyticsSource)) {
+  fail('/js/analytics.js', 'analytics must not race consent initialization or emit a duplicate page_view');
+}
+if (!/var demoBookedTracked = false;/.test(bookingSource) ||
+    !/if \(demoBookedTracked\) return;/.test(bookingSource) ||
+    !/['"]lead_captured['"]/.test(bookingSource) ||
+    !/['"]lead_capture_failed['"]/.test(bookingSource)) {
+  fail('/js/booking.js', 'booking conversion dedupe or lead-capture telemetry is missing');
+}
+if (!/CTGConsent\.isProductionHost/.test(hubspotSource)) {
+  fail('/js/hubspot.js', 'HubSpot tracking must be production-host gated');
 }
 
 if (failures.length) {

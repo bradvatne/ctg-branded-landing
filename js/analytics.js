@@ -239,28 +239,12 @@
     nodes.forEach(function (n) { obs.observe(n); });
   }
 
-  /* ── Consent changes ────────────────────────────────────────── */
-  function wireConsent() {
-    window.addEventListener('ctg:consent', function (e) {
-      track('consent_update', {
-        analytics: !!(e.detail && e.detail.analytics),
-        marketing: !!(e.detail && e.detail.marketing)
-      });
-    });
-  }
-
   /* ── Boot ───────────────────────────────────────────────────── */
   function boot() {
     document.addEventListener('click', onDocClick, true);
     wireFaq();
     wireScrollDepth();
     wireSectionViews();
-    wireConsent();
-    track('page_view', {
-      path: location.pathname,
-      title: document.title,
-      referrer: document.referrer || ''
-    });
   }
 
   if (document.readyState === 'loading') {
