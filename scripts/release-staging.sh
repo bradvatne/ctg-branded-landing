@@ -66,8 +66,12 @@ fi
 
 STAMP="$(date -u +%Y%m%dT%H%M%SZ)"
 CHANGELOG="$(git log --no-merges --pretty=format:"- %s (\`%h\`)" "$TAG"..HEAD)"
-# single-line summary for the divider WHY (scaffold rejects newlines)
-mapfile -t SUBJECTS < <(git log --no-merges --pretty=format:"%s" "$TAG"..HEAD)
+# single-line summary for the divider WHY (scaffold rejects newlines).
+# Use a Bash 3-compatible read loop because macOS still ships Bash 3.2.
+SUBJECTS=()
+while IFS= read -r subject; do
+  SUBJECTS[${#SUBJECTS[@]}]="$subject"
+done < <(git log --no-merges --pretty=format:"%s%n" "$TAG"..HEAD)
 SUMMARY="$(printf "%s; " "${SUBJECTS[@]:0:3}" | sed "s/; $//")"
 [ "${#SUBJECTS[@]}" -gt 3 ] && SUMMARY="$SUMMARY (+$(( ${#SUBJECTS[@]} - 3 )) more)"
 COMPARE="https://github.com/$REPO_SLUG/compare/$BASE...$HEAD_SHORT"
