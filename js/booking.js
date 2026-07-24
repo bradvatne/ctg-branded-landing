@@ -51,7 +51,7 @@
      dataLayer so GTM's Google Ads user-provided-data tag ("Ads - EC user_data")
      can attach it to the demo conversions. The RAW email never enters the
      dataLayer — only the hash. Async; fired at form submit so it is present
-     before the later demo_booked conversion. */
+     before the later lead_captured or demo_booked conversion. */
   function pushEmailHash(email) {
     try {
       var norm = String(email || '').trim().toLowerCase();
@@ -218,8 +218,8 @@
       // available before the demo_booked conversion fires (raw email is never pushed).
       pushEmailHash(lead.email);
 
-      // SECONDARY: stitch identity onto the consent-gated pixel and log the
-      // funnel step (both no-op without marketing consent).
+      // SECONDARY: stitch identity onto the consent-gated pixel. The verified
+      // lead_captured event is emitted only after the server accepts the lead.
       identify({
         email: lead.email,
         firstname: lead.firstname,
@@ -227,7 +227,6 @@
         company: lead.company,
         phone: lead.phone,
       });
-      track('demo_submit', { has_phone: !!lead.phone, has_notes: !!lead.description });
 
       showScheduler(root, lead);
     });
@@ -289,7 +288,7 @@
   /* ===== HubSpot meetings success → true "demo booked" conversion ===== */
   /* The scheduler runs in a cross-origin HubSpot iframe and posts a message
      when a slot is actually booked. That on-calendar booking is the real
-     conversion — distinct from demo_submit (lead form only). GTM maps
+     conversion — distinct from lead_captured (accepted lead form). GTM maps
      demo_booked -> the Google Ads "Demo booked" conversion action. */
   function originHost(origin) {
     try { return new URL(origin).hostname; } catch (_) { return ''; }

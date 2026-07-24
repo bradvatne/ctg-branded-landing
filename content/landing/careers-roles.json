@@ -1,0 +1,50 @@
+{
+  "applyUrl": "https://talent.mitra-it.com/careers/mitra-it",
+  "roles": [
+    {
+      "title": "Sales Development Representative",
+      "location": "Onsite · Bali",
+      "employment": "Full-time",
+      "level": "Mid-level · 3+ years",
+      "description": "Open and qualify conversations with premium venues, and set up the product walkthroughs that move operators toward Clubtech.",
+      "skills": [],
+      "additionalSkills": 0
+    },
+    {
+      "title": "Product Support",
+      "location": "Remote · Singapore",
+      "employment": "Full-time",
+      "level": "Mid-level · 3+ years",
+      "description": "Help venue teams get the most from the platform — answer questions, reproduce and test issues, and feed real usability findings back to product.",
+      "skills": ["Teamwork", "Testing", "Usability Testing", "Communication"],
+      "additionalSkills": 1
+    },
+    {
+      "title": "Back-End Developer",
+      "location": "Onsite · Bali",
+      "employment": "Full-time",
+      "level": "Mid-level · 3+ years",
+      "description": "Build and maintain the Laravel and PHP services and APIs behind bookings, operations, and revenue, with MySQL at the core.",
+      "skills": ["Laravel", "PHP", "MySQL", "API Development"],
+      "additionalSkills": 8
+    },
+    {
+      "title": "Front-End Developer",
+      "location": "Onsite · Bali",
+      "employment": "Full-time",
+      "level": "Mid-level · 3+ years",
+      "description": "Build the guest booking journey and operator interfaces in React, Next.js, and TypeScript — close to how venues actually use the product.",
+      "skills": ["React", "Next.js", "TypeScript", "TanStack Query"],
+      "additionalSkills": 7
+    },
+    {
+      "title": "DevOps Engineer",
+      "location": "Remote · Singapore",
+      "employment": "Full-time",
+      "level": "Mid-level · 3+ years",
+      "description": "Run and harden the cloud infrastructure across AWS, Azure, and GCP — the networking, DNS, CDN, SSL, and storage that keep the platform reliable.",
+      "skills": ["AWS", "Azure", "GCP", "Firewall, DNS, CDN, SSL, S3"],
+      "additionalSkills": 1
+    }
+  ]
+}

@@ -191,6 +191,9 @@ const consentBootstrapSource = readFileSync(join(ROOT, 'js', 'consent-bootstrap.
 const analyticsSource = readFileSync(join(ROOT, 'js', 'analytics.js'), 'utf8');
 const bookingSource = readFileSync(join(ROOT, 'js', 'booking.js'), 'utf8');
 const hubspotSource = readFileSync(join(ROOT, 'js', 'hubspot.js'), 'utf8');
+const buildSource = readFileSync(join(ROOT, 'scripts', 'build-blog.mjs'), 'utf8');
+const careersRoles = JSON.parse(readFileSync(join(ROOT, 'content', 'landing', 'careers-roles.json'), 'utf8'));
+const careersOutput = readFileSync(join(ROOT, 'careers', 'index.html'), 'utf8');
 if (/googletagmanager\.com\/gtm\.js/i.test(consentSource)) {
   fail('/js/consent.js', 'GTM must use the configured first-party gateway');
 }
@@ -217,11 +220,25 @@ if (/ctg:consent|track\(['"]page_view['"]/.test(analyticsSource)) {
 if (!/var demoBookedTracked = false;/.test(bookingSource) ||
     !/if \(demoBookedTracked\) return;/.test(bookingSource) ||
     !/['"]lead_captured['"]/.test(bookingSource) ||
-    !/['"]lead_capture_failed['"]/.test(bookingSource)) {
-  fail('/js/booking.js', 'booking conversion dedupe or lead-capture telemetry is missing');
+    !/['"]lead_capture_failed['"]/.test(bookingSource) ||
+    /track\(['"]demo_submit['"]/.test(bookingSource)) {
+  fail('/js/booking.js', 'booking conversion dedupe, verified lead telemetry, or legacy event cleanup is incomplete');
 }
 if (!/CTGConsent\.isProductionHost/.test(hubspotSource)) {
   fail('/js/hubspot.js', 'HubSpot tracking must be production-host gated');
+}
+if (/data-open-demo/.test(buildSource)) {
+  fail('/scripts/build-blog.mjs', 'retired booking-modal hooks must not be regenerated');
+}
+if (!Array.isArray(careersRoles.roles) || !careersRoles.roles.length) {
+  fail('/content/landing/careers-roles.json', 'canonical careers role data is empty');
+} else {
+  const careersText = decodeHtml(careersOutput);
+  for (const role of careersRoles.roles) {
+    if (!role.title || !careersText.includes(role.title)) {
+      fail('/careers/', `canonical role missing from generated output: ${role.title || '(untitled)'}`);
+    }
+  }
 }
 
 if (failures.length) {

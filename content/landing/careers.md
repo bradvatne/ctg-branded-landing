@@ -6,13 +6,14 @@ date: 2026-07-16
 group: company
 layout: careers
 ctaType: careers
-ctaHref: mailto:info@clubtechglobal.com?subject=Careers%20at%20Clubtech
-ctaLabel: Introduce yourself
+ctaHref: #open-roles
+ctaLabel: See open roles
 eyebrow: Company · Careers
 excerpt: Clubtech hires operators and builders who want their work close to the venues, teams, and commercial problems it serves.
 description: Careers at Clubtech for operators and builders who want to work close to premium venues and the product those teams use.
-cta2href: about/
-cta2label: About Clubtech
+cta2href: mailto:info@clubtechglobal.com?subject=Careers%20at%20Clubtech
+cta2label: Introduce yourself
+closingHref: mailto:info@clubtechglobal.com?subject=Careers%20at%20Clubtech
 ---
 
 ## The work
@@ -41,9 +42,9 @@ Clubtech is a focused team working across product and high-touch venue delivery.
 
 [See how Clubtech delivers](/delivery/)
 
-## Open roles and expressions of interest
+## Don't see your role?
 
-Formal openings may not always be listed. If your experience belongs close to this problem, send a short introduction to info@clubtechglobal.com.
+Not every role is always listed. If your experience belongs close to this problem, send a short introduction to info@clubtechglobal.com.
 
 Include:
 
